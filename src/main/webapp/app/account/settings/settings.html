@@ -1,7 +1,7 @@
-<div>
+<div class="main-content">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h2>User settings for [<b>{{vm.settingsAccount.login}}</b>]</h2>
+            <div class="main-head-text">User settings for {{vm.settingsAccount.login}}</div>
 
             <div class="alert alert-success" ng-show="vm.success">
                 <strong>Settings saved!</strong>
@@ -73,7 +73,7 @@
                     </div>
                 </div>
 
-                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Save</button>
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary main-btn">Save</button>
             </form>
         </div>
     </div>

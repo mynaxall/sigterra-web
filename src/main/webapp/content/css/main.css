@@ -200,9 +200,9 @@ ul#strengthBar {
     background:#DDD;
     border-radius:2px;
     display:inline-block;
-    height:5px;
-    margin-right:1px;
-    width:20px;
+    height:10px;
+    margin-right:5px;
+    width:30px;
 }
 
 /* ==========================================================================
@@ -374,3 +374,128 @@ Social Buttons
 }
 
 /* jhipster-needle-css-add-main JHipster will add new css style */
+.navbar-custom {
+    background-color: #1c6258;
+    border-color: #1c6258;
+}
+
+.navbar{
+    margin-bottom: 0;
+    border-radius: 0px;
+}
+.sub-header{
+    background-color: #1c6258;
+    width: 100%;
+    height: 200px;
+    position: absolute
+}
+
+.well {
+    margin-top: 20px;
+    background-color: #e7e7e7;
+}
+.registration-div{
+    background-color: #f0f0f0;
+    max-width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.75);
+}
+.main-head-text{
+    color: #1c6258;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    font-size: 25pt;
+}
+.control-label{
+    font-weight: normal;
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+.main-btn{
+    background-color: #1c6258;
+    width: 200px;
+    margin-bottom: 60px;
+}
+
+.main-btn:hover{
+    background-color: #5aaea7;
+}
+
+.register-btn[disabled]:hover{
+    background-color: #5aaea7;
+}
+
+.terms-and-conditions{
+    color: #333;
+    text-decoration: underline;
+}
+.terms-and-conditions:hover{
+    color: #666;
+}
+
+.modal-dialog{
+    width: 400px;
+}
+
+.login-body{
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.login-header{
+    background-color: #1c6258;
+}
+
+.login-form{
+    padding: 50px;
+    padding-bottom: 0;
+}
+
+.login-btn{
+    background-color: #1c6258;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.login-btn:hover{
+    background-color: #5aaea7;
+}
+
+.forgot-password{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.forgot-password a{
+    color: #1c6258;
+    font-weight: bold;
+}
+
+.login-registration{
+    background-color: #e6e6e6;
+    text-align: center;
+    padding: 15px;
+    width: 100%;
+}
+
+.main-content{
+    background-color: #f0f0f0;
+    max-width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.75);
+}
+
+

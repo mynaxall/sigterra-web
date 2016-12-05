@@ -1,7 +1,7 @@
-<div>
+<div class="registration-div">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1>Reset your password</h1>
+            <div class="main-head-text">Reset your password</div>
 
             <div class="alert alert-danger" ng-show="vm.errorEmailNotExists">
                 <strong>E-Mail address isn't registered!</strong> Please check and try again.
@@ -39,7 +39,7 @@
                         </p>
                     </div>
                 </div>
-                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Reset</button>
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary main-btn">Reset</button>
             </form>
 
         </div>
