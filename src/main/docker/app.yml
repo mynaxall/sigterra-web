@@ -1,16 +1,16 @@
 version: '2'
 services:
-    sigterra-app:
-        image: sigterra
+    sigterra_web-app:
+        image: sigterra_web
         external_links:
-            - sigterra-mysql:mysql
+            - sigterra_web-mysql:mysql
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
-            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/sigterra?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/sigterra_web?useUnicode=true&characterEncoding=utf8&useSSL=false
             - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
         ports:
             - 8080:8080
-    sigterra-mysql:
+    sigterra_web-mysql:
         extends:
             file: mysql.yml
-            service: sigterra-mysql
+            service: sigterra_web-mysql

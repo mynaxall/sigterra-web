@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('sigterraApp')
+        .module('sigterraWebApp')
         .controller('AuditsController', AuditsController);
 
     AuditsController.$inject = ['$filter', 'AuditsService', 'ParseLinks'];

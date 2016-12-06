@@ -2,7 +2,7 @@
 
 describe('Controller Tests', function () {
 
-    beforeEach(module('sigterraApp'));
+    beforeEach(module('sigterraWebApp'));
 
     describe('LoginController', function () {
         var $scope, authService;

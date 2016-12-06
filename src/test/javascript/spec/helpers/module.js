@@ -1,4 +1,4 @@
-beforeEach(module('sigterraApp'));
+beforeEach(module('sigterraWebApp'));
 /**
  * returns a function whose angular will be replaced
  * with whatever mock was supplied.

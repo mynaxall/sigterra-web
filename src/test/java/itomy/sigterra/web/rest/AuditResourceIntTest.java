@@ -1,6 +1,6 @@
 package itomy.sigterra.web.rest;
 
-import itomy.sigterra.SigterraApp;
+import itomy.sigterra.SigterraWebApp;
 import itomy.sigterra.config.audit.AuditEventConverter;
 import itomy.sigterra.domain.PersistentAuditEvent;
 import itomy.sigterra.repository.PersistenceAuditEventRepository;
@@ -32,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SigterraApp.class)
+@SpringBootTest(classes = SigterraWebApp.class)
 @Transactional
 public class AuditResourceIntTest {
 

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('sigterraApp')
+        .module('sigterraWebApp')
         .controller('ResetFinishController', ResetFinishController);
 
     ResetFinishController.$inject = ['$stateParams', '$timeout', 'Auth', 'LoginService'];

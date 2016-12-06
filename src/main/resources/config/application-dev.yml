@@ -24,10 +24,10 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/Sigterra?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://localhost:3306/sigterra_web?useUnicode=true&characterEncoding=utf8&useSSL=false
         name:
-        username: root
-        password:
+        username: primadesk
+        password: primadesk
         hikari:
             data-source-properties:
                 cachePrepStmts: true
@@ -39,10 +39,9 @@ spring:
         database: MYSQL
         show-sql: true
         properties:
-            hibernate.cache.use_second_level_cache: true
+            hibernate.cache.use_second_level_cache: false
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
-            hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
     mail:
         host: localhost
         port: 25
@@ -64,15 +63,12 @@ server:
 # ===================================================================
 
 jhipster:
-    cache: # Hibernate 2nd level cache, used by CacheConfiguration
-        ehcache:
-            maxBytesLocalHeap: 16M
     security:
         rememberMe:
             # security key (this key should be unique for your application, and kept secret)
-            key: 583771afe9477b721cd8b35b36ed37ec4752e16f
+            key: fe9c3a39acc685b0023127795ca5af2c9398ba14
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: Sigterra@localhost
+        from: sigterra_web@localhost
         baseUrl: # keep empty to use the server's default URL
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
@@ -80,7 +76,7 @@ jhipster:
             enabled: false
             host: localhost
             port: 2003
-            prefix: Sigterra
+            prefix: sigterra_web
         logs: # Reports Dropwizard metrics in the logs
             enabled: false
             reportFrequency: 60 # in seconds

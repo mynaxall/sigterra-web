@@ -15,6 +15,6 @@
     };
 
     angular
-        .module('sigterraApp')
+        .module('sigterraWebApp')
         .component('jhiItemCount', jhiItemCount);
 })();

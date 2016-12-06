@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('sigterraApp')
+        .module('sigterraWebApp')
         .factory('stateHandler', stateHandler);
 
     stateHandler.$inject = ['$rootScope', '$state', '$sessionStorage',  '$window',
@@ -35,7 +35,7 @@
             });
 
             var stateChangeSuccess = $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
-                var titleKey = 'Sigterra' ;
+                var titleKey = 'sigterra_web' ;
 
                 // Set the page title key to the one configured in state or use default one
                 if (toState.data.pageTitle) {

@@ -31,9 +31,6 @@ public class UserService {
     private final Logger log = LoggerFactory.getLogger(UserService.class);
 
     @Inject
-    private SocialService socialService;
-
-    @Inject
     private PasswordEncoder passwordEncoder;
 
     @Inject
@@ -93,13 +90,13 @@ public class UserService {
         Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
         Set<Authority> authorities = new HashSet<>();
         String encryptedPassword = passwordEncoder.encode(password);
+        newUser.setLogin(email);
         // new user gets initially a generated password
         newUser.setPassword(encryptedPassword);
         newUser.setFirstName(firstName);
         newUser.setLastName(lastName);
         newUser.setEmail(email);
         newUser.setLangKey(langKey);
-        newUser.setLogin(email);
         // new user is not active
         newUser.setActivated(false);
         // new user gets registration key
@@ -173,7 +170,6 @@ public class UserService {
 
     public void deleteUser(String login) {
         userRepository.findOneByLogin(login).ifPresent(u -> {
-            socialService.deleteUserSocialConnection(u.getLogin());
             userRepository.delete(u);
             log.debug("Deleted User: {}", u);
         });
@@ -205,7 +201,6 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public User getUserWithAuthorities() {
-        log.info("SecurityUtils.getCurrentUserLogin() ====" + SecurityUtils.getCurrentUserLogin());
         Optional<User> optionalUser = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin());
         User user = null;
         if (optionalUser.isPresent()) {

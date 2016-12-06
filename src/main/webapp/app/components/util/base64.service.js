@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('sigterraApp')
+        .module('sigterraWebApp')
         .factory('Base64', Base64);
 
     function Base64 () {

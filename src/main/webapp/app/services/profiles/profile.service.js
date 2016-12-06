@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('sigterraApp')
+        .module('sigterraWebApp')
         .factory('ProfileService', ProfileService);
 
     ProfileService.$inject = ['$http'];

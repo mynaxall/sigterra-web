@@ -18,7 +18,7 @@ management:
             enabled: false # When using the MailService, configure an SMTP server and set this to true
 spring:
     application:
-        name: Sigterra
+        name: sigterra_web
     profiles:
         # The commented value for `active` can be replaced with valid spring profiles to load.
         # Otherwise, it will be filled in by gradle when building the WAR file
@@ -39,23 +39,6 @@ spring:
             enabled: false
     thymeleaf:
         mode: XHTML
-    social:
-        # see https://developers.google.com/+/web/signin/server-side-flow#step_1_create_a_client_id_and_client_secret
-        google:
-            clientId: xxx
-            clientSecret: xxx
-
-        # see https://developers.facebook.com/docs/facebook-login/v2.2
-        facebook:
-            clientId: xxx
-            clientSecret: xxx
-
-        # see https://apps.twitter.com/app/
-        twitter:
-            clientId: xxx
-            clientSecret: xxx
-
-        # jhipster-needle-add-social-configuration
 
 security:
     basic:
@@ -83,10 +66,10 @@ jhipster:
         #allow-credentials: true
         #max-age: 1800
     mail:
-        from: Sigterra@localhost
+        from: sigterra_web@localhost
     swagger:
-        title: Sigterra API
-        description: Sigterra API documentation
+        title: sigterra_web API
+        description: sigterra_web API documentation
         version: 0.0.1
         termsOfServiceUrl:
         contactName:
@@ -94,8 +77,6 @@ jhipster:
         contactEmail:
         license:
         licenseUrl:
-    social:
-        redirectAfterSignIn: "/#/home"
     ribbon:
         # comma separated list of profiles to show a ribbon on the GUI
         displayOnActiveProfiles: dev

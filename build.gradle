@@ -32,7 +32,7 @@ ext['hibernate.version'] = '${hibernate_entitymanager_version}'
 defaultTasks 'bootRun'
 
 bootRepackage {
-   mainClass = 'itomy.sigterra.SigterraApp'
+   mainClass = 'itomy.sigterra.SigterraWebApp'
 }
 
 war {
@@ -40,7 +40,7 @@ war {
 }
 
 springBoot {
-    mainClass = 'itomy.sigterra.SigterraApp'
+    mainClass = 'itomy.sigterra.SigterraWebApp'
     executable = true
     buildInfo()
 }
@@ -112,8 +112,6 @@ repositories {
 
 dependencies {
     compile "io.dropwizard.metrics:metrics-core"
-    compile "io.dropwizard.metrics:metrics-annotation:${dropwizard_metrics_version}"
-    compile "io.dropwizard.metrics:metrics-ehcache:${dropwizard_metrics_version}"
     compile "io.dropwizard.metrics:metrics-graphite:${dropwizard_metrics_version}"
     compile "io.dropwizard.metrics:metrics-healthchecks:${dropwizard_metrics_version}"
     compile "io.dropwizard.metrics:metrics-jvm:${dropwizard_metrics_version}"
@@ -145,9 +143,6 @@ dependencies {
     compile "javax.transaction:javax.transaction-api"
     compile "org.apache.geronimo.javamail:geronimo-javamail_1.4_mail:${geronimo_javamail_1_4_mail_version}"
     
-    compile ("org.hibernate:hibernate-ehcache") {
-        exclude(module: 'ehcache-core')
-    }
     compile "org.hibernate:hibernate-envers"
     compile "org.hibernate:hibernate-validator"
     compile ("org.liquibase:liquibase-core:${liquibase_core_version}") {
@@ -165,7 +160,6 @@ dependencies {
         exclude module: 'spring-boot-starter-tomcat'
     }
     compile "org.springframework.boot:spring-boot-starter-undertow"
-    compile "org.springframework.boot:spring-boot-starter-websocket"
     compile "org.springframework.boot:spring-boot-starter-thymeleaf"
     compile "org.springframework.boot:spring-boot-starter-cloud-connectors"
     compile ("org.springframework:spring-context-support") {
@@ -174,18 +168,12 @@ dependencies {
     compile "org.springframework.security:spring-security-config:${spring_security_version}"
     compile "org.springframework.security:spring-security-data:${spring_security_version}"
     compile "org.springframework.security:spring-security-web:${spring_security_version}"
-    compile "org.springframework.security:spring-security-messaging:${spring_security_version}" 
     compile("io.springfox:springfox-swagger2:${springfox_version}"){
         exclude module: 'mapstruct'
     }
     compile "io.springfox:springfox-bean-validators:${springfox_version}"
     compile "mysql:mysql-connector-java"
     compile "org.mapstruct:mapstruct-jdk8:${mapstruct_version}"
-    compile "org.apache.httpcomponents:httpclient"
-    compile "org.springframework.social:spring-social-security"
-    compile "org.springframework.social:spring-social-google:${spring_social_google_version}"
-    compile "org.springframework.social:spring-social-facebook"
-    compile "org.springframework.social:spring-social-twitter"
     testCompile "com.jayway.awaitility:awaitility:${awaility_version}"
     testCompile "com.jayway.jsonpath:json-path"
     testCompile "org.springframework.boot:spring-boot-starter-test"

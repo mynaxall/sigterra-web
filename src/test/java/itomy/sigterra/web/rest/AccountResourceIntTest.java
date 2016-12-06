@@ -1,6 +1,6 @@
 package itomy.sigterra.web.rest;
 
-import itomy.sigterra.SigterraApp;
+import itomy.sigterra.SigterraWebApp;
 import itomy.sigterra.config.JHipsterProperties;
 import itomy.sigterra.domain.Authority;
 import itomy.sigterra.domain.User;
@@ -42,7 +42,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see UserService
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SigterraApp.class)
+@SpringBootTest(classes = SigterraWebApp.class)
 public class AccountResourceIntTest {
 
     @Inject

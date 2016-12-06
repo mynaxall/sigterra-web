@@ -1,7 +1,7 @@
 version: '2'
 services:
-    sigterra-sonar:
-        container_name: sigterra-sonar
+    sigterra_web-sonar:
+        container_name: sigterra_web-sonar
         image: sonarqube:6.1-alpine
         ports:
             - 9000:9000

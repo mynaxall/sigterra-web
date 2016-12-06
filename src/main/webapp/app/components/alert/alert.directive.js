@@ -11,7 +11,7 @@
     };
 
     angular
-        .module('sigterraApp')
+        .module('sigterraWebApp')
         .component('jhiAlert', jhiAlert);
 
     jhiAlertController.$inject = ['$scope', 'AlertService'];

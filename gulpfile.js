@@ -1,4 +1,4 @@
-// Generated on 2016-11-25 using generator-jhipster 3.11.0
+// Generated on 2016-12-06 using generator-jhipster 3.11.0
 'use strict';
 
 var gulp = require('gulp'),
@@ -81,7 +81,7 @@ gulp.task('html', function () {
     return gulp.src(config.app + 'app/**/*.html')
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(templateCache({
-            module: 'sigterraApp',
+            module: 'sigterraWebApp',
             root: 'app/',
             moduleSystem: 'IIFE'
         }))
@@ -90,7 +90,7 @@ gulp.task('html', function () {
 
 gulp.task('ngconstant:dev', function () {
     return ngConstant({
-        name: 'sigterraApp',
+        name: 'sigterraWebApp',
         constants: {
             VERSION: util.parseVersion(),
             DEBUG_INFO_ENABLED: true
@@ -104,7 +104,7 @@ gulp.task('ngconstant:dev', function () {
 
 gulp.task('ngconstant:prod', function () {
     return ngConstant({
-        name: 'sigterraApp',
+        name: 'sigterraWebApp',
         constants: {
             VERSION: util.parseVersion(),
             DEBUG_INFO_ENABLED: false

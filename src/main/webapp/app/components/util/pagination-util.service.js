@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('sigterraApp')
+        .module('sigterraWebApp')
         .factory('PaginationUtil', PaginationUtil);
 
     function PaginationUtil () {

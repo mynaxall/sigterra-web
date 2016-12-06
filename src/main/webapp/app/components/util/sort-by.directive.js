@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('sigterraApp')
+        .module('sigterraWebApp')
         .directive('jhSortBy', jhSortBy);
 
     function jhSortBy() {

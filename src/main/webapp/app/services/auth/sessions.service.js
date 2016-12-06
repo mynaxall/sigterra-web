@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('sigterraApp')
+        .module('sigterraWebApp')
         .factory('Sessions', Sessions);
 
     Sessions.$inject = ['$resource'];

@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('sigterraApp')
+    angular.module('sigterraWebApp')
         .controller('HealthModalController', HealthModalController);
 
     HealthModalController.$inject = ['$uibModalInstance', 'currentHealth', 'baseName', 'subSystemName'];

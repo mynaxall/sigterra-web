@@ -30,8 +30,6 @@ public class JHipsterProperties {
 
     private final CorsConfiguration cors = new CorsConfiguration();
 
-    private final Social social = new Social();
-
     private final Ribbon ribbon = new Ribbon();
 
     public Async getAsync() {
@@ -64,10 +62,6 @@ public class JHipsterProperties {
 
     public CorsConfiguration getCors() {
         return cors;
-    }
-
-    public Social getSocial() {
-        return social;
     }
 
     public Ribbon getRibbon() {
@@ -130,29 +124,11 @@ public class JHipsterProperties {
     }
 
     public static class Cache {
-        private final Ehcache ehcache = new Ehcache();
-
-        public Ehcache getEhcache() {
-            return ehcache;
-        }
-
-        public static class Ehcache {
-
-            private String maxBytesLocalHeap = "16M";
-
-            public String getMaxBytesLocalHeap() {
-                return maxBytesLocalHeap;
-            }
-
-            public void setMaxBytesLocalHeap(String maxBytesLocalHeap) {
-                this.maxBytesLocalHeap = maxBytesLocalHeap;
-            }
-        }
     }
 
     public static class Mail {
 
-        private String from = "Sigterra@localhost";
+        private String from = "sigterra_web@localhost";
 
         private String baseUrl = "";
 
@@ -198,9 +174,9 @@ public class JHipsterProperties {
 
     public static class Swagger {
 
-        private String title = "Sigterra API";
+        private String title = "sigterra_web API";
 
-        private String description = "Sigterra API documentation";
+        private String description = "sigterra_web API documentation";
 
         private String version = "0.0.1";
 
@@ -330,7 +306,7 @@ public class JHipsterProperties {
 
             private int port = 2003;
 
-            private String prefix = "Sigterra";
+            private String prefix = "sigterra_web";
 
             public boolean isEnabled() {
                 return enabled;
@@ -424,19 +400,6 @@ public class JHipsterProperties {
             public int getQueueSize() { return queueSize; }
 
             public void setQueueSize(int queueSize) { this.queueSize = queueSize; }
-        }
-    }
-
-    public static class Social {
-
-        private String redirectAfterSignIn = "/#/home";
-
-        public String getRedirectAfterSignIn() {
-            return redirectAfterSignIn;
-        }
-
-        public void setRedirectAfterSignIn(String redirectAfterSignIn) {
-            this.redirectAfterSignIn = redirectAfterSignIn;
         }
     }
 

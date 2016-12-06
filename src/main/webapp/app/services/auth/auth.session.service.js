@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('sigterraApp')
+        .module('sigterraWebApp')
         .factory('AuthServerProvider', AuthServerProvider);
 
-    AuthServerProvider.$inject = ['$http', '$localStorage' , 'JhiTrackerService'];
+    AuthServerProvider.$inject = ['$http', '$localStorage' ];
 
-    function AuthServerProvider ($http, $localStorage , JhiTrackerService) {
+    function AuthServerProvider ($http, $localStorage ) {
         var service = {
             getToken: getToken,
             hasValidToken: hasValidToken,
@@ -42,7 +42,6 @@
         }
 
         function logout () {
-            JhiTrackerService.disconnect();
 
             
             // logout from the server

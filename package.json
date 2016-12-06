@@ -1,7 +1,7 @@
 {
-  "name": "sigterra",
+  "name": "sigterra-web",
   "version": "0.0.0",
-  "description": "Description for Sigterra",
+  "description": "Description for sigterra_web",
   "private": true,
   "cacheDirectories": [
     "node_modules",

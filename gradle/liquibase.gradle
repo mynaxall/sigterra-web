@@ -17,7 +17,7 @@ task liquibaseDiffChangelog(dependsOn: compileJava, type: JavaExec) {
     args "--referenceUrl=hibernate:spring:itomy.sigterra.domain?dialect=org.hibernate.dialect.MySQL5InnoDBDialect&hibernate.ejb.naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy"
     args "--username=root"
     args "--password="
-    args "--url=jdbc:mysql://localhost:3306/Sigterra"
+    args "--url=jdbc:mysql://localhost:3306/sigterra_web"
     args "--driver=com.mysql.jdbc.Driver"
     args "diffChangeLog"
     
