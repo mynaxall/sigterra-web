@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span>Cardlet</span> {{vm.cardlet.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.cardlet.name}}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+            <span>{{vm.cardlet.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Modified Date</span></dt>
+        <dd>
+            <span>{{vm.cardlet.modifiedDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Active</span></dt>
+        <dd>
+            <span>{{vm.cardlet.active}}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{vm.cardlet.user.id}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="cardlet-detail.edit({id:vm.cardlet.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

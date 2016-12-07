@@ -1,0 +1,42 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "cardlet",
+            "otherEntityName": "cardlet",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "icon",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "modifiDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "mainColor",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "color",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161207122219",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "item",
+    "pagination": "pager"
+}

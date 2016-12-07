@@ -498,4 +498,16 @@ Social Buttons
     box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.75);
 }
 
+.entiti-content{
+    background-color: #f0f0f0;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.75);
+}
+
 

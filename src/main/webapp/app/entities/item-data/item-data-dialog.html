@@ -1,0 +1,82 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myItemDataLabel">Create or edit a Item Data</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.itemData.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.itemData.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                    ng-model="vm.itemData.title"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.itemData.description"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_createdDate">Created Date</label>
+                <div class="input-group">
+                    <input id="field_createdDate" type="text" class="form-control" name="createdDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.itemData.createdDate" is-open="vm.datePickerOpenStatus.createdDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createdDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_modifiedDate">Modified Date</label>
+                <div class="input-group">
+                    <input id="field_modifiedDate" type="text" class="form-control" name="modifiedDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.itemData.modifiedDate" is-open="vm.datePickerOpenStatus.modifiedDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('modifiedDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_firstImage">First Image</label>
+            <input type="text" class="form-control" name="firstImage" id="field_firstImage"
+                    ng-model="vm.itemData.firstImage"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_secondImage">Second Image</label>
+            <input type="text" class="form-control" name="secondImage" id="field_secondImage"
+                    ng-model="vm.itemData.secondImage"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_thirdImage">Third Image</label>
+            <input type="text" class="form-control" name="thirdImage" id="field_thirdImage"
+                    ng-model="vm.itemData.thirdImage"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_item">Item</label>
+            <select class="form-control" id="field_item" name="item" ng-model="vm.itemData.item" ng-options="item as item.id for item in vm.items track by item.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

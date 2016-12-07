@@ -1,0 +1,19 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "path",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161207100357",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "signature",
+    "pagination": "pager"
+}

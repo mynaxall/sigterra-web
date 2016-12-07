@@ -1,0 +1,46 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "item",
+            "otherEntityName": "item",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "modifiedDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "firstImage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "secondImage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "thirdImage",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161207122952",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "item_data",
+    "pagination": "pager"
+}

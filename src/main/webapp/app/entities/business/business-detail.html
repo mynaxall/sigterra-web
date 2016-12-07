@@ -1,0 +1,99 @@
+
+<div>
+    <h2><span>Business</span> {{vm.business.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.business.name}}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+            <span>{{vm.business.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Modified Date</span></dt>
+        <dd>
+            <span>{{vm.business.modifiedDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Pisition</span></dt>
+        <dd>
+            <span>{{vm.business.pisition}}</span>
+        </dd>
+        <dt><span>Icon</span></dt>
+        <dd>
+            <span>{{vm.business.icon}}</span>
+        </dd>
+        <dt><span>User Name</span></dt>
+        <dd>
+            <span>{{vm.business.userName}}</span>
+        </dd>
+        <dt><span>Job Position</span></dt>
+        <dd>
+            <span>{{vm.business.jobPosition}}</span>
+        </dd>
+        <dt><span>Company Name</span></dt>
+        <dd>
+            <span>{{vm.business.companyName}}</span>
+        </dd>
+        <dt><span>Company Site</span></dt>
+        <dd>
+            <span>{{vm.business.companySite}}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+            <span>{{vm.business.email}}</span>
+        </dd>
+        <dt><span>Phone</span></dt>
+        <dd>
+            <span>{{vm.business.phone}}</span>
+        </dd>
+        <dt><span>Address</span></dt>
+        <dd>
+            <span>{{vm.business.address}}</span>
+        </dd>
+        <dt><span>Twitter</span></dt>
+        <dd>
+            <span>{{vm.business.twitter}}</span>
+        </dd>
+        <dt><span>Facebook</span></dt>
+        <dd>
+            <span>{{vm.business.facebook}}</span>
+        </dd>
+        <dt><span>Google</span></dt>
+        <dd>
+            <span>{{vm.business.google}}</span>
+        </dd>
+        <dt><span>Linked In</span></dt>
+        <dd>
+            <span>{{vm.business.linkedIn}}</span>
+        </dd>
+        <dt><span>Photo</span></dt>
+        <dd>
+            <span>{{vm.business.photo}}</span>
+        </dd>
+        <dt><span>Main Color</span></dt>
+        <dd>
+            <span>{{vm.business.mainColor}}</span>
+        </dd>
+        <dt><span>Color</span></dt>
+        <dd>
+            <span>{{vm.business.color}}</span>
+        </dd>
+        <dt><span>Cardlet</span></dt>
+        <dd>
+            <a ui-sref="cardlet-detail({id:vm.business.cardlet.id})">{{vm.business.cardlet.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="business-detail.edit({id:vm.business.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

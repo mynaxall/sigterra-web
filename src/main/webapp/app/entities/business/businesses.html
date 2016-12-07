@@ -1,0 +1,100 @@
+<div class="entiti-content">
+    <h2>Businesses</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="business.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Business
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDate"><span>Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="modifiedDate"><span>Modified Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pisition"><span>Pisition</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="icon"><span>Icon</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="userName"><span>User Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="jobPosition"><span>Job Position</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="companyName"><span>Company Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="companySite"><span>Company Site</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="email"><span>Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="phone"><span>Phone</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address"><span>Address</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="twitter"><span>Twitter</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="facebook"><span>Facebook</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="google"><span>Google</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="linkedIn"><span>Linked In</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="photo"><span>Photo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mainColor"><span>Main Color</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="color"><span>Color</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cardlet.id"><span>Cardlet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="business in vm.businesses track by business.id">
+                    <td><a ui-sref="business-detail({id:business.id})">{{business.id}}</a></td>
+                    <td>{{business.name}}</td>
+                        <td>{{business.createdDate | date:'mediumDate'}}</td>
+                        <td>{{business.modifiedDate | date:'mediumDate'}}</td>
+                    <td>{{business.pisition}}</td>
+                    <td>{{business.icon}}</td>
+                    <td>{{business.userName}}</td>
+                    <td>{{business.jobPosition}}</td>
+                    <td>{{business.companyName}}</td>
+                    <td>{{business.companySite}}</td>
+                    <td>{{business.email}}</td>
+                    <td>{{business.phone}}</td>
+                    <td>{{business.address}}</td>
+                    <td>{{business.twitter}}</td>
+                    <td>{{business.facebook}}</td>
+                    <td>{{business.google}}</td>
+                    <td>{{business.linkedIn}}</td>
+                    <td>{{business.photo}}</td>
+                    <td>{{business.mainColor}}</td>
+                    <td>{{business.color}}</td>
+                    <td>
+                        <a ui-sref="cardlet-detail({id:business.cardlet.id})">{{business.cardlet.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="business-detail({id:business.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="business.edit({id:business.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="business.delete({id:business.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

@@ -1,0 +1,64 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCardletLabel">Create or edit a Cardlet</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.cardlet.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.cardlet.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.cardlet.name"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_createdDate">Created Date</label>
+                <div class="input-group">
+                    <input id="field_createdDate" type="text" class="form-control" name="createdDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.cardlet.createdDate" is-open="vm.datePickerOpenStatus.createdDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createdDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_modifiedDate">Modified Date</label>
+                <div class="input-group">
+                    <input id="field_modifiedDate" type="text" class="form-control" name="modifiedDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.cardlet.modifiedDate" is-open="vm.datePickerOpenStatus.modifiedDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('modifiedDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_active">Active</label>
+            <input type="checkbox" class="form-control" name="active" id="field_active"
+                    ng-model="vm.cardlet.active"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.cardlet.user" ng-options="user as user.id for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

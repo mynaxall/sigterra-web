@@ -1,0 +1,70 @@
+<div class="entiti-content">
+    <h2>Cardlets</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="cardlet.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Cardlet
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDate"><span>Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="modifiedDate"><span>Modified Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="active"><span>Active</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.id"><span>User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cardlet in vm.cardlets track by cardlet.id">
+                    <td><a ui-sref="cardlet-detail({id:cardlet.id})">{{cardlet.id}}</a></td>
+                    <td>{{cardlet.name}}</td>
+                        <td>{{cardlet.createdDate | date:'mediumDate'}}</td>
+                        <td>{{cardlet.modifiedDate | date:'mediumDate'}}</td>
+                    <td>{{cardlet.active}}</td>
+                    <td>
+                        {{cardlet.user.id}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="cardlet-detail({id:cardlet.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="cardlet.edit({id:cardlet.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="cardlet.delete({id:cardlet.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

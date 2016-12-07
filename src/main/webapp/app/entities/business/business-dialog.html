@@ -1,0 +1,154 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myBusinessLabel">Create or edit a Business</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.business.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.business.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.business.name"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_createdDate">Created Date</label>
+                <div class="input-group">
+                    <input id="field_createdDate" type="text" class="form-control" name="createdDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.business.createdDate" is-open="vm.datePickerOpenStatus.createdDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createdDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_modifiedDate">Modified Date</label>
+                <div class="input-group">
+                    <input id="field_modifiedDate" type="text" class="form-control" name="modifiedDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.business.modifiedDate" is-open="vm.datePickerOpenStatus.modifiedDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('modifiedDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_pisition">Pisition</label>
+            <input type="number" class="form-control" name="pisition" id="field_pisition"
+                    ng-model="vm.business.pisition"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_icon">Icon</label>
+            <input type="text" class="form-control" name="icon" id="field_icon"
+                    ng-model="vm.business.icon"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_userName">User Name</label>
+            <input type="text" class="form-control" name="userName" id="field_userName"
+                    ng-model="vm.business.userName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_jobPosition">Job Position</label>
+            <input type="text" class="form-control" name="jobPosition" id="field_jobPosition"
+                    ng-model="vm.business.jobPosition"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_companyName">Company Name</label>
+            <input type="text" class="form-control" name="companyName" id="field_companyName"
+                    ng-model="vm.business.companyName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_companySite">Company Site</label>
+            <input type="text" class="form-control" name="companySite" id="field_companySite"
+                    ng-model="vm.business.companySite"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                    ng-model="vm.business.email"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_phone">Phone</label>
+            <input type="text" class="form-control" name="phone" id="field_phone"
+                    ng-model="vm.business.phone"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                    ng-model="vm.business.address"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_twitter">Twitter</label>
+            <input type="text" class="form-control" name="twitter" id="field_twitter"
+                    ng-model="vm.business.twitter"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_facebook">Facebook</label>
+            <input type="text" class="form-control" name="facebook" id="field_facebook"
+                    ng-model="vm.business.facebook"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_google">Google</label>
+            <input type="text" class="form-control" name="google" id="field_google"
+                    ng-model="vm.business.google"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_linkedIn">Linked In</label>
+            <input type="text" class="form-control" name="linkedIn" id="field_linkedIn"
+                    ng-model="vm.business.linkedIn"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_photo">Photo</label>
+            <input type="text" class="form-control" name="photo" id="field_photo"
+                    ng-model="vm.business.photo"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_mainColor">Main Color</label>
+            <input type="text" class="form-control" name="mainColor" id="field_mainColor"
+                    ng-model="vm.business.mainColor"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_color">Color</label>
+            <input type="text" class="form-control" name="color" id="field_color"
+                    ng-model="vm.business.color"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_cardlet">Cardlet</label>
+            <select class="form-control" id="field_cardlet" name="cardlet" ng-model="vm.business.cardlet" ng-options="cardlet as cardlet.id for cardlet in vm.cardlets track by cardlet.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

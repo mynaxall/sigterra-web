@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span>Item</span> {{vm.item.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.item.name}}</span>
+        </dd>
+        <dt><span>Icon</span></dt>
+        <dd>
+            <span>{{vm.item.icon}}</span>
+        </dd>
+        <dt><span>Created Date</span></dt>
+        <dd>
+            <span>{{vm.item.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Modifi Date</span></dt>
+        <dd>
+            <span>{{vm.item.modifiDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Main Color</span></dt>
+        <dd>
+            <span>{{vm.item.mainColor}}</span>
+        </dd>
+        <dt><span>Color</span></dt>
+        <dd>
+            <span>{{vm.item.color}}</span>
+        </dd>
+        <dt><span>Cardlet</span></dt>
+        <dd>
+            <a ui-sref="cardlet-detail({id:vm.item.cardlet.id})">{{vm.item.cardlet.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="item-detail.edit({id:vm.item.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

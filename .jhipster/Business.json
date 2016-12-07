@@ -1,0 +1,94 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "cardlet",
+            "otherEntityName": "cardlet",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "modifiedDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "pisition",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "icon",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "userName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "jobPosition",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "companyName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "companySite",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "twitter",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "facebook",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "google",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "linkedIn",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "photo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mainColor",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "color",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161207121408",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "business",
+    "pagination": "pager"
+}
