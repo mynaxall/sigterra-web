@@ -6,6 +6,14 @@
             "otherEntityName": "cardlet",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "tabType",
+            "otherEntityName": "tabType",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "business"
         }
     ],
     "fields": [

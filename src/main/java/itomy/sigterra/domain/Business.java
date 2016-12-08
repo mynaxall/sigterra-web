@@ -79,6 +79,10 @@ public class Business implements Serializable {
     @ManyToOne
     private Cardlet cardlet;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private TabType tabType;
+
     public Long getId() {
         return id;
     }
@@ -345,6 +349,19 @@ public class Business implements Serializable {
 
     public void setCardlet(Cardlet cardlet) {
         this.cardlet = cardlet;
+    }
+
+    public TabType getTabType() {
+        return tabType;
+    }
+
+    public Business tabType(TabType tabType) {
+        this.tabType = tabType;
+        return this;
+    }
+
+    public void setTabType(TabType tabType) {
+        this.tabType = tabType;
     }
 
     @Override

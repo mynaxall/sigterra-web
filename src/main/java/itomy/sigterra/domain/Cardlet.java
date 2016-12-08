@@ -159,8 +159,6 @@ public class Cardlet implements Serializable {
             ", modifiedDate=" + modifiedDate +
             ", active=" + active +
             ", user=" + user +
-            ", businesses=" + businesses +
-            ", items=" + items +
             '}';
     }
 }

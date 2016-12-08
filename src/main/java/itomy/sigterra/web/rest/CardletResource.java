@@ -3,7 +3,10 @@ package itomy.sigterra.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import itomy.sigterra.domain.Cardlet;
 
+import itomy.sigterra.domain.User;
 import itomy.sigterra.repository.CardletRepository;
+import itomy.sigterra.repository.UserRepository;
+import itomy.sigterra.service.UserService;
 import itomy.sigterra.web.rest.util.HeaderUtil;
 import itomy.sigterra.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -29,9 +32,12 @@ import java.util.Optional;
 public class CardletResource {
 
     private final Logger log = LoggerFactory.getLogger(CardletResource.class);
-        
+
     @Inject
     private CardletRepository cardletRepository;
+
+    @Inject
+    private UserService userService;
 
     /**
      * POST  /cardlets : Create a new cardlet.
@@ -123,5 +129,15 @@ public class CardletResource {
         cardletRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("cardlet", id.toString())).build();
     }
+
+    @GetMapping("/cardlet")
+    @Timed
+    public ResponseEntity<List<Cardlet>> getUserCardlet(){
+        User user = userService.getUserWithAuthorities();
+        List <Cardlet> cardlets =cardletRepository.findByUserIsCurrentUser();
+        return new ResponseEntity<>(cardlets, HttpStatus.OK);
+    }
+
+
 
 }

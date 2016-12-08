@@ -64,6 +64,12 @@
                 <option value=""></option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="field_tabType">Tab Type</label>
+            <select class="form-control" id="field_tabType" name="tabType" ng-model="vm.item.tabType" ng-options="tabType as tabType.id for tabType in vm.tabtypes | orderBy:'id' track by tabType.id">
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

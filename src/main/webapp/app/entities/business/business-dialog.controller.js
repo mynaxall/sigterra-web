@@ -5,9 +5,9 @@
         .module('sigterraWebApp')
         .controller('BusinessDialogController', BusinessDialogController);
 
-    BusinessDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Business', 'Cardlet'];
+    BusinessDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Business', 'Cardlet', 'TabType'];
 
-    function BusinessDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Business, Cardlet) {
+    function BusinessDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, Business, Cardlet, TabType) {
         var vm = this;
 
         vm.business = entity;
@@ -16,6 +16,15 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
         vm.cardlets = Cardlet.query();
+        vm.tabtypes = TabType.query({filter: 'business-is-null'});
+        $q.all([vm.business.$promise, vm.tabtypes.$promise]).then(function() {
+            if (!vm.business.tabType || !vm.business.tabType.id) {
+                return $q.reject();
+            }
+            return TabType.get({id : vm.business.tabType.id}).$promise;
+        }).then(function(tabType) {
+            vm.tabtypes.push(tabType);
+        });
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

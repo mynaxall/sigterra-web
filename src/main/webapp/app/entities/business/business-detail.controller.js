@@ -5,9 +5,9 @@
         .module('sigterraWebApp')
         .controller('BusinessDetailController', BusinessDetailController);
 
-    BusinessDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Business', 'Cardlet'];
+    BusinessDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Business', 'Cardlet', 'TabType'];
 
-    function BusinessDetailController($scope, $rootScope, $stateParams, previousState, entity, Business, Cardlet) {
+    function BusinessDetailController($scope, $rootScope, $stateParams, previousState, entity, Business, Cardlet, TabType) {
         var vm = this;
 
         vm.business = entity;

@@ -4,7 +4,6 @@ package itomy.sigterra.domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -41,8 +40,9 @@ public class Item implements Serializable {
     @ManyToOne
     private Cardlet cardlet;
 
-    @OneToMany
-    private List<ItemData> itemDatas;
+    @OneToOne
+    @JoinColumn(unique = true)
+    private TabType tabType;
 
     public Long getId() {
         return id;
@@ -143,12 +143,17 @@ public class Item implements Serializable {
         this.cardlet = cardlet;
     }
 
-    public List<ItemData> getItemDatas() {
-        return itemDatas;
+    public TabType getTabType() {
+        return tabType;
     }
 
-    public void setItemDatas(List<ItemData> itemDatas) {
-        this.itemDatas = itemDatas;
+    public Item tabType(TabType tabType) {
+        this.tabType = tabType;
+        return this;
+    }
+
+    public void setTabType(TabType tabType) {
+        this.tabType = tabType;
     }
 
     @Override
@@ -175,14 +180,12 @@ public class Item implements Serializable {
     public String toString() {
         return "Item{" +
             "id=" + id +
-            ", name='" + name + '\'' +
-            ", icon='" + icon + '\'' +
-            ", createdDate=" + createdDate +
-            ", modifiDate=" + modifiDate +
-            ", mainColor='" + mainColor + '\'' +
-            ", color='" + color + '\'' +
-            ", cardlet=" + cardlet +
-            ", itemDatas=" + itemDatas +
+            ", name='" + name + "'" +
+            ", icon='" + icon + "'" +
+            ", createdDate='" + createdDate + "'" +
+            ", modifiDate='" + modifiDate + "'" +
+            ", mainColor='" + mainColor + "'" +
+            ", color='" + color + "'" +
             '}';
     }
 }

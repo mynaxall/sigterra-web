@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="cardlet"/>
 
+        <addForeignKeyConstraint baseColumnNames="tab_type_id"
+                                 baseTableName="business"
+                                 constraintName="fk_business_tab_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tab_type"/>
+
     </changeSet>
 </databaseChangeLog>
