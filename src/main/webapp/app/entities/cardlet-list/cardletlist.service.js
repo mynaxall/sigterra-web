@@ -2,12 +2,12 @@
     'use strict';
     angular
         .module('sigterraWebApp')
-        .factory('Cardlet', Cardlet);
+        .factory('CardletList', CardletList);
 
-    Cardlet.$inject = ['$resource', 'DateUtils'];
+    CardletList.$inject = ['$resource', 'DateUtils'];
 
-    function Cardlet ($resource, DateUtils) {
-        var resourceUrl =  'api/cardlets/:id';
+    function CardletList ($resource, DateUtils) {
+        var resourceUrl =  'api/cardlet/:id';
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
@@ -20,24 +20,6 @@
                         data.modifiedDate = DateUtils.convertLocalDateFromServer(data.modifiedDate);
                     }
                     return data;
-                }
-            },
-            'update': {
-                method: 'PUT',
-                transformRequest: function (data) {
-                    var copy = angular.copy(data);
-                    copy.createdDate = DateUtils.convertLocalDateToServer(copy.createdDate);
-                    copy.modifiedDate = DateUtils.convertLocalDateToServer(copy.modifiedDate);
-                    return angular.toJson(copy);
-                }
-            },
-            'save': {
-                method: 'POST',
-                transformRequest: function (data) {
-                    var copy = angular.copy(data);
-                    copy.createdDate = DateUtils.convertLocalDateToServer(copy.createdDate);
-                    copy.modifiedDate = DateUtils.convertLocalDateToServer(copy.modifiedDate);
-                    return angular.toJson(copy);
                 }
             }
         });

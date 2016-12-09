@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
+<div>
+	<div class="sig">
+        <div class="row">
+            {{tabs[0].userName}}<br>
+            {{tabs[0].phone}}<br>
+            {{tabs[0].companySite}}<br>
+            <div class="col-md-4" ng-repeat="tab in tabs">
+                <img src="{{tab.icon}}" class="avatar">
+                {{tab.name}}
+            </div>
+
+        </div>
+	</div>
+
+
+</div>
+
+<style type="text/css">
+	.sig{
+		width: 600px;
+		height: 300px;
+		border-width: 2px;
+		border-style: solid;
+		border-color: #bdbdbd;
+	}
+	.avatar{
+		width: 148px;
+		height: 161px;
+		margin-top: 15px;
+		margin-left: 15px;
+	}
+    .social{
+        width: 30px;
+        height:30px;
+        background-color: #34b6a4;
+        border: none;
+        margin: 2px;
+    }
+    .social-img{
+        width: 20px;
+        height:20px;
+    }
+    .social-div{
+        margin-top: 15px;
+        margin-left: 15px;
+    }
+    .name{
+       color: #34b6a4;
+        font-size: 20px;
+        margin-top: 15px;
+    }
+</style>

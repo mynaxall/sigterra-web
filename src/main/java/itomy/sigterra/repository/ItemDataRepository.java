@@ -1,5 +1,6 @@
 package itomy.sigterra.repository;
 
+import itomy.sigterra.domain.Item;
 import itomy.sigterra.domain.ItemData;
 
 import org.springframework.data.jpa.repository.*;
@@ -11,5 +12,7 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface ItemDataRepository extends JpaRepository<ItemData,Long> {
+
+    List<ItemData> findAllByItem(Item item);
 
 }

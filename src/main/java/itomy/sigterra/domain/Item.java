@@ -40,8 +40,7 @@ public class Item implements Serializable {
     @ManyToOne
     private Cardlet cardlet;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
     private TabType tabType;
 
     public Long getId() {

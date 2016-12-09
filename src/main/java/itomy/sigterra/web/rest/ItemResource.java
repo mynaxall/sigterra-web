@@ -1,8 +1,10 @@
 package itomy.sigterra.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import itomy.sigterra.domain.Cardlet;
 import itomy.sigterra.domain.Item;
 
+import itomy.sigterra.repository.CardletRepository;
 import itomy.sigterra.repository.ItemRepository;
 import itomy.sigterra.web.rest.util.HeaderUtil;
 import itomy.sigterra.web.rest.util.PaginationUtil;
@@ -29,9 +31,12 @@ import java.util.Optional;
 public class ItemResource {
 
     private final Logger log = LoggerFactory.getLogger(ItemResource.class);
-        
+
     @Inject
     private ItemRepository itemRepository;
+
+    @Inject
+    private CardletRepository cardletRepository;
 
     /**
      * POST  /items : Create a new item.
@@ -122,6 +127,15 @@ public class ItemResource {
         log.debug("REST request to delete Item : {}", id);
         itemRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("item", id.toString())).build();
+    }
+
+    @GetMapping("/items/caedlet/{id}")
+    @Timed
+    public ResponseEntity<List<Item>> getBusinessByCardlet(@PathVariable Long id) {
+        Cardlet cardlet = cardletRepository.findOne(id);
+        List<Item> items = itemRepository.findAllByCardlet(cardlet);
+
+        return new ResponseEntity<>(items, HttpStatus.OK);
     }
 
 }

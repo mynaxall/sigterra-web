@@ -1,9 +1,11 @@
 package itomy.sigterra.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import itomy.sigterra.domain.Item;
 import itomy.sigterra.domain.ItemData;
 
 import itomy.sigterra.repository.ItemDataRepository;
+import itomy.sigterra.repository.ItemRepository;
 import itomy.sigterra.web.rest.util.HeaderUtil;
 import itomy.sigterra.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -29,9 +31,12 @@ import java.util.Optional;
 public class ItemDataResource {
 
     private final Logger log = LoggerFactory.getLogger(ItemDataResource.class);
-        
+
     @Inject
     private ItemDataRepository itemDataRepository;
+
+    @Inject
+    private ItemRepository itemRepository;
 
     /**
      * POST  /item-data : Create a new itemData.
@@ -124,4 +129,15 @@ public class ItemDataResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("itemData", id.toString())).build();
     }
 
-}
+
+    @GetMapping("/itemsData/caedlet/{id}")
+    @Timed
+    public ResponseEntity<List<ItemData>> getBusinessByCardlet(@PathVariable Long id) {
+        Item item = itemRepository.findOne(id);
+        List<ItemData> itemDatas = itemDataRepository.findAllByItem(item);
+        return new ResponseEntity<>(itemDatas, HttpStatus.OK);
+    }
+
+
+
+    }

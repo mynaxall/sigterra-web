@@ -10,10 +10,8 @@
         {
             "relationshipName": "tabType",
             "otherEntityName": "tabType",
-            "relationshipType": "one-to-one",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "business"
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

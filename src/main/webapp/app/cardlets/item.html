@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
+<div ng-show="itemsDatas">
+	<div class="cardlet">
+        <div class="row">
+            <div class="col-md-4" ng-repeat="itemsData in itemsDatas">
+                {{itemsData.title}}
+                <img src="{{itemsData.firstImage}}" class="avatar">
+                {{itemsData.description}}
+            </div>
+
+        </div>
+	</div>
+
+
+</div>
+
+<style type="text/css">
+	.cardlet{
+		width: 600px;
+		height: 250px;
+		border-width: 2px;
+		border-style: solid;
+		border-color: #bdbdbd;
+	}
+	.avatar{
+		width: 148px;
+		height: 161px;
+		margin-top: 15px;
+		margin-left: 15px;
+	}
+    .social{
+        width: 30px;
+        height:30px;
+        background-color: #34b6a4;
+        border: none;
+        margin: 2px;
+    }
+    .social-img{
+        width: 20px;
+        height:20px;
+    }
+    .social-div{
+        margin-top: 15px;
+        margin-left: 15px;
+    }
+    .name{
+       color: #34b6a4;
+        font-size: 20px;
+        margin-top: 15px;
+    }
+</style>

@@ -18,7 +18,7 @@
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/cardlet/cardletsList.html',
+                    templateUrl: 'app/entities/cardlet/cardlets.html',
                     controller: 'CardletController',
                     controllerAs: 'vm'
                 }

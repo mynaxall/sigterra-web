@@ -134,7 +134,7 @@ public class CardletResource {
     @Timed
     public ResponseEntity<List<Cardlet>> getUserCardlet(){
         User user = userService.getUserWithAuthorities();
-        List <Cardlet> cardlets =cardletRepository.findByUserIsCurrentUser();
+        List <Cardlet> cardlets =cardletRepository.findAllByUser(user);
         return new ResponseEntity<>(cardlets, HttpStatus.OK);
     }
 

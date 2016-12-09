@@ -3,7 +3,9 @@ package itomy.sigterra.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import itomy.sigterra.domain.Business;
 
+import itomy.sigterra.domain.Cardlet;
 import itomy.sigterra.repository.BusinessRepository;
+import itomy.sigterra.repository.CardletRepository;
 import itomy.sigterra.web.rest.util.HeaderUtil;
 import itomy.sigterra.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,9 +32,12 @@ import java.util.Optional;
 public class BusinessResource {
 
     private final Logger log = LoggerFactory.getLogger(BusinessResource.class);
-        
+
     @Inject
     private BusinessRepository businessRepository;
+
+    @Inject
+    private CardletRepository cardletRepository;
 
     /**
      * POST  /businesses : Create a new business.
@@ -122,6 +128,15 @@ public class BusinessResource {
         log.debug("REST request to delete Business : {}", id);
         businessRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("business", id.toString())).build();
+    }
+
+    @GetMapping("/businesses/caedlet/{id}")
+    @Timed
+    public ResponseEntity<List<Business>> getBusinessByCardlet(@PathVariable Long id) {
+        Cardlet cardlet = cardletRepository.findOne(id);
+        List<Business> businesses = businessRepository.findAllByCardlet(cardlet);
+
+        return new ResponseEntity<>(businesses, HttpStatus.OK);
     }
 
 }
