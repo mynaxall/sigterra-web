@@ -1,54 +1,69 @@
 package itomy.sigterra.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Item.
  */
-@Entity
-@Table(name = "item")
-public class Item implements Serializable {
+
+public class ItemDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "icon")
     private String icon;
 
-    @Column(name = "created_date")
     private LocalDate createdDate;
 
-    @Column(name = "modifi_date")
     private LocalDate modifiDate;
 
-    @Column(name = "main_color")
     private String mainColor;
 
-    @Column(name = "color")
     private String color;
-
-    @ManyToOne
-    private Cardlet cardlet;
 
     @ManyToOne
     private TabType tabType;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "item", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Set<ItemData> itemData = new HashSet<>();
+    private Set<ItemDataDTO> itemData;
+
+    public ItemDTO(Long id, String name, String icon, LocalDate createdDate, LocalDate modifiDate, String mainColor, String color, TabType tabType, Set<ItemDataDTO> itemData) {
+        this.id = id;
+        this.name = name;
+        this.icon = icon;
+        this.createdDate = createdDate;
+        this.modifiDate = modifiDate;
+        this.mainColor = mainColor;
+        this.color = color;
+        this.tabType = tabType;
+        this.itemData = itemData;
+    }
+
+    public ItemDTO(Long id, String name, String icon, LocalDate createdDate, LocalDate modifiDate, String mainColor, String color, TabType tabType) {
+        this.id = id;
+        this.name = name;
+        this.icon = icon;
+        this.createdDate = createdDate;
+        this.modifiDate = modifiDate;
+        this.mainColor = mainColor;
+        this.color = color;
+        this.tabType = tabType;
+    }
+
+    public ItemDTO(Item item) {
+        this(item.getId(), item.getName(), item.getIcon() ,item.getCreatedDate(), item.getModifiDate(), item.getMainColor(), item.getColor(), item.getTabType() );
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public Long getId() {
         return id;
@@ -62,22 +77,12 @@ public class Item implements Serializable {
         return name;
     }
 
-    public Item name(String name) {
-        this.name = name;
-        return this;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
     public String getIcon() {
         return icon;
-    }
-
-    public Item icon(String icon) {
-        this.icon = icon;
-        return this;
     }
 
     public void setIcon(String icon) {
@@ -88,22 +93,12 @@ public class Item implements Serializable {
         return createdDate;
     }
 
-    public Item createdDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-        return this;
-    }
-
     public void setCreatedDate(LocalDate createdDate) {
         this.createdDate = createdDate;
     }
 
     public LocalDate getModifiDate() {
         return modifiDate;
-    }
-
-    public Item modifiDate(LocalDate modifiDate) {
-        this.modifiDate = modifiDate;
-        return this;
     }
 
     public void setModifiDate(LocalDate modifiDate) {
@@ -114,11 +109,6 @@ public class Item implements Serializable {
         return mainColor;
     }
 
-    public Item mainColor(String mainColor) {
-        this.mainColor = mainColor;
-        return this;
-    }
-
     public void setMainColor(String mainColor) {
         this.mainColor = mainColor;
     }
@@ -127,61 +117,23 @@ public class Item implements Serializable {
         return color;
     }
 
-    public Item color(String color) {
-        this.color = color;
-        return this;
-    }
-
     public void setColor(String color) {
         this.color = color;
-    }
-
-    public Cardlet getCardlet() {
-        return cardlet;
-    }
-
-    public Item cardlet(Cardlet cardlet) {
-        this.cardlet = cardlet;
-        return this;
-    }
-
-    public void setCardlet(Cardlet cardlet) {
-        this.cardlet = cardlet;
     }
 
     public TabType getTabType() {
         return tabType;
     }
 
-    public Item tabType(TabType tabType) {
-        this.tabType = tabType;
-        return this;
-    }
-
     public void setTabType(TabType tabType) {
         this.tabType = tabType;
     }
 
-    public Set<ItemData> getItemData() {
+    public Set<ItemDataDTO> getItemData() {
         return itemData;
     }
 
-    public Item itemData(Set<ItemData> itemData) {
-        this.itemData = itemData;
-        return this;
-    }
-
-    public Item addItemData(ItemData itemData) {
-        itemData.setItem(this);
-        return this;
-    }
-
-    public Item removeItemData(ItemData itemData) {
-        itemData.setItem(null);
-        return this;
-    }
-
-    public void setItemData(Set<ItemData> itemData) {
+    public void setItemData(Set<ItemDataDTO> itemData) {
         this.itemData = itemData;
     }
 
@@ -193,7 +145,7 @@ public class Item implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Item item = (Item) o;
+        ItemDTO item = (ItemDTO) o;
         if(item.id == null || id == null) {
             return false;
         }

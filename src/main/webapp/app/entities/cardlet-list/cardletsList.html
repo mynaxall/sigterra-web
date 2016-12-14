@@ -52,23 +52,26 @@
     }
 
 </style>
-<body>
+    <div ng-repeat="cardlet in cardlets">
+        <ul class="tab">
+            <li ng-repeat="business in cardlet.businesses"><a href="javascript:void(0)" class="tablinks" ng-click="openCity(business.name)">{{business.name}}</a></li>
+            <li ng-repeat="item in cardlet.items"><a href="javascript:void(0)" class="tablinks" ng-click="openCity(item.name)">{{item.name}}</a></li>
+        </ul>
 
-<p>Click on the links inside the tabbed menu:</p>
+        <div ng-repeat="business in cardlet.businesses" id="{{business.name}}" class="tabcontent" ng-class="business.pisition === 1 ? 'display' : 'none-display'">
+            <button ng-click="showSignature()">signature</button>
+            <ng-include style="display: block!important" src="business.tabType.path" ></ng-include>
+        </div>
+        <div ng-repeat="item in cardlet.items" id="{{item.name}}" class="tabcontent" ng-class="item.pisition === 1 ? 'display' : 'none-display'">
+            <button ng-click="showSignature()">signature</button>
+            <ng-include style="display: block!important" src="item.tabType.path" ></ng-include>
+        </div>
 
-<ul class="tab">
-    <li ng-repeat="tab in tabs"><a href="javascript:void(0)" class="tablinks" ng-click="openCity(event, tab.name)">{{tab.name}}</a></li>
-</ul>
-
-<div ng-repeat="tab in tabs" id="{{tab.name}}" class="tabcontent" ng-class="tab.pisition === 1 ? 'display' : 'none-display'">
-    <button ng-click="showSignature()">signature</button>
-    <ng-include style="display: block!important" src="tab.tabType.path" ></ng-include>
+        <div ng-repeat="signatur in signatures">
+            <ng-include id="signatur.name" style="display: block!important" src="signatur.path" ></ng-include>
+        </div>
+    </div>
 </div>
-
-<div ng-repeat="signatur in signatures">
-    <ng-include id="signatur.name" style="display: block!important" src="signatur.path" ></ng-include>
-</div>
-
 
 
 

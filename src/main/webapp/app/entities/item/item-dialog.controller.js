@@ -5,9 +5,9 @@
         .module('sigterraWebApp')
         .controller('ItemDialogController', ItemDialogController);
 
-    ItemDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Item', 'Cardlet', 'TabType'];
+    ItemDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Item', 'Cardlet', 'TabType', 'ItemData'];
 
-    function ItemDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Item, Cardlet, TabType) {
+    function ItemDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Item, Cardlet, TabType, ItemData) {
         var vm = this;
 
         vm.item = entity;
@@ -17,6 +17,7 @@
         vm.save = save;
         vm.cardlets = Cardlet.query();
         vm.tabtypes = TabType.query();
+        vm.itemdata = ItemData.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

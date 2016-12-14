@@ -5,9 +5,9 @@
         .module('sigterraWebApp')
         .controller('CardletDialogController', CardletDialogController);
 
-    CardletDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Cardlet', 'User'];
+    CardletDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Cardlet', 'User', 'Business', 'Item'];
 
-    function CardletDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Cardlet, User) {
+    function CardletDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Cardlet, User, Business, Item) {
         var vm = this;
 
         vm.cardlet = entity;
@@ -16,6 +16,8 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
         vm.users = User.query();
+        vm.businesses = Business.query();
+        vm.items = Item.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

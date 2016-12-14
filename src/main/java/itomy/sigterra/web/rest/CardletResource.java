@@ -1,12 +1,9 @@
 package itomy.sigterra.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import itomy.sigterra.domain.Cardlet;
+import itomy.sigterra.domain.*;
 
-import itomy.sigterra.domain.User;
 import itomy.sigterra.repository.CardletRepository;
-import itomy.sigterra.repository.UserRepository;
-import itomy.sigterra.service.UserService;
 import itomy.sigterra.web.rest.util.HeaderUtil;
 import itomy.sigterra.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
@@ -21,8 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * REST controller for managing Cardlet.
@@ -35,9 +31,6 @@ public class CardletResource {
 
     @Inject
     private CardletRepository cardletRepository;
-
-    @Inject
-    private UserService userService;
 
     /**
      * POST  /cardlets : Create a new cardlet.
@@ -90,7 +83,7 @@ public class CardletResource {
      */
     @GetMapping("/cardlets")
     @Timed
-    public ResponseEntity<List<Cardlet>> getAllCardlets(Pageable pageable)
+    public ResponseEntity<List<?>> getAllCardlets(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Cardlets");
         Page<Cardlet> page = cardletRepository.findAll(pageable);
@@ -130,14 +123,44 @@ public class CardletResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("cardlet", id.toString())).build();
     }
 
-    @GetMapping("/cardlet")
+    @GetMapping("/userCardlets")
     @Timed
-    public ResponseEntity<List<Cardlet>> getUserCardlet(){
-        User user = userService.getUserWithAuthorities();
-        List <Cardlet> cardlets =cardletRepository.findAllByUser(user);
-        return new ResponseEntity<>(cardlets, HttpStatus.OK);
-    }
+    public ResponseEntity<List<?>> getAllCardletsByUser(Pageable pageable)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of Cardlets");
+        List<Cardlet> cardlets = cardletRepository.findByUserIsCurrentUser();
+        List<CardletDTO> cardletDTOs = new LinkedList<>();
+        Set<ItemDTO> itemDTOs = new HashSet<>();
+        Set<BusinessDTO> businessDTOs = new HashSet<>();
+        for (Cardlet cardlet : cardlets) {
+            Set<Item> items = cardlet.getItems();
+            Set<Business> businesses = cardlet.getBusinesses();
+            for (Business business : businesses) {
+                log.info("asdasdasd=== "+business.getTabType());
+                BusinessDTO businessDTO = new BusinessDTO(business);
+                businessDTOs.add(businessDTO);
+            }
+            for (Item item : items) {
+                Set<ItemData> itemDatas = item.getItemData();
+                log.info("asdasd = "+ itemDatas);
+                Set<ItemDataDTO> itemDataDTOs = new HashSet<>();
+                for (ItemData itemData : itemDatas) {
+                    ItemDataDTO itemDataDTO = new ItemDataDTO(itemData);
+                    itemDataDTOs.add(itemDataDTO);
+                }
 
+                ItemDTO itemDTO = new ItemDTO(item.getId(),item.getName(),item.getIcon(),item.getCreatedDate(),item.getModifiDate(),item.getMainColor(),item.getColor(),
+                    item.getTabType(), itemDataDTOs);
+                itemDTOs.add(itemDTO);
+            }
+            CardletDTO cardletDTO = new CardletDTO(cardlet.getId(), cardlet.getName(), cardlet.getCreatedDate(),cardlet.getModifiedDate(), cardlet.isActive()
+            ,cardlet.getUser(), businessDTOs, itemDTOs);
+            cardletDTOs.add(cardletDTO);
+
+
+        }
+        return new ResponseEntity<>(cardletDTOs, HttpStatus.OK);
+    }
 
 
 }

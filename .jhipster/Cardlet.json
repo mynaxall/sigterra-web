@@ -7,6 +7,18 @@
             "relationshipType": "many-to-one",
             "otherEntityField": "id",
             "ownerSide": true
+        },
+        {
+            "relationshipName": "business",
+            "otherEntityName": "business",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "cardlet"
+        },
+        {
+            "relationshipName": "item",
+            "otherEntityName": "item",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "cardlet"
         }
     ],
     "fields": [

@@ -12,6 +12,12 @@
             "otherEntityName": "tabType",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "itemData",
+            "otherEntityName": "itemData",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "item"
         }
     ],
     "fields": [

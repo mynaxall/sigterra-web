@@ -6,44 +6,56 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Cardlet.
  */
-@Entity
-@Table(name = "cardlet")
-public class Cardlet implements Serializable {
+
+public class CardletDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private Long id;
 
-    @Column(name = "name")
+
     private String name;
 
-    @Column(name = "created_date")
+
     private LocalDate createdDate;
 
-    @Column(name = "modified_date")
     private LocalDate modifiedDate;
 
-    @Column(name = "active")
+
     private Boolean active;
 
-    @ManyToOne
+
     private User user;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "cardlet", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Set<Business> businesses = new HashSet<>();
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "cardlet", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Set<Item> items = new HashSet<>();
+    private Set<BusinessDTO> businesses = new HashSet<>();
+
+    private Set<ItemDTO> items = new HashSet<>();
+
+    public CardletDTO() {
+    }
+
+    public CardletDTO(Long id, String name, LocalDate createdDate, LocalDate modifiedDate, Boolean active, User user, Set<BusinessDTO> businesses, Set<ItemDTO> items) {
+        this.id = id;
+        this.name = name;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+        this.active = active;
+        this.user = user;
+        this.businesses = businesses;
+        this.items = items;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public Long getId() {
         return id;
@@ -57,22 +69,12 @@ public class Cardlet implements Serializable {
         return name;
     }
 
-    public Cardlet name(String name) {
-        this.name = name;
-        return this;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
     public LocalDate getCreatedDate() {
         return createdDate;
-    }
-
-    public Cardlet createdDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-        return this;
     }
 
     public void setCreatedDate(LocalDate createdDate) {
@@ -83,22 +85,12 @@ public class Cardlet implements Serializable {
         return modifiedDate;
     }
 
-    public Cardlet modifiedDate(LocalDate modifiedDate) {
-        this.modifiedDate = modifiedDate;
-        return this;
-    }
-
     public void setModifiedDate(LocalDate modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
 
-    public Boolean isActive() {
+    public Boolean getActive() {
         return active;
-    }
-
-    public Cardlet active(Boolean active) {
-        this.active = active;
-        return this;
     }
 
     public void setActive(Boolean active) {
@@ -109,62 +101,23 @@ public class Cardlet implements Serializable {
         return user;
     }
 
-    public Cardlet user(User user) {
-        this.user = user;
-        return this;
-    }
-
     public void setUser(User user) {
         this.user = user;
     }
 
-    public Set<Business> getBusinesses() {
+    public Set<BusinessDTO> getBusinesses() {
         return businesses;
     }
 
-    public Cardlet businesses(Set<Business> businesses) {
-        this.businesses = businesses;
-        return this;
-    }
-
-    public Cardlet addBusiness(Business business) {
-        businesses.add(business);
-        business.setCardlet(this);
-        return this;
-    }
-
-    public Cardlet removeBusiness(Business business) {
-        businesses.remove(business);
-        business.setCardlet(null);
-        return this;
-    }
-
-    public void setBusinesses(Set<Business> businesses) {
+    public void setBusinesses(Set<BusinessDTO> businesses) {
         this.businesses = businesses;
     }
 
-    public Set<Item> getItems() {
+    public Set<ItemDTO> getItems() {
         return items;
     }
 
-    public Cardlet items(Set<Item> items) {
-        this.items = items;
-        return this;
-    }
-
-    public Cardlet addItem(Item item) {
-        items.add(item);
-        item.setCardlet(this);
-        return this;
-    }
-
-    public Cardlet removeItem(Item item) {
-        items.remove(item);
-        item.setCardlet(null);
-        return this;
-    }
-
-    public void setItems(Set<Item> items) {
+    public void setItems(Set<ItemDTO> items) {
         this.items = items;
     }
 
@@ -176,7 +129,7 @@ public class Cardlet implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Cardlet cardlet = (Cardlet) o;
+        CardletDTO cardlet = (CardletDTO) o;
         if(cardlet.id == null || id == null) {
             return false;
         }

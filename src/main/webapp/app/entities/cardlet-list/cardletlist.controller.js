@@ -5,9 +5,9 @@
         .module('sigterraWebApp')
         .controller('CardletListController', CardletListController);
 
-    CardletListController.$inject = ['$scope', '$state', 'Cardlet', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http'];
+    CardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http'];
 
-    function CardletListController ($scope, $state, Cardlet, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http) {
+    function CardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http) {
         var vm = this;
 
         vm.loadPage = loadPage;
@@ -18,7 +18,7 @@
         loadAll();
 
         function loadAll () {
-            Cardlet.query({
+            CardletList.query({
                 sort: sort()
             }, onSuccess, onError);
             function sort() {
@@ -29,42 +29,9 @@
                 return result;
             }
             function onSuccess(data, headers) {
-                vm.links = ParseLinks.parse(headers('link'));
-                vm.totalItems = headers('X-Total-Count');
                 vm.queryCount = vm.totalItems;
-                vm.cardlets = data;
-
-                angular.forEach( vm.cardlets, function(item){
-                    $scope.businesses = [];
-                    $scope.items =[];
-                    $scope.itemsData
-                    $http.get("/api/businesses/caedlet/"+item.id)
-                        .success(function(response, status, headers) {
-                            console.log(response);
-                            $scope.businesses = response;
-                        });
-                    $http.get("/api/items/caedlet/"+item.id)
-                        .success(function(response, status, headers) {
-
-                                console.log(response);
-                                $scope.items = response;
-                                var ba = $scope.businesses;
-                                $scope.tabs =  ba.concat($scope.items);
-                                console.log("tabs")
-                                console.log($scope.tabs)
-                                vm.page = pagingParams.page;
-                            angular.forEach( $scope.items, function(item) {
-                                $http.get("/api/itemsData/caedlet/" + item.id)
-                                    .success(function (response, status, headers) {
-                                        console.log(response);
-                                        $scope.itemsDatas = response;
-
-                                    });
-                            });
-                        });
-
-                });
-
+                $scope.cardlets = data;
+                console.log(data);
 
             }
             function onError(error) {
@@ -84,7 +51,7 @@
                 search: vm.currentSearch
             });
         }
-        $scope.openCity = function(evt, cityName) {
+        $scope.openCity = function(cityName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
@@ -95,7 +62,6 @@
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
             document.getElementById(cityName).style.display = "block";
-            evt.currentTarget.className += " active";
         }
 
         $scope.showSignature = function(){

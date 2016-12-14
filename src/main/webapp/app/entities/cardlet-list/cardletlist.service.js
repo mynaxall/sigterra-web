@@ -7,7 +7,7 @@
     CardletList.$inject = ['$resource', 'DateUtils'];
 
     function CardletList ($resource, DateUtils) {
-        var resourceUrl =  'api/cardlet/:id';
+        var resourceUrl =  'api/userCardlets';
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},

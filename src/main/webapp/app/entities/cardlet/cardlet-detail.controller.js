@@ -5,9 +5,9 @@
         .module('sigterraWebApp')
         .controller('CardletDetailController', CardletDetailController);
 
-    CardletDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Cardlet', 'User'];
+    CardletDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'Cardlet', 'User', 'Business', 'Item'];
 
-    function CardletDetailController($scope, $rootScope, $stateParams, previousState, entity, Cardlet, User) {
+    function CardletDetailController($scope, $rootScope, $stateParams, previousState, entity, Cardlet, User, Business, Item) {
         var vm = this;
 
         vm.cardlet = entity;

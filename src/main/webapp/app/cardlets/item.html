@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
-<div ng-show="itemsDatas">
+<div ng-show="item.itemData">
 	<div class="cardlet">
         <div class="row">
-            <div class="col-md-4" ng-repeat="itemsData in itemsDatas">
+            <div class="col-md-4" ng-repeat="itemsData in item.itemData">
                 {{itemsData.title}}
-                <img src="{{itemsData.firstImage}}" class="avatar">
+                <!--<img src="{{itemsData.firstImage}}" class="avatar">-->
                 {{itemsData.description}}
             </div>
 
