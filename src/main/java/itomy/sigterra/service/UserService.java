@@ -84,7 +84,8 @@ public class UserService {
     }
 
     public User createUser(String password, String firstName, String lastName, String email,
-        String langKey) {
+                           String langKey, String username, String phoneNumber, String address,
+                           String companyName, String companySite, String jobTitle) {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
@@ -103,6 +104,13 @@ public class UserService {
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
         newUser.setAuthorities(authorities);
+        newUser.setUsername(username);
+        //Sigterra specific user's parameter
+        newUser.setPhoneNumber(phoneNumber);
+        newUser.setAddress(address);
+        newUser.setCompanyName(companyName);
+        newUser.setCompanySite(companySite);
+        newUser.setJobTitle(jobTitle);
         userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
         return newUser;

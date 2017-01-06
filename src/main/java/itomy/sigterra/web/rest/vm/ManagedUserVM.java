@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
  */
 public class ManagedUserVM extends UserDTO {
 
-    public static final int PASSWORD_MIN_LENGTH = 4;
+    public static final int PASSWORD_MIN_LENGTH = 6;
     public static final int PASSWORD_MAX_LENGTH = 100;
 
     private Long id;
@@ -44,8 +44,11 @@ public class ManagedUserVM extends UserDTO {
 
     public ManagedUserVM(Long id, String login, String password, String firstName, String lastName,
                          String email, boolean activated, String langKey, Set<String> authorities,
-                         String createdBy, ZonedDateTime createdDate, String lastModifiedBy, ZonedDateTime lastModifiedDate) {
-        super(login, firstName, lastName, email, activated, langKey, authorities);
+                         String createdBy, ZonedDateTime createdDate, String lastModifiedBy,
+                         ZonedDateTime lastModifiedDate, String username, String phoneNumber,
+                         String address, String companyName, String companySite, String jobTitle) {
+        super(login, firstName, lastName, email, activated, langKey, authorities,
+              username, phoneNumber, address, companyName, companySite, jobTitle);
         this.id = id;
         this.createdBy = createdBy;
         this.createdDate = createdDate;
@@ -61,7 +64,6 @@ public class ManagedUserVM extends UserDTO {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public String getCreatedBy() {
         return createdBy;

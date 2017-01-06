@@ -75,8 +75,10 @@ public class AccountResource {
                 .orElseGet(() -> {
                     User user = userService
                         .createUser(managedUserVM.getPassword(),
-                            managedUserVM.getFirstName(), managedUserVM.getLastName(),
-                            managedUserVM.getEmail().toLowerCase(), managedUserVM.getLangKey());
+                                    managedUserVM.getFirstName(), managedUserVM.getLastName(),
+                                    managedUserVM.getEmail().toLowerCase(), managedUserVM.getLangKey(),
+                                    managedUserVM.getUsername(), managedUserVM.getPhoneNumber(), managedUserVM.getAddress(),
+                                    managedUserVM.getCompanyName(), managedUserVM.getCompanySite(), managedUserVM.getJobTitle());
 
 
                     String baseUrl = jHipsterProperties.getMail().getBaseUrl();

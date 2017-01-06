@@ -1,13 +1,13 @@
 package itomy.sigterra.service.dto;
 
 import itomy.sigterra.config.Constants;
-
 import itomy.sigterra.domain.Authority;
 import itomy.sigterra.domain.User;
-
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -26,6 +26,20 @@ public class UserDTO {
     @Size(max = 50)
     private String lastName;
 
+    @NotEmpty
+    @Size(min = 1, max = 30)
+    private String username;
+
+    private String phoneNumber;
+
+    private String address;
+
+    private String companyName;
+
+    private String companySite;
+
+    private String jobTitle;
+
     @Email
     @Size(min = 5, max = 100)
     private String email;
@@ -42,13 +56,16 @@ public class UserDTO {
 
     public UserDTO(User user) {
         this(user.getLogin(), user.getFirstName(), user.getLastName(),
-            user.getEmail(), user.getActivated(), user.getLangKey(),
-            user.getAuthorities().stream().map(Authority::getName)
-                .collect(Collectors.toSet()));
+             user.getEmail(), user.getActivated(), user.getLangKey(),
+             user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet()),
+             user.getUsername(), user.getPhoneNumber(),
+             user.getAddress(), user.getCompanyName(), user.getCompanySite(), user.getJobTitle());
     }
 
     public UserDTO(String login, String firstName, String lastName,
-        String email, boolean activated, String langKey, Set<String> authorities) {
+                   String email, boolean activated, String langKey, Set<String> authorities,
+                   String username, String phoneNumber, String address, String companyName,
+                   String companySite, String jobTitle) {
 
         this.login = login;
         this.firstName = firstName;
@@ -57,7 +74,14 @@ public class UserDTO {
         this.activated = activated;
         this.langKey = langKey;
         this.authorities = authorities;
+        this.username = username;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.companyName = companyName;
+        this.companySite = companySite;
+        this.jobTitle = jobTitle;
     }
+
 
     public String getLogin() {
         return login;
@@ -87,6 +111,30 @@ public class UserDTO {
         return authorities;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public String getCompanySite() {
+        return companySite;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
@@ -96,6 +144,7 @@ public class UserDTO {
             ", email='" + email + '\'' +
             ", activated=" + activated +
             ", langKey='" + langKey + '\'' +
+            ", username='" + username + '\'' +
             ", authorities=" + authorities +
             "}";
     }

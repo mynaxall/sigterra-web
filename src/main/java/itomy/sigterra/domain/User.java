@@ -47,6 +47,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "last_name", length = 50)
     private String lastName;
 
+    @Size(min = 1, max = 30)
+    @Column(name = "username", length = 50)
+    private String username;
+
     @Email
     @Size(max = 100)
     @Column(length = 100, unique = true)
@@ -69,8 +73,28 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "reset_key", length = 20)
     private String resetKey;
 
-    @Column(name = "reset_date", nullable = true)
+    @Column(name = "reset_date")
     private ZonedDateTime resetDate = null;
+
+    @Size(min = 5, max = 20)
+    @Column(name = "phone_number", length = 30)
+    private String phoneNumber;
+
+    @Size(min = 1, max = 200)
+    @Column(name = "address")
+    private String address;
+
+    @Size(min = 1, max = 130)
+    @Column(name = "company_name", length = 150)
+    private String companyName;
+
+    @Size(min = 1, max = 200)
+    @Column(name = "company_site")
+    private String companySite;
+
+    @Size(min = 1, max = 200)
+    @Column(name = "job_title")
+    private String jobTitle;
 
     @JsonIgnore
     @ManyToMany
@@ -189,6 +213,54 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.persistentTokens = persistentTokens;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getCompanySite() {
+        return companySite;
+    }
+
+    public void setCompanySite(String companySite) {
+        this.companySite = companySite;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -222,6 +294,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", activated='" + activated + '\'' +
             ", langKey='" + langKey + '\'' +
             ", activationKey='" + activationKey + '\'' +
+            ", username='" + username + '\'' +
             "}";
     }
 }
