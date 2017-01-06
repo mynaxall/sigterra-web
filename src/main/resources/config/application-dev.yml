@@ -26,8 +26,8 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/sigterra_web?useUnicode=true&characterEncoding=utf8&useSSL=false
         name:
-        username: primadesk
-        password: primadesk
+        username: sigterra
+        password: 123123123Aa
         hikari:
             data-source-properties:
                 cachePrepStmts: true
@@ -43,10 +43,16 @@ spring:
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
+            host: smtp.gmail.com
+            port: 587
+            username: test@tomych.com
+            password: 123123123Aa
+            protocol: smtp
+            tls: true
+            properties.mail.smtp:
+                         auth: true
+                         starttls.enable: true
+                         ssl.trust: smtp.gmail.com
     messages:
         cache-seconds: 1
     thymeleaf:
@@ -68,7 +74,8 @@ jhipster:
             # security key (this key should be unique for your application, and kept secret)
             key: fe9c3a39acc685b0023127795ca5af2c9398ba14
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: sigterra_web@localhost
+        from: sigterra@localhost
+        label: Sigterra Support Team
         baseUrl: # keep empty to use the server's default URL
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true

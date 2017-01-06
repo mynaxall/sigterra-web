@@ -132,6 +132,8 @@ public class JHipsterProperties {
 
         private String baseUrl = "";
 
+        private String label = "Sigterra Support Team";
+
         public String getFrom() {
             return from;
         }
@@ -146,6 +148,14 @@ public class JHipsterProperties {
 
         public void setBaseUrl(String baseUrl) {
             this.baseUrl = baseUrl;
+        }
+
+        public String getLabel() {
+            return label;
+        }
+
+        public void setLabel(String label) {
+            this.label = label;
         }
     }
 

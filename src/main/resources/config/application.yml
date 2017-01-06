@@ -67,6 +67,7 @@ jhipster:
         #max-age: 1800
     mail:
         from: sigterra_web@localhost
+        label: Sigterra Support Team
     swagger:
         title: sigterra_web API
         description: sigterra_web API documentation
