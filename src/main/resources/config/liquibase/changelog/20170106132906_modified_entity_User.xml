@@ -54,5 +54,12 @@
         </addColumn>
     </changeSet>
 
+    <changeSet id="20170106132906-2" author="kirill">
+        <addColumn tableName="jhi_user">
+            <column name="image_url" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
 
 </databaseChangeLog>

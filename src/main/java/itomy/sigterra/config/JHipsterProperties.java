@@ -32,6 +32,8 @@ public class JHipsterProperties {
 
     private final Ribbon ribbon = new Ribbon();
 
+    private final AWSS3Bucket awss3Bucket = new AWSS3Bucket();
+
     public Async getAsync() {
         return async;
     }
@@ -66,6 +68,10 @@ public class JHipsterProperties {
 
     public Ribbon getRibbon() {
         return ribbon;
+    }
+
+    public AWSS3Bucket getAwss3Bucket() {
+        return awss3Bucket;
     }
 
     public static class Async {
@@ -423,6 +429,36 @@ public class JHipsterProperties {
 
         public void setDisplayOnActiveProfiles(String[] displayOnActiveProfiles) {
             this.displayOnActiveProfiles = displayOnActiveProfiles;
+        }
+    }
+
+    public static class AWSS3Bucket {
+        private String name;
+        private String credentials;
+        private String region;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getCredentials() {
+            return credentials;
+        }
+
+        public void setCredentials(String credentials) {
+            this.credentials = credentials;
+        }
+
+        public String getRegion() {
+            return region;
+        }
+
+        public void setRegion(String region) {
+            this.region = region;
         }
     }
 }

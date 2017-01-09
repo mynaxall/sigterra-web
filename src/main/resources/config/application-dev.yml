@@ -93,3 +93,7 @@ jhipster:
             host: localhost
             port: 5000
             queueSize: 512
+    awss3Bucket:
+            credentials: config/aws/s3credentials.properties
+            name: <storage_name>
+            region: <region_us-east-1>

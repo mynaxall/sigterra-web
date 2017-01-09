@@ -96,6 +96,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "job_title")
     private String jobTitle;
 
+    @Size(min = 1, max = 200)
+    @Column(name = "image_url")
+    private String imageUrl;
+
     @JsonIgnore
     @ManyToMany
     @JoinTable(
@@ -259,6 +263,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setJobTitle(String jobTitle) {
         this.jobTitle = jobTitle;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override

@@ -8,6 +8,7 @@ import itomy.sigterra.domain.User;
 import itomy.sigterra.repository.PersistentTokenRepository;
 import itomy.sigterra.repository.UserRepository;
 import itomy.sigterra.security.SecurityUtils;
+import itomy.sigterra.service.AWSS3BucketService;
 import itomy.sigterra.service.MailService;
 import itomy.sigterra.service.UserService;
 import itomy.sigterra.service.dto.UserDTO;
@@ -16,6 +17,8 @@ import itomy.sigterra.web.rest.vm.ManagedUserVM;
 import itomy.sigterra.web.rest.util.HeaderUtil;
 
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -23,11 +26,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.net.URLDecoder;
 import java.util.*;
 
@@ -37,6 +43,8 @@ import java.util.*;
 @RestController
 @RequestMapping("/api")
 public class AccountResource {
+    // Max allowed size of profile icon is 50 Mb
+    public static final int MAX_ALLOWED_PROFILE_ICON_SIZE = 50 * 1024 * 1024;
 
     private final Logger log = LoggerFactory.getLogger(AccountResource.class);
 
@@ -53,7 +61,10 @@ public class AccountResource {
     private PersistentTokenRepository persistentTokenRepository;
 
     @Inject
-    private MailService mailService;
+    private MailService        mailService;
+
+    @Inject
+    private AWSS3BucketService awss3BucketService;
 
     /**
      * POST  /register : register the user.
@@ -241,6 +252,37 @@ public class AccountResource {
                 mailService.sendPasswordResetMail(user, baseUrl);
                 return new ResponseEntity<>("e-mail was sent", HttpStatus.OK);
             }).orElse(new ResponseEntity<>("e-mail address not registered", HttpStatus.BAD_REQUEST));
+    }
+
+    @RequestMapping(value = "/upload/icon",
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<?> uploadProfileIcon(@RequestParam MultipartFile file) throws JSONException {
+        JSONObject successObject = new JSONObject();
+        if(file != null && !file.isEmpty()) {
+            if(file.getSize() > MAX_ALLOWED_PROFILE_ICON_SIZE) {
+                successObject.put("success", false);
+                successObject.put("message", "File is too big. Max allowed file size is 50Mb");
+                // TODO: 1/9/17 Maybe need to change it to not OK status
+                return ResponseEntity.ok(successObject);
+            }
+
+            URI url = awss3BucketService.uploadProfileImage(file);
+            if(url == null) {
+                successObject.put("success", false);
+                successObject.put("message", "Unable to fetch the file from S3 bucket.");
+            } else {
+                successObject.put("success", true);
+                successObject.put("url", url);
+            }
+            return ResponseEntity.ok(successObject);
+        } else {
+            successObject.put("success", false);
+            successObject.put("message", "File is empty or NULL");
+            // TODO: 1/9/17 Maybe need to change it to not OK status
+            return ResponseEntity.ok(successObject);
+        }
     }
 
     /**
