@@ -3,16 +3,14 @@
 
     angular
         .module('sigterraWebApp')
-        .controller('RegisterController', RegisterController);
+        .controller('RegisterSuccessController', RegisterSuccessController);
 
 
-    RegisterController.$inject = [ '$timeout', 'Auth', 'LoginService', '$state'];
+    RegisterSuccessController.$inject = [ '$timeout', 'Auth', 'LoginService'];
 
-    function RegisterController ($timeout, Auth, LoginService, $state) {
+    function RegisterSuccessController ($timeout, Auth, LoginService) {
         var vm = this;
 
-
-        vm.isFirstStep = true;
         vm.doNotMatch = null;
         vm.error = null;
         vm.errorUserExists = null;
@@ -20,13 +18,7 @@
         vm.register = register;
         vm.registerAccount = {};
         vm.success = null;
-        vm.isDone = false;
 
-        vm.nextStep = nextStep;
-
-        function nextStep (){
-            vm.isFirstStep = false;
-        }
         $timeout(function (){angular.element('#login').focus();});
 
         function register () {
@@ -39,10 +31,8 @@
                 vm.errorUserExists = null;
                 vm.errorEmailExists = null;
 
-                Auth.createAccount(vm.registerAccount).then(function (response) {
+                Auth.createAccount(vm.registerAccount).then(function () {
                     vm.success = 'OK';
-                    console.log(response.status )
-                        vm.isDone = true;
                 }).catch(function (response) {
                     vm.success = null;
                     if (response.status === 400 && response.data === 'login already in use') {
