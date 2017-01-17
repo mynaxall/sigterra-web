@@ -36,6 +36,7 @@ module.exports = function (config) {
             'src/main/webapp/bower_components/angular-resource/angular-resource.js',
             'src/main/webapp/bower_components/angular-sanitize/angular-sanitize.js',
             'src/main/webapp/bower_components/angular-ui-router/release/angular-ui-router.js',
+            "src/main/webapp/bower_components/angular-material/angular-material.min.js",
             'src/main/webapp/bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js',
             'src/main/webapp/bower_components/ng-file-upload/ng-file-upload.js',
             'src/main/webapp/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js',

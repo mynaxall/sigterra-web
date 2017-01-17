@@ -1,7 +1,7 @@
 <div class="sub-header center-align" layout="row" layout-align="center center">
 </div>
 </div>
-<div ng-show="vm.isFirstStep && !vm.isDone" class="registration-div">
+<div class="registration-div">
     <div class="register-head"></div>
     <div class="register-container">
         <div>
@@ -31,11 +31,11 @@
             </div>
         </div>
         <div>
-            <form ng-show="!vm.success" name="form" role="form" novalidate show-validation>
+            <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
 
                 <div class="form-group">
-                    <label class="login-lable" for="firstName">NAME*</label>
-                    <input type="text" class="form-control profile-input" id="firstName" name="firstName" placeholder="First & Last Name"
+                    <label class="login-lable" for="firstName">First name</label>
+                    <input type="text" class="form-control profile-input" id="firstName" name="firstName" placeholder="Your name"
                            ng-model="vm.registerAccount.firstName" ng-minlength=3 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
                     <div ng-show="form.firstName.$dirty && form.firstName.$invalid">
                         <p class="help-block"
@@ -52,6 +52,29 @@
                         </p>
                         <p class="help-block"
                            ng-show="form.firstName.$error.pattern">
+                            Your username can only contain lower-case letters and digits.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="login-lable" for="lastName">Last name</label>
+                    <input type="text" class="form-control profile-input" id="lastName" name="lastName" placeholder="Your last name"
+                           ng-model="vm.registerAccount.lastName" ng-minlength=3 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
+                    <div ng-show="form.lastName.$dirty && form.lastName.$invalid">
+                        <p class="help-block"
+                           ng-show="form.lastName.$error.required">
+                            Your username is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.lastName.$error.minlength">
+                            Your username is required to be at least 1 character.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.lastName.$error.maxlength">
+                            Your username cannot be longer than 50 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.lastName.$error.pattern">
                             Your username can only contain lower-case letters and digits.
                         </p>
                     </div>
@@ -123,150 +146,11 @@
                     <input type="checkbox" id="accept" name="accept" ng-model="vm.accept" required>
                     <label class="login-lable" for="accept">I accept <a class="terms-and-conditions" href="#">terms and conditions</a> of using</label>
                 </div>
-                <div style="text-align: center;">
-                    <button ng-click="vm.nextStep()"  type="submit" ng-disabled="form.$invalid" class="btn btn-primary main-btn">Next</button>
-                </div>
+
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary main-btn">SIGN UP</button>
             </form>
-
-            <div class="indication-page-block">
-                <div class="indication-page">
-                    <div class="circle circle-active" id="page1"></div>
-                    <div class="circle" id="curent-page"></div>
-                    <div class="circle" id="page3"></div>
-                </div>
-            </div>
         </div>
     </div>
-
-
-
-
-
-    <div class="login-registration">
-        Already have an account? <a href="#"  ng-click="vm.login()">LOGIN</a>
-    </div>
-</div>
-
-
-
-<div ng-show="!vm.isFirstStep && !vm.isDone" class="registration-div">
-    <div class="register-head"></div>
-    <div class="register-container">
-        <div>
-            <div class="row main-head-text">
-                <div class="col-md-7"></div>
-                <div class="col-md-5 steps">Step 2 of 3</div>
-            </div>
-
-            <div class="alert alert-success" ng-show="vm.success">
-                <strong>Registration saved!</strong> Please check your email for confirmation.
-            </div>
-
-            <div class="alert alert-danger" ng-show="vm.error">
-                <strong>Registration failed!</strong> Please try again later.
-            </div>
-
-            <div class="alert alert-danger" ng-show="vm.errorUserExists">
-                <strong>Login name already registered!</strong> Please choose another one.
-            </div>
-
-            <div class="alert alert-danger" ng-show="vm.errorEmailExists">
-                <strong>E-mail is already in use!</strong> Please choose another one.
-            </div>
-
-            <div class="alert alert-danger" ng-show="vm.doNotMatch">
-                The password and its confirmation do not match!
-            </div>
-        </div>
-        <div>
-            <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
-
-                <div class="form-group">
-                    <label class="login-lable" for="phone">PHONE NUMBER*</label>
-                    <input type="text" class="form-control profile-input" id="phone" name="phone" placeholder="Your Phone Number"
-                           ng-model="vm.registerAccount.phone">
-                </div>
-                <div class="form-group">
-                    <label class="login-lable" for="address">ADDRESS*</label>
-                    <input type="text" class="form-control profile-input" id="address" name="address" placeholder="Your Address"
-                           ng-model="vm.registerAccount.address">
-                </div>
-
-                <div class="form-group">
-                    <label class="login-lable" for="company">COMPANY NAME*</label>
-                    <input type="text" class="form-control profile-input" id="company" name="company" placeholder="Your Company Name"
-                           ng-model="vm.registerAccount.company">
-                </div>
-                <div class="form-group">
-                    <label class="login-lable" for="site">COMPANY WEBSITE*</label>
-                    <input type="text" class="form-control profile-input" id="site" name="site" placeholder="Your Company Website"
-                           ng-model="vm.registerAccount.site">
-                </div>
-
-                <div class="form-group">
-                    <label class="login-lable" for="job">JOB TITLE*</label>
-                    <input type="text" class="form-control profile-input" id="job" name="job" placeholder="Job Title"
-                           ng-model="vm.registerAccount.job">
-                </div>
-
-                <div style="text-align: center;">
-                    <button  type="submit" ng-disabled="form.$invalid" class="btn btn-primary main-btn">Save</button>
-                    <button  type="submit" ng-disabled="form.$invalid" class="btn btn-primary skip-btn">skip</button>
-                </div>
-            </form>
-
-            <div class="indication-page-block">
-                <div class="indication-page">
-                    <div class="circle" id="page1"></div>
-                    <div class="circle circle-active" id="curent-page"></div>
-                    <div class="circle" id="page3"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="login-registration">
-        Already have an account? <a href="#"  ng-click="vm.login()">LOGIN</a>
-    </div>
-</div>
-
-
-<div ng-show="vm.isDone" class="registration-div">
-    <div class="register-head"></div>
-    <div class="register-container">
-        <div>
-            <div class="row main-head-text">
-                <div class="col-md-7"></div>
-                <div class="col-md-5 steps">Step 3 of 3</div>
-            </div>
-        </div>
-        <div>
-            <div class="email-img-block">
-                <img src="/content/images/email.png" alt="">
-            </div>
-            <div class="reg-saved-block">
-                REGISTRATION SAVED!
-            </div>
-            <div class="check-email-block">
-                Please check your <b>{{vm.registerAccount.email}}</b> for confirmation.
-            </div>
-            <div class="check-span-block">
-                No email? Check your spam folder! <a href="">Click here to resend</a> or contact us at <a href="">costumer@sigterra.com.</a>
-            </div>
-            <div class="indication-page-block">
-                <div class="indication-page">
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <div class="circle circle-active"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
     <div class="login-registration">
         Already have an account? <a href="#"  ng-click="vm.login()">LOGIN</a>
     </div>
