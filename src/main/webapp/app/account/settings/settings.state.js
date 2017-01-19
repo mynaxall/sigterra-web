@@ -8,7 +8,8 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('settings', {
+        $stateProvider
+            .state('settings', {
             parent: 'account',
             url: '/settings',
             data: {
@@ -22,6 +23,7 @@
                     controllerAs: 'vm'
                 }
             }
-        });
+        })
+
     }
 })();

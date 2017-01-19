@@ -1,4 +1,4 @@
-<div class="sub-header center-align" layout="row" layout-align="center center">
+
 </div>
 </div>
 <div ng-show="vm.isFirstStep && !vm.isDone" class="registration-div">
@@ -102,7 +102,7 @@
                 <div class="form-group">
                     <label class="login-lable" for="confirmPassword">New password confirmation*</label>
                     <input type="password" class="form-control profile-input" id="confirmPassword" name="confirmPassword" placeholder="Confirm the new password"
-                           ng-model="vm.confirmPassword" ng-minlength=3 ng-maxlength=50 required>
+                           ng-model="vm.confirmPassword" ng-minlength=3 ng-maxlength=50  pw-check='password' required>
                     <div ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
                         <p class="help-block"
                            ng-show="form.confirmPassword.$error.required">
@@ -116,6 +116,10 @@
                            ng-show="form.confirmPassword.$error.maxlength">
                             Your confirmation password cannot be longer than 50 characters.
                         </p>
+                       <p class="help-block"
+                          ng-show="form.confirmPassword.$error.pwmatch">
+                           Passwords don't match.
+                        </p>
                     </div>
                 </div>
 
@@ -124,7 +128,7 @@
                     <label class="login-lable" for="accept">I accept <a class="terms-and-conditions" href="#">terms and conditions</a> of using</label>
                 </div>
                 <div style="text-align: center;">
-                    <button ng-click="vm.nextStep()"  type="submit" ng-disabled="form.$invalid" class="btn btn-primary main-btn">Next</button>
+                    <button ng-click="vm.nextStep()" type="submit" ng-disabled="form.$invalid" class="btn btn-primary main-btn">Next</button>
                 </div>
             </form>
 

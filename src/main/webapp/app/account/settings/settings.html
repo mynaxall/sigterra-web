@@ -1,58 +1,102 @@
-<div class="main-content">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="main-head-text">User settings for {{vm.settingsAccount.login}}</div>
 
-            <div class="alert alert-success" ng-show="vm.success">
-                <strong>Settings saved!</strong>
+<link rel="stylesheet" type="text/css" href="/content/ng-img-crop.css">
+<div ng-show="vm.isShowDialog" class="image-popup">
+    <div class="row image-dialog">
+        <button type="button" class="close login-close-gray" ng-click="vm.hideImageDialog()">×</button>
+        <div class="crop-dialog-header">Upload an avatar</div>
+        <div class="image-dialog-crop-panel">
+
+            <div>
+                <div class="fileUpload btn btn-primary choose-photo-btn">
+                    <span>Choose photo</span>
+                    <input type="file" id="fileInput" class="upload" />
+                </div>
             </div>
+            <div class="cropArea">
+                <img-crop image="myImage" result-image="myCroppedImage" ></img-crop>
+            </div>
+            <div class="crop-btn-div">
+                <button class="btn btn-primary main-btn" ng-click="vm.saveImage()">save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="profile-photo-div">
+        <div class="border-line"></div>
+        <div class="profile-photo-panel">
+            <div class="row">
+                <div class="col-md-6" style="text-align: right">
+                    <div class="image-cropped-div">
+                        <img class="image-cropped" ng-show="showCroppedImage"  ng-src="{{myCroppedImage}}" />
+                        <img ng-show="!showCroppedImage" class="image-cropped" src="/content/images/default_photo_image@2x.png" /></div>
+                </div>
+                <div class="col-md-6" style="text-align: left">
+                <div class="button-upload-div">
+                 <button ng-click="vm.showImageDialog()" class="btn btn-primary btn-upload">Update Photo</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-success" ng-show="vm.successPassword">
+        <strong>Settings saved!</strong>
+    </div>
+
+    <div class="alert alert-success" ng-show="vm.success">
+        <strong>Settings saved!</strong>
+    </div>
+    <div class="row" style="margin: 0;margin-top: 40px;">
+        <div class="col-md-4 col-md-offset-2">
+
 
             <jhi-alert-error></jhi-alert-error>
 
             <form name="form" role="form" novalidate ng-submit="vm.save()" show-validation>
 
                 <div class="form-group">
-                    <label class="control-label" for="firstName">First Name</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Your first name"
-                           ng-model="vm.settingsAccount.firstName" ng-minlength=1 ng-maxlength=50 required maxlength="50">
-                    <div ng-show="form.firstName.$dirty && form.firstName.$invalid">
+                    <label class="login-lable" for="username">First and Last Name</label>
+                    <input type="text" class="form-control profile-input" id="username" name="username" placeholder="Your first name"
+                           ng-model="vm.settingsAccount.username"">
+                    <div ng-show="form.username.$dirty && form.username.$invalid">
                         <p class="help-block"
-                           ng-show="form.firstName.$error.required">
+                           ng-show="form.username.$error.required">
                             Your first name is required.
                         </p>
                         <p class="help-block"
-                           ng-show="form.firstName.$error.minlength">
+                           ng-show="form.username.$error.minlength">
                             Your first name is required to be at least 1 character.
                         </p>
                         <p class="help-block"
-                           ng-show="form.firstName.$error.maxlength">
+                           ng-show="form.username.$error.maxlength">
                             Your first name cannot be longer than 50 characters.
                         </p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="lastName">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Your last name"
-                           ng-model="vm.settingsAccount.lastName" ng-minlength=1 ng-maxlength=50 required maxlength="50">
-                    <div ng-show="form.lastName.$dirty && form.lastName.$invalid">
-                        <p class="help-block"
-                           ng-show="form.lastName.$error.required">
-                            Your last name is required.
-                        </p>
-                        <p class="help-block"
-                           ng-show="form.lastName.$error.minlength">
-                            Your last name is required to be at least 1 character.
-                        </p>
-                        <p class="help-block"
-                           ng-show="form.lastName.$error.maxlength">
-                            Your last name cannot be longer than 50 characters.
-                        </p>
-                    </div>
+                    <label class="login-lable" for="jobTitle">Job title</label>
+                    <input type="text" class="form-control profile-input" id="jobTitle" name="jobTitle" placeholder="Your e-mail"
+                           ng-model="vm.settingsAccount.jobTitle">
                 </div>
+
                 <div class="form-group">
-                    <label class="control-label" for="email">E-mail</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Your e-mail"
-                           ng-model="vm.settingsAccount.email" ng-minlength=5 ng-maxlength=100 required maxlength="100">
+                    <label class="login-lable" for="companyName">Company name</label>
+                    <input type="text" class="form-control profile-input" id="companyName" name="companyName" placeholder="Your e-mail"
+                           ng-model="vm.settingsAccount.companyName">
+                </div>
+
+
+                <div class="form-group">
+                    <label class="login-lable" for="companySite">Company website</label>
+                    <input type="text" class="form-control profile-input" id="companySite" name="companySite" placeholder="Your e-mail"
+                           ng-model="vm.settingsAccount.companySite">
+                </div>
+
+                <div class="form-group">
+                    <label class="login-lable" for="email">E-mail</label>
+                    <input type="email" class="form-control profile-input" id="email" name="email" placeholder="Your e-mail"
+                           ng-model="vm.settingsAccount.email"  ng-disabled="true"  ng-minlength=5 ng-maxlength=100 required maxlength="100">
                     <div ng-show="form.email.$dirty && form.email.$invalid">
                         <p class="help-block"
                            ng-show="form.email.$error.required">
@@ -73,9 +117,76 @@
                     </div>
                 </div>
 
-                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary main-btn">Save</button>
+
+                <div class="form-group">
+                    <label class="login-lable" for="phoneNumber">Phone number</label>
+                    <input type="text" class="form-control profile-input" id="phoneNumber" name="phoneNumber" placeholder="Your e-mail"
+                           ng-model="vm.settingsAccount.phoneNumber">
+                </div>
+
+
+                <div class="form-group">
+                    <label class="login-lable" for="address">Address</label>
+                    <input type="text" class="form-control profile-input" id="address" name="address" placeholder="Your e-mail"
+                           ng-model="vm.settingsAccount.address">
+                </div>
+
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary main-btn">Update profile</button>
             </form>
         </div>
+        <div class="col-md-4">
+            <jhi-alert-error></jhi-alert-error>
+
+            <form name="form2" role="form" novalidate ng-submit="vm.changePassword()" show-validation>
+                <div class="form-group">
+                    <label class="login-lable" for="password">New password*</label>
+                    <input type="password" class="form-control profile-input" id="password" name="password" placeholder="New password"
+                           ng-model="vm.password" ng-minlength=3 ng-maxlength=50 required>
+                    <div ng-show="form2.password.$dirty && form2.password.$invalid">
+                        <p class="help-block"
+                           ng-show="form2.password.$error.required">
+                            Your password is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form2.password.$error.minlength">
+                            Your password is required to be at least 4 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form2.password.$error.maxlength">
+                            Your password cannot be longer than 50 characters.
+                        </p>
+                    </div>
+                    <password-strength-bar password-to-check="vm.password"></password-strength-bar>
+                </div>
+                <div class="form-group">
+                    <label class="login-lable" for="confirmPassword">New password confirmation*</label>
+                    <input type="password" class="form-control profile-input" id="confirmPassword" name="confirmPassword" placeholder="Confirm the new password"
+                           ng-model="vm.confirmPassword" ng-minlength=3 ng-maxlength=50  pw-check='password' required>
+                    <div ng-show="form2.confirmPassword.$dirty && form2.confirmPassword.$invalid">
+                        <p class="help-block"
+                           ng-show="form2.confirmPassword.$error.required">
+                            Your confirmation password is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form2.confirmPassword.$error.minlength">
+                            Your confirmation password is required to be at least 4 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form2.confirmPassword.$error.maxlength">
+                            Your confirmation password cannot be longer than 50 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form2.confirmPassword.$error.pwmatch">
+                            Passwords don't match.
+                        </p>
+                    </div>
+                </div>
+
+                <button type="submit" ng-disabled="form2.$invalid" class="btn btn-primary main-btn">Change password</button>
+            </form>
+
+        </div>
+
     </div>
 
 </div>

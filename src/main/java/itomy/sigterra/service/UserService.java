@@ -1,5 +1,6 @@
 package itomy.sigterra.service;
 
+import com.amazonaws.services.dynamodbv2.xspec.S;
 import itomy.sigterra.domain.Authority;
 import itomy.sigterra.domain.User;
 import itomy.sigterra.repository.AuthorityRepository;
@@ -97,7 +98,7 @@ public class UserService {
         newUser.setFirstName(firstName);
         newUser.setLastName(lastName);
         newUser.setEmail(email);
-        newUser.setLangKey(langKey);
+        newUser.setLangKey("en-US");
         // new user is not active
         newUser.setActivated(false);
         // new user gets registration key
@@ -144,12 +145,14 @@ public class UserService {
         return user;
     }
 
-    public void updateUser(String firstName, String lastName, String email, String langKey) {
+    public void updateUser(String username, String address, String companyName, String companySite, String jobTitle, String phoneNumber) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(u -> {
-            u.setFirstName(firstName);
-            u.setLastName(lastName);
-            u.setEmail(email);
-            u.setLangKey(langKey);
+            u.setUsername(username);
+            u.setAddress(address);
+            u.setCompanyName(companyName);
+            u.setCompanySite(companySite);
+            u.setJobTitle(jobTitle);
+            u.setPhoneNumber(phoneNumber);
             userRepository.save(u);
             log.debug("Changed Information for User: {}", u);
         });
