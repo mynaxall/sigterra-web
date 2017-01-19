@@ -3,6 +3,20 @@
 
     angular
         .module('sigterraWebApp')
+        .directive('pwCheck', [function () {
+            return {
+                require: 'ngModel',
+                link: function (scope, elem, attrs, ctrl) {
+                    var firstPassword = '#' + attrs.pwCheck;
+                    elem.add(firstPassword).on('keyup', function () {
+                        scope.$apply(function () {
+                            var v = elem.val()===$(firstPassword).val();
+                            ctrl.$setValidity('pwmatch', v);
+                        });
+                    });
+                }
+            }
+        }])
         .controller('RegisterController', RegisterController);
 
 
@@ -21,6 +35,7 @@
         vm.registerAccount = {};
         vm.success = null;
         vm.isDone = false;
+        vm.skip = skip;
 
         vm.nextStep = nextStep;
 
@@ -41,13 +56,48 @@
 
                 Auth.createAccount(vm.registerAccount).then(function (response) {
                     vm.success = 'OK';
-                    console.log(response.status )
-                        vm.isDone = true;
+                    vm.isDone = true;
                 }).catch(function (response) {
                     vm.success = null;
                     if (response.status === 400 && response.data === 'login already in use') {
                         vm.errorUserExists = 'ERROR';
                     } else if (response.status === 400 && response.data === 'e-mail address already in use') {
+                        vm.isFirstStep = true;
+                        vm.errorEmailExists = 'ERROR';
+                    } else {
+                        vm.error = 'ERROR';
+                    }
+                });
+            }
+        }
+
+        function skip () {
+            if (vm.registerAccount.password !== vm.confirmPassword) {
+                vm.doNotMatch = 'ERROR';
+            } else {
+                vm.registerAccount.langKey =  'en' ;
+                vm.doNotMatch = null;
+                vm.error = null;
+                vm.errorUserExists = null;
+                vm.errorEmailExists = null;
+
+                var skipRegister ={"username": vm.registerAccount.username,
+                    "email": vm.registerAccount.email,
+                    "password": vm.registerAccount.password
+
+                };
+
+
+
+                Auth.createAccount(skipRegister).then(function (response) {
+                    vm.success = 'OK';
+                    vm.isDone = true;
+                }).catch(function (response) {
+                    vm.success = null;
+                    if (response.status === 400 && response.data === 'login already in use') {
+                        vm.errorUserExists = 'ERROR';
+                    } else if (response.status === 400 && response.data === 'e-mail address already in use') {
+                        vm.isFirstStep = true;
                         vm.errorEmailExists = 'ERROR';
                     } else {
                         vm.error = 'ERROR';

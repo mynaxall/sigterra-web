@@ -68,9 +68,6 @@ Browser Upgrade Prompt
 /* ==========================================================================
 Logo styles
 ========================================================================== */
-.navbar-brand.logo {
-    padding: 5px 15px;
-}
 
 .logo .logo-img {
     height: 45px;
@@ -375,24 +372,15 @@ Social Buttons
 
 /* jhipster-needle-css-add-main JHipster will add new css style */
 .navbar-custom {
-    background-color: #76C7C0;
-    border-color: #76C7C0;
-    border-top: 5px;
-    border-bottom: 5px;
-    border-style: solid;
+    background-color: #242424;
     border-color: #242424;
-    height:70px;
+    border-style: solid;
+    height:80px;
 }
 
 .navbar{
     margin-bottom: 0;
     border-radius: 0px;
-}
-.sub-header{
-    background-color: #242424;
-    width: 100%;
-    height: 120px;
-
 }
 
 .well {
@@ -411,7 +399,7 @@ Social Buttons
     -moz-box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.75);
     z-index: 10;
-    margin-top: -80px;
+    margin-top: 30px;
 }
 .main-head-text{
     color: #489B94;
@@ -430,14 +418,16 @@ Social Buttons
 
 .main-btn{
     background-color: #E8645A;
-    width: 170px;
-    height: 45px;
+    height: 40px;
+    min-width: 170px;
     border: none;
     color: white;
     font-size: 18px;
     text-transform: uppercase;
-    border-radius: 2px;
     font-weight:bold;
+    border-radius: 40px;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .skip-btn{
@@ -445,17 +435,26 @@ Social Buttons
     border-width: 2px;
     border-style: solid;
     border-color: #489B94;
-    width: 170px;
+    min-width: 170px;
     height: 45px;
     color: #489B94;
     font-size: 18px;
     text-transform: uppercase;
-    border-radius: 2px;
     font-weight:bold;
+    border-radius: 40px;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .main-btn:hover{
     background-color: #5aaea7;
+}
+
+.main-btn[disabled]{
+    background-color: #D0D8D9;
+}
+.main-btn[disabled]:hover{
+    background-color: #D0D8D9;
 }
 
 .register-btn[disabled]:hover{
@@ -560,8 +559,16 @@ Social Buttons
     font-size: 18px;
 }
 
+.login-close-gray{
+    color: #D0D8D9;
+    opacity: 1;
+    text-shadow: none;
+    font-size: 18px;
+}
+
 .login-lable{
     color: #7F8C8C;
+    text-transform: uppercase;
 }
 
 .profile-input{
@@ -654,6 +661,137 @@ Social Buttons
     text-align: center
 }
 
+.profile-photo-div{
+    background-color: #ffffff;
+    width: 100%;
+    height:300px;
+    text-align: center;
+}
+
+.settings-form{
+    margin-top: 40px;
+}
+
+
+.cropArea {
+    background: #E4E4E4;
+    overflow: hidden;
+    width:350px;
+    height:350px;
+}
+
+.image-popup{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    z-index:10;
+}
+
+.image-dialog{
+    position: relative;
+    background: #fff;
+    width: 450px;
+    margin: 30px auto;
+    margin-top: 100px;
+    padding: 10px;
+}
+
+.image-cropped-div{
+    margin-top: 50px;
+
+}
+
+.image-cropped{
+    width: 200px;
+    height:200px;
+    border-radius: 200px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ECECEC;
+
+
+}
+.profile-photo-panel{
+    width: 500px;
+    margin: auto;
+    background: #fff;
+    position: relative;
+    z-index: 5;
+
+
+}
+
+.btn-upload{
+    background-color: #FFFFFF;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #D0D8D9;
+    min-width: 170px;
+    height: 45px;
+    color: #D0D8D9;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight:bold;
+    border-radius: 40px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.button-upload-div{
+    margin-top: 127px;
+}
+
+.image-dialog-crop-panel{
+    padding: 10px 35px;
+    text-align: center;
+}
+
+.crop-btn-div{
+    margin: 20px auto;
+}
+
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.choose-photo-btn{
+    background-color: #19C5B6;
+    color: #fff;
+    border: none;
+    height: 30px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.crop-dialog-header{
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.border-line{
+    background-color: #D0D8D9;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 230px;
+}
 
 
 
