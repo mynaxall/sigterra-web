@@ -1,4 +1,6 @@
 <div class="registration-div">
+
+    <div class="register-head"></div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="main-head-text">Reset your password</div>
@@ -39,9 +41,12 @@
                         </p>
                     </div>
                 </div>
-                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary main-btn">Reset</button>
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary login-btn main-btn">Reset</button>
             </form>
 
         </div>
+    </div>
+    <div class="login-registration">
+        Don't have an account yet? <br><a class="alert-link register-link" href="" ng-click="vm.register()">Register a new account</a>
     </div>
 </div>
