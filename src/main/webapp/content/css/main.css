@@ -372,8 +372,8 @@ Social Buttons
 
 /* jhipster-needle-css-add-main JHipster will add new css style */
 .navbar-custom {
-    background-color: #242424;
-    border-color: #242424;
+    background-color: #242424!important;
+    border-color: #242424!important;
     border-style: solid;
     height:80px;
 }
