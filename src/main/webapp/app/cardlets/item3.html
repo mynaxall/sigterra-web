@@ -1,275 +1,195 @@
 <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
 <div>
-	<div class="cardlet"  style="background-color: #{{tabName.type.mainColor}}">
+    <div class="cardlet"  style="background-color: #{{tabName.type.mainColor}}" ng-init="initSlide(tabName)">
         <div>
-            <div class="layouts">
-                <div>
-                    <img src="/app/cardlets/img/2_card/avatar_img.png" class="avatar">
-                </div>
-                <div class="social-link-group">
-                    <a class="social-link"  href="{{tabName.socialLinks.twitter}}" target="_blank">
-                        <svg width="32px" height="31px" viewBox="0 0 32 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
-                            <title>tweeter_sq</title>
-                            <desc>Created with Sketch.</desc>
-                            <defs></defs>
-                            <g id="mobile_icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g id="Business_card_01-" transform="translate(-14.000000, -225.000000)" fill="#{{tabName.type.secondaryColor}}">
-                                    <path d="M14,225 L45.1111111,225 L45.1111111,256 L14,256 L14,225 Z M33.0917919,233.000859 C34.504772,232.975794 35.2571764,233.502168 35.9740343,234.171561 C36.5842521,234.117007 37.3766466,233.76904 37.8431966,233.527233 C37.99427,233.441716 38.1453433,233.357673 38.2964166,233.27363 C38.0298166,234.009373 37.6684255,234.585878 37.1130088,235.023785 C36.9900766,235.121098 36.8671443,235.252323 36.7131088,235.314249 L36.7131088,235.323096 C37.5040221,235.314249 38.1571922,234.950063 38.7777778,234.751015 L38.7777778,234.761336 C38.4519333,235.290658 38.0105622,235.827353 37.5410499,236.21218 C37.3514677,236.366996 37.1604043,236.520338 36.9708221,236.675153 C36.9811899,237.5318 36.9589732,238.348638 36.8019754,239.069637 C35.891092,243.25556 33.4783619,246.098272 29.657095,247.314682 C28.285586,247.752589 26.0683625,247.93247 24.4969036,247.532898 C23.7178391,247.335324 23.0128301,247.11121 22.3522545,246.816323 C21.984939,246.65266 21.6457645,246.474253 21.31992,246.272256 C21.21328,246.205906 21.10664,246.139557 21,246.073207 C21.3539856,246.083528 21.7686967,246.18379 22.1656345,246.11744 C22.5240634,246.058463 22.8750868,246.074681 23.2068557,245.999485 C24.0318346,245.815181 24.7649847,245.570424 25.3959381,245.192969 C25.701047,245.010139 26.1661159,244.794871 26.3823581,244.530947 C25.9735714,244.538319 25.6018125,244.441007 25.2981847,244.330424 C24.1177391,243.904312 23.4305035,243.121387 22.984689,241.944787 C23.3416368,241.984597 24.3710091,242.080435 24.6124302,241.872539 C24.1621724,241.847474 23.7296879,241.580601 23.4201357,241.383027 C22.4707434,240.775559 21.6976034,239.756724 21.7035278,238.189399 C21.8279412,238.249851 21.9523545,238.310303 22.0767678,238.370754 C22.3152267,238.473965 22.5566479,238.528519 22.8425023,238.588971 C22.9624723,238.614036 23.2024124,238.686284 23.3401557,238.634678 L23.3223824,238.634678 C23.1387246,238.414988 22.8395401,238.270493 22.6544012,238.036058 C22.0456645,237.261979 21.4754367,236.070635 21.8368278,234.652227 C21.9271756,234.292465 22.0738056,233.973987 22.2278412,233.680574 C22.2337656,233.684998 22.2396901,233.686472 22.2456145,233.690895 C22.3167079,233.842762 22.4751868,233.953345 22.5744212,234.080146 C22.8854546,234.473821 23.2690624,234.82916 23.6600757,235.14174 C24.9915947,236.206283 26.1912948,236.860932 28.1182204,237.346022 C28.6069871,237.4684 29.1712905,237.562764 29.7548483,237.564238 C29.5919261,237.0762 29.643765,236.285902 29.7726217,235.812608 C30.096985,234.624213 30.8019939,233.767566 31.8372907,233.309016 C32.0846362,233.199908 32.3586418,233.120289 32.6474585,233.055413 C32.7955696,233.03772 32.9436807,233.018553 33.0917919,233.000859 Z" id="tweeter_sq"></path>
-                                </g>
-                            </g>
-                        </svg>
-                    </a>
-                    <a class="social-link"  href="{{tabName.socialLinks.facebook}}" target="_blank">
-                        <svg width="32px" height="31px" viewBox="0 0 32 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
-                            <title>facebook_sq</title>
-                            <desc>Created with Sketch.</desc>
-                            <defs></defs>
-                            <g id="mobile_icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g id="Business_card_01-" transform="translate(-53.000000, -225.000000)" fill="#{{tabName.type.secondaryColor}}">
-                                    <path d="M53,225 L84.1111111,225 L84.1111111,256 L53,256 L53,225 Z M73.2668182,231.060314 L73.2668182,234.172989 C73.2668182,234.172989 70.9602732,233.943727 70.3809796,234.823741 C70.0656455,235.305192 70.2534288,236.710746 70.2250841,237.723026 L73.2863052,237.723026 C73.0276604,238.904609 72.8416487,239.705263 72.6520939,240.728125 L70.2073687,240.728125 L70.2073687,250.399464 L65.9680736,250.399464 C65.9698451,247.417291 65.9680736,243.93956 65.9680736,240.76516 L64.1646459,240.76516 L64.1646459,237.723026 L65.9485867,237.723026 C66.0389352,235.497419 66.074366,233.292975 67.1851216,232.171354 C68.4358288,230.908648 69.6263036,231.060314 73.2668182,231.060314 Z" id="facebook_sq"></path>
-                                </g>
-                            </g>
-                        </svg>
-                    </a>
-                    <a class="social-link" href="{{tabName.socialLinks.google}}" target="_blank">
-                        <svg width="32px" height="31px" viewBox="0 0 32 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
-                            <title>gmail_sq</title>
-                            <desc>Created with Sketch.</desc>
-                            <defs></defs>
-                            <g id="mobile_icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g id="Business_card_01-" transform="translate(-93.000000, -225.000000)" fill="#{{tabName.type.secondaryColor}}"">
-                                    <path d="M93,225 L124.111111,225 L124.111111,256 L93,256 L93,225 Z M120.000966,239.46243 L120.000966,237.308286 L117.890821,237.308286 L117.890821,239.46243 L115.780676,239.46243 L115.780676,241.616573 L117.890821,241.616573 L117.890821,243.770716 L120.000966,243.770716 L120.000966,241.616573 L122.111111,241.616573 L122.111111,239.46243 L120.000966,239.46243 Z M113.268599,239.46243 L106.335266,239.46243 L106.335266,242.026886 L110.555556,242.026886 C110.555556,242.232042 110.455072,242.539777 110.354589,242.744934 C110.254106,243.052668 110.05314,243.257825 109.852174,243.56556 C109.651208,243.873294 109.349758,244.181029 109.048309,244.386186 C108.74686,244.591342 108.344928,244.796499 107.942995,245.001655 C107.44058,245.206812 106.938164,245.206812 106.435749,245.206812 C105.631884,245.206812 104.828019,245.001655 104.124638,244.591342 C103.421256,244.181029 102.918841,243.56556 102.516908,242.847512 C102.114976,242.129464 101.91401,241.308838 101.91401,240.488212 C101.91401,239.667586 102.114976,238.84696 102.516908,238.128912 C102.918841,237.410865 103.521739,236.795395 104.124638,236.385082 C104.828019,235.974769 105.531401,235.769613 106.335266,235.769613 C107.541063,235.769613 108.545894,236.179926 109.249275,236.897973 L111.258937,234.948987 C109.852174,233.615469 108.244444,233 106.335266,233 C105.330435,233 104.426087,233.205156 103.521739,233.615469 C102.617391,234.025782 101.813527,234.538674 101.210628,235.154143 C100.507246,235.872191 100.004831,236.692817 99.6028986,237.616021 C99.2009662,238.539225 99,239.46243 99,240.488212 C99,241.513995 99.2009662,242.437199 99.6028986,243.360403 C100.004831,244.283607 100.507246,245.104233 101.210628,245.719703 C101.813527,246.437751 102.617391,246.950642 103.521739,247.360955 C104.426087,247.771268 105.330435,247.976424 106.335266,247.976424 C107.742029,247.976424 108.947826,247.66869 110.05314,247.05322 C111.158454,246.437751 111.962319,245.514546 112.565217,244.488764 C113.168116,243.360403 113.469565,242.129464 113.469565,240.693369 C113.369082,240.283056 113.369082,239.872743 113.268599,239.46243 Z" id="gmail_sq"></path>
-                                </g>
-                            </g>
-                        </svg>
-                    </a>
-                    <a href="{{tabName.socialLinks.linkedin}}" target="_blank">
-                        <svg width="32px" height="31px" viewBox="0 0 32 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
-                            <title>linkedin_sq</title>
-                            <desc>Created with Sketch.</desc>
-                            <defs></defs>
-                            <g id="mobile_icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g id="Business_card_01-" transform="translate(-131.000000, -225.000000)" fill="#{{tabName.type.secondaryColor}}">
-                                    <path d="M131,225 L162.111111,225 L162.111111,256 L131,256 L131,225 Z M138.221442,248.662009 L142.179063,248.662009 L142.179063,236.895566 L138.221442,236.895566 L138.221442,248.662009 Z M140.207339,235.15141 C138.988519,235.15141 138,234.22378 138,233.077468 C138,231.929394 138.988519,231 140.207339,231 C141.426158,231 142.412906,231.929394 142.412906,233.077468 C142.412906,234.22378 141.426158,235.15141 140.207339,235.15141 Z M151.757779,248.662009 L151.757779,242.237376 C151.757779,240.92 151.392842,239.599097 149.911835,239.599097 C148.430827,239.599097 147.810788,240.92 147.810788,242.26912 L147.810788,248.662009 L143.858483,248.662009 L143.858483,236.89733 L147.810788,236.89733 L147.810788,238.481003 C148.850682,237.096612 149.754168,236.52522 151.392842,236.52522 C153.033288,236.52522 155.697684,237.327637 155.697684,241.972843 L155.697684,248.662009 L151.757779,248.662009 Z" id="linkedin_sq"></path>
-                                </g>
-                            </g>
-                        </svg>
-                    </a>
-                </div>
-
-            </div>
-            <div class="layouts main-layouts">
-                <div class="user-info">
-                    <div class="user-name" ng-show="!tabName.userName.name"  style="color: #{{tabName.type.secondaryColor}}">Jon Dou</div>
-                    <div class="user-name" ng-style="{'font-weight': tabName.userName.bold ? 'bold' : 'normal',
-                    'font-style': tabName.userName.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.userName.underline ? 'underline' : 'normal'}" style="color: #{{tabName.type.secondaryColor}}" ng-show="tabName.userName.name">{{tabName.userName.name}}</div>
-                    <div class="user-main-text job-titile" ng-show="!tabName.job.name">General Manager</div>
-                    <div class="user-main-text job-titile" ng-style="{'font-weight': tabName.job.bold ? 'bold' : 'normal',
-                    'font-style': tabName.job.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.job.underline ? 'underline' : 'normal'}" ng-show="tabName.job.name">{{tabName.job.name}}</div>
-                    <div class="user-contacts-div">
-                        <div class="svg-div">
-                            <svg width="15px" height="20px" viewBox="0 0 15 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
-                                <title>mobile_white_icon</title>
-                                <desc>Created with Sketch.</desc>
-                                <defs>
-                                    <polygon id="path-1" points="13.2783158 9 13.2783158 17.9998105 0 17.9998105 0 9 0 0.000189473684 13.2783158 0.000189473684 13.2783158 9"></polygon>
-                                </defs>
-                                <g id="540x270" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="mobile" transform="translate(-199.000000, -159.000000)">
-                                        <g id="mobile_white_icon" transform="translate(199.000000, 159.000000)" fill="#{{tabName.type.secondaryColor}}">
-                                            <mask id="mask-2" fill="white">
-                                                <use xlink:href="#path-1"></use>
-                                            </mask>
-                                            <g id="Clip-2"></g>
-                                            <path d="M6.08021053,16.0476632 C5.93147368,15.8809263 5.85663158,15.6800842 5.85663158,15.4451368 C5.85663158,15.2092421 5.93147368,15.0084 6.08021053,14.8426105 C6.22894737,14.6768211 6.40989474,14.5934526 6.62115789,14.5934526 C6.82768421,14.5934526 7.00768421,14.6777684 7.16210526,14.8473474 C7.31652632,15.0159789 7.39421053,15.2158737 7.39421053,15.4451368 C7.39421053,15.6744 7.31652632,15.8733474 7.16210526,16.0429263 C7.00768421,16.2125053 6.82768421,16.2968211 6.62115789,16.2968211 C6.40989474,16.2968211 6.22894737,16.2134526 6.08021053,16.0476632 L6.08021053,16.0476632 Z M2.72652632,11.8801895 C2.72652632,12.1871368 2.83547368,12.4486105 3.05147368,12.6646105 C3.26842105,12.8796632 3.52610526,12.9876632 3.82452632,12.9876632 L9.43484211,12.9876632 C9.73326316,12.9876632 9.98810526,12.8796632 10.1993684,12.6646105 C10.4096842,12.4486105 10.5148421,12.1871368 10.5148421,11.8801895 L10.5148421,4.63850526 C10.5148421,4.33724211 10.4096842,4.07766316 10.1993684,3.85882105 C9.98810526,3.63997895 9.73326316,3.53008421 9.43484211,3.53008421 L3.82452632,3.53008421 C3.52610526,3.53008421 3.26842105,3.63997895 3.05147368,3.85882105 C2.83547368,4.07766316 2.72652632,4.33724211 2.72652632,4.63850526 L2.72652632,11.8801895 Z M1.73463158,11.8782947 L1.73463158,4.63092632 C1.73463158,4.05682105 1.93831579,3.56608421 2.34757895,3.15776842 C2.75684211,2.7504 3.24568421,2.54576842 3.816,2.54576842 L9.45284211,2.54576842 C10.0222105,2.54576842 10.5082105,2.7504 10.908,3.15776842 C11.3077895,3.56608421 11.5076842,4.05682105 11.5076842,4.63092632 L11.5076842,11.8782947 C11.5076842,12.4580842 11.3077895,12.9516632 10.908,13.3599789 C10.5082105,13.7682947 10.0222105,13.9719789 9.45284211,13.9719789 L3.816,13.9719789 C3.24568421,13.9719789 2.75684211,13.7682947 2.34757895,13.3599789 C1.93831579,12.9516632 1.73463158,12.4580842 1.73463158,11.8782947 L1.73463158,11.8782947 Z M0.992842105,13.9824 C0.992842105,14.3547158 1.12831579,14.7185053 1.39926316,15.0737684 C1.67021053,15.4280842 2.05578947,15.7530316 2.55694737,16.0486105 C3.68810526,16.6928211 5.04189474,17.0149263 6.62115789,17.0149263 L6.63915789,17.0149263 C8.23547368,17.0149263 9.59873684,16.6928211 10.7298947,16.0486105 C11.7672632,15.4394526 12.2854737,14.7507158 12.2854737,13.9824 L12.2854737,4.01703158 C12.2854737,3.50829474 12.0543158,3.02987368 11.592,2.58082105 C11.1306316,2.13082105 10.4996842,1.76324211 9.69915789,1.47713684 C8.89863158,1.19008421 8.028,1.02524211 7.08631579,0.984505263 L6.62684211,0.984505263 L6.34452632,0.984505263 C5.37726316,1.01387368 4.48294737,1.16924211 3.65968421,1.44966316 C2.83736842,1.73103158 2.18652632,2.09861053 1.70905263,2.55429474 C1.23157895,3.00903158 0.992842105,3.49692632 0.992842105,4.01703158 L0.992842105,13.9824 Z M0,13.9899789 L0,4.01892632 C0,3.30366316 0.271894737,2.64334737 0.814736842,2.03987368 C1.35852632,1.43734737 2.11073684,0.955136842 3.07326316,0.594189474 C4.03578947,0.233242105 5.10821053,0.0352421053 6.28957895,0.000189473684 L6.31515789,0.000189473684 L6.61642105,0.000189473684 L7.13084211,0.000189473684 C8.28189474,0.0532421053 9.32778947,0.261663158 10.2656842,0.625452632 C11.2045263,0.989242105 11.9415789,1.46955789 12.4758947,2.06734737 C13.0111579,2.66418947 13.2783158,3.31503158 13.2783158,4.01892632 L13.2783158,13.9899789 C13.2783158,14.5517684 13.1021053,15.0851368 12.7506316,15.5910316 C12.3991579,16.0969263 11.8932632,16.5393474 11.232,16.9173474 C9.97957895,17.6392421 8.44768421,18.0001895 6.63442105,18.0001895 L6.59936842,18.0001895 C4.83347368,18.0001895 3.31578947,17.6335579 2.04631579,16.8993474 C1.38505263,16.5270316 0.878210526,16.0912421 0.526736842,15.5910316 C0.175263158,15.0917684 0,14.5574526 0,13.9899789 L0,13.9899789 Z" id="Fill-1" mask="url(#mask-2)"></path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg>
+            <div ng-show="tabName.items.length <= 3">
+                <div class="main-carousel-image-div">
+                    <div  ng-repeat="slide in tabName.items"  class="main-carousel-item-div">
+                        <div class="carousel-item-name-div" ng-style="{'font-weight': slide.nameItem.bold ? 'bold' : 'normal',
+                    'font-style': slide.nameItem.italic ? 'italic' : 'normal',
+                    'text-decoration': slide.nameItem.underline ? 'underline' : 'normal'}" ng-show="slide.nameItem.name">{{slide.nameItem.name}}</div>
+                        <div class="carousel-item-name-div" ng-show="!slide.nameItem.name">Maui Hotel</div>
+                        <div id="cf4a">
+                            <a href="{{slide.link}}" target="_blank">
+                                <img id="ing-1" class="item-images-2" ng-src="{{slide.image}}">
+                                <img id="ing-2" class="item-images-2" ng-src="{{slide.image2}}">
+                                <img id="ing-3"  class="item-images-2" ng-src="{{slide.image3}}">
+                            </a>
                         </div>
-                        <div class="svg-description" ng-show="!tabName.phone.number">
-                            1-888-555-5555
-                        </div>
-                        <div class="svg-description" ng-show="tabName.phone.number" ng-style="{'font-weight': tabName.phone.bold ? 'bold' : 'normal',
-                    'font-style': tabName.phone.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.phone.underline ? 'underline' : 'normal'}">
-                            {{tabName.phone.number}}
-                        </div>
-
-
-                    </div>
-                    <div class="user-contacts-div">
-                        <div class="svg-div" style="margin-top: 3px">
-                            <svg width="18px" height="14px" viewBox="0 0 18 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
-                                <title>e-mail_white_icon</title>
-                                <desc>Created with Sketch.</desc>
-                                <defs></defs>
-                                <g id="mobile_icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="Business_card_02-Copy" transform="translate(-197.000000, -189.000000)" fill="#{{tabName.type.secondaryColor}}">
-                                        <path d="M214.023752,191.902874 L214.023752,194.363238 L214.023752,198.044932 L214.023752,201.160212 C214.023752,201.218759 213.993797,201.248714 213.93525,201.248714 L198.074281,201.248714 C198.051135,201.248714 198.029349,201.237821 198.008926,201.217398 C197.988502,201.196974 197.97761,201.177912 197.97761,201.160212 L197.97761,194.363238 L197.978971,194.363238 L197.978971,191.902874 L197.97761,191.902874 L197.97761,190.120575 L204.807262,196.863086 C205.142209,197.196672 205.535703,197.361422 206.008169,197.36823 L206.039486,197.36823 C206.491528,197.36823 206.87413,197.207564 207.213162,196.87534 L214.023752,190.146445 L214.023752,190.831316 L214.023752,191.902874 Z M206.488805,196.133283 C206.317247,196.304841 206.134796,196.340242 206.013616,196.340242 C205.891074,196.340242 205.709985,196.304841 205.539788,196.133283 L199.29289,189.965356 L212.73298,189.965356 L206.488805,196.133283 Z M214.772617,189.405749 L214.795764,189.382602 L214.753555,189.382602 C214.733132,189.358094 214.715431,189.330862 214.692284,189.307716 C214.486687,189.10348 214.234796,189 213.93525,189 L198.066112,189 C197.766566,189 197.513313,189.10348 197.309077,189.307716 C197.28593,189.330862 197.26823,189.358094 197.246445,189.382602 L197.228744,189.382602 L197.238275,189.392133 C197.083056,189.581392 197,189.799244 197,190.051135 L197,201.160212 C197,201.450227 197.10348,201.698033 197.309077,201.904992 C197.513313,202.11059 197.766566,202.212708 198.066112,202.212708 L213.93525,202.212708 C214.234796,202.212708 214.486687,202.11059 214.692284,201.904992 C214.897882,201.698033 215,201.450227 215,201.160212 L215,190.051135 C215,189.806051 214.921029,189.590923 214.772617,189.405749 L214.772617,189.405749 Z" id="e-mail_white_icon"></path>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="svg-description" ng-show="!tabName.userEmail.email">
-                            fabian.abshireabsh@wilford.biz
-                        </div>
-                        <div class="svg-description" ng-show="tabName.userEmail.email" ng-style="{'font-weight': tabName.userEmail.bold ? 'bold' : 'normal',
-                            'font-style': tabName.userEmail.italic ? 'italic' : 'normal',
-                            'text-decoration': tabName.userEmail.underline ? 'underline' : 'normal'}">
-                           {{tabName.userEmail.email}}
-                        </div>
-
-                    </div>
-                    <div class="user-contacts-div">
-                        <div class="svg-div" style="margin-top: 3px">
-                            <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
-                                <title>globe_white_icon</title>
-                                <desc>Created with Sketch.</desc>
-                                <defs></defs>
-                                <g id="mobile_icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="Business_card_02-Copy" transform="translate(-197.000000, -212.000000)" fill="#{{tabName.type.secondaryColor}}">
-                                        <g id="globe_white_icon" transform="translate(197.000000, 212.000000)">
-                                            <path d="M13.9157476,11.4496555 L16.5223419,11.4496555 C16.7786176,10.6493557 16.9078795,9.82882368 16.9078795,8.98805935 C16.9078795,8.12931075 16.7729975,7.30203462 16.5021096,6.50735496 L13.9157476,6.50735496 C14.0405135,7.3413752 14.1023344,8.16865133 14.1023344,8.98805935 C14.1023344,9.7962272 14.0405135,10.6156352 13.9157476,11.4496555 L13.9157476,11.4496555 Z M11.9846873,16.325639 C12.8726603,15.9592096 13.668464,15.4500301 14.3720983,14.7981006 C15.0757326,14.146171 15.6377409,13.394204 16.058123,12.5421995 L13.6988124,12.5421995 C13.331259,14.0888462 12.7602587,15.3499927 11.9846873,16.325639 L11.9846873,16.325639 Z M11.9846873,1.67071203 C12.7602587,2.65310244 13.331259,3.90076073 13.6988124,5.41481094 L16.058123,5.41481094 C15.6242527,4.57629464 15.0555003,3.83219573 14.351866,3.18363822 C13.6482317,2.5350807 12.8591721,2.0303973 11.9846873,1.67071203 L11.9846873,1.67071203 Z M9.53657939,16.8168342 C10.188509,16.6403636 10.7819897,16.1671526 11.3181455,15.3972013 C11.8554254,14.6272501 12.2713115,13.6763321 12.5669278,12.5421995 L9.53657939,12.5421995 L9.53657939,16.8168342 Z M9.53657939,11.4496555 L12.8130874,11.4496555 C12.9445974,10.5762946 13.0109143,9.75576261 13.0109143,8.98805935 C13.0109143,8.16190723 12.9378533,7.3346311 12.7939792,6.50735496 L9.53657939,6.50735496 L9.53657939,11.4496555 Z M9.53657939,5.41481094 L12.5669278,5.41481094 C12.2645674,4.2941665 11.8430612,3.35336471 11.3035333,2.5890335 C10.7640054,1.8258263 10.1750208,1.35598741 9.53657939,1.17951682 L9.53657939,5.41481094 Z M5.42267906,12.5421995 C5.71155129,13.6763321 6.12631338,14.626126 6.66808932,15.3927053 C7.20874125,16.1592845 7.80109794,16.6336195 8.44403537,16.8168342 L8.44403537,12.5421995 L5.42267906,12.5421995 Z M5.42267906,5.41481094 L8.44403537,5.41481094 L8.44403537,1.17951682 C7.80784204,1.35598741 7.21998142,1.8258263 6.68270154,2.5890335 C6.14429764,3.35336471 5.72391547,4.2941665 5.42267906,5.41481094 L5.42267906,5.41481094 Z M4.97981656,8.98805935 C4.97981656,9.75576261 5.04500952,10.5762946 5.17651945,11.4496555 L8.44403537,11.4496555 L8.44403537,6.50735496 L5.19675174,6.50735496 C5.05175362,7.3346311 4.97981656,8.16190723 4.97981656,8.98805935 L4.97981656,8.98805935 Z M1.93822795,12.5421995 C2.35861012,13.394204 2.91949434,14.146171 3.62200465,14.7981006 C4.32339093,15.4500301 5.11807059,15.9592096 6.00379558,16.325639 C5.22934822,15.3499927 4.65834785,14.0888462 4.29079445,12.5421995 L1.93822795,12.5421995 Z M1.93822795,5.41481094 L4.29079445,5.41481094 C4.65834785,3.90076073 5.22934822,2.65310244 6.00379558,1.67071203 C5.13043477,2.0303973 4.34362323,2.5350807 3.64111293,3.18363822 C2.93972664,3.83219573 2.37209831,4.57629464 1.93822795,5.41481094 L1.93822795,5.41481094 Z M1.09184354,8.98805935 C1.09184354,9.82882368 1.21998142,10.6493557 1.47625717,11.4496555 L4.07385927,11.4496555 C3.95021746,10.6167592 3.88727254,9.7962272 3.88727254,8.98805935 C3.88727254,8.16865133 3.95021746,7.3413752 4.07385927,6.50735496 L1.49648947,6.50735496 C1.22672552,7.30203462 1.09184354,8.12931075 1.09184354,8.98805935 L1.09184354,8.98805935 Z M0.713049981,12.4882467 C0.237591008,11.3754704 0.000423529412,10.2087413 0.000423529412,8.98805935 C0.000423529412,7.76737744 0.237591008,6.60289637 0.713049981,5.49349209 C1.18963297,4.38408782 1.82919835,3.42979783 2.63287014,2.62837407 C3.43654193,1.82807433 4.39195594,1.18963297 5.50136021,0.714173998 C6.60964046,0.237591008 7.77187351,0.000423529412 8.98693533,0.000423529412 C10.2019972,0.000423529412 11.3676022,0.237591008 12.4815026,0.714173998 C13.5965269,1.18963297 14.556437,1.82807433 15.3612328,2.62837407 C16.1671526,3.42979783 16.807842,4.38408782 17.285549,5.49349209 C17.762132,6.60289637 18.0004235,7.76737744 18.0004235,8.98805935 C18.0004235,10.2087413 17.762132,11.3754704 17.285549,12.4882467 C16.807842,13.601023 16.1671526,14.5586851 15.3612328,15.3623568 C14.556437,16.1671526 13.5965269,16.806718 12.4815026,17.282177 C11.3676022,17.75876 10.2019972,17.9959275 8.98693533,17.9959275 C7.77187351,17.9959275 6.60964046,17.75876 5.50136021,17.282177 C4.39195594,16.806718 3.43654193,16.1671526 2.63287014,15.3634809 C1.82919835,14.5598091 1.18963297,13.601023 0.713049981,12.4882467 L0.713049981,12.4882467 Z" id="Fill-1"></path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="svg-description" ng-show="!tabName.site.name">
-                            www.websitewebsite.com
-                        </div>
-
-                        <div class="svg-description" ng-show="tabName.site.name" ng-style="{'font-weight': tabName.site.bold ? 'bold' : 'normal',
-                    'font-style': tabName.site.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.site.underline ? 'underline' : 'normal'}">
-                            {{tabName.site.name}}
-                        </div>
-
-                    </div>
-                </div>
-                <div class="company-info">
-                    <div class="company" ng-show="!tabName.company.name">
-                        Company Name
-                    </div>
-                    <div class="company" ng-show="tabName.company.name" ng-style="{'font-weight': tabName.company.bold ? 'bold' : 'normal',
-                    'font-style': tabName.company.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.company.underline ? 'underline' : 'normal'}">
-                        {{tabName.company.name}}
-                    </div>
-
-                    <div class="user-main-text" ng-show="!tabName.address.address">
-                        0000 Lynch Pine Apt. 605, South Keagan, Croatia
-                    </div>
-                    <div class="user-main-text" ng-show="tabName.address.address" ng-style="{'font-weight': tabName.address.bold ? 'bold' : 'normal',
-                    'font-style': tabName.address.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.address.underline ? 'underline' : 'normal'}">
-                        {{tabName.address.address}}
+                        <div class="carousel-item-name-div carousel-item-deskript-div" ng-show="slide.description.name"
+                             ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
+                    'font-style': slide.description.italic ? 'italic' : 'normal',
+                    'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.name}}</div>
+                        <div class="carousel-item-name-div carousel-item-deskript-div" ng-show="!slide.description.name">How To Fly A Private Jet On Your Next Trip</div>
                     </div>
                 </div>
 
             </div>
+            <div uib-carousel active interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 3">
+                <div uib-slide ng-repeat="slide in tabName.items track by slide.id" index="slide.id">
+
+                    <div class="carousel-image-div">
+
+                        <div  class="carousel-item-div">
+                            <div class="carousel-item-name-div" ng-style="{'font-weight': slide.nameItem.bold ? 'bold' : 'normal',
+                    'font-style': slide.nameItem.italic ? 'italic' : 'normal',
+                    'text-decoration': slide.nameItem.underline ? 'underline' : 'normal'}">{{slide.nameItem.name}}</div>
+                            <div id="cf4a">
+                                <a href="{{slide.link}}" target="_blank">
+                                    <img id="ing-1" class="item-images-2" ng-src="{{slide.image}}">
+                                    <img id="ing-2" class="item-images-2" ng-src="{{slide.image2}}">
+                                    <img id="ing-3"  class="item-images-2" ng-src="{{slide.image3}}">
+                                </a>
+                            </div>
+                            <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
+                    'font-style': slide.description.italic ? 'italic' : 'normal',
+                    'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.name}}</div>
+                        </div>
+
+                        <div  class="carousel-item-div" ng-show="tabName.items.length >$index+1">
+                            <div class="carousel-item-name-div" ng-style="{'font-weight': tabName.items[$index+1].nameItem.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[$index+1].nameItem.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[$index+1].nameItem.underline ? 'underline' : 'normal'}">{{tabName.items[$index+1].nameItem.name}}</div>
+                            <div id="cf4a">
+                                <a href="{{tabName.items[$index+1].link}}" target="_blank">
+                                    <img id="ing-1" class="item-images-2" ng-src="{{tabName.items[$index+1].image}}">
+                                    <img id="ing-2" class="item-images-2" ng-src="{{tabName.items[$index+1].image2}}">
+                                    <img id="ing-3" class="item-images-2" ng-src="{{tabName.items[$index+1].image3}}">
+                                </a>
+                            </div>
+                            <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': tabName.items[$index+1].description.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[$index+1].description.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[$index+1].description.underline ? 'underline' : 'normal'}">{{tabName.items[$index+1].description.name}}</div>
+                        </div>
+
+                        <div class="carousel-item-div"  ng-show="tabName.items.length >$index+2">
+                            <div class="carousel-item-name-div"  ng-style="{'font-weight': tabName.items[$index+2].nameItem.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[$index+2].nameItem.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[$index+2].nameItem.underline ? 'underline' : 'normal'}">{{tabName.items[$index+2].nameItem.name}}</div>
+                            <div id="cf4a">
+                                <a href="{{tabName.items[$index+2].link}}" target="_blank">
+                                    <img id="ing-1" class="item-images-2" ng-src="{{tabName.items[$index+2].image}}">
+                                    <img id="ing-2" class="item-images-2" ng-src="{{tabName.items[$index+2].image2}}">
+                                    <img id="ing-3" class="item-images-2" ng-src="{{tabName.items[$index+2].image3}}">
+                                </a>
+                            </div>
+                            <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': {tabName.items[$index+2].description.bold ? 'bold' : 'normal',
+                    'font-style': {tabName.items[$index+2].description.italic ? 'italic' : 'normal',
+                    'text-decoration': {tabName.items[$index+2].description.underline ? 'underline' : 'normal'}">{{tabName.items[$index+2].description.name}}</div>
+                        </div>
+                        <div class="carousel-item-div" ng-show="tabName.items.length-3 < $index && tabName.items.length > 3">
+                            <div class="carousel-item-name-div" ng-style="{'font-weight': tabName.items[0].nameItem.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[0].nameItem.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[0].nameItem.underline ? 'underline' : 'normal'}">{{tabName.items[0].nameItem.name}}</div>
+                            <div id="cf4a">
+                                <a href="{{tabName.items[0].link}}" target="_blank">
+                                    <img id="ing-1" class="item-images-2" ng-src="{{tabName.items[0].image}}">
+                                    <img id="ing-2" class="item-images-2" ng-src="{{tabName.items[0].image2}}">
+                                    <img id="ing-3" class="item-images-2" ng-src="{{tabName.items[0].image3}}">
+                                </a>
+                            </div>
+                            <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': tabName.items[0].description.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[0].description.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[0].description.underline ? 'underline' : 'normal'}">{{tabName.items[0].description.name}}</div>
+                        </div>
+
+                        <div  class="carousel-item-div" ng-show="tabName.items.length-2 < $index && tabName.items.length > 3">
+                            <div class="carousel-item-name-div" ng-style="{'font-weight': tabName.items[1].nameItem.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[1].nameItem.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[1].nameItem.underline ? 'underline' : 'normal'}">{{tabName.items[1].nameItem.name}}</div>
+                            <div id="cf4a">
+                                <a href="{{tabName.items[1].link}}" target="_blank">
+                                    <img id="ing-1" class="item-images-2" ng-src="{{tabName.items[1].image}}" >
+                                    <img id="ing-2" class="item-images-2" ng-src="{{tabName.items[1].image2}}" >
+                                    <img id="ing-3" class="item-images-2" ng-src="{{tabName.items[1].image3}}" >
+                                </a>
+                            </div>
+                            <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': tabName.items[1].description.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[1].description.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[1].description.underline ? 'underline' : 'normal'}">{{tabName.items[1].description.name}}</div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-	</div>
 
+    </div>
 
 </div>
 
 
 <style type="text/css">
 
-    .social-link{
-        margin-right: 6px;
+    .main-carousel-image-div{
+        text-align: center;
+        margin-top: 10px;
     }
 
-    .social-link-group{
-        padding-left: 10px;
-        padding-bottom: 10px;
-        padding-right: 10px;
+    .main-carousel-item-div{
+        width: 160px;
+        display: inline-block;
+        vertical-align: top;
     }
 
-    .company-info{
-        padding: 10px;
-    }
 
-    .company{
-        font-size: 15px;
-        font-weight: bold;
-    }
-
-    .job-titile{
-        margin-bottom: 15px;
-    }
-
-    .user-contacts-div{
-        margin-top: 5px;
-    }
-
-    .main-layouts{
-        width: 340px;
-    }
-
-    .svg-div{
-        float: left;
-    }
-
-    .svg-description{
+    .carousel-image-div{
         margin-left: 25px;
-        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .carousel-item-name-div{
+        width: 140px;
+        max-width: 140px;
+        height: 30px;
         font-weight: bold;
+        font-size: 16px;
+        margin-left: 15px;
+        max-height:30px;
+        min-height: 30px;
     }
 
-    #mobile_icon{
-        fill: #4BABE2!important;
+
+    .carousel-item-deskript-div{
+        font-weight: normal;
+        font-size: 14px;
+        max-height:40px;
+        min-height: 40px;
     }
 
-    img svg{
-        color:#ffffff;
-    }
-    .layouts{
+
+    .carousel-item-div{
         float: left;
+        width: 160px;
     }
-	.cardlet{
-		width: 540px;
-		height: 220px;
-		border-width: 2px;
-		border-style: solid;
-		border-color: #bdbdbd;
-	}
-	.avatar{
-		width: 158px;
-		height: 150px;
-        margin: 10px;
-	}
 
-    .user-info{
-        padding: 10px;
-        border-width: 0;
-        border-bottom-width: 1px;
+    .carousel-indicators{
+        display: none;
+    }
+
+    .carousel-control{
+        box-shadow: none !important;
+        width: 25px!important;
+        background-color: #fff!important;
+    }
+    .cardlet{
+        border-width: 2px;
+        border-style: solid;
+        border-color: #bdbdbd;
+    }
+
+    .item-images-2 {
+        width: 130px;
+        height: 130px;
+        border-radius: 20px;
+        border-width: 5px;
         border-style: solid;
         border-color: #CFCFCF;
+        margin-left: 20px;
     }
 
-
-    .user-name{
-        font-size: 22px;
-        color: #4BABE2;
-        font-weight: bold;
-    }
-
-    .user-main-text{
-        font-size: 14px;
-        color: #000000;
+    .carousel-control.left, .carousel-control.right {
+        background-image: none !important;
     }
 
 </style>

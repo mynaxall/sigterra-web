@@ -136,13 +136,11 @@ public class CardletResource {
             Set<Item> items = cardlet.getItems();
             Set<Business> businesses = cardlet.getBusinesses();
             for (Business business : businesses) {
-                log.info("asdasdasd=== "+business.getTabType());
                 BusinessDTO businessDTO = new BusinessDTO(business);
                 businessDTOs.add(businessDTO);
             }
             for (Item item : items) {
                 Set<ItemData> itemDatas = item.getItemData();
-                log.info("asdasd = "+ itemDatas);
                 Set<ItemDataDTO> itemDataDTOs = new HashSet<>();
                 for (ItemData itemData : itemDatas) {
                     ItemDataDTO itemDataDTO = new ItemDataDTO(itemData);

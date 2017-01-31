@@ -1,11 +1,128 @@
 <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
 <div>
-	<div class="cardlet"  style="background-color: #{{tabName.type.mainColor}}">
+	<div class="cardlet"  style="background-color: #{{tabName.type.mainColor}}" ng-init="initSlide(tabName)">
         <div>
-           <div ng-repeat="item in tabName.items">
-               <img src="/app/cardlets/img/2_card/avatar_img.png">
-           </div>
+            <div ng-show="tabName.items.length <= 3">
+                <div class="main-carousel-image-div">
+                    <div  ng-repeat="slide in tabName.items"  class="main-carousel-item-div">
+                        <div class="carousel-item-name-div" ng-show="slide.nameItem.name" ng-style="{'font-weight': slide.nameItem.bold ? 'bold' : 'normal',
+                    'font-style': slide.nameItem.italic ? 'italic' : 'normal',
+                    'text-decoration': slide.nameItem.underline ? 'underline' : 'normal'}">{{slide.nameItem.name}}</div>
+                        <div class="carousel-item-name-div" ng-show="!slide.nameItem.name">Maui Hotel</div>
+                        <div id="cf4a">
+                            <a href="{{slide.link}}" target="_blank">
+                                <img id="ing-1" class="item-images" ng-src="{{slide.image}}">
+                                <img id="ing-2" class="item-images" ng-src="{{slide.image2}}">
+                                <img id="ing-3"  class="item-images" ng-src="{{slide.image3}}">
+                            </a>
+                        </div>
+                        <div class="carousel-item-name-div carousel-item-deskript-div" ng-show="slide.description.name"
+                             ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
+                    'font-style': slide.description.italic ? 'italic' : 'normal',
+                    'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.name}}</div>
+                        <div class="carousel-item-name-div carousel-item-deskript-div" ng-show="!slide.description.name">How To Fly A Private Jet On Your Next Trip</div>
+                    </div>
+                </div>
+
+            </div>
+            <div uib-carousel active="slide.active" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 3">
+                <div uib-slide ng-repeat="slide in tabName.items track by slide.id" index="slide.id">
+
+                    <div class="carousel-image-div">
+
+                        <div  class="carousel-item-div">
+                            <div class="carousel-item-name-div"
+                                 ng-style="{'font-weight': slide.nameItem.bold ? 'bold' : 'normal',
+                    'font-style': slide.nameItem.italic ? 'italic' : 'normal',
+                    'text-decoration': slide.nameItem.underline ? 'underline' : 'normal'}"
+                            >{{slide.nameItem.name}}</div>
+                            <div id="cf4a">
+                                <a href="{{slide.link}}" target="_blank">
+                                    <img id="ing-1" class="item-images" ng-src="{{slide.image}}">
+                                    <img id="ing-2" class="item-images" ng-src="{{slide.image2}}">
+                                    <img id="ing-3"  class="item-images" ng-src="{{slide.image3}}">
+                                </a>
+                            </div>
+                            <div class="carousel-item-name-div carousel-item-deskript-div"
+                                 ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
+                    'font-style': slide.description.italic ? 'italic' : 'normal',
+                    'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.name}}</div>
+                        </div>
+
+                        <div  class="carousel-item-div" ng-show="tabName.items.length >$index+1">
+                            <div class="carousel-item-name-div"
+                                 ng-style="{'font-weight': tabName.items[$index+1].nameItem.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[$index+1].nameItem.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[$index+1].nameItem.underline ? 'underline' : 'normal'}">{{tabName.items[$index+1].nameItem.name}}</div>
+                            <div id="cf4a">
+                                <a href="{{tabName.items[$index+1].link}}" target="_blank">
+                                    <img id="ing-1" class="item-images" ng-src="{{tabName.items[$index+1].image}}">
+                                    <img id="ing-2" class="item-images" ng-src="{{tabName.items[$index+1].image2}}">
+                                    <img id="ing-3" class="item-images" ng-src="{{tabName.items[$index+1].image3}}">
+                                </a>
+                            </div>
+                            <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': tabName.items[$index+1].description.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[$index+1].description.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[$index+1].description.underline ? 'underline' : 'normal'}">{{tabName.items[$index+1].description.name}}</div>
+                        </div>
+
+                        <div class="carousel-item-div"  ng-show="tabName.items.length >$index+2">
+                            <div class="carousel-item-name-div" ng-style="{'font-weight': tabName.items[$index+2].nameItem.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[$index+2].nameItem.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[$index+2].nameItem.underline ? 'underline' : 'normal'}">{{tabName.items[$index+2].nameItem.name}}</div>
+                            <div id="cf4a">
+                                <a href="{{tabName.items[$index+2].link}}" target="_blank">
+                                    <img id="ing-1" class="item-images" ng-src="{{tabName.items[$index+2].image}}">
+                                    <img id="ing-2" class="item-images" ng-src="{{tabName.items[$index+2].image2}}">
+                                    <img id="ing-3" class="item-images" ng-src="{{tabName.items[$index+2].image3}}">
+                                </a>
+                            </div>
+                            <div class="carousel-item-name-div carousel-item-deskript-div"
+                                 ng-style="{'font-weight': tabName.items[$index+2].description.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[$index+2].description.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[$index+2].description.underline ? 'underline' : 'normal'}"
+                            >{{tabName.items[$index+2].description.name}}</div>
+                        </div>
+                        <div class="carousel-item-div" ng-show="tabName.items.length-3 < $index && tabName.items.length > 3">
+                            <div class="carousel-item-name-div"
+                                 ng-style="{'font-weight': tabName.items[0].nameItem.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[0].nameItem.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[0].nameItem.underline ? 'underline' : 'normal'}">{{tabName.items[0].nameItem.name}}</div>
+                            <div id="cf4a">
+                                <a href="{{tabName.items[0].link}}" target="_blank">
+                                    <img id="ing-1" class="item-images" ng-src="{{tabName.items[0].image}}">
+                                    <img id="ing-2" class="item-images" ng-src="{{tabName.items[0].image2}}">
+                                    <img id="ing-3" class="item-images" ng-src="{{tabName.items[0].image3}}">
+                                </a>
+                            </div>
+                            <div class="carousel-item-name-div carousel-item-deskript-div"
+                                 ng-style="{'font-weight': tabName.items[0].description.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[0].description.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[0].description.underline ? 'underline' : 'normal'}">{{tabName.items[0].description.name}}</div>
+                        </div>
+
+                        <div  class="carousel-item-div" ng-show="tabName.items.length-2 < $index && tabName.items.length > 3">
+                            <div class="carousel-item-name-div"
+                                 ng-style="{'font-weight': tabName.items[1].nameItem.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[1].nameItem.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[1].nameItem.underline ? 'underline' : 'normal'}">{{tabName.items[1].nameItem.name}}</div>
+                            <div id="cf4a">
+                                <a href="{{tabName.items[1].link}}" target="_blank">
+                                    <img id="ing-1" class="item-images" ng-src="{{tabName.items[1].image}}" >
+                                    <img id="ing-2" class="item-images" ng-src="{{tabName.items[1].image2}}" >
+                                    <img id="ing-3" class="item-images" ng-src="{{tabName.items[1].image3}}" >
+                                </a>
+                            </div>
+                            <div class="carousel-item-name-div carousel-item-deskript-div"
+                                 ng-style="{'font-weight': tabName.items[1].description.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[1].description.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[1].description.underline ? 'underline' : 'normal'}">{{tabName.items[1].description.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
 	</div>
 
 </div>
@@ -13,15 +130,115 @@
 
 <style type="text/css">
 
+    #cf4a{
+        width: 130px;
+        height:130px;
+
+    }
 
 
+    @keyframes cf3FadeInOut {
+        0%  {
+           opacity: 0;
+        }
+
+        50% {
+            opacity: 1;
+        }
+        70% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    #ing-1{
+        animation: cf3FadeInOut 4s infinite;
+        animation-delay: 0s;
+    }
+
+
+    #ing-2{
+        margin-top:-150px;
+        animation: cf3FadeInOut 8s infinite;
+        animation-delay: 4s;
+    }
+
+    #ing-3{
+        margin-top:-190px;
+        animation: cf3FadeInOut 12s infinite;
+        animation-delay:8s;
+    }
+
+
+    .main-carousel-image-div{
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .main-carousel-item-div{
+        vertical-align: top;
+        display: inline-block;
+        width: 160px;
+    }
+
+
+    .carousel-image-div{
+        margin-left: 25px;
+        margin-top: 10px;
+    }
+
+    .carousel-item-name-div{
+        width: 140px;
+        height: 30px;
+        max-height:30px;
+        min-height: 30px;
+        font-weight: bold;
+        font-size: 16px;
+        margin-right: 15px;
+        max-width: 140px;
+    }
+
+
+    .carousel-item-deskript-div{
+        font-weight: normal;
+        font-size: 14px;
+        height: 40px;
+        max-height:40px;
+        min-height: 40px;
+    }
+
+
+    .carousel-item-div{
+        float: left;
+        width: 160px;
+
+    }
+
+    .carousel-indicators{
+        display: none;
+    }
+
+    .carousel-control{
+        box-shadow: none !important;
+        width: 25px!important;
+        background-color: #fff!important;
+    }
 	.cardlet{
-		width: 540px;
-		height: 220px;
 		border-width: 2px;
 		border-style: solid;
 		border-color: #bdbdbd;
 	}
 
+    .item-images {
+        width: 130px;
+        height: 130px;
+        margin-left: 20px;
+    }
+
+    .carousel-control.left, .carousel-control.right {
+        background-image: none !important;
+    }
 
 </style>

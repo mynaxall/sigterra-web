@@ -1,20 +1,44 @@
 <script src="/app/entities/cardlet-list/jscolor.js"></script>
 <div class="entiti-content">
 
+
+
+
+
 <style>
+
+
+
+    .cardlet-name-panel{
+        margin-bottom: 30px;
+    }
+
+    .cadletName{
+        border-width: 0px;
+        border-bottom-width: 1px;
+        border-style: solid;
+        border-color: #18C6B7;
+        width: 300px;
+        padding-bottom: 10px;
+        font-size:15px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
 
     .tab-panel{
         padding-top: 50px;
         margin-left: 5%;
         margin-right: 5%;
         padding-bottom: 50px;
+        background-color: #fff;
+        box-shadow: none;
     }
 
     ul.tab {
         list-style-type: none;
         margin: 0;
         padding: 0;
-        background-color: #f1f1f1;
+        background-color: #FFF;
         width: 620px;
     }
 
@@ -40,7 +64,7 @@
     ul.tab li a {
         display: inline-block;
         text-align: center;
-        padding: 14px 16px;
+        padding: 10px 16px;
         text-decoration: none;
         transition: 0.3s;
         font-size: 17px;
@@ -84,7 +108,7 @@
         border: 1px solid #ccc;
         width: 620px;
         background-color: #F9F9F9;
-        margin-top: 55px;
+        margin-top: 45px;
     }
 
 
@@ -110,14 +134,14 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: #f1f1f1;
-        width: 620px;
+        background-color: #FFF;
+        width: 550px;
         padding-top: 10px;
     }
 
     /* Float the list items side by side */
     ul.tab2 li {
-        width: 150px;
+        width: 131px;
         float: left;
         background: #FFFFFF;
         border-width: 1px;
@@ -137,7 +161,7 @@
     ul.tab2 li a {
         display: inline-block;
         text-align: center;
-        padding: 14px 16px;
+        padding: 10px 16px;
         text-decoration: none;
         transition: 0.3s;
         font-size: 17px;
@@ -264,15 +288,62 @@
         min-width: 120px!important;
     }
 
+    .add-item-btn{
+        margin: 10px;
+    }
+
+    .delete-item-btn{
+        background: none!important;
+        border: none!important;
+        color: #18C6B7!important;
+        text-decoration: underline;
+    }
+
+    .saveButton{
+        background-color: #E8645A;
+        color: #FFF;
+        text-transform: uppercase;
+        width: 200px;
+        border:none;
+        border-radius: 20px;
+        font-size: 15px;
+        padding: 12px;
+        font-weight: bold;
+
+    }
+
+     input:focus{
+        outline: none;
+    }
+
+    ul[dnd-list], ul[dnd-list] > li {
+        position: relative;
+    }
+
+    .dndPlaceholder{
+        display: inline-block;
+        position: relative;
+        background-color: #ddd;
+        width: 150px;
+        min-height:44px;
+        margin: 0;
+        padding: 0;
+    }
+
+
 </style>
 
     <div class="tab-panel">
+
+        <div class="cardlet-name-panel">
+            <input type="text" placeholder="Templates name" class="cadletName" ng-model="tabNames.cardletName">
+        </div>
         <div class="row">
             <div class="col-md-6">
 
-                <ul class="tab">
+                <ul class="tab" dnd-list="tabNames.tabs" dnd-horizontal-list="true" dnd-external-sources="true">
 
-                    <li class="tabs" ng-repeat="tabName in tabNames" id="{{tabName.id}}">
+                    <li class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-draggable="tabName" dnd-moved="tabNames.tabs.splice($index, 1)" id="{{tabName.id}}" dnd-dragend="positionCheck()">
                         <div style="position: relative">
                             <a href="javascript:void(0)" class="tablinks" ng-click="openCity(tabName.name, tabName.id)">{{tabName.name}}</a>
                             <div class="remove" ng-click="removeTab(tabName.id)"><span style="font-size: 15px;color:#D0D8D9;" class="glyphicon glyphicon-remove-circle"></span></div>
@@ -301,7 +372,7 @@
                     </li>
 
                 </ul>
-                <div ng-repeat="tabName in tabNames " id="{{tabName.name}}" class="tabcontent">
+                <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}" class="tabcontent">
                     <div class="form-group" style="padding: 15px">
                         <label class="login-lable" for="name">Tab’s name</label>
 
@@ -323,7 +394,7 @@
                                     </script>
                                     <input ng-model="tabName.type.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor" value="FFFFFF">
                                     <input ng-model="tabName.type.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor" value="4BABE2">
-                                    <div ng-repeat="itemType in itemTypes">
+                                    <div ng-repeat="itemType in itemTypes" style="margin-bottom: 20px;">
                                         <ng-include ng-click="chooseType(tabName.id, itemType.item)" style="display: block!important" src="itemType.item" ></ng-include>
                                     </div>
 
@@ -337,19 +408,19 @@
                                     <div class="form-group">
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="itemName">Name</label>
-                                            <input type="text" class="form-control profile-input" id="itemName" placeholder="" ng-model="tabName.item.name.name">
+                                            <input type="text" class="form-control profile-input" id="itemName" placeholder="" ng-model="item.nameItem.name">
                                         </div>
                                         <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="tabName.item.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.id}}"/><label for="boldName{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.item.name.italic" name='italic'  class="checkboxItalic" value='valuable' id="italicName{{tabName.id}}"/><label for="italicName{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.item.name.underline" name='underline' class="checkboxUunderline" value='valuable' id="underlineName{{tabName.id}}"/><label for="underlineName{{tabName.id}}"></label>
+                                            <input type='checkbox' ng-model="item.nameItem.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.id}}{{item.id}}"/><label for="boldName{{tabName.id}}{{item.id}}"></label>
+                                            <input type='checkbox' ng-model="item.nameItem.italic" name='italic'  class="checkboxItalic" value='valuable' id="italicName{{tabName.id}}{{item.id}}"/><label for="italicName{{tabName.id}}{{item.id}}"></label>
+                                            <input type='checkbox' ng-model="item.nameItem.underline" name='underline' class="checkboxUunderline" value='valuable' id="underlineName{{tabName.id}}{{item.id}}"/><label for="underlineName{{tabName.id}}{{item.id}}"></label>
 
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="urlOne">url:\\</label>
-                                            <input type="text" class="form-control profile-input" id="urlOne" placeholder="" ng-model="tabName.item.urlOne">
+                                            <input type="text" class="form-control profile-input" id="urlOne" placeholder="" ng-model="item.urlOne">
                                         </div>
                                         <div class="social-image-form-div" >
                                             <button  type="submit" ng-disabled="for2m.$invalid"  class="btn btn-primary main-btn upload-item-img">Upload</button>
@@ -358,7 +429,7 @@
                                     <div class="form-group">
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="urlTwo">url:\\</label>
-                                            <input type="text" class="form-control profile-input" id="urlTwo" placeholder="" ng-model="tabName.item.urlTwo">
+                                            <input type="text" class="form-control profile-input" id="urlTwo" placeholder="" ng-model="item.urlTwo">
                                         </div>
                                         <div class="social-image-form-div" >
                                             <button  type="submit" ng-disabled="for2m.$invalid"  class="btn btn-primary main-btn upload-item-img">Upload</button>
@@ -367,7 +438,7 @@
                                     <div class="form-group">
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="urlThree">url:\\</label>
-                                            <input type="text" class="form-control profile-input" id="urlThree" placeholder="" ng-model="tabName.item.urlThree">
+                                            <input type="text" class="form-control profile-input" id="urlThree" placeholder="" ng-model="item.urlThree">
                                         </div>
                                         <div class="social-image-form-div" >
                                             <button  type="submit" ng-disabled="for2m.$invalid"  class="btn btn-primary main-btn upload-item-img">Upload</button>
@@ -377,30 +448,34 @@
                                     <div class="form-group">
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="description">Description</label>
-                                            <input type="text" class="form-control profile-input" id="description" placeholder="" ng-model="tabName.item.description.name">
+                                            <input type="text" class="form-control profile-input" id="description" placeholder="" ng-model="item.description.name">
                                         </div>
                                         <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="tabName.item.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.id}}"/><label for="boldDescription{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.item.description.italic" name='italic' value='valuable' class="checkboxItalic" id="italicDescription{{tabName.id}}"/><label for="italicDescription{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.item.description.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineDescription{{tabName.id}}"/><label for="underlineDescription{{tabName.id}}"></label>
+                                            <input type='checkbox' ng-model="item.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.id}}{{item.id}}"/><label for="boldDescription{{tabName.id}}{{item.id}}"></label>
+                                            <input type='checkbox' ng-model="item.description.italic" name='italic' value='valuable' class="checkboxItalic" id="italicDescription{{tabName.id}}{{item.id}}"/><label for="italicDescription{{tabName.id}}{{item.id}}"></label>
+                                            <input type='checkbox' ng-model="item.description.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineDescription{{tabName.id}}{{item.id}}"/><label for="underlineDescription{{tabName.id}}{{item.id}}"></label>
 
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="input-text-div">
+                                        <div style="width: 450px">
                                             <label class="login-lable cardlet-label" for="description">1 item’s link</label>
-                                            <input type="text" class="form-control profile-input" id="description" placeholder="" ng-model="tabName.item.link">
+                                            <input type="text" class="form-control profile-input" id="description" placeholder="" ng-model="item.link">
                                         </div>
                                         <div class="text-decoration-div" >
 
                                         </div>
                                     </div>
-
-                                    <button  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.id,  tabName.items.length)" class="btn btn-primary main-btn">Delete item</button>
+                                    <br>
+                                    <div>
+                                        <button ng-show="isDeleteItem"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.id,  tabName.items.length)" class="btn btn-primary delete-item-btn"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete item</button>
+                                    </div>
                                 </div>
                             </div>
-                            <button  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.id,  tabName.items.length)" class="btn btn-primary main-btn upload-item-img">Add item</button>
+                            <div class="add-item-btn">
+                                <button  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.id,  tabName.items.length)" class="btn btn-primary main-btn upload-item-img">Add item</button>
+                            </div>
                         </div>
 
 
@@ -571,7 +646,7 @@
                                     </script>
                                     <input ng-model="tabName.type.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor" value="FFFFFF">
                                     <input ng-model="tabName.type.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor" value="4BABE2">
-                                    <div ng-repeat="tabType in tabTypes">
+                                    <div ng-repeat="tabType in tabTypes" style="margin-bottom: 20px;">
                                         <ng-include ng-click="chooseType(tabName.id, tabType.businessCard)" style="display: block!important" src="tabType.businessCard" ></ng-include>
                                     </div>
 
@@ -584,17 +659,24 @@
             </div>
             <div class="col-md-6">
 
+                <div>
+                    <ul class="tab2">
+                        <li style="background-color: #fff" class="tabs2" ng-style="addColors(tabName.id+tabName.name, tabName.type.mainColor, tabName.type.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="{{tabName.id}}{{tabName.name}}">
+                            <div style="position: relative">
+                                <a href="javascript:void(0)" class="tablinks2" ng-click="openCard(tabName.name+tabName.id, tabName.id+tabName.name)">{{tabName.name}}</a>
+                            </div>
+                        </li>
 
-                <ul class="tab2">
-                    <li style="background-color: #fff" class="tabs2" ng-style="addColors(tabName.id+tabName.name, tabName.type.mainColor, tabName.type.secondaryColor)" ng-repeat="tabName in tabNames" id="{{tabName.id}}{{tabName.name}}">
-                        <div style="position: relative">
-                            <a href="javascript:void(0)" class="tablinks2" ng-click="openCard(tabName.name+tabName.id, tabName.id+tabName.name)">{{tabName.name}}</a>
-                        </div>
-                    </li>
-                </ul>
+                    </ul>
+                </div>
 
-                <div ng-repeat="tabName in tabNames " id="{{tabName.name}}{{tabName.id}}" class="tabcontent2" ng-class="business.pisition === 1 ? 'display' : 'none-display'">
+                <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.id}}" class="tabcontent2" ng-class="business.pisition === 1 ? 'display' : 'none-display'">
                         <ng-include style="display: block!important" src="tabName.type.url" ></ng-include>
+                </div>
+
+
+                <div style="margin-top: 20px;">
+                    <button class="saveButton" ng-click="saveCardlet()">save</button>
                 </div>
 
             </div>

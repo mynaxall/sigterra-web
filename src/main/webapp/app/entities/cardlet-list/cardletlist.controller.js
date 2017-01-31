@@ -17,6 +17,7 @@
 
         loadAll();
 
+
         function loadAll () {
             CardletList.query({
                 sort: sort()
@@ -95,6 +96,8 @@
 
             }
 
+
+
             console.log(cardName);
             console.log("cardName");
 
@@ -113,7 +116,9 @@
 
         $scope.isNewTab = true;
 
-        $scope.tabNames =
+        $scope.tabNames ={
+            "cardletName": "catdlet",
+            "tabs":
             [{
                 "name": "card",
                 'id': 0,
@@ -138,10 +143,15 @@
                     {
                         "name": "1 item",
                         "index": "2",
+                        "id": "0",
+                        "image": "/app/cardlets/img/portfolio_img_01.png",
+                        "image2": "/app/cardlets/img/portfolio_img_02.png",
+                        "image3": "/app/cardlets/img/portfolio_img_03.png"
+
                     }
                 ]
             }
-            ];
+            ]};
 
         $scope.tabTypes = [
             {"businessCard":  "app/cardlets/busimessCard.html"},
@@ -149,7 +159,7 @@
             {"businessCard":  "app/cardlets/businessCard3.html"}
         ]
         $scope.itemTypes = [
-            {"item":  "app/cardlets/item.html"},
+            {"item":  "app/cardlets/item.html",},
             {"item":  "app/cardlets/item2.html"},
             {"item":  "app/cardlets/item3.html"}
         ]
@@ -165,11 +175,11 @@
 
 
         $scope.addItem = function() {
-            if ($scope.tabNames.length <= 3) {
-                var newTab = {"name":"Item"+$scope.tabNames.length,
-                    "id": $scope.tabNames.length,
+            if ($scope.tabNames.tabs.length <= 3) {
+                var newTab = {"name":"Item"+$scope.tabNames.tabs.length,
+                    "id": $scope.tabNames.tabs.length,
                     "tybType": 2,
-                    "type":{ "url": "app/cardlets/busimessCard.html",
+                    "type":{ "url": "app/cardlets/item.html",
                         "mainColor": "FFFFFF",
                         "secondaryColor": "4BABE2"
                     },
@@ -177,33 +187,44 @@
                         {
                             "name": "1 item",
                             "index": "2",
+                            "id": "0",
+                            "image": "/app/cardlets/img/portfolio_img_01.png",
+                            "image2": "/app/cardlets/img/portfolio_img_02.png",
+                            "image3": "/app/cardlets/img/portfolio_img_03.png"
                         }
                     ]
 
                 }
-                $scope.tabNames.push(newTab);
+                $scope.tabNames.tabs.push(newTab);
             }
-            if($scope.tabNames.length == 4){
+            if($scope.tabNames.tabs.length == 4){
                 $scope.isNewTab = false;
             }
         }
 
         $scope.addItems = function(tabId, index) {
-            if($scope.tabNames[tabId].items.length <= 9){
+            if($scope.tabNames.tabs[tabId].items.length <= 9){
+                $scope.isDeleteItem = true;
                 var newItem =  {
-                    "name":  ($scope.tabNames[tabId].items.length+1)+" item",
-                    "index": index+2
+                    "name":  ($scope.tabNames.tabs[tabId].items.length+1)+" item",
+                    "index": index+2,
+                    "id": $scope.tabNames.tabs[tabId].items.length,
+                    "image": "/app/cardlets/img/portfolio_img_01.png",
+                    "image2": "/app/cardlets/img/portfolio_img_02.png",
+                    "image3": "/app/cardlets/img/portfolio_img_03.png",
                 }
-                $scope.tabNames[tabId].items.push(newItem);
+                $scope.tabNames.tabs[tabId].items.push(newItem);
+
+                $scope.slides2 = $scope.tabNames.tabs[tabId].items;
 
             }
         }
 
 
         $scope.addTab = function() {
-            if ($scope.tabNames.length <= 3) {
-                var newTab = {"name":"card"+$scope.tabNames.length,
-                    "id": $scope.tabNames.length,
+            if ($scope.tabNames.tabs.length <= 3) {
+                var newTab = {"name":"card"+$scope.tabNames.tabs.length,
+                    "id": $scope.tabNames.tabs.length,
                     "tybType": 1,
                     "type":{ "url": "app/cardlets/busimessCard.html",
                         "mainColor": "FFFFFF",
@@ -213,22 +234,28 @@
                     }
 
                 }
-                $scope.tabNames.push(newTab);
+                $scope.tabNames.tabs.push(newTab);
+
             }
-            if($scope.tabNames.length == 4){
+            if($scope.tabNames.tabs.length == 4){
                 $scope.isNewTab = false;
             }
         }
 
+        $scope.isDeleteItem = false;
+
         $scope.deleteItems = function(tabId, index){
-            if($scope.tabNames[tabId].items.length > 1){
+            if($scope.tabNames.tabs[tabId].items.length > 1){
                 console.log(index)
-                $scope.tabNames[tabId].items.splice((index-2), 1);
-                for (var i = 0; i < $scope.tabNames[tabId].items.length; i++) {
-                    $scope.tabNames[tabId].items[i].index = i + 2;
-                    $scope.tabNames[tabId].items[i].name  =  (i+1)+" item"
+                $scope.tabNames.tabs[tabId].items.splice((index-2), 1);
+                for (var i = 0; i < $scope.tabNames.tabs[tabId].items.length; i++) {
+                    $scope.tabNames.tabs[tabId].items[i].index = i + 2;
+                    $scope.tabNames.tabs[tabId].items[i].name  =  (i+1)+" item";
+                    $scope.tabNames.tabs[tabId].items[i].id = i;
                 }
-                console.log($scope.tabNames[tabId].items)
+            }
+            if($scope.tabNames.tabs[tabId].items.length === 1){
+                $scope.isDeleteItem = false;
             }
         }
 
@@ -239,45 +266,124 @@
         }
 
 
+        $scope.positionCheck = function(){
+
+
+            for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
+                $scope.tabNames.tabs[i].id = i;
+            }
+
+            setTimeout(function(){
+
+                setTimeout(function(){
+                    var tabs2 = document.getElementsByClassName("tabs2");
+                    var tabs = document.getElementsByClassName("tabs");
+
+                    for (var i = 0; i < tabs.length; i++) {
+                        if(angular.element(tabs[i]).hasClass('active')){
+                            document.getElementsByClassName("tabcontent")[i].style.display = "none";;
+                            tabs[i].className = tabs[i].className.replace(" active", "");
+                        }
+
+                    }
+
+                    for (var i = 0; i < tabs2.length; i++) {
+                        if(angular.element(tabs2[i]).hasClass('active')){
+                            document.getElementsByClassName("tabcontent2")[i].style.display = "none";;
+                            tabs2[i].className = tabs2[i].className.replace(" active", "");
+                        }
+
+                    }
+
+                    document.getElementsByClassName("tabcontent2")[0].style.display = "block";
+                    document.getElementsByClassName("tabs2")[0].className += " active";
+                    document.getElementsByClassName("tabcontent")[0].style.display = "block";;
+                    document.getElementsByClassName("tabs")[0].className += " active";
+                }, 500);
+
+                document.getElementsByClassName("tabcontent2")[0].style.display = "block";
+                document.getElementsByClassName("tabs2")[0].className += " active";
+                document.getElementsByClassName("tabcontent")[0].style.display = "block";;
+                document.getElementsByClassName("tabs")[0].className += " active";
+            }, 500);
+        }
+
+
+
         $scope.removeTab = function(index) {
 
-            if($scope.tabNames.length >1) {
+            if($scope.tabNames.tabs.length >1) {
                 console.log(index)
-                $scope.tabNames.splice(index, 1);
-                for (var i = 0; i < $scope.tabNames.length; i++) {
-                    $scope.tabNames[i].id = i;
+                $scope.tabNames.tabs.splice(index, 1);
+                for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
+                    $scope.tabNames.tabs[i].id = i;
                 }
+
                 setTimeout(function(){
+
+                    var tabs2 = document.getElementsByClassName("tabs2");
+                    var tabs = document.getElementsByClassName("tabs");
+
+                    for (var i = 0; i < tabs.length; i++) {
+                        if(angular.element(tabs[i]).hasClass('active')){
+                            document.getElementsByClassName("tabcontent")[i].style.display = "none";;
+                            tabs[i].className = tabs[i].className.replace(" active", "");
+                        }
+
+                    }
+
+                    for (var i = 0; i < tabs2.length; i++) {
+                        if(angular.element(tabs2[i]).hasClass('active')){
+                            document.getElementsByClassName("tabcontent2")[i].style.display = "none";;
+                            tabs2[i].className = tabs2[i].className.replace(" active", "");
+                        }
+
+                    }
                     document.getElementsByClassName("tabcontent2")[0].style.display = "block";
                     document.getElementsByClassName("tabs2")[0].className += " active";
                     document.getElementsByClassName("tabcontent")[0].style.display = "block";;
                     document.getElementsByClassName("tabs")[0].className += " active";
                 }, 500);
             }
-            if($scope.tabNames.length < 4){
+            if($scope.tabNames.tabs.length < 4){
                 $scope.isNewTab = true;
             }
         }
 
         $scope.chooseType = function(id, url) {
-            $scope.tabNames[id].type.url = url;
+            $scope.tabNames.tabs[id].type.url = url;
+
         }
 
 
         $scope.addColors = function(id, colorMain, colorSecond){
-            var cyrrentEl =document.getElementById(id);
-            cyrrentEl.style.background = "#"+colorMain;
-            if(angular.element(document.getElementById(id)).hasClass('active')){
-                cyrrentEl.style.background = "#"+colorSecond;
+
+            var cyrrentEl = document.getElementById(id);
+            if(cyrrentEl) {
+                cyrrentEl.style.background = "#" + colorMain;
+                if (angular.element(document.getElementById(id)).hasClass('active')) {
+                    cyrrentEl.style.background = "#" + colorSecond;
+                }
+            }
+            if($scope.tabNames.tabs.length ===2){
+                cyrrentEl.style.width = "268px"
+            }
+            if($scope.tabNames.tabs.length ===3){
+                cyrrentEl.style.width = "177px"
+            }
+            if($scope.tabNames.tabs.length ===4){
+                cyrrentEl.style.width = "131px"
             }
         }
 
-        function toggleNavbar() {
-            vm.isNavbarCollapsed = !vm.isNavbarCollapsed;
-        }
+        $scope.myInterval = 3000;
 
-        function collapseNavbar() {
-            vm.isNavbarCollapsed = true;
+
+        $scope.saveCardlet = function(){
+            $http.post("/api/testsig",  $scope.tabNames)
+                .success(function (data, status, headers, config) {
+
+                });
         }
     }
 
