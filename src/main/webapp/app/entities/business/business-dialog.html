@@ -52,48 +52,6 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_userName">User Name</label>
-            <input type="text" class="form-control" name="userName" id="field_userName"
-                    ng-model="vm.business.userName"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_jobPosition">Job Position</label>
-            <input type="text" class="form-control" name="jobPosition" id="field_jobPosition"
-                    ng-model="vm.business.jobPosition"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_companyName">Company Name</label>
-            <input type="text" class="form-control" name="companyName" id="field_companyName"
-                    ng-model="vm.business.companyName"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_companySite">Company Site</label>
-            <input type="text" class="form-control" name="companySite" id="field_companySite"
-                    ng-model="vm.business.companySite"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_email">Email</label>
-            <input type="text" class="form-control" name="email" id="field_email"
-                    ng-model="vm.business.email"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_phone">Phone</label>
-            <input type="text" class="form-control" name="phone" id="field_phone"
-                    ng-model="vm.business.phone"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_address">Address</label>
-            <input type="text" class="form-control" name="address" id="field_address"
-                    ng-model="vm.business.address"
-                     />
-        </div>
-        <div class="form-group">
             <label class="control-label" for="field_twitter">Twitter</label>
             <input type="text" class="form-control" name="twitter" id="field_twitter"
                     ng-model="vm.business.twitter"
@@ -145,6 +103,48 @@
         <div class="form-group">
             <label for="field_tabType">Tab Type</label>
             <select class="form-control" id="field_tabType" name="tabType" ng-model="vm.business.tabType" ng-options="tabType as tabType.id for tabType in vm.tabtypes track by tabType.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_userName">User Name</label>
+            <select class="form-control" id="field_userName" name="userName" ng-model="vm.business.userName" ng-options="inputProperties as inputProperties.id for inputProperties in vm.usernames | orderBy:'id' track by inputProperties.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_userEmail">User Email</label>
+            <select class="form-control" id="field_userEmail" name="userEmail" ng-model="vm.business.userEmail" ng-options="inputProperties as inputProperties.id for inputProperties in vm.useremails | orderBy:'id' track by inputProperties.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_phone">Phone</label>
+            <select class="form-control" id="field_phone" name="phone" ng-model="vm.business.phone" ng-options="inputProperties as inputProperties.id for inputProperties in vm.phones | orderBy:'id' track by inputProperties.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_address">Address</label>
+            <select class="form-control" id="field_address" name="address" ng-model="vm.business.address" ng-options="inputProperties as inputProperties.id for inputProperties in vm.addresses | orderBy:'id' track by inputProperties.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_company">Company</label>
+            <select class="form-control" id="field_company" name="company" ng-model="vm.business.company" ng-options="inputProperties as inputProperties.id for inputProperties in vm.companies | orderBy:'id' track by inputProperties.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_site">Site</label>
+            <select class="form-control" id="field_site" name="site" ng-model="vm.business.site" ng-options="inputProperties as inputProperties.id for inputProperties in vm.sites | orderBy:'id' track by inputProperties.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_job">Job</label>
+            <select class="form-control" id="field_job" name="job" ng-model="vm.business.job" ng-options="inputProperties as inputProperties.id for inputProperties in vm.jobs | orderBy:'id' track by inputProperties.id">
                 <option value=""></option>
             </select>
         </div>

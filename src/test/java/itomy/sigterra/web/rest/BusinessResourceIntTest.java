@@ -54,27 +54,6 @@ public class BusinessResourceIntTest {
     private static final String DEFAULT_ICON = "AAAAAAAAAA";
     private static final String UPDATED_ICON = "BBBBBBBBBB";
 
-    private static final String DEFAULT_USER_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_USER_NAME = "BBBBBBBBBB";
-
-    private static final String DEFAULT_JOB_POSITION = "AAAAAAAAAA";
-    private static final String UPDATED_JOB_POSITION = "BBBBBBBBBB";
-
-    private static final String DEFAULT_COMPANY_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_COMPANY_NAME = "BBBBBBBBBB";
-
-    private static final String DEFAULT_COMPANY_SITE = "AAAAAAAAAA";
-    private static final String UPDATED_COMPANY_SITE = "BBBBBBBBBB";
-
-    private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
-    private static final String UPDATED_EMAIL = "BBBBBBBBBB";
-
-    private static final String DEFAULT_PHONE = "AAAAAAAAAA";
-    private static final String UPDATED_PHONE = "BBBBBBBBBB";
-
-    private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
-    private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
-
     private static final String DEFAULT_TWITTER = "AAAAAAAAAA";
     private static final String UPDATED_TWITTER = "BBBBBBBBBB";
 
@@ -135,13 +114,6 @@ public class BusinessResourceIntTest {
                 .modifiedDate(DEFAULT_MODIFIED_DATE)
                 .pisition(DEFAULT_PISITION)
                 .icon(DEFAULT_ICON)
-                .userName(DEFAULT_USER_NAME)
-                .jobPosition(DEFAULT_JOB_POSITION)
-                .companyName(DEFAULT_COMPANY_NAME)
-                .companySite(DEFAULT_COMPANY_SITE)
-                .email(DEFAULT_EMAIL)
-                .phone(DEFAULT_PHONE)
-                .address(DEFAULT_ADDRESS)
                 .twitter(DEFAULT_TWITTER)
                 .facebook(DEFAULT_FACEBOOK)
                 .google(DEFAULT_GOOGLE)
@@ -178,13 +150,6 @@ public class BusinessResourceIntTest {
         assertThat(testBusiness.getModifiedDate()).isEqualTo(DEFAULT_MODIFIED_DATE);
         assertThat(testBusiness.getPisition()).isEqualTo(DEFAULT_PISITION);
         assertThat(testBusiness.getIcon()).isEqualTo(DEFAULT_ICON);
-        assertThat(testBusiness.getUserName()).isEqualTo(DEFAULT_USER_NAME);
-        assertThat(testBusiness.getJobPosition()).isEqualTo(DEFAULT_JOB_POSITION);
-        assertThat(testBusiness.getCompanyName()).isEqualTo(DEFAULT_COMPANY_NAME);
-        assertThat(testBusiness.getCompanySite()).isEqualTo(DEFAULT_COMPANY_SITE);
-        assertThat(testBusiness.getEmail()).isEqualTo(DEFAULT_EMAIL);
-        assertThat(testBusiness.getPhone()).isEqualTo(DEFAULT_PHONE);
-        assertThat(testBusiness.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testBusiness.getTwitter()).isEqualTo(DEFAULT_TWITTER);
         assertThat(testBusiness.getFacebook()).isEqualTo(DEFAULT_FACEBOOK);
         assertThat(testBusiness.getGoogle()).isEqualTo(DEFAULT_GOOGLE);
@@ -210,13 +175,6 @@ public class BusinessResourceIntTest {
                 .andExpect(jsonPath("$.[*].modifiedDate").value(hasItem(DEFAULT_MODIFIED_DATE.toString())))
                 .andExpect(jsonPath("$.[*].pisition").value(hasItem(DEFAULT_PISITION)))
                 .andExpect(jsonPath("$.[*].icon").value(hasItem(DEFAULT_ICON.toString())))
-                .andExpect(jsonPath("$.[*].userName").value(hasItem(DEFAULT_USER_NAME.toString())))
-                .andExpect(jsonPath("$.[*].jobPosition").value(hasItem(DEFAULT_JOB_POSITION.toString())))
-                .andExpect(jsonPath("$.[*].companyName").value(hasItem(DEFAULT_COMPANY_NAME.toString())))
-                .andExpect(jsonPath("$.[*].companySite").value(hasItem(DEFAULT_COMPANY_SITE.toString())))
-                .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
-                .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())))
-                .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
                 .andExpect(jsonPath("$.[*].twitter").value(hasItem(DEFAULT_TWITTER.toString())))
                 .andExpect(jsonPath("$.[*].facebook").value(hasItem(DEFAULT_FACEBOOK.toString())))
                 .andExpect(jsonPath("$.[*].google").value(hasItem(DEFAULT_GOOGLE.toString())))
@@ -242,13 +200,6 @@ public class BusinessResourceIntTest {
             .andExpect(jsonPath("$.modifiedDate").value(DEFAULT_MODIFIED_DATE.toString()))
             .andExpect(jsonPath("$.pisition").value(DEFAULT_PISITION))
             .andExpect(jsonPath("$.icon").value(DEFAULT_ICON.toString()))
-            .andExpect(jsonPath("$.userName").value(DEFAULT_USER_NAME.toString()))
-            .andExpect(jsonPath("$.jobPosition").value(DEFAULT_JOB_POSITION.toString()))
-            .andExpect(jsonPath("$.companyName").value(DEFAULT_COMPANY_NAME.toString()))
-            .andExpect(jsonPath("$.companySite").value(DEFAULT_COMPANY_SITE.toString()))
-            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
-            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()))
-            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
             .andExpect(jsonPath("$.twitter").value(DEFAULT_TWITTER.toString()))
             .andExpect(jsonPath("$.facebook").value(DEFAULT_FACEBOOK.toString()))
             .andExpect(jsonPath("$.google").value(DEFAULT_GOOGLE.toString()))
@@ -281,13 +232,6 @@ public class BusinessResourceIntTest {
                 .modifiedDate(UPDATED_MODIFIED_DATE)
                 .pisition(UPDATED_PISITION)
                 .icon(UPDATED_ICON)
-                .userName(UPDATED_USER_NAME)
-                .jobPosition(UPDATED_JOB_POSITION)
-                .companyName(UPDATED_COMPANY_NAME)
-                .companySite(UPDATED_COMPANY_SITE)
-                .email(UPDATED_EMAIL)
-                .phone(UPDATED_PHONE)
-                .address(UPDATED_ADDRESS)
                 .twitter(UPDATED_TWITTER)
                 .facebook(UPDATED_FACEBOOK)
                 .google(UPDATED_GOOGLE)
@@ -310,13 +254,6 @@ public class BusinessResourceIntTest {
         assertThat(testBusiness.getModifiedDate()).isEqualTo(UPDATED_MODIFIED_DATE);
         assertThat(testBusiness.getPisition()).isEqualTo(UPDATED_PISITION);
         assertThat(testBusiness.getIcon()).isEqualTo(UPDATED_ICON);
-        assertThat(testBusiness.getUserName()).isEqualTo(UPDATED_USER_NAME);
-        assertThat(testBusiness.getJobPosition()).isEqualTo(UPDATED_JOB_POSITION);
-        assertThat(testBusiness.getCompanyName()).isEqualTo(UPDATED_COMPANY_NAME);
-        assertThat(testBusiness.getCompanySite()).isEqualTo(UPDATED_COMPANY_SITE);
-        assertThat(testBusiness.getEmail()).isEqualTo(UPDATED_EMAIL);
-        assertThat(testBusiness.getPhone()).isEqualTo(UPDATED_PHONE);
-        assertThat(testBusiness.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testBusiness.getTwitter()).isEqualTo(UPDATED_TWITTER);
         assertThat(testBusiness.getFacebook()).isEqualTo(UPDATED_FACEBOOK);
         assertThat(testBusiness.getGoogle()).isEqualTo(UPDATED_GOOGLE);

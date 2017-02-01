@@ -43,7 +43,7 @@ public class ItemDataDTO implements Serializable {
     }
 
     public ItemDataDTO(ItemData item) {
-        this(item.getId(), item.getTitle(), item.getDescription(), item.getCreatedDate(), item.getCreatedDate(), item.getFirstImage(), item.getSecondImage(), item.getThirdImage());
+
     }
 
     public static long getSerialVersionUID() {

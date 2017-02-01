@@ -60,9 +60,7 @@ public class BusinessDTO implements Serializable {
     private TabType tabType;
 
     public BusinessDTO(Business business) {
-        this(business.getId(), business.getName(),business.getCreatedDate(),business.getModifiedDate(),business.getPisition(), business.getIcon(), business.getUserName(),
-         business.getJobPosition(), business.getCompanyName(), business.getCompanySite(), business.getEmail(), business.getPhone(), business.getAddress(), business.getTwitter(), business.getFacebook(), business.getGoogle() , business.getLinkedIn(), business.getPhoto() ,business.getMainColor(), business.getColor(), business.getTabType());
-    }
+   }
 
     public BusinessDTO(Long id, String name, LocalDate createdDate, LocalDate modifiedDate, Integer pisition, String icon, String userName, String jobPosition, String companyName, String companySite, String email, String phone, String address, String twitter, String facebook, String google, String linkedIn, String photo, String mainColor, String color, TabType tabType) {
         this.id = id;

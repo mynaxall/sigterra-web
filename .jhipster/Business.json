@@ -12,6 +12,62 @@
             "otherEntityName": "tabType",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "userName",
+            "otherEntityName": "inputProperties",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "business"
+        },
+        {
+            "relationshipName": "userEmail",
+            "otherEntityName": "inputProperties",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "business"
+        },
+        {
+            "relationshipName": "phone",
+            "otherEntityName": "inputProperties",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "business"
+        },
+        {
+            "relationshipName": "address",
+            "otherEntityName": "inputProperties",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "business"
+        },
+        {
+            "relationshipName": "company",
+            "otherEntityName": "inputProperties",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "business"
+        },
+        {
+            "relationshipName": "site",
+            "otherEntityName": "inputProperties",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "business"
+        },
+        {
+            "relationshipName": "job",
+            "otherEntityName": "inputProperties",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "business"
         }
     ],
     "fields": [
@@ -33,34 +89,6 @@
         },
         {
             "fieldName": "icon",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "userName",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "jobPosition",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "companyName",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "companySite",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "email",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "phone",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "address",
             "fieldType": "String"
         },
         {

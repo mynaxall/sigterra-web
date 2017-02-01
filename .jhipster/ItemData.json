@@ -10,14 +10,6 @@
     ],
     "fields": [
         {
-            "fieldName": "title",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "description",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "createdDate",
             "fieldType": "LocalDate"
         },
@@ -35,6 +27,10 @@
         },
         {
             "fieldName": "thirdImage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "link",
             "fieldType": "String"
         }
     ],

@@ -14,18 +14,6 @@
                     ng-model="vm.itemData.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_title">Title</label>
-            <input type="text" class="form-control" name="title" id="field_title"
-                    ng-model="vm.itemData.title"
-                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_description">Description</label>
-            <input type="text" class="form-control" name="description" id="field_description"
-                    ng-model="vm.itemData.description"
-                     />
-        </div>
-        <div class="form-group">
             <label class="control-label" for="field_createdDate">Created Date</label>
                 <div class="input-group">
                     <input id="field_createdDate" type="text" class="form-control" name="createdDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.itemData.createdDate" is-open="vm.datePickerOpenStatus.createdDate"
@@ -61,6 +49,12 @@
             <label class="control-label" for="field_thirdImage">Third Image</label>
             <input type="text" class="form-control" name="thirdImage" id="field_thirdImage"
                     ng-model="vm.itemData.thirdImage"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_link">Link</label>
+            <input type="text" class="form-control" name="link" id="field_link"
+                    ng-model="vm.itemData.link"
                      />
         </div>
 

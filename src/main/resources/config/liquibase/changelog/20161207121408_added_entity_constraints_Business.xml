@@ -20,5 +20,47 @@
                                  referencedColumnNames="id"
                                  referencedTableName="tab_type"/>
 
+        <addForeignKeyConstraint baseColumnNames="user_name_id"
+                                 baseTableName="business"
+                                 constraintName="fk_business_user_name_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="input_properties"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_email_id"
+                                 baseTableName="business"
+                                 constraintName="fk_business_user_email_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="input_properties"/>
+
+        <addForeignKeyConstraint baseColumnNames="phone_id"
+                                 baseTableName="business"
+                                 constraintName="fk_business_phone_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="input_properties"/>
+
+        <addForeignKeyConstraint baseColumnNames="address_id"
+                                 baseTableName="business"
+                                 constraintName="fk_business_address_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="input_properties"/>
+
+        <addForeignKeyConstraint baseColumnNames="company_id"
+                                 baseTableName="business"
+                                 constraintName="fk_business_company_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="input_properties"/>
+
+        <addForeignKeyConstraint baseColumnNames="site_id"
+                                 baseTableName="business"
+                                 constraintName="fk_business_site_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="input_properties"/>
+
+        <addForeignKeyConstraint baseColumnNames="job_id"
+                                 baseTableName="business"
+                                 constraintName="fk_business_job_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="input_properties"/>
+
     </changeSet>
 </databaseChangeLog>

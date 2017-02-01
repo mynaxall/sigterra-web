@@ -115,13 +115,12 @@
                     resolve: {
                         entity: function () {
                             return {
-                                title: null,
-                                description: null,
                                 createdDate: null,
                                 modifiedDate: null,
                                 firstImage: null,
                                 secondImage: null,
                                 thirdImage: null,
+                                link: null,
                                 id: null
                             };
                         }

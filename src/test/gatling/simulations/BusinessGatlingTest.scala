@@ -67,7 +67,7 @@ class BusinessGatlingTest extends Simulation {
             .exec(http("Create new business")
             .post("/api/businesses")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "createdDate":"2020-01-01T00:00:00.000Z", "modifiedDate":"2020-01-01T00:00:00.000Z", "pisition":"0", "icon":"SAMPLE_TEXT", "userName":"SAMPLE_TEXT", "jobPosition":"SAMPLE_TEXT", "companyName":"SAMPLE_TEXT", "companySite":"SAMPLE_TEXT", "email":"SAMPLE_TEXT", "phone":"SAMPLE_TEXT", "address":"SAMPLE_TEXT", "twitter":"SAMPLE_TEXT", "facebook":"SAMPLE_TEXT", "google":"SAMPLE_TEXT", "linkedIn":"SAMPLE_TEXT", "photo":"SAMPLE_TEXT", "mainColor":"SAMPLE_TEXT", "color":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "createdDate":"2020-01-01T00:00:00.000Z", "modifiedDate":"2020-01-01T00:00:00.000Z", "pisition":"0", "icon":"SAMPLE_TEXT", "twitter":"SAMPLE_TEXT", "facebook":"SAMPLE_TEXT", "google":"SAMPLE_TEXT", "linkedIn":"SAMPLE_TEXT", "photo":"SAMPLE_TEXT", "mainColor":"SAMPLE_TEXT", "color":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_business_url"))).exitHereIfFailed
             .pause(10)
