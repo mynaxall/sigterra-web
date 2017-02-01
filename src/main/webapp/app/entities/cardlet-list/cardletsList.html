@@ -1,13 +1,7 @@
 <script src="/app/entities/cardlet-list/jscolor.js"></script>
 <div class="entiti-content">
 
-
-
-
-
 <style>
-
-
 
     .cardlet-name-panel{
         margin-bottom: 30px;
@@ -343,10 +337,10 @@
 
                 <ul class="tab" dnd-list="tabNames.tabs" dnd-horizontal-list="true" dnd-external-sources="true">
 
-                    <li class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-draggable="tabName" dnd-moved="tabNames.tabs.splice($index, 1)" id="{{tabName.id}}" dnd-dragend="positionCheck()">
+                    <li class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-draggable="tabName" dnd-moved="tabNames.tabs.splice($index, 1)" id="{{tabName.position}}" dnd-dragend="positionCheck()">
                         <div style="position: relative">
-                            <a href="javascript:void(0)" class="tablinks" ng-click="openCity(tabName.name, tabName.id)">{{tabName.name}}</a>
-                            <div class="remove" ng-click="removeTab(tabName.id)"><span style="font-size: 15px;color:#D0D8D9;" class="glyphicon glyphicon-remove-circle"></span></div>
+                            <a href="javascript:void(0)" class="tablinks" ng-click="openCity(tabName.name, tabName.position)">{{tabName.name}}</a>
+                            <div class="remove" ng-click="removeTab(tabName.position)"><span style="font-size: 15px;color:#D0D8D9;" class="glyphicon glyphicon-remove-circle"></span></div>
                         </div>
                     </li>
                     <li  uib-dropdown class="dropdown pointer"  ng-show="isNewTab">
@@ -383,7 +377,7 @@
                     <div class="main">
 
 
-                        <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tybType === 2">
+                        <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 2">
                             <div class="accordion-section">
                                 <a class="accordion-section-title" ng-class="{active:accordionActive==1}" ng-click="changeAccordionActivity(1)">Layout design</a>
                                 <div id="accordion2-1" class="accordion-section-content" ng-show="accordionActive==1">
@@ -392,10 +386,10 @@
                                             jscolor.installByClassName("jscolor");
                                         });
                                     </script>
-                                    <input ng-model="tabName.type.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor" value="FFFFFF">
-                                    <input ng-model="tabName.type.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor" value="4BABE2">
+                                    <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor" value="FFFFFF">
+                                    <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor" value="4BABE2">
                                     <div ng-repeat="itemType in itemTypes" style="margin-bottom: 20px;">
-                                        <ng-include ng-click="chooseType(tabName.id, itemType.item)" style="display: block!important" src="itemType.item" ></ng-include>
+                                        <ng-include ng-click="chooseType(tabName.position, itemType.item)" style="display: block!important" src="itemType.item" ></ng-include>
                                     </div>
 
                                 </div><!--end .accordion-section-content-->
@@ -403,17 +397,17 @@
 
 
                             <div class="accordion-section" ng-repeat="item in tabName.items">
-                                <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">{{item.name}}</a>
+                                <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">{{$index+1}} item</a>
                                 <div id="accordion2-item.index" class="accordion-section-content" ng-show="accordionActive==item.index">
                                     <div class="form-group">
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="itemName">Name</label>
-                                            <input type="text" class="form-control profile-input" id="itemName" placeholder="" ng-model="item.nameItem.name">
+                                            <input type="text" class="form-control profile-input" id="itemName" placeholder="" ng-model="item.nameItem.value">
                                         </div>
                                         <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="item.nameItem.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.id}}{{item.id}}"/><label for="boldName{{tabName.id}}{{item.id}}"></label>
-                                            <input type='checkbox' ng-model="item.nameItem.italic" name='italic'  class="checkboxItalic" value='valuable' id="italicName{{tabName.id}}{{item.id}}"/><label for="italicName{{tabName.id}}{{item.id}}"></label>
-                                            <input type='checkbox' ng-model="item.nameItem.underline" name='underline' class="checkboxUunderline" value='valuable' id="underlineName{{tabName.id}}{{item.id}}"/><label for="underlineName{{tabName.id}}{{item.id}}"></label>
+                                            <input type='checkbox' ng-model="item.nameItem.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{item.position}}"/><label for="boldName{{tabName.position}}{{item.position}}"></label>
+                                            <input type='checkbox' ng-model="item.nameItem.italic" name='italic'  class="checkboxItalic" value='valuable' id="italicName{{tabName.position}}{{item.position}}"/><label for="italicName{{tabName.position}}{{item.position}}"></label>
+                                            <input type='checkbox' ng-model="item.nameItem.underline" name='underline' class="checkboxUunderline" value='valuable' id="underlineName{{tabName.position}}{{item.position}}"/><label for="underlineName{{tabName.position}}{{item.position}}"></label>
 
                                         </div>
                                     </div>
@@ -448,12 +442,12 @@
                                     <div class="form-group">
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="description">Description</label>
-                                            <input type="text" class="form-control profile-input" id="description" placeholder="" ng-model="item.description.name">
+                                            <input type="text" class="form-control profile-input" id="description" placeholder="" ng-model="item.description.value">
                                         </div>
                                         <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="item.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.id}}{{item.id}}"/><label for="boldDescription{{tabName.id}}{{item.id}}"></label>
-                                            <input type='checkbox' ng-model="item.description.italic" name='italic' value='valuable' class="checkboxItalic" id="italicDescription{{tabName.id}}{{item.id}}"/><label for="italicDescription{{tabName.id}}{{item.id}}"></label>
-                                            <input type='checkbox' ng-model="item.description.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineDescription{{tabName.id}}{{item.id}}"/><label for="underlineDescription{{tabName.id}}{{item.id}}"></label>
+                                            <input type='checkbox' ng-model="item.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{item.position}}"/><label for="boldDescription{{tabName.position}}{{item.position}}"></label>
+                                            <input type='checkbox' ng-model="item.description.italic" name='italic' value='valuable' class="checkboxItalic" id="italicDescription{{tabName.position}}{{item.position}}"/><label for="italicDescription{{tabName.position}}{{item.position}}"></label>
+                                            <input type='checkbox' ng-model="item.description.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineDescription{{tabName.position}}{{item.position}}"/><label for="underlineDescription{{tabName.position}}{{item.position}}"></label>
 
                                         </div>
                                     </div>
@@ -469,19 +463,19 @@
                                     </div>
                                     <br>
                                     <div>
-                                        <button ng-show="isDeleteItem"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.id,  tabName.items.length)" class="btn btn-primary delete-item-btn"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete item</button>
+                                        <button ng-show="isDeleteItem"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  tabName.items.length)" class="btn btn-primary delete-item-btn"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete item</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="add-item-btn">
-                                <button  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.id,  tabName.items.length)" class="btn btn-primary main-btn upload-item-img">Add item</button>
+                                <button  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn upload-item-img">Add item</button>
                             </div>
                         </div>
 
 
 
 
-                        <div class="accordion" ng-init="accordion=1" ng-show="tabName.tybType === 1">
+                        <div class="accordion" ng-init="accordion=1" ng-show="tabName.tabType === 1">
                             <div class="accordion-section">
                                 <a class="accordion-section-title" ng-class="{active:accordion==1}" ng-click="accordion = 1">
                                     <div class="accordion-section-text">Personal details</div>
@@ -492,12 +486,12 @@
 
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="userName">Name</label>
-                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.userName.name">
+                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.userName.value">
                                         </div>
                                         <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="tabName.userName.bold" name='bold' class="checkboxBold" value='valuable' id="bold{{tabName.id}}"/><label for="bold{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.userName.italic" name='italic' class="checkboxItalic" value='valuable' id="italic{{tabName.id}}"/><label for="italic{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.userName.underline" name='underline' class="checkboxUunderline" value='valuable' id="underline{{tabName.id}}"/><label for="underline{{tabName.id}}"></label>
+                                            <input type='checkbox' ng-model="tabName.userName.bold" name='bold' class="checkboxBold" value='valuable' id="bold{{tabName.position}}"/><label for="bold{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.userName.italic" name='italic' class="checkboxItalic" value='valuable' id="italic{{tabName.position}}"/><label for="italic{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.userName.underline" name='underline' class="checkboxUunderline" value='valuable' id="underline{{tabName.position}}"/><label for="underline{{tabName.position}}"></label>
 
                                         </div>
                                     </div>
@@ -505,12 +499,12 @@
 
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="userName">Email</label>
-                                            <input type="email" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.userEmail.email">
+                                            <input type="email" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.userEmail.value">
                                         </div>
                                         <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="tabName.userEmail.bold" name='boldEmail' value='valuableEmail' class="checkboxBold" id="boldEmail{{tabName.id}}"/><label for="boldEmail{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.userEmail.italic" name='italicEmail' value='italicEmail' class="checkboxItalic" id="italicEmail{{tabName.id}}"/><label for="italicEmail{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.userEmail.underline" name='underlineEmail' value='valuable' class="checkboxUunderline" id="underlineEmail{{tabName.id}}"/><label for="underlineEmail{{tabName.id}}"></label>
+                                            <input type='checkbox' ng-model="tabName.userEmail.bold" name='boldEmail' value='valuableEmail' class="checkboxBold" id="boldEmail{{tabName.position}}"/><label for="boldEmail{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.userEmail.italic" name='italicEmail' value='italicEmail' class="checkboxItalic" id="italicEmail{{tabName.position}}"/><label for="italicEmail{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.userEmail.underline" name='underlineEmail' value='valuable' class="checkboxUunderline" id="underlineEmail{{tabName.position}}"/><label for="underlineEmail{{tabName.position}}"></label>
 
                                         </div>
                                     </div>
@@ -519,12 +513,12 @@
 
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="userName">Phone number</label>
-                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.phone.number">
+                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.phone.value">
                                         </div>
                                         <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="tabName.phone.bold" name='bold' value='valuable' class="checkboxBold" id="boldPhone{{tabName.id}}"/><label for="boldPhone{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.phone.italic" name='italic' value='valuable' class="checkboxItalic" id="italicPhone{{tabName.id}}"/><label for="italicPhone{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.phone.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlinePhone{{tabName.id}}"/><label for="underlinePhone{{tabName.id}}"></label>
+                                            <input type='checkbox' ng-model="tabName.phone.bold" name='bold' value='valuable' class="checkboxBold" id="boldPhone{{tabName.position}}"/><label for="boldPhone{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.phone.italic" name='italic' value='valuable' class="checkboxItalic" id="italicPhone{{tabName.position}}"/><label for="italicPhone{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.phone.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlinePhone{{tabName.position}}"/><label for="underlinePhone{{tabName.position}}"></label>
 
                                         </div>
                                     </div>
@@ -533,12 +527,12 @@
 
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="userName">Address</label>
-                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.address.address">
+                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.address.value">
                                         </div>
                                         <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="tabName.address.bold" name='bold' value='valuable' class="checkboxBold" id="boldAddress{{tabName.id}}"/><label for="boldAddress{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.address.italic" name='italic' value='valuable' class="checkboxItalic" id="italicAddress{{tabName.id}}"/><label for="italicAddress{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.address.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineAddress{{tabName.id}}"/><label for="underlineAddress{{tabName.id}}"></label>
+                                            <input type='checkbox' ng-model="tabName.address.bold" name='bold' value='valuable' class="checkboxBold" id="boldAddress{{tabName.position}}"/><label for="boldAddress{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.address.italic" name='italic' value='valuable' class="checkboxItalic" id="italicAddress{{tabName.position}}"/><label for="italicAddress{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.address.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineAddress{{tabName.position}}"/><label for="underlineAddress{{tabName.position}}"></label>
 
                                         </div>
                                     </div>
@@ -547,12 +541,12 @@
 
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="userName">Company Name</label>
-                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.company.name">
+                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.company.value">
                                         </div>
                                         <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="tabName.company.bold" name='bold' value='valuable' class="checkboxBold" id="boldCompany{{tabName.id}}"/><label for="boldCompany{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.company.italic" name='italic' value='valuable' class="checkboxItalic" id="italicCompany{{tabName.id}}"/><label for="italicCompany{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.company.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineCompany{{tabName.id}}"/><label for="underlineCompany{{tabName.id}}"></label>
+                                            <input type='checkbox' ng-model="tabName.company.bold" name='bold' value='valuable' class="checkboxBold" id="boldCompany{{tabName.position}}"/><label for="boldCompany{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.company.italic" name='italic' value='valuable' class="checkboxItalic" id="italicCompany{{tabName.position}}"/><label for="italicCompany{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.company.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineCompany{{tabName.position}}"/><label for="underlineCompany{{tabName.position}}"></label>
 
                                         </div>
                                     </div>
@@ -561,12 +555,12 @@
 
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="userName">Company site</label>
-                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.site.name">
+                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.site.value">
                                         </div>
                                         <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="tabName.site.bold" name='bold' value='valuable' class="checkboxBold" id="boldSite{{tabName.id}}"/><label for="boldSite{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.site.italic" name='italic' value='valuable' class="checkboxItalic" id="italicSite{{tabName.id}}"/><label for="italicSite{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.site.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineSite{{tabName.id}}"/><label for="underlineSite{{tabName.id}}"></label>
+                                            <input type='checkbox' ng-model="tabName.site.bold" name='bold' value='valuable' class="checkboxBold" id="boldSite{{tabName.position}}"/><label for="boldSite{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.site.italic" name='italic' value='valuable' class="checkboxItalic" id="italicSite{{tabName.position}}"/><label for="italicSite{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.site.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineSite{{tabName.position}}"/><label for="underlineSite{{tabName.position}}"></label>
 
                                         </div>
 
@@ -575,12 +569,12 @@
 
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="userName">Job title</label>
-                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.job.name">
+                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.job.value">
                                         </div>
                                         <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="tabName.job.bold" name='bold' value='valuable' class="checkboxBold" id="boldJob{{tabName.id}}"/><label for="boldJob{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.job.italic" name='italic' value='valuable' class="checkboxItalic" id="italicJob{{tabName.id}}"/><label for="italicJob{{tabName.id}}"></label>
-                                            <input type='checkbox' ng-model="tabName.job.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineJob{{tabName.id}}"/><label for="underlineJob{{tabName.id}}"></label>
+                                            <input type='checkbox' ng-model="tabName.job.bold" name='bold' value='valuable' class="checkboxBold" id="boldJob{{tabName.position}}"/><label for="boldJob{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.job.italic" name='italic' value='valuable' class="checkboxItalic" id="italicJob{{tabName.position}}"/><label for="italicJob{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.job.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineJob{{tabName.position}}"/><label for="underlineJob{{tabName.position}}"></label>
 
                                         </div>
                                     </div>
@@ -644,10 +638,10 @@
                                             jscolor.installByClassName("jscolor");
                                         });
                                     </script>
-                                    <input ng-model="tabName.type.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor" value="FFFFFF">
-                                    <input ng-model="tabName.type.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor" value="4BABE2">
+                                    <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor" value="FFFFFF">
+                                    <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor" value="4BABE2">
                                     <div ng-repeat="tabType in tabTypes" style="margin-bottom: 20px;">
-                                        <ng-include ng-click="chooseType(tabName.id, tabType.businessCard)" style="display: block!important" src="tabType.businessCard" ></ng-include>
+                                        <ng-include ng-click="chooseType(tabName.position, tabType.businessCard)" style="display: block!important" src="tabType.businessCard" ></ng-include>
                                     </div>
 
                                 </div><!--end .accordion-section-content-->
@@ -661,17 +655,17 @@
 
                 <div>
                     <ul class="tab2">
-                        <li style="background-color: #fff" class="tabs2" ng-style="addColors(tabName.id+tabName.name, tabName.type.mainColor, tabName.type.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="{{tabName.id}}{{tabName.name}}">
+                        <li style="background-color: #fff" class="tabs2" ng-style="addColors(tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="{{tabName.position}}{{tabName.name}}">
                             <div style="position: relative">
-                                <a href="javascript:void(0)" class="tablinks2" ng-click="openCard(tabName.name+tabName.id, tabName.id+tabName.name)">{{tabName.name}}</a>
+                                <a href="javascript:void(0)" class="tablinks2" ng-click="openCard(tabName.name+tabName.position, tabName.position+tabName.name)">{{tabName.name}}</a>
                             </div>
                         </li>
 
                     </ul>
                 </div>
 
-                <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.id}}" class="tabcontent2" ng-class="business.pisition === 1 ? 'display' : 'none-display'">
-                        <ng-include style="display: block!important" src="tabName.type.url" ></ng-include>
+                <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="business.pisition === 1 ? 'display' : 'none-display'">
+                        <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
                 </div>
 
 

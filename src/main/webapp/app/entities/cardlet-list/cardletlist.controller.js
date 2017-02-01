@@ -121,10 +121,10 @@
             "tabs":
             [{
                 "name": "card",
-                'id': 0,
+                'position': 0,
                 "display": "block",
-                "tybType": 1,
-                "type":{ "url": "app/cardlets/busimessCard.html",
+                "tabType": 1,
+                "layout":{ "url": "app/cardlets/busimessCard.html",
                     "mainColor": "FFFFFF",
                     "secondaryColor": "4BABE2"
 
@@ -132,16 +132,16 @@
             },
             {
                 "name": "portfolio",
-                "id": 1,
-                "tybType": 2,
-                "type": {
+                "position": 1,
+                "tabType": 2,
+                "layout": {
                     "url": "app/cardlets/item.html",
                     "mainColor": "FFFFFF",
                     "secondaryColor": "4BABE2"
                 },
                 "items": [
                     {
-                        "name": "1 item",
+                        //"name": "1 item",
                         "index": "2",
                         "id": "0",
                         "image": "/app/cardlets/img/portfolio_img_01.png",
@@ -177,15 +177,15 @@
         $scope.addItem = function() {
             if ($scope.tabNames.tabs.length <= 3) {
                 var newTab = {"name":"Item"+$scope.tabNames.tabs.length,
-                    "id": $scope.tabNames.tabs.length,
-                    "tybType": 2,
-                    "type":{ "url": "app/cardlets/item.html",
+                    "position": $scope.tabNames.tabs.length,
+                    "tabType": 2,
+                    "layout":{ "url": "app/cardlets/item.html",
                         "mainColor": "FFFFFF",
                         "secondaryColor": "4BABE2"
                     },
                     "items": [
                         {
-                            "name": "1 item",
+                            //"name": "1 item",
                             "index": "2",
                             "id": "0",
                             "image": "/app/cardlets/img/portfolio_img_01.png",
@@ -206,7 +206,7 @@
             if($scope.tabNames.tabs[tabId].items.length <= 9){
                 $scope.isDeleteItem = true;
                 var newItem =  {
-                    "name":  ($scope.tabNames.tabs[tabId].items.length+1)+" item",
+                    //"name":  ($scope.tabNames.tabs[tabId].items.length+1)+" item",
                     "index": index+2,
                     "id": $scope.tabNames.tabs[tabId].items.length,
                     "image": "/app/cardlets/img/portfolio_img_01.png",
@@ -224,9 +224,9 @@
         $scope.addTab = function() {
             if ($scope.tabNames.tabs.length <= 3) {
                 var newTab = {"name":"card"+$scope.tabNames.tabs.length,
-                    "id": $scope.tabNames.tabs.length,
-                    "tybType": 1,
-                    "type":{ "url": "app/cardlets/busimessCard.html",
+                    "position": $scope.tabNames.tabs.length,
+                    "tabType": 1,
+                    "layout":{ "url": "app/cardlets/busimessCard.html",
                         "mainColor": "FFFFFF",
                         "secondaryColor": "4BABE2"
 
@@ -251,7 +251,7 @@
                 for (var i = 0; i < $scope.tabNames.tabs[tabId].items.length; i++) {
                     $scope.tabNames.tabs[tabId].items[i].index = i + 2;
                     $scope.tabNames.tabs[tabId].items[i].name  =  (i+1)+" item";
-                    $scope.tabNames.tabs[tabId].items[i].id = i;
+                    $scope.tabNames.tabs[tabId].items[i].position = i;
                 }
             }
             if($scope.tabNames.tabs[tabId].items.length === 1){
@@ -270,7 +270,7 @@
 
 
             for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
-                $scope.tabNames.tabs[i].id = i;
+                $scope.tabNames.tabs[i].position = i;
             }
 
             setTimeout(function(){
@@ -316,7 +316,7 @@
                 console.log(index)
                 $scope.tabNames.tabs.splice(index, 1);
                 for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
-                    $scope.tabNames.tabs[i].id = i;
+                    $scope.tabNames.tabs[i].position = i;
                 }
 
                 setTimeout(function(){
@@ -351,7 +351,7 @@
         }
 
         $scope.chooseType = function(id, url) {
-            $scope.tabNames.tabs[id].type.url = url;
+            $scope.tabNames.tabs[id].layout.url = url;
 
         }
 
@@ -380,7 +380,8 @@
 
 
         $scope.saveCardlet = function(){
-            $http.post("/api/testsig",  $scope.tabNames)
+            console.log($scope.tabNames)
+            $http.post("/api/cardlet",  $scope.tabNames)
                 .success(function (data, status, headers, config) {
 
                 });
