@@ -5,9 +5,9 @@
         .module('sigterraWebApp')
         .controller('ItemDataDetailController', ItemDataDetailController);
 
-    ItemDataDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'ItemData', 'Item'];
+    ItemDataDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'ItemData', 'Item', 'InputProperties'];
 
-    function ItemDataDetailController($scope, $rootScope, $stateParams, previousState, entity, ItemData, Item) {
+    function ItemDataDetailController($scope, $rootScope, $stateParams, previousState, entity, ItemData, Item, InputProperties) {
         var vm = this;
 
         vm.itemData = entity;

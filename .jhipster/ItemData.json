@@ -6,6 +6,22 @@
             "otherEntityName": "item",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "name",
+            "otherEntityName": "inputProperties",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "itemData"
+        },
+        {
+            "relationshipName": "description",
+            "otherEntityName": "inputProperties",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "itemData"
         }
     ],
     "fields": [

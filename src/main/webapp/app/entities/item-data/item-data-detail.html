@@ -32,6 +32,14 @@
         <dd>
             <a ui-sref="item-detail({id:vm.itemData.item.id})">{{vm.itemData.item.id}}</a>
         </dd>
+        <dt><span>Name</span></dt>
+        <dd>
+            <a ui-sref="input-properties-detail({id:vm.itemData.name.id})">{{vm.itemData.name.id}}</a>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <a ui-sref="input-properties-detail({id:vm.itemData.description.id})">{{vm.itemData.description.id}}</a>
+        </dd>
     </dl>
 
     <button type="submit"

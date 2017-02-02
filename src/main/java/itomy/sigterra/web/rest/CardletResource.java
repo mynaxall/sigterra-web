@@ -3,7 +3,9 @@ package itomy.sigterra.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import itomy.sigterra.domain.*;
 
+import itomy.sigterra.repository.BusinessRepository;
 import itomy.sigterra.repository.CardletRepository;
+import itomy.sigterra.service.UserService;
 import itomy.sigterra.service.dto.CardletItemTab;
 import itomy.sigterra.service.dto.CardletTab;
 import itomy.sigterra.service.dto.ItemModel;
@@ -37,6 +39,13 @@ public class CardletResource {
 
     @Inject
     private CardletRepository cardletRepository;
+
+    @Inject
+    BusinessRepository businessRepository;
+
+    @Inject
+    private UserService userService;
+
 
     /**
      * POST  /cardlets : Create a new cardlet.
@@ -175,24 +184,37 @@ public class CardletResource {
         log.debug("asdasd==== "+cardletDTO);
         Cardlet cardlet = new Cardlet();
         cardlet.setName(cardletDTO.getCardletName());
+        cardlet.setUser(userService.getUserWithAuthorities());
         Set <Business> businesses  = new HashSet<>();
         Set <Item> items = new HashSet<>();
         List<CardletTab> tabs = cardletDTO.getTabs();
 
         for (CardletTab tab : tabs) {
-            if(tab.getTabType().equals(2)){
-                Item item = new Item();
-                item.setName(tab.getName());
-                //TODO: add position, tabType
-                item.setMainColor(tab.getLayout().getMainColor());
-                item.setColor(tab.getLayout().getSecondaryColor());
-                Set<ItemData>  itemDatas = new HashSet<>();
+            if(tab.getTabType().equals(1)){
+                Business business = new Business();
+                business.setName(tab.getName());
+                business.setUserEmail(tab.getUserEmail());
+                business.setPisition(tab.getPosition());
+                business.setMainColor(tab.getLayout().getMainColor());
+                business.setColor(tab.getLayout().getSecondaryColor());
+                business.setUserName(tab.getUserName());
+                business.setPhone(tab.getPhone());
+                business.setAddress(tab.getAddress());
+                business.setCompany(tab.getCompany());
+                business.setSite(tab.getSite());
+                business.setJob(tab.getJob());
+                business.setTwitter(tab.getSocialLinks().getTwitter());
+                business.setFacebook(tab.getSocialLinks().getFacebook());
+                business.setGoogle(tab.getSocialLinks().getGoogle());
+                business.setLinkedIn(tab.getSocialLinks().getLinkedin());
+//                business.setCardlet(cardlet);
+                businesses.add(business);
             }
+
         }
+        cardlet.setBusinesses(businesses);
 
-
-
-
+        cardletRepository.save(cardlet);
 
         return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
     }

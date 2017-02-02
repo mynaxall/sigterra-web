@@ -40,6 +40,14 @@ public class ItemData implements Serializable {
     @ManyToOne
     private Item item;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private InputProperties name;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private InputProperties description;
+
     public Long getId() {
         return id;
     }
@@ -137,6 +145,32 @@ public class ItemData implements Serializable {
 
     public void setItem(Item item) {
         this.item = item;
+    }
+
+    public InputProperties getName() {
+        return name;
+    }
+
+    public ItemData name(InputProperties inputProperties) {
+        this.name = inputProperties;
+        return this;
+    }
+
+    public void setName(InputProperties inputProperties) {
+        this.name = inputProperties;
+    }
+
+    public InputProperties getDescription() {
+        return description;
+    }
+
+    public ItemData description(InputProperties inputProperties) {
+        this.description = inputProperties;
+        return this;
+    }
+
+    public void setDescription(InputProperties inputProperties) {
+        this.description = inputProperties;
     }
 
     @Override

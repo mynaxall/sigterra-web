@@ -389,7 +389,7 @@
                                     <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor" value="FFFFFF">
                                     <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor" value="4BABE2">
                                     <div ng-repeat="itemType in itemTypes" style="margin-bottom: 20px;">
-                                        <ng-include ng-click="chooseType(tabName.position, itemType.item)" style="display: block!important" src="itemType.item" ></ng-include>
+                                        <ng-include ng-click="chooseType(tabName.position, itemType.path, itemType.id)" style="display: block!important" src="itemType.path" ></ng-include>
                                     </div>
 
                                 </div><!--end .accordion-section-content-->
@@ -402,12 +402,12 @@
                                     <div class="form-group">
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="itemName">Name</label>
-                                            <input type="text" class="form-control profile-input" id="itemName" placeholder="" ng-model="item.nameItem.value">
+                                            <input type="text" class="form-control profile-input" id="itemName" placeholder="" ng-model="item.name.value">
                                         </div>
                                         <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="item.nameItem.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{item.position}}"/><label for="boldName{{tabName.position}}{{item.position}}"></label>
-                                            <input type='checkbox' ng-model="item.nameItem.italic" name='italic'  class="checkboxItalic" value='valuable' id="italicName{{tabName.position}}{{item.position}}"/><label for="italicName{{tabName.position}}{{item.position}}"></label>
-                                            <input type='checkbox' ng-model="item.nameItem.underline" name='underline' class="checkboxUunderline" value='valuable' id="underlineName{{tabName.position}}{{item.position}}"/><label for="underlineName{{tabName.position}}{{item.position}}"></label>
+                                            <input type='checkbox' ng-model="item.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{item.position}}"/><label for="boldName{{tabName.position}}{{item.position}}"></label>
+                                            <input type='checkbox' ng-model="item.name.italic" name='italic'  class="checkboxItalic" value='valuable' id="italicName{{tabName.position}}{{item.position}}"/><label for="italicName{{tabName.position}}{{item.position}}"></label>
+                                            <input type='checkbox' ng-model="item.name.underline" name='underline' class="checkboxUunderline" value='valuable' id="underlineName{{tabName.position}}{{item.position}}"/><label for="underlineName{{tabName.position}}{{item.position}}"></label>
 
                                         </div>
                                     </div>
@@ -641,7 +641,7 @@
                                     <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor" value="FFFFFF">
                                     <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor" value="4BABE2">
                                     <div ng-repeat="tabType in tabTypes" style="margin-bottom: 20px;">
-                                        <ng-include ng-click="chooseType(tabName.position, tabType.businessCard)" style="display: block!important" src="tabType.businessCard" ></ng-include>
+                                        <ng-include ng-click="chooseType(tabName.position, tabType.path, tabType.id)" style="display: block!important" src="tabType.path" ></ng-include>
                                     </div>
 
                                 </div><!--end .accordion-section-content-->

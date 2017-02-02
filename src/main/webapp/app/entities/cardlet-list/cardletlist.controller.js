@@ -153,16 +153,26 @@
             }
             ]};
 
-        $scope.tabTypes = [
-            {"businessCard":  "app/cardlets/busimessCard.html"},
-            {"businessCard":  "app/cardlets/businessCard2.html"},
-            {"businessCard":  "app/cardlets/businessCard3.html"}
-        ]
-        $scope.itemTypes = [
-            {"item":  "app/cardlets/item.html",},
-            {"item":  "app/cardlets/item2.html"},
-            {"item":  "app/cardlets/item3.html"}
-        ]
+
+        $scope.getTabTypes = function(){
+            $http.get("/api/tab-types-by-type/1")
+                .success(function(response, status, headers) {
+                    console.log(response);
+                    $scope.tabTypes = response;
+                });
+        }
+
+        $scope.getItemTypes = function(){
+            $http.get("/api/tab-types-by-type/2")
+                .success(function(response, status, headers) {
+                    console.log(response);
+                    $scope.itemTypes = response;
+                });
+        }
+
+        $scope.getItemTypes();
+        $scope.getTabTypes();
+
 
 
 
@@ -350,8 +360,9 @@
             }
         }
 
-        $scope.chooseType = function(id, url) {
+        $scope.chooseType = function(id, url, tabId) {
             $scope.tabNames.tabs[id].layout.url = url;
+            $scope.tabNames.tabs[id].layout.id = tabId;
 
         }
 

@@ -1,5 +1,7 @@
 package itomy.sigterra.service.dto;
 
+import itomy.sigterra.domain.InputProperties;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,19 +14,19 @@ public class CardletTab implements Serializable {
     private Integer tabType;
     private CardletLayout layout;
     private List<ItemModel> items;
-    private InputModel userName;
-    private InputModel userEmail;
-    private InputModel phone;
-    private InputModel address;
-    private InputModel company;
-    private InputModel site;
-    private InputModel job;
+    private InputProperties userName;
+    private InputProperties userEmail;
+    private InputProperties phone;
+    private InputProperties address;
+    private InputProperties company;
+    private InputProperties site;
+    private InputProperties job;
     private BusinessSocialLinks socialLinks;
 
     public CardletTab() {
     }
 
-    public CardletTab(String name, Integer position, Integer tabType, CardletLayout layout, List<ItemModel> items, InputModel userName, InputModel userEmail, InputModel phone, InputModel address, InputModel company, InputModel site, InputModel job, BusinessSocialLinks socialLinks) {
+    public CardletTab(String name, Integer position, Integer tabType, CardletLayout layout, List<ItemModel> items, InputProperties userName, InputProperties userEmail, InputProperties phone, InputProperties address, InputProperties company, InputProperties site, InputProperties job, BusinessSocialLinks socialLinks) {
         this.name = name;
         this.position = position;
         this.tabType = tabType;
@@ -80,59 +82,59 @@ public class CardletTab implements Serializable {
         this.items = items;
     }
 
-    public InputModel getUserName() {
+    public InputProperties getUserName() {
         return userName;
     }
 
-    public void setUserName(InputModel userName) {
+    public void setUserName(InputProperties userName) {
         this.userName = userName;
     }
 
-    public InputModel getUserEmail() {
+    public InputProperties getUserEmail() {
         return userEmail;
     }
 
-    public void setUserEmail(InputModel userEmail) {
+    public void setUserEmail(InputProperties userEmail) {
         this.userEmail = userEmail;
     }
 
-    public InputModel getPhone() {
+    public InputProperties getPhone() {
         return phone;
     }
 
-    public void setPhone(InputModel phone) {
+    public void setPhone(InputProperties phone) {
         this.phone = phone;
     }
 
-    public InputModel getAddress() {
+    public InputProperties getAddress() {
         return address;
     }
 
-    public void setAddress(InputModel address) {
+    public void setAddress(InputProperties address) {
         this.address = address;
     }
 
-    public InputModel getCompany() {
+    public InputProperties getCompany() {
         return company;
     }
 
-    public void setCompany(InputModel company) {
+    public void setCompany(InputProperties company) {
         this.company = company;
     }
 
-    public InputModel getSite() {
+    public InputProperties getSite() {
         return site;
     }
 
-    public void setSite(InputModel site) {
+    public void setSite(InputProperties site) {
         this.site = site;
     }
 
-    public InputModel getJob() {
+    public InputProperties getJob() {
         return job;
     }
 
-    public void setJob(InputModel job) {
+    public void setJob(InputProperties job) {
         this.job = job;
     }
 

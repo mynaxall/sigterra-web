@@ -38,11 +38,9 @@ public class Cardlet implements Serializable {
     private User user;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "cardlet", cascade = CascadeType.ALL)
-    @JsonIgnore
     private Set<Business> businesses = new HashSet<>();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "cardlet", cascade = CascadeType.ALL)
-    @JsonIgnore
     private Set<Item> items = new HashSet<>();
 
     public Long getId() {

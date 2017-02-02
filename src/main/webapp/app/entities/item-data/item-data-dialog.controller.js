@@ -5,9 +5,9 @@
         .module('sigterraWebApp')
         .controller('ItemDataDialogController', ItemDataDialogController);
 
-    ItemDataDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'ItemData', 'Item'];
+    ItemDataDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'ItemData', 'Item', 'InputProperties'];
 
-    function ItemDataDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, ItemData, Item) {
+    function ItemDataDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, ItemData, Item, InputProperties) {
         var vm = this;
 
         vm.itemData = entity;
@@ -16,6 +16,24 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
         vm.items = Item.query();
+        vm.names = InputProperties.query({filter: 'itemdata-is-null'});
+        $q.all([vm.itemData.$promise, vm.names.$promise]).then(function() {
+            if (!vm.itemData.name || !vm.itemData.name.id) {
+                return $q.reject();
+            }
+            return InputProperties.get({id : vm.itemData.name.id}).$promise;
+        }).then(function(name) {
+            vm.names.push(name);
+        });
+        vm.descriptions = InputProperties.query({filter: 'itemdata-is-null'});
+        $q.all([vm.itemData.$promise, vm.descriptions.$promise]).then(function() {
+            if (!vm.itemData.description || !vm.itemData.description.id) {
+                return $q.reject();
+            }
+            return InputProperties.get({id : vm.itemData.description.id}).$promise;
+        }).then(function(description) {
+            vm.descriptions.push(description);
+        });
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
