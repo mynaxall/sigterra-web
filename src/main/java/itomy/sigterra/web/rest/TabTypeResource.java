@@ -29,7 +29,7 @@ import java.util.Optional;
 public class TabTypeResource {
 
     private final Logger log = LoggerFactory.getLogger(TabTypeResource.class);
-        
+
     @Inject
     private TabTypeRepository tabTypeRepository;
 
@@ -103,6 +103,17 @@ public class TabTypeResource {
     public ResponseEntity<TabType> getTabType(@PathVariable Long id) {
         log.debug("REST request to get TabType : {}", id);
         TabType tabType = tabTypeRepository.findOne(id);
+        return Optional.ofNullable(tabType)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/tab-types-by-type/{type}")
+    @Timed
+    public ResponseEntity<List<TabType>> getTabTypeByType(@PathVariable String type) {
+        List<TabType> tabType = tabTypeRepository.findByType(type);
         return Optional.ofNullable(tabType)
             .map(result -> new ResponseEntity<>(
                 result,

@@ -34,27 +34,6 @@ public class Business implements Serializable {
     @Column(name = "icon")
     private String icon;
 
-    @Column(name = "user_name")
-    private String userName;
-
-    @Column(name = "job_position")
-    private String jobPosition;
-
-    @Column(name = "company_name")
-    private String companyName;
-
-    @Column(name = "company_site")
-    private String companySite;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "phone")
-    private String phone;
-
-    @Column(name = "address")
-    private String address;
-
     @Column(name = "twitter")
     private String twitter;
 
@@ -81,6 +60,34 @@ public class Business implements Serializable {
 
     @ManyToOne
     private TabType tabType;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private InputProperties userName;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private InputProperties userEmail;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private InputProperties phone;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private InputProperties address;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private InputProperties company;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private InputProperties site;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private InputProperties job;
 
     public Long getId() {
         return id;
@@ -153,97 +160,6 @@ public class Business implements Serializable {
 
     public void setIcon(String icon) {
         this.icon = icon;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public Business userName(String userName) {
-        this.userName = userName;
-        return this;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getJobPosition() {
-        return jobPosition;
-    }
-
-    public Business jobPosition(String jobPosition) {
-        this.jobPosition = jobPosition;
-        return this;
-    }
-
-    public void setJobPosition(String jobPosition) {
-        this.jobPosition = jobPosition;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public Business companyName(String companyName) {
-        this.companyName = companyName;
-        return this;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public String getCompanySite() {
-        return companySite;
-    }
-
-    public Business companySite(String companySite) {
-        this.companySite = companySite;
-        return this;
-    }
-
-    public void setCompanySite(String companySite) {
-        this.companySite = companySite;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public Business email(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public Business phone(String phone) {
-        this.phone = phone;
-        return this;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public Business address(String address) {
-        this.address = address;
-        return this;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getTwitter() {
@@ -363,6 +279,97 @@ public class Business implements Serializable {
         this.tabType = tabType;
     }
 
+    public InputProperties getUserName() {
+        return userName;
+    }
+
+    public Business userName(InputProperties inputProperties) {
+        this.userName = inputProperties;
+        return this;
+    }
+
+    public void setUserName(InputProperties inputProperties) {
+        this.userName = inputProperties;
+    }
+
+    public InputProperties getUserEmail() {
+        return userEmail;
+    }
+
+    public Business userEmail(InputProperties inputProperties) {
+        this.userEmail = inputProperties;
+        return this;
+    }
+
+    public void setUserEmail(InputProperties inputProperties) {
+        this.userEmail = inputProperties;
+    }
+
+    public InputProperties getPhone() {
+        return phone;
+    }
+
+    public Business phone(InputProperties inputProperties) {
+        this.phone = inputProperties;
+        return this;
+    }
+
+    public void setPhone(InputProperties inputProperties) {
+        this.phone = inputProperties;
+    }
+
+    public InputProperties getAddress() {
+        return address;
+    }
+
+    public Business address(InputProperties inputProperties) {
+        this.address = inputProperties;
+        return this;
+    }
+
+    public void setAddress(InputProperties inputProperties) {
+        this.address = inputProperties;
+    }
+
+    public InputProperties getCompany() {
+        return company;
+    }
+
+    public Business company(InputProperties inputProperties) {
+        this.company = inputProperties;
+        return this;
+    }
+
+    public void setCompany(InputProperties inputProperties) {
+        this.company = inputProperties;
+    }
+
+    public InputProperties getSite() {
+        return site;
+    }
+
+    public Business site(InputProperties inputProperties) {
+        this.site = inputProperties;
+        return this;
+    }
+
+    public void setSite(InputProperties inputProperties) {
+        this.site = inputProperties;
+    }
+
+    public InputProperties getJob() {
+        return job;
+    }
+
+    public Business job(InputProperties inputProperties) {
+        this.job = inputProperties;
+        return this;
+    }
+
+    public void setJob(InputProperties inputProperties) {
+        this.job = inputProperties;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -392,13 +399,6 @@ public class Business implements Serializable {
             ", modifiedDate='" + modifiedDate + "'" +
             ", pisition='" + pisition + "'" +
             ", icon='" + icon + "'" +
-            ", userName='" + userName + "'" +
-            ", jobPosition='" + jobPosition + "'" +
-            ", companyName='" + companyName + "'" +
-            ", companySite='" + companySite + "'" +
-            ", email='" + email + "'" +
-            ", phone='" + phone + "'" +
-            ", address='" + address + "'" +
             ", twitter='" + twitter + "'" +
             ", facebook='" + facebook + "'" +
             ", google='" + google + "'" +

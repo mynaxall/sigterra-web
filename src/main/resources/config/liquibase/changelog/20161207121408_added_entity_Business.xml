@@ -41,34 +41,6 @@
                 <constraints nullable="true" />
             </column>
             
-            <column name="user_name" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            
-            <column name="job_position" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            
-            <column name="company_name" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            
-            <column name="company_site" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            
-            <column name="email" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            
-            <column name="phone" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            
-            <column name="address" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            
             <column name="twitter" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -104,7 +76,21 @@
             <column name="tab_type_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-
+            <column name="user_name_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>            <column name="user_email_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>            <column name="phone_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>            <column name="address_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>            <column name="company_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>            <column name="site_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>            <column name="job_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
         

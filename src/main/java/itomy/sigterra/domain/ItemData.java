@@ -19,12 +19,6 @@ public class ItemData implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "title")
-    private String title;
-
-    @Column(name = "description")
-    private String description;
-
     @Column(name = "created_date")
     private LocalDate createdDate;
 
@@ -40,8 +34,19 @@ public class ItemData implements Serializable {
     @Column(name = "third_image")
     private String thirdImage;
 
+    @Column(name = "link")
+    private String link;
+
     @ManyToOne
     private Item item;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private InputProperties name;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private InputProperties description;
 
     public Long getId() {
         return id;
@@ -49,32 +54,6 @@ public class ItemData implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public ItemData title(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public ItemData description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public LocalDate getCreatedDate() {
@@ -142,6 +121,19 @@ public class ItemData implements Serializable {
         this.thirdImage = thirdImage;
     }
 
+    public String getLink() {
+        return link;
+    }
+
+    public ItemData link(String link) {
+        this.link = link;
+        return this;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
     public Item getItem() {
         return item;
     }
@@ -153,6 +145,32 @@ public class ItemData implements Serializable {
 
     public void setItem(Item item) {
         this.item = item;
+    }
+
+    public InputProperties getName() {
+        return name;
+    }
+
+    public ItemData name(InputProperties inputProperties) {
+        this.name = inputProperties;
+        return this;
+    }
+
+    public void setName(InputProperties inputProperties) {
+        this.name = inputProperties;
+    }
+
+    public InputProperties getDescription() {
+        return description;
+    }
+
+    public ItemData description(InputProperties inputProperties) {
+        this.description = inputProperties;
+        return this;
+    }
+
+    public void setDescription(InputProperties inputProperties) {
+        this.description = inputProperties;
     }
 
     @Override
@@ -179,13 +197,12 @@ public class ItemData implements Serializable {
     public String toString() {
         return "ItemData{" +
             "id=" + id +
-            ", title='" + title + "'" +
-            ", description='" + description + "'" +
             ", createdDate='" + createdDate + "'" +
             ", modifiedDate='" + modifiedDate + "'" +
             ", firstImage='" + firstImage + "'" +
             ", secondImage='" + secondImage + "'" +
             ", thirdImage='" + thirdImage + "'" +
+            ", link='" + link + "'" +
             '}';
     }
 }

@@ -24,34 +24,6 @@
         <dd>
             <span>{{vm.business.icon}}</span>
         </dd>
-        <dt><span>User Name</span></dt>
-        <dd>
-            <span>{{vm.business.userName}}</span>
-        </dd>
-        <dt><span>Job Position</span></dt>
-        <dd>
-            <span>{{vm.business.jobPosition}}</span>
-        </dd>
-        <dt><span>Company Name</span></dt>
-        <dd>
-            <span>{{vm.business.companyName}}</span>
-        </dd>
-        <dt><span>Company Site</span></dt>
-        <dd>
-            <span>{{vm.business.companySite}}</span>
-        </dd>
-        <dt><span>Email</span></dt>
-        <dd>
-            <span>{{vm.business.email}}</span>
-        </dd>
-        <dt><span>Phone</span></dt>
-        <dd>
-            <span>{{vm.business.phone}}</span>
-        </dd>
-        <dt><span>Address</span></dt>
-        <dd>
-            <span>{{vm.business.address}}</span>
-        </dd>
         <dt><span>Twitter</span></dt>
         <dd>
             <span>{{vm.business.twitter}}</span>
@@ -87,6 +59,34 @@
         <dt><span>Tab Type</span></dt>
         <dd>
             <a ui-sref="tab-type-detail({id:vm.business.tabType.id})">{{vm.business.tabType.id}}</a>
+        </dd>
+        <dt><span>User Name</span></dt>
+        <dd>
+            <a ui-sref="input-properties-detail({id:vm.business.userName.id})">{{vm.business.userName.id}}</a>
+        </dd>
+        <dt><span>User Email</span></dt>
+        <dd>
+            <a ui-sref="input-properties-detail({id:vm.business.userEmail.id})">{{vm.business.userEmail.id}}</a>
+        </dd>
+        <dt><span>Phone</span></dt>
+        <dd>
+            <a ui-sref="input-properties-detail({id:vm.business.phone.id})">{{vm.business.phone.id}}</a>
+        </dd>
+        <dt><span>Address</span></dt>
+        <dd>
+            <a ui-sref="input-properties-detail({id:vm.business.address.id})">{{vm.business.address.id}}</a>
+        </dd>
+        <dt><span>Company</span></dt>
+        <dd>
+            <a ui-sref="input-properties-detail({id:vm.business.company.id})">{{vm.business.company.id}}</a>
+        </dd>
+        <dt><span>Site</span></dt>
+        <dd>
+            <a ui-sref="input-properties-detail({id:vm.business.site.id})">{{vm.business.site.id}}</a>
+        </dd>
+        <dt><span>Job</span></dt>
+        <dd>
+            <a ui-sref="input-properties-detail({id:vm.business.job.id})">{{vm.business.job.id}}</a>
         </dd>
     </dl>
 

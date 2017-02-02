@@ -39,12 +39,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = SigterraWebApp.class)
 public class ItemDataResourceIntTest {
 
-    private static final String DEFAULT_TITLE = "AAAAAAAAAA";
-    private static final String UPDATED_TITLE = "BBBBBBBBBB";
-
-    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
-
     private static final LocalDate DEFAULT_CREATED_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_CREATED_DATE = LocalDate.now(ZoneId.systemDefault());
 
@@ -59,6 +53,9 @@ public class ItemDataResourceIntTest {
 
     private static final String DEFAULT_THIRD_IMAGE = "AAAAAAAAAA";
     private static final String UPDATED_THIRD_IMAGE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_LINK = "AAAAAAAAAA";
+    private static final String UPDATED_LINK = "BBBBBBBBBB";
 
     @Inject
     private ItemDataRepository itemDataRepository;
@@ -94,13 +91,12 @@ public class ItemDataResourceIntTest {
      */
     public static ItemData createEntity(EntityManager em) {
         ItemData itemData = new ItemData()
-                .title(DEFAULT_TITLE)
-                .description(DEFAULT_DESCRIPTION)
                 .createdDate(DEFAULT_CREATED_DATE)
                 .modifiedDate(DEFAULT_MODIFIED_DATE)
                 .firstImage(DEFAULT_FIRST_IMAGE)
                 .secondImage(DEFAULT_SECOND_IMAGE)
-                .thirdImage(DEFAULT_THIRD_IMAGE);
+                .thirdImage(DEFAULT_THIRD_IMAGE)
+                .link(DEFAULT_LINK);
         return itemData;
     }
 
@@ -125,13 +121,12 @@ public class ItemDataResourceIntTest {
         List<ItemData> itemData = itemDataRepository.findAll();
         assertThat(itemData).hasSize(databaseSizeBeforeCreate + 1);
         ItemData testItemData = itemData.get(itemData.size() - 1);
-        assertThat(testItemData.getTitle()).isEqualTo(DEFAULT_TITLE);
-        assertThat(testItemData.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testItemData.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testItemData.getModifiedDate()).isEqualTo(DEFAULT_MODIFIED_DATE);
         assertThat(testItemData.getFirstImage()).isEqualTo(DEFAULT_FIRST_IMAGE);
         assertThat(testItemData.getSecondImage()).isEqualTo(DEFAULT_SECOND_IMAGE);
         assertThat(testItemData.getThirdImage()).isEqualTo(DEFAULT_THIRD_IMAGE);
+        assertThat(testItemData.getLink()).isEqualTo(DEFAULT_LINK);
     }
 
     @Test
@@ -145,13 +140,12 @@ public class ItemDataResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(itemData.getId().intValue())))
-                .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
-                .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
                 .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
                 .andExpect(jsonPath("$.[*].modifiedDate").value(hasItem(DEFAULT_MODIFIED_DATE.toString())))
                 .andExpect(jsonPath("$.[*].firstImage").value(hasItem(DEFAULT_FIRST_IMAGE.toString())))
                 .andExpect(jsonPath("$.[*].secondImage").value(hasItem(DEFAULT_SECOND_IMAGE.toString())))
-                .andExpect(jsonPath("$.[*].thirdImage").value(hasItem(DEFAULT_THIRD_IMAGE.toString())));
+                .andExpect(jsonPath("$.[*].thirdImage").value(hasItem(DEFAULT_THIRD_IMAGE.toString())))
+                .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK.toString())));
     }
 
     @Test
@@ -165,13 +159,12 @@ public class ItemDataResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(itemData.getId().intValue()))
-            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
             .andExpect(jsonPath("$.modifiedDate").value(DEFAULT_MODIFIED_DATE.toString()))
             .andExpect(jsonPath("$.firstImage").value(DEFAULT_FIRST_IMAGE.toString()))
             .andExpect(jsonPath("$.secondImage").value(DEFAULT_SECOND_IMAGE.toString()))
-            .andExpect(jsonPath("$.thirdImage").value(DEFAULT_THIRD_IMAGE.toString()));
+            .andExpect(jsonPath("$.thirdImage").value(DEFAULT_THIRD_IMAGE.toString()))
+            .andExpect(jsonPath("$.link").value(DEFAULT_LINK.toString()));
     }
 
     @Test
@@ -192,13 +185,12 @@ public class ItemDataResourceIntTest {
         // Update the itemData
         ItemData updatedItemData = itemDataRepository.findOne(itemData.getId());
         updatedItemData
-                .title(UPDATED_TITLE)
-                .description(UPDATED_DESCRIPTION)
                 .createdDate(UPDATED_CREATED_DATE)
                 .modifiedDate(UPDATED_MODIFIED_DATE)
                 .firstImage(UPDATED_FIRST_IMAGE)
                 .secondImage(UPDATED_SECOND_IMAGE)
-                .thirdImage(UPDATED_THIRD_IMAGE);
+                .thirdImage(UPDATED_THIRD_IMAGE)
+                .link(UPDATED_LINK);
 
         restItemDataMockMvc.perform(put("/api/item-data")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -209,13 +201,12 @@ public class ItemDataResourceIntTest {
         List<ItemData> itemData = itemDataRepository.findAll();
         assertThat(itemData).hasSize(databaseSizeBeforeUpdate);
         ItemData testItemData = itemData.get(itemData.size() - 1);
-        assertThat(testItemData.getTitle()).isEqualTo(UPDATED_TITLE);
-        assertThat(testItemData.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testItemData.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testItemData.getModifiedDate()).isEqualTo(UPDATED_MODIFIED_DATE);
         assertThat(testItemData.getFirstImage()).isEqualTo(UPDATED_FIRST_IMAGE);
         assertThat(testItemData.getSecondImage()).isEqualTo(UPDATED_SECOND_IMAGE);
         assertThat(testItemData.getThirdImage()).isEqualTo(UPDATED_THIRD_IMAGE);
+        assertThat(testItemData.getLink()).isEqualTo(UPDATED_LINK);
     }
 
     @Test

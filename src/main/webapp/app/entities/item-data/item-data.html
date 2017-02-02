@@ -1,4 +1,4 @@
-<div class="entiti-content">
+<div>
     <h2>Item Data</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
@@ -19,29 +19,35 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="title"><span>Title</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="description"><span>Description</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="createdDate"><span>Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="modifiedDate"><span>Modified Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="firstImage"><span>First Image</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="secondImage"><span>Second Image</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="thirdImage"><span>Third Image</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="link"><span>Link</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="item.id"><span>Item</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name.id"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description.id"><span>Description</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="itemData in vm.itemData track by itemData.id">
                     <td><a ui-sref="item-data-detail({id:itemData.id})">{{itemData.id}}</a></td>
-                    <td>{{itemData.title}}</td>
-                    <td>{{itemData.description}}</td>
                         <td>{{itemData.createdDate | date:'mediumDate'}}</td>
                         <td>{{itemData.modifiedDate | date:'mediumDate'}}</td>
                     <td>{{itemData.firstImage}}</td>
                     <td>{{itemData.secondImage}}</td>
                     <td>{{itemData.thirdImage}}</td>
+                    <td>{{itemData.link}}</td>
                     <td>
                         <a ui-sref="item-detail({id:itemData.item.id})">{{itemData.item.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="input-properties-detail({id:itemData.name.id})">{{itemData.name.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="input-properties-detail({id:itemData.description.id})">{{itemData.description.id}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

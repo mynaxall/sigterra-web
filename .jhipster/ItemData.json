@@ -6,17 +6,25 @@
             "otherEntityName": "item",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "name",
+            "otherEntityName": "inputProperties",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "itemData"
+        },
+        {
+            "relationshipName": "description",
+            "otherEntityName": "inputProperties",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "itemData"
         }
     ],
     "fields": [
-        {
-            "fieldName": "title",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "description",
-            "fieldType": "String"
-        },
         {
             "fieldName": "createdDate",
             "fieldType": "LocalDate"
@@ -35,6 +43,10 @@
         },
         {
             "fieldName": "thirdImage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "link",
             "fieldType": "String"
         }
     ],

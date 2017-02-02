@@ -1,4 +1,4 @@
-<div class="entiti-content">
+<div>
     <h2>Businesses</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
@@ -24,13 +24,6 @@
                     <th jh-sort-by="modifiedDate"><span>Modified Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="pisition"><span>Pisition</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="icon"><span>Icon</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="userName"><span>User Name</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="jobPosition"><span>Job Position</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="companyName"><span>Company Name</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="companySite"><span>Company Site</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="email"><span>Email</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="phone"><span>Phone</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="address"><span>Address</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="twitter"><span>Twitter</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="facebook"><span>Facebook</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="google"><span>Google</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -40,6 +33,13 @@
                     <th jh-sort-by="color"><span>Color</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="cardlet.id"><span>Cardlet</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="tabType.id"><span>Tab Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="userName.id"><span>User Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="userEmail.id"><span>User Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="phone.id"><span>Phone</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address.id"><span>Address</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="company.id"><span>Company</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="site.id"><span>Site</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="job.id"><span>Job</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -51,13 +51,6 @@
                         <td>{{business.modifiedDate | date:'mediumDate'}}</td>
                     <td>{{business.pisition}}</td>
                     <td>{{business.icon}}</td>
-                    <td>{{business.userName}}</td>
-                    <td>{{business.jobPosition}}</td>
-                    <td>{{business.companyName}}</td>
-                    <td>{{business.companySite}}</td>
-                    <td>{{business.email}}</td>
-                    <td>{{business.phone}}</td>
-                    <td>{{business.address}}</td>
                     <td>{{business.twitter}}</td>
                     <td>{{business.facebook}}</td>
                     <td>{{business.google}}</td>
@@ -70,6 +63,27 @@
                     </td>
                     <td>
                         <a ui-sref="tab-type-detail({id:business.tabType.id})">{{business.tabType.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="input-properties-detail({id:business.userName.id})">{{business.userName.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="input-properties-detail({id:business.userEmail.id})">{{business.userEmail.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="input-properties-detail({id:business.phone.id})">{{business.phone.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="input-properties-detail({id:business.address.id})">{{business.address.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="input-properties-detail({id:business.company.id})">{{business.company.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="input-properties-detail({id:business.site.id})">{{business.site.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="input-properties-detail({id:business.job.id})">{{business.job.id}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

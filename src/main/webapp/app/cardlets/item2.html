@@ -1,16 +1,16 @@
 <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
 <div>
     <div class="cardlet" ng-init="initSlide(tabName)" style="position: relative;">
-        <div style="background-color: #{{tabName.type.mainColor}}" class="item-top-div"></div>
-        <div style="background-color: #{{tabName.type.secondaryColor}}" class="item-bottom-div"></div>
+        <div style="background-color: #{{tabName.layout.mainColor}}" class="item-top-div"></div>
+        <div style="background-color: #{{tabName.layout.secondaryColor}}" class="item-bottom-div"></div>
         <div>
             <div ng-show="tabName.items.length <= 3">
                 <div class="main-carousel-image-div-2">
                     <div  ng-repeat="slide in tabName.items"  class="main-carousel-item-div">
-                        <div class="carousel-item-name-div" ng-style="{'font-weight': slide.nameItem.bold ? 'bold' : 'normal',
-                    'font-style': slide.nameItem.italic ? 'italic' : 'normal',
-                    'text-decoration': slide.nameItem.underline ? 'underline' : 'normal'}" ng-show="slide.nameItem.name">{{slide.nameItem.name}}</div>
-                        <div class="carousel-item-name-div" ng-show="!slide.nameItem.name">Maui Hotel</div>
+                        <div class="carousel-item-name-div" ng-style="{'font-weight': slide.name.bold ? 'bold' : 'normal',
+                    'font-style': slide.name.italic ? 'italic' : 'normal',
+                    'text-decoration': slide.name.underline ? 'underline' : 'normal'}" ng-show="slide.name.name">{{slide.name.name}}</div>
+                        <div class="carousel-item-name-div" ng-show="!slide.name.name">Maui Hotel</div>
                         <div id="cf4a">
                             <a href="{{slide.link}}" target="_blank">
                                 <img id="ing-1" class="item-images-3" ng-src="{{slide.image}}">
@@ -18,11 +18,11 @@
                                 <img id="ing-3"  class="item-images-3" ng-src="{{slide.image3}}">
                             </a>
                         </div>
-                        <div class="carousel-item-name-div carousel-item-deskript-div" ng-show="slide.description.name"
+                        <div class="carousel-item-name-div carousel-item-deskript-div" ng-show="slide.description.value"
                              ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
                     'font-style': slide.description.italic ? 'italic' : 'normal',
-                    'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.name}}</div>
-                        <div class="carousel-item-name-div carousel-item-deskript-div" ng-show="!slide.description.name">How To Fly A Private Jet On Your Next Trip</div>
+                    'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.value}}</div>
+                        <div class="carousel-item-name-div carousel-item-deskript-div" ng-show="!slide.description.value">How To Fly A Private Jet On Your Next Trip</div>
                     </div>
                 </div>
 
@@ -33,9 +33,9 @@
                     <div class="carousel-image-div">
 
                         <div  class="carousel-item-div">
-                            <div class="carousel-item-name-div"  ng-style="{'font-weight': slide.nameItem.bold ? 'bold' : 'normal',
-                    'font-style': slide.nameItem.italic ? 'italic' : 'normal',
-                    'text-decoration': slide.nameItem.underline ? 'underline' : 'normal'}">{{slide.nameItem.name}}</div>
+                            <div class="carousel-item-name-div"  ng-style="{'font-weight': slide.name.bold ? 'bold' : 'normal',
+                    'font-style': slide.name.italic ? 'italic' : 'normal',
+                    'text-decoration': slide.name.underline ? 'underline' : 'normal'}">{{slide.name.name}}</div>
                             <div id="cf4a">
                                 <a href="{{slide.link}}" target="_blank">
                                     <img id="ing-1" class="item-images-3" ng-src="{{slide.image}}">
@@ -45,13 +45,13 @@
                             </div>
                             <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
                     'font-style': slide.description.italic ? 'italic' : 'normal',
-                    'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.name}}</div>
+                    'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.value}}</div>
                         </div>
 
                         <div  class="carousel-item-div" ng-show="tabName.items.length >$index+1">
-                            <div class="carousel-item-name-div" ng-style="{'font-weight': tabName.items[$index+1].nameItem.bold ? 'bold' : 'normal',
-                    'font-style': tabName.items[$index+1].nameItem.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[$index+1].nameItem.underline ? 'underline' : 'normal'}">{{tabName.items[$index+1].nameItem.name}}</div>
+                            <div class="carousel-item-name-div" ng-style="{'font-weight': tabName.items[$index+1].name.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[$index+1].name.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[$index+1].name.underline ? 'underline' : 'normal'}">{{tabName.items[$index+1].name.name}}</div>
                             <div id="cf4a">
                                 <a href="{{tabName.items[$index+1].link}}" target="_blank">
                                     <img id="ing-1" class="item-images-3" ng-src="{{tabName.items[$index+1].image}}">
@@ -61,13 +61,13 @@
                             </div>
                             <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': tabName.items[$index+1].bold ? 'bold' : 'normal',
                     'font-style': tabName.items[$index+1].description.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[$index+1].description.underline ? 'underline' : 'normal'}">{{tabName.items[$index+1].description.name}}</div>
+                    'text-decoration': tabName.items[$index+1].description.underline ? 'underline' : 'normal'}">{{tabName.items[$index+1].description.value}}</div>
                         </div>
 
                         <div class="carousel-item-div"  ng-show="tabName.items.length >$index+2">
-                            <div class="carousel-item-name-div" ng-style="{'font-weight': tabName.items[$index+2].nameItem.bold ? 'bold' : 'normal',
-                    'font-style': tabName.items[$index+2].nameItem.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[$index+2].nameItem.underline ? 'underline' : 'normal'}">{{tabName.items[$index+2].nameItem.name}}</div>
+                            <div class="carousel-item-name-div" ng-style="{'font-weight': tabName.items[$index+2].name.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[$index+2].name.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[$index+2].name.underline ? 'underline' : 'normal'}">{{tabName.items[$index+2].name.name}}</div>
                             <div id="cf4a">
                                 <a href="{{tabName.items[$index+2].link}}" target="_blank">
                                     <img id="ing-1" class="item-images-3" ng-src="{{tabName.items[$index+2].image}}">
@@ -77,12 +77,12 @@
                             </div>
                             <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': tabName.items[$index+2].description.bold ? 'bold' : 'normal',
                     'font-style': tabName.items[$index+2].description.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[$index+2].description.underline ? 'underline' : 'normal'}">{{tabName.items[$index+2].description.name}}</div>
+                    'text-decoration': tabName.items[$index+2].description.underline ? 'underline' : 'normal'}">{{tabName.items[$index+2].description.value}}</div>
                         </div>
                         <div class="carousel-item-div" ng-show="tabName.items.length-3 < $index && tabName.items.length > 3">
-                            <div class="carousel-item-name-div" ng-style="{'font-weight': tabName.items[0].nameItem.bold ? 'bold' : 'normal',
-                    'font-style': tabName.items[0].nameItem.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[0].nameItem.underline ? 'underline' : 'normal'}">{{tabName.items[0].nameItem.name}}</div>
+                            <div class="carousel-item-name-div" ng-style="{'font-weight': tabName.items[0].name.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[0].name.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[0].name.underline ? 'underline' : 'normal'}">{{tabName.items[0].name.value}}</div>
                             <div id="cf4a">
                                 <a href="{{tabName.items[0].link}}" target="_blank">
                                     <img id="ing-1" class="item-images-3" ng-src="{{tabName.items[0].image}}">
@@ -92,13 +92,13 @@
                             </div>
                             <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': tabName.items[0].description.bold ? 'bold' : 'normal',
                     'font-style': tabName.items[0].description.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[0].description.underline ? 'underline' : 'normal'}">{{tabName.items[0].description.name}}</div>
+                    'text-decoration': tabName.items[0].description.underline ? 'underline' : 'normal'}">{{tabName.items[0].description.value}}</div>
                         </div>
 
                         <div  class="carousel-item-div" ng-show="tabName.items.length-2 < $index && tabName.items.length > 3">
-                            <div class="carousel-item-name-div" ng-style="{'font-weight': tabName.items[1].nameItem.bold ? 'bold' : 'normal',
-                    'font-style': tabName.items[1].nameItem.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[1].nameItem.underline ? 'underline' : 'normal'}">{{tabName.items[1].nameItem.name}}</div>
+                            <div class="carousel-item-name-div" ng-style="{'font-weight': tabName.items[1].name.bold ? 'bold' : 'normal',
+                    'font-style': tabName.items[1].name.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.items[1].name.underline ? 'underline' : 'normal'}">{{tabName.items[1].name.value}}</div>
                             <div id="cf4a">
                                 <a href="{{tabName.items[1].link}}" target="_blank">
                                     <img id="ing-1" class="item-images-3" ng-src="{{tabName.items[1].image}}" >
@@ -108,7 +108,7 @@
                             </div>
                             <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': tabName.items[1].description.bold ? 'bold' : 'normal',
                     'font-style': tabName.items[1].description.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[1].description.underline ? 'underline' : 'normal'}">{{tabName.items[1].description.name}}</div>
+                    'text-decoration': tabName.items[1].description.underline ? 'underline' : 'normal'}">{{tabName.items[1].description.value}}</div>
                         </div>
                     </div>
 

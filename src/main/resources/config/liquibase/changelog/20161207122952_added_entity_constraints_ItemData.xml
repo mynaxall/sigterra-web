@@ -14,5 +14,17 @@
                                  referencedColumnNames="id"
                                  referencedTableName="item"/>
 
+        <addForeignKeyConstraint baseColumnNames="name_id"
+                                 baseTableName="item_data"
+                                 constraintName="fk_item_data_name_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="input_properties"/>
+
+        <addForeignKeyConstraint baseColumnNames="description_id"
+                                 baseTableName="item_data"
+                                 constraintName="fk_item_data_description_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="input_properties"/>
+
     </changeSet>
 </databaseChangeLog>

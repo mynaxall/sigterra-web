@@ -3,15 +3,23 @@ package itomy.sigterra.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import itomy.sigterra.domain.*;
 
+import itomy.sigterra.repository.BusinessRepository;
 import itomy.sigterra.repository.CardletRepository;
+import itomy.sigterra.service.UserService;
+import itomy.sigterra.service.dto.CardletItemTab;
+import itomy.sigterra.service.dto.CardletTab;
+import itomy.sigterra.service.dto.ItemModel;
+import itomy.sigterra.service.dto.UserCardletDTO;
 import itomy.sigterra.web.rest.util.HeaderUtil;
 import itomy.sigterra.web.rest.util.PaginationUtil;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +39,13 @@ public class CardletResource {
 
     @Inject
     private CardletRepository cardletRepository;
+
+    @Inject
+    BusinessRepository businessRepository;
+
+    @Inject
+    private UserService userService;
+
 
     /**
      * POST  /cardlets : Create a new cardlet.
@@ -81,7 +96,7 @@ public class CardletResource {
      * @return the ResponseEntity with status 200 (OK) and the list of cardlets in body
      * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
      */
-    @GetMapping("/cardlets")
+    @GetMapping("/cardlets" )
     @Timed
     public ResponseEntity<List<?>> getAllCardlets(Pageable pageable)
         throws URISyntaxException {
@@ -158,6 +173,50 @@ public class CardletResource {
 
         }
         return new ResponseEntity<>(cardletDTOs, HttpStatus.OK);
+    }
+
+
+    @PostMapping(value = "/cardlet", produces=MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<UserCardletDTO> createCardlet(@RequestBody UserCardletDTO cardletDTO)
+        throws URISyntaxException {
+        log.debug("REST request to get a page of Cardlets22");
+        log.debug("asdasd==== "+cardletDTO);
+        Cardlet cardlet = new Cardlet();
+        cardlet.setName(cardletDTO.getCardletName());
+        cardlet.setUser(userService.getUserWithAuthorities());
+        Set <Business> businesses  = new HashSet<>();
+        Set <Item> items = new HashSet<>();
+        List<CardletTab> tabs = cardletDTO.getTabs();
+
+        for (CardletTab tab : tabs) {
+            if(tab.getTabType().equals(1)){
+                Business business = new Business();
+                business.setName(tab.getName());
+                business.setUserEmail(tab.getUserEmail());
+                business.setPisition(tab.getPosition());
+                business.setMainColor(tab.getLayout().getMainColor());
+                business.setColor(tab.getLayout().getSecondaryColor());
+                business.setUserName(tab.getUserName());
+                business.setPhone(tab.getPhone());
+                business.setAddress(tab.getAddress());
+                business.setCompany(tab.getCompany());
+                business.setSite(tab.getSite());
+                business.setJob(tab.getJob());
+                business.setTwitter(tab.getSocialLinks().getTwitter());
+                business.setFacebook(tab.getSocialLinks().getFacebook());
+                business.setGoogle(tab.getSocialLinks().getGoogle());
+                business.setLinkedIn(tab.getSocialLinks().getLinkedin());
+//                business.setCardlet(cardlet);
+                businesses.add(business);
+            }
+
+        }
+        cardlet.setBusinesses(businesses);
+
+        cardletRepository.save(cardlet);
+
+        return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
     }
 
 

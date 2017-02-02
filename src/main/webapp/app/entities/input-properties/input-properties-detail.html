@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span>Input Properties</span> {{vm.inputProperties.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Value</span></dt>
+        <dd>
+            <span>{{vm.inputProperties.value}}</span>
+        </dd>
+        <dt><span>Bold</span></dt>
+        <dd>
+            <span>{{vm.inputProperties.bold}}</span>
+        </dd>
+        <dt><span>Italic</span></dt>
+        <dd>
+            <span>{{vm.inputProperties.italic}}</span>
+        </dd>
+        <dt><span>Underline</span></dt>
+        <dd>
+            <span>{{vm.inputProperties.underline}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="input-properties-detail.edit({id:vm.inputProperties.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>
