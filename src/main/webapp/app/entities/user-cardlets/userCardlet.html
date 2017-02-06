@@ -1,6 +1,60 @@
 <script src="/app/entities/cardlet-list/jscolor.js"></script>
+<div class="add-new-header">
+    <div class="add-new-header-text">
+        Have you been prospecting for months on end, only to end up with no one? Or have you been trying to sell a product or service that has not been selling? Or you just kind of depressed about your current employment?
+    </div>
+    <div style="position: relative">
+        <div class="border-line-new-header"></div>
+        <div class="add-new-btn">
+            <button class="saveButton" ui-sref="cardletlist">Create new</button>
+        </div>
+    </div>
+</div>
 <div class="entiti-content">
 <style>
+
+    .border-line-new-header{
+        background-color: #D0D8D9;
+        position: absolute;
+        height: 1px;
+        width: 100%;
+        top: 25px;
+    }
+
+    .add-new-btn{
+        background: #FFF;
+        width:250px;
+        position: relative;
+        z-index:100;
+        margin: auto;
+        margin-top: 25px;
+    }
+
+    .add-new-header{
+        position: relative;
+        height: 200px;
+        background-color: #fff;
+        text-align: center;
+        padding-top: 40px;
+        font-size: 14px;
+        color: #4A4A4A;
+    }
+
+    .user-cardlets-footer{
+        height: 250px;
+        background-color: #fff;
+        text-align: center;
+        padding-top: 40px;
+        font-size: 14px;
+        color: #4A4A4A;
+        position: relative;
+    }
+
+    .add-new-header-text{
+        padding-right: 10%;
+        padding-left: 10%;
+        width: 100%;
+    }
 
     .cardlet-name-panel{
         margin-bottom: 30px;
@@ -21,10 +75,10 @@
     .user-cardlet-panel{
         min-width: 600px;
         padding-top: 50px;
-        margin-left: 5%;
-        margin-right: 5%;
+        padding-left: 5%;
+        padding-right: 5%;
         padding-bottom: 50px;
-        background-color: #fff;
+        background-color: #F9F9F9;
         box-shadow: none;
     }
 
@@ -365,6 +419,42 @@
         margin-right: 10px;
     }
 
+    .create-new-cardlet{
+        width: 500px;
+        height: 220px;
+        background: #FFF;
+        margin: auto;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 5px;
+        border-color: #D0D8D9;
+        color: #E8645A;
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        margin-top: 80px;
+    }
+    .crate-new-btn{
+        margin-top: 20px;
+    }
+
+    .add-new-panel{
+        margin-top: 50px;
+    }
+
+    .mail-us-btn{
+        width: 100px;
+        position: relative;
+        z-index: 100;
+        margin: auto;
+        margin-top: 15px;
+        background: #fff;
+        margin-bottom: 30px;
+    }
+
+
+
 
 </style>
 
@@ -375,7 +465,8 @@
                         <div class="cardlet-name">{{tabNames.cardletName}}</div>
                         <div>
                             <ul class="tab2">
-                                <li style="background-color: #fff" class="tabs2 tabs2{{tabNames.id}}" ng-style="addColors(tabName.position+tabName.name+tabNames.id, tabName.layout.mainColor, tabName.layout.secondaryColor, $index)" ng-repeat="tabName in tabNames.tabs" id="{{tabName.position}}{{tabName.name}}{{tabNames.id}}">
+                                <li style="background-color: #fff" class="tabs2 tabs2{{tabNames.id}}" ng-style="addColors(tabName.position+tabName.name+tabNames.id, tabName.layout.mainColor, tabName.layout.secondaryColor, $index)" ng-repeat="tabName in tabNames.tabs" ng-class="tabName.position == 0 ? 'active' : ''"
+                                    id="{{tabName.position}}{{tabName.name}}{{tabNames.id}}">
                                     <div style="position: relative">
                                         <a href="javascript:void(0)" class="tablinks2 tablinks2{{tabNames.id}}" ng-click="openCard(tabName.name+tabName.position+tabNames.id, tabName.position+tabName.name+tabNames.id, tabNames.id)">{{tabName.name}}</a>
                                     </div>
@@ -384,7 +475,7 @@
                             </ul>
                         </div>
 
-                        <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}{{tabNames.id}}" class="tabcontent2 tabcontent2{{tabNames.id}}">
+                        <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}{{tabNames.id}}" class="tabcontent2 tabcontent2{{tabNames.id}}" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
                                 <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
                         </div>
                         <div class="cardlet-button-panel row">
@@ -404,7 +495,7 @@
                                 </div>
                             </div>
                             <div class=" catdlet-btn-col">
-                                <div class="catdlet-btn">
+                                <div class="catdlet-btn" ng-click="delteCardlet(tabNames.id)">
                                     <img src="/app/entities/user-cardlets/img/btn-icon/delete_icon.png">
                                 </div>
                             </div>
@@ -412,12 +503,31 @@
                         </div>
                     </div>
                 </div>
+                <div style="margin-bottom: 30px;" class="col-lg-6">
+                    <div class="create-new-cardlet" ui-sref="cardletlist">
+                        <div class="add-new-panel">
+                            <img src="/app/entities/user-cardlets/img/btn-icon/plus_icon.png">
+                            <div class="crate-new-btn">Create new</div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
+    <div class="user-cardlets-footer">
+        <div class="border-line-footer"></div>
+        <div class="mail-us-btn">
+            <img src="/app/entities/user-cardlets/img/btn-icon/envelope_icon.png">
+        </div>
+        <div class="add-new-header-text">
+            Have you been prospecting for months on end, only to end up with no one? Or have you been trying to sell a product or service that has not been selling? Or you just kind of depressed about your current employment?
+        </div>
+        <div class="add-new-btn">
+            <button class="saveButton" ng-click="saveCardlet()">Mail us</button>
         </div>
     </div>
 
     <style>
-
 
         a.accordion-section-title.active{
             background-color: #ECECEC!important;
@@ -489,6 +599,7 @@
         }
 
     </style>
+
 </div>
 
 

@@ -134,12 +134,12 @@ public class CardletResource {
      * @param id the id of the cardlet to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping("/cardlets/{id}")
+    @GetMapping("/cardletDelete/{id}")
     @Timed
-    public ResponseEntity<Void> deleteCardlet(@PathVariable Long id) {
+    public ResponseEntity<List<?>> deleteCardlet(@PathVariable Long id) {
         log.debug("REST request to delete Cardlet : {}", id);
-        cardletRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("cardlet", id.toString())).build();
+        List<UserCardletDTO> usetCardletDTOs = cardletService.deleteCardlet(id);
+        return new ResponseEntity<>(usetCardletDTOs, HttpStatus.OK);
     }
 
     @GetMapping("/userCardlets")

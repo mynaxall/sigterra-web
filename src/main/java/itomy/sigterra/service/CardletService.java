@@ -1,9 +1,6 @@
 package itomy.sigterra.service;
 
-import itomy.sigterra.domain.Business;
-import itomy.sigterra.domain.Cardlet;
-import itomy.sigterra.domain.Item;
-import itomy.sigterra.domain.ItemData;
+import itomy.sigterra.domain.*;
 import itomy.sigterra.repository.*;
 import itomy.sigterra.service.dto.*;
 import org.slf4j.Logger;
@@ -138,6 +135,47 @@ public class CardletService {
 
         return usetCardletDTOs;
     }
+
+
+    public List<UserCardletDTO> deleteCardlet(Long id){
+
+        Cardlet cardlet = cardletRepository.findOne(id);
+        Set<Business> businesses = cardlet.getBusinesses();
+        Set<Item> items = cardlet.getItems();
+        for (Item item : items) {
+            Set<ItemData> itemDatas = item.getItemData();
+            for (ItemData itemData : itemDatas) {
+                if(itemData.getDescription() != null)
+                inputPropertiesRepository.delete(itemData.getDescription());
+                if(itemData.getName() != null)
+                inputPropertiesRepository.delete(itemData.getName());
+                itemDataRepository.delete(itemData);
+            }
+            itemRepository.delete(item);
+        }
+        for (Business business : businesses) {
+            if(business.getAddress() != null)
+            inputPropertiesRepository.delete(business.getAddress());
+            if(business.getCompany() != null)
+            inputPropertiesRepository.delete(business.getCompany());
+            if(business.getJob() != null)
+            inputPropertiesRepository.delete(business.getJob());
+            if(business.getPhone() != null)
+            inputPropertiesRepository.delete(business.getPhone());
+            if(business.getSite() != null)
+            inputPropertiesRepository.delete(business.getSite());
+            if(business.getUserEmail() != null)
+            inputPropertiesRepository.delete(business.getUserEmail());
+            if(business.getUserName() != null)
+            inputPropertiesRepository.delete(business.getUserName());
+            businessRepository.delete(business);
+        }
+        cardletRepository.delete(cardlet);
+
+        List<UserCardletDTO> userCardletDTOs = userCardlets();
+        return userCardletDTOs;
+    }
+
 
 
 

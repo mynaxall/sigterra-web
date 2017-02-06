@@ -790,5 +790,13 @@ Social Buttons
     top: 230px;
 }
 
+.border-line-footer{
+    background-color: #D0D8D9;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 70px;
+}
+
 
 

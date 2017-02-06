@@ -190,20 +190,21 @@
                 });
         }
 
+        $scope.delteCardlet = function(id){
+            $http.get("/api/cardletDelete/"+id)
+                .success(function(response, status, headers) {
+                    console.log(response);
+                    $scope.userCardlets = response;
+                });
+        }
+
         $scope.getItemTypes();
         $scope.getTabTypes();
 
         $scope.isNewTab = true;
 
 
-        angular.element(document).ready(function () {
-            setTimeout(function(){
-                angular.forEach($scope.userCardlets, function (item) {
-                    document.getElementsByClassName("tabcontent2"+item.id)[0].style.display = "block";
-                    document.getElementsByClassName("tabs2"+item.id)[0].className += " active";
-                })
-                , 1500});
-        });
+
 
 
         $scope.addItem = function() {
