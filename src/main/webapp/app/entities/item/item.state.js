@@ -121,6 +121,7 @@
                                 modifiDate: null,
                                 mainColor: null,
                                 color: null,
+                                pisition: null,
                                 id: null
                             };
                         }

@@ -8,13 +8,13 @@ import java.util.List;
  */
 public class UserCardletDTO implements Serializable {
     private String cardletName;
-    private int id;
+    private Long id;
     private List<CardletTab> tabs;
 
     public UserCardletDTO() {
     }
 
-    public UserCardletDTO(String cardletName, int id, List<CardletTab> tabs) {
+    public UserCardletDTO(String cardletName, Long id, List<CardletTab> tabs) {
         this.cardletName = cardletName;
         this.id = id;
         this.tabs = tabs;
@@ -28,11 +28,11 @@ public class UserCardletDTO implements Serializable {
         this.cardletName = cardletName;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

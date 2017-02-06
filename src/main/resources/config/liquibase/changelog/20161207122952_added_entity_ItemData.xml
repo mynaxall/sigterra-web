@@ -45,6 +45,14 @@
                 <constraints nullable="true" />
             </column>
             
+            <column name="position" type="integer">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="tab_index" type="integer">
+                <constraints nullable="true" />
+            </column>
+            
             <column name="item_id" type="bigint">
                 <constraints nullable="true" />
             </column>

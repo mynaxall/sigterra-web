@@ -44,6 +44,10 @@
         {
             "fieldName": "color",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "pisition",
+            "fieldType": "Integer"
         }
     ],
     "changelogDate": "20161207122219",

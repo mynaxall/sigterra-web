@@ -57,6 +57,9 @@ public class ItemResourceIntTest {
     private static final String DEFAULT_COLOR = "AAAAAAAAAA";
     private static final String UPDATED_COLOR = "BBBBBBBBBB";
 
+    private static final Integer DEFAULT_PISITION = 1;
+    private static final Integer UPDATED_PISITION = 2;
+
     @Inject
     private ItemRepository itemRepository;
 
@@ -96,7 +99,8 @@ public class ItemResourceIntTest {
                 .createdDate(DEFAULT_CREATED_DATE)
                 .modifiDate(DEFAULT_MODIFI_DATE)
                 .mainColor(DEFAULT_MAIN_COLOR)
-                .color(DEFAULT_COLOR);
+                .color(DEFAULT_COLOR)
+                .pisition(DEFAULT_PISITION);
         return item;
     }
 
@@ -127,6 +131,7 @@ public class ItemResourceIntTest {
         assertThat(testItem.getModifiDate()).isEqualTo(DEFAULT_MODIFI_DATE);
         assertThat(testItem.getMainColor()).isEqualTo(DEFAULT_MAIN_COLOR);
         assertThat(testItem.getColor()).isEqualTo(DEFAULT_COLOR);
+        assertThat(testItem.getPisition()).isEqualTo(DEFAULT_PISITION);
     }
 
     @Test
@@ -145,7 +150,8 @@ public class ItemResourceIntTest {
                 .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
                 .andExpect(jsonPath("$.[*].modifiDate").value(hasItem(DEFAULT_MODIFI_DATE.toString())))
                 .andExpect(jsonPath("$.[*].mainColor").value(hasItem(DEFAULT_MAIN_COLOR.toString())))
-                .andExpect(jsonPath("$.[*].color").value(hasItem(DEFAULT_COLOR.toString())));
+                .andExpect(jsonPath("$.[*].color").value(hasItem(DEFAULT_COLOR.toString())))
+                .andExpect(jsonPath("$.[*].pisition").value(hasItem(DEFAULT_PISITION)));
     }
 
     @Test
@@ -164,7 +170,8 @@ public class ItemResourceIntTest {
             .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
             .andExpect(jsonPath("$.modifiDate").value(DEFAULT_MODIFI_DATE.toString()))
             .andExpect(jsonPath("$.mainColor").value(DEFAULT_MAIN_COLOR.toString()))
-            .andExpect(jsonPath("$.color").value(DEFAULT_COLOR.toString()));
+            .andExpect(jsonPath("$.color").value(DEFAULT_COLOR.toString()))
+            .andExpect(jsonPath("$.pisition").value(DEFAULT_PISITION));
     }
 
     @Test
@@ -190,7 +197,8 @@ public class ItemResourceIntTest {
                 .createdDate(UPDATED_CREATED_DATE)
                 .modifiDate(UPDATED_MODIFI_DATE)
                 .mainColor(UPDATED_MAIN_COLOR)
-                .color(UPDATED_COLOR);
+                .color(UPDATED_COLOR)
+                .pisition(UPDATED_PISITION);
 
         restItemMockMvc.perform(put("/api/items")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -207,6 +215,7 @@ public class ItemResourceIntTest {
         assertThat(testItem.getModifiDate()).isEqualTo(UPDATED_MODIFI_DATE);
         assertThat(testItem.getMainColor()).isEqualTo(UPDATED_MAIN_COLOR);
         assertThat(testItem.getColor()).isEqualTo(UPDATED_COLOR);
+        assertThat(testItem.getPisition()).isEqualTo(UPDATED_PISITION);
     }
 
     @Test

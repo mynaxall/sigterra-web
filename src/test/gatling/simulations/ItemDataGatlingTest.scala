@@ -67,7 +67,7 @@ class ItemDataGatlingTest extends Simulation {
             .exec(http("Create new itemData")
             .post("/api/item-data")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "createdDate":"2020-01-01T00:00:00.000Z", "modifiedDate":"2020-01-01T00:00:00.000Z", "firstImage":"SAMPLE_TEXT", "secondImage":"SAMPLE_TEXT", "thirdImage":"SAMPLE_TEXT", "link":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "createdDate":"2020-01-01T00:00:00.000Z", "modifiedDate":"2020-01-01T00:00:00.000Z", "firstImage":"SAMPLE_TEXT", "secondImage":"SAMPLE_TEXT", "thirdImage":"SAMPLE_TEXT", "link":"SAMPLE_TEXT", "position":"0", "tabIndex":"0"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_itemData_url"))).exitHereIfFailed
             .pause(10)

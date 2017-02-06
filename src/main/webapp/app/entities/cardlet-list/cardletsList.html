@@ -1,6 +1,8 @@
 <script src="/app/entities/cardlet-list/jscolor.js"></script>
 <div class="entiti-content">
 
+    {{tabNames}}
+
 <style>
 
     .cardlet-name-panel{
@@ -388,7 +390,7 @@
                                     </script>
                                     <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor" value="FFFFFF">
                                     <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor" value="4BABE2">
-                                    <div ng-repeat="itemType in itemTypes" style="margin-bottom: 20px;">
+                                    <div ng-repeat="itemType in itemTypes" style="margin-bottom: 30px;">
                                         <ng-include ng-click="chooseType(tabName.position, itemType.path, itemType.id)" style="display: block!important" src="itemType.path" ></ng-include>
                                     </div>
 
@@ -640,7 +642,7 @@
                                     </script>
                                     <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor" value="FFFFFF">
                                     <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor" value="4BABE2">
-                                    <div ng-repeat="tabType in tabTypes" style="margin-bottom: 20px;">
+                                    <div ng-repeat="tabType in tabTypes" style="margin-bottom: 30px;">
                                         <ng-include ng-click="chooseType(tabName.position, tabType.path, tabType.id)" style="display: block!important" src="tabType.path" ></ng-include>
                                     </div>
 

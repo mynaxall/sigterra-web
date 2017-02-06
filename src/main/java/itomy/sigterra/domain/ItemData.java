@@ -37,6 +37,12 @@ public class ItemData implements Serializable {
     @Column(name = "link")
     private String link;
 
+    @Column(name = "position")
+    private Integer position;
+
+    @Column(name = "tab_index")
+    private Integer tabIndex;
+
     @ManyToOne
     private Item item;
 
@@ -134,6 +140,32 @@ public class ItemData implements Serializable {
         this.link = link;
     }
 
+    public Integer getPosition() {
+        return position;
+    }
+
+    public ItemData position(Integer position) {
+        this.position = position;
+        return this;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
+    }
+
+    public Integer getTabIndex() {
+        return tabIndex;
+    }
+
+    public ItemData tabIndex(Integer tabIndex) {
+        this.tabIndex = tabIndex;
+        return this;
+    }
+
+    public void setTabIndex(Integer tabIndex) {
+        this.tabIndex = tabIndex;
+    }
+
     public Item getItem() {
         return item;
     }
@@ -203,6 +235,8 @@ public class ItemData implements Serializable {
             ", secondImage='" + secondImage + "'" +
             ", thirdImage='" + thirdImage + "'" +
             ", link='" + link + "'" +
+            ", position='" + position + "'" +
+            ", tabIndex='" + tabIndex + "'" +
             '}';
     }
 }

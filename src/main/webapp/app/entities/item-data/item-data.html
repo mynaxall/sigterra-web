@@ -25,6 +25,8 @@
                     <th jh-sort-by="secondImage"><span>Second Image</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="thirdImage"><span>Third Image</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="link"><span>Link</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="position"><span>Position</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tabIndex"><span>Tab Index</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="item.id"><span>Item</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name.id"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="description.id"><span>Description</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -40,6 +42,8 @@
                     <td>{{itemData.secondImage}}</td>
                     <td>{{itemData.thirdImage}}</td>
                     <td>{{itemData.link}}</td>
+                    <td>{{itemData.position}}</td>
+                    <td>{{itemData.tabIndex}}</td>
                     <td>
                         <a ui-sref="item-detail({id:itemData.item.id})">{{itemData.item.id}}</a>
                     </td>

@@ -25,6 +25,7 @@
                     <th jh-sort-by="modifiDate"><span>Modifi Date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="mainColor"><span>Main Color</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="color"><span>Color</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pisition"><span>Pisition</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="cardlet.id"><span>Cardlet</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="tabType.id"><span>Tab Type</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
@@ -39,6 +40,7 @@
                         <td>{{item.modifiDate | date:'mediumDate'}}</td>
                     <td>{{item.mainColor}}</td>
                     <td>{{item.color}}</td>
+                    <td>{{item.pisition}}</td>
                     <td>
                         <a ui-sref="cardlet-detail({id:item.cardlet.id})">{{item.cardlet.id}}</a>
                     </td>
