@@ -151,11 +151,30 @@ public class CardletResource {
         List<UserCardletDTO> usetCardletDTOs = cardletService.userCardlets();
         log.debug("REST request to get a page of Cardlets");
 
-
-
-
         return new ResponseEntity<>(usetCardletDTOs, HttpStatus.OK);
     }
+
+
+    @GetMapping("/cardlet/{id}")
+    @Timed
+    public ResponseEntity<?> getCardletById(@PathVariable Long id) {
+        log.debug("REST request to get Cardlet : {}", id);
+        UserCardletDTO usetCardletDTOs = cardletService.getCardlet(id);
+        return new ResponseEntity<>(usetCardletDTOs, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/editCardlet", produces=MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<UserCardletDTO> editCardlet(@RequestBody UserCardletDTO cardletDTO)
+        throws URISyntaxException {
+
+
+        cardletService.createCardlet(cardletDTO, true);
+
+        return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
+    }
+
+
 
 
     @PostMapping(value = "/cardlet", produces=MediaType.APPLICATION_JSON_VALUE)
@@ -164,7 +183,7 @@ public class CardletResource {
         throws URISyntaxException {
 
 
-        cardletService.createCardlet(cardletDTO);
+        cardletService.createCardlet(cardletDTO, false);
 
         return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
     }

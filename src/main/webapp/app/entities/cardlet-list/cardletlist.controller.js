@@ -5,9 +5,9 @@
         .module('sigterraWebApp')
         .controller('CardletListController', CardletListController);
 
-    CardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout'];
+    CardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location'];
 
-    function CardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout) {
+    function CardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location) {
         var vm = this;
 
         vm.loadPage = loadPage;
@@ -16,7 +16,7 @@
         vm.transition = transition;
 
         $scope.tabNames ={
-            "cardletName": "catdlet",
+            "cardletName": "cardlet",
             "tabs":
                 [{
                     "name": "card",
@@ -209,7 +209,7 @@
                     "position": $scope.tabNames.tabs.length,
                     "tabType": 2,
                     "layout":{
-                        "id": $scope.itemTypes[0].tabId,
+                        "tabId": $scope.itemTypes[0].id,
                         "url": $scope.itemTypes[0].path,
                         "mainColor": "FFFFFF",
                         "secondaryColor": "4BABE2"
@@ -283,7 +283,6 @@
                 $scope.tabNames.tabs[tabId].items.splice((index-2), 1);
                 for (var i = 0; i < $scope.tabNames.tabs[tabId].items.length; i++) {
                     $scope.tabNames.tabs[tabId].items[i].index = i + 2;
-                    $scope.tabNames.tabs[tabId].items[i].name  =  (i+1)+" item";
                     $scope.tabNames.tabs[tabId].items[i].position = i;
                 }
             }
@@ -419,7 +418,7 @@
             console.log($scope.tabNames)
             $http.post("/api/cardlet",  $scope.tabNames)
                 .success(function (data, status, headers, config) {
-
+                    $location.path('/user-cardlets')
                 });
         }
     }

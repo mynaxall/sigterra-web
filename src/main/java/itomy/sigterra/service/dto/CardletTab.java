@@ -9,6 +9,8 @@ import java.util.List;
  * Created by alexander on 1/31/17.
  */
 public class CardletTab implements Serializable {
+
+    private Long id;
     private String name;
     private Integer position;
     private Integer tabType;
@@ -26,7 +28,8 @@ public class CardletTab implements Serializable {
     public CardletTab() {
     }
 
-    public CardletTab(String name, Integer position, Integer tabType, CardletLayout layout, List<ItemModel> items, InputProperties userName, InputProperties userEmail, InputProperties phone, InputProperties address, InputProperties company, InputProperties site, InputProperties job, BusinessSocialLinks socialLinks) {
+    public CardletTab(Long id,String name, Integer position, Integer tabType, CardletLayout layout, List<ItemModel> items, InputProperties userName, InputProperties userEmail, InputProperties phone, InputProperties address, InputProperties company, InputProperties site, InputProperties job, BusinessSocialLinks socialLinks) {
+        this.id = id;
         this.name = name;
         this.position = position;
         this.tabType = tabType;
@@ -40,6 +43,14 @@ public class CardletTab implements Serializable {
         this.site = site;
         this.job = job;
         this.socialLinks = socialLinks;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -149,7 +160,8 @@ public class CardletTab implements Serializable {
     @Override
     public String toString() {
         return "CardletTab{" +
-            "name='" + name + '\'' +
+            "id=" + id +
+            ", name='" + name + '\'' +
             ", position=" + position +
             ", tabType=" + tabType +
             ", layout=" + layout +

@@ -53,87 +53,102 @@ public class CardletService {
         List<Cardlet> caedletList = cardletRepository.findByUserIsCurrentUser();
         List<UserCardletDTO> usetCardletDTOs = new ArrayList<>();
         for (Cardlet cardlet : caedletList) {
-            UserCardletDTO userCardletDTO = new UserCardletDTO();
-            userCardletDTO.setCardletName(cardlet.getName());
-            userCardletDTO.setId(cardlet.getId());
-            Set<Business> businesses = cardlet.getBusinesses();
-            Set<Item> items = cardlet.getItems();
-            List<CardletTab> tabs = new ArrayList<>();
-            for (Business business : businesses) {
-                CardletTab cardletTab = new CardletTab();
-                cardletTab.setName(business.getName());
-                cardletTab.setPosition(business.getPisition());
-                cardletTab.setUserName(business.getUserName());
-                cardletTab.setUserEmail(business.getUserEmail());
-                cardletTab.setPhone(business.getPhone());
-                cardletTab.setAddress(business.getAddress());
-                cardletTab.setCompany(business.getCompany());
-                cardletTab.setSite(business.getSite());
-                cardletTab.setJob(business.getJob());
 
-                BusinessSocialLinks links = new BusinessSocialLinks();
-                links.setTwitter(business.getTwitter());
-                links.setFacebook(business.getFacebook());
-                links.setGoogle(business.getGoogle());
-                links.setLinkedin(business.getLinkedIn());
-
-                cardletTab.setSocialLinks(links);
-
-                CardletLayout cardletLayout = new CardletLayout();
-                cardletLayout.setMainColor(business.getMainColor());
-                cardletLayout.setSecondaryColor(business.getColor());
-                cardletLayout.setTabId(business.getTabType().getId());
-                cardletLayout.setUrl(business.getTabType().getPath());
-
-                cardletTab.setLayout(cardletLayout);
-                cardletTab.setTabType(Integer.valueOf(business.getTabType().getType()));
-
-                tabs.add(cardletTab);
-
-            }
-            for (Item item : items) {
-                CardletTab cardletTabItem = new CardletTab();
-                cardletTabItem.setName(item.getName());
-                cardletTabItem.setPosition(item.getPisition());
-                List <ItemModel> itemModels = new ArrayList<>();
-                Set<ItemData> itemDatas = item.getItemData();
-
-                for (ItemData itemData : itemDatas) {
-                    ItemModel itemModel = new ItemModel();
-                    itemModel.setDescription(itemData.getDescription());
-                    itemModel.setImage(itemData.getFirstImage());
-                    itemModel.setImage2(itemData.getSecondImage());
-                    itemModel.setImage3(itemData.getThirdImage());
-                    itemModel.setName(itemData.getName());
-                    itemModel.setIndex(itemData.getTabIndex());
-                    itemModel.setPosition(itemData.getPosition());
-                    itemModel.setLink(itemData.getLink());
-                    itemModels.add(itemModel);
-
-                }
-
-                cardletTabItem.setItems(itemModels);
-
-                CardletLayout cardletLayout = new CardletLayout();
-                cardletLayout.setMainColor(item.getMainColor());
-                cardletLayout.setSecondaryColor(item.getColor());
-                cardletLayout.setTabId(item.getTabType().getId());
-                cardletLayout.setUrl(item.getTabType().getPath());
-
-                cardletTabItem.setLayout(cardletLayout);
-
-                tabs.add(cardletTabItem);
-
-            }
-            userCardletDTO.setTabs(tabs);
+            UserCardletDTO userCardletDTO = createUserCatdletDTO(cardlet);
             usetCardletDTOs.add(userCardletDTO);
 
         }
 
-        log.info("usetCardletDTOs =======  "+ usetCardletDTOs);
 
 
         return usetCardletDTOs;
+    }
+
+    public UserCardletDTO createUserCatdletDTO(Cardlet cardlet){
+        UserCardletDTO userCardletDTO = new UserCardletDTO();
+        userCardletDTO.setCardletName(cardlet.getName());
+        userCardletDTO.setId(cardlet.getId());
+        Set<Business> businesses = cardlet.getBusinesses();
+        Set<Item> items = cardlet.getItems();
+        List<CardletTab> tabs = new ArrayList<>();
+        for (Business business : businesses) {
+            CardletTab cardletTab = new CardletTab();
+            cardletTab.setId(business.getId());
+            cardletTab.setName(business.getName());
+            cardletTab.setPosition(business.getPisition());
+            cardletTab.setUserName(business.getUserName());
+            cardletTab.setUserEmail(business.getUserEmail());
+            cardletTab.setPhone(business.getPhone());
+            cardletTab.setAddress(business.getAddress());
+            cardletTab.setCompany(business.getCompany());
+            cardletTab.setSite(business.getSite());
+            cardletTab.setJob(business.getJob());
+
+            BusinessSocialLinks links = new BusinessSocialLinks();
+            links.setTwitter(business.getTwitter());
+            links.setFacebook(business.getFacebook());
+            links.setGoogle(business.getGoogle());
+            links.setLinkedin(business.getLinkedIn());
+
+            cardletTab.setSocialLinks(links);
+
+            CardletLayout cardletLayout = new CardletLayout();
+            cardletLayout.setMainColor(business.getMainColor());
+            cardletLayout.setSecondaryColor(business.getColor());
+            cardletLayout.setTabId(business.getTabType().getId());
+            cardletLayout.setUrl(business.getTabType().getPath());
+
+            cardletTab.setLayout(cardletLayout);
+            cardletTab.setTabType(Integer.valueOf(business.getTabType().getType()));
+            tabs.add(cardletTab);
+
+        }
+        for (Item item : items) {
+            CardletTab cardletTabItem = new CardletTab();
+            cardletTabItem.setId(item.getId());
+            cardletTabItem.setName(item.getName());
+            cardletTabItem.setPosition(item.getPisition());
+            List <ItemModel> itemModels = new ArrayList<>();
+            Set<ItemData> itemDatas = item.getItemData();
+
+            for (ItemData itemData : itemDatas) {
+                ItemModel itemModel = new ItemModel();
+                itemModel.setId(itemData.getId());
+                itemModel.setDescription(itemData.getDescription());
+                itemModel.setImage(itemData.getFirstImage());
+                itemModel.setImage2(itemData.getSecondImage());
+                itemModel.setImage3(itemData.getThirdImage());
+                itemModel.setName(itemData.getName());
+                itemModel.setIndex(itemData.getTabIndex());
+                itemModel.setPosition(itemData.getPosition());
+                itemModel.setLink(itemData.getLink());
+                itemModels.add(itemModel);
+
+            }
+
+            cardletTabItem.setItems(itemModels);
+
+            CardletLayout cardletLayout = new CardletLayout();
+            cardletLayout.setMainColor(item.getMainColor());
+            cardletLayout.setSecondaryColor(item.getColor());
+            cardletLayout.setTabId(item.getTabType().getId());
+            cardletLayout.setUrl(item.getTabType().getPath());
+
+            cardletTabItem.setLayout(cardletLayout);
+            cardletTabItem.setTabType(Integer.valueOf(item.getTabType().getType()));
+            tabs.add(cardletTabItem);
+
+        }
+        userCardletDTO.setTabs(tabs);
+
+        return userCardletDTO;
+    }
+
+    public UserCardletDTO getCardlet(Long id){
+        Cardlet cardlet = cardletRepository.findOne(id);
+        UserCardletDTO userCardletDTO = createUserCatdletDTO(cardlet);
+
+       return userCardletDTO;
     }
 
 
@@ -179,10 +194,13 @@ public class CardletService {
 
 
 
-    public UserCardletDTO createCardlet(UserCardletDTO cardletDTO) {
+    public UserCardletDTO createCardlet(UserCardletDTO cardletDTO, boolean update) {
 
         log.debug("REST request to get a page of Cardlets22");
         Cardlet cardlet = new Cardlet();
+        if(update){
+            cardlet.setId(cardletDTO.getId());
+        }
         cardlet.setName(cardletDTO.getCardletName());
         cardlet.setUser(userService.getUserWithAuthorities());
         Set<Business> businesses  = new HashSet<>();
@@ -194,6 +212,9 @@ public class CardletService {
         for (CardletTab tab : tabs) {
             if(tab.getTabType().equals(1)) {
                 Business business = new Business();
+                if(update){
+                    business.setId(tab.getId());
+                }
                 business.setName(tab.getName());
                 if (tab.getUserEmail() != null) {
                     inputPropertiesRepository.save(tab.getUserEmail());
@@ -215,7 +236,7 @@ public class CardletService {
                     inputPropertiesRepository.save(tab.getAddress());
                     business.setAddress(tab.getAddress());
                 }
-                if (tab.getAddress() != null) {
+                if (tab.getCompany() != null) {
                     inputPropertiesRepository.save(tab.getCompany());
                     business.setCompany(tab.getCompany());
                 }
@@ -234,17 +255,20 @@ public class CardletService {
                     business.setGoogle(tab.getSocialLinks().getGoogle());
                     business.setLinkedIn(tab.getSocialLinks().getLinkedin());
                 }
-                log.info("asdasda ====== "+tab.getLayout().getTabId());
                 business.setTabType(tabTypeRepository.findOne(tab.getLayout().getTabId()));
                 businesses.add(business);
                 businessRepository.save(business);
             }else if(tab.getTabType().equals(2)){
                 Item item = new Item();
+                if(update){
+                    item.setId(tab.getId());
+                }
                 item.setName(tab.getName());
                 item.setPisition(tab.getPosition());
                 item.setColor(tab.getLayout().getSecondaryColor());
                 item.setMainColor(tab.getLayout().getMainColor());
                 item.setCardlet(cardlet);
+                log.info("+++++++++++++ "+tab.getLayout().getTabId());
                 item.setTabType(tabTypeRepository.findOne(tab.getLayout().getTabId()));
                 item = itemRepository.save(item);
                 List<ItemModel> inputModels = tab.getItems();
@@ -259,6 +283,7 @@ public class CardletService {
                         inputPropertiesRepository.save(inputModel.getName());
                         itemData.setName(inputModel.getName());
                     }
+                    itemData.setId(inputModel.getId());
                     itemData.setSecondImage(inputModel.getImage2());
                     itemData.setThirdImage(inputModel.getImage3());
                     itemData.setLink(inputModel.getLink());
@@ -280,6 +305,52 @@ public class CardletService {
         }
         cardlet.setBusinesses(businesses);
         cardlet.setItems(items);
+        if(update){
+            if(cardletDTO.getRemoveItems() != null) {
+                List<Long> itemsToRemove = cardletDTO.getRemoveItems();
+                for (Long itemToRemove : itemsToRemove) {
+                    itemDataRepository.delete(itemToRemove);
+
+                }
+            }
+            if(cardletDTO.getRemoveTabs() != null){
+                List<Long> tabsToRemove = cardletDTO.getRemoveTabs();
+                for (Long tabToRemove : tabsToRemove) {
+                    Item ite = itemRepository.findOne(tabToRemove);
+                    Set<ItemData> itemDats = ite.getItemData();
+                    for (ItemData itemDat : itemDats) {
+                        if(itemDat.getDescription() != null)
+                            inputPropertiesRepository.delete(itemDat.getDescription());
+                        if(itemDat.getName() != null)
+                            inputPropertiesRepository.delete(itemDat.getName());
+                        itemDataRepository.delete(itemDat);
+                    }
+                    itemRepository.delete(tabToRemove);
+                }
+            }
+            if(cardletDTO.getRemoveBusiness() != null){
+                List<Long> businessesToRemove = cardletDTO.getRemoveBusiness();
+                for (Long businesseToRemove : businessesToRemove) {
+                    Business bus = businessRepository.findOne(businesseToRemove);
+                    if(bus.getAddress() != null)
+                        inputPropertiesRepository.delete(bus.getAddress());
+                    if(bus.getCompany() != null)
+                        inputPropertiesRepository.delete(bus.getCompany());
+                    if(bus.getJob() != null)
+                        inputPropertiesRepository.delete(bus.getJob());
+                    if(bus.getPhone() != null)
+                        inputPropertiesRepository.delete(bus.getPhone());
+                    if(bus.getSite() != null)
+                        inputPropertiesRepository.delete(bus.getSite());
+                    if(bus.getUserEmail() != null)
+                        inputPropertiesRepository.delete(bus.getUserEmail());
+                    if(bus.getUserName() != null)
+                        inputPropertiesRepository.delete(bus.getUserName());
+                    businessRepository.delete(businesseToRemove);
+
+                }
+            }
+        }
 
         cardletRepository.save(cardlet);
 

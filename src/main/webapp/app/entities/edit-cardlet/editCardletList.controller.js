@@ -3,13 +3,11 @@
 
     angular
         .module('sigterraWebApp')
-        .controller('UserCardletListController', UserCardletListController);
+        .controller('EditCardletListController', EditCardletListController);
 
+    EditCardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location'];
 
-
-    UserCardletListController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout'];
-
-    function UserCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout) {
+    function EditCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location) {
         var vm = this;
 
         vm.loadPage = loadPage;
@@ -17,41 +15,14 @@
         vm.reverse = pagingParams.ascending;
         vm.transition = transition;
 
-        $scope.tabNames ={
-            "cardletName": "catdlet",
-            "tabs":
-                [{
-                    "name": "card",
-                    'position': 0,
-                    "display": "block",
-                    "tabType": 1,
-                    "layout":{
-                        "mainColor": "FFFFFF",
-                        "secondaryColor": "4BABE2"
 
-                    }
-                },
-                    {
-                        "name": "portfolio",
-                        "position": 1,
-                        "tabType": 2,
-                        "layout": {
-                            "mainColor": "FFFFFF",
-                            "secondaryColor": "4BABE2"
-                        },
-                        "items": [
-                            {
-                                //"name": "1 item",
-                                "index": "2",
-                                "position": "0",
-                                "image": "/app/cardlets/img/portfolio_img_01.png",
-                                "image2": "/app/cardlets/img/portfolio_img_02.png",
-                                "image3": "/app/cardlets/img/portfolio_img_03.png"
-
-                            }
-                        ]
-                    }
-                ]
+        $scope.getCardlet = function(){
+            var param1 = $location.search().cardletId;
+            $http.get("/api/cardlet/"+param1)
+                .success(function(response, status, headers) {
+                    console.log(response);
+                    $scope.tabNames = response;
+                });
         };
 
         loadAll();
@@ -71,6 +42,7 @@
             function onSuccess(data, headers) {
                 vm.queryCount = vm.totalItems;
                 $scope.cardlets = data;
+                console.log(data);
 
             }
             function onError(error) {
@@ -110,24 +82,23 @@
 
             }
 
+            console.log(cityName)
             document.getElementById(cityName).style.display = "block";
             document.getElementById(tabId).className += " active";
         }
 
-        $scope.openCard = function(cardName, tabId, id) {
+        $scope.openCard = function(cardName, tabId) {
             var i, tabcontent2, tablinks2, tabs2;
-            console.log("===============")
-            tabcontent2 = document.getElementsByClassName("tabcontent2"+id);
-            console.log(tabcontent2)
+            tabcontent2 = document.getElementsByClassName("tabcontent2");
             for (i = 0; i < tabcontent2.length; i++) {
                 tabcontent2[i].style.display = "none";
             }
-            tablinks2 = document.getElementsByClassName("tablinks2"+id);
+            tablinks2 = document.getElementsByClassName("tablinks2");
             for (i = 0; i < tablinks2.length; i++) {
                 tablinks2[i].className = tablinks2[i].className.replace(" active", "");
 
             }
-            tabs2 = document.getElementsByClassName("tabs2"+id);
+            tabs2 = document.getElementsByClassName("tabs2");
             console.log("tabs2")
             console.log(tabs2)
             for (i = 0; i < tabs2.length; i++) {
@@ -158,8 +129,7 @@
             $http.get("/api/userCardlets")
                 .success(function(response, status, headers) {
                     console.log(response);
-                    $scope.userCardlets = response;
-
+                    $scope.signatures = response;
                 });
         }
 
@@ -171,10 +141,7 @@
         $scope.getTabTypes = function(){
             $http.get("/api/tab-types-by-type/1")
                 .success(function(response, status, headers) {
-                    console.log(response);
                     $scope.tabTypes = response;
-                    $scope.tabNames.tabs[0].layout.tabId = $scope.tabTypes[0].id;
-                    $scope.tabNames.tabs[0].layout.url = $scope.tabTypes[0].path;
 
                 });
         }
@@ -182,19 +149,8 @@
         $scope.getItemTypes = function(){
             $http.get("/api/tab-types-by-type/2")
                 .success(function(response, status, headers) {
-                    console.log(response);
                     $scope.itemTypes = response;
-                    $scope.tabNames.tabs[1].layout.tabId = $scope.itemTypes[0].id;
-                    $scope.tabNames.tabs[1].layout.url = $scope.itemTypes[0].path;
-                    console.log($scope.tabNames)
-                });
-        }
 
-        $scope.delteCardlet = function(id){
-            $http.get("/api/cardletDelete/"+id)
-                .success(function(response, status, headers) {
-                    console.log(response);
-                    $scope.userCardlets = response;
                 });
         }
 
@@ -206,14 +162,22 @@
 
 
 
+        angular.element(document).ready(function () {
+            document.getElementsByClassName("tabcontent2")[0].style.display = "block";
+            document.getElementsByClassName("tabs2")[0].className += " active";
+            document.getElementsByClassName("tabcontent")[0].style.display = "block";;
+            document.getElementsByClassName("tabs")[0].className += " active";
+        });
+
 
         $scope.addItem = function() {
+            alert($scope.itemTypes[0].id)
             if ($scope.tabNames.tabs.length <= 3) {
                 var newTab = {"name":"Item"+$scope.tabNames.tabs.length,
                     "position": $scope.tabNames.tabs.length,
                     "tabType": 2,
                     "layout":{
-                        "id": $scope.itemTypes[0].tabId,
+                        "tabId": $scope.itemTypes[0].id,
                         "url": $scope.itemTypes[0].path,
                         "mainColor": "FFFFFF",
                         "secondaryColor": "4BABE2"
@@ -279,15 +243,19 @@
             }
         }
 
-        $scope.isDeleteItem = false;
+        $scope.isDeleteItem = true;
 
         $scope.deleteItems = function(tabId, index){
             if($scope.tabNames.tabs[tabId].items.length > 1){
                 console.log(index)
+                if($scope.tabNames.removeItems == null){
+                    $scope.tabNames.removeItems = [];
+                }
+                $scope.tabNames.removeItems.push($scope.tabNames.tabs[tabId].items[index-2].id);
+
                 $scope.tabNames.tabs[tabId].items.splice((index-2), 1);
                 for (var i = 0; i < $scope.tabNames.tabs[tabId].items.length; i++) {
                     $scope.tabNames.tabs[tabId].items[i].index = i + 2;
-                    $scope.tabNames.tabs[tabId].items[i].name  =  (i+1)+" item";
                     $scope.tabNames.tabs[tabId].items[i].position = i;
                 }
             }
@@ -351,10 +319,26 @@
 
             if($scope.tabNames.tabs.length >1) {
                 console.log(index)
+                if ($scope.tabNames.tabs[index].tabType === 2) {
+                    if ($scope.tabNames.removeTabs == null) {
+                        $scope.tabNames.removeTabs = [];
+                    }
+                    $scope.tabNames.removeTabs.push($scope.tabNames.tabs[index].id);
+                }
+                if ($scope.tabNames.tabs[index].tabType === 1) {
+                    if ($scope.tabNames.removeBusiness == null) {
+                        $scope.tabNames.removeBusiness = [];
+                    }
+                    $scope.tabNames.removeBusiness.push($scope.tabNames.tabs[index].id);
+                }
                 $scope.tabNames.tabs.splice(index, 1);
                 for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                     $scope.tabNames.tabs[i].position = i;
                 }
+
+
+
+
 
                 setTimeout(function(){
 
@@ -388,13 +372,16 @@
         }
 
         $scope.chooseType = function(id, url, tabId) {
+            console.log(tabId)
+            console.log(url)
             $scope.tabNames.tabs[id].layout.url = url;
             $scope.tabNames.tabs[id].layout.tabId = tabId;
 
         }
 
 
-        $scope.addColors = function(id, colorMain, colorSecond, index){
+        $scope.addColors = function(id, colorMain, colorSecond){
+
             var cyrrentEl = document.getElementById(id);
             if(cyrrentEl) {
                 cyrrentEl.style.background = "#" + colorMain;
@@ -402,14 +389,13 @@
                     cyrrentEl.style.background = "#" + colorSecond;
                 }
             }
-            console.log(index)
-            if($scope.userCardlets[index].tabs.length == 2){
+            if($scope.tabNames.tabs.length ===2){
                 cyrrentEl.style.width = "268px"
             }
-            if($scope.userCardlets[index].tabs.length == 3){
+            if($scope.tabNames.tabs.length ===3){
                 cyrrentEl.style.width = "177px"
             }
-            if($scope.userCardlets[index].tabs.length == 4){
+            if($scope.tabNames.tabs.length ===4){
                 cyrrentEl.style.width = "131px"
             }
         }
@@ -419,9 +405,9 @@
 
         $scope.saveCardlet = function(){
             console.log($scope.tabNames)
-            $http.post("/api/cardlet",  $scope.tabNames)
+            $http.post("/api/editCardlet",  $scope.tabNames)
                 .success(function (data, status, headers, config) {
-
+                    $location.path('/user-cardlets')
                 });
         }
     }

@@ -1,6 +1,5 @@
 <script src="/app/entities/cardlet-list/jscolor.js"></script>
-<div class="entiti-content">
-
+<div class="entiti-content" ng-init="getCardlet()">
 <style>
 
     .cardlet-name-panel{
@@ -337,7 +336,7 @@
 
                 <ul class="tab" dnd-list="tabNames.tabs" dnd-horizontal-list="true" dnd-external-sources="true">
 
-                    <li class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-draggable="tabName" dnd-moved="tabNames.tabs.splice($index, 1)" id="{{tabName.position}}" dnd-dragend="positionCheck()">
+                    <li class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-draggable="tabName" dnd-moved="tabNames.tabs.splice($index, 1)" id="{{tabName.position}}" dnd-dragend="positionCheck()" ng-class="tabName.position == 0 ? 'active' : ''">
                         <div style="position: relative">
                             <a href="javascript:void(0)" class="tablinks" ng-click="openCity(tabName.name, tabName.position)">{{tabName.name}}</a>
                             <div class="remove" ng-click="removeTab(tabName.position)"><span style="font-size: 15px;color:#D0D8D9;" class="glyphicon glyphicon-remove-circle"></span></div>
@@ -366,7 +365,7 @@
                     </li>
 
                 </ul>
-                <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}" class="tabcontent">
+                <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}" class="tabcontent"  ng-class="tabName.position == 0 ? 'display' : 'none-display'">
                     <div class="form-group" style="padding: 15px">
                         <label class="login-lable" for="name">Tab’s name</label>
 
@@ -655,7 +654,7 @@
 
                 <div>
                     <ul class="tab2">
-                        <li style="background-color: #fff" class="tabs2" ng-style="addColors(tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="{{tabName.position}}{{tabName.name}}">
+                        <li style="background-color: #fff" class="tabs2" ng-style="addColors(tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
                             <div style="position: relative">
                                 <a href="javascript:void(0)" class="tablinks2" ng-click="openCard(tabName.name+tabName.position, tabName.position+tabName.name)">{{tabName.name}}</a>
                             </div>
@@ -664,7 +663,7 @@
                     </ul>
                 </div>
 
-                <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="business.pisition === 1 ? 'display' : 'none-display'">
+                <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
                         <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
                 </div>
 

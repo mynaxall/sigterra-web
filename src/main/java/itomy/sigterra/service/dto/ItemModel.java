@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 public class ItemModel implements Serializable {
 
+    private Long id;
     private int index;
     private int position;
     private String image;
@@ -21,7 +22,7 @@ public class ItemModel implements Serializable {
     public ItemModel() {
     }
 
-    public ItemModel(int index, int position, String image1, String image2, String image3, InputProperties name, InputProperties description, String link) {
+    public ItemModel(Long id,int index, int position, String image1, String image2, String image3, InputProperties name, InputProperties description, String link) {
         this.index = index;
         this.position = position;
         this.image = image1;
@@ -30,6 +31,14 @@ public class ItemModel implements Serializable {
         this.name = name;
         this.description = description;
         this.link = link;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public int getIndex() {
@@ -99,14 +108,15 @@ public class ItemModel implements Serializable {
     @Override
     public String toString() {
         return "ItemModel{" +
-            "link='" + link + '\'' +
-            ", description=" + description +
-            ", name=" + name +
-            ", image3='" + image3 + '\'' +
-            ", image2='" + image2 + '\'' +
-            ", image1='" + image + '\'' +
-            ", position=" + position +
+            "id=" + id +
             ", index=" + index +
+            ", position=" + position +
+            ", image='" + image + '\'' +
+            ", image2='" + image2 + '\'' +
+            ", image3='" + image3 + '\'' +
+            ", name=" + name +
+            ", description=" + description +
+            ", link='" + link + '\'' +
             '}';
     }
 }
