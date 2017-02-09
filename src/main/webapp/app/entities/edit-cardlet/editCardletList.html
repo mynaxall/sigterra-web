@@ -176,6 +176,7 @@
 
     .cardlet-label{
         font-size: 11px;
+        margin-left: 5px;
     }
 
     .input-text-div{
@@ -323,6 +324,33 @@
         padding: 0;
     }
 
+    .input-padding{
+        margin-bottom: 40px;
+    }
+
+
+    .mainColor-input{
+        margin-right: 215px;
+    }
+
+    .secondaryColor-input{
+        margin-bottom: 40px;
+    }
+    a.tablinks{
+        width: 100%;
+    }
+    a.tablinks2{
+        width: 100%;
+    }
+
+    a.dropdown-toggle{
+        width: 100%;
+    }
+
+    .status-icon{
+        float: right;
+        margin-right: 10px;
+    }
 
 </style>
 
@@ -338,11 +366,11 @@
 
                     <li class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-draggable="tabName" dnd-moved="tabNames.tabs.splice($index, 1)" id="{{tabName.position}}" dnd-dragend="positionCheck()" ng-class="tabName.position == 0 ? 'active' : ''">
                         <div style="position: relative">
-                            <a href="javascript:void(0)" class="tablinks" ng-click="openCity(tabName.name, tabName.position)">{{tabName.name}}</a>
+                            <a href="javascript:void(0)" class="tablinks" ng-click="openCity(tabName.name, tabName.position, tabName.name+tabName.position, tabName.position+tabName.name)">{{tabName.name}}</a>
                             <div class="remove" ng-click="removeTab(tabName.position)"><span style="font-size: 15px;color:#D0D8D9;" class="glyphicon glyphicon-remove-circle"></span></div>
                         </div>
                     </li>
-                    <li  uib-dropdown class="dropdown pointer"  ng-show="isNewTab">
+                    <li  uib-dropdown class="dropdown pointer"  ng-show="tabNames.tabs.length < 4">
                         <a class="dropdown-toggle" uib-dropdown-toggle href="" >
                         <span>
                             <span class="hidden-sm" style="color: #7F8C8C !important;">new tab
@@ -378,15 +406,15 @@
 
                         <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 2">
                             <div class="accordion-section">
-                                <a class="accordion-section-title" ng-class="{active:accordionActive==1}" ng-click="changeAccordionActivity(1)">Layout design</a>
+                                <a class="accordion-section-title" ng-class="{active:accordionActive==1}" ng-click="changeAccordionActivity(1)">Layout design <img class="status-icon" ng-show="accordionActive==1" src="/app/entities/cardlet-list/img/minus_icon.png"><img class="status-icon" ng-show="accordionActive!=1" src="/app/entities/cardlet-list/img/plus_icon.png"></a>
                                 <div id="accordion2-1" class="accordion-section-content" ng-show="accordionActive==1">
                                     <script>
                                         $(document).ready(function() {
                                             jscolor.installByClassName("jscolor");
                                         });
                                     </script>
-                                    <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor" value="FFFFFF">
-                                    <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor" value="4BABE2">
+                                    <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
+                                    <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor secondaryColor-input" value="4BABE2">
                                     <div ng-repeat="itemType in itemTypes" style="margin-bottom: 30px;">
                                         <ng-include ng-click="chooseType(tabName.position, itemType.path, itemType.id)" style="display: block!important" src="itemType.path" ></ng-include>
                                     </div>
@@ -396,7 +424,7 @@
 
 
                             <div class="accordion-section" ng-repeat="item in tabName.items">
-                                <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">{{$index+1}} item</a>
+                                <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">{{$index+1}} item <img class="status-icon" ng-show="accordionActive==item.index" src="/app/entities/cardlet-list/img/minus_icon.png"><img class="status-icon" ng-show="accordionActive!=item.index" src="/app/entities/cardlet-list/img/plus_icon.png"></a>
                                 <div id="accordion2-item.index" class="accordion-section-content" ng-show="accordionActive==item.index">
                                     <div class="form-group">
                                         <div class="input-text-div">
@@ -462,12 +490,12 @@
                                     </div>
                                     <br>
                                     <div>
-                                        <button ng-show="isDeleteItem"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  item.index)" class="btn btn-primary delete-item-btn"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete item</button>
+                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  item.index)" class="btn btn-primary delete-item-btn"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete item</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="add-item-btn">
-                                <button  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn upload-item-img">Add item</button>
+                                <button ng-show="tabName.items.length < 10"   type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn upload-item-img">Add item</button>
                             </div>
                         </div>
 
@@ -477,7 +505,7 @@
                         <div class="accordion" ng-init="accordion=1" ng-show="tabName.tabType === 1">
                             <div class="accordion-section">
                                 <a class="accordion-section-title" ng-class="{active:accordion==1}" ng-click="accordion = 1">
-                                    <div class="accordion-section-text">Personal details</div>
+                                    <div class="accordion-section-text">Personal details <img class="status-icon" ng-show="accordion==1" src="/app/entities/cardlet-list/img/minus_icon.png"><img class="status-icon" ng-show="accordion!=1" src="/app/entities/cardlet-list/img/plus_icon.png"></div>
                                     <div class=""></div>
                                 </a>
                                 <div id="accordion-1" class="accordion-section-content"  ng-show="accordion==1">
@@ -494,16 +522,17 @@
 
                                         </div>
                                     </div>
+
                                     <div class="form-group">
 
                                         <div class="input-text-div">
-                                            <label class="login-lable cardlet-label" for="userName">Email</label>
-                                            <input type="email" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.userEmail.value">
+                                            <label class="login-lable cardlet-label" for="userName">Job title</label>
+                                            <input type="text" class="form-control profile-input" id="userName" placeholder="General manager" ng-model="tabName.job.value">
                                         </div>
                                         <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="tabName.userEmail.bold" name='boldEmail' value='valuableEmail' class="checkboxBold" id="boldEmail{{tabName.position}}"/><label for="boldEmail{{tabName.position}}"></label>
-                                            <input type='checkbox' ng-model="tabName.userEmail.italic" name='italicEmail' value='italicEmail' class="checkboxItalic" id="italicEmail{{tabName.position}}"/><label for="italicEmail{{tabName.position}}"></label>
-                                            <input type='checkbox' ng-model="tabName.userEmail.underline" name='underlineEmail' value='valuable' class="checkboxUunderline" id="underlineEmail{{tabName.position}}"/><label for="underlineEmail{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.job.bold" name='bold' value='valuable' class="checkboxBold" id="boldJob{{tabName.position}}"/><label for="boldJob{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.job.italic" name='italic' value='valuable' class="checkboxItalic" id="italicJob{{tabName.position}}"/><label for="italicJob{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.job.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineJob{{tabName.position}}"/><label for="underlineJob{{tabName.position}}"></label>
 
                                         </div>
                                     </div>
@@ -512,7 +541,7 @@
 
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="userName">Phone number</label>
-                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.phone.value">
+                                            <input type="text" class="form-control profile-input" id="userName" placeholder="077 1234 5678" ng-model="tabName.phone.value">
                                         </div>
                                         <div class="text-decoration-div" >
                                             <input type='checkbox' ng-model="tabName.phone.bold" name='bold' value='valuable' class="checkboxBold" id="boldPhone{{tabName.position}}"/><label for="boldPhone{{tabName.position}}"></label>
@@ -525,13 +554,13 @@
                                     <div class="form-group">
 
                                         <div class="input-text-div">
-                                            <label class="login-lable cardlet-label" for="userName">Address</label>
-                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.address.value">
+                                            <label class="login-lable cardlet-label" for="userName">Email</label>
+                                            <input type="email" class="form-control profile-input" id="userName" placeholder="heidenreich.eloisa@yahoo.com" ng-model="tabName.userEmail.value">
                                         </div>
                                         <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="tabName.address.bold" name='bold' value='valuable' class="checkboxBold" id="boldAddress{{tabName.position}}"/><label for="boldAddress{{tabName.position}}"></label>
-                                            <input type='checkbox' ng-model="tabName.address.italic" name='italic' value='valuable' class="checkboxItalic" id="italicAddress{{tabName.position}}"/><label for="italicAddress{{tabName.position}}"></label>
-                                            <input type='checkbox' ng-model="tabName.address.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineAddress{{tabName.position}}"/><label for="underlineAddress{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.userEmail.bold" name='boldEmail' value='valuableEmail' class="checkboxBold" id="boldEmail{{tabName.position}}"/><label for="boldEmail{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.userEmail.italic" name='italicEmail' value='italicEmail' class="checkboxItalic" id="italicEmail{{tabName.position}}"/><label for="italicEmail{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.userEmail.underline" name='underlineEmail' value='valuable' class="checkboxUunderline" id="underlineEmail{{tabName.position}}"/><label for="underlineEmail{{tabName.position}}"></label>
 
                                         </div>
                                     </div>
@@ -539,8 +568,23 @@
                                     <div class="form-group">
 
                                         <div class="input-text-div">
+                                            <label class="login-lable cardlet-label" for="userName">Company site</label>
+                                            <input type="text" class="form-control profile-input" id="userName" placeholder="https://www.yourcompany" ng-model="tabName.site.value">
+                                        </div>
+                                        <div class="text-decoration-div" >
+                                            <input type='checkbox' ng-model="tabName.site.bold" name='bold' value='valuable' class="checkboxBold" id="boldSite{{tabName.position}}"/><label for="boldSite{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.site.italic" name='italic' value='valuable' class="checkboxItalic" id="italicSite{{tabName.position}}"/><label for="italicSite{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.site.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineSite{{tabName.position}}"/><label for="underlineSite{{tabName.position}}"></label>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="userName">Company Name</label>
-                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.company.value">
+                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Your company" ng-model="tabName.company.value">
                                         </div>
                                         <div class="text-decoration-div" >
                                             <input type='checkbox' ng-model="tabName.company.bold" name='bold' value='valuable' class="checkboxBold" id="boldCompany{{tabName.position}}"/><label for="boldCompany{{tabName.position}}"></label>
@@ -553,36 +597,33 @@
                                     <div class="form-group">
 
                                         <div class="input-text-div">
-                                            <label class="login-lable cardlet-label" for="userName">Company site</label>
-                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.site.value">
+                                            <label class="login-lable cardlet-label" for="userName">Address</label>
+                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Your address" ng-model="tabName.address.value">
                                         </div>
                                         <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="tabName.site.bold" name='bold' value='valuable' class="checkboxBold" id="boldSite{{tabName.position}}"/><label for="boldSite{{tabName.position}}"></label>
-                                            <input type='checkbox' ng-model="tabName.site.italic" name='italic' value='valuable' class="checkboxItalic" id="italicSite{{tabName.position}}"/><label for="italicSite{{tabName.position}}"></label>
-                                            <input type='checkbox' ng-model="tabName.site.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineSite{{tabName.position}}"/><label for="underlineSite{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.address.bold" name='bold' value='valuable' class="checkboxBold" id="boldAddress{{tabName.position}}"/><label for="boldAddress{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.address.italic" name='italic' value='valuable' class="checkboxItalic" id="italicAddress{{tabName.position}}"/><label for="italicAddress{{tabName.position}}"></label>
+                                            <input type='checkbox' ng-model="tabName.address.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineAddress{{tabName.position}}"/><label for="underlineAddress{{tabName.position}}"></label>
 
                                         </div>
-
                                     </div>
+
                                     <div class="form-group">
-
                                         <div class="input-text-div">
-                                            <label class="login-lable cardlet-label" for="userName">Job title</label>
-                                            <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.job.value">
+                                            <label class="login-lable cardlet-label" for="urlOne">Choose image</label>
+                                            <input type="text" class="form-control profile-input input-padding" id="urlOne" placeholder="https://www.yourcompany.com/my-promo-page">
                                         </div>
-                                        <div class="text-decoration-div" >
-                                            <input type='checkbox' ng-model="tabName.job.bold" name='bold' value='valuable' class="checkboxBold" id="boldJob{{tabName.position}}"/><label for="boldJob{{tabName.position}}"></label>
-                                            <input type='checkbox' ng-model="tabName.job.italic" name='italic' value='valuable' class="checkboxItalic" id="italicJob{{tabName.position}}"/><label for="italicJob{{tabName.position}}"></label>
-                                            <input type='checkbox' ng-model="tabName.job.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineJob{{tabName.position}}"/><label for="underlineJob{{tabName.position}}"></label>
-
+                                        <div class="social-image-form-div" >
+                                            <button  type="submit" ng-disabled="for2m.$invalid"  class="btn btn-primary main-btn upload-item-img">Upload</button>
                                         </div>
                                     </div>
+
                                 </div>
 
                             </div><!--end .accordion-section-->
 
                             <div class="accordion-section">
-                                <a class="accordion-section-title" ng-class="{active:accordion==2}" ng-click="accordion = 2">Social links</a>
+                                <a class="accordion-section-title" ng-class="{active:accordion==2}" ng-click="accordion = 2">Social links  <img class="status-icon" ng-show="accordion==2" src="/app/entities/cardlet-list/img/minus_icon.png"><img class="status-icon" ng-show="accordion!=2" src="/app/entities/cardlet-list/img/plus_icon.png"></a>
                                 <div id="accordion-2" class="accordion-section-content"  ng-show="accordion==2">
 
                                     <div class="form-group">
@@ -619,7 +660,7 @@
 
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="linkedin">linkedin</label>
-                                            <input type="text" class="form-control profile-input" id="linkedin" placeholder="" ng-model="tabName.socialLinks.linkedin">
+                                            <input type="text" class="form-control profile-input input-padding" id="linkedin" placeholder="" ng-model="tabName.socialLinks.linkedin">
                                         </div>
                                         <div class="social-image-form-div" >
                                             <img src="/app/cardlets/img/2_card/linkedin.png">
@@ -630,15 +671,15 @@
                             </div><!--end .accordion-section-->
 
                             <div class="accordion-section">
-                                <a class="accordion-section-title" ng-class="{active:accordion==3}" ng-click="accordion = 3">Layout design</a>
+                                <a class="accordion-section-title" ng-class="{active:accordion==3}" ng-click="accordion = 3">Layout design <img class="status-icon" ng-show="accordion==3" src="/app/entities/cardlet-list/img/minus_icon.png"><img class="status-icon" ng-show="accordion!=3" src="/app/entities/cardlet-list/img/plus_icon.png"></a>
                                 <div id="accordion-3" class="accordion-section-content" ng-show="accordion==3">
                                     <script>
                                         $(document).ready(function() {
                                             jscolor.installByClassName("jscolor");
                                         });
                                     </script>
-                                    <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor" value="FFFFFF">
-                                    <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor" value="4BABE2">
+                                    <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
+                                    <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor secondaryColor-input" value="4BABE2">
                                     <div ng-repeat="tabType in tabTypes" style="margin-bottom: 30px;">
                                         <ng-include ng-click="chooseType(tabName.position, tabType.path, tabType.id)" style="display: block!important" src="tabType.path" ></ng-include>
                                     </div>
@@ -656,7 +697,7 @@
                     <ul class="tab2">
                         <li style="background-color: #fff" class="tabs2" ng-style="addColors(tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
                             <div style="position: relative">
-                                <a href="javascript:void(0)" class="tablinks2" ng-click="openCard(tabName.name+tabName.position, tabName.position+tabName.name)">{{tabName.name}}</a>
+                                <a href="javascript:void(0)" class="tablinks2"ng-click="openCity(tabName.name, tabName.position, tabName.name+tabName.position, tabName.position+tabName.name)">{{tabName.name}}</a>
                             </div>
                         </li>
 

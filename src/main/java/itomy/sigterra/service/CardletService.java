@@ -11,10 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.*;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by alexander on 2/2/17.
@@ -59,8 +57,6 @@ public class CardletService {
 
         }
 
-
-
         return usetCardletDTOs;
     }
 
@@ -103,6 +99,7 @@ public class CardletService {
             tabs.add(cardletTab);
 
         }
+
         for (Item item : items) {
             CardletTab cardletTabItem = new CardletTab();
             cardletTabItem.setId(item.getId());
@@ -139,6 +136,12 @@ public class CardletService {
             tabs.add(cardletTabItem);
 
         }
+        Collections.sort(tabs, new Comparator<CardletTab>() {
+            @Override
+            public int compare(CardletTab o1, CardletTab o2) {
+                return o1.getPosition().compareTo(o2.getPosition());
+            }
+        });
         userCardletDTO.setTabs(tabs);
 
         return userCardletDTO;

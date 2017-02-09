@@ -20,7 +20,6 @@
             var param1 = $location.search().cardletId;
             $http.get("/api/cardlet/"+param1)
                 .success(function(response, status, headers) {
-                    console.log(response);
                     $scope.tabNames = response;
                 });
         };
@@ -42,7 +41,6 @@
             function onSuccess(data, headers) {
                 vm.queryCount = vm.totalItems;
                 $scope.cardlets = data;
-                console.log(data);
 
             }
             function onError(error) {
@@ -64,7 +62,7 @@
         }
 
 
-        $scope.openCity = function(cityName, tabId) {
+        $scope.openCity = function(cityName, tabId, cardName, cardId) {
             var i, tabcontent, tablinks, tabs;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
@@ -82,12 +80,11 @@
 
             }
 
-            console.log(cityName)
+            console.log(document.getElementById(cityName))
+            console.log(document.getElementById(tabId))
             document.getElementById(cityName).style.display = "block";
             document.getElementById(tabId).className += " active";
-        }
 
-        $scope.openCard = function(cardName, tabId) {
             var i, tabcontent2, tablinks2, tabs2;
             tabcontent2 = document.getElementsByClassName("tabcontent2");
             for (i = 0; i < tabcontent2.length; i++) {
@@ -99,22 +96,16 @@
 
             }
             tabs2 = document.getElementsByClassName("tabs2");
-            console.log("tabs2")
-            console.log(tabs2)
+
             for (i = 0; i < tabs2.length; i++) {
                 tabs2[i].className = tabs2[i].className.replace(" active", "");
 
             }
 
-
-
-            console.log(cardName);
-            console.log("cardName");
-
-            console.log(tabId);
             document.getElementById(cardName).style.display = "block";
-            document.getElementById(tabId).className += " active";
+            document.getElementById(cardId).className += " active";
         }
+
 
         $scope.showSignature = function(){
             $http.get("/api/signatures")
@@ -157,10 +148,6 @@
         $scope.getItemTypes();
         $scope.getTabTypes();
 
-        $scope.isNewTab = true;
-
-
-
 
         angular.element(document).ready(function () {
             document.getElementsByClassName("tabcontent2")[0].style.display = "block";
@@ -171,7 +158,6 @@
 
 
         $scope.addItem = function() {
-            alert($scope.itemTypes[0].id)
             if ($scope.tabNames.tabs.length <= 3) {
                 var newTab = {"name":"Item"+$scope.tabNames.tabs.length,
                     "position": $scope.tabNames.tabs.length,
@@ -196,14 +182,10 @@
                 }
                 $scope.tabNames.tabs.push(newTab);
             }
-            if($scope.tabNames.tabs.length == 4){
-                $scope.isNewTab = false;
-            }
         }
 
         $scope.addItems = function(tabId, index) {
             if($scope.tabNames.tabs[tabId].items.length <= 9){
-                $scope.isDeleteItem = true;
                 var newItem =  {
                     //"name":  ($scope.tabNames.tabs[tabId].items.length+1)+" item",
                     "index": index+2,
@@ -238,12 +220,7 @@
                 $scope.tabNames.tabs.push(newTab);
 
             }
-            if($scope.tabNames.tabs.length == 4){
-                $scope.isNewTab = false;
-            }
         }
-
-        $scope.isDeleteItem = true;
 
         $scope.deleteItems = function(tabId, index){
             if($scope.tabNames.tabs[tabId].items.length > 1){
@@ -258,9 +235,6 @@
                     $scope.tabNames.tabs[tabId].items[i].index = i + 2;
                     $scope.tabNames.tabs[tabId].items[i].position = i;
                 }
-            }
-            if($scope.tabNames.tabs[tabId].items.length === 1){
-                $scope.isDeleteItem = false;
             }
         }
 
@@ -365,9 +339,6 @@
                     document.getElementsByClassName("tabcontent")[0].style.display = "block";;
                     document.getElementsByClassName("tabs")[0].className += " active";
                 }, 500);
-            }
-            if($scope.tabNames.tabs.length < 4){
-                $scope.isNewTab = true;
             }
         }
 

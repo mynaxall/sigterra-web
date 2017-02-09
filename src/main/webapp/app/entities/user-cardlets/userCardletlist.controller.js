@@ -115,10 +115,14 @@
         }
 
         $scope.openCard = function(cardName, tabId, id) {
+
+
             var i, tabcontent2, tablinks2, tabs2;
             console.log("===============")
             tabcontent2 = document.getElementsByClassName("tabcontent2"+id);
-            console.log(tabcontent2)
+            console.log(cardName)
+            console.log(tabId)
+            console.log(id)
             for (i = 0; i < tabcontent2.length; i++) {
                 tabcontent2[i].style.display = "none";
             }
@@ -403,7 +407,7 @@
                 }
             }
             console.log(index)
-            if($scope.userCardlets[index].tabs.length == 2){
+            if($scope.userCardlets[index].tabs.length <= 2){
                 cyrrentEl.style.width = "268px"
             }
             if($scope.userCardlets[index].tabs.length == 3){

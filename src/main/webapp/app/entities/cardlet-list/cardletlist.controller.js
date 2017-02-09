@@ -91,7 +91,7 @@
         }
 
 
-        $scope.openCity = function(cityName, tabId) {
+        $scope.openCity = function(cityName, tabId, cardName, cardId) {
             var i, tabcontent, tablinks, tabs;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
@@ -109,12 +109,9 @@
 
             }
 
-            console.log(cityName)
             document.getElementById(cityName).style.display = "block";
             document.getElementById(tabId).className += " active";
-        }
 
-        $scope.openCard = function(cardName, tabId) {
             var i, tabcontent2, tablinks2, tabs2;
             tabcontent2 = document.getElementsByClassName("tabcontent2");
             for (i = 0; i < tabcontent2.length; i++) {
@@ -126,21 +123,12 @@
 
             }
             tabs2 = document.getElementsByClassName("tabs2");
-            console.log("tabs2")
-            console.log(tabs2)
             for (i = 0; i < tabs2.length; i++) {
                 tabs2[i].className = tabs2[i].className.replace(" active", "");
 
             }
-
-
-
-            console.log(cardName);
-            console.log("cardName");
-
-            console.log(tabId);
             document.getElementById(cardName).style.display = "block";
-            document.getElementById(tabId).className += " active";
+            document.getElementById(cardId).className += " active";
         }
 
         $scope.showSignature = function(){

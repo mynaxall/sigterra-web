@@ -407,6 +407,14 @@
         background: #fff;
         border-radius: 5px;
         text-align: center;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #c4c4c4;
+    }
+
+    .catdlet-btn:hover{
+        border-width: 2px;
+        border-color: #18C6B7;
     }
 
     .catdlet-btn-col{
@@ -453,6 +461,13 @@
         margin-bottom: 30px;
     }
 
+    a.tablinks{
+        width: 100%;
+    }
+    a.tablinks2{
+        width: 100%;
+    }
+
 </style>
 
     <div class="user-cardlet-panel">
@@ -462,8 +477,8 @@
                         <div class="cardlet-name">{{tabNames.cardletName}}</div>
                         <div>
                             <ul class="tab2">
-                                <li style="background-color: #fff" class="tabs2 tabs2{{tabNames.id}}" ng-style="addColors(tabName.position+tabName.name+tabNames.id, tabName.layout.mainColor, tabName.layout.secondaryColor, $parent.$index)" ng-repeat="tabName in tabNames.tabs" ng-class="tabName.position == 0 ? 'active' : ''"
-                                    id="{{tabName.position}}{{tabName.name}}{{tabNames.id}}">
+                                <li style="background-color: #fff" class="tabs2 tabs2{{tabNames.id}}" ng-style="addColors('tab'+tabName.position+tabName.name+tabNames.id, tabName.layout.mainColor, tabName.layout.secondaryColor, $parent.$index)" ng-repeat="tabName in tabNames.tabs" ng-class="tabName.position == 0 ? 'active' : ''"
+                                    id="tab{{tabName.position}}{{tabName.name}}{{tabNames.id}}">
                                     <div style="position: relative">
                                         <a href="javascript:void(0)" class="tablinks2 tablinks2{{tabNames.id}}" ng-click="openCard(tabName.name+tabName.position+tabNames.id, tabName.position+tabName.name+tabNames.id, tabNames.id)">{{tabName.name}}</a>
                                     </div>

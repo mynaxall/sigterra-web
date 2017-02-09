@@ -570,7 +570,7 @@ Social Buttons
 
 .profile-input{
     height: 40px;
-    border-radius: 25px;
+    border-radius: 25px!important;
 }
 .register-link{
     font-size: 18px;
