@@ -1,6 +1,5 @@
 <script src="/app/entities/cardlet-list/jscolor.js"></script>
 <div class="entiti-content">
-
 <style>
 
     .cardlet-name-panel{
@@ -39,6 +38,7 @@
     /* Float the list items side by side */
     ul.tab li {
         width: 150px;
+        min-width: 44px;
         float: left;
         background: #FFFFFF;
         border-width: 1px;
@@ -136,6 +136,7 @@
     /* Float the list items side by side */
     ul.tab2 li {
         width: 131px;
+        min-height: 44px;
         float: left;
         background: #FFFFFF;
         border-width: 1px;
@@ -353,6 +354,29 @@
         margin-right: 10px;
     }
 
+    .choose-tab{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 10;
+    }
+
+    .choose-tab:focus{
+        outline: none;
+    }
+
+    .choose-tab-active{
+        -webkit-box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
+    }
+
+    ul[dnd-list] .dndDraggingSource {
+        display: none;
+    }
+
 </style>
 
     <div class="tab-panel">
@@ -365,16 +389,17 @@
 
                 <ul class="tab" dnd-list="tabNames.tabs" dnd-horizontal-list="true" dnd-external-sources="true">
 
-                    <li class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-draggable="tabName" dnd-moved="tabNames.tabs.splice($index, 1)" id="{{tabName.position}}" dnd-dragend="positionCheck()">
+                    <li class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-draggable="tabName" dnd-selected="models.selected = tabName"
+                        ng-class="{'selected': models.selected === tabName}"  dnd-effect-allowed="move" dnd-moved="tabNames.tabs.splice($index, 1)" id="tab{{tabName.position}}" dnd-dragend="positionCheck()">
                         <div style="position: relative">
-                            <a href="javascript:void(0)" class="tablinks" ng-click="openCity(tabName.name, tabName.position, tabName.name+tabName.position, tabName.position+tabName.name)">{{tabName.name}}</a>
+                            <a href="javascript:void(0)" class="tablinks" ng-click="openCity('settings'+tabName.name+tabName.position, 'tab'+tabName.position, tabName.name+tabName.position, tabName.position+tabName.name)">{{tabName.name}}</a>
                             <div class="remove" ng-click="removeTab(tabName.position)"><span style="font-size: 15px;color:#D0D8D9;" class="glyphicon glyphicon-remove-circle"></span></div>
                         </div>
                     </li>
                     <li  uib-dropdown class="dropdown pointer"  ng-show="isNewTab">
                         <a class="dropdown-toggle" uib-dropdown-toggle href="" >
                         <span>
-                            <span class="hidden-sm" style="color: #7F8C8C !important;">new tab
+                            <span style="color: #7F8C8C !important;">new tab
                             </span>
                             <b class="caret" style="color: #7F8C8C !important;"></b>
                         </span>
@@ -394,7 +419,7 @@
                     </li>
 
                 </ul>
-                <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}" class="tabcontent">
+                <div ng-repeat="tabName in tabNames.tabs " id="settings{{tabName.name}}{{tabName.position}}" class="tabcontent">
                     <div class="form-group" style="padding: 15px">
                         <label class="login-lable" for="name">Tab’s name</label>
 
@@ -416,8 +441,11 @@
                                     </script>
                                     <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
                                     <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor secondaryColor-input" value="4BABE2">
-                                    <div ng-repeat="itemType in itemTypes" style="margin-bottom: 30px;">
-                                        <ng-include ng-click="chooseType(tabName.position, itemType.path, itemType.id)" style="display: block!important" src="itemType.path" ></ng-include>
+                                    <div ng-repeat="itemType in itemTypes" style="margin-bottom: 30px;position: relative; width: 540px;">
+                                        <div ng-click="chooseType(tabName.position, itemType.path, itemType.id)" style="display: block!important" class="choose-tab" ng-class="tabNames.tabs[tabName.position].layout.tabId == itemType.id ? 'choose-tab-active' : ''">
+                                        </div>
+
+                                        <ng-include style="display: block!important" src="itemType.path" ></ng-include>
                                     </div>
 
                                 </div><!--end .accordion-section-content-->
@@ -681,8 +709,9 @@
                                     </script>
                                     <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
                                     <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor secondaryColor-input" value="4BABE2">
-                                    <div ng-repeat="tabType in tabTypes" style="margin-bottom: 30px;">
-                                        <ng-include ng-click="chooseType(tabName.position, tabType.path, tabType.id)" style="display: block!important" src="tabType.path" ></ng-include>
+                                    <div ng-repeat="tabType in tabTypes" style="margin-bottom: 30px;position: relative; width: 540px">
+                                        <div ng-click="chooseType(tabName.position, tabType.path, tabType.id)" class="choose-tab" ng-class="tabNames.tabs[tabName.position].layout.tabId == tabType.id ? 'choose-tab-active' : ''"></div>
+                                        <ng-include style="display: block!important" src="tabType.path" ></ng-include>
                                     </div>
 
                                 </div><!--end .accordion-section-content-->
@@ -698,7 +727,7 @@
                     <ul class="tab2">
                         <li style="background-color: #fff" class="tabs2" ng-style="addColors(tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="{{tabName.position}}{{tabName.name}}">
                             <div style="position: relative">
-                                <a href="javascript:void(0)" class="tablinks2" ng-click="openCity(tabName.name, tabName.position, tabName.name+tabName.position, tabName.position+tabName.name)">{{tabName.name}}</a>
+                                <a href="javascript:void(0)" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, 'tab'+tabName.position, tabName.name+tabName.position, tabName.position+tabName.name)">{{tabName.name}}</a>
                             </div>
                         </li>
 

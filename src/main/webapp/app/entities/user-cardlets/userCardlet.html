@@ -480,7 +480,7 @@
                                 <li style="background-color: #fff" class="tabs2 tabs2{{tabNames.id}}" ng-style="addColors('tab'+tabName.position+tabName.name+tabNames.id, tabName.layout.mainColor, tabName.layout.secondaryColor, $parent.$index)" ng-repeat="tabName in tabNames.tabs" ng-class="tabName.position == 0 ? 'active' : ''"
                                     id="tab{{tabName.position}}{{tabName.name}}{{tabNames.id}}">
                                     <div style="position: relative">
-                                        <a href="javascript:void(0)" class="tablinks2 tablinks2{{tabNames.id}}" ng-click="openCard(tabName.name+tabName.position+tabNames.id, tabName.position+tabName.name+tabNames.id, tabNames.id)">{{tabName.name}}</a>
+                                        <a href="javascript:void(0)" class="tablinks2 tablinks2{{tabNames.id}}" ng-click="openCard(tabName.name+tabName.position+tabNames.id, 'tab'+tabName.position+tabName.name+tabNames.id, tabNames.id)">{{tabName.name}}</a>
                                     </div>
                                 </li>
 

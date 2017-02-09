@@ -228,7 +228,9 @@
                 if($scope.tabNames.removeItems == null){
                     $scope.tabNames.removeItems = [];
                 }
-                $scope.tabNames.removeItems.push($scope.tabNames.tabs[tabId].items[index-2].id);
+                if($scope.tabNames.tabs[tabId].items[index-2].id) {
+                    $scope.tabNames.removeItems.push($scope.tabNames.tabs[tabId].items[index - 2].id);
+                }
 
                 $scope.tabNames.tabs[tabId].items.splice((index-2), 1);
                 for (var i = 0; i < $scope.tabNames.tabs[tabId].items.length; i++) {
@@ -293,13 +295,13 @@
 
             if($scope.tabNames.tabs.length >1) {
                 console.log(index)
-                if ($scope.tabNames.tabs[index].tabType === 2) {
+                if ($scope.tabNames.tabs[index].tabType === 2 && $scope.tabNames.tabs[index].id) {
                     if ($scope.tabNames.removeTabs == null) {
                         $scope.tabNames.removeTabs = [];
                     }
                     $scope.tabNames.removeTabs.push($scope.tabNames.tabs[index].id);
                 }
-                if ($scope.tabNames.tabs[index].tabType === 1) {
+                if ($scope.tabNames.tabs[index].tabType === 1 && $scope.tabNames.tabs[index].id) {
                     if ($scope.tabNames.removeBusiness == null) {
                         $scope.tabNames.removeBusiness = [];
                     }
@@ -309,9 +311,6 @@
                 for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                     $scope.tabNames.tabs[i].position = i;
                 }
-
-
-
 
 
                 setTimeout(function(){

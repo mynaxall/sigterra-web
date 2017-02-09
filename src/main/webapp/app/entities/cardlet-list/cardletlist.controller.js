@@ -92,6 +92,13 @@
 
 
         $scope.openCity = function(cityName, tabId, cardName, cardId) {
+
+
+            console.log(cityName)
+            console.log(tabId)
+            console.log(cardName)
+            console.log(cardId)
+
             var i, tabcontent, tablinks, tabs;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {

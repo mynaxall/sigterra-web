@@ -143,7 +143,6 @@ public class CardletService {
             }
         });
         userCardletDTO.setTabs(tabs);
-
         return userCardletDTO;
     }
 
