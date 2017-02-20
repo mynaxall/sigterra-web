@@ -330,19 +330,23 @@
         margin-bottom: 40px;
     }
 
-
     .mainColor-input{
-        margin-right: 215px;
+        margin-right: 135px;
+        width: 200px;
     }
 
     .secondaryColor-input{
         margin-bottom: 40px;
+        width: 200px;
     }
+
     a.tablinks{
         width: 100%;
+        min-height: 40px;
     }
     a.tablinks2{
         width: 100%;
+        min-height: 40px;
     }
 
     a.dropdown-toggle{
@@ -438,8 +442,14 @@
                                             jscolor.installByClassName("jscolor");
                                         });
                                     </script>
-                                    <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
-                                    <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor secondaryColor-input" value="4BABE2">
+                                    <div class="color-tnput-div">
+                                        <label class="login-lable cardlet-label" style="margin-left: 0px;" for="mainColor{{tabName.name}}">Background colour</label>
+                                        <label class="login-lable cardlet-label" style="margin-left: 205px;">Feature colour</label>
+                                    </div>
+                                    <div class="color-tnput-div">
+                                        <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
+                                        <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor secondaryColor-input" value="4BABE2">
+                                    </div>
                                     <div ng-repeat="itemType in itemTypes" style="margin-bottom: 30px; position: relative; width: 540px">
                                         <div ng-click="chooseType(tabName.position, itemType.path, itemType.id)" class="choose-tab"
                                              ng-class="tabNames.tabs[tabName.position].layout.tabId == itemType.id ? 'choose-tab-active' : ''"></div>
@@ -705,8 +715,14 @@
                                             jscolor.installByClassName("jscolor");
                                         });
                                     </script>
+                                    <div class="color-tnput-div">
+                                        <label class="login-lable cardlet-label" style="margin-left: 0px;" for="mainColor{{tabName.name}}">Background colour</label>
+                                        <label class="login-lable cardlet-label" style="margin-left: 205px;">Feature colour</label>
+                                    </div>
+                                    <div class="color-tnput-div">
                                     <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
                                     <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor secondaryColor-input" value="4BABE2">
+                                    </div>
                                     <div ng-repeat="tabType in tabTypes" style="margin-bottom: 30px;position: relative; width: 540px">
                                         <div ng-click="chooseType(tabName.position, tabType.path, tabType.id)" class="choose-tab"
                                              ng-class="tabNames.tabs[tabName.position].layout.tabId == tabType.id ? 'choose-tab-active' : ''"></div>

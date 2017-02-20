@@ -1,0 +1,494 @@
+<script src="/app/entities/cardlet-list/jscolor.js"></script>
+<div class="entiti-content" ng-init="getCardlet()">
+    <style>
+
+        .cardlet-name-panel{
+            margin-bottom: 30px;
+        }
+
+        .cadletName{
+            border-width: 0px;
+            border-bottom-width: 1px;
+            border-style: solid;
+            border-color: #18C6B7;
+            width: 300px;
+            padding-bottom: 10px;
+            font-size:15px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .tab-panel{
+            padding-top: 50px;
+            margin-left: 5%;
+            margin-right: 5%;
+            padding-bottom: 50px;
+            background-color: #fff;
+            box-shadow: none;
+        }
+
+        ul.tab {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #FFF;
+            width: 620px;
+        }
+
+        /* Float the list items side by side */
+        ul.tab li {
+            width: 150px;
+            min-height: 44px;
+            float: left;
+            background: #FFFFFF;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #D0D8D9;
+            margin-right: 5px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom: none;
+            color: #7F8C8C!important;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Style the links inside the list items */
+        ul.tab li a {
+            display: inline-block;
+            text-align: center;
+            padding: 10px 16px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 17px;
+
+
+        }
+
+        /* Change background color of links on hover */
+        ul.tab li a:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+
+        .tabs a{
+            color: #7F8C8C;
+        }
+
+
+        .remove{
+            padding: 0px!important;
+            position: absolute;
+            background: #fff;
+            color: #000!important;
+            border-radius: 20px;
+            width: 15px;
+            height: 15px;
+            top: -7px;
+            right: -7px;
+            text-transform: none;
+        }
+
+        ul.tab{
+            padding-top: 10px;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 0px;
+            border: 1px solid #ccc;
+            width: 620px;
+            background-color: #F9F9F9;
+            margin-top: 45px;
+        }
+
+
+        /* Style the tab content */
+        .tabcontent2 {
+            display: none;
+            border: 1px solid #ccc;
+            width: 540px;
+            background-color: #F9F9F9;
+        }
+
+
+        .tabs2 a{
+            color: #7F8C8C;
+        }
+
+        .active a{
+            color: #FFFFFF;
+        }
+
+        ul.tab2 {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #FFF;
+            width: 550px;
+            padding-top: 10px;
+        }
+
+        /* Float the list items side by side */
+        ul.tab2 li {
+            width: 131px;
+            min-height: 44px;
+            float: left;
+            background: #FFFFFF;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #D0D8D9;
+            margin-right: 5px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom: none;
+            color: #7F8C8C!important;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Style the links inside the list items */
+        ul.tab2 li a {
+            display: inline-block;
+            text-align: center;
+            padding: 10px 16px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 17px;
+
+
+        }
+
+        /* Change background color of links on hover */
+        ul.tab2 li a:hover {
+            background-color: #ddd;
+        }
+
+        .display{
+            display: block;
+        }
+        .none-display{
+            display: none;
+        }
+
+        .cardlet-label{
+            font-size: 11px;
+            margin-left: 5px;
+        }
+
+        .input-text-div{
+            float:left;
+            width: 450px
+        }
+
+        .text-decoration-div{
+            float: left;
+            width: 130px;
+            text-align: right;
+            padding-top: 25px;
+        }
+
+        .social-image-form-div{
+            float: left;
+            width: 130px;
+            padding-top: 25px;
+            padding-left: 25px;
+        }
+
+        ul.tab li.active {
+            background: #18C6B7;
+        }
+
+        .dropdown-tab{
+            border:none!important;
+            width: 100%!important;
+            background-color: #FAFAFA!important;
+        }
+        .cardlet-dropdown{
+            background-color: #FAFAFA!important;
+        }
+
+        .checkboxBold {
+            display:none;
+        }
+
+        .checkboxBold + label
+        {
+            background-image: url("/app/entities/cardlet-list/img/text_icons/bold.png");
+            height: 30px;
+            width: 30px;
+            display:inline-block;
+            padding: 0 0 0 0px;
+        }
+
+
+        .checkboxBold:checked + label
+        {
+            background-image: url("/app/entities/cardlet-list/img/text_icons/bold_active.png");
+            height: 30px;
+            width: 30px;
+            display:inline-block;
+            padding: 0 0 0 0px;
+        }
+
+        .checkboxItalic {
+            display:none;
+        }
+
+        .checkboxItalic + label
+        {
+            background-image: url("/app/entities/cardlet-list/img/text_icons/italic.png");
+            height: 30px;
+            width: 30px;
+            display:inline-block;
+            padding: 0 0 0 0px;
+        }
+        .checkboxItalic:checked + label
+        {
+            background-image: url("/app/entities/cardlet-list/img/text_icons/italic_active.png");
+            height: 30px;
+            width: 30px;
+            display:inline-block;
+            padding: 0 0 0 0px;
+        }
+        .checkboxUunderline {
+            display:none;
+        }
+
+        .checkboxUunderline + label
+        {
+            background-image: url("/app/entities/cardlet-list/img/text_icons/underline.png");
+            height: 30px;
+            width: 30px;
+            display:inline-block;
+            padding: 0 0 0 0px;
+        }
+        .checkboxUunderline:checked + label
+        {
+            background-image: url("/app/entities/cardlet-list/img/text_icons/underline_active.png");
+            height: 30px;
+            width: 30px;
+            display:inline-block;
+            padding: 0 0 0 0px;
+        }
+
+        .upload-item-img{
+            background-color: #18C6B7!important;
+            border-color: #18C6B7!important;
+            border-radius: 20px!important;
+            min-width: 120px!important;
+        }
+
+        .add-item-btn{
+            margin: 10px;
+        }
+
+        .delete-item-btn{
+            background: none!important;
+            border: none!important;
+            color: #18C6B7!important;
+            text-decoration: underline;
+        }
+
+        .saveButton{
+            background-color: #E8645A;
+            color: #FFF;
+            text-transform: uppercase;
+            width: 200px;
+            border:none;
+            border-radius: 20px;
+            font-size: 15px;
+            padding: 12px;
+            font-weight: bold;
+
+        }
+
+        input:focus{
+            outline: none;
+        }
+
+        ul[dnd-list], ul[dnd-list] > li {
+            position: relative;
+        }
+
+        .dndPlaceholder{
+            display: inline-block;
+            position: relative;
+            background-color: #ddd;
+            width: 150px;
+            min-height:44px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .input-padding{
+            margin-bottom: 40px;
+        }
+
+
+        .mainColor-input{
+            margin-right: 215px;
+        }
+
+        .secondaryColor-input{
+            margin-bottom: 40px;
+        }
+        a.tablinks{
+            width: 100%;
+        }
+        a.tablinks2{
+            width: 100%;
+        }
+
+        a.dropdown-toggle{
+            width: 100%;
+        }
+
+        .status-icon{
+            float: right;
+            margin-right: 10px;
+        }
+
+        .choose-tab{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .choose-tab:focus{
+            outline: none;
+        }
+
+        .choose-tab-active{
+            -webkit-box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
+            box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
+        }
+
+        ul[dnd-list] .dndDraggingSource {
+            display: none;
+        }
+        .navbar{
+            display: none;
+        }
+        .footer{
+            display: none;
+        }
+
+        .well{
+            border: 0px!important;
+        }
+        .dev{
+            display: none;
+        }
+
+    </style>
+
+    <div>
+
+            <div>
+                <ul class="tab2">
+                    <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
+                        <div style="position: relative">
+                            <a href="javascript:void(0)" class="tablinks2"ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
+                <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+            </div>
+    </div>
+
+    <style>
+
+
+        a.accordion-section-title.active{
+            background-color: #ECECEC!important;
+        }
+        .main:before {
+            width:100%;
+            height:100%;
+            position:absolute;
+            top:0px;
+            left:0px;
+            z-index:-1;
+            content:'';
+            background:-webkit-radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0)), url('img/body-bg.png');
+            background:-moz-radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0)), url('img/body-bg.png');
+            background:-o-radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0)), url('img/body-bg.png');
+            background:radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0)), url('img/body-bg.png');
+        }
+
+        .site-header-wrap {
+            margin-bottom:60px;
+            border-bottom:1px solid #cd9ad6;
+        }
+
+        /*------------------------------------*\
+        -------- DEMO Code: accordion
+        \*------------------------------------*/
+        /*----- Accordion -----*/
+        .accordion, .accordion * {
+            -webkit-box-sizing:border-box;
+            -moz-box-sizing:border-box;
+            box-sizing:border-box;
+        }
+
+        .accordion {
+            overflow:hidden;
+            box-shadow:0px 1px 3px rgba(0,0,0,0.25);
+            border-radius:3px;
+            background:#f7f7f7;
+        }
+
+        /*----- Section Titles -----*/
+        .accordion-section-title {
+            width: 100%;
+            padding: 15px;
+            display: inline-block;
+            border-top: 1px solid #D0D8D9;
+            border-bottom: 1px solid #D0D8D9;
+            background: #F9F9F9;
+            font-size: 1.200em;
+            color: #7F8C8C;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .accordion-section-title.active, .accordion-section-title:hover {
+            background:#ECECEC;
+            /* Type */
+            text-decoration:none;
+            color: #7F8C8C;
+        }
+
+        .accordion-section:last-child .accordion-section-title {
+            border-bottom:none;
+        }
+
+        /*----- Section Content -----*/
+        .accordion-section-content {
+            padding:15px;
+        }
+
+    </style>
+</div>
+
+
+
+
+
+
+
+

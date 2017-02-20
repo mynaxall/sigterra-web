@@ -693,6 +693,14 @@ Social Buttons
     margin-top: 100px;
     padding: 10px;
 }
+.image-dialog2{
+    position: relative;
+    background: #fff;
+    width: 450px;
+    margin: 30px auto;
+    margin-top: 100px;
+    padding: 10px;
+}
 
 .image-cropped-div{
     margin-top: 50px;
@@ -796,6 +804,97 @@ Social Buttons
     height: 1px;
     width: 100%;
     top: 70px;
+}
+
+.modal-signature-panel{
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 17px -4px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 17px -4px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 17px -4px rgba(0,0,0,0.5);
+    width: 340px;
+    height:245px;
+    display: inline-block;
+    background-color: #FFFFFF;
+    margin: 10px;
+
+}
+
+.signature-text-sample{
+    color: #5C5C5C;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-top: 20px
+}
+
+.select-btn-div{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.copy-to-email-top{
+    height: 300px;
+    width: 100%;
+    background-color: #FFF;
+    text-align: center;
+}
+.copy-to-email-bottom{
+    height: 50%;
+    background-color: #ECECEC;
+    width: 100%;
+}
+
+.signature-title{
+    color: #242424;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.mail-agent-div{
+    background-color: #ECECEC;
+    height: 200px;
+    padding: 40px;
+}
+
+.mail-instructions{
+    background-color: #FFF;
+    width: 100%;
+    height:300px;
+    padding: 30px;
+    overflow: auto;
+}
+
+.mail-agent-col{
+    text-align: center;
+    color: #4A4A4A;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.mail-agent-col:focus{
+    outline: none;
+}
+
+.instructions-title{
+
+    color: #4A4A4A;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.activeInstruction{
+    webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+}
+
+.mail-copy-div{
+    width: 100%;
+    height:300px;
+    background-color: #ECECEC;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
 }
 
 

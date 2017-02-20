@@ -1,0 +1,102 @@
+<!--<div ng-show="showBannerDialog" class="image-popup">-->
+    <!--<div class="row image-dialog2" style="margin-right: 30%;">-->
+        <!--<button type="button" class="close login-close-gray" ng-click="closeDialog()">×</button>-->
+        <!--<div class="crop-dialog-header">Upload banner</div>-->
+        <!--<div class="image-dialog-crop-panel">-->
+
+            <!--<div>-->
+                <!--<div class="fileUpload btn btn-primary choose-photo-btn">-->
+                    <!--<span>Choose photo</span>-->
+                    <!--<input type="file" id="fileInput" class="upload" onchange="angular.element(this).scope().handleFileSelect(event)" />-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="cropArea">-->
+                <!--<img-crop image="myImage" result-image="myCroppedImage" ></img-crop>-->
+            <!--</div>-->
+            <!--<div class="crop-btn-div">-->
+                <!--<button class="btn btn-primary main-btn" ng-click="vm.saveImage()">save</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="modeal-custom-window" ng-show="isCopyTiEmail">
+    <div class="modal-dialog " style="margin-top: 0px; width: 1130px!important;">
+        <div class="modal-content" uib-modal-transclude="">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        ng-click="closeDialog()">&times;</button>
+            </div>
+            <div  style=" padding: 0px!important;" class="modal-body">
+                <div class="copy-to-email-top">
+                    <div class="signature-title">Add banner to your signature</div>
+                    <div class="form-group" style="margin-left: 250px;">
+                        <div class="input-text-div">
+                            <input type="text" class="form-control profile-input" id="urlOne" placeholder="" ng-model="item.urlOne">
+                        </div>
+                        <div class="social-image-form-div"  style="padding: 0px; padding-left: 30px">
+                            <button  type="submit" ng-disabled="for2m.$invalid" style="padding: 0px;" ng-click="showImageDialogBanner()" class="btn btn-primary main-btn upload-item-img">Upload</button>
+                        </div>
+                    </div>
+                    <!--<img class="image-cropped" ng-show="showCroppedImage"  ng-src="{{myCroppedImage}}" />-->
+                    <!--<img ng-show="!showCroppedImage" class="image-cropped" src="/content/images/default_photo_image@2x.png" /></div>-->
+                </div>
+                <div class="copy-to-email-bottom">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="modal-signature-panel">
+                                <div class="signature-text-sample">Kind regards,</div>
+                                <div style="margin-left: -75px; margin-top: -30px; height: 220px;">
+                                    <div  style="transform: scale(0.59);">
+                                        <div id="previewImage"></div>
+                                    </div>
+                                    <!--<input id="btn-Preview-Image" type="button" value="Preview" ng-click="testimg()"/>-->
+                                    <!--<a id="btn-Convert-Html2Image" href="#" ng-click="testimg2()">Download</a>-->
+                                    <!--<br/>-->
+                                    <!--<h3>Preview :</h3>-->
+                                    <!--<div id="previewImage">-->
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                            <div class="select-btn-div" style="margin-top: 0px;">
+                                <button type="submit" data-clipboard-text="{{cardletLink}}" ngclipboard data-clipboard-text="{{cardletLink}}"class="saveButton" ng-click="selectSignature(1)">
+                                    Select
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="modal-signature-panel">
+                                <div class="signature-text-sample">Kind regards,</div>
+                                <div style="margin-top: -30px;" id="secondSignature">
+                                    <ng-include src="'/app/entities/user-cardlets/userSigmature2.html'"></ng-include>
+                                </div>
+                            </div>
+                            <div class="select-btn-div">
+                                <button type="submit" data-clipboard-text="{{cardletLink}}" ngclipboard data-clipboard-text="{{cardletLink}}"class="saveButton"  ng-click="selectSignature(2)">
+                                    Select
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="modal-signature-panel">
+                                <div class="signature-text-sample">Kind regards,</div>
+                                <div style=" margin-top: -30px;" id="thirdSignature">
+                                    <ng-include src="'/app/entities/user-cardlets/userSigmature3.html'"></ng-include>
+                                </div>
+                            </div>
+                            <div class="select-btn-div">
+                                <button type="submit" data-clipboard-text="{{cardletLink}}" ngclipboard data-clipboard-text="{{cardletLink}}"class="saveButton"  ng-click="selectSignature(3)">
+                                    Select
+                                </button>
+                            </div>
+                            <img src="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

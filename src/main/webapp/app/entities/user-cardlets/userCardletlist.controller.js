@@ -7,14 +7,12 @@
 
 
 
-    UserCardletListController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout'];
+    UserCardletListController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService',  'paginationConstants', '$http', '$timeout', '$uibModal', '$location'];
 
-    function UserCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout) {
+    function UserCardletListController ($scope, $state, CardletList, ParseLinks, AlertService,  paginationcardletConstants ,$http, $timeout, $uibModal, $location) {
         var vm = this;
 
         vm.loadPage = loadPage;
-        vm.predicate = pagingParams.predicate;
-        vm.reverse = pagingParams.ascending;
         vm.transition = transition;
 
         $scope.tabNames ={
@@ -114,15 +112,34 @@
             document.getElementById(tabId).className += " active";
         }
 
+        $scope.isCopyTiEmail = false;
+
+        $scope.copyToEmail = function(id, cardId) {
+
+            $scope.isCopyTiEmail = true;
+            $scope.segnatureId = id;
+            $scope.userCardlets[id].tabs
+            for (var i = 0; i < $scope.userCardlets[id].tabs.length; i++) {
+                if ($scope.userCardlets[id].tabs[i].tabType = 1){
+                    $scope.firstBusinessCardId = i;
+                break
+                }
+            }
+            $scope.element = $("#"+cardId); // global variable
+            $scope.getCanvas;
+            html2canvas($scope.element, {
+                onrendered: function (canvas) {
+                    $("#previewImage").append(canvas);
+                    $scope.getCanvas = canvas;
+                }
+            });
+        };
+
         $scope.openCard = function(cardName, tabId, id) {
 
 
             var i, tabcontent2, tablinks2, tabs2;
-            console.log("===============")
             tabcontent2 = document.getElementsByClassName("tabcontent2"+id);
-            console.log(cardName)
-            console.log(tabId)
-            console.log(id)
             for (i = 0; i < tabcontent2.length; i++) {
                 tabcontent2[i].style.display = "none";
             }
@@ -132,19 +149,11 @@
 
             }
             tabs2 = document.getElementsByClassName("tabs2"+id);
-            console.log("tabs2")
-            console.log(tabs2)
             for (i = 0; i < tabs2.length; i++) {
                 tabs2[i].className = tabs2[i].className.replace(" active", "");
 
             }
 
-
-
-            console.log(cardName);
-            console.log("cardName");
-
-            console.log(tabId);
             document.getElementById(cardName).style.display = "block";
             document.getElementById(tabId).className += " active";
         }
@@ -152,16 +161,19 @@
         $scope.showSignature = function(){
             $http.get("/api/signatures")
                 .success(function(response, status, headers) {
-                    console.log(response);
                     $scope.signatures = response;
                 });
+        }
+        $scope.copText = function(){
+            var urlField = document.getElementById('copyedText');
+            // select the contents
+            copyToClipboard('bobo')
         }
 
 
         $scope.userCard= function(){
             $http.get("/api/userCardlets")
                 .success(function(response, status, headers) {
-                    console.log(response);
                     $scope.userCardlets = response;
 
                 });
@@ -169,35 +181,126 @@
 
         $scope.userCard();
 
+        $scope.copyToClipboard = function(id) {
+           var code =  '<iframe style="width: 555px; height: 280px;border: 0px!important" src="http://localhost:8080/#/copyToWeb?cardletId='+ id +'"></iframe>';
+            window.prompt("Copy to clipboard: Ctrl+C, Enter", code);
+        }
 
+        // $scope.showImageDialogBanner = function(){
+        //     $scope.showBannerDialog = true;
+        //}
+        //
+        //$scope.myImage='';
+        //$scope.myCroppedImage = '';
+        //
+        //$scope.showCroppedImage = false;
+        //
+        //$scope.handleFileSelect=function(evt) {
+        //    alert("asd")
+        //    var file=evt.currentTarget.files[0];
+        //    var reader = new FileReader();
+        //    reader.onload = function (evt) {
+        //        $scope.$apply(function($scope){
+        //            $scope.myImage=evt.target.result;
+        //        });
+        //    };
+        //    reader.readAsDataURL(file);
+        //    console.log("asdas")
+        //};
+
+
+
+
+        $scope.isShowModal = false;
+
+        $scope.closeDialog = function(){
+            $scope.isShowModal = false;
+            $scope.isCopyTiEmail = false;
+            $scope.showBannerDialog = false;
+            $scope.isShowMailClientWindow = false;
+
+            $("canvas").remove();
+        };
+
+
+        $scope.testimg2= function() {
+            var imgageData =  $scope.getCanvas.toDataURL("image/png");
+            console.log(imgageData)
+
+            // Now browser starts downloading it instead of just showing it
+            $scope.newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+            $("#btn-Convert-Html2Image").attr("download", "your_pic_name.png").attr("href", newData);
+        };
+
+
+
+        $scope.coptToEmailText;
+        $scope.isShowMailClientWindow = false;
+
+        $scope.selectSignature = function(id){
+            $scope.isShowMailClientWindow = true;
+            $scope.isCopyTiEmail = false;
+            if(id == 1){
+                var imgageData =  $scope.getCanvas.toDataURL("image/png");
+                // Now browser starts downloading it instead of just showing it
+                $scope.newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+
+                $scope.coptToEmailText = '<img style="text-transform: scale(0.59)" src="'+imgageData+'">'
+                    console.log(imgageData)
+            }
+            else if(id == 2){
+                var urlField = document.getElementById('secondSignature');
+                $scope.coptToEmailText = urlField.outerHTML;
+            }else if(id == 3){
+
+                var urlField = document.getElementById('thirdSignature');
+                $scope.coptToEmailText = urlField.outerHTML;
+            }
+        };
+
+
+        $scope.testimg = function(){
+            $scope.element = $("#cardlet-signature"); // global variable
+            $scope.getCanvas;
+            html2canvas($scope.element, {
+                onrendered: function (canvas) {
+                    $("#previewImage").append(canvas);
+                    $scope.getCanvas = canvas;
+                }
+            });
+        };
+
+
+         $scope.openModal= function(id, syncData) {
+             $scope.cardletLink = '<iframe style="width: 555px; height: 280px;border: 0px!important" src="'+$location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/copyToWeb?cardletId='+ id +'"></iframe>'
+             $scope.isShowModal = true;
+        };
+
+        /* @ngInject */
 
 
         $scope.getTabTypes = function(){
             $http.get("/api/tab-types-by-type/1")
                 .success(function(response, status, headers) {
-                    console.log(response);
                     $scope.tabTypes = response;
                     $scope.tabNames.tabs[0].layout.tabId = $scope.tabTypes[0].id;
                     $scope.tabNames.tabs[0].layout.url = $scope.tabTypes[0].path;
 
                 });
-        }
+        };
 
         $scope.getItemTypes = function(){
             $http.get("/api/tab-types-by-type/2")
                 .success(function(response, status, headers) {
-                    console.log(response);
                     $scope.itemTypes = response;
                     $scope.tabNames.tabs[1].layout.tabId = $scope.itemTypes[0].id;
                     $scope.tabNames.tabs[1].layout.url = $scope.itemTypes[0].path;
-                    console.log($scope.tabNames)
                 });
         }
 
         $scope.delteCardlet = function(id){
             $http.get("/api/cardletDelete/"+id)
                 .success(function(response, status, headers) {
-                    console.log(response);
                     $scope.userCardlets = response;
                 });
         }
@@ -287,7 +390,6 @@
 
         $scope.deleteItems = function(tabId, index){
             if($scope.tabNames.tabs[tabId].items.length > 1){
-                console.log(index)
                 $scope.tabNames.tabs[tabId].items.splice((index-2), 1);
                 for (var i = 0; i < $scope.tabNames.tabs[tabId].items.length; i++) {
                     $scope.tabNames.tabs[tabId].items[i].index = i + 2;
@@ -349,12 +451,11 @@
             }, 500);
         }
 
-
+        $scope.showBannerDialog = false;
 
         $scope.removeTab = function(index) {
 
             if($scope.tabNames.tabs.length >1) {
-                console.log(index)
                 $scope.tabNames.tabs.splice(index, 1);
                 for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                     $scope.tabNames.tabs[i].position = i;
@@ -406,7 +507,6 @@
                     cyrrentEl.style.background = "#" + colorSecond;
                 }
             }
-            console.log(index)
             if($scope.userCardlets[index].tabs.length <= 2){
                 cyrrentEl.style.width = "268px"
             }
@@ -422,7 +522,6 @@
 
 
         $scope.saveCardlet = function(){
-            console.log($scope.tabNames)
             $http.post("/api/cardlet",  $scope.tabNames)
                 .success(function (data, status, headers, config) {
 

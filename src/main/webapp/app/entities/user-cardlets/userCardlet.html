@@ -1,4 +1,34 @@
 <script src="/app/entities/cardlet-list/jscolor.js"></script>
+<script src="http://files.codepedia.info/uploads/iScripts/html2canvas.js"></script>
+<ng-include ng-show="isCopyTiEmail" src="'/app/entities/user-cardlets/copyToClipboard.html'"></ng-include>
+<ng-include ng-show="isShowMailClientWindow" src="'/app/entities/user-cardlets/emailClientDialog.html'"></ng-include>
+
+
+<div class="modeal-custom-window" ng-show="isShowModal">
+    <div class="modal-dialog "><div class="modal-content" uib-modal-transclude="">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                    ng-click="closeDialog()">&times;</button>
+            <h4 class="modal-title" id="myUserLabel">
+                Copy to web-browser</h4>
+        </div>
+        <div class="modal-body">
+            <div class="copy-to-web-div">
+                <textarea id="copyedText" style="width: 100%; height: 100px" ng-model="cardletLink"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="saveButton back-btn" data-dismiss="modal" ng-click="closeDialog()">
+                Back to Portfolio
+            </button>
+
+            <button type="submit" style="float: right;" data-clipboard-text="{{cardletLink}}" ngclipboard data-clipboard-text="{{cardletLink}}"class="saveButton">
+                Copy to Clipboard
+            </button>
+        </div>
+    </div>
+    </div>
+</div>
 <div class="add-new-header">
     <div class="add-new-header-text">
         Have you been prospecting for months on end, only to end up with no one? Or have you been trying to sell a product or service that has not been selling? Or you just kind of depressed about your current employment?
@@ -12,6 +42,34 @@
 </div>
 <div class="entiti-content">
 <style>
+
+    .modal-content{
+        margin-top: 100px;
+    }
+
+    .copy-to-web-div{
+        text-align: center;
+        width: 100%;
+    }
+
+    .modal-title{
+        text-transform: uppercase;
+    }
+
+    .modal-header{
+        text-align: center;
+    }
+
+    .modal-footer{
+        text-align: left!important;
+        background-color: #e7e7e7;
+        padding: 10px 10% 30px 10%!important;
+    }
+    .modal-body{
+        background-color: #e7e7e7;
+        padding: 30px 10%!important;
+
+    }
 
     .border-line-new-header{
         background-color: #D0D8D9;
@@ -468,36 +526,54 @@
         width: 100%;
     }
 
-</style>
+    .modeal-custom-window{
+        top:0;
+        position: fixed;
+        display: block;
+        width: 100%;
+        height:100%;
+        background-color: rgba(0,0,0, 0.6);
+        z-index: 1000;
+    }
 
+    .back-btn{
+        background-color: #e7e7e7;
+        color: #cf3d37;
+        width: auto;
+        padding-left: 0px;
+    }
+
+</style>
     <div class="user-cardlet-panel">
             <div class="row" >
                 <div style="margin-bottom: 30px;" class="col-lg-6" ng-repeat="tabNames in userCardlets">
                     <div class="cardlet-panel">
                         <div class="cardlet-name">{{tabNames.cardletName}}</div>
-                        <div>
-                            <ul class="tab2">
-                                <li style="background-color: #fff" class="tabs2 tabs2{{tabNames.id}}" ng-style="addColors('tab'+tabName.position+tabName.name+tabNames.id, tabName.layout.mainColor, tabName.layout.secondaryColor, $parent.$index)" ng-repeat="tabName in tabNames.tabs" ng-class="tabName.position == 0 ? 'active' : ''"
-                                    id="tab{{tabName.position}}{{tabName.name}}{{tabNames.id}}">
-                                    <div style="position: relative">
-                                        <a href="javascript:void(0)" class="tablinks2 tablinks2{{tabNames.id}}" ng-click="openCard(tabName.name+tabName.position+tabNames.id, 'tab'+tabName.position+tabName.name+tabNames.id, tabNames.id)">{{tabName.name}}</a>
-                                    </div>
-                                </li>
+                        <div id="copy-to-clip{{tabNames.id}}">
+                            <div>
+                                <ul class="tab2">
+                                    <li style="background-color: #fff" class="tabs2 tabs2{{tabNames.id}}" ng-style="addColors('tab'+tabName.position+tabName.name+tabNames.id, tabName.layout.mainColor, tabName.layout.secondaryColor, $parent.$index)" ng-repeat="tabName in tabNames.tabs" ng-class="tabName.position == 0 ? 'active' : ''"
+                                        id="tab{{tabName.position}}{{tabName.name}}{{tabNames.id}}">
+                                        <div style="position: relative">
+                                            <a href="javascript:void(0)" class="tablinks2 tablinks2{{tabNames.id}}" ng-click="openCard(tabName.name+tabName.position+tabNames.id, 'tab'+tabName.position+tabName.name+tabNames.id, tabNames.id)">{{tabName.name}}</a>
+                                        </div>
+                                    </li>
 
-                            </ul>
-                        </div>
+                                </ul>
+                            </div>
 
-                        <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}{{tabNames.id}}" class="tabcontent2 tabcontent2{{tabNames.id}}" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-                                <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+                            <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}{{tabNames.id}}" class="tabcontent2 tabcontent2{{tabNames.id}}" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
+                                    <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+                            </div>
                         </div>
                         <div class="cardlet-button-panel row">
                             <div class="catdlet-btn-col">
-                                <div class="catdlet-btn catdlet-btn-margin">
+                                <div ng-click="copyToEmail($index, 'copy-to-clip'+tabNames.id)" class="catdlet-btn catdlet-btn-margin">
                                     <img src="/app/entities/user-cardlets/img/btn-icon/copy_to_email_icon.png">
                                 </div>
                             </div>
                             <div class=" catdlet-btn-col">
-                                <div class="catdlet-btn catdlet-btn-margin">
+                                <div ng-click="openModal(tabNames.id)" class="catdlet-btn catdlet-btn-margin">
                                     <img src="/app/entities/user-cardlets/img/btn-icon/copy_to_web_icon.png">
                                 </div>
                             </div>
@@ -511,9 +587,9 @@
                                     <img src="/app/entities/user-cardlets/img/btn-icon/delete_icon.png">
                                 </div>
                             </div>
-
                         </div>
                     </div>
+
                 </div>
                 <div style="margin-bottom: 30px;" class="col-lg-6">
                     <div class="create-new-cardlet" ui-sref="cardletlist">

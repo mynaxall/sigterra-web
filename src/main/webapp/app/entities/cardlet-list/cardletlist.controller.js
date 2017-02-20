@@ -69,7 +69,6 @@
             function onSuccess(data, headers) {
                 vm.queryCount = vm.totalItems;
                 $scope.cardlets = data;
-                console.log(data);
 
             }
             function onError(error) {
@@ -92,12 +91,6 @@
 
 
         $scope.openCity = function(cityName, tabId, cardName, cardId) {
-
-
-            console.log(cityName)
-            console.log(tabId)
-            console.log(cardName)
-            console.log(cardId)
 
             var i, tabcontent, tablinks, tabs;
             tabcontent = document.getElementsByClassName("tabcontent");
@@ -141,7 +134,6 @@
         $scope.showSignature = function(){
             $http.get("/api/signatures")
                 .success(function(response, status, headers) {
-                    console.log(response);
                     $scope.signatures = response;
                 });
         }
@@ -150,7 +142,6 @@
         $scope.userCard= function(){
             $http.get("/api/userCardlets")
                 .success(function(response, status, headers) {
-                    console.log(response);
                     $scope.signatures = response;
                 });
         }
@@ -163,7 +154,6 @@
         $scope.getTabTypes = function(){
             $http.get("/api/tab-types-by-type/1")
                 .success(function(response, status, headers) {
-                    console.log(response);
                     $scope.tabTypes = response;
                     $scope.tabNames.tabs[0].layout.tabId = $scope.tabTypes[0].id;
                     $scope.tabNames.tabs[0].layout.url = $scope.tabTypes[0].path;
@@ -174,11 +164,9 @@
         $scope.getItemTypes = function(){
             $http.get("/api/tab-types-by-type/2")
                 .success(function(response, status, headers) {
-                    console.log(response);
                     $scope.itemTypes = response;
                     $scope.tabNames.tabs[1].layout.tabId = $scope.itemTypes[0].id;
                     $scope.tabNames.tabs[1].layout.url = $scope.itemTypes[0].path;
-                    console.log($scope.tabNames)
                 });
         }
 
@@ -274,7 +262,6 @@
 
         $scope.deleteItems = function(tabId, index){
             if($scope.tabNames.tabs[tabId].items.length > 1){
-                console.log(index)
                 $scope.tabNames.tabs[tabId].items.splice((index-2), 1);
                 for (var i = 0; i < $scope.tabNames.tabs[tabId].items.length; i++) {
                     $scope.tabNames.tabs[tabId].items[i].index = i + 2;
@@ -292,9 +279,7 @@
             $scope.accordionActive = id;
         }
 
-
         $scope.positionCheck = function(){
-
 
             for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                 $scope.tabNames.tabs[i].position = i;
@@ -311,16 +296,12 @@
                             document.getElementsByClassName("tabcontent")[i].style.display = "none";;
                             tabs[i].className = tabs[i].className.replace(" active", "");
                         }
-
-                    }
-
-                    for (var i = 0; i < tabs2.length; i++) {
                         if(angular.element(tabs2[i]).hasClass('active')){
                             document.getElementsByClassName("tabcontent2")[i].style.display = "none";;
                             tabs2[i].className = tabs2[i].className.replace(" active", "");
                         }
-
                     }
+
 
                     document.getElementsByClassName("tabcontent2")[0].style.display = "block";
                     document.getElementsByClassName("tabs2")[0].className += " active";
@@ -340,7 +321,6 @@
         $scope.removeTab = function(index) {
 
             if($scope.tabNames.tabs.length >1) {
-                console.log(index)
                 $scope.tabNames.tabs.splice(index, 1);
                 for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                     $scope.tabNames.tabs[i].position = i;
@@ -378,8 +358,6 @@
         }
 
         $scope.chooseType = function(id, url, tabId) {
-            console.log(tabId)
-            console.log(url)
             $scope.tabNames.tabs[id].layout.url = url;
             $scope.tabNames.tabs[id].layout.tabId = tabId;
 
@@ -410,7 +388,6 @@
 
 
         $scope.saveCardlet = function(){
-            console.log($scope.tabNames)
             $http.post("/api/cardlet",  $scope.tabNames)
                 .success(function (data, status, headers, config) {
                     $location.path('/user-cardlets')

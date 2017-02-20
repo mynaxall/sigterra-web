@@ -16,7 +16,8 @@
             // jhipster-needle-angularjs-add-module JHipster will add new module here
             'angular-loading-bar',
             'ngImgCrop',
-            'dndLists'
+            'dndLists',
+            'ngclipboard'
         ])
         .run(run);
 

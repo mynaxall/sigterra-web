@@ -80,8 +80,6 @@
 
             }
 
-            console.log(document.getElementById(cityName))
-            console.log(document.getElementById(tabId))
             document.getElementById(cityName).style.display = "block";
             document.getElementById(tabId).className += " active";
 
@@ -110,7 +108,7 @@
         $scope.showSignature = function(){
             $http.get("/api/signatures")
                 .success(function(response, status, headers) {
-                    console.log(response);
+
                     $scope.signatures = response;
                 });
         }
@@ -119,7 +117,7 @@
         $scope.userCard= function(){
             $http.get("/api/userCardlets")
                 .success(function(response, status, headers) {
-                    console.log(response);
+
                     $scope.signatures = response;
                 });
         }
@@ -224,7 +222,7 @@
 
         $scope.deleteItems = function(tabId, index){
             if($scope.tabNames.tabs[tabId].items.length > 1){
-                console.log(index)
+
                 if($scope.tabNames.removeItems == null){
                     $scope.tabNames.removeItems = [];
                 }
@@ -265,10 +263,6 @@
                             document.getElementsByClassName("tabcontent")[i].style.display = "none";;
                             tabs[i].className = tabs[i].className.replace(" active", "");
                         }
-
-                    }
-
-                    for (var i = 0; i < tabs2.length; i++) {
                         if(angular.element(tabs2[i]).hasClass('active')){
                             document.getElementsByClassName("tabcontent2")[i].style.display = "none";;
                             tabs2[i].className = tabs2[i].className.replace(" active", "");
@@ -294,7 +288,7 @@
         $scope.removeTab = function(index) {
 
             if($scope.tabNames.tabs.length >1) {
-                console.log(index)
+
                 if ($scope.tabNames.tabs[index].tabType === 2 && $scope.tabNames.tabs[index].id) {
                     if ($scope.tabNames.removeTabs == null) {
                         $scope.tabNames.removeTabs = [];
@@ -342,8 +336,7 @@
         }
 
         $scope.chooseType = function(id, url, tabId) {
-            console.log(tabId)
-            console.log(url)
+
             $scope.tabNames.tabs[id].layout.url = url;
             $scope.tabNames.tabs[id].layout.tabId = tabId;
 
@@ -374,7 +367,7 @@
 
 
         $scope.saveCardlet = function(){
-            console.log($scope.tabNames)
+
             $http.post("/api/editCardlet",  $scope.tabNames)
                 .success(function (data, status, headers, config) {
                     $location.path('/user-cardlets')

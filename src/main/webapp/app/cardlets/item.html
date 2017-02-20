@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="http://localhost:8080/bower_components/bootstrap/dist/css/bootstrap.css">
+<script src="http://localhost:8080/bower_components/angular/angular.js"></script>
 <div>
 	<div class="cardlet"  style="background-color: #{{tabName.layout.mainColor}}" ng-init="initSlide(tabName)" >
         <div>
@@ -136,37 +137,23 @@
 
     }
 
-
-    @keyframes cf3FadeInOut {
-        0%  {
-           opacity: 0;
-        }
-
-        50% {
-            opacity: 1;
-        }
-        70% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
-
     #ing-1{
+        display: block;
         animation: cf3FadeInOut 4s infinite;
         animation-delay: 0s;
     }
 
 
     #ing-2{
-        margin-top:-150px;
+        display: block;
+        margin-top:-130px;
         animation: cf3FadeInOut 8s infinite;
         animation-delay: 4s;
     }
 
     #ing-3{
-        margin-top:-190px;
+        display: block;
+        margin-top:-130px;
         animation: cf3FadeInOut 12s infinite;
         animation-delay:8s;
     }
@@ -232,8 +219,8 @@
 	}
 
     .item-images {
-        width: 130px;
-        height: 130px;
+        min-width: 130px;
+        min-height: 130px;
         margin-left: 20px;
     }
 
