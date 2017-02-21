@@ -3,25 +3,33 @@
 
     angular
         .module('sigterraWebApp')
-        .controller('UserCardletController', UserCardletController);
+        .controller('PreviewCardletController', PreviewCardletController);
 
 
 
-    UserCardletController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location'];
+    PreviewCardletController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'LoginService'];
 
-    function UserCardletController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location) {
+    function PreviewCardletController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, LoginService) {
+
 
 
         $scope.getCardlet = function(){
             var param1 = $location.search().cardletId;
-            console.log("asdasd");
-            console.log(param1);
             $http.get("/api/cardlet/"+param1)
                 .success(function(response, status, headers) {
                     $scope.tabNames = response;
                 });
         };
 
+
+
+        function transition () {
+            $state.transitionTo($state.$current, {
+                page: vm.page,
+                sort: vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc'),
+                search: vm.currentSearch
+            });
+        }
 
 
         $scope.openCity = function(cardName, cardId) {
@@ -58,6 +66,7 @@
         }
 
 
+
         angular.element(document).ready(function () {
             document.getElementsByClassName("tabcontent2")[0].style.display = "block";
             document.getElementsByClassName("tabs2")[0].className += " active";
@@ -88,7 +97,6 @@
         }
 
         $scope.myInterval = 3000;
-
 
     }
 

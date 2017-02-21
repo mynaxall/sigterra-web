@@ -114,7 +114,7 @@
 
         $scope.isCopyTiEmail = false;
 
-        $scope.copyToEmail = function(id, cardId) {
+        $scope.copyToEmail = function(id, cardId, sigId) {
 
             $scope.isCopyTiEmail = true;
             $scope.segnatureId = id;
@@ -125,6 +125,8 @@
                 break
                 }
             }
+            console.log(sigId)
+            $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ sigId.toString();
             $scope.element = $("#"+cardId); // global variable
             $scope.getCanvas;
             html2canvas($scope.element, {

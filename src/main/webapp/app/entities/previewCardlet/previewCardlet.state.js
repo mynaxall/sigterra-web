@@ -9,17 +9,17 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('userCardlet', {
+        .state('previewCardlet', {
             parent: 'entity',
-            url: '/copyToWeb?page&sort&search&cardletId',
+            url: '/previewCardlet?page&sort&search&cardletId',
             data: {
                 authorities: [],
                 pageTitle: 'Cardlets'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/copyToWeb/userCardlet.html',
-                    controller: 'UserCardletController',
+                    templateUrl: 'app/entities/previewCardlet/previewCardlet.html',
+                    controller: 'PreviewCardletController',
                     controllerAs: 'vm'
                 }
             },

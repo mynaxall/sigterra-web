@@ -376,19 +376,7 @@
         ul[dnd-list] .dndDraggingSource {
             display: none;
         }
-        .navbar{
-            display: none;
-        }
-        .footer{
-            display: none;
-        }
 
-        .well{
-            border: 0px!important;
-        }
-        .dev{
-            display: none;
-        }
 
 
     </style>
@@ -425,7 +413,7 @@
             margin: auto;
             margin-top: 20px;"></div>
                     <div style="position: relative">
-                        <a href="javascript:void(0)" class="tablinks2"ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                        <a href="{{signatureLink}}" class="tablinks2"ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
                     </div>
                 </div>
             </div>

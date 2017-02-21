@@ -869,6 +869,8 @@ Social Buttons
     color: #4A4A4A;
     font-size: 14px;
     font-weight: bold;
+    float: left;
+    width: 25%;
 }
 
 .mail-agent-col:focus{
@@ -896,6 +898,42 @@ Social Buttons
     padding-right: 50px;
     padding-top: 50px;
 }
+
+.preview-header{
+    margin: auto;
+    max-width: 900px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.preview-header-text{
+    color: #4A4A4A;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.border-line-new-header{
+    background-color: #D0D8D9;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 25px;
+}
+
+.add-new-btn{
+    background: #FFF;
+    width:250px;
+    position: relative;
+    z-index:100;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.selectSignature{
+    float: left;
+    width: 33.333333%;
+}
+
 
 
 

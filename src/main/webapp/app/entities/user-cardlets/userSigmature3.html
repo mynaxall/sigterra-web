@@ -25,7 +25,7 @@
             <div>
                 <span style="background: #FFF; border-width: 1px; border-style: solid; border-color: #D0D8D9;float: left; width: 75px;text-align: center; padding: 5px;" ng-repeat="tabName in userCardlets[segnatureId].tabs" id="card{{tabName.position}}{{tabName.name}}"
                       ng-style="{'background': tabName.position == 0 ? '#4BABE2' : '#FFF'}">
-                    <a style=" font-size: 13px; font-weight: bold" ng-style="{'color': tabName.position == 0 ? '#FFFFFF' : '#7F8C8C'}" href="javascript:void(0)" class="tablinks2">{{tabName.name}}</a>
+                    <a style=" font-size: 13px; font-weight: bold" ng-style="{'color': tabName.position == 0 ? '#FFFFFF' : '#7F8C8C'}" href="{{signatureLink}}" class="tablinks2">{{tabName.name}}</a>
                 </span>
                 </ul>
             </div>

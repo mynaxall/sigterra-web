@@ -1,5 +1,5 @@
-<script src="/app/entities/cardlet-list/jscolor.js"></script>
-<div class="entiti-content" >
+
+<div class="entiti-content" ng-init="getCardlet()" style="padding-bottom: 30px">
     <style>
 
         .cardlet-name-panel{
@@ -377,24 +377,35 @@
             display: none;
         }
 
-
     </style>
 
-    <div>
-            <div>
-                <ul class="tab2">
-                    <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in userCardlets[segnatureId].tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
-                        <div style="position: relative">
-                            <a href="javascript:void(0)" class="tablinks2"ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
-                        </div>
-                    </li>
+    <div style="margin: auto;width: 540px;padding-top: 30px;">
 
-                </ul>
-            </div>
+        <div>
+            <ul class="tab2">
+                <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
+                    <div style="position: relative">
+                        <a href="javascript:void(0)" class="tablinks2"ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                    </div>
+                </li>
 
-            <div ng-repeat="tabName in userCardlets[segnatureId].tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-                <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+            </ul>
+        </div>
+
+        <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
+            <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+        </div>
+    </div>
+    <div class="preview-header">
+        <div class="preview-header-text">
+            Have you been prospecting for months on end, only to end up with no one? Or have you been trying to sell a product or service that has not been selling? Or you just kind of depressed about your current employment?
+        </div>
+        <div style="position: relative">
+            <div class="border-line-new-header"></div>
+            <div class="add-new-btn">
+                <button class="saveButton" ui-sref="cardletlist">Create new</button>
             </div>
+        </div>
     </div>
 
     <style>
