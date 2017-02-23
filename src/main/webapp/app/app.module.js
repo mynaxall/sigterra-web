@@ -17,7 +17,8 @@
             'angular-loading-bar',
             'ngImgCrop',
             'dndLists',
-            'ngclipboard'
+            'ngclipboard',
+            'base64'
         ])
         .run(run);
 

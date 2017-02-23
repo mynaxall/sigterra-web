@@ -130,12 +130,19 @@
             $scope.element = $("#"+cardId); // global variable
             $scope.getCanvas;
             html2canvas($scope.element, {
+                useCORS: true,
                 onrendered: function (canvas) {
                     $("#previewImage").append(canvas);
                     $scope.getCanvas = canvas;
                 }
             });
         };
+
+        $scope.convertImage = function(image){
+            $scope.encoded = $base64.encode(image);
+            console.log($scope.encoded)
+            return $scope.encoded;
+        }
 
         $scope.openCard = function(cardName, tabId, id) {
 
@@ -265,6 +272,7 @@
             $scope.element = $("#cardlet-signature"); // global variable
             $scope.getCanvas;
             html2canvas($scope.element, {
+                useCORS: true,
                 onrendered: function (canvas) {
                     $("#previewImage").append(canvas);
                     $scope.getCanvas = canvas;

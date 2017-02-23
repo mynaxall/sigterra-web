@@ -6,10 +6,10 @@
         <div>
             <div class="layouts">
                 <div>
-                    <img src="/app/cardlets/img/2_card/avatar_img.png" class="avatar">
+                    <img src="{{tabName.photo}}" class="avatar">
                 </div>
                 <div class="social-link-group">
-                    <a class="social-link-1"  href="{{tabName.socialLinks.twitter}}" target="_blank">
+                    <a class="social-link-1"  href="{{tabName.socialLinks.twitter}}" target="_blank" ng-show="tabName.socialLinks.twitter">
                         <svg width="32px" height="31px" viewBox="0 0 32 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
                             <title>tweeter_sq</title>
@@ -22,7 +22,7 @@
                             </g>
                         </svg>
                     </a>
-                    <a class="social-link-1"  href="{{tabName.socialLinks.facebook}}" target="_blank">
+                    <a class="social-link-1"  href="{{tabName.socialLinks.facebook}}" target="_blank" ng-show="tabName.socialLinks.facebook">
                         <svg width="32px" height="31px" viewBox="0 0 32 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
                             <title>facebook_sq</title>
@@ -35,7 +35,7 @@
                             </g>
                         </svg>
                     </a>
-                    <a class="social-link-1" href="{{tabName.socialLinks.google}}" target="_blank">
+                    <a class="social-link-1" href="{{tabName.socialLinks.google}}" target="_blank" ng-show="tabName.socialLinks.google">
                         <svg width="32px" height="31px" viewBox="0 0 32 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
                             <title>gmail_sq</title>
@@ -48,7 +48,7 @@
                             </g>
                         </svg>
                     </a>
-                    <a href="{{tabName.socialLinks.linkedin}}" target="_blank">
+                    <a href="{{tabName.socialLinks.linkedin}}" target="_blank" ng-show="tabName.socialLinks.linkedin">
                         <svg width="32px" height="31px" viewBox="0 0 32 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
                             <title>linkedin_sq</title>

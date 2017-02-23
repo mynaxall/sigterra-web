@@ -2,7 +2,7 @@
 <div>
 	<div class="cardlet2" style="background-color: #{{tabName.layout.mainColor}}">
         <div class="avatar-2-div2">
-            <img class="avatar-2-2" src="/app/cardlets/img/2_card/avatar_circle.png">
+            <img class="avatar-2-2" src="{{tabName.photo}}">
         </div>
         <div class="top-div2" style="background-color: #{{tabName.layout.mainColor}}">
             <div class="user-info2">
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="social-link-group2">
-                <a href="{{tabName.socialLinks.twitter}}" target="_blank">
+                <a href="{{tabName.socialLinks.twitter}}" target="_blank" ng-show="tabName.socialLinks.twitter">
                     <svg width="30px" height="31px" viewBox="0 0 30 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
                         <title>tweeter_circle</title>
@@ -38,7 +38,7 @@
                         </g>
                     </svg>
                 </a>
-                <a href="{{tabName.socialLinks.facebook}}" target="_blank">
+                <a href="{{tabName.socialLinks.facebook}}" target="_blank" ng-show="tabName.socialLinks.facebook">
                     <svg width="31px" height="31px" viewBox="0 0 31 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
                         <title>facebook_circle</title>
@@ -53,7 +53,7 @@
                         </g>
                     </svg>
                 </a>
-                <a href="{{tabName.socialLinks.google}}" target="_blank">
+                <a href="{{tabName.socialLinks.google}}" target="_blank" ng-show="tabName.socialLinks.google">
                     <svg width="31px" height="31px" viewBox="0 0 31 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
                         <title>google_circle</title>
@@ -68,7 +68,7 @@
                         </g>
                     </svg>
                 </a>
-                <a href="{{tabName.socialLinks.linkedin}}" target="_blank">
+                <a href="{{tabName.socialLinks.linkedin}}" target="_blank" ng-show="tabName.socialLinks.linkedin">
                     <svg width="31px" height="30px" viewBox="0 0 31 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
                         <title>linkedin_circle</title>
@@ -284,5 +284,9 @@
     .avatar-2-2{
         width: 150px;
         height:150px;
+        border-radius: 100%;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #CFCFCF;
     }
 </style>

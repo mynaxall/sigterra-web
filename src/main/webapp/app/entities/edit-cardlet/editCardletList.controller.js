@@ -10,6 +10,34 @@
     function EditCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location) {
         var vm = this;
 
+
+        $scope.showCropDialog = false;
+        $scope.myImage='';
+        $scope.myCroppedImage = '';
+
+        $scope.handleFileSelect=function(evt) {
+            var file=evt.currentTarget.files[0];
+            var reader = new FileReader();
+            reader.onload = function (evt) {
+                $scope.$apply(function($scope){
+                    $scope.myImage=evt.target.result;
+                });
+            };
+            reader.readAsDataURL(file);
+            console.log("asdas")
+        };
+
+        $scope.closeCropDialog = function(){
+            $scope.showCropDialog = false;
+        }
+
+
+        $scope.openCropDialog = function(tabId, itemId, itemImgPosition){
+            $scope.showCropDialog = true;
+            $scope.tabImageId = tabId;
+            $scope.itemImageId = itemId;
+        }
+
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
         vm.reverse = pagingParams.ascending;

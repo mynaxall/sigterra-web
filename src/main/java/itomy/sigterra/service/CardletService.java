@@ -79,6 +79,7 @@ public class CardletService {
             cardletTab.setCompany(business.getCompany());
             cardletTab.setSite(business.getSite());
             cardletTab.setJob(business.getJob());
+            cardletTab.setPhoto(business.getPhoto());
 
             BusinessSocialLinks links = new BusinessSocialLinks();
             links.setTwitter(business.getTwitter());
@@ -226,6 +227,8 @@ public class CardletService {
                 business.setMainColor(tab.getLayout().getMainColor());
                 business.setColor(tab.getLayout().getSecondaryColor());
                 business.setCardlet(cardlet);
+                log.info("asdasd=------------- "+tab.getPhoto());
+                business.setPhoto(tab.getPhoto());
                 if (tab.getUserName() != null) {
                     inputPropertiesRepository.save(tab.getUserName());
                     business.setUserName(tab.getUserName());
@@ -286,6 +289,8 @@ public class CardletService {
                         itemData.setName(inputModel.getName());
                     }
                     itemData.setId(inputModel.getId());
+
+                    itemData.setFirstImage(inputModel.getImage());
                     itemData.setSecondImage(inputModel.getImage2());
                     itemData.setThirdImage(inputModel.getImage3());
                     itemData.setLink(inputModel.getLink());

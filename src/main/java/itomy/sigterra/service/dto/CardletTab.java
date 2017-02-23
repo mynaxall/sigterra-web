@@ -24,11 +24,12 @@ public class CardletTab implements Serializable {
     private InputProperties site;
     private InputProperties job;
     private BusinessSocialLinks socialLinks;
+    private String photo;
 
     public CardletTab() {
     }
 
-    public CardletTab(Long id,String name, Integer position, Integer tabType, CardletLayout layout, List<ItemModel> items, InputProperties userName, InputProperties userEmail, InputProperties phone, InputProperties address, InputProperties company, InputProperties site, InputProperties job, BusinessSocialLinks socialLinks) {
+    public CardletTab(Long id, String name, Integer position, Integer tabType, CardletLayout layout, List<ItemModel> items, InputProperties userName, InputProperties userEmail, InputProperties phone, InputProperties address, InputProperties company, InputProperties site, InputProperties job, BusinessSocialLinks socialLinks, String photo) {
         this.id = id;
         this.name = name;
         this.position = position;
@@ -43,6 +44,7 @@ public class CardletTab implements Serializable {
         this.site = site;
         this.job = job;
         this.socialLinks = socialLinks;
+        this.photo = photo;
     }
 
     public Long getId() {
@@ -157,6 +159,14 @@ public class CardletTab implements Serializable {
         this.socialLinks = socialLinks;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     @Override
     public String toString() {
         return "CardletTab{" +
@@ -174,6 +184,7 @@ public class CardletTab implements Serializable {
             ", site=" + site +
             ", job=" + job +
             ", socialLinks=" + socialLinks +
+            ", photo='" + photo + '\'' +
             '}';
     }
 }

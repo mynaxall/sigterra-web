@@ -675,6 +675,7 @@ Social Buttons
     overflow: hidden;
     width:350px;
     height:350px;
+    margin: auto;
 }
 
 .image-popup{

@@ -3,7 +3,7 @@
 	<div class="cardlet" style="background-color: #{{tabName.layout.mainColor}}">
         <div class="top-div" style="background-color: #{{tabName.layout.secondaryColor}}">
             <div class="avatar-div">
-                <img class="avatar-img" src="/app/cardlets/img/2_card/avatar_rc.png">
+                <img class="avatar-img" src="{{tabName.photo}}">
             </div>
             <div class="user-info-div">
                 <div ng-show="!tabName.userName.value" class="user-name" style="color: #{{tabName.layout.mainColor}}">Jon Dou</div>
@@ -115,7 +115,7 @@
                     {{tabName.address.value}}
                 </div>
                 <div class="social-links">
-                    <a class="social-link" href="{{tabName.socialLinks.twitter}}" target="_blank">
+                    <a class="social-link" href="{{tabName.socialLinks.twitter}}" target="_blank" ng-show="tabName.socialLinks.twitter">
                         <svg width="32px" height="31px" viewBox="0 0 32 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
                             <title>tweeter_icon_rc</title>
@@ -128,7 +128,7 @@
                             </g>
                         </svg>
                     </a>
-                    <a class="social-link" href="{{tabName.socialLinks.facebook}}" target="_blank">
+                    <a class="social-link" href="{{tabName.socialLinks.facebook}}" target="_blank" ng-show="tabName.socialLinks.facebook">
                         <svg width="32px" height="31px" viewBox="0 0 32 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
                             <title>facebook_icon_rc</title>
@@ -141,7 +141,7 @@
                             </g>
                         </svg>
                     </a>
-                    <a class="social-link" href="{{tabName.socialLinks.google}}" target="_blank">
+                    <a class="social-link" href="{{tabName.socialLinks.google}}" target="_blank" ng-show="tabName.socialLinks.google">
                         <svg width="32px" height="31px" viewBox="0 0 32 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
                             <title>gmail_icon_rc</title>
@@ -154,7 +154,7 @@
                             </g>
                         </svg>
                     </a>
-                    <a class="social-link" href="{{tabName.socialLinks.linkedin}}" target="_blank">
+                    <a class="social-link" href="{{tabName.socialLinks.linkedin}}" target="_blank" ng-show="tabName.socialLinks.linkedin">
                         <svg width="32px" height="31px" viewBox="0 0 32 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
                             <title>linkedin_icon_rc</title>
