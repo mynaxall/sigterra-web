@@ -39,6 +39,22 @@
         box-shadow: none;
     }
 
+
+    @media (min-width: 1200px) {
+        .tab-panel {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    }
+
+    @media (min-width: 1300px) {
+        .tab-panel {
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+    }
+
+
     ul.tab {
         list-style-type: none;
         margin: 0;
@@ -749,27 +765,27 @@
                 </div>
             </div>
             <div class="col-lg-6">
+                <div style="width: 550px; margin-right: 0px; margin-left: auto;">
+                    <div>
+                        <ul class="tab2">
+                            <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
+                                <div style="position: relative">
+                                    <a href="javascript:void(0)" class="tablinks2"ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                                </div>
+                            </li>
 
-                <div>
-                    <ul class="tab2">
-                        <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
-                            <div style="position: relative">
-                                <a href="javascript:void(0)" class="tablinks2"ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
-                            </div>
-                        </li>
+                        </ul>
+                    </div>
 
-                    </ul>
+                    <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
+                            <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+                    </div>
+
+
+                    <div style="margin-top: 20px;">
+                        <button class="saveButton" ng-click="saveCardlet()">save</button>
+                    </div>
                 </div>
-
-                <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-                        <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
-                </div>
-
-
-                <div style="margin-top: 20px;">
-                    <button class="saveButton" ng-click="saveCardlet()">save</button>
-                </div>
-
             </div>
         </div>
     </div>
