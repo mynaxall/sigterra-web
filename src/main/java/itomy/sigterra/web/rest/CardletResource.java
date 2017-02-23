@@ -5,6 +5,7 @@ import itomy.sigterra.domain.*;
 
 import itomy.sigterra.repository.BusinessRepository;
 import itomy.sigterra.repository.CardletRepository;
+import itomy.sigterra.service.CardletService;
 import itomy.sigterra.service.UserService;
 import itomy.sigterra.service.dto.CardletItemTab;
 import itomy.sigterra.service.dto.CardletTab;
@@ -45,6 +46,9 @@ public class CardletResource {
 
     @Inject
     private UserService userService;
+
+    @Inject
+    private CardletService cardletService;
 
 
     /**
@@ -130,91 +134,56 @@ public class CardletResource {
      * @param id the id of the cardlet to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping("/cardlets/{id}")
+    @GetMapping("/cardletDelete/{id}")
     @Timed
-    public ResponseEntity<Void> deleteCardlet(@PathVariable Long id) {
+    public ResponseEntity<List<?>> deleteCardlet(@PathVariable Long id) {
         log.debug("REST request to delete Cardlet : {}", id);
-        cardletRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("cardlet", id.toString())).build();
+        List<UserCardletDTO> usetCardletDTOs = cardletService.deleteCardlet(id);
+        return new ResponseEntity<>(usetCardletDTOs, HttpStatus.OK);
     }
 
     @GetMapping("/userCardlets")
     @Timed
-    public ResponseEntity<List<?>> getAllCardletsByUser(Pageable pageable)
+    public ResponseEntity<List<?>> getAllCardletsByUser()
         throws URISyntaxException {
+
+
+        List<UserCardletDTO> usetCardletDTOs = cardletService.userCardlets();
         log.debug("REST request to get a page of Cardlets");
-        List<Cardlet> cardlets = cardletRepository.findByUserIsCurrentUser();
-        List<CardletDTO> cardletDTOs = new LinkedList<>();
-        Set<ItemDTO> itemDTOs = new HashSet<>();
-        Set<BusinessDTO> businessDTOs = new HashSet<>();
-        for (Cardlet cardlet : cardlets) {
-            Set<Item> items = cardlet.getItems();
-            Set<Business> businesses = cardlet.getBusinesses();
-            for (Business business : businesses) {
-                BusinessDTO businessDTO = new BusinessDTO(business);
-                businessDTOs.add(businessDTO);
-            }
-            for (Item item : items) {
-                Set<ItemData> itemDatas = item.getItemData();
-                Set<ItemDataDTO> itemDataDTOs = new HashSet<>();
-                for (ItemData itemData : itemDatas) {
-                    ItemDataDTO itemDataDTO = new ItemDataDTO(itemData);
-                    itemDataDTOs.add(itemDataDTO);
-                }
 
-                ItemDTO itemDTO = new ItemDTO(item.getId(),item.getName(),item.getIcon(),item.getCreatedDate(),item.getModifiDate(),item.getMainColor(),item.getColor(),
-                    item.getTabType(), itemDataDTOs);
-                itemDTOs.add(itemDTO);
-            }
-            CardletDTO cardletDTO = new CardletDTO(cardlet.getId(), cardlet.getName(), cardlet.getCreatedDate(),cardlet.getModifiedDate(), cardlet.isActive()
-            ,cardlet.getUser(), businessDTOs, itemDTOs);
-            cardletDTOs.add(cardletDTO);
-
-
-        }
-        return new ResponseEntity<>(cardletDTOs, HttpStatus.OK);
+        return new ResponseEntity<>(usetCardletDTOs, HttpStatus.OK);
     }
+
+
+    @GetMapping("/cardlet/{id}")
+    @Timed
+    public ResponseEntity<?> getCardletById(@PathVariable Long id) {
+        log.debug("REST request to get Cardlet : {}", id);
+        UserCardletDTO usetCardletDTOs = cardletService.getCardlet(id);
+        return new ResponseEntity<>(usetCardletDTOs, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/editCardlet", produces=MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<UserCardletDTO> editCardlet(@RequestBody UserCardletDTO cardletDTO)
+        throws URISyntaxException {
+
+
+        cardletService.createCardlet(cardletDTO, true);
+
+        return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
+    }
+
+
 
 
     @PostMapping(value = "/cardlet", produces=MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<UserCardletDTO> createCardlet(@RequestBody UserCardletDTO cardletDTO)
         throws URISyntaxException {
-        log.debug("REST request to get a page of Cardlets22");
-        log.debug("asdasd==== "+cardletDTO);
-        Cardlet cardlet = new Cardlet();
-        cardlet.setName(cardletDTO.getCardletName());
-        cardlet.setUser(userService.getUserWithAuthorities());
-        Set <Business> businesses  = new HashSet<>();
-        Set <Item> items = new HashSet<>();
-        List<CardletTab> tabs = cardletDTO.getTabs();
 
-        for (CardletTab tab : tabs) {
-            if(tab.getTabType().equals(1)){
-                Business business = new Business();
-                business.setName(tab.getName());
-                business.setUserEmail(tab.getUserEmail());
-                business.setPisition(tab.getPosition());
-                business.setMainColor(tab.getLayout().getMainColor());
-                business.setColor(tab.getLayout().getSecondaryColor());
-                business.setUserName(tab.getUserName());
-                business.setPhone(tab.getPhone());
-                business.setAddress(tab.getAddress());
-                business.setCompany(tab.getCompany());
-                business.setSite(tab.getSite());
-                business.setJob(tab.getJob());
-                business.setTwitter(tab.getSocialLinks().getTwitter());
-                business.setFacebook(tab.getSocialLinks().getFacebook());
-                business.setGoogle(tab.getSocialLinks().getGoogle());
-                business.setLinkedIn(tab.getSocialLinks().getLinkedin());
-//                business.setCardlet(cardlet);
-                businesses.add(business);
-            }
 
-        }
-        cardlet.setBusinesses(businesses);
-
-        cardletRepository.save(cardlet);
+        cardletService.createCardlet(cardletDTO, false);
 
         return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
     }

@@ -8,16 +8,23 @@ import java.util.List;
  */
 public class UserCardletDTO implements Serializable {
     private String cardletName;
-    private int id;
+    private Long id;
     private List<CardletTab> tabs;
+    private List<Long> removeTabs;
+    private List<Long> removeItems;
+    private List<Long> removeBusiness;
+
 
     public UserCardletDTO() {
     }
 
-    public UserCardletDTO(String cardletName, int id, List<CardletTab> tabs) {
+    public UserCardletDTO(String cardletName, Long id, List<CardletTab> tabs, List<Long> removeTabs, List<Long> removeItems, List<Long> removeBusiness) {
         this.cardletName = cardletName;
         this.id = id;
         this.tabs = tabs;
+        this.removeTabs = removeTabs;
+        this.removeItems = removeItems;
+        this.removeBusiness = removeBusiness;
     }
 
     public String getCardletName() {
@@ -28,11 +35,11 @@ public class UserCardletDTO implements Serializable {
         this.cardletName = cardletName;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -44,12 +51,39 @@ public class UserCardletDTO implements Serializable {
         this.tabs = tabs;
     }
 
+    public List<Long> getRemoveTabs() {
+        return removeTabs;
+    }
+
+    public void setRemoveTabs(List<Long> removeTabs) {
+        this.removeTabs = removeTabs;
+    }
+
+    public List<Long> getRemoveItems() {
+        return removeItems;
+    }
+
+    public void setRemoveItems(List<Long> removeItems) {
+        this.removeItems = removeItems;
+    }
+
+    public List<Long> getRemoveBusiness() {
+        return removeBusiness;
+    }
+
+    public void setRemoveBusiness(List<Long> removeBusiness) {
+        this.removeBusiness = removeBusiness;
+    }
+
     @Override
     public String toString() {
         return "UserCardletDTO{" +
             "cardletName='" + cardletName + '\'' +
             ", id=" + id +
             ", tabs=" + tabs +
+            ", removeTabs=" + removeTabs +
+            ", removeItems=" + removeItems +
+            ", removeBusiness=" + removeBusiness +
             '}';
     }
 }

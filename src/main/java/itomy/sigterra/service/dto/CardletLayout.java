@@ -9,14 +9,16 @@ public class CardletLayout implements Serializable {
     private String url;
     private String mainColor;
     private String secondaryColor;
+    private Long tabId;
 
     public CardletLayout() {
     }
 
-    public CardletLayout(String url, String mainColor, String secondaryColor) {
+    public CardletLayout(String url, String mainColor, String secondaryColor, Long tabId) {
         this.url = url;
         this.mainColor = mainColor;
         this.secondaryColor = secondaryColor;
+        this.tabId = tabId;
     }
 
     public String getUrl() {
@@ -43,12 +45,21 @@ public class CardletLayout implements Serializable {
         this.secondaryColor = secondaryColor;
     }
 
+    public Long getTabId() {
+        return tabId;
+    }
+
+    public void setTabId(Long tabId) {
+        this.tabId = tabId;
+    }
+
     @Override
     public String toString() {
         return "CardletLayout{" +
             "url='" + url + '\'' +
             ", mainColor='" + mainColor + '\'' +
             ", secondaryColor='" + secondaryColor + '\'' +
+            ", tabId=" + tabId +
             '}';
     }
 }

@@ -45,6 +45,10 @@
                 <constraints nullable="true" />
             </column>
             
+            <column name="pisition" type="integer">
+                <constraints nullable="true" />
+            </column>
+            
             <column name="cardlet_id" type="bigint">
                 <constraints nullable="true" />
             </column>

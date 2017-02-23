@@ -57,6 +57,12 @@ public class ItemDataResourceIntTest {
     private static final String DEFAULT_LINK = "AAAAAAAAAA";
     private static final String UPDATED_LINK = "BBBBBBBBBB";
 
+    private static final Integer DEFAULT_POSITION = 1;
+    private static final Integer UPDATED_POSITION = 2;
+
+    private static final Integer DEFAULT_TAB_INDEX = 1;
+    private static final Integer UPDATED_TAB_INDEX = 2;
+
     @Inject
     private ItemDataRepository itemDataRepository;
 
@@ -96,7 +102,9 @@ public class ItemDataResourceIntTest {
                 .firstImage(DEFAULT_FIRST_IMAGE)
                 .secondImage(DEFAULT_SECOND_IMAGE)
                 .thirdImage(DEFAULT_THIRD_IMAGE)
-                .link(DEFAULT_LINK);
+                .link(DEFAULT_LINK)
+                .position(DEFAULT_POSITION)
+                .tabIndex(DEFAULT_TAB_INDEX);
         return itemData;
     }
 
@@ -127,6 +135,8 @@ public class ItemDataResourceIntTest {
         assertThat(testItemData.getSecondImage()).isEqualTo(DEFAULT_SECOND_IMAGE);
         assertThat(testItemData.getThirdImage()).isEqualTo(DEFAULT_THIRD_IMAGE);
         assertThat(testItemData.getLink()).isEqualTo(DEFAULT_LINK);
+        assertThat(testItemData.getPosition()).isEqualTo(DEFAULT_POSITION);
+        assertThat(testItemData.getTabIndex()).isEqualTo(DEFAULT_TAB_INDEX);
     }
 
     @Test
@@ -145,7 +155,9 @@ public class ItemDataResourceIntTest {
                 .andExpect(jsonPath("$.[*].firstImage").value(hasItem(DEFAULT_FIRST_IMAGE.toString())))
                 .andExpect(jsonPath("$.[*].secondImage").value(hasItem(DEFAULT_SECOND_IMAGE.toString())))
                 .andExpect(jsonPath("$.[*].thirdImage").value(hasItem(DEFAULT_THIRD_IMAGE.toString())))
-                .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK.toString())));
+                .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK.toString())))
+                .andExpect(jsonPath("$.[*].position").value(hasItem(DEFAULT_POSITION)))
+                .andExpect(jsonPath("$.[*].tabIndex").value(hasItem(DEFAULT_TAB_INDEX)));
     }
 
     @Test
@@ -164,7 +176,9 @@ public class ItemDataResourceIntTest {
             .andExpect(jsonPath("$.firstImage").value(DEFAULT_FIRST_IMAGE.toString()))
             .andExpect(jsonPath("$.secondImage").value(DEFAULT_SECOND_IMAGE.toString()))
             .andExpect(jsonPath("$.thirdImage").value(DEFAULT_THIRD_IMAGE.toString()))
-            .andExpect(jsonPath("$.link").value(DEFAULT_LINK.toString()));
+            .andExpect(jsonPath("$.link").value(DEFAULT_LINK.toString()))
+            .andExpect(jsonPath("$.position").value(DEFAULT_POSITION))
+            .andExpect(jsonPath("$.tabIndex").value(DEFAULT_TAB_INDEX));
     }
 
     @Test
@@ -190,7 +204,9 @@ public class ItemDataResourceIntTest {
                 .firstImage(UPDATED_FIRST_IMAGE)
                 .secondImage(UPDATED_SECOND_IMAGE)
                 .thirdImage(UPDATED_THIRD_IMAGE)
-                .link(UPDATED_LINK);
+                .link(UPDATED_LINK)
+                .position(UPDATED_POSITION)
+                .tabIndex(UPDATED_TAB_INDEX);
 
         restItemDataMockMvc.perform(put("/api/item-data")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -207,6 +223,8 @@ public class ItemDataResourceIntTest {
         assertThat(testItemData.getSecondImage()).isEqualTo(UPDATED_SECOND_IMAGE);
         assertThat(testItemData.getThirdImage()).isEqualTo(UPDATED_THIRD_IMAGE);
         assertThat(testItemData.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testItemData.getPosition()).isEqualTo(UPDATED_POSITION);
+        assertThat(testItemData.getTabIndex()).isEqualTo(UPDATED_TAB_INDEX);
     }
 
     @Test

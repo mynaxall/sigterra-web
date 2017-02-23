@@ -1,0 +1,126 @@
+<!--<div ng-show="showBannerDialog" class="image-popup">-->
+<!--<div class="row image-dialog2" style="margin-right: 30%;">-->
+<!--<button type="button" class="close login-close-gray" ng-click="closeDialog()">×</button>-->
+<!--<div class="crop-dialog-header">Upload banner</div>-->
+<!--<div class="image-dialog-crop-panel">-->
+
+<!--<div>-->
+<!--<div class="fileUpload btn btn-primary choose-photo-btn">-->
+<!--<span>Choose photo</span>-->
+<!--<input type="file" id="fileInput" class="upload" onchange="angular.element(this).scope().handleFileSelect(event)" />-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="cropArea">-->
+<!--<img-crop image="myImage" result-image="myCroppedImage" ></img-crop>-->
+<!--</div>-->
+<!--<div class="crop-btn-div">-->
+<!--<button class="btn btn-primary main-btn" ng-click="vm.saveImage()">save</button>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<div class="modeal-custom-window" ng-show="isShowMailClientWindow">
+    <div class="modal-dialog " style="margin-top: -90px;  width: 700px!important;">
+        <div class="modal-content" uib-modal-transclude="">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        ng-click="closeDialog()">&times;</button>
+                <div class="signature-title"style="margin-bottom: 0px">Choose e-mail Client</div>
+            </div>
+            <div  style=" padding: 0px!important;" class="modal-body">
+                <div class="mail-agent-div">
+                    <div class="row">
+                        <div class="mail-agent-col" ng-init="instructions=1" ng-click="instructions = 1">
+                            <div>
+                                <img src="/app/entities/user-cardlets/img/mailAgent/Gmail.png" ng-class="{activeInstruction:instructions==1}">
+                                Gmail
+                            </div>
+                        </div>
+                        <div class="mail-agent-col" ng-click="instructions = 2" >
+                            <div>
+                                <img src="/app/entities/user-cardlets/img/mailAgent/Outlook.png" ng-class="{activeInstruction:instructions==2}">
+                                Outlook
+                            </div>
+                        </div>
+                        <div class="mail-agent-col" ng-click="instructions = 3" >
+                            <div>
+                                <img src="/app/entities/user-cardlets/img/mailAgent/Airmail.png" ng-class="{activeInstruction:instructions==3}">
+                                Airmal
+                            </div>
+                        </div>
+                        <div class="mail-agent-col" ng-click="instructions = 4">
+                            <div>
+                                <img src="/app/entities/user-cardlets/img/mailAgent/Yahoo.png" ng-class="{activeInstruction:instructions==4}">
+                                Yahoo
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="mail-instructions" ng-show="instructions==1" >
+                    <div class="instructions-title">Gmail instructions</div>
+
+                    If you are applying for a job abroad (particularly in Europe or South America), a Motivation Letter For Work Abroad takes the place of a Cover Letter. Both resumes and Motivation Letters are much less formal than their United States equivalents. The Motivation Letter, as its name implies, tells your prospective employers why you are motivated to work for their companies. It gives you a chance to describe your personality, the languages you speak, any awards you may have won, and what motivates you to work abroad.
+
+                    The Motivation Letter is constructed like a formal business letter, with your name and address in the top right corner. Beneath this and against the left margin should be the name, job title, company and address of the recipient. (It is worth doing a little digging to find out the name, if you don’t know it.) European countries don’t put a period after title abbreviations, so remember to leave them off ; i.e., “Mr” instead of “Mr.” and “Dr” rather than “Dr.”. Spell out the name of the month and use the order “day-month-year.”
+
+                    The first paragraph of your Motivation Letter describes the job for which you are applying, and how you learned about it. The second paragraph should address your qualifications for the job; don’t just list them, talk about them. Show yourself to be a person of initiative and creativity ; in short, motivated! In the third paragraph, talk about why you want this particular job. What skills do you bring to it? What do you hope to learn? Finally, in the fourth paragraph give your contact information and times you are available for interview.
+
+                    If you used the recipient’s name, close “Yours sincerely;” if you used “Dear Sir or Madam,” close “Yours faithfully.” Type your name four spaces down and two spaces under that, against the left margin, type “Enclosure.” Sign your name in the space above your typed name, attach a resume to your Motivation Letter For Work Abroad, and you’ve done it!
+                </div>
+                <div class="mail-instructions" ng-show="instructions==2">
+                    <div class="instructions-title">Airmal instructions</div>
+
+                    If you are applying for a job abroad (particularly in Europe or South America), a Motivation Letter For Work Abroad takes the place of a Cover Letter. Both resumes and Motivation Letters are much less formal than their United States equivalents. The Motivation Letter, as its name implies, tells your prospective employers why you are motivated to work for their companies. It gives you a chance to describe your personality, the languages you speak, any awards you may have won, and what motivates you to work abroad.
+
+                    The Motivation Letter is constructed like a formal business letter, with your name and address in the top right corner. Beneath this and against the left margin should be the name, job title, company and address of the recipient. (It is worth doing a little digging to find out the name, if you don’t know it.) European countries don’t put a period after title abbreviations, so remember to leave them off ; i.e., “Mr” instead of “Mr.” and “Dr” rather than “Dr.”. Spell out the name of the month and use the order “day-month-year.”
+
+                    The first paragraph of your Motivation Letter describes the job for which you are applying, and how you learned about it. The second paragraph should address your qualifications for the job; don’t just list them, talk about them. Show yourself to be a person of initiative and creativity ; in short, motivated! In the third paragraph, talk about why you want this particular job. What skills do you bring to it? What do you hope to learn? Finally, in the fourth paragraph give your contact information and times you are available for interview.
+
+                    If you used the recipient’s name, close “Yours sincerely;” if you used “Dear Sir or Madam,” close “Yours faithfully.” Type your name four spaces down and two spaces under that, against the left margin, type “Enclosure.” Sign your name in the space above your typed name, attach a resume to your Motivation Letter For Work Abroad, and you’ve done it!
+                </div>
+                <div class="mail-instructions" ng-show="instructions==3">
+                    <div class="instructions-title">Outlook instructions</div>
+
+                    If you are applying for a job abroad (particularly in Europe or South America), a Motivation Letter For Work Abroad takes the place of a Cover Letter. Both resumes and Motivation Letters are much less formal than their United States equivalents. The Motivation Letter, as its name implies, tells your prospective employers why you are motivated to work for their companies. It gives you a chance to describe your personality, the languages you speak, any awards you may have won, and what motivates you to work abroad.
+
+                    The Motivation Letter is constructed like a formal business letter, with your name and address in the top right corner. Beneath this and against the left margin should be the name, job title, company and address of the recipient. (It is worth doing a little digging to find out the name, if you don’t know it.) European countries don’t put a period after title abbreviations, so remember to leave them off ; i.e., “Mr” instead of “Mr.” and “Dr” rather than “Dr.”. Spell out the name of the month and use the order “day-month-year.”
+
+                    The first paragraph of your Motivation Letter describes the job for which you are applying, and how you learned about it. The second paragraph should address your qualifications for the job; don’t just list them, talk about them. Show yourself to be a person of initiative and creativity ; in short, motivated! In the third paragraph, talk about why you want this particular job. What skills do you bring to it? What do you hope to learn? Finally, in the fourth paragraph give your contact information and times you are available for interview.
+
+                    If you used the recipient’s name, close “Yours sincerely;” if you used “Dear Sir or Madam,” close “Yours faithfully.” Type your name four spaces down and two spaces under that, against the left margin, type “Enclosure.” Sign your name in the space above your typed name, attach a resume to your Motivation Letter For Work Abroad, and you’ve done it!
+                </div>
+                <div class="mail-instructions" ng-show="instructions==4">
+                    <div class="instructions-title">Yahoo instructions</div>
+
+                    If you are applying for a job abroad (particularly in Europe or South America), a Motivation Letter For Work Abroad takes the place of a Cover Letter. Both resumes and Motivation Letters are much less formal than their United States equivalents. The Motivation Letter, as its name implies, tells your prospective employers why you are motivated to work for their companies. It gives you a chance to describe your personality, the languages you speak, any awards you may have won, and what motivates you to work abroad.
+
+                    The Motivation Letter is constructed like a formal business letter, with your name and address in the top right corner. Beneath this and against the left margin should be the name, job title, company and address of the recipient. (It is worth doing a little digging to find out the name, if you don’t know it.) European countries don’t put a period after title abbreviations, so remember to leave them off ; i.e., “Mr” instead of “Mr.” and “Dr” rather than “Dr.”. Spell out the name of the month and use the order “day-month-year.”
+
+                    The first paragraph of your Motivation Letter describes the job for which you are applying, and how you learned about it. The second paragraph should address your qualifications for the job; don’t just list them, talk about them. Show yourself to be a person of initiative and creativity ; in short, motivated! In the third paragraph, talk about why you want this particular job. What skills do you bring to it? What do you hope to learn? Finally, in the fourth paragraph give your contact information and times you are available for interview.
+
+                    If you used the recipient’s name, close “Yours sincerely;” if you used “Dear Sir or Madam,” close “Yours faithfully.” Type your name four spaces down and two spaces under that, against the left margin, type “Enclosure.” Sign your name in the space above your typed name, attach a resume to your Motivation Letter For Work Abroad, and you’ve done it!
+                </div>
+                <div class="mail-copy-div">
+                    <div class="copy-to-web-div">
+                        <textarea id="copyedText" style="width: 100%; height: 150px" ng-model="coptToEmailText"></textarea>
+                    </div>
+                    <div style="margin-top: 40px">
+                        <button type="button" class="saveButton back-btn" data-dismiss="modal" ng-click="closeDialog()">
+                            Back to Portfolio
+                        </button>
+
+                        <button type="submit" style="float: right;" data-clipboard-text="{{coptToEmailText}}" ngclipboard data-clipboard-text="{{coptToEmailText}}"class="saveButton">
+                            Copy to Clipboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

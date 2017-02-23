@@ -1,5 +1,7 @@
 package itomy.sigterra.service.dto;
 
+import itomy.sigterra.domain.InputProperties;
+
 import java.io.Serializable;
 
 /**
@@ -7,27 +9,36 @@ import java.io.Serializable;
  */
 public class ItemModel implements Serializable {
 
+    private Long id;
     private int index;
     private int position;
-    private String image1;
+    private String image;
     private String image2;
     private String image3;
-    private InputModel name;
-    private InputModel description;
+    private InputProperties name;
+    private InputProperties description;
     private String link;
 
     public ItemModel() {
     }
 
-    public ItemModel(int index, int position, String image1, String image2, String image3, InputModel name, InputModel description, String link) {
+    public ItemModel(Long id,int index, int position, String image1, String image2, String image3, InputProperties name, InputProperties description, String link) {
         this.index = index;
         this.position = position;
-        this.image1 = image1;
+        this.image = image1;
         this.image2 = image2;
         this.image3 = image3;
         this.name = name;
         this.description = description;
         this.link = link;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public int getIndex() {
@@ -46,12 +57,12 @@ public class ItemModel implements Serializable {
         this.position = position;
     }
 
-    public String getImage1() {
-        return image1;
+    public String getImage() {
+        return image;
     }
 
-    public void setImage1(String image1) {
-        this.image1 = image1;
+    public void setImage(String image1) {
+        this.image = image1;
     }
 
     public String getImage2() {
@@ -70,19 +81,19 @@ public class ItemModel implements Serializable {
         this.image3 = image3;
     }
 
-    public InputModel getName() {
+    public InputProperties getName() {
         return name;
     }
 
-    public void setName(InputModel name) {
+    public void setName(InputProperties name) {
         this.name = name;
     }
 
-    public InputModel getDescription() {
+    public InputProperties getDescription() {
         return description;
     }
 
-    public void setDescription(InputModel description) {
+    public void setDescription(InputProperties description) {
         this.description = description;
     }
 
@@ -97,14 +108,15 @@ public class ItemModel implements Serializable {
     @Override
     public String toString() {
         return "ItemModel{" +
-            "link='" + link + '\'' +
-            ", description=" + description +
-            ", name=" + name +
-            ", image3='" + image3 + '\'' +
-            ", image2='" + image2 + '\'' +
-            ", image1='" + image1 + '\'' +
-            ", position=" + position +
+            "id=" + id +
             ", index=" + index +
+            ", position=" + position +
+            ", image='" + image + '\'' +
+            ", image2='" + image2 + '\'' +
+            ", image3='" + image3 + '\'' +
+            ", name=" + name +
+            ", description=" + description +
+            ", link='" + link + '\'' +
             '}';
     }
 }

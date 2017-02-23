@@ -40,13 +40,16 @@ public class Item implements Serializable {
     @Column(name = "color")
     private String color;
 
+    @Column(name = "pisition")
+    private Integer pisition;
+
     @ManyToOne
     private Cardlet cardlet;
 
     @ManyToOne
     private TabType tabType;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "item", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "item")
     @JsonIgnore
     private Set<ItemData> itemData = new HashSet<>();
 
@@ -136,6 +139,19 @@ public class Item implements Serializable {
         this.color = color;
     }
 
+    public Integer getPisition() {
+        return pisition;
+    }
+
+    public Item pisition(Integer pisition) {
+        this.pisition = pisition;
+        return this;
+    }
+
+    public void setPisition(Integer pisition) {
+        this.pisition = pisition;
+    }
+
     public Cardlet getCardlet() {
         return cardlet;
     }
@@ -171,15 +187,6 @@ public class Item implements Serializable {
         return this;
     }
 
-    public Item addItemData(ItemData itemData) {
-        itemData.setItem(this);
-        return this;
-    }
-
-    public Item removeItemData(ItemData itemData) {
-        itemData.setItem(null);
-        return this;
-    }
 
     public void setItemData(Set<ItemData> itemData) {
         this.itemData = itemData;
@@ -215,6 +222,7 @@ public class Item implements Serializable {
             ", modifiDate='" + modifiDate + "'" +
             ", mainColor='" + mainColor + "'" +
             ", color='" + color + "'" +
+            ", pisition='" + pisition + "'" +
             '}';
     }
 }

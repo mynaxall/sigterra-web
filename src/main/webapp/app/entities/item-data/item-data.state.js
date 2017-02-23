@@ -121,6 +121,8 @@
                                 secondImage: null,
                                 thirdImage: null,
                                 link: null,
+                                position: null,
+                                tabIndex: null,
                                 id: null
                             };
                         }

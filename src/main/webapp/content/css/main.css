@@ -570,7 +570,7 @@ Social Buttons
 
 .profile-input{
     height: 40px;
-    border-radius: 25px;
+    border-radius: 25px!important;
 }
 .register-link{
     font-size: 18px;
@@ -675,6 +675,7 @@ Social Buttons
     overflow: hidden;
     width:350px;
     height:350px;
+    margin: auto;
 }
 
 .image-popup{
@@ -686,6 +687,14 @@ Social Buttons
 }
 
 .image-dialog{
+    position: relative;
+    background: #fff;
+    width: 450px;
+    margin: 30px auto;
+    margin-top: 100px;
+    padding: 10px;
+}
+.image-dialog2{
     position: relative;
     background: #fff;
     width: 450px;
@@ -789,6 +798,143 @@ Social Buttons
     width: 100%;
     top: 230px;
 }
+
+.border-line-footer{
+    background-color: #D0D8D9;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 70px;
+}
+
+.modal-signature-panel{
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 17px -4px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 17px -4px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 17px -4px rgba(0,0,0,0.5);
+    width: 340px;
+    height:245px;
+    display: inline-block;
+    background-color: #FFFFFF;
+    margin: 10px;
+
+}
+
+.signature-text-sample{
+    color: #5C5C5C;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-top: 20px
+}
+
+.select-btn-div{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.copy-to-email-top{
+    height: 300px;
+    width: 100%;
+    background-color: #FFF;
+    text-align: center;
+}
+.copy-to-email-bottom{
+    height: 50%;
+    background-color: #ECECEC;
+    width: 100%;
+}
+
+.signature-title{
+    color: #242424;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.mail-agent-div{
+    background-color: #ECECEC;
+    height: 200px;
+    padding: 40px;
+}
+
+.mail-instructions{
+    background-color: #FFF;
+    width: 100%;
+    height:300px;
+    padding: 30px;
+    overflow: auto;
+}
+
+.mail-agent-col{
+    text-align: center;
+    color: #4A4A4A;
+    font-size: 14px;
+    font-weight: bold;
+    float: left;
+    width: 25%;
+}
+
+.mail-agent-col:focus{
+    outline: none;
+}
+
+.instructions-title{
+
+    color: #4A4A4A;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.activeInstruction{
+    webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+}
+
+.mail-copy-div{
+    width: 100%;
+    height:300px;
+    background-color: #ECECEC;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+}
+
+.preview-header{
+    margin: auto;
+    max-width: 900px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.preview-header-text{
+    color: #4A4A4A;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.border-line-new-header{
+    background-color: #D0D8D9;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    top: 25px;
+}
+
+.add-new-btn{
+    background: #FFF;
+    width:250px;
+    position: relative;
+    z-index:100;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.selectSignature{
+    float: left;
+    width: 33.333333%;
+}
+
 
 
 

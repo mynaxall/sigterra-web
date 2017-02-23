@@ -48,6 +48,14 @@
         {
             "fieldName": "link",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "position",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "tabIndex",
+            "fieldType": "Integer"
         }
     ],
     "changelogDate": "20161207122952",
