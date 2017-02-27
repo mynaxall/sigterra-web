@@ -2,7 +2,7 @@
 <script src="http://localhost:8080/bower_components/angular/angular.js"></script>
 
 <div>
-	<div class="cardlet"  style="background-color: #{{tabName.layout.mainColor}}">
+	<div class="cardlet"  ng-style="{'background-color': '#'+tabName.layout.mainColor}">
         <div>
             <div class="layouts">
                 <div>
@@ -69,7 +69,7 @@
                     <div class="user-name" ng-show="!tabName.userName.value"  style="color: #{{tabName.layout.secondaryColor}}">Jon Dou</div>
                     <div class="user-name" ng-style="{'font-weight': tabName.userName.bold ? 'bold' : 'normal',
                     'font-style': tabName.userName.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.userName.underline ? 'underline' : 'normal'}" style="color: #{{tabName.layout.secondaryColor}}" ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
+                    'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}"  ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
                     <div class="user-main-text job-titile" ng-show="!tabName.job.value">General Manager</div>
                     <div class="user-main-text job-titile" ng-style="{'font-weight': tabName.job.bold ? 'bold' : 'normal',
                     'font-style': tabName.job.italic ? 'italic' : 'normal',
@@ -84,8 +84,8 @@
                                     <polygon id="path-1" points="13.2783158 9 13.2783158 17.9998105 0 17.9998105 0 9 0 0.000189473684 13.2783158 0.000189473684 13.2783158 9"></polygon>
                                 </defs>
                                 <g id="540x270" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g id="mobile" transform="translate(-199.000000, -159.000000)">
-                                        <g id="mobile_white_icon" transform="translate(199.000000, 159.000000)" fill="#{{tabName.layout.secondaryColor}}">
+                                    <g id="mobile" transform="translate(-199.000000, -159.000000)" fill="#{{tabName.layout.secondaryColor}}">
+                                        <g id="mobile_white_icon" transform="translate(199.000000, 159.000000)">
                                             <mask id="mask-2" fill="white">
                                                 <use xlink:href="#path-1"></use>
                                             </mask>

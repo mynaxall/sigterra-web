@@ -813,7 +813,7 @@ Social Buttons
     -moz-box-shadow: 0px 0px 17px -4px rgba(0,0,0,0.5);
     box-shadow: 0px 0px 17px -4px rgba(0,0,0,0.5);
     width: 340px;
-    height:245px;
+    min-height: 300px;
     display: inline-block;
     background-color: #FFFFFF;
     margin: 10px;
@@ -833,7 +833,7 @@ Social Buttons
     margin-bottom: 20px;
 }
 .copy-to-email-top{
-    height: 300px;
+    min-height: 300px;
     width: 100%;
     background-color: #FFF;
     text-align: center;
@@ -933,6 +933,19 @@ Social Buttons
 .selectSignature{
     float: left;
     width: 33.333333%;
+}
+
+.selectSogmatureCol{
+    color: #4A4A4A;
+    font-size: 14px;
+    font-weight: bold;
+    float: left;
+    width: 50%;
+}
+
+.navbar-default .navbar-nav > li > a{
+    color:#FFF!important;
+    font-weight: bold;
 }
 
 

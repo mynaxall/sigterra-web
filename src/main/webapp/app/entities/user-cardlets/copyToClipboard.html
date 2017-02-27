@@ -21,7 +21,7 @@
 <!--</div>-->
 
 <div class="modeal-custom-window" ng-show="isCopyTiEmail">
-    <div class="modal-dialog " style="margin-top: 0px; width: 1130px!important;">
+    <div class="modal-dialog " style="margin-top: -100px; width: 1130px!important;">
         <div class="modal-content" uib-modal-transclude="">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -32,24 +32,35 @@
                     <div class="signature-title">Add banner to your signature</div>
                     <div class="form-group" style="margin-left: 250px;">
                         <div class="input-text-div">
-                            <input type="text" class="form-control profile-input" id="urlOne" placeholder="" ng-model="item.urlOne">
+                            <input type="text" ng-model="banner" class="form-control profile-input" id="urlOne" placeholder="" ng-model="item.urlOne">
                         </div>
                         <div class="social-image-form-div"  style="padding: 0px; padding-left: 30px">
                             <button  type="submit" ng-disabled="for2m.$invalid" style="padding: 0px;" ng-click="showImageDialogBanner()" class="btn btn-primary main-btn upload-item-img">Upload</button>
                         </div>
                     </div>
+                    <div style="margin-top: 100px;">
+                        <img style="width: 150px; max-height:100px;" src="{{banner}}">
+
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <button type="submit" data-clipboard-text="{{cardletLink}}" ngclipboard data-clipboard-text="{{cardletLink}}"class="saveButton" ng-click="addBanner()">
+                            Add to signature
+                        </button>
+                    </div>
                     <!--<img class="image-cropped" ng-show="showCroppedImage"  ng-src="{{myCroppedImage}}" />-->
                     <!--<img ng-show="!showCroppedImage" class="image-cropped" src="/content/images/default_photo_image@2x.png" /></div>-->
                 </div>
-                <div class="copy-to-email-bottom">
+                <div class="copy-to-email-bottom" style="height: 400px; overflow:auto">
                     <div class="row" style="margin-left: 15px;margin-right: 15px;">
                         <div class="selectSignature">
                             <div class="modal-signature-panel">
                                 <div class="signature-text-sample">Kind regards,</div>
-                                <div style="margin-left: -75px; margin-top: -30px; height: 220px;">
+                                <div style="margin-left: -75px; margin-top: -30px;">
                                     <div  style="transform: scale(0.59);">
                                         <a href="signatureLink"><div id="previewImage"></div></a>
+                                        <img ng-show="isAddBanner" style="width: 540px" src="{{banner}}">
                                     </div>
+
                                     <!--<input id="btn-Preview-Image" type="button" value="Preview" ng-click="testimg()"/>-->
                                     <!--<a id="btn-Convert-Html2Image" href="#" ng-click="testimg2()">Download</a>-->
                                     <!--<br/>-->

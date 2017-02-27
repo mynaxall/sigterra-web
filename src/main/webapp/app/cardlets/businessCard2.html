@@ -4,12 +4,12 @@
         <div class="avatar-2-div2">
             <img class="avatar-2-2" src="{{tabName.photo}}">
         </div>
-        <div class="top-div2" style="background-color: #{{tabName.layout.mainColor}}">
+        <div class="top-div2" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
             <div class="user-info2">
                 <div class="user-name2" ng-show="!tabName.userName.value" style="color: #{{tabName.layout.secondaryColor}}">Jon Dou</div>
                 <div class="user-name2" ng-style="{'font-weight': tabName.userName.bold ? 'bold' : 'normal',
                     'font-style': tabName.userName.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.userName.underline ? 'underline' : 'normal'}" ng-show="tabName.userName.value" style="color: #{{tabName.layout.secondaryColor}}">{{tabName.userName.value}}</div>
+                    'text-decoration': tabName.userName.underline ? 'underline' : 'normal'}" ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
 
                 <div class="job-titile2" ng-show="!tabName.job.value">General Manager</div>
                 <div class="job-titile2" ng-style="{'font-weight': tabName.job.bold ? 'bold' : 'normal',
@@ -85,7 +85,7 @@
                 </a>
             </div>
         </div>
-        <div class="bottom-div2" style="background-color: #{{tabName.layout.secondaryColor}}">
+        <div class="bottom-div2"  ng-style="{'background-color': '#'+tabName.layout.secondaryColor}">
             <div class="user-contacts2">
                 <div class="user-contacts-div2">
                     <div class="svg-div2">
@@ -280,13 +280,14 @@
         position: absolute;
         top: 20px;
         left: 10px;
+        border-radius: 80px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #CFCFCF;
     }
     .avatar-2-2{
         width: 150px;
         height:150px;
-        border-radius: 100%;
-        border-width: 5px;
-        border-style: solid;
-        border-color: #CFCFCF;
+        border-radius: 75px;
     }
 </style>

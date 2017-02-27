@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
 <div>
-    <div class="cardlet"  style="background-color: #{{tabName.layout.mainColor}}" ng-init="initSlide(tabName)">
+    <div class="cardlet"  ng-style="{'background-color': '#'+tabName.layout.mainColor}" ng-init="initSlide(tabName)">
         <div>
             <div ng-show="tabName.items.length <= 3">
                 <div class="main-carousel-image-div">
@@ -190,6 +190,44 @@
 
     .carousel-control.left, .carousel-control.right {
         background-image: none !important;
+    }
+
+    #ing-1{
+        display: block;
+        animation: cf3FadeInOut 4s infinite;
+        animation-delay: 0s;
+    }
+
+
+    #ing-2{
+        display: block;
+        margin-top:-130px;
+        animation: cf3FadeInOut 8s infinite;
+        animation-delay: 4s;
+    }
+
+    #ing-3{
+        display: block;
+        margin-top:-130px;
+        animation: cf3FadeInOut 12s infinite;
+        animation-delay:8s;
+    }
+
+
+    @keyframes cf3FadeInOut {
+        0%  {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 1;
+        }
+        70% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
     }
 
 </style>

@@ -228,6 +228,43 @@
         }
 
 
+        $scope.getUserProfile = function(){
+            $http.get("/api/account")
+                .success(function(response, status, headers) {
+                    $scope.userAccount = response;
+                    $scope.tabNames.tabs[0].userName = {
+                        "value": $scope.userAccount.username
+                    }
+                    $scope.tabNames.tabs[0].userEmail = {
+                        "value": $scope.userAccount.email
+                    }
+
+                    $scope.tabNames.tabs[0].phone = {
+                        "value": $scope.userAccount.phoneNumber
+                    }
+
+                    $scope.tabNames.tabs[0].address = {
+                        "value": $scope.userAccount.address
+                    }
+
+                    $scope.tabNames.tabs[0].company = {
+                        "value": $scope.userAccount.companyName
+                    }
+
+                    $scope.tabNames.tabs[0].site = {
+                        "value": $scope.userAccount.companySite
+                    }
+
+                    $scope.tabNames.tabs[0].job = {
+                        "value": $scope.userAccount.jobTitle
+                    }
+
+
+                });
+        }
+        $scope.getUserProfile();
+
+
         $scope.addTab = function() {
             if ($scope.tabNames.tabs.length <= 3) {
                 var newTab = {"name":"card"+$scope.tabNames.tabs.length,
@@ -238,11 +275,32 @@
                         "url": $scope.tabTypes[0].path,
                         "mainColor": "FFFFFF",
                         "secondaryColor": "4BABE2"
+                    },
+                    "userName": {
+                    "value":  $scope.userAccount.username
+                    },
 
+                    "userEmail":{
+                        "value": $scope.userAccount.email
+                    },
+                    "phone":{
+                        "value": $scope.userAccount.phoneNumber
+                    },
+                    "address":{
+                        "value": $scope.userAccount.address
+                    },
+                    "company":{
+                        "value": $scope.userAccount.companyName
+                    },
+                    "site":{
+                        "value": $scope.userAccount.companySite
+                    },
+                    "job":{
+                        "value": $scope.userAccount.jobTitle
+                    },
+                    "photo": "/app/cardlets/img/2_card/avatar_img.png"
 
                     }
-
-                }
                 $scope.tabNames.tabs.push(newTab);
 
             }

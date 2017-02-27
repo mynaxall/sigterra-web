@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
 <div>
-	<div class="cardlet" style="background-color: #{{tabName.layout.mainColor}}">
-        <div class="top-div" style="background-color: #{{tabName.layout.secondaryColor}}">
+	<div class="cardlet" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
+        <div class="top-div" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}">
             <div class="avatar-div">
                 <img class="avatar-img" src="{{tabName.photo}}">
             </div>

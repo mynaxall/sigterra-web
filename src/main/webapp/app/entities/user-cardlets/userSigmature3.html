@@ -2,7 +2,7 @@
 
 
 
-<div class="entiti-content" style="width: 300px; height:150px;">
+<div class="entiti-content" style="width: 300px;">
     <div style="margin-top: 40px">
         <div class="user-name" ng-style="{'font-weight': userCardlets[segnatureId].tabs[firstBusinessCardId].userName.bold ? 'bold' : 'normal',
                     'font-style': userCardlets[segnatureId].tabs[firstBusinessCardId].userName.italic ? 'italic' : 'normal',
@@ -30,6 +30,7 @@
                 </ul>
             </div>
         </div>
+        <img ng-style="{'display': isAddBanner ? 'block' : 'none'}"  style="width: 300px;" src="{{banner}}">
     </div>
 </div>
 

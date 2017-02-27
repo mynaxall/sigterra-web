@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
 <div>
     <div class="cardlet" ng-init="initSlide(tabName)" style="position: relative;">
-        <div style="background-color: #{{tabName.layout.mainColor}}" class="item-top-div"></div>
-        <div style="background-color: #{{tabName.layout.secondaryColor}}" class="item-bottom-div"></div>
+        <div ng-style="{'background-color': '#'+tabName.layout.mainColor}" class="item-top-div"></div>
+        <div ng-style="{'background-color': '#'+tabName.layout.secondaryColor}" class="item-bottom-div"></div>
         <div>
             <div ng-show="tabName.items.length <= 3">
                 <div class="main-carousel-image-div-2">
@@ -154,12 +154,14 @@
 
 
     #ing-2{
+        display: block;
         margin-top:-130px;
         animation: cf3FadeInOut 8s infinite;
         animation-delay: 4s;
     }
 
     #ing-3{
+        display: block;
         margin-top:-130px;
         animation: cf3FadeInOut 12s infinite;
         animation-delay:8s;
@@ -245,8 +247,7 @@
         border-width: 5px;
         border-style: solid;
         border-color: #CFCFCF;
-        border-radius: 70%;
-
+        border-radius: 70px;
         margin-left: 20px;
 
     }
