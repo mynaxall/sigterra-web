@@ -36,6 +36,11 @@
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
 
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/tab_type.csv"
+                  separator=";"
+                  tableName="tab_type"/>
+
     </changeSet>
 
 

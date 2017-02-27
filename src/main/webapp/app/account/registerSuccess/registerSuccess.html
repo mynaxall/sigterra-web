@@ -1,0 +1,157 @@
+<div class="sub-header center-align" layout="row" layout-align="center center">
+</div>
+</div>
+<div class="registration-div">
+    <div class="register-head"></div>
+    <div class="register-container">
+        <div>
+            <div class="row main-head-text">
+                <div class="col-md-7">Registration</div>
+                <div class="col-md-5 steps">Step 1 of 3</div>
+            </div>
+
+            <div class="alert alert-success" ng-show="vm.success">
+                <strong>Registration saved!</strong> Please check your email for confirmation.
+            </div>
+
+            <div class="alert alert-danger" ng-show="vm.error">
+                <strong>Registration failed!</strong> Please try again later.
+            </div>
+
+            <div class="alert alert-danger" ng-show="vm.errorUserExists">
+                <strong>Login name already registered!</strong> Please choose another one.
+            </div>
+
+            <div class="alert alert-danger" ng-show="vm.errorEmailExists">
+                <strong>E-mail is already in use!</strong> Please choose another one.
+            </div>
+
+            <div class="alert alert-danger" ng-show="vm.doNotMatch">
+                The password and its confirmation do not match!
+            </div>
+        </div>
+        <div>
+            <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
+
+                <div class="form-group">
+                    <label class="login-lable" for="firstName">First name</label>
+                    <input type="text" class="form-control profile-input" id="firstName" name="firstName" placeholder="Your name"
+                           ng-model="vm.registerAccount.firstName" ng-minlength=3 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
+                    <div ng-show="form.firstName.$dirty && form.firstName.$invalid">
+                        <p class="help-block"
+                           ng-show="form.firstName.$error.required">
+                            Your username is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.firstName.$error.minlength">
+                            Your username is required to be at least 1 character.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.firstName.$error.maxlength">
+                            Your username cannot be longer than 50 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.firstName.$error.pattern">
+                            Your username can only contain lower-case letters and digits.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="login-lable" for="lastName">Last name</label>
+                    <input type="text" class="form-control profile-input" id="lastName" name="lastName" placeholder="Your last name"
+                           ng-model="vm.registerAccount.lastName" ng-minlength=3 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
+                    <div ng-show="form.lastName.$dirty && form.lastName.$invalid">
+                        <p class="help-block"
+                           ng-show="form.lastName.$error.required">
+                            Your username is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.lastName.$error.minlength">
+                            Your username is required to be at least 1 character.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.lastName.$error.maxlength">
+                            Your username cannot be longer than 50 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.lastName.$error.pattern">
+                            Your username can only contain lower-case letters and digits.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="login-lable" for="email">E-mail*</label>
+                    <input type="email" class="form-control profile-input" id="email" name="email" placeholder="Your e-mail"
+                           ng-model="vm.registerAccount.email" ng-minlength=5 ng-maxlength=100 required>
+                    <div ng-show="form.email.$dirty && form.email.$invalid">
+                        <p class="help-block"
+                           ng-show="form.email.$error.required">
+                            Your e-mail is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.email.$error.email">
+                            Your e-mail is invalid.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.email.$error.minlength">
+                            Your e-mail is required to be at least 5 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.email.$error.maxlength">
+                            Your e-mail cannot be longer than 100 characters.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="login-lable" for="password">New password*</label>
+                    <input type="password" class="form-control profile-input" id="password" name="password" placeholder="New password"
+                           ng-model="vm.registerAccount.password" ng-minlength=3 ng-maxlength=50 required>
+                    <div ng-show="form.password.$dirty && form.password.$invalid">
+                        <p class="help-block"
+                           ng-show="form.password.$error.required">
+                            Your password is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.password.$error.minlength">
+                            Your password is required to be at least 4 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.password.$error.maxlength">
+                            Your password cannot be longer than 50 characters.
+                        </p>
+                    </div>
+                    <password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>
+                </div>
+                <div class="form-group">
+                    <label class="login-lable" for="confirmPassword">New password confirmation*</label>
+                    <input type="password" class="form-control profile-input" id="confirmPassword" name="confirmPassword" placeholder="Confirm the new password"
+                           ng-model="vm.confirmPassword" ng-minlength=3 ng-maxlength=50 required>
+                    <div ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
+                        <p class="help-block"
+                           ng-show="form.confirmPassword.$error.required">
+                            Your confirmation password is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.confirmPassword.$error.minlength">
+                            Your confirmation password is required to be at least 4 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.confirmPassword.$error.maxlength">
+                            Your confirmation password cannot be longer than 50 characters.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="checkbox" id="accept" name="accept" ng-model="vm.accept" required>
+                    <label class="login-lable" for="accept">I accept <a class="terms-and-conditions" href="#">terms and conditions</a> of using</label>
+                </div>
+
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary main-btn">SIGN UP</button>
+            </form>
+        </div>
+    </div>
+    <div class="login-registration">
+        Already have an account? <a href="#"  ng-click="vm.login()">LOGIN</a>
+    </div>
+</div>
