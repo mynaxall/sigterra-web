@@ -275,13 +275,12 @@ public class AccountResource {
                 successObject.put("success", true);
                 successObject.put("url", url);
             }
-            return ResponseEntity.ok(successObject);
         } else {
             successObject.put("success", false);
             successObject.put("message", "File is empty or NULL");
             // TODO: 1/9/17 Maybe need to change it to not OK status
-            return ResponseEntity.ok(successObject);
         }
+        return ResponseEntity.ok(successObject);
     }
 
     /**
