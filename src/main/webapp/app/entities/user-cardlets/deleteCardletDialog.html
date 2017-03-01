@@ -1,0 +1,32 @@
+
+
+<div class="modeal-custom-window" ng-show="showDelteCardletDialog">
+    <div class="modal-dialog " style="margin-top: 100px; width: 400px!important;">
+        <div class="modal-content" uib-modal-transclude="">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        ng-click="closeDialog()">&times;</button>
+              <div class="signature-title"></div>
+            </div>
+            <div  style=" padding: 0px!important;" class="modal-body">
+                <div style="background: #FFF; padding-left: 30px; padding-right: 30px;">
+                    <div class="delete-dialog-title">Delete Business Card?</div>
+                    <div class="delete-msg">
+                        Are you sure you want to delete this?
+                    </div>
+                    <div class="select-btn-div" style="padding-bottom: 50px;">
+                        <button style="float: left" class="saveButton closeButton" ng-click="closeDialog()">
+                            Close
+                        </button>
+                        <button style="float: right" class="saveButton deleteButton" ng-click="delteCardlet(delteCardletId)">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

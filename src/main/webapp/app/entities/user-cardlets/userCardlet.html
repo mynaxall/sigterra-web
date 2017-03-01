@@ -3,6 +3,7 @@
 <ng-include ng-show="isCopyTiEmail" src="'/app/entities/user-cardlets/copyToClipboard.html'"></ng-include>
 <ng-include ng-show="isShowMailClientWindow" src="'/app/entities/user-cardlets/emailClientDialog.html'"></ng-include>
 <ng-include ng-show="isAddIcons" src="'/app/entities/user-cardlets/addIconsDialog.html'"></ng-include>
+<ng-include ng-show="showDelteCardletDialog" src="'/app/entities/user-cardlets/deleteCardletDialog.html'"></ng-include>
 
 
 <div class="modeal-custom-window" ng-show="showCropDialog">
@@ -400,13 +401,6 @@
         padding: 0 0 0 0px;
     }
 
-    .upload-item-img{
-        background-color: #18C6B7!important;
-        border-color: #18C6B7!important;
-        border-radius: 20px!important;
-        min-width: 120px!important;
-    }
-
     .add-item-btn{
         margin: 10px;
     }
@@ -416,19 +410,6 @@
         border: none!important;
         color: #18C6B7!important;
         text-decoration: underline;
-    }
-
-    .saveButton{
-        background-color: #E8645A;
-        color: #FFF;
-        text-transform: uppercase;
-        width: 200px;
-        border:none;
-        border-radius: 20px;
-        font-size: 15px;
-        padding: 12px;
-        font-weight: bold;
-
     }
 
      input:focus{
@@ -450,7 +431,7 @@
     }
 
     .cardlet-panel{
-        width: 560px;
+        width: 562px;
         padding: 10px;
         margin: auto;
         background-color: #ECECEC;
@@ -500,22 +481,6 @@
         margin-right: 10px;
     }
 
-    .create-new-cardlet{
-        width: 500px;
-        height: 220px;
-        background: #FFF;
-        margin: auto;
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 5px;
-        border-color: #D0D8D9;
-        color: #E8645A;
-        font-size: 20px;
-        font-weight: bold;
-        text-transform: uppercase;
-        text-align: center;
-        margin-top: 80px;
-    }
     .crate-new-btn{
         margin-top: 20px;
     }
@@ -598,7 +563,7 @@
                                 </div>
                             </div>
                             <div class=" catdlet-btn-col">
-                                <div class="catdlet-btn" ng-click="delteCardlet(tabNames.id)">
+                                <div class="catdlet-btn" ng-click="delteCardletDialog(tabNames.id)">
                                     <img src="/app/entities/user-cardlets/img/btn-icon/delete_icon.png">
                                 </div>
                             </div>

@@ -145,7 +145,8 @@
             $scope.isAddBanner = true;
         }
 
-        $scope.banner =""
+        $scope.banner ="";
+
         $scope.copyToEmail = function(id, cardId, sigId) {
 
             $scope.isCopyTiEmail = true;
@@ -158,7 +159,6 @@
                 break
                 }
             }
-            console.log(sigId)
             $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ sigId.toString();
             $scope.element = $("#"+cardId); // global variable
             $scope.getCanvas;
@@ -175,7 +175,7 @@
             $scope.encoded = $base64.encode(image);
             console.log($scope.encoded)
             return $scope.encoded;
-        }
+        };
 
         $scope.openCard = function(cardName, tabId, id) {
 
@@ -243,6 +243,7 @@
             $scope.showBannerDialog = false;
             $scope.isShowMailClientWindow = false;
             $scope.isAddIcons = false;
+            $scope.showDelteCardletDialog = false;
 
             $("canvas").remove();
         };
@@ -331,17 +332,27 @@
                     $scope.tabNames.tabs[1].layout.tabId = $scope.itemTypes[0].id;
                     $scope.tabNames.tabs[1].layout.url = $scope.itemTypes[0].path;
                 });
-        }
+        };
 
         $scope.delteCardlet = function(id){
+            $scope.showDelteCardletDialog = false;
+            console.log("as")
             $http.get("/api/cardletDelete/"+id)
                 .success(function(response, status, headers) {
                     $scope.userCardlets = response;
                 });
-        }
+        };
+
+
+        $scope.showDelteCardletDialog = false;
+        $scope.delteCardletDialog = function(id){
+            $scope.showDelteCardletDialog = true;
+            $scope.delteCardletId = id;
+        };
 
         $scope.getItemTypes();
         $scope.getTabTypes();
+
 
         $scope.isNewTab = true;
 

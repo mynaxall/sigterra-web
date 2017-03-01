@@ -253,11 +253,11 @@ public class AccountResource {
             }).orElse(new ResponseEntity<>("e-mail address not registered", HttpStatus.BAD_REQUEST));
     }
 
-    @RequestMapping(value = "/upload/icon",
-        method = RequestMethod.POST,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+
+    @PostMapping(value = "account/upload/icon", produces=MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<?> uploadProfileIcon(@RequestParam MultipartFile file) throws JSONException {
+    public ResponseEntity<?> uploadProfileIcon(@RequestBody MultipartFile file) throws JSONException {
+
         JSONObject successObject = new JSONObject();
         if(file != null && !file.isEmpty()) {
             if(file.getSize() > MAX_ALLOWED_PROFILE_ICON_SIZE) {
@@ -280,7 +280,7 @@ public class AccountResource {
             successObject.put("message", "File is empty or NULL");
             // TODO: 1/9/17 Maybe need to change it to not OK status
         }
-        return ResponseEntity.ok(successObject);
+        return new ResponseEntity<>(successObject.toString(), HttpStatus.OK);
     }
 
     /**

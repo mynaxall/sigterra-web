@@ -5,6 +5,7 @@ import itomy.sigterra.domain.*;
 
 import itomy.sigterra.repository.BusinessRepository;
 import itomy.sigterra.repository.CardletRepository;
+import itomy.sigterra.service.AWSS3BucketService;
 import itomy.sigterra.service.CardletService;
 import itomy.sigterra.service.UserService;
 import itomy.sigterra.service.dto.CardletItemTab;
@@ -13,6 +14,7 @@ import itomy.sigterra.service.dto.ItemModel;
 import itomy.sigterra.service.dto.UserCardletDTO;
 import itomy.sigterra.web.rest.util.HeaderUtil;
 import itomy.sigterra.web.rest.util.PaginationUtil;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +25,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.inject.Inject;
 import java.net.URI;
@@ -35,6 +38,8 @@ import java.util.*;
 @RestController
 @RequestMapping("/api")
 public class CardletResource {
+
+    public static final int MAX_ALLOWED_PROFILE_ICON_SIZE = 50 * 1024 * 1024;
 
     private final Logger log = LoggerFactory.getLogger(CardletResource.class);
 
@@ -49,6 +54,9 @@ public class CardletResource {
 
     @Inject
     private CardletService cardletService;
+
+    @Inject
+    private AWSS3BucketService awss3BucketService;
 
 
     /**
@@ -186,6 +194,36 @@ public class CardletResource {
         cardletService.createCardlet(cardletDTO, false);
 
         return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "cardlet/upload/icon/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<?> uploadProfileIcon(@RequestBody MultipartFile file, @PathVariable String id) throws JSONException {
+        log.info("asdasdasd========== "+id);
+
+        JSONObject successObject = new JSONObject();
+        if(file != null && !file.isEmpty()) {
+            if(file.getSize() > MAX_ALLOWED_PROFILE_ICON_SIZE) {
+                successObject.put("success", false);
+                successObject.put("message", "File is too big. Max allowed file size is 50Mb");
+                // TODO: 1/9/17 Maybe need to change it to not OK status
+                return ResponseEntity.ok(successObject);
+            }
+
+            URI url = awss3BucketService.uploadBusinessImage(file, id);
+            if(url == null) {
+                successObject.put("success", false);
+                successObject.put("message", "Unable to fetch the file from S3 bucket.");
+            } else {
+                successObject.put("success", true);
+                successObject.put("url", url);
+            }
+        } else {
+            successObject.put("success", false);
+            successObject.put("message", "File is empty or NULL");
+            // TODO: 1/9/17 Maybe need to change it to not OK status
+        }
+        return new ResponseEntity<>(successObject.toString(), HttpStatus.OK);
     }
 
 
