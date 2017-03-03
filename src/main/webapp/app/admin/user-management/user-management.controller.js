@@ -5,9 +5,9 @@
         .module('sigterraWebApp')
         .controller('UserManagementController', UserManagementController);
 
-    UserManagementController.$inject = ['Principal', 'User', 'ParseLinks', 'AlertService', '$state', 'pagingParams', 'paginationConstants'];
+    UserManagementController.$inject = ['Principal', 'User', 'ParseLinks', 'AlertService', '$state', 'pagingParams', 'paginationConstants', '$http', '$location'];
 
-    function UserManagementController(Principal, User, ParseLinks, AlertService, $state, pagingParams, paginationConstants) {
+    function UserManagementController(Principal, User, ParseLinks, AlertService, $state, pagingParams, paginationConstants, $http, $location) {
         var vm = this;
 
         vm.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
@@ -15,6 +15,7 @@
         vm.languages = null;
         vm.loadAll = loadAll;
         vm.setActive = setActive;
+        vm.inpersonate = inpersonate;
         vm.users = [];
         vm.page = 1;
         vm.totalItems = null;
@@ -30,6 +31,36 @@
         Principal.identity().then(function(account) {
             vm.currentAccount = account;
         });
+
+        function inpersonate(user, isActive){
+            if(isActive) {
+                $http.get("/api/login/impersonate?username="+user.email)
+                    .success(function (response, status, headers) {
+                        $location.path('/user-cardlets')
+                        localStorage.setItem("impersonate", true);
+                    })
+            }else{
+                $http.get("/api/logout/impersonate")
+                    .success(function (response, status, headers) {
+                        localStorage.setItem("impersonate", false);
+                    })
+            }
+            setTimeout(function() {
+                $http.get("/api/account")
+                    .success(function (response, status, headers) {
+                        for(var i= 0; vm.users.length > i; i++){
+                            if(vm.users[i].email === response.email){
+                                vm.users[i].impersonate = true;
+                            }else{
+                                vm.users[i].impersonate = false;
+                            }
+                        }
+                    });
+            },500)
+
+
+        }
+
 
         function setActive (user, isActivated) {
             user.activated = isActivated;
@@ -61,6 +92,16 @@
             vm.queryCount = vm.totalItems;
             vm.page = pagingParams.page;
             vm.users = data;
+            $http.get("/api/account")
+                .success(function (response, status, headers) {
+                    for(var i= 0; vm.users.length > i; i++){
+                        if(vm.users[i].email === response.email){
+                            vm.users[i].impersonate = true;
+                        }else{
+                            vm.users[i].impersonate = false;
+                        }
+                    }
+                });
         }
 
         function onError(error) {

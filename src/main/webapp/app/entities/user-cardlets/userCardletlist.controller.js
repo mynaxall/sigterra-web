@@ -7,9 +7,9 @@
 
 
 
-    UserCardletListController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService',  'paginationConstants', '$http', '$timeout', '$uibModal', '$location', '$window'];
+    UserCardletListController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService',  'paginationConstants', '$http', '$timeout', '$uibModal', '$location', '$window', '$rootScope'];
 
-    function UserCardletListController ($scope, $state, CardletList, ParseLinks, AlertService,  paginationcardletConstants ,$http, $timeout, $uibModal, $location, $window) {
+    function UserCardletListController ($scope, $state, CardletList, ParseLinks, AlertService,  paginationcardletConstants ,$http, $timeout, $uibModal, $location, $window, $rootScope) {
         var vm = this;
 
 
@@ -231,12 +231,24 @@
         }
 
 
+        $scope.impersonate = function(){
+            if(window.localStorage['impersonate'] === 'true'){
+                $http.get("/api/logout/impersonate")
+                    .success(function (response, status, headers) {
+                        localStorage.setItem("impersonate", false);
+                        $window.location.reload()
+                    })
+            }
+
+        }
+
+        $scope.showImpersonate = window.localStorage['impersonate'];
         $scope.userCard= function(){
             $http.get("/api/userCardlets")
                 .success(function(response, status, headers) {
                     $scope.userCardlets = response;
-
                 });
+
         }
 
         $scope.userCard();
@@ -387,9 +399,6 @@
 
 
         $scope.isNewTab = true;
-
-
-
 
 
         $scope.addItem = function() {
