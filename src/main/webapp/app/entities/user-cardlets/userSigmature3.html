@@ -2,32 +2,32 @@
 
 
 
-<div class="entiti-content" style="width: 300px;">
+<div class="entiti-content" style="width: 300px;background: #fff">
     <div style="margin-top: 40px">
         <div class="user-name" ng-style="{'font-weight': userCardlets[segnatureId].tabs[firstBusinessCardId].userName.bold ? 'bold' : 'normal',
                     'font-style': userCardlets[segnatureId].tabs[firstBusinessCardId].userName.italic ? 'italic' : 'normal',
-                    'text-decoration': userCardlets[segnatureId].tabs[firstBusinessCardId].userName.underline ? 'underline' : 'normal'}" style="font-size: 22px;color: #4BABE2;">{{userCardlets[segnatureId].tabs[firstBusinessCardId].userName.value}}</div>
+                    'text-decoration': userCardlets[segnatureId].tabs[firstBusinessCardId].userName.underline ? 'underline' : 'normal'}" style="font-size: 22px;color: #4BABE2;text-align: left">{{userCardlets[segnatureId].tabs[firstBusinessCardId].userName.value}}</div>
 
         <div class="user-main-text job-titile" ng-style="{'font-weight': userCardlets[segnatureId].tabs[firstBusinessCardId].job.bold ? 'bold' : 'normal',
                     'font-style': userCardlets[segnatureId].tabs[firstBusinessCardId].job.italic ? 'italic' : 'normal',
-                    'text-decoration': userCardlets[segnatureId].tabs[firstBusinessCardId].job.underline ? 'underline' : 'normal'}">{{userCardlets[segnatureId].tabs[firstBusinessCardId].job.value}}</div>
+                    'text-decoration': userCardlets[segnatureId].tabs[firstBusinessCardId].job.underline ? 'underline' : 'normal'}" style="text-align: left">{{userCardlets[segnatureId].tabs[firstBusinessCardId].job.value}}</div>
 
-        <div style="margin-bottom: 0px;" class="user-main-text job-titile" ng-style="{'font-weight': userCardlets[segnatureId].tabs[firstBusinessCardId].phone.bold ? 'bold' : 'normal',
+        <div style="margin-bottom: 0px;text-align: left" class="user-main-text job-titile" ng-style="{'font-weight': userCardlets[segnatureId].tabs[firstBusinessCardId].phone.bold ? 'bold' : 'normal',
                     'font-style': userCardlets[segnatureId].tabs[firstBusinessCardId].phone.italic ? 'italic' : 'normal',
-                    'text-decoration': userCardlets[segnatureId].tabs[firstBusinessCardId].phone.underline ? 'underline' : 'normal'}">{{userCardlets[segnatureId].tabs[firstBusinessCardId].phone.value}}</div>
+                    'text-decoration': userCardlets[segnatureId].tabs[firstBusinessCardId].phone.underline ? 'underline' : 'normal'}" >{{userCardlets[segnatureId].tabs[firstBusinessCardId].phone.value}}</div>
 
          <div class="user-main-text job-titile" ng-style="{'font-weight': userCardlets[segnatureId].tabs[firstBusinessCardId].site.bold ? 'bold' : 'normal',
                             'font-style': userCardlets[segnatureId].tabs[firstBusinessCardId].site.italic ? 'italic' : 'normal',
-                            'text-decoration': userCardlets[segnatureId].tabs[firstBusinessCardId].site.underline ? 'underline' : 'normal'}">{{userCardlets[segnatureId].tabs[firstBusinessCardId].site.value}}</div>
+                            'text-decoration': userCardlets[segnatureId].tabs[firstBusinessCardId].site.underline ? 'underline' : 'normal'}" style="text-align: left">{{userCardlets[segnatureId].tabs[firstBusinessCardId].site.value}}</div>
 
 
-        <div>
+        <div style="height: 40px;text-align: left;">
             <div>
-                <span style="background: #FFF; border-width: 1px; border-style: solid; border-color: #D0D8D9;float: left; width: 75px;text-align: center; padding: 5px;" ng-repeat="tabName in userCardlets[segnatureId].tabs" id="card{{tabName.position}}{{tabName.name}}"
+
+                <div style="display: inline-block;background: #FFF; border-width: 1px; border-style: solid; border-color: #D0D8D9; width: 75px;text-align: center; padding: 5px;" ng-repeat="tabName in userCardlets[segnatureId].tabs" id="card{{tabName.position}}{{tabName.name}}"
                       ng-style="{'background': tabName.position == 0 ? '#4BABE2' : '#FFF'}">
                     <a style=" font-size: 13px; font-weight: bold" ng-style="{'color': tabName.position == 0 ? '#FFFFFF' : '#7F8C8C'}" href="{{signatureLink}}" class="tablinks2">{{tabName.name}}</a>
-                </span>
-                </ul>
+                </div>
             </div>
         </div>
         <img ng-style="{'display': isAddBanner ? 'block' : 'none'}"  style="width: 300px;" src="{{banner}}">

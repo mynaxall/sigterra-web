@@ -479,9 +479,22 @@
             }, 500);
         }
 
+        $scope.hideDeleteTab = false;
+        $scope.showDelteTabDialog = false;
+
+        $scope.showDeleteDialog = function(id){
+            $scope.showDelteTabDialog = true;
+            $scope.tabToDeleteID = id
+        };
 
 
-        $scope.removeTab = function(index) {
+        $scope.closeDialog = function(){
+            $scope.showDelteTabDialog = false;
+        };
+
+        $scope.removeTab = function() {
+
+            var index = $scope.tabToDeleteID;
 
             if($scope.tabNames.tabs.length >1) {
                 $scope.tabNames.tabs.splice(index, 1);
@@ -514,10 +527,12 @@
                     document.getElementsByClassName("tabcontent")[0].style.display = "block";;
                     document.getElementsByClassName("tabs")[0].className += " active";
                 }, 500);
+
             }
             if($scope.tabNames.tabs.length < 4){
                 $scope.isNewTab = true;
             }
+            $scope.showDelteTabDialog = false;
         }
 
         $scope.chooseType = function(id, url, tabId) {
@@ -556,6 +571,8 @@
                     $location.path('/user-cardlets')
                 });
         }
+
+
 
     }
 

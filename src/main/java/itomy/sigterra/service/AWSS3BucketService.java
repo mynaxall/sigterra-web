@@ -130,5 +130,42 @@ public class AWSS3BucketService {
         }
         return uri;
     }
+
+    public URI uploadSignatureImage(MultipartFile file, String cardletId, String fileName) {
+        URI uri = null;
+        if (file != null && !file.isEmpty()) {
+            try {
+                String bucketName = hipsterProperties.getAwss3Bucket().getName();
+                User user = userService.getUserWithAuthorities();
+
+
+                if(StringUtils.isNotBlank(cardletId)) {
+
+                    s3Client.deleteObject(new DeleteObjectRequest(bucketName+"/signature/"+user.getId()+"/"+cardletId, fileName));
+                }
+
+                String name = fileName;
+                String originalFilename = file.getOriginalFilename();
+                if (originalFilename.contains(".")) {
+                    name += originalFilename.substring(originalFilename.lastIndexOf("."));
+                }
+
+                ObjectMetadata metadata = new ObjectMetadata();
+                metadata.setContentType(file.getContentType());
+                PutObjectRequest putObject = new PutObjectRequest(bucketName+"/signature/"+user.getId()+"/"+cardletId, name, file.getInputStream(), metadata);
+                putObject.withCannedAcl(CannedAccessControlList.PublicRead);
+                s3Client.putObject(putObject);
+                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName+"/signature/"+user.getId()+"/"+cardletId, name);
+                URL url = s3Client.generatePresignedUrl(urlRequest);
+                uri = new URI(url.toURI().getScheme(), url.toURI().getAuthority(), url.toURI()
+                    .getPath(), null, url.toURI()
+                    .getFragment());
+
+            } catch (Exception e) {
+                log.error("Error occurred while uploading the profile icon file", e);
+            }
+        }
+        return uri;
+    }
 }
 

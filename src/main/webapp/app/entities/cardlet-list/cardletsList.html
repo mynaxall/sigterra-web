@@ -27,6 +27,40 @@
     </div>
 </div>
 
+
+
+<div class="modeal-custom-window" ng-show="showDelteTabDialog">
+    <div class="modal-dialog " style="margin-top: 100px; width: 400px!important;">
+        <div class="modal-content" uib-modal-transclude="">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        ng-click="closeDialog()">&times;</button>
+                <div class="signature-title"></div>
+            </div>
+            <div  style=" padding: 0px!important;" class="modal-body">
+                <div style="background: #FFF; padding-left: 30px; padding-right: 30px;">
+                    <div class="delete-dialog-title">Delete Tab?</div>
+                    <div class="delete-msg">
+                        Are you sure you want to delete this?
+                    </div>
+                    <div class="select-btn-div" style="padding-bottom: 50px;">
+                        <button style="float: left" class="saveButton closeButton" ng-click="closeDialog()">
+                            Close
+                        </button>
+                        <button style="float: right" class="saveButton deleteButton" ng-click="removeTab()">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 <div class="entiti-content">
 <style>
 
@@ -58,8 +92,8 @@
 
     .tab-panel{
         padding-top: 50px;
-        margin-left: 5%;
-        margin-right: 5%;
+        margin-left: 15%;
+        margin-right: 15%;
         padding-bottom: 50px;
         background-color: #fff;
         box-shadow: none;
@@ -76,6 +110,12 @@
         .tab-panel {
             margin-left: 5%;
             margin-right: 5%;
+        }
+    }
+    @media (min-width: 1600px) {
+        .tab-panel {
+            margin-left: 15%;
+            margin-right: 15%;
         }
     }
 
@@ -411,7 +451,7 @@
                             ng-class="{'selected': models.selected === tabName}"  dnd-effect-allowed="move" dnd-moved="tabNames.tabs.splice($index, 1)" id="tab{{tabName.position}}" dnd-dragend="positionCheck()">
                             <div style="position: relative">
                                 <a href="javascript:void(0)" class="tablinks" ng-click="openCity('settings'+tabName.name+tabName.position, 'tab'+tabName.position, tabName.name+tabName.position, tabName.position+tabName.name)">{{tabName.name}}</a>
-                                <div class="remove" ng-click="removeTab(tabName.position)"><span style="font-size: 15px;color:#D0D8D9;" class="glyphicon glyphicon-remove-circle"></span></div>
+                                <div ng-hide="tabNames.tabs.length == 1" class="remove" ng-click="showDeleteDialog(tabName.position)"><span style="font-size: 15px;color:#D0D8D9;" class="glyphicon glyphicon-remove-circle"></span></div>
                             </div>
                         </li>
                         <li  uib-dropdown class="dropdown pointer"  ng-show="isNewTab">

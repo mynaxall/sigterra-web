@@ -7,24 +7,28 @@
 
 
 
-    UserCardletListController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService',  'paginationConstants', '$http', '$timeout', '$uibModal', '$location'];
+    UserCardletListController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService',  'paginationConstants', '$http', '$timeout', '$uibModal', '$location', '$window'];
 
-    function UserCardletListController ($scope, $state, CardletList, ParseLinks, AlertService,  paginationcardletConstants ,$http, $timeout, $uibModal, $location) {
+    function UserCardletListController ($scope, $state, CardletList, ParseLinks, AlertService,  paginationcardletConstants ,$http, $timeout, $uibModal, $location, $window) {
         var vm = this;
 
 
         $scope.saveBanner = function(){
-            console.log($scope.banner )
-            $scope.showCropDialog = false
+            var image64 = $scope.banner;
+            $scope.saveImage("banner", image64);
+            $scope.showCropDialog = false;
         }
 
         $scope.closeCropDialog = function(){
             $scope.showCropDialog = false;
+            $scope.showCropDialogTabs = false;
         }
 
         $scope.showCropDialog = false;
+        $scope.showCropDialogTabs = false;
         $scope.myImage ='';
         $scope.myCroppedImage = '';
+        $scope.myImage2 ='';
 
         $scope.handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];
@@ -35,7 +39,19 @@
                 });
             };
             reader.readAsDataURL(file);
-            console.log("asdas")
+
+        };
+
+        $scope.handleFileSelect2=function(evt) {
+            var file=evt.currentTarget.files[0];
+            var reader = new FileReader();
+            reader.onload = function (evt) {
+                $scope.$apply(function($scope){
+                    $scope.myImage2=evt.target.result;
+                });
+            };
+            reader.readAsDataURL(file);
+
         };
 
         vm.loadPage = loadPage;
@@ -146,10 +162,12 @@
         }
 
         $scope.banner ="";
+        $scope.tabsImage = '';
 
         $scope.copyToEmail = function(id, cardId, sigId) {
 
             $scope.isCopyTiEmail = true;
+            $window.scrollTo(0, 0);
             $scope.segnatureId = id;
             $scope.userCardlets[id].tabs;
             $scope.banner = '/app/cardlets/img/banner.png'
@@ -232,6 +250,16 @@
              $scope.showCropDialog = true;
         };
 
+        $scope.showCropTabs = function(index){
+            $scope.showCropDialogTabs = true;
+            $scope.ImageTabIndex = index;
+        }
+
+        $scope.saveTabsImage = function(){
+            console.log($scope.banner)
+            $scope.saveImage($scope.ImageTabIndex, $scope.tabsImage)
+        }
+
 
 
 
@@ -262,34 +290,38 @@
 
         $scope.coptToEmailText;
         $scope.isShowMailClientWindow = false;
-        $scope.sigImage0 = "asdasd"
+
 
         $scope.isAddIcons = false;
 
         $scope.selectSignature = function(id){
-            $scope.isAddBanner = false;
+
             $scope.isCopyTiEmail = false;
             if(id == 1){
-                $scope.isShowMailClientWindow = true;
                 var imgageData =  $scope.getCanvas.toDataURL("image/png");
                 // Now browser starts downloading it instead of just showing it
                 $scope.newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
-                $scope.coptToEmailText = '<a href="'+$scope.signatureLink+'"> <img style="text-transform: scale(0.59)" src="'+imgageData+'"></a>'
-                    console.log(imgageData)
+                $scope.saveImage("signature",imgageData)
+
             }
             else if(id == 2){
                 $scope.isAddIcons = true;
-                var urlField = document.getElementById('secondSignature');
-                $scope.coptToEmailText = urlField.outerHTML;
+                console.log($scope.banner);
             }else if(id == 3){
                 $scope.isShowMailClientWindow = true;
+                $window.scrollTo(0, 0);
                 var urlField = document.getElementById('thirdSignature');
                 $scope.coptToEmailText = urlField.outerHTML;
+                $scope.isAddBanner = false;
+                document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText
             }else if(id = 4){
                 $scope.isShowMailClientWindow = true;
+                $window.scrollTo(0, 0);
                 $scope.isAddIcons = false;
-                var urlField = document.getElementById('secondSignature');
+                var urlField = document.getElementById('secondSignaturePreview');
                 $scope.coptToEmailText = urlField.outerHTML;
+                $scope.isAddBanner = false;
+                document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText
             }
         };
 
@@ -573,6 +605,77 @@
 
                 });
         }
+
+
+        function b64toBlob(b64Data, contentType, sliceSize) {
+            contentType = contentType || '';
+            sliceSize = sliceSize || 512;
+
+            var byteCharacters = atob(b64Data);
+            var byteArrays = [];
+
+            for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+                var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+                var byteNumbers = new Array(slice.length);
+                for (var i = 0; i < slice.length; i++) {
+                    byteNumbers[i] = slice.charCodeAt(i);
+                }
+
+                var byteArray = new Uint8Array(byteNumbers);
+
+                byteArrays.push(byteArray);
+            }
+
+            var blob = new Blob(byteArrays, {type: contentType});
+            return blob;
+        };
+
+
+        $scope.saveImage = function(name, image64){
+
+            console.log( $scope.banner)
+            var img_b64 = image64;
+            var png = img_b64.split(',')[1];
+            var file = b64toBlob(png, 'image/png')
+            console.log(file);
+            var fd = new FormData();
+            fd.append('file', file);
+
+            $http.post("/api/signature/upload/icon/"+ $scope.userCardlets[$scope.segnatureId].id +"/"+name,  fd, {
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined}
+                })
+                .success(function (data, status, headers, config) {
+                    $scope.croppedImageUrl = data.url;
+                    $scope.showCropDialog = false;
+                    $scope.showCropDialogTabs = false;
+                    if(name == "signature"){
+                        $scope.isShowMailClientWindow = true;
+                        $window.scrollTo(0, 0);
+                        $scope.coptToEmailText = '<a href="'+$scope.signatureLink+'"> <img style="text-transform: scale(0.59)" src="'+$scope.croppedImageUrl+'"></a>';
+                        if($scope.isAddBanner == true){
+                            $scope.coptToEmailText =  '<div></div><a href="'+$scope.signatureLink+'"> <img style="text-transform: scale(0.59)" src="'+$scope.croppedImageUrl+'"></a></div><div><img style="text-transform: scale(0.59)" src="'+$scope.banner+'"></div>'
+                            $scope.isAddBanner = false;
+                        }
+                    }else if(name == "banner") {
+                        $scope.banner = $scope.croppedImageUrl;
+                    }else{
+                        $scope.userCardlets[$scope.segnatureId].tabs[$scope.ImageTabIndex].sigImage = $scope.croppedImageUrl;
+                        console.log( $scope.banner)
+
+                    }
+                    document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText
+
+
+
+
+
+
+                });
+        };
+
+
     }
 
 

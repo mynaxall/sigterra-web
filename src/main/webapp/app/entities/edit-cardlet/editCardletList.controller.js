@@ -459,9 +459,22 @@
         }
 
 
+        $scope.showDelteTabDialog = false;
 
-        $scope.removeTab = function(index) {
+        $scope.showDeleteDialog = function(id){
+            $scope.showDelteTabDialog = true;
+            $scope.tabToDeleteID = id
+        };
 
+
+        $scope.closeDialog = function(){
+            $scope.showDelteTabDialog = false;
+        };
+
+
+
+        $scope.removeTab = function() {
+            var index = $scope.tabToDeleteID;
             if($scope.tabNames.tabs.length >1) {
 
                 if ($scope.tabNames.tabs[index].tabType === 2 && $scope.tabNames.tabs[index].id) {
@@ -508,6 +521,7 @@
                     document.getElementsByClassName("tabs")[0].className += " active";
                 }, 500);
             }
+            $scope.showDelteTabDialog = false;
         }
 
         $scope.chooseType = function(id, url, tabId) {
