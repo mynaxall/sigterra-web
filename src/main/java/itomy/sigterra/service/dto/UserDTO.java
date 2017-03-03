@@ -51,6 +51,8 @@ public class UserDTO {
 
     private Set<String> authorities;
 
+    private String imageUrl;
+
     public UserDTO() {
     }
 
@@ -59,13 +61,13 @@ public class UserDTO {
              user.getEmail(), user.getActivated(), user.getLangKey(),
              user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet()),
              user.getUsername(), user.getPhoneNumber(),
-             user.getAddress(), user.getCompanyName(), user.getCompanySite(), user.getJobTitle());
+             user.getAddress(), user.getCompanyName(), user.getCompanySite(), user.getJobTitle(), user.getImageUrl());
     }
 
     public UserDTO(String login, String firstName, String lastName,
                    String email, boolean activated, String langKey, Set<String> authorities,
                    String username, String phoneNumber, String address, String companyName,
-                   String companySite, String jobTitle) {
+                   String companySite, String jobTitle, String imageUrl) {
 
         this.login = login;
         this.firstName = firstName;
@@ -80,6 +82,7 @@ public class UserDTO {
         this.companyName = companyName;
         this.companySite = companySite;
         this.jobTitle = jobTitle;
+        this.imageUrl = imageUrl;
     }
 
 
@@ -133,6 +136,14 @@ public class UserDTO {
 
     public String getJobTitle() {
         return jobTitle;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override

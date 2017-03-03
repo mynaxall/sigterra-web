@@ -36,6 +36,95 @@
             $scope.showCropDialog = true;
             $scope.tabImageId = tabId;
             $scope.itemImageId = itemId;
+            $scope.imageItemMame =itemImgPosition;
+        }
+
+        function dataURLtoFile(dataurl, filename) {
+            var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+                bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+            while(n--){
+                u8arr[n] = bstr.charCodeAt(n);
+            }
+            return new File([u8arr], filename, {type:mime});
+        }
+
+//Usage example:
+
+
+        function b64toBlob(b64Data, contentType, sliceSize) {
+            contentType = contentType || '';
+            sliceSize = sliceSize || 512;
+
+            var byteCharacters = atob(b64Data);
+            var byteArrays = [];
+
+            for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+                var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+                var byteNumbers = new Array(slice.length);
+                for (var i = 0; i < slice.length; i++) {
+                    byteNumbers[i] = slice.charCodeAt(i);
+                }
+
+                var byteArray = new Uint8Array(byteNumbers);
+
+                byteArrays.push(byteArray);
+            }
+
+            var blob = new Blob(byteArrays, {type: contentType});
+            return blob;
+        };
+
+
+        $scope.saveImage = function(){
+
+
+            var img_b64 = $scope.myCroppedImage;
+            var png = img_b64.split(',')[1];
+            var file = b64toBlob(png, 'image/png')
+            console.log(file);
+            var fd = new FormData();
+            fd.append('file', file);
+            var url = "";
+            console.log("asdasd ")
+            console.log($scope.itemImageId)
+            console.log($scope.imageItemMame)
+            console.log($scope.tabImageId)
+
+            if($scope.itemImageId != null){
+                 url =  $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame];
+                console.log("111111");
+                console.log(url);
+
+            }else{
+                 url = $scope.tabNames.tabs[$scope.tabImageId].photo;
+                console.log("2222");
+                console.log(url);
+            }
+            var filename = url.substring(url.lastIndexOf('/')+1);
+            if(filename.indexOf(".")!= -1){
+                filename = "name"
+            }
+
+            $http.post("/api/cardlet/upload/icon/"+filename,  fd, {
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined}
+                })
+                .success(function (data, status, headers, config) {
+                    $scope.imageUrl = data.url;
+                    if($scope.itemImageId != null){
+                        console.log("11111")
+                        $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame] = $scope.imageUrl;
+                    }else {
+                        console.log("2222")
+                        setTabImage();
+                    }
+                    $scope.showCropDialog = false;
+                });
+        };
+
+        function setTabImage(){
+            $scope.tabNames.tabs[$scope.tabImageId].photo = $scope.imageUrl;
         }
 
         vm.loadPage = loadPage;
@@ -298,7 +387,7 @@
                     "job":{
                         "value": $scope.userAccount.jobTitle
                     },
-                    "photo": "/app/cardlets/img/2_card/avatar_img.png"
+                    "photo": $scope.userAccount.imageUrl
 
                     }
                 $scope.tabNames.tabs.push(newTab);
@@ -370,9 +459,22 @@
         }
 
 
+        $scope.showDelteTabDialog = false;
 
-        $scope.removeTab = function(index) {
+        $scope.showDeleteDialog = function(id){
+            $scope.showDelteTabDialog = true;
+            $scope.tabToDeleteID = id
+        };
 
+
+        $scope.closeDialog = function(){
+            $scope.showDelteTabDialog = false;
+        };
+
+
+
+        $scope.removeTab = function() {
+            var index = $scope.tabToDeleteID;
             if($scope.tabNames.tabs.length >1) {
 
                 if ($scope.tabNames.tabs[index].tabType === 2 && $scope.tabNames.tabs[index].id) {
@@ -419,6 +521,7 @@
                     document.getElementsByClassName("tabs")[0].className += " active";
                 }, 500);
             }
+            $scope.showDelteTabDialog = false;
         }
 
         $scope.chooseType = function(id, url, tabId) {

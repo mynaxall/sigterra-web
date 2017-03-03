@@ -1,5 +1,62 @@
 <script src="/app/entities/cardlet-list/jscolor.js"></script>
-<ng-include  src="'/app/entities/cardlet-list/cropDialog.html'"></ng-include>
+<div class="modeal-custom-window" ng-show="showCropDialog">
+    <div class="modal-dialog " style="margin-top: 0px; width:390px!important;">
+        <div class="modal-content" uib-modal-transclude="">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        ng-click="closeCropDialog()">&times;</button>
+            </div>
+            <div  style="padding: 0px!important; text-align: center" class="modal-body">
+                <div>
+                    <link rel="stylesheet" type="text/css" href="/content/ng-img-crop.css">
+
+                    <div class="fileUpload btn btn-primary choose-photo-btn">
+                        <span>Choose photo</span>
+                        {{tabImageId}} {{itemImageId}}
+                        <input type="file" id="fileInput" class="upload"  onchange="angular.element(this).scope().handleFileSelect(event)"/>
+                    </div>
+                </div>
+                <div class="cropArea">
+                    <img-crop image="myImage" result-image="myCroppedImage" ></img-crop>
+                </div>
+                <div class="crop-btn-div">
+                    <button class="btn btn-primary main-btn" ng-click="saveImage()">save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modeal-custom-window" ng-show="showDelteTabDialog">
+    <div class="modal-dialog " style="margin-top: 100px; width: 400px!important;">
+        <div class="modal-content" uib-modal-transclude="">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        ng-click="closeDialog()">&times;</button>
+                <div class="signature-title"></div>
+            </div>
+            <div  style=" padding: 0px!important;" class="modal-body">
+                <div style="background: #FFF; padding-left: 30px; padding-right: 30px;">
+                    <div class="delete-dialog-title">Delete Tab?</div>
+                    <div class="delete-msg">
+                        Are you sure you want to delete this?
+                    </div>
+                    <div class="select-btn-div" style="padding-bottom: 50px;">
+                        <button style="float: left" class="saveButton closeButton" ng-click="closeDialog()">
+                            Close
+                        </button>
+                        <button style="float: right" class="saveButton deleteButton" ng-click="removeTab()">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="entiti-content" ng-init="getCardlet()">
 <style>
 
@@ -53,6 +110,13 @@
             margin-right: 5%;
         }
     }
+    @media (min-width: 1600px) {
+        .tab-panel {
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+    }
+
 
 
     ul.tab {
@@ -304,13 +368,6 @@
         padding: 0 0 0 0px;
     }
 
-    .upload-item-img{
-        background-color: #18C6B7!important;
-        border-color: #18C6B7!important;
-        border-radius: 20px!important;
-        min-width: 120px!important;
-    }
-
     .add-item-btn{
         margin: 10px;
     }
@@ -320,19 +377,6 @@
         border: none!important;
         color: #18C6B7!important;
         text-decoration: underline;
-    }
-
-    .saveButton{
-        background-color: #E8645A;
-        color: #FFF;
-        text-transform: uppercase;
-        width: 200px;
-        border:none;
-        border-radius: 20px;
-        font-size: 15px;
-        padding: 12px;
-        font-weight: bold;
-
     }
 
      input:focus{
@@ -385,25 +429,6 @@
         margin-right: 10px;
     }
 
-    .choose-tab{
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        z-index: 10;
-    }
-
-    .choose-tab:focus{
-        outline: none;
-    }
-
-    .choose-tab-active{
-        -webkit-box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
-        -moz-box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
-        box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
-    }
-
     ul[dnd-list] .dndDraggingSource {
         display: none;
     }
@@ -423,7 +448,7 @@
                     <li class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-draggable="tabName" dnd-moved="tabNames.tabs.splice($index, 1)" id="{{tabName.position}}" dnd-dragend="positionCheck()" ng-class="tabName.position == 0 ? 'active' : ''">
                         <div style="position: relative">
                             <a href="javascript:void(0)" class="tablinks" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
-                            <div class="remove" ng-click="removeTab(tabName.position)"><span style="font-size: 15px;color:#D0D8D9;" class="glyphicon glyphicon-remove-circle"></span></div>
+                            <div ng-hide="tabNames.tabs.length == 1"  class="remove" ng-click="showDeleteDialog(tabName.position)"><span style="font-size: 15px;color:#D0D8D9;" class="glyphicon glyphicon-remove-circle"></span></div>
                         </div>
                     </li>
                     <li  uib-dropdown class="dropdown pointer"  ng-show="tabNames.tabs.length < 4">
@@ -508,7 +533,7 @@
                                             <input type="text" class="form-control profile-input" id="urlOne" placeholder="" ng-model="item.image">
                                         </div>
                                         <div class="social-image-form-div" >
-                                            <button  type="submit" ng-disabled="for2m.$invalid" ng-click="openCropDialog($parent.$index, item.position, '1')"  class="btn btn-primary main-btn upload-item-img">Upload</button>
+                                            <button  type="submit" ng-disabled="for2m.$invalid" ng-click="openCropDialog($parent.$index, item.position, 'image')"  class="btn btn-primary main-btn upload-item-img">Upload</button>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -517,7 +542,7 @@
                                             <input type="text" class="form-control profile-input" id="urlTwo" placeholder="" ng-model="item.image2">
                                         </div>
                                         <div class="social-image-form-div" >
-                                            <button  type="submit" ng-disabled="for2m.$invalid" ng-click="openCropDialog($parent.$index, item.position, '2')" class="btn btn-primary main-btn upload-item-img">Upload</button>
+                                            <button  type="submit" ng-disabled="for2m.$invalid" ng-click="openCropDialog($parent.$index, item.position, 'image2')" class="btn btn-primary main-btn upload-item-img">Upload</button>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -526,7 +551,7 @@
                                             <input type="text" class="form-control profile-input" id="urlThree" placeholder="" ng-model="item.image3">
                                         </div>
                                         <div class="social-image-form-div" >
-                                            <button  type="submit" ng-disabled="for2m.$invalid" ng-click="openCropDialog($parent.$index, item.position, '3')" class="btn btn-primary main-btn upload-item-img">Upload</button>
+                                            <button  type="submit" ng-disabled="for2m.$invalid" ng-click="openCropDialog($parent.$index, item.position, 'image3')" class="btn btn-primary main-btn upload-item-img">Upload</button>
                                         </div>
                                     </div>
 

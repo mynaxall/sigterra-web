@@ -28,8 +28,9 @@
             <div class="row">
                 <div class="col-md-6" style="text-align: right">
                     <div class="image-cropped-div">
-                        <img class="image-cropped" ng-show="showCroppedImage"  ng-src="{{myCroppedImage}}" />
-                        <img ng-show="!showCroppedImage" class="image-cropped" src="/content/images/default_photo_image@2x.png" /></div>
+                        <img class="image-cropped" ng-show="showCroppedImage && !vm.settingsAccount.imageUrl"  ng-src="{{myCroppedImage}}" />
+                        <img class="image-cropped" ng-show="vm.settingsAccount.imageUrl && !showCroppedImage"  ng-src="{{vm.settingsAccount.imageUrl}}" />
+                        <img ng-show="!showCroppedImage && !vm.settingsAccount.imageUrl" class="image-cropped" src="/content/images/default_photo_image@2x.png" /></div>
                 </div>
                 <div class="col-md-6" style="text-align: left">
                 <div class="button-upload-div">

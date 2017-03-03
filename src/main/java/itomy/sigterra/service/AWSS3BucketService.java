@@ -66,7 +66,7 @@ public class AWSS3BucketService {
                 String imageUrl = user.getImageUrl();
                 if(StringUtils.isNotBlank(imageUrl)) {
                     String imageKey = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
-                    s3Client.deleteObject(new DeleteObjectRequest(bucketName, imageKey));
+                    s3Client.deleteObject(new DeleteObjectRequest(bucketName+"/accounts/"+user.getId(), imageKey));
                 }
 
                 String name = "user_profile_icon_" + user.getId() + "_" + System.currentTimeMillis();
@@ -77,17 +77,90 @@ public class AWSS3BucketService {
 
                 ObjectMetadata metadata = new ObjectMetadata();
                 metadata.setContentType(file.getContentType());
-                PutObjectRequest putObject = new PutObjectRequest(bucketName, name, file.getInputStream(), metadata);
+                PutObjectRequest putObject = new PutObjectRequest(bucketName+"/accounts/"+user.getId(), name, file.getInputStream(), metadata);
                 putObject.withCannedAcl(CannedAccessControlList.PublicRead);
                 s3Client.putObject(putObject);
-
-                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName, name);
+                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName+"/accounts/"+user.getId(), name);
                 URL url = s3Client.generatePresignedUrl(urlRequest);
                 uri = new URI(url.toURI().getScheme(), url.toURI().getAuthority(), url.toURI()
                                                                                       .getPath(), null, url.toURI()
                                                                                                            .getFragment());
                 user.setImageUrl(uri.toString());
                 userRepository.save(user);
+            } catch (Exception e) {
+                log.error("Error occurred while uploading the profile icon file", e);
+            }
+        }
+        return uri;
+    }
+
+    public URI uploadBusinessImage(MultipartFile file, String id) {
+        URI uri = null;
+        if (file != null && !file.isEmpty()) {
+            try {
+                String bucketName = hipsterProperties.getAwss3Bucket().getName();
+                User user = userService.getUserWithAuthorities();
+
+
+                if(StringUtils.isNotBlank(id)) {
+
+                    s3Client.deleteObject(new DeleteObjectRequest(bucketName+"/bussinessCardTab/"+user.getId(), id));
+                }
+
+                String name = "user_profile_icon_" + user.getId() + "_" + System.currentTimeMillis();
+                String originalFilename = file.getOriginalFilename();
+                if (originalFilename.contains(".")) {
+                    name += originalFilename.substring(originalFilename.lastIndexOf("."));
+                }
+
+                ObjectMetadata metadata = new ObjectMetadata();
+                metadata.setContentType(file.getContentType());
+                PutObjectRequest putObject = new PutObjectRequest(bucketName+"/bussinessCardTab/"+user.getId(), name, file.getInputStream(), metadata);
+                putObject.withCannedAcl(CannedAccessControlList.PublicRead);
+                s3Client.putObject(putObject);
+                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName+"/bussinessCardTab/"+user.getId(), name);
+                URL url = s3Client.generatePresignedUrl(urlRequest);
+                uri = new URI(url.toURI().getScheme(), url.toURI().getAuthority(), url.toURI()
+                    .getPath(), null, url.toURI()
+                    .getFragment());
+
+            } catch (Exception e) {
+                log.error("Error occurred while uploading the profile icon file", e);
+            }
+        }
+        return uri;
+    }
+
+    public URI uploadSignatureImage(MultipartFile file, String cardletId, String fileName) {
+        URI uri = null;
+        if (file != null && !file.isEmpty()) {
+            try {
+                String bucketName = hipsterProperties.getAwss3Bucket().getName();
+                User user = userService.getUserWithAuthorities();
+
+
+                if(StringUtils.isNotBlank(cardletId)) {
+
+                    s3Client.deleteObject(new DeleteObjectRequest(bucketName+"/signature/"+user.getId()+"/"+cardletId, fileName));
+                }
+
+                String name = fileName;
+                String originalFilename = file.getOriginalFilename();
+                if (originalFilename.contains(".")) {
+                    name += originalFilename.substring(originalFilename.lastIndexOf("."));
+                }
+
+                ObjectMetadata metadata = new ObjectMetadata();
+                metadata.setContentType(file.getContentType());
+                PutObjectRequest putObject = new PutObjectRequest(bucketName+"/signature/"+user.getId()+"/"+cardletId, name, file.getInputStream(), metadata);
+                putObject.withCannedAcl(CannedAccessControlList.PublicRead);
+                s3Client.putObject(putObject);
+                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName+"/signature/"+user.getId()+"/"+cardletId, name);
+                URL url = s3Client.generatePresignedUrl(urlRequest);
+                uri = new URI(url.toURI().getScheme(), url.toURI().getAuthority(), url.toURI()
+                    .getPath(), null, url.toURI()
+                    .getFragment());
+
             } catch (Exception e) {
                 log.error("Error occurred while uploading the profile icon file", e);
             }

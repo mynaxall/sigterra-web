@@ -507,7 +507,7 @@ Social Buttons
 }
 
 .login-registration{
-    margin-top: 100px;
+    margin-top: 50px;
     background-color: #489B94;
     text-align: center;
     padding: 15px;
@@ -817,7 +817,17 @@ Social Buttons
     display: inline-block;
     background-color: #FFFFFF;
     margin: 10px;
+    position: relative;
 
+}
+
+.modal-signature-panel-shadow{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
 }
 
 .signature-text-sample{
@@ -893,7 +903,7 @@ Social Buttons
 
 .mail-copy-div{
     width: 100%;
-    height:300px;
+    min-height:300px;
     background-color: #ECECEC;
     padding-left: 50px;
     padding-right: 50px;
@@ -947,6 +957,168 @@ Social Buttons
     color:#FFF!important;
     font-weight: bold;
 }
+
+.navbar-default .navbar-nav > li.activeNavigationTab > a{
+    color: #268d83 !important;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{
+    background-color: #242424 !important;
+    color: #268d83 !important;
+
+}
+
+.upload-item-img{
+    background-color: #18C6B7!important;
+    border-color: #18C6B7!important;
+    border-radius: 20px!important;
+    min-width: 120px!important;
+    height: 34px!important;
+    padding: 1px 12px!important;
+}
+
+.upload-item-img:hover{
+    background-color: #66bdb4!important;
+}
+
+.saveButton{
+    background-color: #E8645A;
+    color: #FFF;
+    text-transform: uppercase;
+    width: 200px;
+    border:none;
+    border-radius: 20px;
+    font-size: 15px;
+    padding: 12px;
+    font-weight: bold;
+
+}
+
+.deleteButton{
+    width: 150px;
+
+}
+
+.closeButton{
+    width: 150px;
+    background-color: #D0D8D9;
+}
+
+.saveButton:hover{
+    background-color: #e87771;
+}
+
+.choose-tab{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+}
+
+.choose-tab:focus{
+    outline: none;
+}
+
+.choose-tab:hover{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #268d83 ;
+}
+
+.choose-tab-active{
+    -webkit-box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
+}
+
+.delete-dialog-title{
+    color: #7F8C8C;
+    font-size: 26px;
+}
+
+.delete-msg{
+    width: 100%;
+    height: 55px;
+    text-align: center;
+    font-size: 13px;
+    color: #E2534B;
+    background-color: rgba(226, 83, 75, 0.31);
+    padding-top: 17px;
+}
+
+.navbar{
+    border-radius: 0px!important;
+}
+
+.create-new-cardlet{
+    width: 500px;
+    height: 220px;
+    background: #FFF;
+    margin: auto;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: #D0D8D9;
+    color: #E8645A;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.create-new-cardlet:hover{
+    border-color: #268d83 ;
+}
+
+@keyframes cf3FadeInOut {
+    0%  {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.imgFirst{
+    display: block;
+    animation: cf3FadeInOut 4s infinite;
+    animation-delay: 0s;
+}
+
+.imgSecond{
+    display: block;
+    margin-top:-130px;
+    animation: cf3FadeInOut 8s infinite;
+    animation-delay: 4s;
+}
+
+.imgThird{
+    display: block;
+    margin-top:-130px;
+    animation: cf3FadeInOut 12s infinite;
+    animation-delay:8s;
+}
+
+#gmailDiv{
+    padding: 40px 20px;
+    border-width: 1px;
+    border-style: dashed;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
 
 
 

@@ -21,16 +21,16 @@
                     <!--</a>-->
                 <!--</li>-->
                 <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-                <li style="margin-top: 15px;" ng-switch-when="true" uib-dropdown class="dropdown pointer">
+                <li ui-sref-active="activeNavigationTab" style="margin-top: 15px;" ng-switch-when="true" uib-dropdown class="dropdown pointer">
                     <a ui-sref="userCardletlist" ng-click="vm.collapseNavbar()">
-                        <span >User Cardlets</span>
+                        <span>PORTFOLIO</span>
                     </a>
                 </li>
-                <li style="margin-top: 15px;" uib-dropdown class="dropdown pointer">
+                <li ng-class="{activeNavigationTab: vm.$state.includes('account')}" style="margin-top: 15px;" uib-dropdown class="dropdown pointer">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="account-menu">
                         <span>
                             <span class="hidden-sm">
-                                Account
+                                ACCOUNT
                             </span>
                             <b class="caret"></b>
                         </span>
@@ -42,18 +42,12 @@
                                 <span>Settings</span>
                             </a>
                         </li>
-                        <li ui-sref-active="active" ng-switch-when="true">
-                            <a ui-sref="password" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-lock"></span>&nbsp;
-                                <span>Password</span>
-                            </a>
-                        </li>
-                        <li ui-sref-active="active" ng-switch-when="true">
-                            <a ui-sref="sessions" ng-click="vm.collapseNavbar()">
-                                <span class="glyphicon glyphicon-cloud"></span>&nbsp;
-                                <span>Sessions</span>
-                            </a>
-                        </li>
+                        <!--<li ui-sref-active="active" ng-switch-when="true">-->
+                            <!--<a ui-sref="password" ng-click="vm.collapseNavbar()">-->
+                                <!--<span class="glyphicon glyphicon-lock"></span>&nbsp;-->
+                                <!--<span>Password</span>-->
+                            <!--</a>-->
+                        <!--</li>-->
                         <li ui-sref-active="active" ng-switch-when="true">
                             <a href="" ng-click="vm.logout()" id="logout">
                                 <span class="glyphicon glyphicon-log-out"></span>&nbsp;
@@ -74,10 +68,10 @@
                         </li>
                     </ul>
                 </li>
-                <li style="margin-top: 15px;" ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown class="dropdown pointer">
+                <li  ng-class="{activeNavigationTab: vm.$state.includes('admin')}" style="margin-top: 15px;" ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown class="dropdown pointer">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="admin-menu">
                         <span>
-                            <span class="hidden-sm">Administration</span>
+                            <span class="hidden-sm">ADMINISTRATION</span>
                             <b class="caret"></b>
                         </span>
                     </a>

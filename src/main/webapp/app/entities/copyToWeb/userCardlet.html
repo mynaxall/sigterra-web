@@ -276,12 +276,6 @@
             padding: 0 0 0 0px;
         }
 
-        .upload-item-img{
-            background-color: #18C6B7!important;
-            border-color: #18C6B7!important;
-            border-radius: 20px!important;
-            min-width: 120px!important;
-        }
 
         .add-item-btn{
             margin: 10px;
@@ -292,19 +286,6 @@
             border: none!important;
             color: #18C6B7!important;
             text-decoration: underline;
-        }
-
-        .saveButton{
-            background-color: #E8645A;
-            color: #FFF;
-            text-transform: uppercase;
-            width: 200px;
-            border:none;
-            border-radius: 20px;
-            font-size: 15px;
-            padding: 12px;
-            font-weight: bold;
-
         }
 
         input:focus{
@@ -353,24 +334,6 @@
             margin-right: 10px;
         }
 
-        .choose-tab{
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            z-index: 10;
-        }
-
-        .choose-tab:focus{
-            outline: none;
-        }
-
-        .choose-tab-active{
-            -webkit-box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
-            -moz-box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
-            box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
-        }
 
         ul[dnd-list] .dndDraggingSource {
             display: none;
@@ -392,7 +355,6 @@
     </style>
 
     <div>
-
             <div>
                 <ul class="tab2">
                     <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">

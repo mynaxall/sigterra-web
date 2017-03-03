@@ -32,11 +32,83 @@
         }
 
 
+
         $scope.openCropDialog = function(tabId, itemId, itemImgPosition){
             $scope.showCropDialog = true;
             $scope.tabImageId = tabId;
             $scope.itemImageId = itemId;
+            $scope.imageItemMame = itemImgPosition;
         }
+
+        function dataURLtoFile(dataurl, filename) {
+            var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+                bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+            while(n--){
+                u8arr[n] = bstr.charCodeAt(n);
+            }
+            return new File([u8arr], filename, {type:mime});
+        }
+
+//Usage example:
+
+
+        function b64toBlob(b64Data, contentType, sliceSize) {
+            contentType = contentType || '';
+            sliceSize = sliceSize || 512;
+
+            var byteCharacters = atob(b64Data);
+            var byteArrays = [];
+
+            for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+                var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+                var byteNumbers = new Array(slice.length);
+                for (var i = 0; i < slice.length; i++) {
+                    byteNumbers[i] = slice.charCodeAt(i);
+                }
+
+                var byteArray = new Uint8Array(byteNumbers);
+
+                byteArrays.push(byteArray);
+            }
+
+            var blob = new Blob(byteArrays, {type: contentType});
+            return blob;
+        };
+
+
+         $scope.saveImage = function(){
+
+             console.log($scope.myCroppedImage)
+
+            var img_b64 = $scope.myCroppedImage;
+            var png = img_b64.split(',')[1];
+            var file = b64toBlob(png, 'image/png')
+            console.log(file);
+            var fd = new FormData();
+            fd.append('file', file);
+            $http.post("/api/cardlet/upload/icon/test",  fd, {
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined}
+                })
+                .success(function (data, status, headers, config) {
+                    $scope.imageUrl = data.url;
+                    if($scope.itemImageId){
+                        console.log($scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame])
+                        $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame] = $scope.imageUrl;
+                        console.log($scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame])
+                    }else {
+                        console.log("2222")
+                        setTabImage();
+                    }
+                    $scope.showCropDialog = false;
+                });
+        };
+
+        function setTabImage(){
+            $scope.tabNames.tabs[$scope.tabImageId].photo = $scope.imageUrl;
+        }
+
 
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
@@ -72,7 +144,8 @@
 
                     $scope.tabNames.tabs[0].job = {
                         "value": $scope.userAccount.jobTitle
-                    }
+                    },
+                    $scope.tabNames.tabs[0].photo = $scope.userAccount.imageUrl
 
 
                 });
@@ -337,7 +410,7 @@
                     "job":{
                         "value": $scope.userAccount.jobTitle
                     },
-                    "photo": "/app/cardlets/img/2_card/avatar_img.png"
+                    "photo": $scope.userAccount.imageUrl
 
                 }
                 $scope.tabNames.tabs.push(newTab);
@@ -406,9 +479,22 @@
             }, 500);
         }
 
+        $scope.hideDeleteTab = false;
+        $scope.showDelteTabDialog = false;
+
+        $scope.showDeleteDialog = function(id){
+            $scope.showDelteTabDialog = true;
+            $scope.tabToDeleteID = id
+        };
 
 
-        $scope.removeTab = function(index) {
+        $scope.closeDialog = function(){
+            $scope.showDelteTabDialog = false;
+        };
+
+        $scope.removeTab = function() {
+
+            var index = $scope.tabToDeleteID;
 
             if($scope.tabNames.tabs.length >1) {
                 $scope.tabNames.tabs.splice(index, 1);
@@ -441,10 +527,12 @@
                     document.getElementsByClassName("tabcontent")[0].style.display = "block";;
                     document.getElementsByClassName("tabs")[0].className += " active";
                 }, 500);
+
             }
             if($scope.tabNames.tabs.length < 4){
                 $scope.isNewTab = true;
             }
+            $scope.showDelteTabDialog = false;
         }
 
         $scope.chooseType = function(id, url, tabId) {
@@ -483,6 +571,8 @@
                     $location.path('/user-cardlets')
                 });
         }
+
+
 
     }
 

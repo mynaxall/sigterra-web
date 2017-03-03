@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
 <div>
-    <div class="cardlet" ng-init="initSlide(tabName)" style="position: relative;">
+    <div class="cardlet" ng-init="initSlide(tabName)" style="position: relative;height: 223px">
         <div ng-style="{'background-color': '#'+tabName.layout.mainColor}" class="item-top-div"></div>
         <div ng-style="{'background-color': '#'+tabName.layout.secondaryColor}" class="item-bottom-div"></div>
         <div>
@@ -12,10 +12,13 @@
                     'text-decoration': slide.name.underline ? 'underline' : 'normal'}" ng-show="slide.name.value">{{slide.name.value}}</div>
                         <div class="carousel-item-name-div" ng-show="!slide.name.value">Maui Hotel</div>
                         <div id="cf4a">
-                            <a href="{{slide.link}}" target="_blank">
-                                <img id="ing-1" class="item-images-3" ng-src="{{slide.image}}">
-                                <img id="ing-2" class="item-images-3" ng-src="{{slide.image2}}">
-                                <img id="ing-3"  class="item-images-3" ng-src="{{slide.image3}}">
+                            <a href="{{slide.link}}" target="_blank" ng-class="{'disabled': !slide.link}">
+                                <img id="ing-1" class="item-images-3" ng-show="slide.image" ng-src="{{slide.image}}"
+                                     ng-class="(slide.image && (slide.image2 || slide.image3)) ? 'imgFirst : ''">
+                                <img id="ing-2" class="item-images-3" ng-show="slide.image2" ng-src="{{slide.image2}}"
+                                     ng-class="(slide.image && slide.image2) ? 'imgSecond' : ((!slide.image && slide.image2 && slide.image3) ? '' : ((!slide.image && slide.image2) ? 'imgFirst' : ''))">
+                                <img id="ing-3"  class="item-images-3" ng-show="slide.image3" ng-src="{{slide.image3}}"
+                                     ng-class="(slide.image && slide.image2 && slide.image3) ? 'imgThird' : ((!slide.image && !slide.image2 && slide.image3) ? '':((slide.image && !slide.image2 && slide.image3) ? 'imgSecond' : ((!slide.image && slide.image2 && slide.image3) ? 'imgSecond' : '') ))">
                             </a>
                         </div>
                         <div class="carousel-item-name-div carousel-item-deskript-div" ng-show="slide.description.value"
@@ -37,10 +40,15 @@
                     'font-style': slide.name.italic ? 'italic' : 'normal',
                     'text-decoration': slide.name.underline ? 'underline' : 'normal'}">{{slide.name.value}}</div>
                             <div id="cf4a">
-                                <a href="{{slide.link}}" target="_blank">
-                                    <img id="ing-1" class="item-images-3" ng-src="{{slide.image}}">
-                                    <img id="ing-2" class="item-images-3" ng-src="{{slide.image2}}">
-                                    <img id="ing-3"  class="item-images-3" ng-src="{{slide.image3}}">
+                                <a href="{{slide.link}}" target="_blank" ng-class="{'disabled': !slide.link}">
+                                    <img id="ing-1" class="item-images-3" ng-show="slide.image" ng-src="{{slide.image}}"
+                                         ng-class="(slide.image && (slide.image2 || slide.image3)) ? 'imgFirst : ''">
+
+                                    <img id="ing-2" class="item-images-3" ng-show="slide.image2" ng-src="{{slide.image2}}"
+                                         ng-class="(slide.image && slide.image2) ? 'imgSecond' : ((!slide.image && slide.image2 && slide.image3) ? '' : ((!slide.image && slide.image2) ? 'imgFirst' : ''))">
+
+                                    <img id="ing-3"  class="item-images-3" ng-show="slide.image3" ng-src="{{slide.image3}}"
+                                         ng-class="(slide.image && slide.image2 && slide.image3) ? 'imgThird' : ((!slide.image && !slide.image2 && slide.image3) ? '':((slide.image && !slide.image2 && slide.image3) ? 'imgSecond' : ((!slide.image && slide.image2 && slide.image3) ? 'imgSecond' : '') ))">
                                 </a>
                             </div>
                             <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
@@ -53,10 +61,18 @@
                     'font-style': tabName.items[$index+1].name.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.items[$index+1].name.underline ? 'underline' : 'normal'}">{{tabName.items[$index+1].name.value}}</div>
                             <div id="cf4a">
-                                <a href="{{tabName.items[$index+1].link}}" target="_blank">
-                                    <img id="ing-1" class="item-images-3" ng-src="{{tabName.items[$index+1].image}}">
-                                    <img id="ing-2" class="item-images-3" ng-src="{{tabName.items[$index+1].image2}}">
-                                    <img id="ing-3" class="item-images-3" ng-src="{{tabName.items[$index+1].image3}}">
+                                <a href="{{tabName.items[$index+1].link}}" target="_blank" ng-class="{'disabled': !tabName.items[$index+1].image}">
+
+
+                                    <img id="ing-1" class="item-images-3" ng-show="tabName.items[$index+1].image" ng-src="{{tabName.items[$index+1].image}}"
+                                         ng-class="(tabName.items[$index+1].image && (tabName.items[$index+1].image2 || tabName.items[$index+1].image3)) ? 'imgFirst : ''">
+
+                                    <img id="ing-2" class="item-images-3" ng-show="tabName.items[$index+1].image2" ng-src="{{tabName.items[$index+1].image2}}"
+                                         ng-class="(tabName.items[$index+1].image && tabName.items[$index+1].image2) ? 'imgSecond' : ((!tabName.items[$index+1].image && tabName.items[$index+1].image2 && tabName.items[$index+1].image3) ? '' : ((!tabName.items[$index+1].image && slide.image2) ? 'imgFirst' : ''))">
+
+                                    <img id="ing-3" class="item-images-3" ng-show="tabName.items[$index+1].image3" ng-src="{{tabName.items[$index+1].image3}}"
+                                         ng-class="(tabName.items[$index+1].image && tabName.items[$index+1].image2 && tabName.items[$index+1].image3) ? 'imgThird' : ((!tabName.items[$index+1].image && !tabName.items[$index+1].image2 && tabName.items[$index+1].image3) ? '':((tabName.items[$index+1].image && !tabName.items[$index+1].image2 && tabName.items[$index+1].image3) ? 'imgSecond' : ((!tabName.items[$index+1].image && tabName.items[$index+1].image2 && tabName.items[$index+1].image3) ? 'imgSecond' : '') ))">
+
                                 </a>
                             </div>
                             <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': tabName.items[$index+1].bold ? 'bold' : 'normal',
@@ -69,10 +85,17 @@
                     'font-style': tabName.items[$index+2].name.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.items[$index+2].name.underline ? 'underline' : 'normal'}">{{tabName.items[$index+2].name.value}}</div>
                             <div id="cf4a">
-                                <a href="{{tabName.items[$index+2].link}}" target="_blank">
-                                    <img id="ing-1" class="item-images-3" ng-src="{{tabName.items[$index+2].image}}">
-                                    <img id="ing-2" class="item-images-3" ng-src="{{tabName.items[$index+2].image2}}">
-                                    <img id="ing-3" class="item-images-3" ng-src="{{tabName.items[$index+2].image3}}">
+                                <a href="{{tabName.items[$index+2].link}}" target="_blank"  ng-class="{'disabled': !tabName.items[$index+2].image}">
+
+                                    <img id="ing-1" class="item-images-3" ng-show="tabName.items[$index+1].image" ng-src="{{tabName.items[$index+2].image}}"
+                                         ng-class="(tabName.items[$index+2].image && (tabName.items[$index+2].image2 || tabName.items[$index+2].image3)) ? 'imgFirst : ''">
+
+                                    <img id="ing-2" class="item-images-3"  ng-show="tabName.items[$index+2].image2" ng-src="{{tabName.items[$index+2].image2}}"
+                                         ng-class="(tabName.items[$index+2].image && tabName.items[$index+2].image2) ? 'imgSecond' : ((!tabName.items[$index+2].image && tabName.items[$index+2].image2 && tabName.items[$index+2].image3) ? '' : ((!tabName.items[$index+2].image && slide.image2) ? 'imgFirst' : ''))">
+
+                                    <img id="ing-3" class="item-images-3"  ng-show="tabName.items[$index+2].image3" ng-src="{{tabName.items[$index+2].image3}}"
+                                         ng-class="(tabName.items[$index+2].image && tabName.items[$index+2].image2 && tabName.items[$index+2].image3) ? 'imgThird' : ((!tabName.items[$index+2].image && !tabName.items[$index+2].image2 && tabName.items[$index+2].image3) ? '':((tabName.items[$index+2].image && !tabName.items[$index+2].image2 && tabName.items[$index+2].image3) ? 'imgSecond' : ((!tabName.items[$index+2].image && tabName.items[$index+2].image2 && tabName.items[$index+2].image3) ? 'imgSecond' : '') ))">
+
                                 </a>
                             </div>
                             <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': tabName.items[$index+2].description.bold ? 'bold' : 'normal',
@@ -84,10 +107,17 @@
                     'font-style': tabName.items[0].name.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.items[0].name.underline ? 'underline' : 'normal'}">{{tabName.items[0].name.value}}</div>
                             <div id="cf4a">
-                                <a href="{{tabName.items[0].link}}" target="_blank">
-                                    <img id="ing-1" class="item-images-3" ng-src="{{tabName.items[0].image}}">
-                                    <img id="ing-2" class="item-images-3" ng-src="{{tabName.items[0].image2}}">
-                                    <img id="ing-3" class="item-images-3" ng-src="{{tabName.items[0].image3}}">
+                                <a href="{{tabName.items[0].link}}" target="_blank"  ng-class="{'disabled': !tabName.items[0].image}">
+
+                                    <img id="ing-1" class="item-images-3" ng-show="tabName.items[0].image" ng-src="{{tabName.items[0].image}}"
+                                         ng-class="(tabName.items[0].image && (tabName.items[0].image2 || tabName.items[0].image3)) ? 'imgFirst : ''">
+
+                                    <img id="ing-2" class="item-images-3" ng-show="tabName.items[0].image2" ng-src="{{tabName.items[0].image2}}"
+                                         ng-class="(tabName.items[0].image && tabName.items[0].image2) ? 'imgSecond' : ((!tabName.items[0].image && tabName.items[0].image2 && tabName.items[0].image3) ? '' : ((!tabName.items[0].image && slide.image2) ? 'imgFirst' : ''))">
+
+                                    <img id="ing-3" class="item-images-3" ng-show="tabName.items[0].image3" ng-src="{{tabName.items[0].image3}}"
+                                         ng-class="(tabName.items[0].image && tabName.items[0].image2 && tabName.items[0].image3) ? 'imgThird' : ((!tabName.items[0].image && !tabName.items[0].image2 && tabName.items[0].image3) ? '':((tabName.items[0].image && !tabName.items[0].image2 && tabName.items[0].image3) ? 'imgSecond' : ((!tabName.items[0].image && tabName.items[0].image2 && tabName.items[0].image3) ? 'imgSecond' : '') ))">
+
                                 </a>
                             </div>
                             <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': tabName.items[0].description.bold ? 'bold' : 'normal',
@@ -100,10 +130,17 @@
                     'font-style': tabName.items[1].name.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.items[1].name.underline ? 'underline' : 'normal'}">{{tabName.items[1].name.value}}</div>
                             <div id="cf4a">
-                                <a href="{{tabName.items[1].link}}" target="_blank">
-                                    <img id="ing-1" class="item-images-3" ng-src="{{tabName.items[1].image}}" >
-                                    <img id="ing-2" class="item-images-3" ng-src="{{tabName.items[1].image2}}" >
-                                    <img id="ing-3" class="item-images-3" ng-src="{{tabName.items[1].image3}}" >
+                                <a href="{{tabName.items[1].link}}" target="_blank"  ng-class="{'disabled': !tabName.items[1].image}">
+
+                                    <img id="ing-1" class="item-images-3" ng-show="tabName.items[1].image"  ng-src="{{tabName.items[1].image}}"
+                                         ng-class="(tabName.items[1].image && (tabName.items[1].image2 || tabName.items[1].image3)) ? 'imgFirst : ''">
+
+                                    <img id="ing-2" class="item-images-3" ng-show="tabName.items[1].image2"  ng-src="{{tabName.items[1].image2}}"
+                                         ng-class="(tabName.items[1].image && tabName.items[1].image2) ? 'imgSecond' : ((!tabName.items[1].image && tabName.items[1].image2 && tabName.items[1].image3) ? '' : ((!tabName.items[1].image && slide.image2) ? 'imgFirst' : ''))">
+
+                                    <img id="ing-3" class="item-images-3" ng-show="tabName.items[1].image3"  ng-src="{{tabName.items[1].image3}}"
+                                         ng-class="(tabName.items[1].image && tabName.items[1].image2 && tabName.items[1].image3) ? 'imgThird' : ((!tabName.items[1].image && !tabName.items[1].image2 && tabName.items[1].image3) ? '':((tabName.items[1].image && !tabName.items[1].image2 && tabName.items[1].image3) ? 'imgSecond' : ((!tabName.items[1].image && tabName.items[1].image2 && tabName.items[1].image3) ? 'imgSecond' : '') ))">
+
                                 </a>
                             </div>
                             <div class="carousel-item-name-div carousel-item-deskript-div" ng-style="{'font-weight': tabName.items[1].description.bold ? 'bold' : 'normal',
@@ -129,43 +166,6 @@
 
     }
 
-
-    @keyframes cf3FadeInOut {
-        0%  {
-            opacity: 0;
-        }
-
-        50% {
-            opacity: 1;
-        }
-        70% {
-            opacity: 1;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
-
-    #ing-1{
-        display: block;
-        animation: cf3FadeInOut 4s infinite;
-        animation-delay: 0s;
-    }
-
-
-    #ing-2{
-        display: block;
-        margin-top:-130px;
-        animation: cf3FadeInOut 8s infinite;
-        animation-delay: 4s;
-    }
-
-    #ing-3{
-        display: block;
-        margin-top:-130px;
-        animation: cf3FadeInOut 12s infinite;
-        animation-delay:8s;
-    }
 
     .item-bottom-div{
         height: 120px;
@@ -256,5 +256,6 @@
         background-image: none !important;
         background-color: rgba(255, 255, 255, 0)!important;
     }
+
 
 </style>
