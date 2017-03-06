@@ -179,6 +179,7 @@
                 })
                 .success(function (data, status, headers, config) {
                     vm.hideImageDialog();
+                    vm.settingsAccount.imageUrl = $scope.myCroppedImage;
                 });
         }
     }

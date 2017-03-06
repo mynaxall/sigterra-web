@@ -29,7 +29,10 @@
 
         $scope.closeCropDialog = function(){
             $scope.showCropDialog = false;
-        }
+            $scope.myImage = ""
+        };
+
+        $scope.showSpinner = false;
 
 
 
@@ -78,6 +81,8 @@
 
 
          $scope.saveImage = function(){
+             $scope.showSpinner = true;
+             $scope.myImage = ""
 
              console.log($scope.myCroppedImage)
 
@@ -101,6 +106,7 @@
                         console.log("2222")
                         setTabImage();
                     }
+                    $scope.showSpinner = false;
                     $scope.showCropDialog = false;
                 });
         };
@@ -379,7 +385,7 @@
 
         $scope.addTab = function() {
             if ($scope.tabNames.tabs.length <= 3) {
-                var newTab = {"name":"card"+$scope.tabNames.tabs.length,
+                var newTab = {"name":"My info "+$scope.tabNames.tabs.length,
                     "position": $scope.tabNames.tabs.length,
                     "tabType": 1,
                     "layout":{

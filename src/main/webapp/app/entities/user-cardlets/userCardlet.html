@@ -21,6 +21,8 @@
 <!--</div>-->
 <!--</div>-->
 <!--</div>-->
+
+<div ng-show="showSpinner" class="spinner-shadow"><img src="/app/entities/cardlet-list/img/spinner.gif" style="position:absolute;top:40%"></div>
 <div class="modeal-custom-window" ng-show="isCopyTiEmail"></div>
 <div class="modeal-custom-window" ng-show="isCopyTiEmail" style="position: absolute; background-color: rgba(0, 0, 0, 0);;">
     <div class="modal-dialog " style="margin-top: -100px; width: 1130px!important;">
@@ -183,7 +185,7 @@
                     </div>
                 </div>
                 <div class="cropArea">
-                    <img-crop image="myImage" result-image="banner"></img-crop>
+                    <img-crop image="myImage" result-image="banner" area-type="square"></img-crop>
                 </div>
                 <div class="crop-btn-div">
                     <button class="btn btn-primary main-btn" ng-click="saveBanner()">save</button>

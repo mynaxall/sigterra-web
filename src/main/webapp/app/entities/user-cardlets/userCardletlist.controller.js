@@ -642,6 +642,7 @@
 
 
         $scope.saveImage = function(name, image64){
+            $scope.showSpinner = true;
 
             console.log( $scope.banner)
             var img_b64 = image64;
@@ -662,9 +663,9 @@
                     if(name == "signature"){
                         $scope.isShowMailClientWindow = true;
                         $window.scrollTo(0, 0);
-                        $scope.coptToEmailText = '<a href="'+$scope.signatureLink+'"> <img style="text-transform: scale(0.59)" src="'+$scope.croppedImageUrl+'"></a>';
+                        $scope.coptToEmailText = '<a href="'+$scope.signatureLink+'"> <img style="text-transform: scale(0.59);width:430px" src="'+$scope.croppedImageUrl+'"></a>';
                         if($scope.isAddBanner == true){
-                            $scope.coptToEmailText =  '<div></div><a href="'+$scope.signatureLink+'"> <img style="text-transform: scale(0.59)" src="'+$scope.croppedImageUrl+'"></a></div><div><img style="text-transform: scale(0.59); width:540px" src="'+$scope.banner+'"></div>'
+                            $scope.coptToEmailText =  '<div></div><a href="'+$scope.signatureLink+'"> <img style="text-transform: scale(0.59);width:430px" src="'+$scope.croppedImageUrl+'"></a></div><div><img style="text-transform: scale(0.59); width:430px" src="'+$scope.banner+'"></div>'
                             $scope.isAddBanner = false;
                         }
                     }else if(name == "banner") {
@@ -676,7 +677,7 @@
                     }
                     document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText
 
-
+                    $scope.showSpinner = false;
 
 
 

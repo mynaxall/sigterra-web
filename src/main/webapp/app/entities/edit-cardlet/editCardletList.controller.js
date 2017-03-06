@@ -29,6 +29,7 @@
 
         $scope.closeCropDialog = function(){
             $scope.showCropDialog = false;
+            $scope.myImage = "";
         }
 
 
@@ -77,7 +78,8 @@
 
 
         $scope.saveImage = function(){
-
+            $scope.showSpinner = true;
+            $scope.myImage = ""
 
             var img_b64 = $scope.myCroppedImage;
             var png = img_b64.split(',')[1];
@@ -120,6 +122,7 @@
                         setTabImage();
                     }
                     $scope.showCropDialog = false;
+                    $scope.showSpinner = false;
                 });
         };
 
@@ -356,7 +359,7 @@
 
         $scope.addTab = function() {
             if ($scope.tabNames.tabs.length <= 3) {
-                var newTab = {"name":"card"+$scope.tabNames.tabs.length,
+                var newTab = {"name":"My info "+$scope.tabNames.tabs.length,
                     "position": $scope.tabNames.tabs.length,
                     "tabType": 1,
                     "layout":{
@@ -412,6 +415,8 @@
                 }
             }
         }
+
+        $scope.showSpinner = false;
 
         $scope.accordionActive = 1;
 
