@@ -416,7 +416,11 @@
         $scope.accordionActive = 1;
 
         $scope.changeAccordionActivity = function(id){
-            $scope.accordionActive = id;
+            if($scope.accordionActive != id){
+                $scope.accordionActive = id;
+            }else{
+                $scope.accordionActive = 0
+            }
         }
 
 
@@ -561,6 +565,16 @@
                 .success(function (data, status, headers, config) {
                     $location.path('/user-cardlets')
                 });
+        }
+
+        $scope.accordion = 1;
+
+        $scope.accordionActivete = function(Id){
+            if($scope.accordion != Id){
+                $scope.accordion = Id;
+            }else{
+                $scope.accordion = 0
+            }
         }
     }
 

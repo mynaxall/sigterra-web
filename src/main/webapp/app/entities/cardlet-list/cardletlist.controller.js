@@ -153,10 +153,10 @@
         $scope.getUserProfile();
 
         $scope.tabNames ={
-            "cardletName": "cardlet",
+            "cardletName": "Business cards",
             "tabs":
                 [{
-                    "name": "card",
+                    "name": "My info",
                     'position': 0,
                     "display": "block",
                     "tabType": 1,
@@ -170,7 +170,7 @@
 
                 },
                     {
-                        "name": "portfolio",
+                        "name": "Items",
                         "position": 1,
                         "tabType": 2,
                         "layout": {
@@ -439,7 +439,11 @@
         $scope.accordionActive = 1;
 
         $scope.changeAccordionActivity = function(id){
-            $scope.accordionActive = id;
+            if($scope.accordionActive != id){
+                $scope.accordionActive = id;
+            }else{
+                $scope.accordionActive = 0
+            }
         }
 
         $scope.positionCheck = function(){
@@ -572,6 +576,15 @@
                 });
         }
 
+        $scope.accordion = 1;
+
+        $scope.accordionActivete = function(Id){
+            if($scope.accordion != Id){
+                $scope.accordion = Id;
+            }else{
+                $scope.accordion = 0
+            }
+        }
 
 
     }

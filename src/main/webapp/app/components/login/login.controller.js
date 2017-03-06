@@ -5,9 +5,9 @@
         .module('sigterraWebApp')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$rootScope', '$state', '$timeout', 'Auth', '$uibModalInstance'];
+    LoginController.$inject = ['$rootScope', '$state', '$timeout', 'Auth', '$uibModalInstance', '$location'];
 
-    function LoginController ($rootScope, $state, $timeout, Auth, $uibModalInstance) {
+    function LoginController ($rootScope, $state, $timeout, Auth, $uibModalInstance, $location) {
         var vm = this;
 
         vm.authenticationError = false;
@@ -43,7 +43,7 @@
                 $uibModalInstance.close();
                 if ($state.current.name === 'register' || $state.current.name === 'activate' ||
                     $state.current.name === 'finishReset' || $state.current.name === 'requestReset') {
-                    $state.go('home');
+
                 }
 
                 $rootScope.$broadcast('authenticationSuccess');
@@ -55,6 +55,7 @@
                     Auth.resetPreviousState();
                     $state.go(previousState.name, previousState.params);
                 }
+                $location.path('/user-cardlets')
             }).catch(function () {
                 vm.authenticationError = true;
             });

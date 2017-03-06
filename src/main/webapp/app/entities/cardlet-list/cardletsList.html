@@ -12,7 +12,6 @@
 
                     <div class="fileUpload btn btn-primary choose-photo-btn">
                         <span>Choose photo</span>
-                        {{tabImageId}} {{itemImageId}}
                         <input type="file" id="fileInput" class="upload"  onchange="angular.element(this).scope().handleFileSelect(event)"/>
                     </div>
                 </div>
@@ -400,12 +399,12 @@
                             </a>
                             <ul class="dropdown-menu cardlet-dropdown" >
                                 <li class="dropdown-tab" ui-sref-active="active">
-                                    <a ng-click="addTab()">
-                                        <span >Business Card</span>
+                                    <a ng-click="addTab()" style="width:100%;">
+                                        <span>My info</span>
                                     </a>
                                 </li>
                                 <li class="dropdown-tab">
-                                    <a ng-click="addItem()">
+                                    <a ng-click="addItem()" style="width:100%;">
                                         <span >Items</span>
                                     </a>
                                 </li>
@@ -425,35 +424,8 @@
 
 
                             <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 2">
-                                <div class="accordion-section">
-                                    <a class="accordion-section-title" ng-class="{active:accordionActive==1}" ng-click="changeAccordionActivity(1)">Layout design <img class="status-icon" ng-show="accordionActive==1" src="/app/entities/cardlet-list/img/minus_icon.png"><img class="status-icon" ng-show="accordionActive!=1" src="/app/entities/cardlet-list/img/plus_icon.png"></a>
-                                    <div id="accordion2-1" class="accordion-section-content" ng-show="accordionActive==1">
-                                        <script>
-                                            $(document).ready(function() {
-                                                jscolor.installByClassName("jscolor");
-                                            });
-                                        </script>
-                                        <div class="color-tnput-div">
-                                            <label class="login-lable cardlet-label" style="margin-left: 0px;" for="mainColor{{tabName.name}}">Background colour</label>
-                                            <label class="login-lable cardlet-label" style="margin-left: 205px;" for="secondaryColor{{tabName.name}}">Feature colour</label>
-                                        </div>
-                                        <div class="color-tnput-div">
-                                            <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
-                                            <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor secondaryColor-input" value="4BABE2">
-                                        </div>
-                                        <div ng-repeat="itemType in itemTypes" style="margin-bottom: 30px;position: relative; width: 540px;">
-                                            <div ng-click="chooseType(tabName.position, itemType.path, itemType.id)" style="display: block!important" class="choose-tab" ng-class="tabNames.tabs[tabName.position].layout.tabId == itemType.id ? 'choose-tab-active' : ''">
-                                            </div>
-
-                                            <ng-include style="display: block!important" src="itemType.path" ></ng-include>
-                                        </div>
-
-                                    </div><!--end .accordion-section-content-->
-                                </div><!--end .accordion-section-->
-
-
                                 <div class="accordion-section" ng-repeat="item in tabName.items">
-                                    <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">{{$index+1}} item <img class="status-icon" ng-show="accordionActive==item.index" src="/app/entities/cardlet-list/img/minus_icon.png"><img class="status-icon" ng-show="accordionActive!=item.index" src="/app/entities/cardlet-list/img/plus_icon.png"></a>
+                                    <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">{{$index+1}} item <img class="status-icon" ng-click="accordionActive=0" ng-show="accordionActive==item.index" src="/app/entities/cardlet-list/img/minus_icon.png"><img class="status-icon" ng-click="accordionActive=item.index" ng-show="accordionActive!=item.index" src="/app/entities/cardlet-list/img/plus_icon.png"></a>
                                     <div id="accordion2-item.index" class="accordion-section-content" ng-show="accordionActive==item.index">
                                         <div class="form-group">
                                             <div class="input-text-div">
@@ -526,15 +498,37 @@
                                 <div class="add-item-btn">
                                     <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn upload-item-img">Add item</button>
                                 </div>
+                                <div class="accordion-section">
+                                    <a class="accordion-section-title" ng-class="{active:accordionActive==1}" ng-click="changeAccordionActivity(1)">Layout design <img class="status-icon" ng-show="accordionActive==1" ng-click="accordionActive=0" src="/app/entities/cardlet-list/img/minus_icon.png"><img class="status-icon" ng-click="accordionActive=1" ng-show="accordionActive!=1" src="/app/entities/cardlet-list/img/plus_icon.png"></a>
+                                    <div id="accordion2-1" class="accordion-section-content" ng-show="accordionActive==1">
+                                        <script>
+                                            $(document).ready(function() {
+                                                jscolor.installByClassName("jscolor");
+                                            });
+                                        </script>
+                                        <div class="color-tnput-div">
+                                            <label class="login-lable cardlet-label" style="margin-left: 0px;" for="mainColor{{tabName.name}}">Background colour</label>
+                                            <label class="login-lable cardlet-label" style="margin-left: 205px;" for="secondaryColor{{tabName.name}}">Feature colour</label>
+                                        </div>
+                                        <div class="color-tnput-div">
+                                            <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
+                                            <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor secondaryColor-input" value="4BABE2">
+                                        </div>
+                                        <div ng-repeat="itemType in itemTypes" style="margin-bottom: 30px;position: relative; width: 540px;">
+                                            <div ng-click="chooseType(tabName.position, itemType.path, itemType.id)" style="display: block!important" class="choose-tab" ng-class="tabNames.tabs[tabName.position].layout.tabId == itemType.id ? 'choose-tab-active' : ''">
+                                            </div>
+
+                                            <ng-include style="display: block!important" src="itemType.path" ></ng-include>
+                                        </div>
+
+                                    </div><!--end .accordion-section-content-->
+                                </div><!--end .accordion-section-->
                             </div>
 
-
-
-
-                            <div class="accordion" ng-init="accordion=1" ng-show="tabName.tabType === 1">
+                            <div class="accordion" ng-show="tabName.tabType === 1">
                                 <div class="accordion-section">
-                                    <a class="accordion-section-title" ng-class="{active:accordion==1}" ng-click="accordion = 1">
-                                        <div class="accordion-section-text">Personal details<img class="status-icon" ng-show="accordion==1" src="/app/entities/cardlet-list/img/minus_icon.png"><img class="status-icon" ng-show="accordion!=1" src="/app/entities/cardlet-list/img/plus_icon.png"></div>
+                                    <a class="accordion-section-title" ng-class="{active:accordion==1}" ng-click="accordionActivete(1)">
+                                        <div class="accordion-section-text">Personal details<img class="status-icon" ng-show="accordion==1" ng-click="accordion = 0" src="/app/entities/cardlet-list/img/minus_icon.png"><img ng-click="accordion=1" class="status-icon" ng-show="accordion!=1" src="/app/entities/cardlet-list/img/plus_icon.png"></div>
                                         <div class=""></div>
                                     </a>
                                     <div id="accordion-1" class="accordion-section-content"  ng-show="accordion==1">
@@ -652,7 +646,7 @@
                                 </div><!--end .accordion-section-->
 
                                 <div class="accordion-section">
-                                    <a class="accordion-section-title" ng-class="{active:accordion==2}" ng-click="accordion = 2">Social links <img class="status-icon" ng-show="accordion==2" src="/app/entities/cardlet-list/img/minus_icon.png"><img class="status-icon" ng-show="accordion!=2" src="/app/entities/cardlet-list/img/plus_icon.png"></a>
+                                    <a class="accordion-section-title" ng-class="{active:accordion==2}" ng-click="accordionActivete(2)">Social links <img class="status-icon" ng-click="accordion=0" ng-show="accordion==2" src="/app/entities/cardlet-list/img/minus_icon.png"><img class="status-icon" ng-click="accordion=2" ng-show="accordion!=2" src="/app/entities/cardlet-list/img/plus_icon.png"></a>
                                     <div id="accordion-2" class="accordion-section-content"  ng-show="accordion==2">
 
                                         <div class="form-group">
@@ -700,7 +694,7 @@
                                 </div><!--end .accordion-section-->
 
                                 <div class="accordion-section">
-                                    <a class="accordion-section-title" ng-class="{active:accordion==3}" ng-click="accordion = 3">Layout design <img class="status-icon" ng-show="accordion==3" src="/app/entities/cardlet-list/img/minus_icon.png"><img class="status-icon" ng-show="accordion!=3" src="/app/entities/cardlet-list/img/plus_icon.png"></a>
+                                    <a class="accordion-section-title" ng-class="{active:accordion==3}" ng-click="accordionActivete(3)">Layout design <img class="status-icon" ng-show="accordion==3" ng-click="accordion = 0" src="/app/entities/cardlet-list/img/minus_icon.png"><img class="status-icon" ng-click="accordion=3" ng-show="accordion!=3" src="/app/entities/cardlet-list/img/plus_icon.png"></a>
                                     <div id="accordion-3" class="accordion-section-content" ng-show="accordion==3">
                                         <script>
                                             $(document).ready(function() {
