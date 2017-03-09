@@ -87,10 +87,10 @@
         $scope.myCroppedImage = '';
 
         $scope.showCroppedImage = false;
+        $scope.showSpinner = false;
 
         var handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];
-            console.log(file)
             var reader = new FileReader();
             reader.onload = function (evt) {
                 $scope.$apply(function($scope){
@@ -98,7 +98,6 @@
                 });
             };
             reader.readAsDataURL(file);
-            console.log("asdas")
         };
         angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
 
@@ -166,11 +165,11 @@
 
 
         function saveImage(){
-
+            vm.hideImageDialog();
+            $scope.showSpinner = true;
             var img_b64 = $scope.myCroppedImage;
             var png = img_b64.split(',')[1];
             var file = b64toBlob(png, 'image/png')
-            console.log(file);
             var fd = new FormData();
             fd.append('file', file);
             $http.post("/api/account/upload/icon",  fd, {
@@ -178,7 +177,7 @@
                     headers: {'Content-Type': undefined}
                 })
                 .success(function (data, status, headers, config) {
-                    vm.hideImageDialog();
+                    $scope.showSpinner = false;
                     vm.settingsAccount.imageUrl = $scope.myCroppedImage;
                 });
         }

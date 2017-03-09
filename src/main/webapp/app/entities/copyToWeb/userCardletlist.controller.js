@@ -14,8 +14,6 @@
 
         $scope.getCardlet = function(){
             var param1 = $location.search().cardletId;
-            console.log("asdasd");
-            console.log(param1);
             $http.get("/api/cardlet/"+param1)
                 .success(function(response, status, headers) {
                     $scope.tabNames = response;
@@ -52,7 +50,6 @@
         $scope.showSignature = function(){
             $http.get("/api/signatures")
                 .success(function(response, status, headers) {
-                    console.log(response);
                     $scope.signatures = response;
                 });
         }

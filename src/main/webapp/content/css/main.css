@@ -968,6 +968,19 @@ Social Buttons
 
 }
 
+.upload-banner-img{
+    background-color: #18C6B7!important;
+    border-color: #18C6B7!important;
+    border-radius: 20px!important;
+    min-width: 120px!important;
+    height: 34px!important;
+    padding: 6px 12px!important;
+}
+
+.upload-banner-img:hover{
+    background-color: #66bdb4!important;
+}
+
 .upload-item-img{
     background-color: #18C6B7!important;
     border-color: #18C6B7!important;

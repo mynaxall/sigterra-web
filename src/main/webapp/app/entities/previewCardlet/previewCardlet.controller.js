@@ -60,7 +60,6 @@
         $scope.showSignature = function(){
             $http.get("/api/signatures")
                 .success(function(response, status, headers) {
-                    console.log(response);
                     $scope.signatures = response;
                 });
         }

@@ -41,6 +41,10 @@
             reader.readAsDataURL(file);
 
         };
+        $scope.fileSelected = function (evt) {
+            var file=evt.currentTarget.files[0];
+            $scope.saveImage("banner", file, true);
+        };
 
         $scope.handleFileSelect2=function(evt) {
             var file=evt.currentTarget.files[0];
@@ -191,7 +195,6 @@
 
         $scope.convertImage = function(image){
             $scope.encoded = $base64.encode(image);
-            console.log($scope.encoded)
             return $scope.encoded;
         };
 
@@ -268,7 +271,6 @@
         }
 
         $scope.saveTabsImage = function(){
-            console.log($scope.banner)
             $scope.saveImage($scope.ImageTabIndex, $scope.tabsImage)
         }
 
@@ -291,7 +293,6 @@
 
         $scope.testimg2= function() {
             var imgageData =  $scope.getCanvas.toDataURL("image/png");
-            console.log(imgageData)
 
             // Now browser starts downloading it instead of just showing it
             $scope.newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
@@ -318,7 +319,6 @@
             }
             else if(id == 2){
                 $scope.isAddIcons = true;
-                console.log($scope.banner);
             }else if(id == 3){
                 $scope.isShowMailClientWindow = true;
                 $window.scrollTo(0, 0);
@@ -380,7 +380,6 @@
 
         $scope.delteCardlet = function(id){
             $scope.showDelteCardletDialog = false;
-            console.log("as")
             $http.get("/api/cardletDelete/"+id)
                 .success(function(response, status, headers) {
                     $scope.userCardlets = response;
@@ -641,16 +640,18 @@
         };
 
 
-        $scope.saveImage = function(name, image64){
+        $scope.saveImage = function(name, image64, isFile){
             $scope.showSpinner = true;
-
-            console.log( $scope.banner)
-            var img_b64 = image64;
-            var png = img_b64.split(',')[1];
-            var file = b64toBlob(png, 'image/png')
-            console.log(file);
-            var fd = new FormData();
-            fd.append('file', file);
+            if(isFile){
+                var fd = new FormData();
+                fd.append('file', image64);
+            }else {
+                var img_b64 = image64;
+                var png = img_b64.split(',')[1];
+                var file = b64toBlob(png, 'image/png')
+                var fd = new FormData();
+                fd.append('file', file);
+            }
 
             $http.post("/api/signature/upload/icon/"+ $scope.userCardlets[$scope.segnatureId].id +"/"+name,  fd, {
                     transformRequest: angular.identity,
@@ -672,7 +673,6 @@
                         $scope.banner = $scope.croppedImageUrl;
                     }else{
                         $scope.userCardlets[$scope.segnatureId].tabs[$scope.ImageTabIndex].sigImage = $scope.croppedImageUrl;
-                        console.log( $scope.banner)
 
                     }
                     document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText

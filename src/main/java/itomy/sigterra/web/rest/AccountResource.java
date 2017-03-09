@@ -44,7 +44,7 @@ import java.util.*;
 @RequestMapping("/api")
 public class AccountResource {
     // Max allowed size of profile icon is 50 Mb
-    public static final int MAX_ALLOWED_PROFILE_ICON_SIZE = 50 * 1024 * 1024;
+    public static final int MAX_ALLOWED_PROFILE_ICON_SIZE = 20 * 1024 * 1024;
 
     private final Logger log = LoggerFactory.getLogger(AccountResource.class);
 

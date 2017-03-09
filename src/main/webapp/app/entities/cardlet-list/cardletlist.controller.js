@@ -24,12 +24,11 @@
                 });
             };
             reader.readAsDataURL(file);
-            console.log("asdas")
         };
 
         $scope.closeCropDialog = function(){
             $scope.showCropDialog = false;
-            $scope.myImage = ""
+            $scope.myImage = "";
         };
 
         $scope.showSpinner = false;
@@ -84,12 +83,9 @@
              $scope.showSpinner = true;
              $scope.myImage = ""
 
-             console.log($scope.myCroppedImage)
-
             var img_b64 = $scope.myCroppedImage;
             var png = img_b64.split(',')[1];
             var file = b64toBlob(png, 'image/png')
-            console.log(file);
             var fd = new FormData();
             fd.append('file', file);
             $http.post("/api/cardlet/upload/icon/test",  fd, {
@@ -99,11 +95,8 @@
                 .success(function (data, status, headers, config) {
                     $scope.imageUrl = data.url;
                     if($scope.itemImageId){
-                        console.log($scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame])
                         $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame] = $scope.imageUrl;
-                        console.log($scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame])
                     }else {
-                        console.log("2222")
                         setTabImage();
                     }
                     $scope.showSpinner = false;
@@ -215,8 +208,6 @@
             function onSuccess(data, headers) {
                 vm.queryCount = vm.totalItems;
                 $scope.cardlets = data;
-                console.log(vm.queryCount )
-                console.log($scope.cardlets)
 
             }
             function onError(error) {
@@ -357,6 +348,8 @@
                     ]
 
                 }
+                setTimeout(function(){
+                    $scope.openCity('settings'+newTab.name+newTab.position, 'tab'+newTab.position, newTab.name+newTab.position, newTab.position+newTab.name)}, 500)
                 $scope.tabNames.tabs.push(newTab);
             }
             if($scope.tabNames.tabs.length == 4){
@@ -376,7 +369,7 @@
                     "image3": "/app/cardlets/img/portfolio_img_03.png",
                 }
                 $scope.tabNames.tabs[tabId].items.push(newItem);
-
+                $scope.changeAccordionActivity(index+2)
                 $scope.slides2 = $scope.tabNames.tabs[tabId].items;
 
             }
@@ -420,7 +413,8 @@
 
                 }
                 $scope.tabNames.tabs.push(newTab);
-
+                setTimeout(function(){
+                $scope.openCity('settings'+newTab.name+newTab.position, 'tab'+newTab.position, newTab.name+newTab.position, newTab.position+newTab.name)}, 500)
             }
             if($scope.tabNames.tabs.length == 4){
                 $scope.isNewTab = false;

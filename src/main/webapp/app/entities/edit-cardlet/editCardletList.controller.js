@@ -24,7 +24,6 @@
                 });
             };
             reader.readAsDataURL(file);
-            console.log("asdas")
         };
 
         $scope.closeCropDialog = function(){
@@ -84,24 +83,17 @@
             var img_b64 = $scope.myCroppedImage;
             var png = img_b64.split(',')[1];
             var file = b64toBlob(png, 'image/png')
-            console.log(file);
             var fd = new FormData();
             fd.append('file', file);
             var url = "";
-            console.log("asdasd ")
-            console.log($scope.itemImageId)
-            console.log($scope.imageItemMame)
-            console.log($scope.tabImageId)
+
 
             if($scope.itemImageId != null){
                  url =  $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame];
-                console.log("111111");
-                console.log(url);
 
             }else{
                  url = $scope.tabNames.tabs[$scope.tabImageId].photo;
-                console.log("2222");
-                console.log(url);
+
             }
             var filename = url.substring(url.lastIndexOf('/')+1);
             if(filename.indexOf(".")!= -1){
@@ -115,10 +107,8 @@
                 .success(function (data, status, headers, config) {
                     $scope.imageUrl = data.url;
                     if($scope.itemImageId != null){
-                        console.log("11111")
                         $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame] = $scope.imageUrl;
                     }else {
-                        console.log("2222")
                         setTabImage();
                     }
                     $scope.showCropDialog = false;
@@ -298,6 +288,8 @@
                     ]
 
                 }
+                setTimeout(function(){
+                    $scope.openCity('settings'+newTab.name+newTab.position, newTab.position, newTab.name+newTab.position, 'card'+newTab.position+newTab.name)}, 500)
                 $scope.tabNames.tabs.push(newTab);
             }
         }
@@ -313,6 +305,7 @@
                     "image3": "/app/cardlets/img/portfolio_img_03.png",
                 }
                 $scope.tabNames.tabs[tabId].items.push(newItem);
+                $scope.changeAccordionActivity(index+2)
 
                 $scope.slides2 = $scope.tabNames.tabs[tabId].items;
 
@@ -394,7 +387,8 @@
 
                     }
                 $scope.tabNames.tabs.push(newTab);
-
+                setTimeout(function(){
+                    $scope.openCity('settings'+newTab.name+newTab.position, newTab.position, newTab.name+newTab.position, 'card'+newTab.position+newTab.name)}, 500)
             }
         }
 
