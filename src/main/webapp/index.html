@@ -11,7 +11,6 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
-
     <!-- endinject -->
     <!-- endbuild -->
     <!-- build:css content/css/main.css -->
@@ -60,17 +59,9 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.min.js"></script>
     <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
-
-    <script src="content/ng-img-crop.js"></script>
-    <script src="bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
-    <script src="app/entities/user-cardlets/clipboard/clipboard.min.js"></script>
-    <script src="app/entities/user-cardlets/clipboard/ng-clipboard.min.js"></script>
-    <script src="app/entities/user-cardlets/html2canvas.js"></script>
-    <script src="app/entities/user-cardlets/bace64.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
 
@@ -92,10 +83,19 @@
     <script src="app/services/auth/auth.service.js"></script>
     <script src="app/services/auth/activate.service.js"></script>
     <script src="app/services/auth/account.service.js"></script>
+    <script src="app/ng-img-crop.js"></script>
     <script src="app/layouts/navbar/navbar.controller.js"></script>
     <script src="app/layouts/error/error.state.js"></script>
     <script src="app/home/home.state.js"></script>
     <script src="app/home/home.controller.js"></script>
+    <script src="app/entities/user-cardlets/userCardletlist.service.js"></script>
+    <script src="app/entities/user-cardlets/userCardletlist.controller.js"></script>
+    <script src="app/entities/user-cardlets/userCardlet.state.js"></script>
+    <script src="app/entities/user-cardlets/jscolor.js"></script>
+    <script src="app/entities/user-cardlets/html2canvas.js"></script>
+    <script src="app/entities/user-cardlets/clipboard/ng-clipboard.min.js"></script>
+    <script src="app/entities/user-cardlets/clipboard/clipboard.min.js"></script>
+    <script src="app/entities/user-cardlets/bace64.js"></script>
     <script src="app/entities/tab-type/tab-type-dialog.controller.js"></script>
     <script src="app/entities/tab-type/tab-type-detail.controller.js"></script>
     <script src="app/entities/tab-type/tab-type-delete-dialog.controller.js"></script>
@@ -108,6 +108,9 @@
     <script src="app/entities/signature/signature.state.js"></script>
     <script src="app/entities/signature/signature.service.js"></script>
     <script src="app/entities/signature/signature.controller.js"></script>
+    <script src="app/entities/previewCardlet/previewCardlet.state.js"></script>
+    <script src="app/entities/previewCardlet/previewCardlet.service.js"></script>
+    <script src="app/entities/previewCardlet/previewCardlet.controller.js"></script>
     <script src="app/entities/item-data/item-data-dialog.controller.js"></script>
     <script src="app/entities/item-data/item-data-detail.controller.js"></script>
     <script src="app/entities/item-data/item-data-delete-dialog.controller.js"></script>
@@ -127,22 +130,24 @@
     <script src="app/entities/input-properties/input-properties.service.js"></script>
     <script src="app/entities/input-properties/input-properties.controller.js"></script>
     <script src="app/entities/entity.state.js"></script>
+    <script src="app/entities/edit-cardlet/jscolor.js"></script>
+    <script src="app/entities/edit-cardlet/editCardletList.state.js"></script>
+    <script src="app/entities/edit-cardlet/editCardletList.service.js"></script>
+    <script src="app/entities/edit-cardlet/editCardletList.controller.js"></script>
+    <script src="app/entities/copyToWeb/userCardletlist.service.js"></script>
+    <script src="app/entities/copyToWeb/userCardletlist.controller.js"></script>
+    <script src="app/entities/copyToWeb/userCardlet.state.js"></script>
+    <script src="app/entities/copyToWeb/jscolor.js"></script>
+    <script src="app/entities/copyToWeb/entity.state.js"></script>
     <script src="app/entities/cardlet-list/jscolor.js"></script>
     <script src="app/entities/cardlet-list/cardletlist.state.js"></script>
     <script src="app/entities/cardlet-list/cardletlist.service.js"></script>
     <script src="app/entities/cardlet-list/cardletlist.controller.js"></script>
-    <script src="app/entities/user-cardlets/userCardlet.state.js"></script>
-    <script src="app/entities/user-cardlets/userCardletlist.service.js"></script>
-    <script src="app/entities/user-cardlets/userCardletlist.controller.js"></script>
-    <script src="app/entities/edit-cardlet/editCardletList.state.js"></script>
-    <script src="app/entities/edit-cardlet/editCardletList.service.js"></script>
-    <script src="app/entities/edit-cardlet/editCardletList.controller.js"></script>
     <script src="app/entities/cardlet/cardlet-dialog.controller.js"></script>
     <script src="app/entities/cardlet/cardlet-detail.controller.js"></script>
     <script src="app/entities/cardlet/cardlet-delete-dialog.controller.js"></script>
     <script src="app/entities/cardlet/cardlet.state.js"></script>
     <script src="app/entities/cardlet/cardlet.service.js"></script>
-    <script src="app/entities/cardlet/cardlet.controller.js"></script>
     <script src="app/entities/cardlet/cardlet.controller.js"></script>
     <script src="app/entities/business/business-dialog.controller.js"></script>
     <script src="app/entities/business/business-detail.controller.js"></script>
@@ -150,12 +155,6 @@
     <script src="app/entities/business/business.state.js"></script>
     <script src="app/entities/business/business.service.js"></script>
     <script src="app/entities/business/business.controller.js"></script>
-    <script src="app/entities/copyToWeb/userCardletlist.controller.js"></script>
-    <script src="app/entities/copyToWeb/userCardletlist.service.js"></script>
-    <script src="app/entities/copyToWeb/userCardlet.state.js"></script>
-    <script src="app/entities/previewCardlet/previewCardlet.controller.js"></script>
-    <script src="app/entities/previewCardlet/previewCardlet.service.js"></script>
-    <script src="app/entities/previewCardlet/previewCardlet.state.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
     <script src="app/components/util/sort-by.directive.js"></script>
@@ -188,6 +187,7 @@
     <script src="app/blocks/config/alert.config.js"></script>
     <script src="app/app.state.js"></script>
     <script src="app/app.constants.js"></script>
+    <script src="app/angular-drag-and-drop-lists.js"></script>
     <script src="app/admin/user-management/user-management-dialog.controller.js"></script>
     <script src="app/admin/user-management/user-management-detail.controller.js"></script>
     <script src="app/admin/user-management/user-management-delete-dialog.controller.js"></script>
@@ -220,6 +220,8 @@
     <script src="app/account/reset/request/reset.request.controller.js"></script>
     <script src="app/account/reset/finish/reset.finish.state.js"></script>
     <script src="app/account/reset/finish/reset.finish.controller.js"></script>
+    <script src="app/account/registerSuccess/registerSuccess.state.js"></script>
+    <script src="app/account/registerSuccess/registerSuccess.controller.js"></script>
     <script src="app/account/register/register.state.js"></script>
     <script src="app/account/register/register.controller.js"></script>
     <script src="app/account/password/password-strength-bar.directive.js"></script>
