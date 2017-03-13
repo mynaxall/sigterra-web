@@ -1137,7 +1137,7 @@ Social Buttons
 
 .checkboxBold + label
 {
-    background-image: url("/app/entities/cardlet-list/img/text_icons/bold.png");
+    background-image: url("/content/images/bold.png");
     height: 30px;
     width: 30px;
     display:inline-block;
@@ -1146,7 +1146,7 @@ Social Buttons
 
 .checkboxBold + label:hover
 {
-    background-image: url("/app/entities/cardlet-list/img/text_icons/bold_hover.png");
+    background-image: url("/content/images/bold_hover.png");
     height: 30px;
     width: 30px;
     display:inline-block;
@@ -1157,7 +1157,7 @@ Social Buttons
 
 .checkboxBold:checked + label
 {
-    background-image: url("/app/entities/cardlet-list/img/text_icons/bold_active.png");
+    background-image: url("/content/images/bold_active.png");
     height: 30px;
     width: 30px;
     display:inline-block;
@@ -1170,7 +1170,7 @@ Social Buttons
 
 .checkboxItalic + label
 {
-    background-image: url("/app/entities/cardlet-list/img/text_icons/italic.png");
+    background-image: url("/content/images/italic.png");
     height: 30px;
     width: 30px;
     display:inline-block;
@@ -1179,7 +1179,7 @@ Social Buttons
 
 .checkboxItalic + label:hover
 {
-    background-image: url("/app/entities/cardlet-list/img/text_icons/italic_hover.png");
+    background-image: url("/content/images/italic_hover.png");
     height: 30px;
     width: 30px;
     display:inline-block;
@@ -1188,7 +1188,7 @@ Social Buttons
 
 .checkboxItalic:checked + label
 {
-    background-image: url("/app/entities/cardlet-list/img/text_icons/italic_active.png");
+    background-image: url("/content/images/italic_active.png");
     height: 30px;
     width: 30px;
     display:inline-block;
@@ -1200,7 +1200,7 @@ Social Buttons
 
 .checkboxUunderline + label
 {
-    background-image: url("/app/entities/cardlet-list/img/text_icons/underline.png");
+    background-image: url("/content/images/underline.png");
     height: 30px;
     width: 30px;
     display:inline-block;
@@ -1209,7 +1209,7 @@ Social Buttons
 
 .checkboxUunderline + label:hover
 {
-    background-image: url("/app/entities/cardlet-list/img/text_icons/underline_hover.png");
+    background-image: url("/content/images/underline_hover.png");
     height: 30px;
     width: 30px;
     display:inline-block;
@@ -1218,7 +1218,7 @@ Social Buttons
 
 .checkboxUunderline:checked + label
 {
-    background-image: url("/app/entities/cardlet-list/img/text_icons/underline_active.png");
+    background-image: url("/content/images/underline_active.png");
     height: 30px;
     width: 30px;
     display:inline-block;

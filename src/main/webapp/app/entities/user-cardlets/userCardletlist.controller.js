@@ -88,9 +88,9 @@
                                 //"name": "1 item",
                                 "index": "2",
                                 "position": "0",
-                                "image": "/app/cardlets/img/portfolio_img_01.png",
-                                "image2": "/app/cardlets/img/portfolio_img_02.png",
-                                "image3": "/app/cardlets/img/portfolio_img_03.png"
+                                "image": "/content/images/portfolio_img_01.png",
+                                "image2": "/content/images/portfolio_img_02.png",
+                                "image3": "/content/images/portfolio_img_03.png"
 
                             }
                         ]
@@ -174,7 +174,7 @@
             $window.scrollTo(0, 0);
             $scope.segnatureId = id;
             $scope.userCardlets[id].tabs;
-            $scope.banner = '/app/cardlets/img/banner.png'
+            $scope.banner = '/content/images/banner.png'
             for (var i = 0; i < $scope.userCardlets[id].tabs.length; i++) {
                 if ($scope.userCardlets[id].tabs[i].tabType = 1){
                     $scope.firstBusinessCardId = i;
@@ -416,9 +416,9 @@
                             //"name": "1 item",
                             "index": "2",
                             "position": "0",
-                            "image": "/app/cardlets/img/portfolio_img_01.png",
-                            "image2": "/app/cardlets/img/portfolio_img_02.png",
-                            "image3": "/app/cardlets/img/portfolio_img_03.png"
+                            "image": "/content/images/portfolio_img_01.png",
+                            "image2": "/content/images/portfolio_img_02.png",
+                            "image3": "/content/images/portfolio_img_03.png"
                         }
                     ]
 
@@ -437,9 +437,9 @@
                     //"name":  ($scope.tabNames.tabs[tabId].items.length+1)+" item",
                     "index": index+2,
                     "position": $scope.tabNames.tabs[tabId].items.length,
-                    "image": "/app/cardlets/img/portfolio_img_01.png",
-                    "image2": "/app/cardlets/img/portfolio_img_02.png",
-                    "image3": "/app/cardlets/img/portfolio_img_03.png",
+                    "image": "/content/images/portfolio_img_01.png",
+                    "image2": "/content/images/portfolio_img_02.png",
+                    "image3": "/content/images/portfolio_img_03.png",
                 }
                 $scope.tabNames.tabs[tabId].items.push(newItem);
 

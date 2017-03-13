@@ -281,9 +281,9 @@
                             //"name": "1 item",
                             "index": "2",
                             "position": "0",
-                            "image": "/app/cardlets/img/portfolio_img_01.png",
-                            "image2": "/app/cardlets/img/portfolio_img_02.png",
-                            "image3": "/app/cardlets/img/portfolio_img_03.png"
+                            "image": "/content/images/portfolio_img_01.png",
+                            "image2": "/content/images/portfolio_img_02.png",
+                            "image3": "/content/images/portfolio_img_03.png"
                         }
                     ]
 
@@ -300,9 +300,9 @@
                     //"name":  ($scope.tabNames.tabs[tabId].items.length+1)+" item",
                     "index": index+2,
                     "position": $scope.tabNames.tabs[tabId].items.length,
-                    "image": "/app/cardlets/img/portfolio_img_01.png",
-                    "image2": "/app/cardlets/img/portfolio_img_02.png",
-                    "image3": "/app/cardlets/img/portfolio_img_03.png",
+                    "image": "/content/images/portfolio_img_01.png",
+                    "image2": "/content/images/portfolio_img_02.png",
+                    "image3": "/content/images/portfolio_img_03.png",
                 }
                 $scope.tabNames.tabs[tabId].items.push(newItem);
                 $scope.changeAccordionActivity(index+2)
