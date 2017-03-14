@@ -1236,6 +1236,22 @@ Social Buttons
     text-align: center;
 }
 
+.thirdItemTop{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    height: 70px;
+    width: 100%;
+}
+
+.thirdItemBottom{
+    position: absolute;
+    bottom:0px;
+    left: 0px;
+    height: 70px;
+    width: 100%;
+}
+
 
 
 

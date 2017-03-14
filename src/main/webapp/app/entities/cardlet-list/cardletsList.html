@@ -265,7 +265,7 @@
         padding: 10px 16px;
         text-decoration: none;
         transition: 0.3s;
-        font-size: 17px;
+        font-size: 14px;
 
 
     }
@@ -391,7 +391,7 @@
     <div class="tab-panel">
 
         <div class="cardlet-name-panel">
-            <input type="text" placeholder="Templates name" class="cadletName" ng-model="tabNames.cardletName">
+            <input type="text" placeholder="Templates name" class="cadletName" ng-model="tabNames.cardletName" maxlength="25">
         </div>
         <div class="row">
             <div class="col-lg-6">
@@ -432,7 +432,7 @@
                         <div class="form-group" style="padding: 15px">
                             <label class="login-lable" for="name">Tab’s name</label>
 
-                            <input type="text" class="form-control profile-input" id="name" placeholder="Business card"
+                            <input type="text" class="form-control profile-input" id="name" placeholder="Business card" maxlength="13"
                                    ng-model="tabName.name">
                         </div>
 
@@ -446,7 +446,7 @@
                                         <div class="form-group">
                                             <div class="input-text-div">
                                                 <label class="login-lable cardlet-label" for="itemName">Name</label>
-                                                <input type="text" class="form-control profile-input" id="itemName" placeholder="" ng-model="item.name.value">
+                                                <input type="text" class="form-control profile-input" id="itemName" placeholder="" ng-model="item.name.value" maxlength="20">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="item.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{item.position}}"/><label for="boldName{{tabName.position}}{{item.position}}"></label>
@@ -458,7 +458,7 @@
                                         <div class="form-group">
                                             <div class="input-text-div">
                                                 <label class="login-lable cardlet-label" for="urlOne">url:\\</label>
-                                                <input type="text" ng-model="item.image" class="form-control profile-input" id="urlOne" placeholder="">
+                                                <input type="text" ng-model="item.image" class="form-control profile-input" id="urlOne" placeholder="" >
                                             </div>
                                             <div class="social-image-form-div" >
                                                 <button  type="submit" ng-disabled="for2m.$invalid" ng-click="openCropDialog($parent.$index, item.position, 'image')" class="btn btn-primary main-btn upload-item-img">Upload</button>
@@ -467,7 +467,7 @@
                                         <div class="form-group">
                                             <div class="input-text-div">
                                                 <label class="login-lable cardlet-label" for="description">Description</label>
-                                                <input type="text" class="form-control profile-input" id="description" placeholder="" ng-model="item.description.value">
+                                                <input type="text" class="form-control profile-input" id="description" placeholder="" ng-model="item.description.value" maxlength="40">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="item.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{item.position}}"/><label for="boldDescription{{tabName.position}}{{item.position}}"></label>
@@ -533,7 +533,7 @@
 
                                             <div class="input-text-div">
                                                 <label class="login-lable cardlet-label" for="userName">Name</label>
-                                                <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.userName.value">
+                                                <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.userName.value" maxlength="20">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.userName.bold" name='bold' class="checkboxBold" value='valuable' id="bold{{tabName.position}}"/><label for="bold{{tabName.position}}"></label>
@@ -547,7 +547,7 @@
 
                                             <div class="input-text-div">
                                                 <label class="login-lable cardlet-label" for="userName">Job title</label>
-                                                <input type="text" class="form-control profile-input" id="userName" placeholder="General manager" ng-model="tabName.job.value">
+                                                <input type="text" class="form-control profile-input" id="userName" placeholder="General manager" ng-model="tabName.job.value" maxlength="30">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.job.bold" name='bold' value='valuable' class="checkboxBold" id="boldJob{{tabName.position}}"/><label for="boldJob{{tabName.position}}"></label>
@@ -561,7 +561,7 @@
 
                                             <div class="input-text-div">
                                                 <label class="login-lable cardlet-label" for="userName">Phone number</label>
-                                                <input type="text" class="form-control profile-input" id="userName" placeholder="077 1234 5678" ng-model="tabName.phone.value">
+                                                <input type="text" class="form-control profile-input" id="userName" placeholder="077 1234 5678" ng-model="tabName.phone.value" maxlength="25">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.phone.bold" name='bold' value='valuable' class="checkboxBold" id="boldPhone{{tabName.position}}"/><label for="boldPhone{{tabName.position}}"></label>
@@ -575,7 +575,7 @@
 
                                             <div class="input-text-div">
                                                 <label class="login-lable cardlet-label" for="userName">Email</label>
-                                                <input type="email" class="form-control profile-input" id="userName" placeholder="heidenreich.eloisa@yahoo.com" ng-model="tabName.userEmail.value">
+                                                <input type="email" class="form-control profile-input" id="userName" placeholder="heidenreich.eloisa@yahoo.com" ng-model="tabName.userEmail.value" maxlength="25">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.userEmail.bold" name='boldEmail' value='valuableEmail' class="checkboxBold" id="boldEmail{{tabName.position}}"/><label for="boldEmail{{tabName.position}}"></label>
@@ -589,7 +589,7 @@
 
                                             <div class="input-text-div">
                                                 <label class="login-lable cardlet-label" for="userName">Company site</label>
-                                                <input type="text" class="form-control profile-input" id="userName" placeholder="https://www.yourcompany" ng-model="tabName.site.value">
+                                                <input type="text" class="form-control profile-input" id="userName" placeholder="https://www.yourcompany" ng-model="tabName.site.value" maxlength="25">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.site.bold" name='bold' value='valuable' class="checkboxBold" id="boldSite{{tabName.position}}"/><label for="boldSite{{tabName.position}}"></label>
@@ -605,7 +605,7 @@
 
                                             <div class="input-text-div">
                                                 <label class="login-lable cardlet-label" for="userName">Company Name</label>
-                                                <input type="text" class="form-control profile-input" id="userName" placeholder="Your company" ng-model="tabName.company.value">
+                                                <input type="text" class="form-control profile-input" id="userName" placeholder="Your company" ng-model="tabName.company.value" maxlength="25">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.company.bold" name='bold' value='valuable' class="checkboxBold" id="boldCompany{{tabName.position}}"/><label for="boldCompany{{tabName.position}}"></label>
@@ -619,7 +619,7 @@
 
                                             <div class="input-text-div">
                                                 <label class="login-lable cardlet-label" for="userName">Address</label>
-                                                <input type="text" class="form-control profile-input" id="userName" placeholder="Your address" ng-model="tabName.address.value">
+                                                <input type="text" class="form-control profile-input" id="userName" placeholder="Your address" ng-model="tabName.address.value" maxlength="45">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.address.bold" name='bold' value='valuable' class="checkboxBold" id="boldAddress{{tabName.position}}"/><label for="boldAddress{{tabName.position}}"></label>
