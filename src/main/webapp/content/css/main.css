@@ -1175,6 +1175,7 @@ Social Buttons
     width: 30px;
     display:inline-block;
     padding: 0 0 0 0px;
+    margin-left: 5px;
 }
 
 .checkboxItalic + label:hover
@@ -1184,6 +1185,7 @@ Social Buttons
     width: 30px;
     display:inline-block;
     padding: 0 0 0 0px;
+    margin-left: 5px;
 }
 
 .checkboxItalic:checked + label
@@ -1193,6 +1195,7 @@ Social Buttons
     width: 30px;
     display:inline-block;
     padding: 0 0 0 0px;
+    margin-left: 5px;
 }
 .checkboxUunderline {
     display:none;
@@ -1205,6 +1208,7 @@ Social Buttons
     width: 30px;
     display:inline-block;
     padding: 0 0 0 0px;
+    margin-left: 5px;
 }
 
 .checkboxUunderline + label:hover
@@ -1214,6 +1218,7 @@ Social Buttons
     width: 30px;
     display:inline-block;
     padding: 0 0 0 0px;
+    margin-left: 5px;
 }
 
 .checkboxUunderline:checked + label
@@ -1223,6 +1228,7 @@ Social Buttons
     width: 30px;
     display:inline-block;
     padding: 0 0 0 0px;
+    margin-left: 5px;
 }
 
 .spinner-shadow{
