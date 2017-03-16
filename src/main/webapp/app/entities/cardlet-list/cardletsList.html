@@ -8,11 +8,10 @@
             </div>
             <div  style="padding: 0px!important; text-align: center" class="modal-body">
                 <div>
-                    <link rel="stylesheet" type="text/css" href="../../ng-img-crop.css">
 
                     <div class="fileUpload btn btn-primary choose-photo-btn">
                         <span>Choose photo</span>
-                        <input type="file" id="fileInput" class="upload"  onchange="angular.element(this).scope().handleFileSelect(event)"/>
+                        <input type="file" id="fileInput" class="upload" />
                     </div>
                 </div>
                 <div class="cropArea">
@@ -429,12 +428,26 @@
 
                     </ul>
                     <div ng-repeat="tabName in tabNames.tabs " id="settings{{tabName.name}}{{tabName.position}}" class="tabcontent">
-                        <div class="form-group" style="padding: 15px">
-                            <label class="login-lable" for="name">Tab’s name</label>
+                        <form  name="form" role="form" novalidate show-validation>
 
-                            <input type="text" class="form-control profile-input" id="name" placeholder="Business card" maxlength="12"
-                                   ng-model="tabName.name">
-                        </div>
+                            <div class="form-group" style="padding: 15px">
+                                <label class="login-lable" for="name">Tab’s name</label>
+
+                                <input type="text" class="form-control profile-input" id="name" name="name" placeholder="Business card" ng-minlength=1 maxlength="12"
+                                       ng-model="tabName.name" required>
+                                <div ng-show="form.name.$dirty && form.name.$invalid">
+                                    <p class="help-block"
+                                       ng-show="form.name.$error.required">
+                                        Your tab name is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.name.$error.minlength">
+                                        Your tab name is required to be at least 1 character.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </form>
 
                         <div class="main">
 

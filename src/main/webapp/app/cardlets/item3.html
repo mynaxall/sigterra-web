@@ -13,9 +13,10 @@
                     'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.mainColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                         <div class="carousel-item-name-div-new" ng-style="{'color': '#'+tabName.layout.mainColor}" ng-show="!slide.name.value">Maui Hotel</div>
                         <div id="cf4a">
-                            <a href="{{slide.link}}" target="_blank"  ng-class="{'disabled': !slide.image}">
+                            <img id="ing-1" class="item-images-new imgFirst" ng-show="!slide.link" ng-src="{{slide.image}}">
+                            <a href="{{slide.link}}" target="_blank"  ng-show="slide.link">
                                 <img id="ing-1" class="item-images-new imgFirst" ng-show="slide.image" ng-src="{{slide.image}}">
-                                </a>
+                            </a>
                         </div>
                         <div class="carousel-item-name-div-new carousel-item-deskript-div" ng-show="slide.description.value"
                              ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
@@ -37,7 +38,8 @@
                     'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                             <div class="carousel-item-name-div-new" ng-style="{'color': '#'+tabName.layout.mainColor}" ng-show="!slide.name.value">Maui Hotel</div>
                             <div id="cf4a">
-                                <a href="{{slide.link}}" target="_blank" ng-class="{'disabled': !slide.image}">
+                                <img id="ing-1" class="item-images-new imgFirst" ng-show="!slide.link" ng-src="{{slide.image}}">
+                                <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
                                     <img id="ing-1" class="item-images-new imgFirst" ng-show="slide.image" ng-src="{{slide.image}}">
                                 </a>
                             </div>
@@ -53,8 +55,8 @@
                     'text-decoration': tabName.items[$index+1].name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.mainColor}" ng-show="tabName.items[$index+1].name.value">{{tabName.items[$index+1].name.value}}</div>
                             <div class="carousel-item-name-div-new" ng-style="{'color': '#'+tabName.layout.mainColor}" ng-show="!tabName.items[$index+1].name.value">Maui Hotel</div>
                             <div id="cf4a">
-                                <a href="{{tabName.items[$index+1].link}}" target="_blank" ng-class="{'disabled': !tabName.items[$index+1].link}">
-
+                                <img id="ing-1" class="item-images-new imgFirst" ng-show="!tabName.items[$index+1].link" ng-src="{{tabName.items[$index+1].image}}">
+                                <a href="{{tabName.items[$index+1].link}}" target="_blank" ng-show="tabName.items[$index+1].link">
                                     <img id="ing-1" class="item-images-new imgFirst" ng-show="tabName.items[$index+1].image" ng-src="{{tabName.items[$index+1].image}}">
                                 </a>
                             </div>
@@ -70,8 +72,8 @@
                     'text-decoration': tabName.items[$index+2].name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.mainColor}" ng-show="tabName.items[$index+2].name.value">{{tabName.items[$index+2].name.value}}</div>
                             <div class="carousel-item-name-div-new" ng-style="{'color': '#'+tabName.layout.mainColor}" ng-show="!tabName.items[$index+2].name.value">Maui Hotel</div>
                             <div id="cf4a">
-                                <a href="{{tabName.items[$index+2].link}}" target="_blank" ng-class="{'disabled': !tabName.items[$index+2].link}">
-
+                                <img id="ing-1" class="item-images-new imgFirst" ng-show="!tabName.items[$index+2].link" ng-src="{{tabName.items[$index+2].image}}">
+                                <a href="{{tabName.items[$index+2].link}}" target="_blank" ng-show="tabName.items[$index+2].link">
                                     <img id="ing-1" class="item-images-new imgFirst" ng-show="tabName.items[$index+2].image" ng-src="{{tabName.items[$index+2].image}}">
                                 </a>
                             </div>
@@ -87,8 +89,8 @@
                     'text-decoration': tabName.items[0].name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.mainColor}" ng-show="tabName.items[0].name.value">{{tabName.items[0].name.value}}</div>
                             <div class="carousel-item-name-div-new" ng-style="{'color': '#'+tabName.layout.mainColor}" ng-show="!tabName.items[0].name.value">Maui Hotel</div>
                             <div id="cf4a">
-                                <a href="{{tabName.items[0].link}}" target="_blank" ng-class="{'disabled': !tabName.items[0].link}">
-
+                                <img id="ing-1" class="item-images-new imgFirst" ng-show="!tabName.items[0].link" ng-src="{{tabName.items[0].image}}">
+                                <a href="{{tabName.items[0].link}}" target="_blank" ng-show="tabName.items[0].link">
                                     <img id="ing-1" class="item-images-new imgFirst" ng-show="tabName.items[0].image" ng-src="{{tabName.items[0].image}}">
                                </a>
                             </div>
@@ -104,7 +106,8 @@
                     'text-decoration': tabName.items[1].name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.mainColor}" ng-show="tabName.items[1].name.value">{{tabName.items[1].name.value}}</div>
                             <div class="carousel-item-name-div-new" ng-style="{'color': '#'+tabName.layout.mainColor}" ng-show="!tabName.items[1].name.value">Maui Hotel</div>
                             <div id="cf4a">
-                                <a href="{{tabName.items[1].link}}" target="_blank" ng-class="{'disabled': !tabName.items[1].link}">
+                                <img id="ing-1" class="item-images-new imgFirst" ng-show="!tabName.items[1].link" ng-src="{{tabName.items[1].image}}">
+                                <a href="{{tabName.items[1].link}}" target="_blank" ng-show="tabName.items[1].link">
                                     <img id="ing-1" class="item-images-new imgFirst" ng-show="tabName.items[1].image"  ng-src="{{tabName.items[1].image}}">
                                 </a>
                             </div>

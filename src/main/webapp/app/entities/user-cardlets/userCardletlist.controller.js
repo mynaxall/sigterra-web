@@ -30,6 +30,18 @@
         $scope.myCroppedImage = '';
         $scope.myImage2 ='';
 
+        var handleFileSelect=function(evt) {
+            var file=evt.currentTarget.files[0];
+            var reader = new FileReader();
+            reader.onload = function (evt) {
+                $scope.$apply(function($scope){
+                    $scope.myImage=evt.target.result;
+                });
+            };
+            reader.readAsDataURL(file);
+        };
+        angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
+
         $scope.handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];
             var reader = new FileReader();
@@ -41,10 +53,30 @@
             reader.readAsDataURL(file);
 
         };
+
+        var fileSelected=function(evt) {
+            var file=evt.currentTarget.files[0];
+            $scope.saveImage("banner", file, true);
+        };
+        angular.element(document.querySelector('#fileInput3')).on('change',fileSelected);
+
+
         $scope.fileSelected = function (evt) {
             var file=evt.currentTarget.files[0];
             $scope.saveImage("banner", file, true);
         };
+
+        var handleFileSelect2=function(evt) {
+            var file=evt.currentTarget.files[0];
+            var reader = new FileReader();
+            reader.onload = function (evt) {
+                $scope.$apply(function($scope){
+                    $scope.myImage2=evt.target.result;
+                });
+            };
+            reader.readAsDataURL(file);
+        };
+        angular.element(document.querySelector('#fileInput2')).on('change',handleFileSelect2);
 
         $scope.handleFileSelect2=function(evt) {
             var file=evt.currentTarget.files[0];
