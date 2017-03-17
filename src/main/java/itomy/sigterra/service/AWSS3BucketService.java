@@ -69,7 +69,7 @@ public class AWSS3BucketService {
                     s3Client.deleteObject(new DeleteObjectRequest(bucketName+"/accounts/"+user.getId(), imageKey));
                 }
 
-                String name = "user_profile_icon_" + user.getId() + "_" + System.currentTimeMillis();
+                String name = "user_profile_icon_" + user.getId();
                 String originalFilename = file.getOriginalFilename();
                 if (originalFilename.contains(".")) {
                     name += originalFilename.substring(originalFilename.lastIndexOf("."));

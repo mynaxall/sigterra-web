@@ -15,7 +15,7 @@
                 <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
             </div>
             <div class="crop-btn-div">
-                <button class="btn btn-primary main-btn" ng-click="vm.saveImage()">save</button>
+                <button class="saveButton" ng-click="vm.saveImage()">save</button>
             </div>
         </div>
     </div>
@@ -27,15 +27,15 @@
         <div class="border-line"></div>
         <div class="profile-photo-panel">
             <div class="row">
-                <div class="col-md-6" style="text-align: right">
+                <div class="col-md-6" style="text-align: center">
                     <div class="image-cropped-div">
                         <img class="image-cropped" ng-show="showCroppedImage && !vm.settingsAccount.imageUrl"  ng-src="{{myCroppedImage}}" />
                         <img class="image-cropped" ng-show="vm.settingsAccount.imageUrl && !showCroppedImage"  ng-src="{{vm.settingsAccount.imageUrl}}" />
                         <img ng-show="!showCroppedImage && !vm.settingsAccount.imageUrl" class="image-cropped" src="/content/images/default_photo_image@2x.png" /></div>
                 </div>
-                <div class="col-md-6" style="text-align: left">
+                <div class="col-md-6" style="text-align: center">
                 <div class="button-upload-div">
-                 <button ng-click="vm.showImageDialog()" class="btn btn-primary btn-upload">Update Photo</button>
+                 <button ng-click="vm.showImageDialog()" class="btn btn-primary saveButton">Update Photo</button>
                 </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@
                            ng-model="vm.settingsAccount.address">
                 </div>
 
-                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary main-btn">Update profile</button>
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary saveButton">Update profile</button>
             </form>
         </div>
         <div class="col-md-4">
@@ -143,7 +143,7 @@
                 <div class="form-group">
                     <label class="login-lable" for="password">New password*</label>
                     <input type="password" class="form-control profile-input" id="password" name="password" placeholder="New password"
-                           ng-model="vm.password" ng-minlength=3 ng-maxlength=50 required>
+                           ng-model="vm.password" ng-minlength=4 ng-maxlength=50 required>
                     <div ng-show="form2.password.$dirty && form2.password.$invalid">
                         <p class="help-block"
                            ng-show="form2.password.$error.required">
@@ -163,7 +163,7 @@
                 <div class="form-group">
                     <label class="login-lable" for="confirmPassword">New password confirmation*</label>
                     <input type="password" class="form-control profile-input" id="confirmPassword" name="confirmPassword" placeholder="Confirm the new password"
-                           ng-model="vm.confirmPassword" ng-minlength=3 ng-maxlength=50  pw-check='password' required>
+                           ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50  pw-check='password' required>
                     <div ng-show="form2.confirmPassword.$dirty && form2.confirmPassword.$invalid">
                         <p class="help-block"
                            ng-show="form2.confirmPassword.$error.required">
@@ -184,7 +184,7 @@
                     </div>
                 </div>
 
-                <button type="submit" ng-disabled="form2.$invalid" class="btn btn-primary main-btn">Change password</button>
+                <button type="submit" ng-disabled="form2.$invalid" class="btn btn-primary saveButton">Change password</button>
             </form>
         </div>
     </div>

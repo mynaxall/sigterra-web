@@ -172,13 +172,14 @@
             var file = b64toBlob(png, 'image/png')
             var fd = new FormData();
             fd.append('file', file);
+            vm.settingsAccount.imageUrl = "";
             $http.post("/api/account/upload/icon",  fd, {
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
                 })
                 .success(function (data, status, headers, config) {
                     $scope.showSpinner = false;
-                    vm.settingsAccount.imageUrl = $scope.myCroppedImage;
+                    vm.settingsAccount.imageUrl = data.url;
                 });
         }
     }

@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <label class="login-lable" for="username">NAME*</label>
                     <input type="text" class="form-control profile-input" id="username" name="username" placeholder="First & Last Name"
-                           ng-model="vm.registerAccount.username" ng-minlength=3 ng-maxlength=50 required>
+                           ng-model="vm.registerAccount.username" ng-minlength=4 ng-maxlength=50 required>
                     <div ng-show="form.username.$dirty && form.username.$invalid">
                         <p class="help-block"
                            ng-show="form.username.$error.required">
@@ -82,7 +82,7 @@
                 <div class="form-group">
                     <label class="login-lable" for="password">Password*</label>
                     <input type="password" class="form-control profile-input" id="password" name="password" placeholder="Your Password"
-                           ng-model="vm.registerAccount.password" ng-minlength=3 ng-maxlength=50 required>
+                           ng-model="vm.registerAccount.password" ng-minlength=4 ng-maxlength=50 required>
                     <div ng-show="form.password.$dirty && form.password.$invalid">
                         <p class="help-block"
                            ng-show="form.password.$error.required">
@@ -102,7 +102,7 @@
                 <div class="form-group">
                     <label class="login-lable" for="confirmPassword">Password confirmation*</label>
                     <input type="password" class="form-control profile-input" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password"
-                           ng-model="vm.confirmPassword" ng-minlength=3 ng-maxlength=50  pw-check='password' required>
+                           ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50  pw-check='password' required>
                     <div ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
                         <p class="help-block"
                            ng-show="form.confirmPassword.$error.required">
@@ -128,7 +128,7 @@
                     <label class="login-lable" for="accept">I accept <a class="terms-and-conditions" href="#">terms and conditions</a> of using</label>
                 </div>
                 <div style="text-align: center;">
-                    <button ng-click="vm.nextStep()" type="submit" ng-disabled="form.$invalid" class="btn btn-primary main-btn">Next</button>
+                    <button ng-click="vm.nextStep()" type="submit" ng-disabled="form.$invalid" class="saveButton">Next</button>
                 </div>
             </form>
 
@@ -212,7 +212,7 @@
                 </div>
 
                 <div style="text-align: center;">
-                    <button  type="submit" ng-disabled="for2m.$invalid" ng-click="vm.register()" class="btn btn-primary main-btn">Save</button>
+                    <button  type="submit" ng-disabled="for2m.$invalid" ng-click="vm.register()" class="saveButton" style="width: 170px;">Save</button>
                     <button  type="submit" ng-disabled="form2.$invalid" ng-click="vm.skip()" class="btn btn-primary skip-btn">skip</button>
                 </div>
             </form>

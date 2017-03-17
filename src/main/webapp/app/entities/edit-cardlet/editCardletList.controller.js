@@ -424,7 +424,7 @@
 
         $scope.showSpinner = false;
 
-        $scope.accordionActive = 1;
+        $scope.accordionActive = 2;
 
         $scope.changeAccordionActivity = function(id){
             if($scope.accordionActive != id){

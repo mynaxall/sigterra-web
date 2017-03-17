@@ -18,7 +18,7 @@
                     <img-crop image="myImage" result-image="myCroppedImage" ></img-crop>
                 </div>
                 <div class="crop-btn-div">
-                    <button class="btn btn-primary main-btn" ng-click="saveImage()">save</button>
+                    <button class="saveButton" ng-click="saveImage()">save</button>
                 </div>
             </div>
         </div>
@@ -453,7 +453,7 @@
                                     <div class="form-group">
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="itemName">Name</label>
-                                            <input type="text" class="form-control profile-input" id="itemName" placeholder="" ng-model="item.name.value" maxlength="16">
+                                            <input type="text" class="form-control profile-input" id="itemName" placeholder="Maui Hotel" ng-model="item.name.value" maxlength="16">
                                         </div>
                                         <div class="text-decoration-div" >
                                             <input type='checkbox' ng-model="item.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{item.position}}"/><label for="boldName{{tabName.position}}{{item.position}}"></label>
@@ -474,7 +474,7 @@
                                     <div class="form-group">
                                         <div class="input-text-div">
                                             <label class="login-lable cardlet-label" for="description">Description</label>
-                                            <input type="text" class="form-control profile-input" id="description" placeholder="" ng-model="item.description.value" maxlength="40">
+                                            <input type="text" class="form-control profile-input" id="description" placeholder="How To Fly A Private Jet On Your Next Trip" ng-model="item.description.value" maxlength="40">
                                         </div>
                                         <div class="text-decoration-div" >
                                             <input type='checkbox' ng-model="item.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{item.position}}"/><label for="boldDescription{{tabName.position}}{{item.position}}"></label>
@@ -486,7 +486,7 @@
 
                                     <div class="form-group">
                                         <div style="width: 450px">
-                                            <label class="login-lable cardlet-label" for="description">1 item’s link</label>
+                                            <label class="login-lable cardlet-label" for="description">link</label>
                                             <input type="text" class="form-control profile-input" id="description" placeholder="" ng-model="item.link">
                                         </div>
                                         <div class="text-decoration-div" >
