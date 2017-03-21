@@ -93,43 +93,6 @@
         vm.loadPage = loadPage;
         vm.transition = transition;
 
-        $scope.tabNames ={
-            "cardletName": "catdlet",
-            "tabs":
-                [{
-                    "name": "card",
-                    'position': 0,
-                    "display": "block",
-                    "tabType": 1,
-                    "layout":{
-                        "mainColor": "FFFFFF",
-                        "secondaryColor": "4BABE2"
-
-                    }
-                },
-                    {
-                        "name": "portfolio",
-                        "position": 1,
-                        "tabType": 2,
-                        "layout": {
-                            "mainColor": "FFFFFF",
-                            "secondaryColor": "4BABE2"
-                        },
-                        "items": [
-                            {
-                                //"name": "1 item",
-                                "index": "2",
-                                "position": "0",
-                                "image": "/content/images/portfolio_img_01.png",
-                                "image2": "/content/images/portfolio_img_02.png",
-                                "image3": "/content/images/portfolio_img_03.png"
-
-                            }
-                        ]
-                    }
-                ]
-        };
-
         loadAll();
 
 
@@ -278,20 +241,107 @@
         }
 
         $scope.showImpersonate = window.localStorage['impersonate'];
-        $scope.userCard= function(){
+        $scope.userCard = function(){
             $http.get("/api/userCardlets")
                 .success(function(response, status, headers) {
                     $scope.userCardlets = response;
+                    if($scope.userCardlets.length === 0){
+                        $scope.saveCardlet();
+
+                    }
                 });
+        };
 
+        $scope.tabNames ={
+            "cardletName": "Business cards",
+            "tabs":
+                [{
+                    "name": "My info",
+                    'position': 0,
+                    "display": "block",
+                    "tabType": 1,
+                    "layout":{
+                        "mainColor": "FFFFFF",
+                        "secondaryColor": "4BABE2",
+                        "tabId": 1
+
+                    },
+                    "photo": "/content/images/avatar_img.png",
+
+
+                },
+                    {
+                        "name": "Items",
+                        "position": 1,
+                        "tabType": 2,
+                        "layout": {
+                            "mainColor": "FFFFFF",
+                            "secondaryColor": "4BABE2",
+                            "tabId": 4
+                        },
+                        "items": [
+                            {
+                                //"name": "1 item",
+                                "index": "2",
+                                "position": "0",
+                                "image": "/content/images/portfolio_img_01.png",
+                                "image2": "/content/images/portfolio_img_02.png",
+                                "image3": "/content/images/img/portfolio_img_03.png"
+
+                            }
+                        ]
+                    }
+                ]
+        };
+
+        $scope.getUserProfile = function(){
+            $http.get("/api/account")
+                .success(function(response, status, headers) {
+
+                    $scope.userAccount = response;
+                    $scope.tabNames.tabs[0].userName = {
+                        "value": $scope.userAccount.username
+                    };
+                    $scope.tabNames.tabs[0].userEmail = {
+                        "value": $scope.userAccount.email
+                    };
+
+                    $scope.tabNames.tabs[0].phone = {
+                        "value": $scope.userAccount.phoneNumber
+                    };
+
+                    $scope.tabNames.tabs[0].address = {
+                        "value": $scope.userAccount.address
+                    };
+
+                    $scope.tabNames.tabs[0].company = {
+                        "value": $scope.userAccount.companyName
+                    };
+
+                    $scope.tabNames.tabs[0].site = {
+                        "value": $scope.userAccount.companySite
+                    };
+
+                    $scope.tabNames.tabs[0].job = {
+                        "value": $scope.userAccount.jobTitle
+                    };
+                    if($scope.userAccount.imageUrl){
+                        $scope.tabNames.tabs[0].photo = $scope.userAccount.imageUrl
+                    }else{
+                        $scope.tabNames.tabs[0].photo = $location.protocol() + '://' + $location.host() + ':' + $location.port()+"content/images/avatar_img.png"
+                    }
+
+
+                });
+            $scope.userCard();
         }
+        $scope.getUserProfile();
 
-        $scope.userCard();
 
         $scope.copyToClipboard = function(id) {
            var code =  '<iframe style="width: 555px; height: 280px;border: 0px!important" src="http://localhost:8080/#/copyToWeb?cardletId='+ id +'"></iframe>';
             window.prompt("Copy to clipboard: Ctrl+C, Enter", code);
-        }
+        };
 
          $scope.showImageDialogBanner = function(){
              $scope.showCropDialog = true;
@@ -300,13 +350,11 @@
         $scope.showCropTabs = function(index){
             $scope.showCropDialogTabs = true;
             $scope.ImageTabIndex = index;
-        }
+        };
 
         $scope.saveTabsImage = function(){
             $scope.saveImage($scope.ImageTabIndex, $scope.tabsImage)
-        }
-
-
+        };
 
 
         $scope.isShowModal = false;
@@ -382,7 +430,6 @@
             });
         };
 
-
          $scope.openModal= function(id, syncData) {
              $scope.cardletLink = '<iframe style="width: 555px; height: 280px;border: 0px!important" src="'+$location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/copyToWeb?cardletId='+ id +'"></iframe>'
              $scope.isShowModal = true;
@@ -454,13 +501,13 @@
                         }
                     ]
 
-                }
+                };
                 $scope.tabNames.tabs.push(newTab);
             }
             if($scope.tabNames.tabs.length == 4){
                 $scope.isNewTab = false;
             }
-        }
+        };
 
         $scope.addItems = function(tabId, index) {
             if($scope.tabNames.tabs[tabId].items.length <= 9){
@@ -472,13 +519,13 @@
                     "image": "/content/images/portfolio_img_01.png",
                     "image2": "/content/images/portfolio_img_02.png",
                     "image3": "/content/images/portfolio_img_03.png",
-                }
+                };
                 $scope.tabNames.tabs[tabId].items.push(newItem);
 
                 $scope.slides2 = $scope.tabNames.tabs[tabId].items;
 
             }
-        }
+        };
 
 
         $scope.addTab = function() {
@@ -495,14 +542,14 @@
 
                     }
 
-                }
+                };
                 $scope.tabNames.tabs.push(newTab);
 
             }
             if($scope.tabNames.tabs.length == 4){
                 $scope.isNewTab = false;
             }
-        }
+        };
 
         $scope.isDeleteItem = false;
 
@@ -518,13 +565,13 @@
             if($scope.tabNames.tabs[tabId].items.length === 1){
                 $scope.isDeleteItem = false;
             }
-        }
+        };
 
         $scope.accordionActive = 1;
 
         $scope.changeAccordionActivity = function(id){
             $scope.accordionActive = id;
-        }
+        };
 
 
         $scope.positionCheck = function(){
@@ -567,7 +614,7 @@
                 document.getElementsByClassName("tabcontent")[0].style.display = "block";;
                 document.getElementsByClassName("tabs")[0].className += " active";
             }, 500);
-        }
+        };
 
         $scope.showBannerDialog = false;
 
@@ -642,7 +689,7 @@
         $scope.saveCardlet = function(){
             $http.post("/api/cardlet",  $scope.tabNames)
                 .success(function (data, status, headers, config) {
-
+                    $scope.userCard();
                 });
         }
 
