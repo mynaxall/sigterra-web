@@ -1264,6 +1264,11 @@ Social Buttons
     width: 100%;
 }
 
+.cardletNew{
+    width: 540px;
+    height: 240px;
+    padding:10px;
+}
 
 
 

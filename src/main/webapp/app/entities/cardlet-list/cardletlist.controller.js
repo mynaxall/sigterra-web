@@ -160,10 +160,11 @@
                     },
                     $scope.tabNames.tabs[0].photo = $scope.userAccount.imageUrl
 
-
                 });
         }
         $scope.getUserProfile();
+
+        $scope.firstBusinessCardId = 0;
 
         $scope.tabNames ={
             "cardletName": "Business cards",
@@ -392,6 +393,7 @@
 
         $scope.addTab = function() {
             if ($scope.tabNames.tabs.length <= 3) {
+
                 var newTab = {"name":"My info "+$scope.tabNames.tabs.length,
                     "position": $scope.tabNames.tabs.length,
                     "tabType": 1,
@@ -428,6 +430,10 @@
                 }
                 $scope.tabNames.tabs.push(newTab);
                 setTimeout(function(){
+                    console.log($scope.firstBusinessCardId)
+                    if(!$scope.firstBusinessCardId){
+                        $scope.firstBusinessCardId = newTab.position;
+                    }
                 $scope.openCity('settings'+newTab.name+newTab.position, 'tab'+newTab.position, newTab.name+newTab.position, newTab.position+newTab.name)}, 500)
             }
             if($scope.tabNames.tabs.length == 4){
@@ -544,6 +550,20 @@
                     document.getElementsByClassName("tabs2")[0].className += " active";
                     document.getElementsByClassName("tabcontent")[0].style.display = "block";;
                     document.getElementsByClassName("tabs")[0].className += " active";
+
+
+                    if($scope.firstBusinessCardId === $scope.tabToDeleteID){
+                        for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
+                            if ($scope.tabNames.tabs[i].tabType === 1){
+                                $scope.firstBusinessCardId = i;
+                                break
+                            }else{
+                                alert("asd")
+                                $scope.firstBusinessCardId = '';
+                            }
+                        }
+                    }
+
                 }, 500);
 
             }

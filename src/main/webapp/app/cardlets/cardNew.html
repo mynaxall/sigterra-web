@@ -1,0 +1,61 @@
+
+<div>
+
+   <div class="cardletNew">
+       <div class="user-name" ng-show="!tabNames.tabs[firstBusinessCardId].userName.value"  style="color: #{{tabNames.tabs[firstBusinessCardId].layout.secondaryColor}}">Jon Dou</div>
+       <div class="user-name" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].userName.bold ? 'bold' : 'normal',
+                    'font-style': tabNames.tabs[firstBusinessCardId].userName.italic ? 'italic' : 'normal',
+                    'text-decoration': tabNames.tabs[firstBusinessCardId].userName.underline ? 'underline' : 'normal', 'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor}"  ng-show="tabNames.tabs[firstBusinessCardId].userName.value">{{tabNames.tabs[firstBusinessCardId].userName.value}}</div>
+       <div class="user-main-text job-titile" ng-show="!tabNames.tabs[firstBusinessCardId].job.value">General Manager</div>
+       <div class="user-main-text job-titile" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].job.bold ? 'bold' : 'normal',
+                    'font-style': tabNames.tabs[firstBusinessCardId].job.italic ? 'italic' : 'normal',
+                    'text-decoration': tabNames.tabs[firstBusinessCardId].job.underline ? 'underline' : 'normal'}" ng-show="tabNames.tabs[firstBusinessCardId].job.value">{{tabNames.tabs[firstBusinessCardId].job.value}}</div>
+       <div class="company" ng-show="!tabNames.tabs[firstBusinessCardId].company.value">
+           Company Name
+       </div>
+       <div class="company" ng-show="tabNames.tabs[firstBusinessCardId].company.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].company.bold ? 'bold' : 'normal',
+                    'font-style': tabNames.tabs[firstBusinessCardId].company.italic ? 'italic' : 'normal',
+                    'text-decoration': tabNames.tabs[firstBusinessCardId].company.underline ? 'underline' : 'normal'}">
+           {{tabNames.tabs[firstBusinessCardId].company.value}}
+       </div>
+       <div class="" ng-show="!tabNames.tabs[firstBusinessCardId].phone.value">
+           tel: 1-888-555-5555
+       </div>
+       <div class="" ng-show="tabNames.tabs[firstBusinessCardId].phone.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].phone.bold ? 'bold' : 'normal',
+                    'font-style': tabNames.tabs[firstBusinessCardId].phone.italic ? 'italic' : 'normal',
+                    'text-decoration': tabNames.tabs[firstBusinessCardId].phone.underline ? 'underline' : 'normal'}">
+           tel: {{tabNames.tabs[firstBusinessCardId].phone.value}}
+       </div>
+
+       <div class="" ng-show="!tabNames.tabs[firstBusinessCardId].userEmail.value">
+           e-mail: fabian.abshireabsh@wilford.biz
+       </div>
+       <div class="" ng-show="tabNames.tabs[firstBusinessCardId].userEmail.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].userEmail.bold ? 'bold' : 'normal',
+                            'font-style': tabNames.tabs[firstBusinessCardId].userEmail.italic ? 'italic' : 'normal',
+                            'text-decoration': tabNames.tabs[firstBusinessCardId].userEmail.underline ? 'underline' : 'normal'}">
+           e-mail: <a href="mailto:{{tabNames.tabs[firstBusinessCardId].userEmail.value}}">{{tabNames.tabs[firstBusinessCardId].userEmail.value}}</a>
+
+       </div>
+
+       <div class="svg-description" ng-show="!tabNames.tabs[firstBusinessCardId].site.value">
+           web site: www.websitewebsite.com
+       </div>
+
+       <div class="" ng-show="tabNames.tabs[firstBusinessCardId].site.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].site.bold ? 'bold' : 'normal',
+                    'font-style': tabNames.tabs[firstBusinessCardId].site.italic ? 'italic' : 'normal',
+                    'text-decoration': tabNames.tabs[firstBusinessCardId].site.underline ? 'underline' : 'normal'}">
+           web site: <a target="_blank" href="{{tabNames.tabs[firstBusinessCardId].site.value}}">{{tabNames.tabs[firstBusinessCardId].site.value}}</a>
+       </div>
+
+       <div class="user-main-text" ng-show="!tabNames.tabs[firstBusinessCardId].address.value">
+           Address: 0000 Lynch Pine Apt. 605, South Keagan, Croatia
+       </div>
+       <div class="user-main-text" ng-show="tabNames.tabs[firstBusinessCardId].address.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].address.bold ? 'bold' : 'normal',
+                    'font-style': tabNames.tabs[firstBusinessCardId].address.italic ? 'italic' : 'normal',
+                    'text-decoration': tabNames.tabs[firstBusinessCardId].address.underline ? 'underline' : 'normal'}" style="max-width: 320px; max-height: 40px">
+           Address: {{tabNames.tabs[firstBusinessCardId].address.value}}
+       </div>
+
+   </div>
+</div>
+

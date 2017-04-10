@@ -10,7 +10,7 @@
     function EditCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location) {
         var vm = this;
 
-
+        $scope.firstBusinessCardId;
         $scope.showCropDialog = false;
         $scope.myImage='';
         $scope.myCroppedImage = '';
@@ -143,6 +143,15 @@
             $http.get("/api/cardlet/"+param1)
                 .success(function(response, status, headers) {
                     $scope.tabNames = response;
+                    for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
+                        if ($scope.tabNames.tabs[i].tabType === 1){
+                            $scope.firstBusinessCardId = i;
+                            break
+                        }else{
+                            alert("asd")
+                            $scope.firstBusinessCardId = '';
+                        }
+                    }
                 });
         };
 
@@ -400,6 +409,9 @@
                     }
                 $scope.tabNames.tabs.push(newTab);
                 setTimeout(function(){
+                    if(!$scope.firstBusinessCardId){
+                        $scope.firstBusinessCardId = newTab.position;
+                    }
                     $scope.openCity('settings'+newTab.name+newTab.position, newTab.position, newTab.name+newTab.position, 'card'+newTab.position+newTab.name)}, 500)
             }
         }
@@ -534,6 +546,18 @@
                     document.getElementsByClassName("tabs2")[0].className += " active";
                     document.getElementsByClassName("tabcontent")[0].style.display = "block";;
                     document.getElementsByClassName("tabs")[0].className += " active";
+
+                    if($scope.firstBusinessCardId === $scope.tabToDeleteID){
+                        for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
+                            if ($scope.tabNames.tabs[i].tabType === 1){
+                                $scope.firstBusinessCardId = i;
+                                break
+                            }else{
+                                alert("asd")
+                                $scope.firstBusinessCardId = '';
+                            }
+                        }
+                    }
                 }, 500);
             }
             $scope.showDelteTabDialog = false;
