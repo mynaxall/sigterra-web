@@ -1,6 +1,13 @@
+@font-face {
+    font-family: 'Roboto-medium';
+    src: url('fonts/Roboto-Medium.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Roboto-medium"!important;
     color: #333;
 }
 
@@ -990,8 +997,8 @@ Social Buttons
 .upload-item-img{
     background-color: #18C6B7!important;
     border-color: #18C6B7!important;
-    border-radius: 20px!important;
-    min-width: 120px!important;
+    border-radius: 0px!important;
+    min-width: 110px!important;
     height: 34px!important;
     padding: 1px 12px!important;
 }
@@ -1006,7 +1013,7 @@ Social Buttons
     text-transform: uppercase;
     width: 200px;
     border:none;
-    border-radius: 20px;
+    border-radius: 0px;
     font-size: 15px;
     padding: 12px;
     font-weight: bold;
@@ -1143,18 +1150,18 @@ Social Buttons
 
 .checkboxBold + label
 {
-    background-image: url("/content/images/bold.png");
+    background-image: url("/content/images/new/b.png");
     height: 30px;
-    width: 30px;
+    width: 38px;
     display:inline-block;
     padding: 0 0 0 0px;
 }
 
 .checkboxBold + label:hover
 {
-    background-image: url("/content/images/bold_hover.png");
+    background-image: url("/content/images/new/b_hover.png");
     height: 30px;
-    width: 30px;
+    width: 38px;
     display:inline-block;
     padding: 0 0 0 0px;
 }
@@ -1163,9 +1170,9 @@ Social Buttons
 
 .checkboxBold:checked + label
 {
-    background-image: url("/content/images/bold_active.png");
+    background-image: url("/content/images/new/b_hover.png");
     height: 30px;
-    width: 30px;
+    width: 38px;
     display:inline-block;
     padding: 0 0 0 0px;
 }
@@ -1176,32 +1183,32 @@ Social Buttons
 
 .checkboxItalic + label
 {
-    background-image: url("/content/images/italic.png");
+    background-image: url("/content/images/new/i.png");
     height: 30px;
-    width: 30px;
+    width: 38px;
     display:inline-block;
     padding: 0 0 0 0px;
-    margin-left: 5px;
+    margin-left: -5px;
 }
 
 .checkboxItalic + label:hover
 {
-    background-image: url("/content/images/italic_hover.png");
+    background-image: url("/content/images/new/i_hover.png");
     height: 30px;
-    width: 30px;
+    width: 38px;
     display:inline-block;
     padding: 0 0 0 0px;
-    margin-left: 5px;
+    margin-left: -5px;
 }
 
 .checkboxItalic:checked + label
 {
-    background-image: url("/content/images/italic_active.png");
+    background-image: url("/content/images/new/i_hover.png");
     height: 30px;
-    width: 30px;
+    width: 38px;
     display:inline-block;
     padding: 0 0 0 0px;
-    margin-left: 5px;
+    margin-left: -5px;
 }
 .checkboxUunderline {
     display:none;
@@ -1209,32 +1216,32 @@ Social Buttons
 
 .checkboxUunderline + label
 {
-    background-image: url("/content/images/underline.png");
+    background-image: url("/content/images/new/U.png");
     height: 30px;
-    width: 30px;
+    width: 38px;
     display:inline-block;
     padding: 0 0 0 0px;
-    margin-left: 5px;
+    margin-left: -5px;
 }
 
 .checkboxUunderline + label:hover
 {
-    background-image: url("/content/images/underline_hover.png");
+    background-image: url("/content/images/new/u_hover.png");
     height: 30px;
-    width: 30px;
+    width: 38px;
     display:inline-block;
     padding: 0 0 0 0px;
-    margin-left: 5px;
+    margin-left: -5px;
 }
 
 .checkboxUunderline:checked + label
 {
-    background-image: url("/content/images/underline_active.png");
+    background-image: url("/content/images/new/u_hover.png");
     height: 30px;
-    width: 30px;
+    width: 38px;
     display:inline-block;
     padding: 0 0 0 0px;
-    margin-left: 5px;
+    margin-left: -5px;
 }
 
 .spinner-shadow{
@@ -1269,6 +1276,33 @@ Social Buttons
     height: 240px;
     padding:10px;
 }
+
+.input-new{
+    width: 400px;
+    height: 34px;
+    border-width: 0px!important;
+    border-bottom-width: 1px!important;
+    border-bottom-color: #D0D8D9!important;
+    border-radius: 0px!important;
+    border-style: solid;
+    margin-top: 7px;
+    color: #7F8C8C;
+}
+
+.input-new:focus{
+    border-bottom-color: #13BCB5!important;
+}
+
+.item-btn{
+    background-color: #E8645A !important;
+    border-color: #E8645A !important;
+    border-radius: 0px !important;
+    min-width: 110px !important;
+    height: 34px !important;
+    padding: 1px 12px !important;
+}
+
+
 
 
 

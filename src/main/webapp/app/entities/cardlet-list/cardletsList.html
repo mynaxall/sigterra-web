@@ -146,18 +146,33 @@
         width: 150px;
         min-height: 44px;
         float: left;
-        background: #FFFFFF;
+        background: #F9F9F9;
         border-width: 1px;
         border-style: solid;
-        border-color: #D0D8D9;
-        margin-right: 5px;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        border-bottom: none;
-        color: #7F8C8C!important;
+        border-color: #E7E7E7;
+        color: #7F8C8C;
         text-transform: uppercase;
         text-align: center;
         font-weight: bold;
+    }
+
+    ul.tab li.dropdown{
+        height: 44px;
+        width: 54px;
+        background: #13BCB5;
+        border-width: 1px;
+        border-color: #13BCB5;
+        border-style: solid;
+    }
+
+
+    ul.tab li.dropdown a{
+        padding:12px;
+    }
+
+    ul.tab li.dropdown a:hover{
+        background: #13BCB5 ;
+        color: #FFFFFF;
     }
 
     /* Style the links inside the list items */
@@ -195,6 +210,7 @@
         top: -7px;
         right: -7px;
         text-transform: none;
+        z-index: 10
     }
 
     ul.tab{
@@ -205,10 +221,10 @@
     .tabcontent {
         display: none;
         padding: 6px 0px;
-        border: 1px solid #ccc;
+        border: 1px solid #E7E7E7;
         width: 620px;
-        background-color: #F9F9F9;
-        margin-top: 45px;
+        background-color: #FFFFFFF;
+        margin-top: 43px;
     }
 
 
@@ -288,39 +304,52 @@
 
     .input-text-div{
         float:left;
-        width: 450px
+        width: 420px
     }
 
     .text-decoration-div{
         float: left;
         width: 130px;
         text-align: right;
-        padding-top: 25px;
+        padding-top: 10px;
     }
 
     .social-image-form-div{
         float: left;
         width: 130px;
-        padding-top: 25px;
-        padding-left: 25px;
+        padding-top: 7px;
+        padding-left: 20px;
+    }
+
+    ul.tab li.active a{
+        color: #13BCB5!important;
     }
 
     ul.tab li.active {
-        background: #18C6B7;
+        background: #FFFFFF!important;
+        color: #13BCB5!important;
+        border-width: 0px;
+        border-top-width: 2px;
+        border-left-width: 1px;
+        border-left-color: #E7E7E7;
+        border-top-color: #13BCB5;
+        border-style: solid;
     }
 
     .dropdown-tab{
         border:none!important;
         width: 100%!important;
-        background-color: #FAFAFA!important;
+        background-color: #FFFFFF!important;
     }
     .cardlet-dropdown{
-        background-color: #FAFAFA!important;
+        background-color: #FFFFFF!important;
     }
 
 
     .add-item-btn{
         margin: 10px;
+        margin-right: 35px;
+        text-align: right;
     }
 
     .delete-item-btn{
@@ -378,6 +407,7 @@
 
     .status-icon{
         float: right;
+        margin-top: 10px;
         margin-right: 10px;
     }
 
@@ -406,10 +436,7 @@
                         </li>
                         <li  uib-dropdown class="dropdown pointer"  ng-show="isNewTab">
                             <a class="dropdown-toggle" uib-dropdown-toggle href="" >
-                            <span>
-                                <span style="color: #7F8C8C !important;">new tab
-                                </span>
-                                <b class="caret" style="color: #7F8C8C !important;"></b>
+                            <span class="glyphicon glyphicon-plus" style="color: #ffffff">
                             </span>
                             </a>
                             <ul class="dropdown-menu cardlet-dropdown" >
@@ -431,9 +458,8 @@
                         <form  name="form" role="form" novalidate show-validation>
 
                             <div class="form-group" style="padding: 15px">
-                                <label class="login-lable" for="name">Tab’s name</label>
 
-                                <input type="text" class="form-control profile-input" id="name" name="name" placeholder="Business card" ng-minlength=1 maxlength="12"
+                                <input type="text" class="input-new" id="name" name="name" placeholder="Tab’s name" ng-minlength=1 maxlength="12"
                                        ng-model="tabName.name" required>
                                 <div ng-show="form.name.$dirty && form.name.$invalid">
                                     <p class="help-block"
@@ -454,12 +480,11 @@
 
                             <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 2">
                                 <div class="accordion-section" ng-repeat="item in tabName.items">
-                                    <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">Enter Item {{$index+1}} Details <img class="status-icon" ng-click="accordionActive=0" ng-show="accordionActive==item.index" src="/content/images/minus_icon.png"><img class="status-icon" ng-click="accordionActive=item.index" ng-show="accordionActive!=item.index" src="/content/images/plus_icon.png"></a>
+                                    <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">Enter Item {{$index+1}} Details <img class="status-icon" ng-click="accordionActive=0" ng-show="accordionActive==item.index" src="/content/images/Arrow_up.png"><img class="status-icon" ng-click="accordionActive=item.index" ng-show="accordionActive!=item.index" src="/content/images/Arrow_down.png"></a>
                                     <div id="accordion2-item.index" class="accordion-section-content" ng-show="accordionActive==item.index">
                                         <div class="form-group">
                                             <div class="input-text-div">
-                                                <label class="login-lable cardlet-label" for="itemName">Name</label>
-                                                <input type="text" class="form-control profile-input" id="itemName" placeholder="Maui Hotel" ng-model="item.name.value" maxlength="16">
+                                                <input type="text" class="input-new" id="itemName" placeholder="Name" ng-model="item.name.value" maxlength="16">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="item.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{item.position}}"/><label for="boldName{{tabName.position}}{{item.position}}"></label>
@@ -470,8 +495,7 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="input-text-div">
-                                                <label class="login-lable cardlet-label" for="urlOne">url:\\</label>
-                                                <input type="text" ng-model="item.image" class="form-control profile-input" id="urlOne" placeholder="" >
+                                                <input type="text" ng-model="item.image" class="input-new" id="urlOne" placeholder="url:\\" >
                                             </div>
                                             <div class="social-image-form-div" >
                                                 <button  type="submit" ng-disabled="for2m.$invalid" ng-click="openCropDialog($parent.$index, item.position, 'image')" class="btn btn-primary main-btn upload-item-img">Upload</button>
@@ -479,8 +503,7 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="input-text-div">
-                                                <label class="login-lable cardlet-label" for="description">Description</label>
-                                                <input type="text" class="form-control profile-input" id="description" placeholder="How To Fly A Private Jet On Your Next Trip" ng-model="item.description.value" maxlength="40">
+                                                <input type="text" class="input-new" id="description" placeholder="Description" ng-model="item.description.value" maxlength="40">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="item.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{item.position}}"/><label for="boldDescription{{tabName.position}}{{item.position}}"></label>
@@ -492,24 +515,23 @@
 
                                         <div class="form-group">
                                             <div style="width: 450px">
-                                                <label class="login-lable cardlet-label" for="description">link</label>
-                                                <input type="text" class="form-control profile-input" id="description" placeholder="" ng-model="item.link">
+                                                <input type="text" class="input-new" id="description" placeholder="Link" ng-model="item.link">
                                             </div>
                                             <div class="text-decoration-div" >
 
                                             </div>
                                         </div>
                                         <br>
-                                        <div>
-                                            <button ng-show="isDeleteItem"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  item.index)" class="btn btn-primary delete-item-btn"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete item</button>
+                                        <div style="width: 100%; text-align: right; padding-right: 5px">
+                                            <button ng-show="isDeleteItem"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  item.index)"  class="btn btn-primary main-btn item-btn"> Delete item</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="add-item-btn">
-                                    <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn upload-item-img">Add item</button>
+                                    <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn">Add item</button>
                                 </div>
                                 <div class="accordion-section">
-                                    <a class="accordion-section-title" ng-class="{active:accordionActive==1}" ng-click="changeAccordionActivity(1)">Layout design <img class="status-icon" ng-show="accordionActive==1" ng-click="accordionActive=0" src="/content/images/minus_icon.png"><img class="status-icon" ng-click="accordionActive=1" ng-show="accordionActive!=1" src="/content/images/plus_icon.png"></a>
+                                    <a class="accordion-section-title" ng-class="{active:accordionActive==1}" ng-click="changeAccordionActivity(1)">Layout design <img class="status-icon" ng-show="accordionActive==1" ng-click="accordionActive=0" src="/content/images/Arrow_up.png"><img class="status-icon" ng-click="accordionActive=1" ng-show="accordionActive!=1" src="/content/images/Arrow_down.png"></a>
                                     <div id="accordion2-1" class="accordion-section-content" ng-show="accordionActive==1">
                                         <script>
                                             $(document).ready(function() {
@@ -538,15 +560,14 @@
                             <div class="accordion" ng-show="tabName.tabType === 1">
                                 <div class="accordion-section">
                                     <a class="accordion-section-title" ng-class="{active:accordion==1}" ng-click="accordionActivete(1)">
-                                        <div class="accordion-section-text">Personal details<img class="status-icon" ng-show="accordion==1" ng-click="accordion = 0" src="/content/images/minus_icon.png"><img ng-click="accordion=1" class="status-icon" ng-show="accordion!=1" src="/content/images/plus_icon.png"></div>
+                                        <div class="accordion-section-text">Personal details<img class="status-icon" ng-show="accordion==1" ng-click="accordion = 0" src="/content/images/Arrow_up.png"><img ng-click="accordion=1" class="status-icon" ng-show="accordion!=1" src="/content/images/Arrow_down.png"></div>
                                         <div class=""></div>
                                     </a>
                                     <div id="accordion-1" class="accordion-section-content"  ng-show="accordion==1">
                                         <div class="form-group">
 
                                             <div class="input-text-div">
-                                                <label class="login-lable cardlet-label" for="userName">Name</label>
-                                                <input type="text" class="form-control profile-input" id="userName" placeholder="Jon Dou" ng-model="tabName.userName.value" maxlength="20">
+                                                <input type="text" class="input-new" id="userName" placeholder="Name" ng-model="tabName.userName.value" maxlength="20">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.userName.bold" name='bold' class="checkboxBold" value='valuable' id="bold{{tabName.position}}"/><label for="bold{{tabName.position}}"></label>
@@ -559,8 +580,7 @@
                                         <div class="form-group">
 
                                             <div class="input-text-div">
-                                                <label class="login-lable cardlet-label" for="userName">Job title</label>
-                                                <input type="text" class="form-control profile-input" id="userName" placeholder="General manager" ng-model="tabName.job.value" maxlength="25">
+                                                <input type="text" class="input-new" id="userName" placeholder="Job title" ng-model="tabName.job.value" maxlength="25">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.job.bold" name='bold' value='valuable' class="checkboxBold" id="boldJob{{tabName.position}}"/><label for="boldJob{{tabName.position}}"></label>
@@ -573,8 +593,7 @@
                                         <div class="form-group">
 
                                             <div class="input-text-div">
-                                                <label class="login-lable cardlet-label" for="userName">Phone number</label>
-                                                <input type="text" class="form-control profile-input" id="userName" placeholder="077 1234 5678" ng-model="tabName.phone.value" maxlength="25">
+                                                <input type="text" class="input-new id="userName" placeholder="Phone number" ng-model="tabName.phone.value" maxlength="25">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.phone.bold" name='bold' value='valuable' class="checkboxBold" id="boldPhone{{tabName.position}}"/><label for="boldPhone{{tabName.position}}"></label>
@@ -587,8 +606,7 @@
                                         <div class="form-group">
 
                                             <div class="input-text-div">
-                                                <label class="login-lable cardlet-label" for="userName">Email</label>
-                                                <input type="email" class="form-control profile-input" id="userName" placeholder="heidenreich.eloisa@yahoo.com" ng-model="tabName.userEmail.value" maxlength="25">
+                                                <input type="email" class="input-new" id="userName" placeholder="E-mail" ng-model="tabName.userEmail.value" maxlength="25">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.userEmail.bold" name='boldEmail' value='valuableEmail' class="checkboxBold" id="boldEmail{{tabName.position}}"/><label for="boldEmail{{tabName.position}}"></label>
@@ -601,8 +619,7 @@
                                         <div class="form-group">
 
                                             <div class="input-text-div">
-                                                <label class="login-lable cardlet-label" for="userName">Company site</label>
-                                                <input type="text" class="form-control profile-input" id="userName" placeholder="https://www.yourcompany" ng-model="tabName.site.value" maxlength="25">
+                                                <input type="text" class="input-new" id="userName" placeholder="Company site" ng-model="tabName.site.value" maxlength="25">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.site.bold" name='bold' value='valuable' class="checkboxBold" id="boldSite{{tabName.position}}"/><label for="boldSite{{tabName.position}}"></label>
@@ -617,8 +634,7 @@
                                         <div class="form-group">
 
                                             <div class="input-text-div">
-                                                <label class="login-lable cardlet-label" for="userName">Company Name</label>
-                                                <input type="text" class="form-control profile-input" id="userName" placeholder="Your company" ng-model="tabName.company.value" maxlength="25">
+                                                <input type="text" class="input-new" id="userName" placeholder="Company Name" ng-model="tabName.company.value" maxlength="25">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.company.bold" name='bold' value='valuable' class="checkboxBold" id="boldCompany{{tabName.position}}"/><label for="boldCompany{{tabName.position}}"></label>
@@ -631,8 +647,7 @@
                                         <div class="form-group">
 
                                             <div class="input-text-div">
-                                                <label class="login-lable cardlet-label" for="userName">Address</label>
-                                                <input type="text" class="form-control profile-input" id="userName" placeholder="Your address" ng-model="tabName.address.value" maxlength="45">
+                                                <input type="text" class="input-new" id="userName" placeholder="Address" ng-model="tabName.address.value" maxlength="45">
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.address.bold" name='bold' value='valuable' class="checkboxBold" id="boldAddress{{tabName.position}}"/><label for="boldAddress{{tabName.position}}"></label>
@@ -644,8 +659,7 @@
 
                                         <div class="form-group">
                                             <div class="input-text-div">
-                                                <label class="login-lable cardlet-label" for="urlOne">Choose image</label>
-                                                <input type="text" ng-model="tabName.photo" class="form-control profile-input input-padding" id="urlOne" placeholder="https://www.yourcompany.com/my-promo-page">
+                                                <input type="text" ng-model="tabName.photo" class="input-new input-padding" id="urlOne" placeholder="Choose image">
                                             </div>
                                             <div class="social-image-form-div" >
                                                 <button  type="submit" ng-disabled="for2m.$invalid" ng-click="openCropDialog($index)" class="btn btn-primary main-btn upload-item-img">Upload</button>
@@ -656,55 +670,55 @@
                                 </div><!--end .accordion-section-->
 
                                 <div class="accordion-section">
-                                    <a class="accordion-section-title" ng-class="{active:accordion==2}" ng-click="accordionActivete(2)">Social links <img class="status-icon" ng-click="accordion=0" ng-show="accordion==2" src="/content/images/minus_icon.png"><img class="status-icon" ng-click="accordion=2" ng-show="accordion!=2" src="/content/images/plus_icon.png"></a>
+                                    <a class="accordion-section-title" ng-class="{active:accordion==2}" ng-click="accordionActivete(2)">Social links <img class="status-icon" ng-click="accordion=0" ng-show="accordion==2" src="/content/images/Arrow_up.png"><img class="status-icon" ng-click="accordion=2" ng-show="accordion!=2" src="/content/images/Arrow_down.png"></a>
                                     <div id="accordion-2" class="accordion-section-content"  ng-show="accordion==2">
 
                                         <div class="form-group">
 
                                             <div class="input-text-div">
-                                                <label class="login-lable cardlet-label" for="twitter">TWITTER</label>
-                                                <input type="text" class="form-control profile-input" id="twitter" placeholder="" ng-model="tabName.socialLinks.twitter">
+                                                <input type="text" class="input-new" id="twitter" placeholder="Twitter" ng-model="tabName.socialLinks.twitter">
                                             </div>
                                             <div class="social-image-form-div" >
-                                               <img src="/content/images/twitter.png">
+                                                <img ng-show="tabName.socialLinks.twitter" src="/content/images/new/twitter_hover.png">
+                                                <img ng-show="!tabName.socialLinks.twitter" src="/content/images/new/twitter.png">
                                             </div>
                                         </div>
                                         <div class="form-group">
 
                                             <div class="input-text-div">
-                                                <label class="login-lable cardlet-label" for="facebook">Facebook</label>
-                                                <input type="text" class="form-control profile-input" id="facebook" placeholder="" ng-model="tabName.socialLinks.facebook">
+                                                <input type="text" class="input-new" id="facebook" placeholder="Facebook" ng-model="tabName.socialLinks.facebook">
                                             </div>
                                             <div class="social-image-form-div" >
-                                                <img src="/content/images/facebook.png">
+                                                <img ng-show="tabName.socialLinks.facebook" src="/content/images/new/facebook_hover.png">
+                                                <img ng-show="!tabName.socialLinks.facebook" src="/content/images/new/facebook.png">
                                             </div>
                                         </div>
                                         <div class="form-group">
 
                                             <div class="input-text-div">
-                                                <label class="login-lable cardlet-label" for="google">Google</label>
-                                                <input type="text" class="form-control profile-input" id="google" placeholder="" ng-model="tabName.socialLinks.google">
+                                                <input type="text" class="input-new" id="google" placeholder="Google" ng-model="tabName.socialLinks.google">
                                             </div>
                                             <div class="social-image-form-div" >
-                                                <img src="/content/images/google.png">
+                                                <img ng-show="tabName.socialLinks.google" src="/content/images/new/facebook_hover.png">
+                                                <img ng-show="!tabName.socialLinks.google" src="/content/images/new/facebook.png">
                                             </div>
                                         </div>
                                         <div class="form-group">
 
                                             <div class="input-text-div">
-                                                <label class="login-lable cardlet-label" for="linkedin">linkedin</label>
-                                                <input type="text" class="form-control profile-input input-padding" id="linkedin" placeholder="" ng-model="tabName.socialLinks.linkedin">
+                                                <input type="text" class="input-new input-padding" id="linkedin" placeholder="Linkedin" ng-model="tabName.socialLinks.linkedin">
                                             </div>
                                             <div class="social-image-form-div" >
-                                                <img src="/content/images/linkedin.png">
-                                            </div>
+                                                <img ng-show="tabName.socialLinks.linkedin" src="/content/images/new/linkedin_hover.png">
+                                                <img ng-show="!tabName.socialLinks.linkedin" src="/content/images/new/linkedin.png">
+                                        </div>
                                         </div>
 
                                      </div><!--end .accordion-section-content-->
                                 </div><!--end .accordion-section-->
 
                                 <div class="accordion-section">
-                                    <a class="accordion-section-title" ng-class="{active:accordion==3}" ng-click="accordionActivete(3)">Layout design <img class="status-icon" ng-show="accordion==3" ng-click="accordion = 0" src="/content/images/minus_icon.png"><img class="status-icon" ng-click="accordion=3" ng-show="accordion!=3" src="/content/images/plus_icon.png"></a>
+                                    <a class="accordion-section-title" ng-class="{active:accordion==3}" ng-click="accordionActivete(3)">Layout design <img class="status-icon" ng-show="accordion==3" ng-click="accordion = 0" src="/content/images/Arrow_up.png"><img class="status-icon" ng-click="accordion=3" ng-show="accordion!=3" src="/content/images/Arrow_down.png"></a>
                                     <div id="accordion-3" class="accordion-section-content" ng-show="accordion==3">
                                         <script>
                                             $(document).ready(function() {
@@ -767,7 +781,7 @@
 
 
         a.accordion-section-title.active{
-            background-color: #ECECEC!important;
+            background-color: #FFFFFF!important;
         }
         .main:before {
             width:100%;
@@ -802,28 +816,29 @@
             overflow:hidden;
             box-shadow:0px 1px 3px rgba(0,0,0,0.25);
             border-radius:3px;
-            background:#f7f7f7;
+            background:#ffffff;
         }
 
         /*----- Section Titles -----*/
         .accordion-section-title {
             width: 100%;
             padding: 15px;
+            padding-left: 30px;
             display: inline-block;
-            border-top: 1px solid #D0D8D9;
-            border-bottom: 1px solid #D0D8D9;
-            background: #F9F9F9;
+            border-top: 1px solid #E7E7E7;
+            border-bottom: 1px solid #E7E7E7;
+            background: #ffffff;
             font-size: 1.200em;
-            color: #7F8C8C;
+            color: #13BCB5;
             text-transform: uppercase;
             font-weight: bold;
         }
 
         .accordion-section-title.active, .accordion-section-title:hover {
-            background:#ECECEC;
+            background:#ffffff;
             /* Type */
             text-decoration:none;
-            color: #7F8C8C;
+            color: #13BCB5;
         }
 
         .accordion-section:last-child .accordion-section-title {
@@ -833,6 +848,8 @@
         /*----- Section Content -----*/
         .accordion-section-content {
             padding:15px;
+            padding-left: 30px;
+            padding-right: 30px;
         }
 
     </style>
