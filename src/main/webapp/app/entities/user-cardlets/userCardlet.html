@@ -278,18 +278,6 @@
     </div>
     </div>
 </div>
-<div class="add-new-header">
-    <div class="add-new-header-text">
-        Have you been prospecting for months on end, only to end up with no one? Or have you been trying to sell a product or service that has not been selling? Or you just kind of depressed about your current employment?
-    </div>
-    <div style="position: relative">
-        <div class="border-line-new-header"></div>
-        <div class="add-new-btn">
-            <button class="saveButton" ui-sref="cardletlist">Create new</button>
-            <button class="saveButton" ng-show="showImpersonate === 'true'" ng-click="impersonate()" style="margin-top: 10px">Logout</button>
-        </div>
-    </div>
-</div>
 <div class="entiti-content">
 <style>
 
@@ -371,7 +359,7 @@
         padding-left: 5%;
         padding-right: 5%;
         padding-bottom: 50px;
-        background-color: #F9F9F9;
+        background-color: #fcfcfc;
         box-shadow: none;
     }
     @media (min-width: 1200px) {
@@ -381,7 +369,7 @@
             padding-left: 5%;
             padding-right: 5%;
             padding-bottom: 50px;
-            background-color: #F9F9F9;
+            background-color: #fcfcfc;
             box-shadow: none;
         }
     }
@@ -392,7 +380,7 @@
             padding-left: 8%;
             padding-right: 8%;
             padding-bottom: 50px;
-            background-color: #F9F9F9;
+            background-color: #fcfcfc;
             box-shadow: none;
         }
     }
@@ -608,28 +596,37 @@
     }
 
     .cardlet-panel{
-        width: 562px;
-        padding: 10px;
+        width: 585px;
         margin: auto;
-        background-color: #ECECEC;
-        border-radius: 5px;
+        background-color: #FFFFFF;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #BCBCBC;
+        position: relative;
     }
 
     .cardlet-name{
-        height: 60px;
-        font-size: 20px;
+        width: 100%;
+        font-size: 26px;
         text-transform: uppercase;
-        width: 540px;
         background: #FFF;
-        margin-bottom: 10px;
-        text-align: center;
-        padding-top: 15px;
+        text-align: left;
+        font-weight: normal;
+        color: #595959;
+        border-width: 0px;
+        border-bottom-width: 1px;
+        border-style: solid;
+        border-color: #F1F1F1;
+        padding: 20px;
     }
+
+
 
     .cardlet-button-panel{
         margin: 0px!important;
-        margin-top: 10px!important;
-        width: 540px;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
 
     }
 
@@ -643,6 +640,16 @@
         border-color: #c4c4c4;
     }
 
+    .catdlet-btn-top{
+        height:30px;
+        background: #fff;
+        text-align: center;
+        border-width: 1px;
+        border-top-width: 0px;
+        border-style: solid;
+        border-color: #BCBCBC;
+    }
+
     .catdlet-btn:hover{
         border-width: 2px;
         border-color: #18C6B7;
@@ -651,6 +658,13 @@
     .catdlet-btn-col{
         padding: 0px!important;
         width: 25%;
+        float: left;
+    }
+
+    .catdlet-btn-col-top{
+        padding: 0px!important;
+        width: 50%;
+        height: 30px;
         float: left;
     }
 
@@ -663,7 +677,7 @@
     }
 
     .add-new-panel{
-        margin-top: 50px;
+        margin-top: 60px;
     }
 
     .mail-us-btn{
@@ -702,48 +716,48 @@
 
 </style>
     <div class="user-cardlet-panel">
+            <div class="portfolio-header">
+                Portfolio
+            </div>
             <div class="row" >
                 <div style="margin-bottom: 30px;" class="col-lg-6" ng-repeat="tabNames in userCardlets">
                     <div class="cardlet-panel">
-                        <div class="cardlet-name">{{tabNames.cardletName}}</div>
-                        <div id="copy-to-clip{{tabNames.id}}">
-                            <div>
-                                <ul class="tab2">
-                                    <li style="background-color: #fff" class="tabs2 tabs2{{tabNames.id}}" ng-style="addColors('tab'+tabName.position+tabName.name+tabNames.id, tabName.layout.mainColor, tabName.layout.secondaryColor, $parent.$index)" ng-repeat="tabName in tabNames.tabs" ng-class="tabName.position == 0 ? 'active' : ''"
-                                        id="tab{{tabName.position}}{{tabName.name}}{{tabNames.id}}">
-                                        <div style="position: relative">
-                                            <a href="javascript:void(0)" class="tablinks2 tablinks2{{tabNames.id}}" ng-click="openCard(tabName.name+tabName.position+tabNames.id, 'tab'+tabName.position+tabName.name+tabNames.id, tabNames.id)">{{tabName.name}}</a>
-                                        </div>
-                                    </li>
-
-                                </ul>
+                        <div class="cardlet-top-control">
+                            <div class=" catdlet-btn-col-top">
+                                <div ui-sref="editcardletlist({ cardletId: tabNames.id })" class="catdlet-btn-top">
+                                    <img src="/content/images/edit_icon.png" style="margin-top: 5px;">
+                                </div>
                             </div>
-
-                            <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}{{tabNames.id}}" class="tabcontent2 tabcontent2{{tabNames.id}}" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-                                    <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+                            <div class="catdlet-btn-col-top">
+                                <div class="catdlet-btn-top" ng-click="delteCardletDialog(tabNames.id)">
+                                    <img src="/content/images/delete_icon.png" style="margin-top: 5px;">
+                                </div>
                             </div>
                         </div>
+                        <div class="cardlet-name">{{tabNames.cardletName}}</div>
+                        <div class="cardlet-central-panel" >
+                            <div id="copy-to-clip{{tabNames.id}}" >
+                                <div>
+                                    <ul class="tab2">
+                                        <li style="background-color: #fff" class="tabs2 tabs2{{tabNames.id}}" ng-style="addColors('tab'+tabName.position+tabName.name+tabNames.id, tabName.layout.mainColor, tabName.layout.secondaryColor, $parent.$index)" ng-repeat="tabName in tabNames.tabs" ng-class="tabName.position == 0 ? 'active' : ''"
+                                            id="tab{{tabName.position}}{{tabName.name}}{{tabNames.id}}">
+                                            <div style="position: relative">
+                                                <a href="javascript:void(0)" class="tablinks2 tablinks2{{tabNames.id}}" ng-click="openCard(tabName.name+tabName.position+tabNames.id, 'tab'+tabName.position+tabName.name+tabNames.id, tabNames.id)">{{tabName.name}}</a>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}{{tabNames.id}}" class="tabcontent2 tabcontent2{{tabNames.id}}" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
+                                        <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+                                </div>
+                        </div>
+                        </div>
                         <div class="cardlet-button-panel row">
-                            <div class="catdlet-btn-col">
-                                <div ng-click="copyToEmail($index, 'copy-to-clip'+tabNames.id, tabNames.id)" class="catdlet-btn catdlet-btn-margin">
-                                    <img src="/content/images/copy_to_email_icon.png">
-                                </div>
-                            </div>
-                            <div class=" catdlet-btn-col">
-                                <div ng-click="openModal(tabNames.id)" class="catdlet-btn catdlet-btn-margin">
-                                    <img src="/content/images/copy_to_web_icon.png">
-                                </div>
-                            </div>
-                            <div class=" catdlet-btn-col">
-                                <div ui-sref="editcardletlist({ cardletId: tabNames.id })" class="catdlet-btn catdlet-btn-margin">
-                                    <img src="/content/images/edit_icon.png">
-                                </div>
-                            </div>
-                            <div class=" catdlet-btn-col">
-                                <div class="catdlet-btn" ng-click="delteCardletDialog(tabNames.id)">
-                                    <img src="/content/images/delete_icon.png">
-                                </div>
-                            </div>
+                            <button type="submit" ng-disabled="for2m.$invalid" ng-click="copyToEmail($index, 'copy-to-clip'+tabNames.id, tabNames.id)" class="btn btn-primary main-btn copy-btn">Copy to e-mail</button>
+                            <button style="margin-left: 10px" type="submit" ng-click="copyToEmail($index, 'copy-to-clip'+tabNames.id, tabNames.id)" class="btn btn-primary main-btn copy-btn">Copy to web</button>
+
                         </div>
                     </div>
 
@@ -751,7 +765,7 @@
                 <div style="margin-bottom: 30px;" class="col-lg-6">
                     <div class="create-new-cardlet" ui-sref="cardletlist">
                         <div class="add-new-panel">
-                            <img src="/content/images/plus_icon2.png">
+                            <img style="width: 40px" src="/content/images/plus_icon2.png">
                             <div class="crate-new-btn">Create new</div>
                         </div>
                     </div>
@@ -760,16 +774,8 @@
         </div>
     </div>
     <div class="user-cardlets-footer">
-        <div class="border-line-footer"></div>
-        <div class="mail-us-btn">
-            <img src="/content/images/envelope_icon.png">
-        </div>
-        <div class="add-new-header-text">
-            Have you been prospecting for months on end, only to end up with no one? Or have you been trying to sell a product or service that has not been selling? Or you just kind of depressed about your current employment?
-        </div>
-        <div class="add-new-btn">
-            <button class="saveButton" ng-click="">Mail us</button>
-        </div>
+       <div style="font-size: 34px; color: #595959;">We’d love to hear from you</div>
+        <div style="font-size: 20px;"><span style=" color: #595959;">Email us: </span><span style="color: #18C6B7">support@sigterra.com</span></div>
     </div>
 
     <style>

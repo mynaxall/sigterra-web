@@ -1302,7 +1302,42 @@ Social Buttons
     padding: 1px 12px !important;
 }
 
+.cardlet-top-control{
+    position: absolute;
+    top:0;
+    right:0;
+    width: 64px;
+    height: 30px;
+}
 
+.cardlet-central-panel{
+    padding: 20px;
+    border-width: 0px;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: #F1F1F1
+}
+
+
+.copy-btn{
+    background-color: #18C6B7!important;
+    border-color: #18C6B7!important;
+    border-radius: 0px!important;
+    min-width: 110px!important;
+    height: 40px!important;
+    padding: 1px 12px!important;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.portfolio-header{
+    text-align: center;
+    width: 100%;
+    color: #595959;
+    font-size: 34px;
+    margin-bottom: 40px;
+
+}
 
 
 
