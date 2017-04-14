@@ -359,28 +359,52 @@
         padding-left: 5%;
         padding-right: 5%;
         padding-bottom: 50px;
-        background-color: #fcfcfc;
+        background-color: #FFFFFF;
         box-shadow: none;
     }
-    @media (min-width: 1200px) {
+    @media (min-width: 1220px) {
         .user-cardlet-panel {
             min-width: 600px;
             padding-top: 50px;
             padding-left: 5%;
             padding-right: 5%;
             padding-bottom: 50px;
-            background-color: #fcfcfc;
+            background-color: #FFFFFF;
             box-shadow: none;
         }
     }
-    @media (min-width: 1300px) {
+    @media (min-width: 1400px) {
         .user-cardlet-panel {
             min-width: 600px;
             padding-top: 50px;
             padding-left: 8%;
             padding-right: 8%;
             padding-bottom: 50px;
-            background-color: #fcfcfc;
+            background-color: #FFFFFF;
+            box-shadow: none;
+        }
+    }
+
+    @media (min-width: 1470px) {
+        .user-cardlet-panel {
+            min-width: 600px;
+            padding-top: 50px;
+            padding-left: 10%;
+            padding-right: 10%;
+            padding-bottom: 50px;
+            background-color: #FFFFFF;
+            box-shadow: none;
+        }
+    }
+
+    @media (min-width: 1650px) {
+        .user-cardlet-panel {
+            min-width: 600px;
+            padding-top: 50px;
+            padding-left: 17%;
+            padding-right: 17%;
+            padding-bottom: 50px;
+            background-color: #FFFFFF;
             box-shadow: none;
         }
     }
@@ -599,25 +623,20 @@
         width: 585px;
         margin: auto;
         background-color: #FFFFFF;
-        border-width: 1px;
-        border-style: solid;
-        border-color: #BCBCBC;
+        border-width: 0px;
         position: relative;
     }
 
     .cardlet-name{
         width: 100%;
         font-size: 26px;
-        text-transform: uppercase;
         background: #FFF;
         text-align: left;
-        font-weight: normal;
+        font-weight: bold;
         color: #595959;
         border-width: 0px;
-        border-bottom-width: 1px;
-        border-style: solid;
-        border-color: #F1F1F1;
         padding: 20px;
+        padding-bottom: 0px;
     }
 
 
@@ -627,6 +646,7 @@
         width: 100%;
         padding: 20px;
         text-align: center;
+        padding-top: 0px;
 
     }
 
@@ -635,7 +655,7 @@
         background: #fff;
         border-radius: 5px;
         text-align: center;
-        border-width: 1px;
+        border-width: 0px;
         border-style: solid;
         border-color: #c4c4c4;
     }
@@ -644,10 +664,7 @@
         height:30px;
         background: #fff;
         text-align: center;
-        border-width: 1px;
-        border-top-width: 0px;
-        border-style: solid;
-        border-color: #BCBCBC;
+        border-width: 0px;
     }
 
     .catdlet-btn:hover{
@@ -677,7 +694,7 @@
     }
 
     .add-new-panel{
-        margin-top: 60px;
+        margin-top: 90px;
     }
 
     .mail-us-btn{
@@ -720,7 +737,7 @@
                 Portfolio
             </div>
             <div class="row" >
-                <div style="margin-bottom: 30px;" class="col-lg-6" ng-repeat="tabNames in userCardlets">
+                <div style="margin-bottom: 70px;" class="col-lg-6" ng-repeat="tabNames in userCardlets">
                     <div class="cardlet-panel">
                         <div class="cardlet-top-control">
                             <div class=" catdlet-btn-col-top">
@@ -755,8 +772,8 @@
                         </div>
                         </div>
                         <div class="cardlet-button-panel row">
-                            <button type="submit" ng-disabled="for2m.$invalid" ng-click="copyToEmail($index, 'copy-to-clip'+tabNames.id, tabNames.id)" class="btn btn-primary main-btn copy-btn">Copy to e-mail</button>
-                            <button style="margin-left: 10px" type="submit" ng-click="copyToEmail($index, 'copy-to-clip'+tabNames.id, tabNames.id)" class="btn btn-primary main-btn copy-btn">Copy to web</button>
+                            <button type="submit" ng-disabled="for2m.$invalid" ng-click="copyToEmail($index, 'copy-to-clip'+tabNames.id, tabNames.id)" class="btn btn-primary main-btn copy-btn"><span class="copy-btn-part"><img src="/content/images/new/atsign.png"></span><span style="padding-left: 15px">Copy to e-mail</span></button>
+                            <button style="margin-left: 20px" type="submit" ng-click="openModal(tabNames.id)" class="btn btn-primary main-btn copy-btn"><span class="copy-btn-part"><img src="/content/images/new/copy_to_web.png"></span><span style="padding-left: 20px">Copy to web</span></button>
 
                         </div>
                     </div>
@@ -765,8 +782,7 @@
                 <div style="margin-bottom: 30px;" class="col-lg-6">
                     <div class="create-new-cardlet" ui-sref="cardletlist">
                         <div class="add-new-panel">
-                            <img style="width: 40px" src="/content/images/plus_icon2.png">
-                            <div class="crate-new-btn">Create new</div>
+                            <button type="submit" ng-disabled="for2m.$invalid" class="btn btn-primary main-btn copy-btn" style="background-color: #E8645A!important"><span style="background-color: #DA4941!important" class="copy-btn-part"><img src="/content/images/new/plus_icon.png"></span><span style="padding-left: 20px">Create New</span></button>
                         </div>
                     </div>
                 </div>
