@@ -883,9 +883,22 @@ Social Buttons
 .mail-instructions{
     background-color: #FFF;
     width: 100%;
-    height:300px;
+    height:110px;
     padding: 30px;
-    overflow: auto;
+    overflow: hidden;
+    color: #595959;
+    font-size: 14px;
+
+}
+
+.mail-instructions-open{
+    background-color: #FFF;
+    width: 100%;
+    padding: 30px;
+    overflow: hidden;
+    color: #595959;
+    font-size: 14px;
+
 }
 
 .mail-agent-col{
@@ -917,10 +930,11 @@ Social Buttons
 .mail-copy-div{
     width: 100%;
     min-height:300px;
-    background-color: #ECECEC;
+    background-color: #FFFFFF;
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 50px;
+    text-align: center;
 }
 
 .preview-header{
@@ -954,8 +968,8 @@ Social Buttons
 }
 
 .selectSignature{
-    float: left;
-    width: 33.333333%;
+    display: inline-block;
+    position: relative;
 }
 
 .selectSogmatureCol{
@@ -1032,6 +1046,7 @@ Social Buttons
 
 .saveButton:hover{
     background-color: #e87771;
+    color: #ffffff;
 }
 
 .choose-tab{
@@ -1298,7 +1313,6 @@ Social Buttons
     border-radius: 0px !important;
     min-width: 110px !important;
     height: 34px !important;
-    padding: 1px 12px !important;
 }
 
 .cardlet-top-control{
@@ -1365,6 +1379,7 @@ Social Buttons
         -webkit-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
         -moz-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
         box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
+        z-index: 10;
     }
     25%{
         height: 235px;
@@ -1399,6 +1414,7 @@ Social Buttons
         -webkit-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
         -moz-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
         box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
+        z-index: 10;
     }
     50%{
         height: 235px;
@@ -1429,6 +1445,7 @@ Social Buttons
         -webkit-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
         -moz-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
         box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
+        z-index: 10;
     }
     75%{
         height: 235px;
@@ -1457,6 +1474,7 @@ Social Buttons
         -webkit-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
         -moz-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
         box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
+        z-index: 10;
     }
     100%{
         height: 235px;
@@ -1519,6 +1537,233 @@ Social Buttons
     animation-iteration-count: infinite;
 }
 
+.landing-use{
+    background-color: #F6F6F6;
+}
+
+.landing-head-text{
+    font-size: 30px;
+    font-weight: bold;
+    color: #595959;
+}
+
+.landing-text{
+    color: #595959;
+    font-size: 16px;
+    font-weight: normal;
+}
+.landing-statistics{
+    background-color: #595959;
+}
+
+.landing-demo-img{
+    width: 100%;
+    height: 100%;;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: all 1s ease-in-out;
+    background: url("/content/images/new/matthew-dix-31391.png");
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+
+}
+
+.landing-demo-div{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;;
+}
+
+.landing-demo-div .image-shadow{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.3);
+    top:0;
+    left: 0;
+}
+
+.landing-demo-div:hover .image-shadow{
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 0;
+
+
+}
+
+
+.landing-demo-div:hover .landing-demo-img{
+    width: 120%;
+    height: 120%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: all 1s ease-in-out;
+    z-index: 10;
+    background: url("/content/images/new/business-card.png");
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+
+
+
+}
+.agents{
+    display: inline-block;
+    width: 18%;
+    min-width: 120px;
+    margin-bottom: 60px;
+}
+
+.landing-image-description{
+    margin-top: 15px;
+    font-size: 20px;
+    color: #595959;
+
+}
+
+.copy-to-email-steps{
+    color: #595959;
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.copy-to-email-step-number{
+    width: 28px;
+    height: 28px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #13BCB5;
+    color: #13BCB5;
+    border-radius: 28px;
+    font-size: 16px;
+    display: inline-block;
+    font-weight: bold;
+    padding-left: 8px;
+    padding-top: 2px
+
+
+}
+
+.add-banner-panel{
+    border-width: 0px;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    border-color: #F1F1F1;
+    border-style: solid;
+}
+
+#signature-selector{
+    outline: none !important;
+}
+
+.activeSignature{
+    border-color: #13BCB5;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.footer-panel{
+    background-color: #242424;
+}
+
+.footer-top-text{
+    font-weight: bold;
+    color: #18C6B7;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.footer-main-text{
+    font-size: 13px;
+    color: #FFFFFF;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+.footer-border{
+    border-width: 0px;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: #FFFFFF;
+    padding-bottom: 60px;
+
+}
+
+.footer-input{
+    margin-top: 25px;
+    height: 40px;
+    width: 100%;
+}
+
+div.navbar-collapse.in.collapse{
+    height: auto;
+    position: relative;
+    background: #242424;
+    z-index: 1000;
+}
+
+.user-cardlet-panel{
+    min-width: 600px;
+    padding-top: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 50px;
+    background-color: #FFFFFF;
+    box-shadow: none;
+}
+@media (min-width: 1220px) {
+    .user-cardlet-panel {
+        min-width: 600px;
+        padding-top: 50px;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom: 50px;
+        background-color: #FFFFFF;
+        box-shadow: none;
+    }
+}
+@media (min-width: 1400px) {
+    .user-cardlet-panel {
+        min-width: 600px;
+        padding-top: 50px;
+        padding-left: 8%;
+        padding-right: 8%;
+        padding-bottom: 50px;
+        background-color: #FFFFFF;
+        box-shadow: none;
+    }
+}
+
+@media (min-width: 1470px) {
+    .user-cardlet-panel {
+        min-width: 600px;
+        padding-top: 50px;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-bottom: 50px;
+        background-color: #FFFFFF;
+        box-shadow: none;
+    }
+}
+
+@media (min-width: 1650px) {
+    .user-cardlet-panel {
+        min-width: 600px;
+        padding-top: 50px;
+        padding-left: 17%;
+        padding-right: 17%;
+        padding-bottom: 50px;
+        background-color: #FFFFFF;
+        box-shadow: none;
+    }
+}
 
 
 
