@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Lato-Regular';
-    src: url('fonts/Lato-Regular.ttf');
+    src: url('/content/fonts/Lato-Regular.ttf');
     font-weight: normal;
     font-style: normal;
 }
@@ -1715,7 +1715,6 @@ div.navbar-collapse.in.collapse{
     padding-left: 5%;
     padding-right: 5%;
     padding-bottom: 50px;
-    background-color: #FFFFFF;
     box-shadow: none;
 }
 @media (min-width: 1220px) {
@@ -1725,7 +1724,6 @@ div.navbar-collapse.in.collapse{
         padding-left: 5%;
         padding-right: 5%;
         padding-bottom: 50px;
-        background-color: #FFFFFF;
         box-shadow: none;
     }
 }
@@ -1736,7 +1734,6 @@ div.navbar-collapse.in.collapse{
         padding-left: 8%;
         padding-right: 8%;
         padding-bottom: 50px;
-        background-color: #FFFFFF;
         box-shadow: none;
     }
 }
@@ -1748,7 +1745,6 @@ div.navbar-collapse.in.collapse{
         padding-left: 10%;
         padding-right: 10%;
         padding-bottom: 50px;
-        background-color: #FFFFFF;
         box-shadow: none;
     }
 }
@@ -1760,7 +1756,6 @@ div.navbar-collapse.in.collapse{
         padding-left: 17%;
         padding-right: 17%;
         padding-bottom: 50px;
-        background-color: #FFFFFF;
         box-shadow: none;
     }
 }
