@@ -52,7 +52,7 @@ public class CustomPersistentRememberMeServices extends
     private final Logger log = LoggerFactory.getLogger(CustomPersistentRememberMeServices.class);
 
     // Token is valid for one month
-    private static final int TOKEN_VALIDITY_DAYS = 31;
+    private static final int TOKEN_VALIDITY_DAYS = 365;
 
     private static final int TOKEN_VALIDITY_SECONDS = 60 * 60 * 24 * TOKEN_VALIDITY_DAYS;
 
@@ -170,7 +170,7 @@ public class CustomPersistentRememberMeServices extends
         if (!presentedToken.equals(token.getTokenValue())) {
             // Token doesn't match series value. Delete this session and throw an exception.
             persistentTokenRepository.delete(token);
-            throw new CookieTheftException("Invalid remember-me token (Series/token) mismatch. Implies previous " +
+            throw new RememberMeAuthenticationException("Invalid remember-me token (Series/token) mismatch. Implies previous " +
                 "cookie theft attack.");
         }
 
