@@ -558,7 +558,6 @@
                                 $scope.firstBusinessCardId = i;
                                 break
                             }else{
-                                alert("asd")
                                 $scope.firstBusinessCardId = '';
                             }
                         }

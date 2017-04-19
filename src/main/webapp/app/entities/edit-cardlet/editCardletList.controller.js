@@ -148,7 +148,6 @@
                             $scope.firstBusinessCardId = i;
                             break
                         }else{
-                            alert("asd")
                             $scope.firstBusinessCardId = '';
                         }
                     }
@@ -553,7 +552,6 @@
                                 $scope.firstBusinessCardId = i;
                                 break
                             }else{
-                                alert("asd")
                                 $scope.firstBusinessCardId = '';
                             }
                         }
