@@ -59,7 +59,7 @@
     <div class="landing-first-panel">
         <div class="user-cardlet-panel">
             <div style="font-weight: bold;font-size: 50px;padding-top: 120px">Business Card Marketing</div>
-            <div style="font-size: 20px;">We help you convert your personal traffic into leads</div>
+            <div style="font-size: 20px;">We help you convert your <span style="font-size: 26px; font-weight: bold">personal traffic</span> into <span style="font-size: 26px; font-weight: bold">leads</span></div>
             <div style="padding-top: 110px; text-align: left" class="row">
                 <div style="font-size: 20px;font-weight: bold" class="col-md-6">
                     <div>Who said Business Cards were supposed
@@ -67,7 +67,7 @@
                     <div style="font-size: 14px;padding-top: 20px">
                         Every email, Every profile lookup, Every web interaction is an opportunity to “passively” communicate what you are selling, marketing or passionate about
                     </div>
-                    <button style="height:40px;padding: 10px; margin-top: 30px;margin-bottom: 200px" type="submit" class="saveButton">LEARN MORE</button>
+                    <button style="height:40px;padding: 10px; margin-top: 30px;margin-bottom: 200px" type="submit" class="saveButton" ng-click="gotoBottom()">LEARN MORE</button>
 
                 </div>
                 <div class="col-md-6">
@@ -76,29 +76,31 @@
             </div>
         </div>
     </div>
-    <div style="background-color: #FFFFFF;">
+    <div style="background-color: #FFFFFF;" id="howItWorks">
         <div class="user-cardlet-panel">
             <div style="width: 100%; text-align: center; color: #595959; font-size: 35px; padding-top: 135px">How it Works ? </div>
             <div class="row" style="padding-top: 110px;  text-align: center;">
-                <div class="col-md-3" style="text-align: center; height: 240px">
+                <div class="col-md-3" style="text-align: center; height: 275px">
                     <div class="landing_create">
-                        <img src="/content/images/new/1_create.png">
+                        <div style="width: 100%;height:91px; margin: 0 auto">
+                            <img src="/content/images/new/1_create.png">
+                        </div>
                         <div style="color:#595959; font-size: 14px; padding-top: 35px">Create your Free Sigterra Profile</div>
                     </div>
                 </div>
-                <div class="col-md-3"  style="text-align: center;  height: 240px">
+                <div class="col-md-3"  style="text-align: center; height: 275px">
                     <div class="landing_add">
                         <img src="/content/images/new/2_add.png">
                         <div style="color:#595959; font-size: 14px; padding-top: 35px">Add it to your email signature</div>
                     </div>
                 </div>
-                <div class="col-md-3"  style="text-align: center; height: 240px">
+                <div class="col-md-3"  style="text-align: center; height: 275px">
                     <div class="landing_add_to_web">
                         <img src="/content/images/new/3_add_to_web.png">
                         <div style="color:#595959; font-size: 14px; padding-top: 35px">Add it to your Web Profiles, Blogs, Documents</div>
                     </div>
                 </div>
-                <div class="col-md-3"  style="text-align: center; height: 240px">
+                <div class="col-md-3"  style="text-align: center; height: 275px">
                     <div class="landing_see">
                         <img src="/content/images/new/4_see.png">
                         <div style="color:#595959; font-size: 14px; padding-top: 35px">See how many people have engaged with it</div>
@@ -118,7 +120,6 @@
                         <div class="landing-text" style="min-height: 130px">
                             Every email, Every profile lookup, Every web interaction is an opportunity to “passively” communicate what you are selling, marketing or passionate about
                         </div>
-                        <button style="height:40px;padding: 10px; margin-top: 30px;" type="submit" class="saveButton">LEARN MORE</button>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -129,7 +130,7 @@
                         <div class="landing-text" style="min-height: 130px">
                             Your web profile is being looked up between 4K – 8K per year. Use this opportunity to “passively” communicate with people interested in you. Add your Sigterra profile to linkedin, twitter, facebook, blogs or forums that you frequent.
                         </div>
-                        <button style="height:40px;padding: 10px; margin-top: 30px;" type="submit" class="saveButton">SIGN UP</button>
+                        <button style="height:40px;padding: 10px; margin-top: 30px;" type="submit" ng-click="vm.login()" class="saveButton">SIGN UP</button>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -140,7 +141,6 @@
                         <div class="landing-text" style="min-height: 130px">
                             Every pdf that you write or a blog post that you publish can have a link to your Sigterra Profile. Unlike Linkedin, Sigterra Profile is designed to capture the projects you are working on today.
                         </div>
-                        <button style="height:40px;padding: 10px; margin-top: 30px;" type="submit" class="saveButton">SIGN UP</button>
                     <div>
                 </div>
             </div>
@@ -292,7 +292,7 @@
         </div>
         <div class="user-cardlets-footer" style="background-color: #FFFFFF; text-align: center">
             <div style="font-size: 34px; color: #595959; padding-top: 135px">We’d love to hear from you</div>
-            <div style="font-size: 20px; padding-bottom: 135px"><span style=" color: #595959;">Email us: </span><span style="color: #18C6B7">support@sigterra.com</span></div>
+            <div style="font-size: 20px; padding-bottom: 135px"><span style=" color: #595959;">Email us: </span><a style="color: #18C6B7"  href="mailto:support@sigterra.com">support@sigterra.com</a></div>
         </div>
 
 </div>

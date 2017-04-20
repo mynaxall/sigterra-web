@@ -5,10 +5,22 @@
     font-style: normal;
 }
 
+html{
+    background: #FFFFFF;
+    height: 100%;
+    box-sizing: border-box;
+}
+
 body {
-    background: #fafafa;
+    background: #ffffff;
     font-family: "Lato-Regular"!important;
     color: #333;
+    min-height: 100%;
+}
+
+.footer {
+    position: relative;
+    width:100%;
 }
 
 /* ==========================================================================
@@ -392,9 +404,10 @@ Social Buttons
 
 .well {
     margin-top: 0px;
-    background-color: #F3F3F3;
+    background-color: #FFFFFF;
     padding: 0!important;
     border: none;
+    height: 100%;
 }
 .registration-div{
     background-color: #fff;
@@ -1096,8 +1109,8 @@ Social Buttons
 }
 
 .create-new-cardlet{
-    width: 500px;
-    height: 220px;
+    width: 545px;
+    height: 280px;
     background: #FFF;
     margin: auto;
     border-width: 1px;
@@ -1357,7 +1370,7 @@ Social Buttons
 }
 
 .copy-btn-part{
-    padding: 12px;
+    padding: 11px;
     background-color: #089993;
 }
 
@@ -1371,7 +1384,7 @@ Social Buttons
     color: #FFFFFF;
 }
 
-@keyframes example {
+@keyframes landing_create_animation {
     0%   {
         height: 235px;
         width: 185px;
@@ -1400,7 +1413,7 @@ Social Buttons
 
 }
 
-@keyframes example2 {
+@keyframes landing_add_animation {
     0%   {
         height: 235px;
         width: 185px;
@@ -1431,7 +1444,7 @@ Social Buttons
 
 }
 
-@keyframes example3 {
+@keyframes landing_add_to_web_animation {
     0%   {
         height: 235px;
         width: 185px;
@@ -1460,7 +1473,7 @@ Social Buttons
 
 }
 
-@keyframes example4 {
+@keyframes landing_see_animation {
     0%   {
         height: 235px;
         width: 185px;
@@ -1498,7 +1511,7 @@ Social Buttons
     width: 185px;
     margin: 0 auto;
     padding: 35px;
-    animation-name: example;
+    animation-name: landing_create_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
 }
@@ -1511,7 +1524,7 @@ Social Buttons
     width: 185px;
     margin: 0 auto;
     padding: 35px;
-    animation-name: example3;
+    animation-name: landing_add_to_web_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
 }
@@ -1524,7 +1537,7 @@ Social Buttons
     width: 185px;
     margin: 0 auto;
     padding: 35px;
-    animation-name: example2;
+    animation-name: landing_add_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
 }
@@ -1537,7 +1550,7 @@ Social Buttons
     width: 185px;
     margin: 0 auto;
     padding: 35px;
-    animation-name: example4;
+    animation-name: landing_see_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
 }
@@ -1764,6 +1777,8 @@ div.navbar-collapse.in.collapse{
         box-shadow: none;
     }
 }
+
+
 
 
 

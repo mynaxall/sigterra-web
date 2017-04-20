@@ -5,9 +5,9 @@
         .module('sigterraWebApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', '$anchorScroll', '$location'];
 
-    function HomeController ($scope, Principal, LoginService, $state) {
+    function HomeController ($scope, Principal, LoginService, $state, $location, $anchorScroll) {
         var vm = this;
 
         vm.account = null;
@@ -29,5 +29,12 @@
         function register () {
             $state.go('register');
         }
+
+        $scope.gotoBottom = function() {
+            // set the location.hash to the id of
+            // the element you wish to scroll to.
+            var el = document.getElementById('howItWorks');
+            el.scrollIntoView();
+        };
     }
 })();

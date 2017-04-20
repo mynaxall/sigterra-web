@@ -111,14 +111,44 @@
 
         @media (min-width: 1350px) {
             .tab-panel {
-                margin-left: 5%;
-                margin-right: 5%;
+                margin-left: 6%;
+                margin-right: 6%;
             }
         }
-        @media (min-width: 1600px) {
+
+        @media (min-width: 1400px) {
+            .tab-panel {
+                margin-left: 8%;
+                margin-right: 8%;
+            }
+        }
+
+
+        @media (min-width: 1500px) {
             .tab-panel {
                 margin-left: 10%;
                 margin-right: 10%;
+            }
+        }
+
+        @media (min-width: 1600px) {
+            .tab-panel {
+                margin-left: 12%;
+                margin-right: 12%;
+            }
+        }
+
+
+        @media (min-width: 1700px) {
+            .tab-panel {
+                margin-left: 15%;
+                margin-right: 15%;
+            }
+        }
+        @media (min-width: 1800px) {
+            .tab-panel {
+                margin-left: 17%;
+                margin-right: 17%;
             }
         }
         @media (min-width: 1200px) {
@@ -435,12 +465,12 @@
                         </a>
                         <ul class="dropdown-menu cardlet-dropdown" >
                             <li class="dropdown-tab" ui-sref-active="active">
-                                <a ng-click="addTab()">
+                                <a ng-click="addTab()" style="width: 100%">
                                     <span >My info</span>
                                 </a>
                             </li>
                             <li class="dropdown-tab">
-                                <a ng-click="addItem()">
+                                <a ng-click="addItem()" style="width: 100%">
                                     <span >Items</span>
                                 </a>
                             </li>
@@ -762,9 +792,8 @@
                         <ng-include src="'app/cardlets/cardNew.html'"></ng-include>
                     </div>
 
-
                     <div style="margin-top: 20px;">
-                        <button class="saveButton" ng-click="saveCardlet()">save</button>
+                        <button class="saveButton" ng-disabled="form.$invalid" ng-click="saveCardlet()">save</button>
                     </div>
                 </div>
             </div>
