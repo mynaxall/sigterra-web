@@ -204,7 +204,6 @@ ul#strengthBar {
     display:inline;
     list-style:none;
     margin:0;
-    margin-left:15px;
     padding:0;
     vertical-align:2px;
 }
@@ -216,9 +215,9 @@ ul#strengthBar {
     background:#DDD;
     border-radius:2px;
     display:inline-block;
-    height:7px;
+    height:2px;
     margin-right:5px;
-    width:30px;
+    width:20px;
 }
 
 /* ==========================================================================
@@ -411,7 +410,7 @@ Social Buttons
 }
 .registration-div{
     background-color: #fff;
-    max-width: 500px;
+    max-width: 410px;
     margin-right: auto;
     margin-left: auto;
     position: relative;
@@ -422,11 +421,11 @@ Social Buttons
     margin-top: 30px;
 }
 .main-head-text{
-    color: #489B94;
+    color: #13BCB5;
     padding-top: 30px;
     margin-bottom: 30px;
-    font-size: 25pt;
-    font-weight: bold;
+    font-size: 26px;
+    text-align: center;
 }
 .control-label{
     font-weight: normal;
@@ -450,22 +449,28 @@ Social Buttons
     padding-left: 20px;
 }
 
+
+
 .skip-btn{
-    background-color: #FFFFFF;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #489B94;
-    min-width: 170px;
-    height: 45px;
-    color: #489B94;
-    font-size: 18px;
+    background-color: #FFFFFf;
+    color: #13BCB5;
     text-transform: uppercase;
-    font-weight:bold;
-    border-radius: 40px;
-    padding-right: 20px;
-    padding-left: 20px;
+    width: 100%;
+    border-radius: 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #13BCB5;
+    font-size: 15px;
+    padding: 9px;
+    font-weight: bold;
 }
 
+.skip-btn:hover{
+    background-color: #13BCB5;
+    color: #FFFFFF;
+    border-color: #13BCB5;
+
+}
 .main-btn:hover{
     background-color: #5aaea7;
 }
@@ -483,7 +488,7 @@ Social Buttons
 
 .terms-and-conditions{
     color: #489B94;
-    text-decoration: underline;
+    text-decoration: none;
 }
 .terms-and-conditions:hover{
     color: #666;
@@ -498,11 +503,16 @@ Social Buttons
 }
 
 .login-header{
-    background-color: #489B94;
+    background-color: #FFFFFF;
+    border-style: solid;
+    border-width: 0px;
+    border-top-width: 4px;
+    border-color: #13BCB5;
+    padding-bottom: 0px;
 }
 
 .login-form{
-    padding: 40px 20px 0px 20px;
+    padding: 20px 60px 0px 60px;
 
 }
 
@@ -570,10 +580,17 @@ Social Buttons
 }
 
 .login-close{
-    color: white;
+    color: #13BCB5;
     opacity: 1;
     text-shadow: none;
-    font-size: 18px;
+    font-size: 23px;
+}
+
+.login-head-text{
+    font-size: 26px;
+    color: #13BCB5;
+    text-align: center;
+    font-weight: 500;
 }
 
 .login-close-gray{
@@ -584,14 +601,33 @@ Social Buttons
 }
 
 .login-lable{
+    font-size: 11px;
     color: #7F8C8C;
-    text-transform: uppercase;
+    font-weight: normal;
 }
 
 .profile-input{
     height: 40px;
-    border-radius: 25px!important;
+    border-width:0px;
+    border-bottom-width: 1px;
+    border-color: #D0D8D9;
+    outline: none;
+    border-style: solid;
+    width: 100%;
+
 }
+
+.profile-input:focus{
+    height: 40px;
+    border-width:0px;
+    border-bottom-width: 1px;
+    border-color: #13BCB5;
+    outline: none;
+    border-style: solid;
+    width: 100%;
+
+}
+
 .register-link{
     font-size: 18px;
     color: #489B94;
@@ -599,12 +635,12 @@ Social Buttons
 
 .register-head{
     width: 100%;
-    height: 15px;
-    background-color: #489B94;
+    height: 4px;
+    background-color: #13BCB5;
 }
 
 .register-container{
-    padding: 0px 25px 0px 25px;
+    padding: 0px 65px 0px 65px;
 }
 
 .steps{
@@ -653,26 +689,31 @@ Social Buttons
 
 .check-email-block {
     width: 80%;
-    color: gray;
-    font-size: 14px;
+    color: #7F8C8C;
+    font-size: 13px;
     margin: 0 auto;
     text-align: center
 }
 
 .check-span-block {
-    color: gray;
-    font-size: 12px;
-    margin-top: 50px;
-    text-align: center
+    color: #7F8C8C;
+    font-size: 10px;
+    margin-top: 35px;
+    text-align: center;
+    border-width: 0px;
+    border-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-color: #D0D8D9;
+    padding: 15px;
 }
 
 .check-span-block a {
-    color: #489a95;
+    color: #13BCB5;
     text-decoration: none;
 }
 
 .email-img-block {
-    float: left;
     width: 100%;
     margin-top: 45px;
     text-align: center
@@ -736,10 +777,18 @@ Social Buttons
     border-style: solid;
     border-color: #ECECEC;
 
+}
+
+.image-cropped-profile{
+    width: 200px;
+    height:200px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ECECEC;
 
 }
+
 .profile-photo-panel{
-    width: 500px;
     margin: auto;
     background: #fff;
     position: relative;
@@ -1045,6 +1094,19 @@ Social Buttons
     border-radius: 0px;
     font-size: 15px;
     padding: 12px;
+    font-weight: bold;
+
+}
+
+.loginButton{
+    background-color: #13BCB5;
+    color: #FFF;
+    text-transform: uppercase;
+    width: 100%;
+    border:none;
+    border-radius: 0px;
+    font-size: 15px;
+    padding: 10px;
     font-weight: bold;
 
 }
@@ -1778,6 +1840,47 @@ div.navbar-collapse.in.collapse{
     }
 }
 
+.registration-steps{
+    width: 28px;
+    height: 28px;
+    border-radius: 28px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #A0A0A0;
+    font-size: 16px;
+    color: #A0A0A0;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 2px;
+    font-weight: bold;
+    position: relative;
+    z-index: 20;
+    background: #fff;
+}
+
+.registration-steps-active{
+    border-color: #13BCB5;
+    color: #13BCB5;
+}
+.registration-steps-line{
+    position: absolute;
+    top:14px;
+    left: 0px;
+    width: 100%;
+    height: 0px;
+    border-width: 0px;
+    border-bottom: 1px;
+     border-color: #979797;
+    border-style: dashed;
+}
+
+.profile-title{
+    color: #4A4A4A;
+    font-size: 34px;
+    text-align: center;
+    margin-bottom: 55px;
+    margin-top: 55px;
+}
 
 
 

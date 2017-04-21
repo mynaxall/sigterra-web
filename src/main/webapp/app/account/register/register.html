@@ -5,9 +5,23 @@
     <div class="register-head"></div>
     <div class="register-container">
         <div>
-            <div class="row main-head-text">
-                <div class="col-md-7">Registration</div>
-                <div class="col-md-5 steps">Step 1 of 3</div>
+            <div class="row main-head-text ">
+                <div>Registration</div>
+            </div>
+
+            <div style="position: relative">
+                <div class="registration-steps-line"></div>
+                <div class="row registration-steps-bar">
+                    <div class="col-sm-4" style="text-align: left">
+                        <div class="registration-steps registration-steps-active" style="margin-left: 0px;">1</div>
+                    </div>
+                    <div class="col-sm-4" style="text-align: center">
+                        <div class="registration-steps">2</div>
+                    </div>
+                    <div class="col-sm-4" style="text-align: right">
+                        <div class="registration-steps" style="margin-right: -1px">3</div>
+                    </div>
+                </div>
             </div>
 
             <div class="alert alert-success" ng-show="vm.success">
@@ -34,8 +48,7 @@
             <form ng-show="!vm.success" name="form" role="form" novalidate show-validation>
 
                 <div class="form-group">
-                    <label class="login-lable" for="username">NAME*</label>
-                    <input type="text" class="form-control profile-input" id="username" name="username" placeholder="First & Last Name"
+                    <input type="text" class="profile-input" id="username" name="username" placeholder="Your Name *"
                            ng-model="vm.registerAccount.username" ng-minlength=4 ng-maxlength=50 required>
                     <div ng-show="form.username.$dirty && form.username.$invalid">
                         <p class="help-block"
@@ -57,8 +70,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="login-lable" for="email">E-mail*</label>
-                    <input type="email" class="form-control profile-input" id="email" name="email" placeholder="Your E-mail"
+                    <input type="email" class="profile-input" id="email" name="email" placeholder="E-mail *"
                            ng-model="vm.registerAccount.email" ng-minlength=5 ng-maxlength=100 required>
                     <div ng-show="form.email.$dirty && form.email.$invalid">
                         <p class="help-block"
@@ -80,8 +92,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="login-lable" for="password">Password*</label>
-                    <input type="password" class="form-control profile-input" id="password" name="password" placeholder="Your Password"
+                    <input type="password" class="profile-input" id="password" name="password" placeholder="Password *"
                            ng-model="vm.registerAccount.password" ng-minlength=4 ng-maxlength=50 required>
                     <div ng-show="form.password.$dirty && form.password.$invalid">
                         <p class="help-block"
@@ -91,7 +102,7 @@
                         <p class="help-block"
                            ng-show="form.password.$error.minlength">
                             Your password is required to be at least 4 characters.
-                        </p>
+                        </p>Password strengthPassword strength
                         <p class="help-block"
                            ng-show="form.password.$error.maxlength">
                             Your password cannot be longer than 50 characters.
@@ -100,8 +111,7 @@
                     <password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>
                 </div>
                 <div class="form-group">
-                    <label class="login-lable" for="confirmPassword">Password confirmation*</label>
-                    <input type="password" class="form-control profile-input" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password"
+                    <input type="password" class="profile-input" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password *"
                            ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50  pw-check='password' required>
                     <div ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
                         <p class="help-block"
@@ -124,28 +134,21 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="checkbox" id="accept" name="accept"style="margin-top: 0px;width: 14px;height: 14px;" ng-model="vm.accept" required>
-                    <label class="login-lable" for="accept">I accept <a target="_blank" class="terms-and-conditions" href="#">terms and conditions</a> of using</label>
+                    <div style="display: inline-block">
+                        <input type="checkbox" id="accept" name="accept"style="margin-top: 0px;width: 14px;height: 14px;" ng-model="vm.accept" required>
+                        <label class="login-lable" for="accept">I accept <a target="_blank" class="terms-and-conditions" href="#">Terms and Conditions</a> of using</label>
+                    </div>
+                    <div style="color: #7F8C8C; font-size: 11px;float: right">* Required</div>
                 </div>
-                <div style="text-align: center;">
-                    <button ng-click="vm.nextStep()" type="submit" ng-disabled="form.$invalid" class="saveButton">Next</button>
+                <div style="text-align: center;margin-top: 45px">
+                    <button ng-click="vm.nextStep()" type="submit" ng-disabled="form.$invalid" class="loginButton">Next</button>
                 </div>
             </form>
 
-            <div class="indication-page-block">
-                <div class="indication-page">
-                    <div class="circle circle-active" id="page1"></div>
-                    <div class="circle" id="curent-page"></div>
-                    <div class="circle" id="page3"></div>
-                </div>
-            </div>
-            <div style="margin-top: 70px;color: #7F8C8C;">
-                * Required fields
+            <div style="color: #7F8C8C; font-size: 13px; text-align: center; padding-top: 20px; padding-bottom: 45px">
+                Already have an account? <a class="alert-link register-link" style="color:#13BCB5;font-size: 13px;  font-weight: bold" href="" ng-click="vm.login()"> Sign in</a>
             </div>
         </div>
-    </div>
-    <div class="login-registration">
-        Already have an account? <a href="#"  ng-click="vm.login()">SIGN IN</a>
     </div>
 </div>
 
@@ -156,8 +159,22 @@
     <div class="register-container">
         <div>
             <div class="row main-head-text">
-                <div class="col-md-7"></div>
-                <div class="col-md-5 steps">Step 2 of 3</div>
+                <div>Additional information</div>
+            </div>
+
+            <div style="position: relative; margin-top: 30px; margin-bottom: 30px">
+                <div class="registration-steps-line"></div>
+                <div class="row registration-steps-bar">
+                    <div class="col-sm-4" style="text-align: left">
+                        <div style="margin-left: 0px;"><img src="/content/images/new/registerStepDone.png"></div>
+                    </div>
+                    <div class="col-sm-4" style="text-align: center">
+                        <div class="registration-steps registration-steps-active">2</div>
+                    </div>
+                    <div class="col-sm-4" style="text-align: right">
+                        <div class="registration-steps" style="margin-right: -1px">3</div>
+                    </div>
+                </div>
             </div>
 
             <div class="alert alert-success" ng-show="vm.success">
@@ -184,50 +201,37 @@
             <form ng-show="!vm.success" name="form2" role="form" novalidate show-validation>
 
                 <div class="form-group">
-                    <label class="login-lable" for="phoneNumber">PHONE NUMBER</label>
-                    <input type="text" class="form-control profile-input" id="phoneNumber" name="phoneNumber" placeholder="Your Phone Number"
+                    <input type="text" class="profile-input" id="phoneNumber" name="phoneNumber" placeholder="Phone number"
                            ng-model="vm.registerAccount.phoneNumber">
                 </div>
                 <div class="form-group">
-                    <label class="login-lable" for="address">ADDRESS</label>
-                    <input type="text" class="form-control profile-input" id="address" name="address" placeholder="Your Address"
+                    <input type="text" class="profile-input" id="address" name="address" placeholder="Address"
                            ng-model="vm.registerAccount.address">
                 </div>
 
                 <div class="form-group">
-                    <label class="login-lable" for="companyName">COMPANY NAME</label>
-                    <input type="text" class="form-control profile-input" id="companyName" name="companyName" placeholder="Your Company Name"
+                    <input type="text" class="profile-input" id="companyName" name="companyName" placeholder="Company Name"
                            ng-model="vm.registerAccount.companyName">
                 </div>
                 <div class="form-group">
-                    <label class="login-lable" for="companySite">COMPANY WEBSITE</label>
-                    <input type="text" class="form-control profile-input" id="companySite" name="companySite" placeholder="Your Company Website"
+                    <input type="text" class="profile-input" id="companySite" name="companySite" placeholder="Company Website"
                            ng-model="vm.registerAccount.companySite">
                 </div>
 
                 <div class="form-group">
-                    <label class="login-lable" for="jobTitle">JOB TITLE</label>
-                    <input type="text" class="form-control profile-input" id="jobTitle" name="jobTitle" placeholder="Job Title"
+                    <input type="text" class="profile-input" id="jobTitle" name="jobTitle" placeholder="Job Title"
                            ng-model="vm.registerAccount.jobTitle">
                 </div>
 
                 <div style="text-align: center;">
-                    <button  type="submit" ng-disabled="for2m.$invalid" ng-click="vm.register()" class="saveButton" style="width: 170px;">Save</button>
-                    <button  type="submit" ng-disabled="form2.$invalid" ng-click="vm.skip()" class="btn btn-primary skip-btn">skip</button>
+                    <button  type="submit" ng-disabled="for2m.$invalid" ng-click="vm.register()" class="loginButton" style="width: 130px; float: left">Save</button>
+                    <button  type="submit" ng-disabled="form2.$invalid" ng-click="vm.skip()" class="btn btn-primary skip-btn"  style="width: 130px; float: right">skip</button>
                 </div>
             </form>
-
-            <div class="indication-page-block">
-                <div class="indication-page">
-                    <div class="circle" id="page1"></div>
-                    <div class="circle circle-active" id="curent-page"></div>
-                    <div class="circle" id="page3"></div>
-                </div>
+            <div style="color: #7F8C8C; font-size: 13px; text-align: center; padding-top: 60px; padding-bottom: 45px">
+                Already have an account? <a class="alert-link register-link" style="color:#13BCB5;font-size: 13px;  font-weight: bold" href="" ng-click="vm.login()"> Sign in</a>
             </div>
         </div>
-    </div>
-    <div class="login-registration">
-        Already have an account? <a href="#"  ng-click="vm.login()">SIGN IN</a>
     </div>
 </div>
 
@@ -237,33 +241,37 @@
     <div class="register-container">
         <div>
             <div class="row main-head-text">
-                <div class="col-md-7"></div>
-                <div class="col-md-5 steps">Step 3 of 3</div>
+               <div>Email sent</div>
+            </div>
+
+            <div style="position: relative; margin-top: 30px; margin-bottom: 30px">
+                <div class="registration-steps-line"></div>
+                <div class="row registration-steps-bar">
+                    <div class="col-sm-4" style="text-align: left">
+                        <div style="margin-left: 0px;"><img src="/content/images/new/registerStepDone.png"></div>
+                    </div>
+                    <div class="col-sm-4" style="text-align: center">
+                        <div style="margin-left: 0px;"><img src="/content/images/new/registerStepDone.png"></div>
+                    </div>
+                    <div class="col-sm-4" style="text-align: right">
+                        <div class="registration-steps registration-steps-active" style="margin-right: -1px">3</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div>
             <div class="email-img-block">
                 <img src="/content/images/email.png" alt="">
             </div>
-            <div class="reg-saved-block">
-                REGISTRATION SAVED!
-            </div>
-            <div class="check-email-block">
+            <div class="check-email-block" style="margin-top: 40px">
                 Please check your <b>{{vm.registerAccount.email}}</b> for confirmation.
             </div>
             <div class="check-span-block">
                 No email? Check your spam folder! <a href="">Click here to resend</a> or contact us at <a href="">costumer@sigterra.com.</a>
             </div>
-            <div class="indication-page-block">
-                <div class="indication-page">
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <div class="circle circle-active"></div>
-                </div>
+            <div style="color: #7F8C8C; font-size: 13px; text-align: center; padding-top: 20px; padding-bottom: 45px">
+                Already have an account? <a class="alert-link register-link" style="color:#13BCB5;font-size: 13px;  font-weight: bold" href="" ng-click="vm.login()"> Sign in</a>
             </div>
         </div>
-    </div>
-    <div class="login-registration">
-        Already have an account? <a href="#"  ng-click="vm.login()">LOGIN</a>
     </div>
 </div>
