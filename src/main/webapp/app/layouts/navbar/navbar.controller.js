@@ -22,6 +22,8 @@
         vm.logout = logout;
         vm.toggleNavbar = toggleNavbar;
         vm.collapseNavbar = collapseNavbar;
+        vm.gotoBottom = gotoBottom;
+        vm.gotoFooter = gotoFooter;
         vm.$state = $state;
 
         function login() {
@@ -42,5 +44,19 @@
         function collapseNavbar() {
             vm.isNavbarCollapsed = true;
         }
+
+        function gotoBottom() {
+            // set the location.hash to the id of
+            // the element you wish to scroll to.
+            var el = document.getElementById('howItWorks');
+            el.scrollIntoView();
+        };
+
+        function gotoFooter() {
+            // set the location.hash to the id of
+            // the element you wish to scroll to.
+            var el = document.getElementById('sigFooter');
+            el.scrollIntoView();
+        };
     }
 })();

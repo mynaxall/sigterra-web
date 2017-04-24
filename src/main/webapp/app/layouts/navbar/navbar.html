@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-custom" role="navigation">
-    <div class="container">
+    <div class="user-cardlet-panel" style="background-color: #242424;padding-top: 0px; padding-bottom: 0px">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" ng-click="vm.toggleNavbar()">
                 <span class="sr-only">Toggle navigation</span>
@@ -21,8 +21,19 @@
                     <!--</a>-->
                 <!--</li>-->
                 <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-                <li ui-sref-active="activeNavigationTab" style="margin-top: 15px;" ng-switch-when="true" uib-dropdown class="dropdown pointer">
-                    <a ui-sref="userCardletlist" ng-click="vm.collapseNavbar()">
+                <li ng-hide="vm.isAuthenticated()" style="margin-top: 15px;" ng-switch-when="false" uib-dropdown class="dropdown pointer">
+                    <a href="" ng-click="vm.gotoBottom()">
+                        <span>HOW IT WORKS?</span>
+                    </a>
+                </li>
+                <li ng-hide="vm.isAuthenticated()" style="margin-top: 15px;" ng-switch-when="false" uib-dropdown class="dropdown pointer">
+                    <a href=""  ng-click="vm.gotoFooter()">
+                        <span>CONTACT US</span>
+                    </a>
+                </li>
+
+                <li style="margin-top: 15px;" ng-switch-when="true" uib-dropdown class="dropdown pointer">
+                    <a ui-sref="userCardletlist" ng-click="">
                         <span>PORTFOLIO</span>
                     </a>
                 </li>
@@ -63,7 +74,7 @@
                         <li ui-sref-active="active" ng-switch-when="false">
                             <a ui-sref="register" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
-                                <span>Register</span>
+                                <span>Sign up</span>
                             </a>
                         </li>
                     </ul>
@@ -126,6 +137,12 @@
                         </li>
                         <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
                     </ul>
+                </li>
+
+                <li style="margin-top: 15px;"  uib-dropdown class="dropdown pointer">
+                    <a href=""  class="saveButton">
+                        <span>Request for demo</span>
+                    </a>
                 </li>
             </ul>
         </div>
