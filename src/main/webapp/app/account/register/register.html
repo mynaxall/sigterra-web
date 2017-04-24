@@ -9,7 +9,7 @@
                 <div>Registration</div>
             </div>
 
-            <div style="position: relative">
+            <div style="position: relative;  margin-top: 30px; margin-bottom: 30px">
                 <div class="registration-steps-line"></div>
                 <div class="row registration-steps-bar">
                     <div class="col-sm-4" style="text-align: left">
@@ -49,7 +49,7 @@
 
                 <div class="form-group">
                     <input type="text" class="profile-input" id="username" name="username" placeholder="Your Name *"
-                           ng-model="vm.registerAccount.username" ng-minlength=4 ng-maxlength=50 required>
+                           ng-model="vm.registerAccount.username" ng-minlength=1 ng-maxlength=50 required>
                     <div ng-show="form.username.$dirty && form.username.$invalid">
                         <p class="help-block"
                            ng-show="form.username.$error.required">
@@ -136,7 +136,7 @@
                 <div class="form-group">
                     <div style="display: inline-block">
                         <input type="checkbox" id="accept" name="accept"style="margin-top: 0px;width: 14px;height: 14px;" ng-model="vm.accept" required>
-                        <label class="login-lable" for="accept">I accept <a target="_blank" class="terms-and-conditions" href="#">Terms and Conditions</a> of using</label>
+                        <label style="margin-left: 5px;" class="login-lable" for="accept">I accept <a target="_blank" class="terms-and-conditions" href="#">Terms and Conditions</a> of using</label>
                     </div>
                     <div style="color: #7F8C8C; font-size: 11px;float: right">* Required</div>
                 </div>
@@ -274,4 +274,25 @@
             </div>
         </div>
     </div>
+    <style>.profile-input{
+        height: 40px;
+        border-width:0px;
+        border-bottom-width: 1px;
+        border-color: #D0D8D9;
+        outline: none;
+        border-style: solid;
+        width: 100%;
+
+    }
+
+    .profile-input:focus{
+        height: 40px;
+        border-width:0px;
+        border-bottom-width: 1px;
+        border-color: #13BCB5;
+        outline: none;
+        border-style: solid;
+        width: 100%;
+
+    }</style>
 </div>
