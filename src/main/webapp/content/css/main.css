@@ -1502,8 +1502,6 @@ Social Buttons
         border-color: #EEEEEE;
     }
 
-
-
 }
 
 @keyframes landing_add_to_web_animation {
@@ -1564,8 +1562,242 @@ Social Buttons
 
 }
 
+@keyframes landing-steps-one_animation {
+    0%   {
+        border-width: 1px;
+        border-style: solid;
+        border-color: #A0A0A0;
+        color:#A0A0A0
+    }
+    12%{
 
-.landing_create{
+        border-width: 1px;
+        border-style: solid;
+        border-color: #18C6B7;
+        color:#18C6B7
+    }
+    25%{
+        border-width: 1px;
+        border-style: solid;
+        color:#A0A0A0
+    }
+
+    100% {
+        border-width: 1px;
+        border-style: solid;
+        color:#A0A0A0
+    }
+
+}
+
+
+@keyframes landing-step-two_animation {
+    0%   {
+        border-width: 1px;
+        border-style: solid;
+        color:#A0A0A0
+    }
+    25%   {
+        border-width: 1px;
+        border-style: solid;
+        color:#A0A0A0
+    }
+
+    37%{
+        border-width: 1px;
+        border-style: solid;
+        border-color: #18C6B7;
+        color:#18C6B7
+    }
+    50%{
+        border-width: 1px;
+        border-style: solid;
+        color:#A0A0A0
+    }
+
+}
+
+@keyframes landing-steps-three_animation {
+    0%   {
+        border-width: 1px;
+        border-style: solid;
+        color:#A0A0A0
+    }
+    50%   {
+        border-width: 1px;
+        border-style: solid;
+        color:#A0A0A0
+    }
+
+    62%{
+        border-width: 1px;
+        border-style: solid;
+        border-color: #18C6B7;
+        color:#18C6B7
+    }
+    75%{
+        border-width: 1px;
+        border-style: solid;
+        color:#A0A0A0
+    }
+
+}
+
+@keyframes landing-steps-four_animation {
+    0%   {
+        border-width: 1px;
+        border-style: solid;
+        color:#A0A0A0
+    }
+    75%   {
+        border-width: 1px;
+        border-style: solid;
+        color:#A0A0A0
+    }
+
+    89%{
+        border-width: 1px;
+        border-style: solid;
+        border-color: #18C6B7;
+        color:#18C6B7
+    }
+    100%{
+        border-width: 1px;
+        border-style: solid;
+        color:#A0A0A0
+    }
+
+}
+
+
+.landing-steps-one{
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #A0A0A0;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    color:#A0A0A0;
+    animation-name: landing-steps-one_animation;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    padding-top: 4px;
+    position: relative;
+    z-index: 10;
+    background-color: #FFF;
+
+}
+
+.landing-steps-two{
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #A0A0A0;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    color:#A0A0A0;
+    animation-name: landing-step-two_animation;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    padding-top: 4px;
+    position: relative;
+    background-color: #FFF;
+    z-index: 10;
+}
+
+.landing-steps-three{
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #A0A0A0;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    color:#A0A0A0;
+    animation-name: landing-steps-three_animation;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    padding-top: 4px;
+    position: relative;
+    background-color: #FFF;
+    z-index: 10;
+
+}
+
+.landing-steps-four{
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #A0A0A0;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    color:#A0A0A0;
+    animation-name: landing-steps-four_animation;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    padding-top: 4px;
+    position: relative;
+    background-color: #FFF;
+    z-index: 10;
+}
+
+.landing-steps{
+    display: none;
+}
+.landing-steps-border{
+    display: none;
+}
+
+.landing-steps-border-right{
+    display: none;
+}
+
+@media (min-width: 970px){
+    .landing-steps{
+        margin-top: 30px;
+        display: block;
+        width: 100%;
+
+    }
+    .landing-steps-border {
+        position: absolute;
+        top: 20px;
+        left: 0px;
+        width: 100%;
+        height: 0px;
+        display: block;
+        border-bottom: 1px dashed #979797;
+    }
+
+    .landing-steps-border-right {
+        position: absolute;
+        top: -20px;
+        left: 0px;
+        width: 100%;
+        height: 0px;
+        display: block;
+        border-bottom: 1px dashed #979797;
+    }
+}
+
+
+
+    .landing_create{
     border-width: 1px;
     border-color: #EEEEEE;
     border-style: solid;
@@ -1704,6 +1936,10 @@ Social Buttons
     font-size: 20px;
     color: #595959;
 
+}
+
+.landing-image{
+    margin-bottom: 40px;
 }
 
 .copy-to-email-steps{
