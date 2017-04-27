@@ -19,8 +19,10 @@ body {
 }
 
 .footer {
-    position: relative;
+    position: absolute;
     width:100%;
+    bottom: 0;
+    left: 0;
 }
 
 /* ==========================================================================
@@ -1364,7 +1366,7 @@ Social Buttons
 
 .cardletNew{
     width: 540px;
-    height: 240px;
+    height: 280px;
     padding:10px;
 }
 
@@ -1448,7 +1450,7 @@ Social Buttons
 
 @keyframes landing_create_animation {
     0%   {
-        height: 235px;
+        height: 255px;
         width: 185px;
         border-color: #EEEEEE;
     }
@@ -1462,13 +1464,13 @@ Social Buttons
         z-index: 10;
     }
     25%{
-        height: 235px;
+        height: 255px;
         width: 185px;
         border-color: #EEEEEE;
     }
 
     100% {
-        height: 235px;
+        height: 255px;
         width: 185px;
         border-color: #EEEEEE;
     }
@@ -1477,12 +1479,12 @@ Social Buttons
 
 @keyframes landing_add_animation {
     0%   {
-        height: 235px;
+        height: 255px;
         width: 185px;
         border-color: #EEEEEE;
     }
     25%   {
-        height: 235px;
+        height: 255px;
         width: 185px;
         border-color: #EEEEEE;
     }
@@ -1497,7 +1499,7 @@ Social Buttons
         z-index: 10;
     }
     50%{
-        height: 235px;
+        height: 255px;
         width: 185px;
         border-color: #EEEEEE;
     }
@@ -1506,12 +1508,12 @@ Social Buttons
 
 @keyframes landing_add_to_web_animation {
     0%   {
-        height: 235px;
+        height: 255px;
         width: 185px;
         border-color: #EEEEEE;
     }
     50%   {
-        height: 235px;
+        height: 255px;
         width: 185px;
         border-color: #EEEEEE;
     }
@@ -1526,7 +1528,7 @@ Social Buttons
         z-index: 10;
     }
     75%{
-        height: 235px;
+        height: 255px;
         width: 185px;
         border-color: #EEEEEE;
     }
@@ -1535,12 +1537,12 @@ Social Buttons
 
 @keyframes landing_see_animation {
     0%   {
-        height: 235px;
+        height: 255px;
         width: 185px;
         border-color: #EEEEEE;
     }
     75%   {
-        height: 235px;
+        height: 255px;
         width: 185px;
         border-color: #EEEEEE;
     }
@@ -1555,7 +1557,7 @@ Social Buttons
         z-index: 10;
     }
     100%{
-        height: 235px;
+        height: 255px;
         width: 185px;
         border-color: #EEEEEE;
     }
@@ -1797,11 +1799,11 @@ Social Buttons
 
 
 
-    .landing_create{
+.landing_create{
     border-width: 1px;
     border-color: #EEEEEE;
     border-style: solid;
-    height: 235px;
+    height: 255px;
     width: 185px;
     margin: 0 auto;
     padding: 35px;
@@ -1814,7 +1816,7 @@ Social Buttons
     border-width: 1px;
     border-color: #EEEEEE;
     border-style: solid;
-    height: 235px;
+    height: 255px;
     width: 185px;
     margin: 0 auto;
     padding: 35px;
@@ -1827,7 +1829,7 @@ Social Buttons
     border-width: 1px;
     border-color: #EEEEEE;
     border-style: solid;
-    height: 235px;
+    height: 255px;
     width: 185px;
     margin: 0 auto;
     padding: 35px;
@@ -1840,7 +1842,7 @@ Social Buttons
     border-width: 1px;
     border-color: #EEEEEE;
     border-style: solid;
-    height: 235px;
+    height: 255px;
     width: 185px;
     margin: 0 auto;
     padding: 35px;
@@ -1961,7 +1963,7 @@ Social Buttons
     font-size: 16px;
     display: inline-block;
     font-weight: bold;
-    padding-left: 8px;
+    text-align: center;
     padding-top: 2px
 
 
@@ -2114,6 +2116,16 @@ div.navbar-collapse.in.collapse{
     margin-bottom: 55px;
     margin-top: 55px;
     font-weight: b;
+}
+
+.navbar-toggle{
+    margin-bottom: 35px;
+}
+
+.modal-title{
+    color: #00C6C2;
+    font-size: 26px;
+    font-weight: bold;
 }
 
 

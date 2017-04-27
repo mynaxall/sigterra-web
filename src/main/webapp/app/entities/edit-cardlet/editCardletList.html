@@ -31,15 +31,16 @@
 <div class="modeal-custom-window" ng-show="showDelteTabDialog">
     <div class="modal-dialog " style="margin-top: 100px; width: 400px!important;">
         <div class="modal-content" uib-modal-transclude="">
-            <div class="modal-header">
+            <div class="modal-header" style="text-align: center">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                         ng-click="closeDialog()">&times;</button>
-                <div class="signature-title"></div>
+                <h4 class="modal-title" id="myUserLabel">
+                    Delete Tab?</h4>
             </div>
             <div  style=" padding: 0px!important;" class="modal-body">
                 <div style="background: #FFF; padding-left: 30px; padding-right: 30px;">
-                    <div class="delete-dialog-title">Delete Tab?</div>
-                    <div class="delete-msg">
+
+                    <div style="margin-top: 40px; color:#595959">
                         Are you sure you want to delete this?
                     </div>
                     <div class="select-btn-div" style="padding-bottom: 50px;">
@@ -84,6 +85,7 @@
             font-size:15px;
             text-transform: uppercase;
             font-weight: bold;
+            height: 60px;
         }
 
         .tab-panel{

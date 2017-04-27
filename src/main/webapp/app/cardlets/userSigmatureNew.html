@@ -2,58 +2,58 @@
 <div>
 
     <div class="cardletNew"style="width: 300px;background: #fff; text-align: left;">
-        <div class="user-name" ng-show="!tabNames.tabs[firstBusinessCardId].userName.value"  style="color: #{{tabNames.tabs[firstBusinessCardId].layout.secondaryColor}}">Jon Dou</div>
-        <div class="user-name" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].userName.bold ? 'bold' : 'normal',
-                    'font-style': tabNames.tabs[firstBusinessCardId].userName.italic ? 'italic' : 'normal',
-                    'text-decoration': tabNames.tabs[firstBusinessCardId].userName.underline ? 'underline' : 'normal', 'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor}"  ng-show="tabNames.tabs[firstBusinessCardId].userName.value">{{tabNames.tabs[firstBusinessCardId].userName.value}}</div>
-        <div class="user-main-text job-titile" ng-show="!tabNames.tabs[firstBusinessCardId].job.value">General Manager</div>
-        <div class="user-main-text job-titile" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].job.bold ? 'bold' : 'normal',
-                    'font-style': tabNames.tabs[firstBusinessCardId].job.italic ? 'italic' : 'normal',
-                    'text-decoration': tabNames.tabs[firstBusinessCardId].job.underline ? 'underline' : 'normal'}" ng-show="tabNames.tabs[firstBusinessCardId].job.value">{{tabNames.tabs[firstBusinessCardId].job.value}}</div>
-        <div class="company" ng-show="!tabNames.tabs[firstBusinessCardId].company.value">
+        <div class="user-name" ng-show="!firstBusinessCardCopyed.userName.value"  style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">Jon Dou</div>
+        <div class="user-name" ng-style="{'font-weight': firstBusinessCardCopyed.userName.bold ? 'bold' : 'normal',
+                    'font-style': firstBusinessCardCopyed.userName.italic ? 'italic' : 'normal',
+                    'text-decoration': firstBusinessCardCopyed.userName.underline ? 'underline' : 'normal', 'color': '#'+firstBusinessCardCopyed.layout.secondaryColor}"  ng-show="firstBusinessCardCopyed.userName.value">{{firstBusinessCardCopyed.userName.value}}</div>
+        <div class="user-main-text job-titile" ng-show="!firstBusinessCardCopyed.job.value">General Manager</div>
+        <div class="user-main-text job-titile" ng-style="{'font-weight': firstBusinessCardCopyed.job.bold ? 'bold' : 'normal',
+                    'font-style': firstBusinessCardCopyed.job.italic ? 'italic' : 'normal',
+                    'text-decoration': firstBusinessCardCopyed.job.underline ? 'underline' : 'normal'}" ng-show="firstBusinessCardCopyed.job.value">{{firstBusinessCardCopyed.job.value}}</div>
+        <div class="company" ng-show="!firstBusinessCardCopyed.company.value">
             Company Name
         </div>
-        <div class="company" ng-show="tabNames.tabs[firstBusinessCardId].company.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].company.bold ? 'bold' : 'normal',
-                    'font-style': tabNames.tabs[firstBusinessCardId].company.italic ? 'italic' : 'normal',
-                    'text-decoration': tabNames.tabs[firstBusinessCardId].company.underline ? 'underline' : 'normal'}">
-            {{tabNames.tabs[firstBusinessCardId].company.value}}
+        <div class="company" ng-show="firstBusinessCardCopyed.company.value" ng-style="{'font-weight': firstBusinessCardCopyed.company.bold ? 'bold' : 'normal',
+                    'font-style': firstBusinessCardCopyed.company.italic ? 'italic' : 'normal',
+                    'text-decoration': firstBusinessCardCopyed.company.underline ? 'underline' : 'normal'}">
+            {{firstBusinessCardCopyed.company.value}}
         </div>
-        <div class="" ng-show="!tabNames.tabs[firstBusinessCardId].phone.value">
-            tel: 1-888-555-5555
+        <div class="" ng-show="!firstBusinessCardCopyed.phone.value">
+            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">f: </span>1-888-555-5555
         </div>
-        <div class="" ng-show="tabNames.tabs[firstBusinessCardId].phone.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].phone.bold ? 'bold' : 'normal',
-                    'font-style': tabNames.tabs[firstBusinessCardId].phone.italic ? 'italic' : 'normal',
-                    'text-decoration': tabNames.tabs[firstBusinessCardId].phone.underline ? 'underline' : 'normal'}">
-            tel: {{tabNames.tabs[firstBusinessCardId].phone.value}}
-        </div>
-
-        <div class="" ng-show="!tabNames.tabs[firstBusinessCardId].userEmail.value">
-            e-mail: fabian.abshireabsh@wilford.biz
-        </div>
-        <div class="" ng-show="tabNames.tabs[firstBusinessCardId].userEmail.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].userEmail.bold ? 'bold' : 'normal',
-                            'font-style': tabNames.tabs[firstBusinessCardId].userEmail.italic ? 'italic' : 'normal',
-                            'text-decoration': tabNames.tabs[firstBusinessCardId].userEmail.underline ? 'underline' : 'normal'}">
-            e-mail: <a href="mailto:{{tabNames.tabs[firstBusinessCardId].userEmail.value}}">{{tabNames.tabs[firstBusinessCardId].userEmail.value}}</a>
-
+        <div class="" ng-show="firstBusinessCardCopyed.phone.value" ng-style="{'font-weight': firstBusinessCardCopyed.phone.bold ? 'bold' : 'normal',
+                    'font-style': firstBusinessCardCopyed.phone.italic ? 'italic' : 'normal',
+                    'text-decoration': firstBusinessCardCopyed.phone.underline ? 'underline' : 'normal'}">
+            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">f: </span>{{firstBusinessCardCopyed.phone.value}}
         </div>
 
-        <div class="svg-description" ng-show="!tabNames.tabs[firstBusinessCardId].site.value">
-            web site: www.websitewebsite.com
+        <div class="" ng-show="!firstBusinessCardCopyed.userEmail.value">
+            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">e: </span>fabian.abshireabsh@wilford.biz
+        </div>
+        <div class="" ng-show="firstBusinessCardCopyed.userEmail.value" ng-style="{'font-weight': firstBusinessCardCopyed.userEmail.bold ? 'bold' : 'normal',
+                            'font-style': firstBusinessCardCopyed.userEmail.italic ? 'italic' : 'normal',
+                            'text-decoration': firstBusinessCardCopyed.userEmail.underline ? 'underline' : 'normal'}">
+            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">e: </span><a href="mailto:{{firstBusinessCardCopyed.userEmail.value}}">{{firstBusinessCardCopyed.userEmail.value}}</a>
+
         </div>
 
-        <div class="" ng-show="tabNames.tabs[firstBusinessCardId].site.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].site.bold ? 'bold' : 'normal',
-                    'font-style': tabNames.tabs[firstBusinessCardId].site.italic ? 'italic' : 'normal',
-                    'text-decoration': tabNames.tabs[firstBusinessCardId].site.underline ? 'underline' : 'normal'}">
-            web site: <a target="_blank" href="{{tabNames.tabs[firstBusinessCardId].site.value}}">{{tabNames.tabs[firstBusinessCardId].site.value}}</a>
+        <div class="svg-description" ng-show="!firstBusinessCardCopyed.site.value">
+            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">w:</span> www.websitewebsite.com
         </div>
 
-        <div class="user-main-text" ng-show="!tabNames.tabs[firstBusinessCardId].address.value">
-            Address: 0000 Lynch Pine Apt. 605, South Keagan, Croatia
+        <div class="" ng-show="firstBusinessCardCopyed.site.value" ng-style="{'font-weight': firstBusinessCardCopyed.site.bold ? 'bold' : 'normal',
+                    'font-style': firstBusinessCardCopyed.site.italic ? 'italic' : 'normal',
+                    'text-decoration': firstBusinessCardCopyed.site.underline ? 'underline' : 'normal'}">
+            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">w: </span><a target="_blank" href="{{firstBusinessCardCopyed.site.value}}">{{firstBusinessCardCopyed.site.value}}</a>
         </div>
-        <div class="user-main-text" ng-show="tabNames.tabs[firstBusinessCardId].address.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].address.bold ? 'bold' : 'normal',
-                    'font-style': tabNames.tabs[firstBusinessCardId].address.italic ? 'italic' : 'normal',
-                    'text-decoration': tabNames.tabs[firstBusinessCardId].address.underline ? 'underline' : 'normal'}" style="max-width: 320px; max-height: 40px">
-            Address: {{tabNames.tabs[firstBusinessCardId].address.value}}
+
+        <div class="user-main-text" ng-show="!firstBusinessCardCopyed.address.value">
+            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">a: </span>0000 Lynch Pine Apt. 605, South Keagan, Croatia
+        </div>
+        <div class="user-main-text" ng-show="firstBusinessCardCopyed.address.value" ng-style="{'font-weight': firstBusinessCardCopyed.address.bold ? 'bold' : 'normal',
+                    'font-style': firstBusinessCardCopyed.address.italic ? 'italic' : 'normal',
+                    'text-decoration': firstBusinessCardCopyed.address.underline ? 'underline' : 'normal'}" style="max-width: 320px; max-height: 40px">
+            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">a: </span>{{firstBusinessCardCopyed.address.value}}
         </div>
 
         <div ng-show="signatureLink"><a target="_blank" href="{{signatureLink}}">My Sigterra Profile</a></div>

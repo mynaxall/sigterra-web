@@ -13,7 +13,25 @@
         var vm = this;
 
 
+        $scope.fieldTable = [{
+            field: "1",
+            title: "Gmail"
+        }, {
+            field: "2",
+            title: "Outlook"
+        }, {
+            field: "3",
+            title: "Airmal"
+        }, {
+            field: "4",
+            title: "Yahoo"
+        }];
 
+        $scope.selected = $scope.fieldTable[0];
+
+        $scope.hasChanged = function() {
+            $scope.instructions =$scope.selected.field;
+        }
         $scope.closeCropDialog = function(){
             $scope.showCropDialog = false;
             $scope.showCropDialogTabs = false;
@@ -193,15 +211,20 @@
         $scope.tabsImage = '';
 
         $scope.copyToEmail = function(id, cardId, sigId) {
+            console.log($scope.userCardlets)
+            console.log(id)
+            console.log(cardId)
+            console.log(sigId)
 
             $scope.isCopyTiEmail = true;
             $window.scrollTo(0, 0);
             $scope.segnatureId = id;
-            $scope.userCardlets[id].tabs;
             $scope.banner = '/content/images/banner.png'
             for (var i = 0; i < $scope.userCardlets[id].tabs.length; i++) {
-                if ($scope.userCardlets[id].tabs[i].tabType = 1){
+                if ($scope.userCardlets[id].tabs[i].tabType == '1'){
+                    $scope.firstBusinessCardCopyed = $scope.userCardlets[id].tabs[i];
                     $scope.firstBusinessCardId = i;
+                    console.log($scope.firstBusinessCardId)
                 break
                 }
             }
@@ -777,7 +800,7 @@
                             $window.scrollTo(0, 0);
                             $scope.coptToEmailText = '<a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a>';
                             if ($scope.isAddBanner == true) {
-                                $scope.coptToEmailText = '<div></div><a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a></div><div><img style="text-transform: scale(0.59); width:430px" src="' + $scope.banner + '"></div>'
+                                $scope.coptToEmailText = '<div></div><a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a></div><div><div style=\"max-height: 240px; overflow: hidden;text-transform: scale(0.59);\"><img style="text-transform: scale(0.59); width:430px" src="' + $scope.banner + '"></div></div>'
                                 $scope.isAddBanner = false;
                             }
                         } else if (name == "banner") {
@@ -796,7 +819,7 @@
                     $window.scrollTo(0, 0);
                     $scope.coptToEmailText = '<a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a>';
                     if ($scope.isAddBanner == true) {
-                        $scope.coptToEmailText = '<div></div><a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a></div><div><img style="text-transform: scale(0.59); width:430px" src="' + $scope.banner + '"></div>'
+                        $scope.coptToEmailText = '<div></div><a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a></div><div><div style=\"max-height: 240px; overflow: hidden;text-transform: scale(0.59);\"><img style="text-transform: scale(0.59); width:430px" src="' + $scope.banner + '"></div></div>'
                     }
                 } else if (name == "banner") {
                     $scope.banner = $scope.croppedImageUrl;
