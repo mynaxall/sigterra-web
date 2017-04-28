@@ -720,19 +720,20 @@
         $scope.addColors = function(id, colorMain, colorSecond, index){
             var cyrrentEl = document.getElementById(id);
             if(cyrrentEl) {
-                cyrrentEl.style.background = "#" + colorMain;
+                cyrrentEl.style.background = "#F9F9F9";
                 if (angular.element(document.getElementById(id)).hasClass('active')) {
-                    cyrrentEl.style.background = "#" + colorSecond;
+                    cyrrentEl.style.background = "#FFFFFF" ;
+                    cyrrentEl.style.borderTop = "2px solid #4BABE2"
                 }
             }
             if($scope.userCardlets[index].tabs.length <= 2){
-                cyrrentEl.style.width = "268px"
+                cyrrentEl.style.width = "270px"
             }
             if($scope.userCardlets[index].tabs.length == 3){
-                cyrrentEl.style.width = "177px"
+                cyrrentEl.style.width = "180px"
             }
             if($scope.userCardlets[index].tabs.length == 4){
-                cyrrentEl.style.width = "131px"
+                cyrrentEl.style.width = "135px"
             }
         }
 

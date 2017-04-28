@@ -1348,6 +1348,15 @@ Social Buttons
     text-align: center;
 }
 
+.firstItemTop{
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+    height: 35px;
+    width: 100%;
+}
+
+
 .thirdItemTop{
     position: absolute;
     top:0px;
