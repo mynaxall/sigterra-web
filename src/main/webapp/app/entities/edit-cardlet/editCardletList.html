@@ -473,6 +473,11 @@
                                     <span >Items</span>
                                 </a>
                             </li>
+                            <li class="dropdown-tab">
+                                <a ng-click="addInfo()" style="width:100%;">
+                                    <span >Info</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 
@@ -500,6 +505,85 @@
                     </form>
 
                     <div class="main">
+
+                        <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 3">
+
+                            <div class="accordion-section" ng-repeat="item in tabName.items">
+                                <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">Enter Info {{$index+1}} Details<img class="status-icon" ng-show="accordionActive==item.index" src="/content/images/Arrow_up.png"><img class="status-icon" ng-show="accordionActive!=item.index" src="/content/images/Arrow_down.png"></a>
+                                <div id="accordion2-item.index" class="accordion-section-content" ng-show="accordionActive==item.index">
+                                    <div class="form-group">
+                                        <div class="input-text-div">
+                                            <input type="text" class="input-new" id="itemName" placeholder="Name" ng-model="item.name.value">
+                                        </div>
+                                        <div class="text-decoration-div" >
+                                            <input type='checkbox' ng-model="item.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{item.position}}"/><label for="boldName{{tabName.position}}{{item.position}}"></label>
+                                            <input type='checkbox' ng-model="item.name.italic" name='italic'  class="checkboxItalic" value='valuable' id="italicName{{tabName.position}}{{item.position}}"/><label for="italicName{{tabName.position}}{{item.position}}"></label>
+                                            <input type='checkbox' ng-model="item.name.underline" name='underline' class="checkboxUunderline" value='valuable' id="underlineName{{tabName.position}}{{item.position}}"/><label for="underlineName{{tabName.position}}{{item.position}}"></label>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-text-div">
+                                            <input type="text" class="input-new" id="urlOne" placeholder="url:\\" ng-model="item.image">
+                                        </div>
+                                        <div class="social-image-form-div" >
+                                            <button  type="submit" ng-disabled="for2m.$invalid" ng-click="openCropDialog($parent.$index, item.position, 'image')"  class="btn btn-primary main-btn upload-item-img">Upload</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-text-div">
+                                            <textarea class="textarea-new" ng-keyup="autoExpand($event)" id="description" placeholder="Description" ng-model="item.description.value" ></textarea>
+                                        </div>
+                                        <div class="text-decoration-div" >
+                                            <input type='checkbox' ng-model="item.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{item.position}}"/><label for="boldDescription{{tabName.position}}{{item.position}}"></label>
+                                            <input type='checkbox' ng-model="item.description.italic" name='italic' value='valuable' class="checkboxItalic" id="italicDescription{{tabName.position}}{{item.position}}"/><label for="italicDescription{{tabName.position}}{{item.position}}"></label>
+                                            <input type='checkbox' ng-model="item.description.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineDescription{{tabName.position}}{{item.position}}"/><label for="underlineDescription{{tabName.position}}{{item.position}}"></label>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div style="width: 450px">
+                                            <input type="text" class="input-new" id="description" placeholder="Link" ng-model="item.link">
+                                        </div>
+                                        <div class="text-decoration-div" >
+
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div style="width: 100%; text-align: right; padding-right: 5px">
+                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  item.index)" class="btn btn-primary main-btn item-btn" style="width: 110px"> Delete info</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add-item-btn">
+                                <button ng-show="tabName.items.length < 10"   type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn">Add info</button>
+                            </div>
+                            <div class="accordion-section">
+                                <a class="accordion-section-title" ng-class="{active:accordionActive==1}" ng-click="changeAccordionActivity(1)">Layout design <img class="status-icon" ng-show="accordionActive==1" src="/content/images/Arrow_up.png"><img class="status-icon" ng-show="accordionActive!=1" src="/content/images/Arrow_down.png"></a>
+                                <div id="accordion2-1" class="accordion-section-content" ng-show="accordionActive==1">
+                                    <script>
+                                        $(document).ready(function() {
+                                            jscolor.installByClassName("jscolor");
+                                        });
+                                    </script>
+                                    <div class="color-tnput-div">
+                                        <label class="login-lable cardlet-label" style="margin-left: 0px;" for="mainColor{{tabName.name}}">Background colour</label>
+                                        <label class="login-lable cardlet-label" style="margin-left: 245px;">Feature colour</label>
+                                    </div>
+                                    <div class="color-tnput-div">
+                                        <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
+                                        <input ng-model="tabName.layout.secondaryColor" name='secondaryColor' value='secondaryColor' id="mainColor{{tabName.name}}" class="jscolor secondaryColor-input" value="4BABE2">
+                                    </div>
+                                    <div ng-repeat="itemType in infoTypes" style="margin-bottom: 30px; position: relative; width: 540px">
+                                        <div ng-click="chooseType(tabName.position, itemType.path, itemType.id)" class="choose-tab"
+                                             ng-class="tabNames.tabs[tabName.position].layout.tabId == itemType.id ? 'choose-tab-active' : ''"></div>
+                                        <ng-include style="display: block!important" src="itemType.path" ></ng-include>
+                                    </div>
+
+                                </div><!--end .accordion-section-content-->
+                            </div><!--end .accordion-section-->
+                        </div>
 
                         <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 2">
 
@@ -564,7 +648,7 @@
                                     </script>
                                     <div class="color-tnput-div">
                                         <label class="login-lable cardlet-label" style="margin-left: 0px;" for="mainColor{{tabName.name}}">Background colour</label>
-                                        <label class="login-lable cardlet-label" style="margin-left: 205px;">Feature colour</label>
+                                        <label class="login-lable cardlet-label" style="margin-left: 245px;">Feature colour</label>
                                     </div>
                                     <div class="color-tnput-div">
                                         <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
@@ -750,7 +834,7 @@
                                     </script>
                                     <div class="color-tnput-div">
                                         <label class="login-lable cardlet-label" style="margin-left: 0px;" for="mainColor{{tabName.name}}">Background colour</label>
-                                        <label class="login-lable cardlet-label" style="margin-left: 205px;">Feature colour</label>
+                                        <label class="login-lable cardlet-label" style="margin-left: 245px;">Feature colour</label>
                                     </div>
                                     <div class="color-tnput-div">
                                     <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">

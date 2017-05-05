@@ -132,6 +132,13 @@
             $scope.tabNames.tabs[$scope.tabImageId].photo = $scope.imageUrl;
         }
 
+        $scope.autoExpand = function(e) {
+            var element = typeof e === 'object' ? e.target : document.getElementById(e);
+            var scrollHeight = element.scrollHeight ; // replace 60 by the sum of padding-top and padding-bottom
+            element.style.height =  scrollHeight + "px";
+        };
+
+
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
         vm.reverse = pagingParams.ascending;
@@ -273,8 +280,17 @@
                 });
         }
 
+
+        $scope.getInfoTypes = function(){
+            $http.get("/api/tab-types-by-type/3")
+                .success(function(response, status, headers) {
+                    $scope.infoTypes = response;
+                });
+        }
+
         $scope.getItemTypes();
         $scope.getTabTypes();
+        $scope.getInfoTypes();
 
 
         angular.element(document).ready(function () {
@@ -284,6 +300,38 @@
             document.getElementsByClassName("tabs")[0].className += " active";
         });
 
+
+        $scope.addInfo = function() {
+            if ($scope.tabNames.tabs.length <= 3) {
+                var newTab = {"name":"Info"+$scope.tabNames.tabs.length,
+                    "position": $scope.tabNames.tabs.length,
+                    "tabType": 3,
+                    "layout":{
+                        "tabId": $scope.infoTypes[0].id,
+                        "url": $scope.infoTypes[0].path,
+                        "mainColor": "FFFFFF",
+                        "secondaryColor": "4BABE2"
+                    },
+                    "items": [
+                        {
+                            //"name": "1 item",
+                            "index": "2",
+                            "position": "0",
+                            "image": "/content/images/portfolio_img_01.png",
+                            "image2": "/content/images/portfolio_img_02.png",
+                            "image3": "/content/images/portfolio_img_03.png"
+                        }
+                    ]
+
+                }
+                setTimeout(function(){
+                    $scope.openCity('settings'+newTab.name+newTab.position, 'tab'+newTab.position, newTab.name+newTab.position, newTab.position+newTab.name)}, 500)
+                $scope.tabNames.tabs.push(newTab);
+            }
+            if($scope.tabNames.tabs.length == 4){
+                $scope.isNewTab = false;
+            }
+        }
 
         $scope.addItem = function() {
             if ($scope.tabNames.tabs.length <= 3) {
@@ -585,6 +633,7 @@
             var cyrrentEl = document.getElementById(id);
             if(cyrrentEl) {
                 cyrrentEl.style.background = "#F9F9F9";
+                cyrrentEl.style.borderTop = "1px solid #D0D8D9"
                 if (angular.element(document.getElementById(id)).hasClass('active')) {
                     cyrrentEl.style.background = "#FFFFFF" ;
                     cyrrentEl.style.borderTop = "2px solid #4BABE2"

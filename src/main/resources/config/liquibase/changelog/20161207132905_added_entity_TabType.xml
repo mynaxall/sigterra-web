@@ -43,5 +43,13 @@
 
     </changeSet>
 
+    <changeSet id="20161207132905-2" author="jhipster">
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/tab_type_info.csv"
+                  separator=";"
+                  tableName="tab_type"/>
+
+    </changeSet>
+
 
 </databaseChangeLog>

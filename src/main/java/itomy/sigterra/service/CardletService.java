@@ -64,6 +64,7 @@ public class CardletService {
         UserCardletDTO userCardletDTO = new UserCardletDTO();
         userCardletDTO.setCardletName(cardlet.getName());
         userCardletDTO.setId(cardlet.getId());
+        log.info("asdasd ======"+ cardlet);
         Set<Business> businesses = cardlet.getBusinesses();
         Set<Item> items = cardlet.getItems();
         List<CardletTab> tabs = new ArrayList<>();
@@ -263,7 +264,7 @@ public class CardletService {
                 business.setTabType(tabTypeRepository.findOne(tab.getLayout().getTabId()));
                 businesses.add(business);
                 businessRepository.save(business);
-            }else if(tab.getTabType().equals(2)){
+            }else if(tab.getTabType().equals(2) || tab.getTabType().equals(3)){
                 Item item = new Item();
                 if(update){
                     item.setId(tab.getId());
