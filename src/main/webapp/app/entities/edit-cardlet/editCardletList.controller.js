@@ -10,8 +10,8 @@
     function EditCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location) {
         var vm = this;
 
-        $scope.firstBusinessCardId;
         $scope.showCropDialog = false;
+        $scope.firstBusinessCardId;
         $scope.myImage='';
         $scope.myCroppedImage = '';
 
@@ -216,7 +216,7 @@
                 tabs[i].className = tabs[i].className.replace(" active", "");
 
             }
-
+            console.log(tabId)
             document.getElementById(cityName).style.display = "block";
             document.getElementById(tabId).className += " active";
 
@@ -325,7 +325,7 @@
 
                 }
                 setTimeout(function(){
-                    $scope.openCity('settings'+newTab.name+newTab.position, 'tab'+newTab.position, newTab.name+newTab.position, newTab.position+newTab.name)}, 500)
+                    $scope.openCity('settings'+newTab.name+newTab.position, newTab.position, newTab.name+newTab.position, 'card'+newTab.position+newTab.name)}, 500)
                 $scope.tabNames.tabs.push(newTab);
             }
             if($scope.tabNames.tabs.length == 4){
@@ -653,12 +653,27 @@
         $scope.myInterval = 3000;
 
 
+        $scope.isEmptyName =function(){
+
+            for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
+
+                if(!$scope.tabNames.tabs[i].name){
+                    return false;
+                }else{
+                    return true
+                }
+            }
+        }
+
+
         $scope.saveCardlet = function(){
 
-            $http.post("/api/editCardlet",  $scope.tabNames)
-                .success(function (data, status, headers, config) {
-                    $location.path('/user-cardlets')
-                });
+            if($scope.isEmptyName()) {
+                $http.post("/api/editCardlet", $scope.tabNames)
+                    .success(function (data, status, headers, config) {
+                        $location.path('/user-cardlets')
+                    });
+            }
         }
 
         $scope.accordion = 1;

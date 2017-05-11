@@ -16,6 +16,7 @@ body {
     font-family: "Lato-Regular"!important;
     color: #333;
     min-height: 100%;
+    min-width: 600px;
 }
 
 .footer {
@@ -1124,7 +1125,7 @@ Social Buttons
 }
 
 .saveButton:hover{
-    background-color: #e87771;
+    background-color: #e87771!important;
     color: #ffffff;
 }
 
@@ -1281,7 +1282,6 @@ Social Buttons
     width: 38px;
     display:inline-block;
     padding: 0 0 0 0px;
-    margin-left: -5px;
 }
 
 .checkboxItalic + label:hover
@@ -1291,7 +1291,6 @@ Social Buttons
     width: 38px;
     display:inline-block;
     padding: 0 0 0 0px;
-    margin-left: -5px;
 }
 
 .checkboxItalic:checked + label
@@ -1301,7 +1300,6 @@ Social Buttons
     width: 38px;
     display:inline-block;
     padding: 0 0 0 0px;
-    margin-left: -5px;
 }
 .checkboxUunderline {
     display:none;
@@ -1314,7 +1312,6 @@ Social Buttons
     width: 38px;
     display:inline-block;
     padding: 0 0 0 0px;
-    margin-left: -5px;
 }
 
 .checkboxUunderline + label:hover
@@ -1324,7 +1321,6 @@ Social Buttons
     width: 38px;
     display:inline-block;
     padding: 0 0 0 0px;
-    margin-left: -5px;
 }
 
 .checkboxUunderline:checked + label
@@ -1334,7 +1330,6 @@ Social Buttons
     width: 38px;
     display:inline-block;
     padding: 0 0 0 0px;
-    margin-left: -5px;
 }
 
 .spinner-shadow{
@@ -1375,7 +1370,7 @@ Social Buttons
 
 .cardletNew{
     width: 540px;
-    height: 280px;
+    height: 293px;
     padding:10px;
 }
 
@@ -1998,11 +1993,9 @@ Social Buttons
 }
 
 .add-banner-panel{
-    border-width: 0px;
-    border-bottom-width: 1px;
-    border-top-width: 1px;
-    border-color: #F1F1F1;
-    border-style: solid;
+    border: 1px solid #F1F1F1;
+    border-right-width: 0px;
+    border-left-width: 0px;
 }
 
 #signature-selector{
@@ -2164,6 +2157,24 @@ div.navbar-collapse.in.collapse{
     .sub-footer{
         height: 400px;
     }
+}
+.navbar-default .navbar-nav .open .dropdown-menu > .sigterra-naigation > a{
+    color:#FFFFFF;
+}
+
+@media (min-width: 770px){
+    .navbar-default .navbar-nav .open .dropdown-menu > .sigterra-naigation > a{
+        color: #000000;
+    }
+}
+
+.navbar-brand{
+    position: relative;
+    z-index: 2000;
+}
+
+.modal-dialog{
+    margin: 30px auto!important;
 }
 
 

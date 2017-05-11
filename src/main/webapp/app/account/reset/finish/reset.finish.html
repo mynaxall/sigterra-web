@@ -21,7 +21,7 @@
             <div class="alert alert-danger" ng-show="vm.doNotMatch">
                 The password and its confirmation do not match!
             </div>
-            <div style="color: #7F8C8C; font-size: 13px; text-align: center;padding-bottom: 45px">Choose a new password</div>
+            <div ng-show="!vm.success" style="color: #7F8C8C; font-size: 13px; text-align: center;padding-bottom: 45px">Choose a new password</div>
 
             <div ng-hide="vm.keyMissing">
                 <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.finishReset()" show-validation>

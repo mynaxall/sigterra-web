@@ -262,7 +262,6 @@
                 tabs[i].className = tabs[i].className.replace(" active", "");
 
             }
-
             document.getElementById(cityName).style.display = "block";
             document.getElementById(tabId).className += " active";
 
@@ -346,6 +345,8 @@
             document.getElementsByClassName("tabcontent")[0].style.display = "block";;
             document.getElementsByClassName("tabs")[0].className += " active";
         });
+
+
 
         $scope.addInfo = function() {
             if ($scope.tabNames.tabs.length <= 3) {
@@ -663,11 +664,27 @@
         $scope.myInterval = 3000;
 
 
-        $scope.saveCardlet = function(){
-            $http.post("/api/cardlet",  $scope.tabNames)
+
+        $scope.isEmptyName =function(){
+
+            for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
+
+                if(!$scope.tabNames.tabs[i].name){
+                    return false;
+                }else{
+                    return true
+                }
+            }
+        }
+        $scope.saveCardlet = function() {
+
+            if ($scope.isEmptyName()) {
+
+            $http.post("/api/cardlet", $scope.tabNames)
                 .success(function (data, status, headers, config) {
                     $location.path('/user-cardlets')
                 });
+            }
         }
 
         $scope.accordion = 1;

@@ -16,7 +16,7 @@
                     'font-style': tabName.job.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.job.underline ? 'underline' : 'normal'}" ng-show="tabName.job.value"  style="color: #{{tabName.layout.mainColor}}">{{tabName.job.value}}</div>
                 <div class="social-links">
-                    <a href="{{tabName.socialLinks.twitter}}" target="_blank" ng-show="tabName.socialLinks.twitter">
+                    <a href="{{tabName.socialLinks.twitter}}" target="_blank" ng-show="tabName.socialLinks.twitter" class="social-links-2">
                         <svg width="27px" height="27px" viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
                             <title>twitter_icon_01</title>
@@ -34,7 +34,7 @@
                             </g>
                         </svg>
                     </a>
-                    <a class="social-link" href="{{tabName.socialLinks.facebook}}" target="_blank" ng-show="tabName.socialLinks.facebook">
+                    <a class="social-link social-links-2" href="{{tabName.socialLinks.facebook}}" target="_blank" ng-show="tabName.socialLinks.facebook">
                         <svg width="27px" height="27px" viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
                             <title>facebook_icon_01</title>
@@ -52,7 +52,7 @@
                             </g>
                         </svg>
                     </a>
-                    <a class="social-link" href="{{tabName.socialLinks.google}}" target="_blank" ng-show="tabName.socialLinks.google">
+                    <a class="social-link social-links-2" href="{{tabName.socialLinks.google}}" target="_blank" ng-show="tabName.socialLinks.google">
                         <svg width="27px" height="27px" viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
                             <title>google_icon_01</title>
@@ -70,7 +70,7 @@
                             </g>
                         </svg>
                     </a>
-                    <a class="social-link" href="{{tabName.socialLinks.linkedin}}" target="_blank" ng-show="tabName.socialLinks.linkedin">
+                    <a class="social-link social-links-2" href="{{tabName.socialLinks.linkedin}}" target="_blank" ng-show="tabName.socialLinks.linkedin">
                         <svg width="27px" height="27px" viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
                             <title>linkedin_icon_01</title>
@@ -236,6 +236,10 @@
 
     .social-links{
         margin-top: 10px;
+    }
+
+    .social-links-2:hover{
+        color: rgba(30, 73, 109, 0);
     }
 
     #social-img{

@@ -17,10 +17,10 @@
                             <div class="carousel-info-name-div-new-3" ng-show="!slide.name.value" ng-style="{'font-weight': slide.name.bold ? 'bold' : 'normal',
                             'font-style': slide.name.italic ? 'italic' : 'normal',
                             'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">Maui Hotel</div>
-                            <div class="carousel-info-name-div-new-3 carousel-info-deskript-div-3" ng-show="slide.description.value"
+                            <pre class="carousel-info-name-div-new-3 carousel-info-deskript-div-3" ng-show="slide.description.value"
                                  ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
                         'font-style': slide.description.italic ? 'italic' : 'normal',
-                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.value}}</div>
+                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.value}}</pre>
                             <div class="carousel-info-name-div-new-3 carousel-info-deskript-div-3" ng-show="!slide.description.value">How To Fly A Private Jet On Your Next Trip</div>
                         </div>
                     </div>
@@ -46,10 +46,10 @@
                                 <div class="carousel-info-name-div-new-3" ng-show="!slide.name.value" ng-style="{'font-weight': slide.name.bold ? 'bold' : 'normal',
                             'font-style': slide.name.italic ? 'italic' : 'normal',
                             'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}">Maui Hotel</div>
-                                <div class="carousel-info-name-div-new-3 carousel-info-deskript-div-3" ng-show="slide.description.value"
+                                <pre class="carousel-info-name-div-new-3 carousel-info-deskript-div-3" ng-show="slide.description.value"
                                      ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
                         'font-style': slide.description.italic ? 'italic' : 'normal',
-                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.value}}</div>
+                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.value}}</pre>
                                 <div class="carousel-info-name-div-new-3 carousel-info-deskript-div-3" ng-show="!slide.description.value">How To Fly A Private Jet On Your Next Trip</div>
                             </div>
                         </div>
@@ -73,7 +73,9 @@
         .carousel-info-name-div-new-3{
             width: 100%;
             font-size: 20px;
-            color:#242424
+            color:#242424;
+            background:transparent;
+            border: none;
         }
 
         .carousel-info-deskript-div-3{

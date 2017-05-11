@@ -1,0 +1,25 @@
+<div class="modeal-custom-window" ng-show="showCropDialog">
+    <div class="modal-dialog " style="margin-top: 0px; width:390px!important;">
+        <div class="modal-content" uib-modal-transclude="">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        ng-click="closeCropDialog()">&times;</button>
+            </div>
+            <div  style="padding: 0px!important; text-align: center" class="modal-body">
+                <div>
+
+                    <div class="fileUpload btn btn-primary choose-photo-btn">
+                        <span>Choose photo</span>
+                        <input type="file" id="fileInput" class="upload"/>
+                    </div>
+                </div>
+                <div class="cropArea">
+                    <img-crop image="myImage" result-image="banner" area-type="square"></img-crop>
+                </div>
+                <div class="crop-btn-div">
+                    <button class="saveButton" ng-click="saveBanner()">save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,61 +1,9 @@
 <script src="/app/entities/cardlet-list/jscolor.js"></script>
-<div class="modeal-custom-window" ng-show="showCropDialog">
-    <div class="modal-dialog " style="margin-top: 0px; width:390px!important;">
-        <div class="modal-content" uib-modal-transclude="">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                        ng-click="closeCropDialog()">&times;</button>
-            </div>
-            <div  style="padding: 0px!important; text-align: center" class="modal-body">
-                <div>
-
-                    <div class="fileUpload btn btn-primary choose-photo-btn">
-                        <span>Choose photo</span>
-                        <input type="file" id="fileInput" class="upload"/>
-                    </div>
-                </div>
-                <div class="cropArea">
-                    <img-crop image="myImage" result-image="myCroppedImage" ></img-crop>
-                </div>
-                <div class="crop-btn-div">
-                    <button class="saveButton" ng-click="saveImage()">save</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div ng-show="showSpinner" class="spinner-shadow"><img src="/content/images/spinner.gif" style="position:absolute;top:40%"></div>
 
 
-<div class="modeal-custom-window" ng-show="showDelteTabDialog">
-    <div class="modal-dialog " style="margin-top: 100px; width: 400px!important;">
-        <div class="modal-content" uib-modal-transclude="">
-            <div class="modal-header" style="text-align: c">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                        ng-click="closeDialog()">&times;</button>
-                <h4 class="modal-title" id="myUserLabel">
-                    Delete Tab?</h4>
-            </div>
-            <div  style=" padding: 0px!important;" class="modal-body">
-                <div style="background: #FFF; padding-left: 30px; padding-right: 30px;">
-
-                    <div style="margin-top: 40px; color:#595959">
-                        Are you sure you want to delete this?
-                    </div>
-                    <div class="select-btn-div" style="padding-bottom: 50px;">
-                        <button style="float: left" class="saveButton closeButton" ng-click="closeDialog()">
-                            Close
-                        </button>
-                        <button style="float: right" class="saveButton deleteButton" ng-click="removeTab()">
-                            Delete
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<ng-include src="'app/cardlets/deleteTabDialog.html'"></ng-include>
 
 
 <div class="entiti-content" ng-init="getCardlet()">
@@ -960,7 +908,31 @@
 
     </style>
 </div>
+<div class="modeal-custom-window" ng-show="showCropDialog">
+    <div class="modal-dialog " style="margin-top: 0px; width:390px!important;">
+        <div class="modal-content" uib-modal-transclude="">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        ng-click="closeCropDialog()">&times;</button>
+            </div>
+            <div  style="padding: 0px!important; text-align: center" class="modal-body">
+                <div>
 
+                    <div class="fileUpload btn btn-primary choose-photo-btn">
+                        <span>Choose photo</span>
+                        <input type="file" id="fileInput" class="upload"/>
+                    </div>
+                </div>
+                <div class="cropArea">
+                    <img-crop image="myImage" result-image="myCroppedImage" ></img-crop>
+                </div>
+                <div class="crop-btn-div">
+                    <button class="saveButton" ng-click="saveImage()">save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
