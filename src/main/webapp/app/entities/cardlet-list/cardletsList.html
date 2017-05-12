@@ -198,18 +198,12 @@
         padding: 6px 0px;
         border: 1px solid #E7E7E7;
         width: 620px;
-        background-color: #FFFFFFF;
+        background-color: #ffffff;
         margin-top: 43px;
     }
 
 
     /* Style the tab content */
-    .tabcontent2 {
-        display: none;
-        border: 1px solid #ccc;
-        width: 540px;
-        background-color: #F9F9F9;
-    }
 
 
     .tabs2 a{
@@ -836,7 +830,7 @@
 
 
                     <div style="margin-top: 20px;">
-                        <button class="saveButton" ng-click="saveCardlet()">save</button>
+                        <button class="saveButton" ng-disabled="disableSaveBtn"  ng-click="saveCardlet()">save</button>
                     </div>
                 </div>
             </div>

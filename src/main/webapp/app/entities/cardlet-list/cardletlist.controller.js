@@ -671,15 +671,16 @@
 
                 if(!$scope.tabNames.tabs[i].name){
                     return false;
-                }else{
-                    return true
                 }
             }
+            return true;
         }
+
+        $scope.disableSaveBtn = false;
         $scope.saveCardlet = function() {
 
             if ($scope.isEmptyName()) {
-
+                $scope.disableSaveBtn = true;
             $http.post("/api/cardlet", $scope.tabNames)
                 .success(function (data, status, headers, config) {
                     $location.path('/user-cardlets')

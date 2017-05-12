@@ -2177,6 +2177,36 @@ div.navbar-collapse.in.collapse{
     margin: 30px auto!important;
 }
 
+.cardlet{
+    width: 540px;
+    height: 240px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #D0D8D9;
+}
+.cardlet3{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #D0D8D9;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 0px;
+    border: 0px solid #ccc;
+    width: 620px;
+    background-color: #F9F9F9;
+    margin-top: 45px;
+}
+
+
+/* Style the tab content */
+.tabcontent2 {
+    display: none;
+    border: 0px solid #ccc;
+    width: 540px;
+    background-color: #F9F9F9;
+}
 
 
 

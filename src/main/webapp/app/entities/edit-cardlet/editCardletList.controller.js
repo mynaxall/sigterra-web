@@ -464,6 +464,8 @@
         }
 
         $scope.deleteItems = function(tabId, index){
+
+            console.log("asdasd")
             if($scope.tabNames.tabs[tabId].items.length > 1){
 
                 if($scope.tabNames.removeItems == null){
@@ -562,7 +564,7 @@
             var index = $scope.tabToDeleteID;
             if($scope.tabNames.tabs.length >1) {
 
-                if ($scope.tabNames.tabs[index].tabType === 2 && $scope.tabNames.tabs[index].id) {
+                if (($scope.tabNames.tabs[index].tabType === 2 || $scope.tabNames.tabs[index].tabType === 3) && $scope.tabNames.tabs[index].id) {
                     if ($scope.tabNames.removeTabs == null) {
                         $scope.tabNames.removeTabs = [];
                     }
@@ -656,19 +658,20 @@
         $scope.isEmptyName =function(){
 
             for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
-
-                if(!$scope.tabNames.tabs[i].name){
+                console.log($scope.tabNames.tabs[i].name)
+                if(!$scope.tabNames.tabs[i].name || $scope.tabNames.tabs[i].name == ''){
                     return false;
-                }else{
-                    return true
                 }
             }
+            return true;
         }
 
+        $scope.disableSaveBtn = false;
 
         $scope.saveCardlet = function(){
 
             if($scope.isEmptyName()) {
+                $scope.disableSaveBtn = true;
                 $http.post("/api/editCardlet", $scope.tabNames)
                     .success(function (data, status, headers, config) {
                         $location.path('/user-cardlets')

@@ -200,6 +200,9 @@ public class CardletService {
 
     public UserCardletDTO createCardlet(UserCardletDTO cardletDTO, boolean update) {
 
+
+        log.info("asdasd==== "+cardletDTO);
+
         log.debug("REST request to get a page of Cardlets22");
         Cardlet cardlet = new Cardlet();
         if(update){

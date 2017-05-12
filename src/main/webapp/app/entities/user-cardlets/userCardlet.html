@@ -1,9 +1,144 @@
 <script src="/app/entities/cardlet-list/jscolor.js"></script>
-<script src="http://files.codepedia.info/uploads/iScripts/html2canvas.js"></script>
 
 
-<div ng-show="showSpinner" class="spinner-shadow"><div style="position:absolute;top:40%; left:50%"><img src="/content/images/spinner.gif" style="position:relative;left: -50%"></div></div>
+<div ng-show="showSpinner" class="spinner-shadow"><img src="/content/images/spinner.gif" style="position:absolute;top:40%"></div>
+<div class="modeal-custom-window" ng-show="isCopyTiEmail"></div>
+<div class="modeal-custom-window" ng-show="isCopyTiEmail" style="position: absolute; background-color: rgba(0, 0, 0, 0);;">
+    <div class="modal-dialog " style="margin-top: -100px; width: 1130px!important;">
+        <div class="modal-content" uib-modal-transclude="">
+            <div class="modal-header">
+                <button style="color: #00C6C2" type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                        ng-click="closeDialog()">&times;</button>
+                <h4 class="modal-title" id="myUserLabel">
+                    Copy to e-mail</h4>
+            </div>
+            <div  style=" padding: 50px!important;" class="modal-body">
+                <div class="copy-to-email-step-number">1</div><div class="copy-to-email-steps">Choose your signature design:</div>
+                <div>
+                    <div class="row" style="margin-left: 15px;margin-right: 15px; margin-top: 30px;">
+                        <div class="selectSignature">
+                            <div ng-click="selectSignature(1)" id="signature-selector">
+                                <div class="modal-signature-panel-shadow"></div>
+                                <div ng-class="signatureSelected === 1 ? 'activeSignature' : ''">
+                                    <a href="signatureLink"><div id="previewImage"></div></a>
+                                    <div style="max-height: 300px; overflow: hidden">
+                                        <img ng-show="isAddBanner" style="width: 540px;" src="{{banner}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="selectSignature" style="float: right;top: 30px; right: 90px">
+                            <div ng-click="selectSignature(3)"  id="signature-selector">
+                                <div class="modal-signature-panel-shadow"></div>
+                                <div style=" margin-top: -30px;" id="thirdSignature" ng-class="signatureSelected === 3 ? 'activeSignature' : ''">
+                                    <div style="width: 300px;">
+                                        <ng-include src="'app/cardlets/userSigmatureNew.html'"></ng-include>
+                                        <div style="max-height: 150px; overflow: hidden">
+                                            <img ng-show="isAddBanner" style="width: 300px;" src="{{banner}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-banner-panel" style="padding-bottom: 35px; padding-top: 35px">
+                    <div class="copy-to-email-step-number">2</div><div class="copy-to-email-steps" style="display: inline-block">Add banner to your signature:</div>
+                    <div style="display: inline-block; color: #595959; font-size: 14px; margin-left: 20px;">
+                        <input class="add-banner-checkbox" type="checkbox" ng-model="isAddBanner" ng-click="addBanner()" width="20px" height="20px" style="margin-right: 10px">
+                    </div>
+                    <div class="social-image-form-div"  style="padding: 0px; padding-left: 30px; display: inline-block">
+                        <div class="fileUpload btn btn-primary upload-banner-img choose-photo-btn" style="margin: 0px; border-radius: 0px!important;">
+                            <span>Upload</span>
+                            <input type="file" id="fileInput3" class="upload"/>
+                        </div>
 
+                    </div>
+                    <div class="input-text-div" style="display: inline-block; margin-left: 60px; width: 350px "><span style="margin-right: 30px">or</span>
+                        <input style=" width: 300px" type="text" ng-model="banner" class="input-new" id="urlOne" placeholder="" ng-model="item.urlOne">
+                    </div>
+                </div>
+
+                <div style="padding-top: 40px">
+                    <div class="copy-to-email-step-number">3</div><div class="copy-to-email-steps" style="display: inline-block;">Choose e-mail client:</div>
+                    <div style="display: inline-block">
+                        <select class="form-control" ng-options="item.title for item in fieldTable" ng-model="selected" ng-change="hasChanged()" style="margin-left: 20px; width: 150px; background-color: #FFF">
+                        </select>
+                    </div>
+                </div>
+                <div  style=" padding: 0px!important;" class="modal-body">
+                    <div ng-show="instructions==1 " class="mail-instructions-open" >
+                        <div class="instructions-title">Gmail instructions</div>
+
+                        1. Open <a href="https://mail.google.com/" target="_blank">Gmail</a>.<br>
+                        2. In the top right, click Settings  <img src="/content/images/gmailSettings.png" style="margin-top: -3px;"> > <b>Settings.</b><br>
+                        3. In the "Signature" section, add your signature text in the box. If you want, you can format your message by adding an image or changing the text style.<br>
+                        4. At the bottom of the page, click <b>Save Changes</b>.<br>
+                        <a target="_blank" href="https://support.google.com/mail/answer/8395?co=GENIE.Platform%3DDesktop&hl=en">Support</a>
+
+                    </div>
+                    <div class="mail-instructions-open" ng-show="instructions==3">
+                        <div class="instructions-title">Airmal instructions</div>
+
+                        Go to Preferences > Accounts >  Signature to change or add signatures to your outgoing email messages. Signatures are created on a per-account basis, so you can configure each email account with multiple signatures.
+                        Additionally, you can control whether a signature is automatically added to a message (again, on a per-account basis). Just go to Preferences > Accounts > (select an account) then click on 'Composer' tab. Choose whether to add a signature to the message while replying.<br>
+                        <a target="_blank" href="http://docs.airmailapp.com/airmail-for-mac/composer/signature-add-multiple-signatures-airmail-for-macos">Support</a>
+
+
+                    </div>
+                    <div class="mail-instructions-open" ng-show="instructions==2">
+                        <div class="instructions-title">Outlook instructions</div>
+
+
+                        1. Create a new email message.<br>
+                        2. On the <b>Message tab</b>, in the Include group, choose <b>Signature</b> > <b>Signatures</b>.<br>
+                        3. Under <b>Select signature to edit</b>, choose <b>New</b>, and in the <b>New Signature</b> dialog box, type a name for the signature.<br>
+                        4. Under <b>Choose default signature</b>, set the following options for your signature:<br>
+                        In the <b>E-mail account list</b>, choose an email account to associate with the signature. You can have different signatures for each email account.<br>
+                        In the <b>New messages</b> list, choose the signature that you want to be added automatically to all new email messages. If you don't want to auto sign your new email messages, accept the default option of <b>(none)</b>.<br>
+                        In the <b>Replies/forwards</b> list, choose the signature that you want to be added automatically (auto sign) when you reply to or forward messages. Otherwise, accept the default option of <b>(none)</b>.<br>
+                        5.Under <b>Edit signature</b>, type the signature, and then choose <b>OK</b>.<br>
+                        <a target="_blank" href="https://support.office.com/en-us/article/Create-and-add-a-signature-to-messages-8ee5d4f4-68fd-464a-a1c1-0e1c80bb27f2">Support</a>
+
+                    </div>
+                    <div class=" mail-instructions-open" ng-show="instructions==4">
+                        <div class="instructions-title">Yahoo instructions</div>
+
+                        1. Mouse over the <b>Settings menu icon</b> <img src="/content/images/yahooSettings.png" style="margin-top: -3px;"> | select <b>Settings</b> .<br>
+                        2. Click <b>Accounts</b> .<br>
+                        3. Click your <b>Yahoo</b>  account.<br>
+                        4. Select <b>Append a signature to the emails you send</b>.<br>
+                        5. Enter or edit your signature text in the Signature field.<br>
+                        6. Click <b>Save</b>.<br>
+                        <a target="_blank" href="https://help.yahoo.com/kb/SLN16030.html">Support</a>
+
+                    </div>
+                    <div style="text-align: center; padding: 10px; border-width: 0px; border-color: #F1F1F1; border-style: solid;border-bottom-width: 1px">
+                    </div>
+                    <div>
+                        <div class="copy-to-email-step-number">4</div><div class="copy-to-email-steps" style="padding-top: 35px">Copy this zone:</div>
+                        <div class="mail-copy-div">
+
+                            <div class="copy-to-web-div">
+                                <div ng-show="instructions==1">
+                                    <div style="color: #a94442; font-size: 20px">Select your signature</div>
+                                    <div id="gmailDiv"></div>
+                                </div>
+                                <textarea ng-show="instructions!=1" id="copyedText" style="width: 100%; height: 150px; max-width: 930px" ng-model="coptToEmailText"></textarea>
+                            </div>
+                            <div style="margin-top: 40px; padding-bottom: 20px;">
+
+                                <button ng-show="instructions!=1" type="submit" data-clipboard-text="{{coptToEmailText}}" ngclipboard data-clipboard-text="{{coptToEmailText}}"class="saveButton">
+                                    Copy to Clipboard
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -13,597 +148,578 @@
 <ng-include src="'app/cardlets/deleteCardletDialog.html'"></ng-include>
 <ng-include src="'app/cardlets/cropDialogTabs.html'"></ng-include>
 <ng-include src="'app/cardlets/cropDialog.html'"></ng-include>
-<ng-include src="'app/cardlets/copyToEmail.html'"></ng-include>
-
 
 <div class="entiti-content">
-<style>
+    <style>
 
-    .modal-content{
-        margin-top: 100px;
-    }
-
-    .copy-to-web-div{
-        text-align: center;
-        width: 100%;
-    }
-
-    .modal-title{
-        color: #00C6C2;
-        font-size: 26px;
-        font-weight: bold;
-    }
-
-    .modal-header{
-        text-align: center;
-    }
-
-    .modal-footer{
-        background-color: #FFFFFF;
-        padding: 10px 10% 30px 10%!important;
-        text-align: center;
-        border-width: 0px;
-    }
-    .modal-body{
-        background-color: #FFFFFF;
-        padding: 30px 10%!important;
-
-    }
-
-
-
-    .add-new-header{
-        position: relative;
-        height: 200px;
-        background-color: #fff;
-        text-align: center;
-        padding-top: 40px;
-        font-size: 14px;
-        color: #4A4A4A;
-    }
-
-    .user-cardlets-footer{
-        height: 250px;
-        background-color: #fff;
-        text-align: center;
-        padding-top: 40px;
-        font-size: 14px;
-        color: #4A4A4A;
-        position: relative;
-    }
-
-    .add-new-header-text{
-        padding-right: 10%;
-        padding-left: 10%;
-        width: 100%;
-    }
-
-    .cardlet-name-panel{
-        margin-bottom: 30px;
-    }
-
-    .cadletName{
-        border-width: 0px;
-        border-bottom-width: 1px;
-        border-style: solid;
-        border-color: #18C6B7;
-        width: 300px;
-        padding-bottom: 10px;
-        font-size:15px;
-        text-transform: uppercase;
-        font-weight: bold;
-        height: 60px;
-    }
-
-    .user-cardlet-panel{
-        min-width: 600px;
-        padding-top: 50px;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-bottom: 50px;
-        background-color: #FFFFFF;
-        box-shadow: none;
-    }
-    @media (min-width: 1300px) {
-        .user-cardlet-panel {
-            min-width: 600px;
-            padding-top: 50px;
-            padding-left: 5%;
-            padding-right: 5%;
-            padding-bottom: 50px;
-            background-color: #FFFFFF;
-            box-shadow: none;
+        .modal-content{
+            margin-top: 100px;
         }
-    }
-    @media (min-width: 1400px) {
-        .user-cardlet-panel {
-            min-width: 600px;
-            padding-top: 50px;
-            padding-left: 8%;
-            padding-right: 8%;
-            padding-bottom: 50px;
-            background-color: #FFFFFF;
-            box-shadow: none;
-        }
-    }
 
-    @media (min-width: 1470px) {
-        .user-cardlet-panel {
-            min-width: 600px;
-            padding-top: 50px;
-            padding-left: 10%;
+        .copy-to-web-div{
+            text-align: center;
+            width: 100%;
+        }
+
+        .modal-title{
+            color: #00C6C2;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .modal-header{
+            text-align: center;
+        }
+
+        .modal-footer{
+            background-color: #FFFFFF;
+            padding: 10px 10% 30px 10%!important;
+            text-align: center;
+            border-width: 0px;
+        }
+        .modal-body{
+            background-color: #FFFFFF;
+            padding: 30px 10%!important;
+
+        }
+
+
+
+        .add-new-header{
+            position: relative;
+            height: 200px;
+            background-color: #fff;
+            text-align: center;
+            padding-top: 40px;
+            font-size: 14px;
+            color: #4A4A4A;
+        }
+
+        .user-cardlets-footer{
+            height: 250px;
+            background-color: #fff;
+            text-align: center;
+            padding-top: 40px;
+            font-size: 14px;
+            color: #4A4A4A;
+            position: relative;
+        }
+
+        .add-new-header-text{
             padding-right: 10%;
-            padding-bottom: 50px;
-            background-color: #FFFFFF;
-            box-shadow: none;
+            padding-left: 10%;
+            width: 100%;
         }
-    }
 
-    @media (min-width: 1650px) {
-        .user-cardlet-panel {
+        .cardlet-name-panel{
+            margin-bottom: 30px;
+        }
+
+        .cadletName{
+            border-width: 0px;
+            border-bottom-width: 1px;
+            border-style: solid;
+            border-color: #18C6B7;
+            width: 300px;
+            padding-bottom: 10px;
+            font-size:15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            height: 60px;
+        }
+
+        .user-cardlet-panel{
             min-width: 600px;
             padding-top: 50px;
-            padding-left: 17%;
-            padding-right: 17%;
+            padding-left: 10px;
+            padding-right: 10px;
             padding-bottom: 50px;
             background-color: #FFFFFF;
             box-shadow: none;
         }
-    }
+        @media (min-width: 1300px) {
+            .user-cardlet-panel {
+                min-width: 600px;
+                padding-top: 50px;
+                padding-left: 5%;
+                padding-right: 5%;
+                padding-bottom: 50px;
+                background-color: #FFFFFF;
+                box-shadow: none;
+            }
+        }
+        @media (min-width: 1400px) {
+            .user-cardlet-panel {
+                min-width: 600px;
+                padding-top: 50px;
+                padding-left: 8%;
+                padding-right: 8%;
+                padding-bottom: 50px;
+                background-color: #FFFFFF;
+                box-shadow: none;
+            }
+        }
 
-    ul.tab {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        background-color: #FFF;
-        width: 620px;
-    }
+        @media (min-width: 1470px) {
+            .user-cardlet-panel {
+                min-width: 600px;
+                padding-top: 50px;
+                padding-left: 10%;
+                padding-right: 10%;
+                padding-bottom: 50px;
+                background-color: #FFFFFF;
+                box-shadow: none;
+            }
+        }
 
-    /* Float the list items side by side */
-    ul.tab li {
-        width: 150px;
-        float: left;
-        background: #FFFFFF;
-        border-width: 1px;
-        border-style: solid;
-        border-color: #D0D8D9;
-        margin-right: 5px;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        border-bottom: none;
-        color: #7F8C8C!important;
-        text-transform: uppercase;
-        text-align: center;
-        font-weight: bold;
-    }
+        @media (min-width: 1650px) {
+            .user-cardlet-panel {
+                min-width: 600px;
+                padding-top: 50px;
+                padding-left: 17%;
+                padding-right: 17%;
+                padding-bottom: 50px;
+                background-color: #FFFFFF;
+                box-shadow: none;
+            }
+        }
 
-    /* Style the links inside the list items */
-    ul.tab li a {
-        display: inline-block;
-        text-align: center;
-        padding: 10px 16px;
-        text-decoration: none;
-        transition: 0.3s;
-        font-size: 14px;
+        ul.tab {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #FFF;
+            width: 620px;
+        }
 
+        /* Float the list items side by side */
+        ul.tab li {
+            width: 150px;
+            float: left;
+            background: #FFFFFF;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #D0D8D9;
+            margin-right: 5px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom: none;
+            color: #7F8C8C!important;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: bold;
+        }
 
-    }
-
-    /* Change background color of links on hover */
-    ul.tab li a:hover {
-        background-color: #ddd;
-    }
-
-    /* Create an active/current tablink class */
-
-    .tabs a{
-        color: #7F8C8C;
-    }
-
-
-    .remove{
-        padding: 0px!important;
-        position: absolute;
-        background: #fff;
-        color: #000!important;
-        border-radius: 20px;
-        width: 15px;
-        height: 15px;
-        top: -7px;
-        right: -7px;
-        text-transform: none;
-    }
-
-    ul.tab{
-        padding-top: 10px;
-    }
-
-    /* Style the tab content */
-    .tabcontent {
-        display: none;
-        padding: 6px 0px;
-        border: 1px solid #ccc;
-        width: 620px;
-        background-color: #F9F9F9;
-        margin-top: 45px;
-    }
-
-
-    /* Style the tab content */
-    .tabcontent2 {
-        display: none;
-        border: 1px solid #ccc;
-        width: 540px;
-        background-color: #F9F9F9;
-    }
+        /* Style the links inside the list items */
+        ul.tab li a {
+            display: inline-block;
+            text-align: center;
+            padding: 10px 16px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 14px;
 
 
-    .tabs2 a{
-        color: #7F8C8C;
-    }
+        }
 
-    .active a{
-        color: #4BABE2;
-    }
+        /* Change background color of links on hover */
+        ul.tab li a:hover {
+            background-color: #ddd;
+        }
 
-    ul.tab2 {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        width: 550px;
-    }
+        /* Create an active/current tablink class */
 
-    /* Float the list items side by side */
-    ul.tab2 li {
-        width: 131px;
-        float: left;
-        background: #FFFFFF;
-        border-width: 1px;
-        border-style: solid;
-        border-color: #D0D8D9;
-        border-bottom: none;
-        color: #7F8C8C!important;
-        text-transform: uppercase;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    /* Style the links inside the list items */
-    ul.tab2 li a {
-        display: inline-block;
-        text-align: center;
-        padding: 10px 16px;
-        text-decoration: none;
-        transition: 0.3s;
-        font-size: 14px;
+        .tabs a{
+            color: #7F8C8C;
+        }
 
 
-    }
+        .remove{
+            padding: 0px!important;
+            position: absolute;
+            background: #fff;
+            color: #000!important;
+            border-radius: 20px;
+            width: 15px;
+            height: 15px;
+            top: -7px;
+            right: -7px;
+            text-transform: none;
+        }
 
-    /* Change background color of links on hover */
-    ul.tab2 li a:hover {
-        background-color: #ddd;
-    }
+        ul.tab{
+            padding-top: 10px;
+        }
 
-    .display{
-        display: block;
-    }
-    .none-display{
-        display: none;
-    }
-
-    .cardlet-label{
-        font-size: 11px;
-    }
-
-    .input-text-div{
-        width: 450px
-    }
-
-    .text-decoration-div{
-        float: left;
-        width: 130px;
-        text-align: right;
-        padding-top: 25px;
-    }
-
-    .social-image-form-div{
-        width: 130px;
-        padding-top: 25px;
-        padding-left: 25px;
-    }
-
-    ul.tab li.active {
-        background: #18C6B7;
-    }
-
-    .dropdown-tab{
-        border:none!important;
-        width: 100%!important;
-        background-color: #FAFAFA!important;
-    }
-    .cardlet-dropdown{
-        background-color: #FAFAFA!important;
-    }
-
-    .add-item-btn{
-        margin: 10px;
-    }
-
-    .delete-item-btn{
-        background: none!important;
-        border: none!important;
-        color: #18C6B7!important;
-        text-decoration: underline;
-    }
-
-     input:focus{
-        outline: none;
-    }
-
-    ul[dnd-list], ul[dnd-list] > li {
-        position: relative;
-    }
-
-    .dndPlaceholder{
-        display: inline-block;
-        position: relative;
-        background-color: #ddd;
-        width: 150px;
-        min-height:44px;
-        margin: 0;
-        padding: 0;
-    }
-
-    .cardlet-panel{
-        width: 585px;
-        margin: auto;
-        background-color: #FFFFFF;
-        border-width: 0px;
-        position: relative;
-    }
-
-    .cardlet-name{
-        width: 100%;
-        font-size: 26px;
-        background: #FFF;
-        text-align: left;
-        font-weight: bold;
-        color: #595959;
-        border-width: 0px;
-        padding: 20px;
-        padding-bottom: 0px;
-        height: 60px;
-    }
+        /* Style the tab content */
 
 
+        .tabs2 a{
+            color: #7F8C8C;
+        }
 
-    .cardlet-button-panel{
-        margin: 0px!important;
-        width: 100%;
-        padding: 20px;
-        text-align: center;
-        padding-top: 0px;
+        .active a{
+            color: #4BABE2;
+        }
 
-    }
+        ul.tab2 {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 550px;
+        }
 
-    .catdlet-btn{
-        height:80px;
-        background: #fff;
-        border-radius: 5px;
-        text-align: center;
-        border-width: 0px;
-        border-style: solid;
-        border-color: #c4c4c4;
-    }
+        /* Float the list items side by side */
+        ul.tab2 li {
+            width: 131px;
+            float: left;
+            background: #FFFFFF;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #D0D8D9;
+            border-bottom: none;
+            color: #7F8C8C!important;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: bold;
+        }
 
-    .catdlet-btn-top{
-        height:30px;
-        background: #fff;
-        text-align: center;
-        border-width: 0px;
-    }
+        /* Style the links inside the list items */
+        ul.tab2 li a {
+            display: inline-block;
+            text-align: center;
+            padding: 10px 16px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 14px;
 
-    .catdlet-btn:hover{
-        border-width: 2px;
-        border-color: #18C6B7;
-    }
 
-    .catdlet-btn-col{
-        padding: 0px!important;
-        width: 25%;
-        float: left;
-    }
+        }
 
-    .catdlet-btn-col-top{
-        padding: 0px!important;
-        width: 50%;
-        height: 30px;
-        float: left;
-    }
+        /* Change background color of links on hover */
+        ul.tab2 li a:hover {
+            background-color: #ddd;
+        }
 
-    .catdlet-btn-margin{
-        margin-right: 10px;
-    }
+        .display{
+            display: block;
+        }
+        .none-display{
+            display: none;
+        }
 
-    .crate-new-btn{
-        margin-top: 20px;
-    }
+        .cardlet-label{
+            font-size: 11px;
+        }
 
-    .add-new-panel{
-        margin-top: 120px;
-    }
+        .input-text-div{
+            width: 450px
+        }
 
-    .mail-us-btn{
-        width: 100px;
-        position: relative;
-        z-index: 100;
-        margin: auto;
-        margin-top: 15px;
-        background: #fff;
-        margin-bottom: 30px;
-    }
+        .text-decoration-div{
+            float: left;
+            width: 130px;
+            text-align: right;
+            padding-top: 25px;
+        }
 
-    a.tablinks{
-        width: 100%;
-    }
-    a.tablinks2{
-        width: 100%;
-    }
+        .social-image-form-div{
+            width: 130px;
+            padding-top: 25px;
+            padding-left: 25px;
+        }
 
-    .modeal-custom-window{
-        top:0;
-        position: fixed;
-        display: block;
-        width: 100%;
-        height:100%;
-        background-color: rgba(0,0,0, 0.6);
-        z-index: 1000;
-    }
+        ul.tab li.active {
+            background: #18C6B7;
+        }
 
-    .back-btn{
-        background-color: #e7e7e7;
-        color: #cf3d37;
-        width: auto;
-        padding-left: 0px;
-    }
+        .dropdown-tab{
+            border:none!important;
+            width: 100%!important;
+            background-color: #FAFAFA!important;
+        }
+        .cardlet-dropdown{
+            background-color: #FAFAFA!important;
+        }
 
-</style>
+        .add-item-btn{
+            margin: 10px;
+        }
+
+        .delete-item-btn{
+            background: none!important;
+            border: none!important;
+            color: #18C6B7!important;
+            text-decoration: underline;
+        }
+
+        input:focus{
+            outline: none;
+        }
+
+        ul[dnd-list], ul[dnd-list] > li {
+            position: relative;
+        }
+
+        .dndPlaceholder{
+            display: inline-block;
+            position: relative;
+            background-color: #ddd;
+            width: 150px;
+            min-height:44px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cardlet-panel{
+            width: 585px;
+            margin: auto;
+            background-color: #FFFFFF;
+            border-width: 0px;
+            position: relative;
+        }
+
+        .cardlet-name{
+            width: 100%;
+            font-size: 26px;
+            background: #FFF;
+            text-align: left;
+            font-weight: bold;
+            color: #595959;
+            border-width: 0px;
+            padding: 20px;
+            padding-bottom: 0px;
+            height: 60px;
+        }
+
+
+
+        .cardlet-button-panel{
+            margin: 0px!important;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            padding-top: 0px;
+
+        }
+
+        .catdlet-btn{
+            height:80px;
+            background: #fff;
+            border-radius: 5px;
+            text-align: center;
+            border-width: 0px;
+            border-style: solid;
+            border-color: #c4c4c4;
+        }
+
+        .catdlet-btn-top{
+            height:30px;
+            background: #fff;
+            text-align: center;
+            border-width: 0px;
+        }
+
+        .catdlet-btn:hover{
+            border-width: 2px;
+            border-color: #18C6B7;
+        }
+
+        .catdlet-btn-col{
+            padding: 0px!important;
+            width: 25%;
+            float: left;
+        }
+
+        .catdlet-btn-col-top{
+            padding: 0px!important;
+            width: 50%;
+            height: 30px;
+            float: left;
+        }
+
+        .catdlet-btn-margin{
+            margin-right: 10px;
+        }
+
+        .crate-new-btn{
+            margin-top: 20px;
+        }
+
+        .add-new-panel{
+            margin-top: 120px;
+        }
+
+        .mail-us-btn{
+            width: 100px;
+            position: relative;
+            z-index: 100;
+            margin: auto;
+            margin-top: 15px;
+            background: #fff;
+            margin-bottom: 30px;
+        }
+
+        a.tablinks{
+            width: 100%;
+        }
+        a.tablinks2{
+            width: 100%;
+        }
+
+        .modeal-custom-window{
+            top:0;
+            position: fixed;
+            display: block;
+            width: 100%;
+            height:100%;
+            background-color: rgba(0,0,0, 0.6);
+            z-index: 1000;
+        }
+
+        .back-btn{
+            background-color: #e7e7e7;
+            color: #cf3d37;
+            width: auto;
+            padding-left: 0px;
+        }
+
+    </style>
     <div class="user-cardlet-panel">
-            <div class="portfolio-header">
-                Portfolio
-            </div>
-            <div class="row" >
-                <div style="margin-bottom: 70px;" class="col-lg-6" ng-repeat="tabNames in userCardlets">
-                    <div class="cardlet-panel">
-                        <div class="cardlet-top-control">
-                            <div class=" catdlet-btn-col-top">
-                                <div ui-sref="editcardletlist({ cardletId: tabNames.id })" class="catdlet-btn-top">
-                                    <img src="/content/images/edit_icon.png" style="margin-top: 5px;">
-                                </div>
-                            </div>
-                            <div class="catdlet-btn-col-top">
-                                <div class="catdlet-btn-top" ng-click="delteCardletDialog(tabNames.id)">
-                                    <img src="/content/images/delete_icon.png" style="margin-top: 5px;">
-                                </div>
+        <div class="portfolio-header">
+            Portfolio
+        </div>
+        <div class="row" >
+            <div style="margin-bottom: 70px;" class="col-lg-6" ng-repeat="tabNames in userCardlets">
+                <div class="cardlet-panel">
+                    <div class="cardlet-top-control">
+                        <div class=" catdlet-btn-col-top">
+                            <div ui-sref="editcardletlist({ cardletId: tabNames.id })" class="catdlet-btn-top">
+                                <img src="/content/images/edit_icon.png" style="margin-top: 5px;">
                             </div>
                         </div>
-                        <div class="cardlet-name">{{tabNames.cardletName}}</div>
-                        <div class="cardlet-central-panel" >
-                            <div id="copy-to-clip{{tabNames.id}}" >
-                                <div>
-                                    <ul class="tab2">
-                                        <li style="background-color: #fff" class="tabs2 tabs2{{tabNames.id}}" ng-style="addColors('tab'+tabName.position+tabName.name+tabNames.id, tabName.layout.mainColor, tabName.layout.secondaryColor, $parent.$index)" ng-repeat="tabName in tabNames.tabs" ng-class="tabName.position == 0 ? 'active' : ''"
-                                            id="tab{{tabName.position}}{{tabName.name}}{{tabNames.id}}">
-                                            <div style="position: relative">
-                                                <a href="javascript:void(0)" class="tablinks2 tablinks2{{tabNames.id}}" ng-click="openCard(tabName.name+tabName.position+tabNames.id, 'tab'+tabName.position+tabName.name+tabNames.id, tabNames.id)">{{tabName.name}}</a>
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                                <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}{{tabNames.id}}" class="tabcontent2 tabcontent2{{tabNames.id}}" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-                                        <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
-                                </div>
-                        </div>
-                        </div>
-                        <div class="cardlet-button-panel row">
-                            <button type="submit" ng-disabled="for2m.$invalid" ng-click="copyToEmail($index, 'copy-to-clip'+tabNames.id, tabNames.id)" class="btn btn-primary main-btn copy-btn"><span class="copy-btn-part"><img src="/content/images/new/atsign.png"></span><span style="padding-left: 15px; padding-right: 15px">Copy to e-mail</span></button>
-                            <button style="margin-left: 20px" type="submit" ng-click="openModal(tabNames.id)" class="btn btn-primary main-btn copy-btn"><span class="copy-btn-part"><img src="/content/images/new/copy_to_web.png"></span><span style="padding-left: 22px;padding-right: 22px">Copy to web</span></button>
-
+                        <div class="catdlet-btn-col-top">
+                            <div class="catdlet-btn-top" ng-click="delteCardletDialog(tabNames.id)">
+                                <img src="/content/images/delete_icon.png" style="margin-top: 5px;">
+                            </div>
                         </div>
                     </div>
+                    <div class="cardlet-name">{{tabNames.cardletName}}</div>
+                    <div class="cardlet-central-panel" >
+                        <div id="copy-to-clip{{tabNames.id}}" >
+                            <div>
+                                <ul class="tab2">
+                                    <li style="background-color: #fff" class="tabs2 tabs2{{tabNames.id}}" ng-style="addColors('tab'+tabName.position+tabName.name+tabNames.id, tabName.layout.mainColor, tabName.layout.secondaryColor, $parent.$index)" ng-repeat="tabName in tabNames.tabs" ng-class="tabName.position == 0 ? 'active' : ''"
+                                        id="tab{{tabName.position}}{{tabName.name}}{{tabNames.id}}">
+                                        <div style="position: relative">
+                                            <a href="javascript:void(0)" class="tablinks2 tablinks2{{tabNames.id}}" ng-click="openCard(tabName.name+tabName.position+tabNames.id, 'tab'+tabName.position+tabName.name+tabNames.id, tabNames.id)">{{tabName.name}}</a>
+                                        </div>
+                                    </li>
 
-                </div>
-                <div style="margin-bottom: 30px;" class="col-lg-6">
-                    <div class="create-new-cardlet" ui-sref="cardletlist">
-                        <div class="add-new-panel">
-                            <button type="submit" ng-disabled="for2m.$invalid" class="btn btn-primary main-btn copy-btn" style="background-color: #E8645A!important; border-color: #E8645A!important"><span style="background-color: #DA4941!important" class="copy-btn-part"><img src="/content/images/new/plus_icon.png"></span><span style="padding-left: 25px; padding-right: 25px">Create New</span></button>
+                                </ul>
+                            </div>
+
+                            <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}{{tabNames.id}}" class="tabcontent2 tabcontent2{{tabNames.id}}" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
+                                <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+                            </div>
                         </div>
+                    </div>
+                    <div class="cardlet-button-panel row">
+                        <button type="submit" ng-disabled="for2m.$invalid" ng-click="copyToEmail($index, 'copy-to-clip'+tabNames.id, tabNames.id)" class="btn btn-primary main-btn copy-btn"><span class="copy-btn-part"><img src="/content/images/new/atsign.png"></span><span style="padding-left: 15px; padding-right: 15px">Copy to e-mail</span></button>
+                        <button style="margin-left: 20px" type="submit" ng-click="openModal(tabNames.id)" class="btn btn-primary main-btn copy-btn"><span class="copy-btn-part"><img src="/content/images/new/copy_to_web.png"></span><span style="padding-left: 22px;padding-right: 22px">Copy to web</span></button>
+
+                    </div>
+                </div>
+
+            </div>
+            <div style="margin-bottom: 30px;" class="col-lg-6">
+                <div class="create-new-cardlet" ui-sref="cardletlist">
+                    <div class="add-new-panel">
+                        <button type="submit" ng-disabled="for2m.$invalid" class="btn btn-primary main-btn copy-btn" style="background-color: #E8645A!important; border-color: #E8645A!important"><span style="background-color: #DA4941!important" class="copy-btn-part"><img src="/content/images/new/plus_icon.png"></span><span style="padding-left: 25px; padding-right: 25px">Create New</span></button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="user-cardlets-footer">
-       <div style="font-size: 34px; color: #595959;">We’d love to hear from you</div>
-        <div style="font-size: 20px;"><span style=" color: #595959;">Email us: </span><a style="color: #18C6B7" href="mailto:support@sigterra.com">support@sigterra.com</a></div>
-    </div>
+</div>
+<div class="user-cardlets-footer">
+    <div style="font-size: 34px; color: #595959;">We’d love to hear from you</div>
+    <div style="font-size: 20px;"><span style=" color: #595959;">Email us: </span><a style="color: #18C6B7" href="mailto:support@sigterra.com">support@sigterra.com</a></div>
+</div>
 
-    <style>
+<style>
 
-        a.accordion-section-title.active{
-            background-color: #ECECEC!important;
-        }
-        .main:before {
-            width:100%;
-            height:100%;
-            position:absolute;
-            top:0px;
-            left:0px;
-            z-index:-1;
-            content:'';
-            background:-webkit-radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0)), url('img/body-bg.png');
-            background:-moz-radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0)), url('img/body-bg.png');
-            background:-o-radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0)), url('img/body-bg.png');
-            background:radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0)), url('img/body-bg.png');
-        }
+    a.accordion-section-title.active{
+        background-color: #ECECEC!important;
+    }
+    .main:before {
+        width:100%;
+        height:100%;
+        position:absolute;
+        top:0px;
+        left:0px;
+        z-index:-1;
+        content:'';
+        background:-webkit-radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0)), url('img/body-bg.png');
+        background:-moz-radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0)), url('img/body-bg.png');
+        background:-o-radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0)), url('img/body-bg.png');
+        background:radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0)), url('img/body-bg.png');
+    }
 
-        .site-header-wrap {
-            margin-bottom:60px;
-            border-bottom:1px solid #cd9ad6;
-        }
+    .site-header-wrap {
+        margin-bottom:60px;
+        border-bottom:1px solid #cd9ad6;
+    }
 
-        /*------------------------------------*\
-        -------- DEMO Code: accordion
-        \*------------------------------------*/
-        /*----- Accordion -----*/
-        .accordion, .accordion * {
-            -webkit-box-sizing:border-box;
-            -moz-box-sizing:border-box;
-            box-sizing:border-box;
-        }
+    /*------------------------------------*\
+    -------- DEMO Code: accordion
+    \*------------------------------------*/
+    /*----- Accordion -----*/
+    .accordion, .accordion * {
+        -webkit-box-sizing:border-box;
+        -moz-box-sizing:border-box;
+        box-sizing:border-box;
+    }
 
-        .accordion {
-            overflow:hidden;
-            box-shadow:0px 1px 3px rgba(0,0,0,0.25);
-            border-radius:3px;
-            background:#f7f7f7;
-        }
+    .accordion {
+        overflow:hidden;
+        box-shadow:0px 1px 3px rgba(0,0,0,0.25);
+        border-radius:3px;
+        background:#f7f7f7;
+    }
 
-        /*----- Section Titles -----*/
-        .accordion-section-title {
-            width: 100%;
-            padding: 15px;
-            display: inline-block;
-            border-top: 1px solid #D0D8D9;
-            border-bottom: 1px solid #D0D8D9;
-            background: #F9F9F9;
-            font-size: 1.200em;
-            color: #7F8C8C;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
+    /*----- Section Titles -----*/
+    .accordion-section-title {
+        width: 100%;
+        padding: 15px;
+        display: inline-block;
+        border-top: 1px solid #D0D8D9;
+        border-bottom: 1px solid #D0D8D9;
+        background: #F9F9F9;
+        font-size: 1.200em;
+        color: #7F8C8C;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
 
-        .accordion-section-title.active, .accordion-section-title:hover {
-            background:#ECECEC;
-            /* Type */
-            text-decoration:none;
-            color: #7F8C8C;
-        }
+    .accordion-section-title.active, .accordion-section-title:hover {
+        background:#ECECEC;
+        /* Type */
+        text-decoration:none;
+        color: #7F8C8C;
+    }
 
-        .accordion-section:last-child .accordion-section-title {
-            border-bottom:none;
-        }
+    .accordion-section:last-child .accordion-section-title {
+        border-bottom:none;
+    }
 
-        /*----- Section Content -----*/
-        .accordion-section-content {
-            padding:15px;
-        }
+    /*----- Section Content -----*/
+    .accordion-section-content {
+        padding:15px;
+    }
 
-    </style>
+</style>
 
 </div>
 
