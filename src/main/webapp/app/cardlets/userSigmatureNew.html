@@ -6,8 +6,8 @@
         <div class="user-name" ng-style="{'font-weight': firstBusinessCardCopyed.userName.bold ? 'bold' : 'normal',
                     'font-style': firstBusinessCardCopyed.userName.italic ? 'italic' : 'normal',
                     'text-decoration': firstBusinessCardCopyed.userName.underline ? 'underline' : 'normal', 'color': '#'+firstBusinessCardCopyed.layout.secondaryColor}"  ng-show="firstBusinessCardCopyed.userName.value">{{firstBusinessCardCopyed.userName.value}}</div>
-        <div class="user-main-text job-titile" ng-show="!firstBusinessCardCopyed.job.value">General Manager</div>
-        <div class="user-main-text job-titile" ng-style="{'font-weight': firstBusinessCardCopyed.job.bold ? 'bold' : 'normal',
+        <div class="user-main-text" style="margin-bottom: 15px" ng-show="!firstBusinessCardCopyed.job.value">General Manager</div>
+        <div class="user-main-text " style="margin-bottom: 15px" ng-style="{'font-weight': firstBusinessCardCopyed.job.bold ? 'bold' : 'normal',
                     'font-style': firstBusinessCardCopyed.job.italic ? 'italic' : 'normal',
                     'text-decoration': firstBusinessCardCopyed.job.underline ? 'underline' : 'normal'}" ng-show="firstBusinessCardCopyed.job.value">{{firstBusinessCardCopyed.job.value}}</div>
         <div class="company" ng-show="!firstBusinessCardCopyed.company.value">
@@ -19,12 +19,12 @@
             {{firstBusinessCardCopyed.company.value}}
         </div>
         <div class="" ng-show="!firstBusinessCardCopyed.phone.value">
-            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">f: </span>1-888-555-5555
+            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">t: </span>1-888-555-5555
         </div>
         <div class="" ng-show="firstBusinessCardCopyed.phone.value" ng-style="{'font-weight': firstBusinessCardCopyed.phone.bold ? 'bold' : 'normal',
                     'font-style': firstBusinessCardCopyed.phone.italic ? 'italic' : 'normal',
                     'text-decoration': firstBusinessCardCopyed.phone.underline ? 'underline' : 'normal'}">
-            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">f: </span>{{firstBusinessCardCopyed.phone.value}}
+            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">t: </span>{{firstBusinessCardCopyed.phone.value}}
         </div>
 
         <div class="" ng-show="!firstBusinessCardCopyed.userEmail.value">

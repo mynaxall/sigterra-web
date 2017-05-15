@@ -458,7 +458,12 @@
                 $scope.signatureSelected = 3;
                 $window.scrollTo(0, 0);
                 var urlField = document.getElementById('thirdSignature');
-                $scope.coptToEmailText = urlField.outerHTML;
+
+                if($scope.isAddBanner == true){
+                    $scope.coptToEmailText = urlField.outerHTML+ '<div style=\"max-height: 240px; overflow: hidden;text-transform: scale(0.59);text-align: left\"><img style="text-transform: scale(0.59); width:430px" src="' + $scope.banner + '"></div>'
+                }else{
+                    $scope.coptToEmailText = innerHTML;
+                }
                 document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText
             }else if(id = 4){
                 $scope.isShowMailClientWindow = true;
