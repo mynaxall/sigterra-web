@@ -739,14 +739,16 @@
                     cyrrentEl.style.borderTop = "2px solid #4BABE2"
                 }
             }
-            if($scope.userCardlets[index].tabs.length <= 2){
-                cyrrentEl.style.width = "270px"
-            }
-            if($scope.userCardlets[index].tabs.length == 3){
-                cyrrentEl.style.width = "180px"
-            }
-            if($scope.userCardlets[index].tabs.length == 4){
-                cyrrentEl.style.width = "135px"
+            if($scope.tabNames) {
+                if ($scope.userCardlets[index].tabs.length <= 2) {
+                    cyrrentEl.style.width = "270px"
+                }
+                if ($scope.userCardlets[index].tabs.length == 3) {
+                    cyrrentEl.style.width = "180px"
+                }
+                if ($scope.userCardlets[index].tabs.length == 4) {
+                    cyrrentEl.style.width = "135px"
+                }
             }
         }
 

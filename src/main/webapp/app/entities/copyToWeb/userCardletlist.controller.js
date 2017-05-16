@@ -64,23 +64,25 @@
 
 
 
-        $scope.addColors = function(id, colorMain, colorSecond){
+        $scope.addColors = function(id, colorMain, colorSecond) {
 
             var cyrrentEl = document.getElementById(id);
-            if(cyrrentEl) {
+            if (cyrrentEl) {
                 cyrrentEl.style.background = "#" + colorMain;
                 if (angular.element(document.getElementById(id)).hasClass('active')) {
                     cyrrentEl.style.background = "#" + colorSecond;
                 }
             }
-            if($scope.tabNames.tabs.length ===2){
-                cyrrentEl.style.width = "268px"
-            }
-            if($scope.tabNames.tabs.length ===3){
-                cyrrentEl.style.width = "177px"
-            }
-            if($scope.tabNames.tabs.length ===4){
-                cyrrentEl.style.width = "131px"
+            if ($scope.tabNames){
+                if ($scope.tabNames.tabs.length === 2) {
+                    cyrrentEl.style.width = "268px"
+                }
+                if ($scope.tabNames.tabs.length === 3) {
+                    cyrrentEl.style.width = "177px"
+                }
+                if ($scope.tabNames.tabs.length === 4) {
+                    cyrrentEl.style.width = "131px"
+                }
             }
         }
 

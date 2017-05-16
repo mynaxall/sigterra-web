@@ -633,14 +633,16 @@
                     cyrrentEl.style.borderTop = "2px solid #4BABE2"
                 }
             }
-            if($scope.tabNames.tabs.length ===2){
-                cyrrentEl.style.width = "270px"
-            }
-            if($scope.tabNames.tabs.length ===3){
-                cyrrentEl.style.width = "180px"
-            }
-            if($scope.tabNames.tabs.length ===4){
-                cyrrentEl.style.width = "135px"
+            if($scope.tabNames) {
+                if ($scope.tabNames.tabs.length === 2) {
+                    cyrrentEl.style.width = "270px"
+                }
+                if ($scope.tabNames.tabs.length === 3) {
+                    cyrrentEl.style.width = "180px"
+                }
+                if ($scope.tabNames.tabs.length === 4) {
+                    cyrrentEl.style.width = "135px"
+                }
             }
         }
 
