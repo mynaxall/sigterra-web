@@ -2208,6 +2208,11 @@ div.navbar-collapse.in.collapse{
     background-color: #F9F9F9;
 }
 
+.registration-steps-image{
+    position: relative;
+    z-index: 20;
+}
+
 
 
 
