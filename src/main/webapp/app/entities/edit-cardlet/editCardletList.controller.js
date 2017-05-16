@@ -503,36 +503,28 @@
                 $scope.tabNames.tabs[i].position = i;
             }
 
-            setTimeout(function(){
 
-                setTimeout(function(){
-                    var tabs2 = document.getElementsByClassName("tabs2");
-                    var tabs = document.getElementsByClassName("tabs");
 
-                    for (var i = 0; i < tabs.length; i++) {
-                        if(angular.element(tabs[i]).hasClass('active')){
-                            document.getElementsByClassName("tabcontent")[i].style.display = "none";;
-                            tabs[i].className = tabs[i].className.replace(" active", "");
-                        }
-                        if(angular.element(tabs2[i]).hasClass('active')){
-                            document.getElementsByClassName("tabcontent2")[i].style.display = "none";;
-                            tabs2[i].className = tabs2[i].className.replace(" active", "");
-                        }
+            var tabs2 = document.getElementsByClassName("tabs2");
+            var tabs = document.getElementsByClassName("tabs");
 
-                    }
+            for (var i = 0; i < tabs.length; i++) {
+                if(angular.element(tabs[i]).hasClass('active')){
+                    document.getElementsByClassName("tabcontent")[i].style.display = "none";;
+                    tabs[i].className = tabs[i].className.replace(" active", "");
+                }
+                if(angular.element(tabs2[i]).hasClass('active')){
+                    document.getElementsByClassName("tabcontent2")[i].style.display = "none";;
+                    tabs2[i].className = tabs2[i].className.replace(" active", "");
+                }
 
-                    document.getElementsByClassName("tabcontent2")[0].style.display = "block";
-                    document.getElementsByClassName("tabs2")[0].className += " active";
-                    document.getElementsByClassName("tabcontent")[0].style.display = "block";;
-                    document.getElementsByClassName("tabs")[0].className += " active";
-                }, 500);
+            }
 
-                document.getElementsByClassName("tabcontent2")[0].style.display = "block";
-                document.getElementsByClassName("tabs2")[0].className += " active";
-                document.getElementsByClassName("tabcontent")[0].style.display = "block";;
-                document.getElementsByClassName("tabs")[0].className += " active";
+            document.getElementsByClassName("tabcontent2")[0].style.display = "block";
+            document.getElementsByClassName("tabs2")[0].className += " active";
+            document.getElementsByClassName("tabcontent")[0].style.display = "block";;
+            document.getElementsByClassName("tabs")[0].className += " active";
 
-            }, 500);
             setTimeout(function() {
                 for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                     if ($scope.tabNames.tabs[i].tabType == '1') {
