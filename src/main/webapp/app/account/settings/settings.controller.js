@@ -28,6 +28,8 @@
         vm.save = save;
         vm.settingsAccount = null;
         vm.success = null;
+        $scope.imageParam = "";
+
 
         /**
          * Store the "settings account" in a separate variable, and not in the shared "account" variable.
@@ -36,9 +38,14 @@
 
         Principal.identity().then(function(account) {
             vm.settingsAccount = account;
+            $scope.imageParam = new Date().getTime();
+            vm.settingsAccount.imageUrl = vm.settingsAccount.imageUrl +"?"+ $scope.imageParam;
+
+
         });
 
         function save () {
+            $scope.imageParam = new Date().getTime();
             Auth.updateAccount(vm.settingsAccount).then(function() {
                 vm.error = null;
                 vm.success = 'OK';
@@ -49,6 +56,7 @@
                 vm.success = null;
                 vm.error = 'ERROR';
             });
+
         }
 
 
@@ -167,6 +175,7 @@
         function saveImage(){
             vm.hideImageDialog();
             $scope.showSpinner = true;
+            $scope.imageParam = new Date().getTime();
             var img_b64 = $scope.myCroppedImage;
             var png = img_b64.split(',')[1];
             var file = b64toBlob(png, 'image/png')
@@ -179,8 +188,10 @@
                 })
                 .success(function (data, status, headers, config) {
                     $scope.showSpinner = false;
-                    vm.settingsAccount.imageUrl = data.url;
+                    vm.settingsAccount.imageUrl = data.url +"?"+ $scope.imageParam;
                 });
+
+
         }
     }
 })();
