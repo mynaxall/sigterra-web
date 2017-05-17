@@ -2214,7 +2214,7 @@ div.navbar-collapse.in.collapse{
 }
 
 a:focus, button:focus{
-    outline: none;
+    outline: none!important;
 }
 
 
