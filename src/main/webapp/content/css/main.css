@@ -2213,6 +2213,10 @@ div.navbar-collapse.in.collapse{
     z-index: 20;
 }
 
+a:focus, button:focus{
+    outline: none;
+}
+
 
 
 
