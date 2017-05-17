@@ -11,7 +11,7 @@
         var vm = this;
 
         $scope.showCropDialog = false;
-        $scope.firstBusinessCardId;
+        $scope.firstBusinessCardId ="";
         $scope.myImage='';
         $scope.myCroppedImage = '';
 
@@ -456,7 +456,8 @@
                     }
                 $scope.tabNames.tabs.push(newTab);
                 setTimeout(function(){
-                    if(!$scope.firstBusinessCardId){
+
+                    if($scope.firstBusinessCardId === '' || $scope.firstBusinessCardId < 0){
                         $scope.firstBusinessCardId = newTab.position;
                     }
                     $scope.openCity('settings'+newTab.name+newTab.position, newTab.position, newTab.name+newTab.position, 'card'+newTab.position+newTab.name)}, 500)
@@ -599,10 +600,15 @@
                     document.getElementsByClassName("tabcontent")[0].style.display = "block";;
                     document.getElementsByClassName("tabs")[0].className += " active";
 
+
+
                     if($scope.firstBusinessCardId === $scope.tabToDeleteID){
+
+
                         for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                             if ($scope.tabNames.tabs[i].tabType == '1'){
                                 $scope.firstBusinessCardId = i;
+
                                 break
                             }else{
                                 $scope.firstBusinessCardId = '';

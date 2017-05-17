@@ -472,7 +472,7 @@
                 $scope.tabNames.tabs.push(newTab);
                 setTimeout(function(){
                     console.log($scope.firstBusinessCardId)
-                    if(!$scope.firstBusinessCardId){
+                    if($scope.firstBusinessCardId === '' || $scope.firstBusinessCardId < 0){
                         $scope.firstBusinessCardId = newTab.position;
                     }
                 $scope.openCity('settings'+newTab.name+newTab.position, 'tab'+newTab.position, newTab.name+newTab.position, newTab.position+newTab.name)}, 500)
