@@ -80,12 +80,19 @@
             var cyrrentEl = document.getElementById(id);
             if(cyrrentEl) {
                 cyrrentEl.style.background = "#F9F9F9";
+                cyrrentEl.style.borderBottom ="1px solid #D0D8D9";
                 if (angular.element(document.getElementById(id)).hasClass('active')) {
                     cyrrentEl.style.background = "#FFFFFF" ;
                     cyrrentEl.style.borderTop = "2px solid #4BABE2"
+                    cyrrentEl.style.borderBottom ="0px";
                 }
             }
             if($scope.tabNames) {
+
+                if($scope.userCardlets[index].tabs.length == 1){
+                    cyrrentEl.style.width = "540px"
+                }
+
                 if ($scope.tabNames.tabs.length === 2) {
                     cyrrentEl.style.width = "270px"
                 }

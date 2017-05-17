@@ -1345,7 +1345,7 @@ Social Buttons
 
 .firstItemTop{
     position: absolute;
-    bottom: 40px;
+    bottom: 55px;
     left: 0px;
     height: 35px;
     width: 100%;
@@ -2180,14 +2180,13 @@ div.navbar-collapse.in.collapse{
 .cardlet{
     width: 540px;
     height: 240px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #D0D8D9;
+    border: 1px solid #D0D8D9;
+    border-top-width: 0px;
 }
 .cardlet3{
-    border-width: 1px;
-    border-style: solid;
-    border-color: #D0D8D9;
+    border: 1px solid #D0D8D9;
+    border-top-width: 0px;
+    height: 240px;
 }
 
 .tabcontent {
@@ -2217,6 +2216,33 @@ a:focus, button:focus{
     outline: none!important;
 }
 
+ul.tab2 li a {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 14px;
+
+
+}
+
+ul.tab2 li a:hover {
+    background-color: #ddd;
+}
+
+
+ul.tab2 li {
+    width: 131px;
+    min-height: 44px;
+    float: left;
+    background: #FFFFFF;
+    border: 1px #D0D8D9 solid;
+    color: #7F8C8C!important;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+}
 
 
 

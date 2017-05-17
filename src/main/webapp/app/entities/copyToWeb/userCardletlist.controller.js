@@ -74,6 +74,11 @@
                 }
             }
             if ($scope.tabNames){
+
+                if($scope.userCardlets[index].tabs.length == 1){
+                    cyrrentEl.style.width = "540px"
+                }
+
                 if ($scope.tabNames.tabs.length === 2) {
                     cyrrentEl.style.width = "268px"
                 }
