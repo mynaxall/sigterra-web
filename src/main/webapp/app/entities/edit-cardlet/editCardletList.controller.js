@@ -621,6 +621,26 @@
 
         }
 
+        $scope.tabWidth = function( id ){
+            var cyrrentEl = document.getElementById(id);
+            if($scope.tabNames) {
+
+                if($scope.tabNames.tabs.length == 1){
+                    cyrrentEl.style.width = "566px"
+                }
+
+                if ($scope.tabNames.tabs.length === 2) {
+                    cyrrentEl.style.width = "283px"
+                }
+                if ($scope.tabNames.tabs.length === 3) {
+                    cyrrentEl.style.width = "188px"
+                }
+                if ($scope.tabNames.tabs.length === 4) {
+                    cyrrentEl.style.width = "155px"
+                }
+            }
+        }
+
 
         $scope.addColors = function(id, colorMain, colorSecond){
 
@@ -637,7 +657,7 @@
             }
             if($scope.tabNames) {
 
-                if($scope.userCardlets[index].tabs.length == 1){
+                if($scope.tabNames.tabs.length == 1){
                     cyrrentEl.style.width = "540px"
                 }
 

@@ -75,7 +75,7 @@
             }
             if ($scope.tabNames){
 
-                if($scope.userCardlets[index].tabs.length == 1){
+                if($scope.tabNames.tabs.length == 1){
                     cyrrentEl.style.width = "540px"
                 }
 
