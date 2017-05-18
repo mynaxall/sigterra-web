@@ -211,10 +211,9 @@
         $scope.tabsImage = '';
 
         $scope.copyToEmail = function(id, cardId, sigId) {
-            console.log($scope.userCardlets)
-            console.log(id)
-            console.log(cardId)
-            console.log(sigId)
+            $scope.selected = $scope.fieldTable[0];
+            $scope.isAddBanner = false;
+
 
             $scope.isCopyTiEmail = true;
             $window.scrollTo(0, 0);
