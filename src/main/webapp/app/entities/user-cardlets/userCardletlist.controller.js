@@ -21,7 +21,7 @@
             title: "Outlook"
         }, {
             field: "3",
-            title: "Airmal"
+            title: "Airmail"
         }, {
             field: "4",
             title: "Yahoo"
