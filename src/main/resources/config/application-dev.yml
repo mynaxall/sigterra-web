@@ -26,8 +26,8 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/sigterra_web?useUnicode=true&characterEncoding=utf8&useSSL=false
         name:
-        username: sigterra
-        password: 123123123Aa
+        username: primadesk
+        password: primadesk
         hikari:
             data-source-properties:
                 cachePrepStmts: true
