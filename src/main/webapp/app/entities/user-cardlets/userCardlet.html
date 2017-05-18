@@ -28,9 +28,9 @@
                             </div>
                         </div>
                         <div class="selectSignature" style="float: right;top: 30px; right: 90px">
-                            <div ng-click="selectSignature(3)"  id="signature-selector">
+                            <div ng-click="selectSignature(3)" style=" margin-top: -30px;"  id="signature-selector" ng-class="signatureSelected === 3 ? 'activeSignature' : ''">
                                 <div class="modal-signature-panel-shadow"></div>
-                                <div style=" margin-top: -30px;" id="thirdSignature" ng-class="signatureSelected === 3 ? 'activeSignature' : ''">
+                                <div  id="thirdSignature" >
                                     <div style="width: 300px;">
                                         <ng-include src="'app/cardlets/userSigmatureNew.html'"></ng-include>
                                     </div>
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="add-banner-panel" style="padding-bottom: 35px; padding-top: 35px; margin-top: 10px">
+                <div class="add-banner-panel" style="padding-bottom: 35px; padding-top: 35px; margin-top: 25px">
                     <div class="copy-to-email-step-number">2</div><div class="copy-to-email-steps" style="display: inline-block">Add banner to your signature:</div>
                     <div style="display: inline-block; color: #595959; font-size: 14px; margin-left: 20px;">
                         <input class="add-banner-checkbox" type="checkbox" ng-model="isAddBanner" ng-click="addBanner()" width="20px" height="20px" style="margin-right: 10px">
