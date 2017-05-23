@@ -1493,9 +1493,24 @@ Social Buttons
     position: absolute;
     top:20px;
     right:20px;
-    width: 64px;
+    width: 96px;
     height: 30px;
 }
+
+.catdlet-btn-col-top{
+    padding: 0px!important;
+    width: 33.33333%;
+    height: 30px;
+    float: left;
+}
+
+.catdlet-btn-top{
+    height:30px;
+    background: #fff;
+    text-align: center;
+    border-width: 0px;
+}
+
 
 .cardlet-central-panel{
     padding: 20px;

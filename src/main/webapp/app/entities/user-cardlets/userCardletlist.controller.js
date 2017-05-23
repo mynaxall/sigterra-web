@@ -210,6 +210,10 @@
         $scope.banner ="";
         $scope.tabsImage = '';
 
+        $scope.gerPreviewLink = function(id){
+            return ($location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ id)
+        }
+
         $scope.copyToEmail = function(id, cardId, sigId) {
             $scope.selected = $scope.fieldTable[0];
             $scope.isAddBanner = false;

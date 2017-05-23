@@ -480,13 +480,6 @@
             border-color: #c4c4c4;
         }
 
-        .catdlet-btn-top{
-            height:30px;
-            background: #fff;
-            text-align: center;
-            border-width: 0px;
-        }
-
         .catdlet-btn:hover{
             border-width: 2px;
             border-color: #18C6B7;
@@ -498,12 +491,6 @@
             float: left;
         }
 
-        .catdlet-btn-col-top{
-            padding: 0px!important;
-            width: 50%;
-            height: 30px;
-            float: left;
-        }
 
         .catdlet-btn-margin{
             margin-right: 10px;
@@ -560,6 +547,11 @@
             <div style="margin-bottom: 70px;" class="col-lg-6" ng-repeat="tabNames in userCardlets">
                 <div class="cardlet-panel">
                     <div class="cardlet-top-control">
+                        <div class=" catdlet-btn-col-top">
+                            <div class="catdlet-btn-top">
+                                <a target="_blank" href="{{gerPreviewLink(tabNames.id)}}"> <img src="/content/images/preview_icon.png" style="margin-top: 5px;"></a>
+                            </div>
+                        </div>
                         <div class=" catdlet-btn-col-top">
                             <div ui-sref="editcardletlist({ cardletId: tabNames.id })" class="catdlet-btn-top">
                                 <img src="/content/images/edit_icon.png" style="margin-top: 5px;">
