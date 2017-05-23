@@ -9,15 +9,16 @@
             Dear
         </p>
         <p th:text="#{email.activation.text1}">
-            Your JHipster account has been created, please click on the URL below to activate it:
+            Welcome to Sigterra! We are glad to have you as our new client. We are truly thankful that you have chosen Sigterra. We make sure that you get only the best and most reliable service available.
+        </p>
+        <p th:text="#{email.activation.text2}">
+            Please press this link to confirm your e-mail:
         </p>
         <p>
             <a th:href="@{|${baseUrl}/#/activate?key=${user.activationKey}|}">Click here to activate</a>
         </p>
         <p>
-            <span th:text="#{email.activation.text2}">Regards, </span>
-            <br/>
-            <em th:text="#{email.signature}">JHipster.</em>
+            <span th:text="#{email.activation.text3}">Thank you again for your choice of Sigterra. We look forward to a long and successful association.</span>
         </p>
     </body>
 </html>
