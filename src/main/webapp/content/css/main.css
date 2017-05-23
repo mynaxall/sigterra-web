@@ -1461,6 +1461,8 @@ Social Buttons
 
 .textarea-new{
     width: 400px;
+    max-width: 400px;
+    max-height: 100px;
     border-width: 0px!important;
     border-bottom-width: 1px!important;
     border-bottom-color: #D0D8D9!important;
@@ -1471,7 +1473,6 @@ Social Buttons
     height: 34px;
     min-height: 34px;
     padding-top: 7px;
-    overflow: hidden;
 }
 
 .textarea-new:focus{
