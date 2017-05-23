@@ -1439,7 +1439,7 @@ Social Buttons
 
 .cardletNew{
     width: 540px;
-    height: 289px;
+    height: 200px;
     padding:10px;
 }
 
@@ -2075,6 +2075,7 @@ Social Buttons
     border-color: #13BCB5;
     border-width: 2px;
     border-style: solid;
+    min-height: 300px;
 }
 
 .footer-panel{
