@@ -6,8 +6,8 @@
         <div class="user-name" ng-style="{'font-weight': firstBusinessCardCopyed.userName.bold ? 'bold' : 'normal',
                     'font-style': firstBusinessCardCopyed.userName.italic ? 'italic' : 'normal',
                     'text-decoration': firstBusinessCardCopyed.userName.underline ? 'underline' : 'normal', 'color': '#'+firstBusinessCardCopyed.layout.secondaryColor}"  ng-show="firstBusinessCardCopyed.userName.value">{{firstBusinessCardCopyed.userName.value}}</div>
-        <div class="user-main-text" style="margin-bottom: 15px" ng-show="!firstBusinessCardCopyed.job.value">General Manager</div>
-        <div class="user-main-text " style="margin-bottom: 15px" ng-style="{'font-weight': firstBusinessCardCopyed.job.bold ? 'bold' : 'normal',
+        <div class="user-main-text" ng-show="!firstBusinessCardCopyed.job.value">General Manager</div>
+        <div class="user-main-text "  ng-style="{'font-weight': firstBusinessCardCopyed.job.bold ? 'bold' : 'normal',
                     'font-style': firstBusinessCardCopyed.job.italic ? 'italic' : 'normal',
                     'text-decoration': firstBusinessCardCopyed.job.underline ? 'underline' : 'normal'}" ng-show="firstBusinessCardCopyed.job.value">{{firstBusinessCardCopyed.job.value}}</div>
         <div class="company" ng-show="!firstBusinessCardCopyed.company.value">
@@ -19,32 +19,34 @@
             {{firstBusinessCardCopyed.company.value}}
         </div>
         <div class="" ng-show="!firstBusinessCardCopyed.phone.value">
-            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">t: </span>1-888-555-5555
+            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">m: </span>1-888-555-5555
         </div>
         <div class="" ng-show="firstBusinessCardCopyed.phone.value" ng-style="{'font-weight': firstBusinessCardCopyed.phone.bold ? 'bold' : 'normal',
                     'font-style': firstBusinessCardCopyed.phone.italic ? 'italic' : 'normal',
                     'text-decoration': firstBusinessCardCopyed.phone.underline ? 'underline' : 'normal'}">
-            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">t: </span>{{firstBusinessCardCopyed.phone.value}}
+            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">m: </span>{{firstBusinessCardCopyed.phone.value}}
         </div>
+        <div style="display: inline-block;">
+            <div class="" ng-show="!firstBusinessCardCopyed.userEmail.value">
+                <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">e: </span>fabian.abshireabsh@wilford.biz
+            </div>
+            <div class="" ng-show="firstBusinessCardCopyed.userEmail.value" ng-style="{'font-weight': firstBusinessCardCopyed.userEmail.bold ? 'bold' : 'normal',
+                                'font-style': firstBusinessCardCopyed.userEmail.italic ? 'italic' : 'normal',
+                                'text-decoration': firstBusinessCardCopyed.userEmail.underline ? 'underline' : 'normal'}">
+                <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">e: </span><a href="mailto:{{firstBusinessCardCopyed.userEmail.value}}">{{firstBusinessCardCopyed.userEmail.value}}</a>
 
-        <div class="" ng-show="!firstBusinessCardCopyed.userEmail.value">
-            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">e: </span>fabian.abshireabsh@wilford.biz
+            </div>
         </div>
-        <div class="" ng-show="firstBusinessCardCopyed.userEmail.value" ng-style="{'font-weight': firstBusinessCardCopyed.userEmail.bold ? 'bold' : 'normal',
-                            'font-style': firstBusinessCardCopyed.userEmail.italic ? 'italic' : 'normal',
-                            'text-decoration': firstBusinessCardCopyed.userEmail.underline ? 'underline' : 'normal'}">
-            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">e: </span><a href="mailto:{{firstBusinessCardCopyed.userEmail.value}}">{{firstBusinessCardCopyed.userEmail.value}}</a>
+        <div style="display: inline-block;">
+            <div ng-show="!firstBusinessCardCopyed.site.value">
+                <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">w:</span> www.websitewebsite.com
+            </div>
 
-        </div>
-
-        <div ng-show="!firstBusinessCardCopyed.site.value">
-            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">w:</span> www.websitewebsite.com
-        </div>
-
-        <div class="" ng-show="firstBusinessCardCopyed.site.value" ng-style="{'font-weight': firstBusinessCardCopyed.site.bold ? 'bold' : 'normal',
-                    'font-style': firstBusinessCardCopyed.site.italic ? 'italic' : 'normal',
-                    'text-decoration': firstBusinessCardCopyed.site.underline ? 'underline' : 'normal'}">
-            <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">w: </span><a target="_blank" href="{{firstBusinessCardCopyed.site.value}}">{{firstBusinessCardCopyed.site.value}}</a>
+            <div class="" ng-show="firstBusinessCardCopyed.site.value" ng-style="{'font-weight': firstBusinessCardCopyed.site.bold ? 'bold' : 'normal',
+                        'font-style': firstBusinessCardCopyed.site.italic ? 'italic' : 'normal',
+                        'text-decoration': firstBusinessCardCopyed.site.underline ? 'underline' : 'normal'}">
+                <span style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}">w: </span><a target="_blank" href="{{firstBusinessCardCopyed.site.value}}">{{firstBusinessCardCopyed.site.value}}</a>
+            </div>
         </div>
 
         <div class="user-main-text" ng-show="!firstBusinessCardCopyed.address.value">
@@ -59,5 +61,10 @@
         <div ng-show="signatureLink"><a target="_blank" href="{{signatureLink}}">My Sigterra Profile</a></div>
 
     </div>
+    <style>
+        .ng-hide{
+            display: none
+        }
+    </style>
 </div>
 
