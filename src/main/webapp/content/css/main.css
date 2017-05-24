@@ -2279,15 +2279,6 @@ div.navbar-collapse.in.collapse{
     height: 240px;
 }
 
-.tabcontent {
-    display: none;
-    padding: 6px 0px;
-    border: 0px solid #ccc;
-    width: 620px;
-    background-color: #F9F9F9;
-    margin-top: 45px;
-}
-
 
 /* Style the tab content */
 .tabcontent2 {
@@ -2381,6 +2372,17 @@ ul.tab2 li {
     top: 0;
     left: 0;
 }
+
+.tabcontent {
+    display: none;
+    padding: 6px 0px;
+    padding-bottom: 0px;
+    border: 1px solid #E7E7E7;
+    width: 620px;
+    background-color: #ffffff;
+    margin-top: 43px;
+}
+
 
 
 
