@@ -152,11 +152,17 @@ public class UserDTO {
             "login='" + login + '\'' +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
+            ", username='" + username + '\'' +
+            ", phoneNumber='" + phoneNumber + '\'' +
+            ", address='" + address + '\'' +
+            ", companyName='" + companyName + '\'' +
+            ", companySite='" + companySite + '\'' +
+            ", jobTitle='" + jobTitle + '\'' +
             ", email='" + email + '\'' +
             ", activated=" + activated +
             ", langKey='" + langKey + '\'' +
-            ", username='" + username + '\'' +
             ", authorities=" + authorities +
-            "}";
+            ", imageUrl='" + imageUrl + '\'' +
+            '}';
     }
 }

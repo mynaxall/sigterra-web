@@ -149,11 +149,21 @@ public class UserService {
     public void updateUser(String username, String address, String companyName, String companySite, String jobTitle, String phoneNumber) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(u -> {
             u.setUsername(username);
-            u.setAddress(address);
-            u.setCompanyName(companyName);
-            u.setCompanySite(companySite);
-            u.setJobTitle(jobTitle);
-            u.setPhoneNumber(phoneNumber);
+            if(!address.isEmpty()) {
+                u.setAddress(address);
+            }
+            if(!companyName.isEmpty()) {
+                u.setCompanyName(companyName);
+            }
+            if(!companySite.isEmpty()) {
+                u.setCompanySite(companySite);
+            }
+            if(!jobTitle.isEmpty()) {
+                u.setJobTitle(jobTitle);
+            }
+            if(!phoneNumber.isEmpty()) {
+                u.setPhoneNumber(phoneNumber);
+            }
             userRepository.save(u);
             log.debug("Changed Information for User: {}", u);
         });
