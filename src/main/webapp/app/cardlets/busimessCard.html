@@ -4,7 +4,7 @@
         <div>
             <div class="layouts">
                 <div>
-                    <img crossorigin="anonymous" src="{{tabName.photo}}" class="avatar">
+                    <img crossorigin="anonymous" ng-src="{{tabName.photo}}" class="avatar">
                 </div>
                 <div class="social-link-group">
                     <a class="social-link-1"  href="{{tabName.socialLinks.twitter}}" target="_blank" ng-show="tabName.socialLinks.twitter">
@@ -155,12 +155,6 @@
 
     .svg-div{
         float: left;
-    }
-
-    .svg-description{
-        margin-left: 30px;
-        font-size: 15px;
-        font-weight: bold;
     }
 
     #mobile_icon{

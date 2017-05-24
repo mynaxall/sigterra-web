@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="avatar-2-new-div">
-                <img crossorigin="anonymous" src="{{tabName.photo}}" class="avatar-2-new">
+                <img crossorigin="anonymous" ng-src="{{tabName.photo}}" class="avatar-2-new">
             </div>
             <div class="top-div-2-new-last">
                 <div class="">
@@ -35,11 +35,7 @@
         <div class="central-div-new" style="height: 30px">
             <div class="central-div-new-left">
                 <div class="user-name" ng-show="!tabName.userName.value"  style="color: #{{tabName.layout.secondaryColor}}">Jon Dou</div>
-                <div class="user-name" ng-style="{'font-weight': tabName.userName.bold ? 'bold' : 'normal',
-                                'font-style': tabName.userName.italic ? 'italic' : 'normal',
-                                'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}"  ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
-
-            </div>
+                  </div>
             <div class="central-div-new-right">
                 <div class="user-main-text" ng-show="!tabName.job.value" style="margin-top: 7px">General Manager</div>
                 <div class="user-main-text" ng-style="{'font-weight': tabName.job.bold ? 'bold' : 'normal',
@@ -134,13 +130,6 @@
     .svg-div{
         float: left;
     }
-
-    .svg-description{
-        margin-left: 25px;
-        font-size: 15px;
-        font-weight: bold;
-    }
-
 
     .central-div-new{
         text-align: center;
