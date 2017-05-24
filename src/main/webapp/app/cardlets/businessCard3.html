@@ -35,7 +35,11 @@
         <div class="central-div-new" style="height: 30px">
             <div class="central-div-new-left">
                 <div class="user-name" ng-show="!tabName.userName.value"  style="color: #{{tabName.layout.secondaryColor}}">Jon Dou</div>
-                  </div>
+                <div class="user-name" ng-style="{'font-weight': tabName.userName.bold ? 'bold' : 'normal',
+                                'font-style': tabName.userName.italic ? 'italic' : 'normal',
+                                'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}"  ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
+
+            </div>
             <div class="central-div-new-right">
                 <div class="user-main-text" ng-show="!tabName.job.value" style="margin-top: 7px">General Manager</div>
                 <div class="user-main-text" ng-style="{'font-weight': tabName.job.bold ? 'bold' : 'normal',
