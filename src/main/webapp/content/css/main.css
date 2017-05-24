@@ -2353,6 +2353,12 @@ ul.tab2 li {
     background:-o-radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0));
     background:radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0))
 }
+.avatar{
+    width: 138px;
+    height: 138px;
+    margin: 25px 33px;
+    border-radius: 70%;
+}
 
 
 
