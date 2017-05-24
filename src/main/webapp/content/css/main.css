@@ -2360,6 +2360,29 @@ ul.tab2 li {
     border-radius: 70%;
 }
 
+.item-central-div{
+    width: 100%;
+    height: 100%;
+}
+
+
+.item-bottom-div{
+    height: 55px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.item-top-div{
+    height: 55px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
 
 
 
