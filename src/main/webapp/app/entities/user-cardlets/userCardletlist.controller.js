@@ -12,7 +12,7 @@
     function UserCardletListController ($scope, $state, CardletList, ParseLinks, AlertService,  paginationcardletConstants ,$http, $timeout, $uibModal, $location, $window, $rootScope) {
         var vm = this;
 
-
+        $scope.isCopyTiEmail = false;
         $scope.fieldTable = [{
             field: "1",
             title: "Gmail"
@@ -199,7 +199,6 @@
 
         $scope.instructions = 1;
 
-        $scope.isCopyTiEmail = false;
         $scope.isAddBanner = false;
 
         $scope.addBanner = function(){
