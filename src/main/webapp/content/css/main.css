@@ -82,6 +82,10 @@ body {
     min-width: 600px;
 }
 
+pre{
+    font-family: "Lato-Regular"!important;
+}
+
 .footer {
     position: absolute;
     width:100%;
