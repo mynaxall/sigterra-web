@@ -10,28 +10,28 @@
        <div class="user-main-text" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].job.bold ? 'bold' : 'normal',
                     'font-style': tabNames.tabs[firstBusinessCardId].job.italic ? 'italic' : 'normal',
                     'text-decoration': tabNames.tabs[firstBusinessCardId].job.underline ? 'underline' : 'normal'}" ng-show="tabNames.tabs[firstBusinessCardId].job.value">{{tabNames.tabs[firstBusinessCardId].job.value}}</div>
-       <div class="company" ng-show="!tabNames.tabs[firstBusinessCardId].company.value">
+       <div class="user-main-text company " ng-show="!tabNames.tabs[firstBusinessCardId].company.value">
            Company Name
        </div>
-       <div class="company" ng-show="tabNames.tabs[firstBusinessCardId].company.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].company.bold ? 'bold' : 'normal',
+       <div class="user-main-text company" ng-show="tabNames.tabs[firstBusinessCardId].company.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].company.bold ? 'bold' : 'normal',
                     'font-style': tabNames.tabs[firstBusinessCardId].company.italic ? 'italic' : 'normal',
                     'text-decoration': tabNames.tabs[firstBusinessCardId].company.underline ? 'underline' : 'normal'}">
            {{tabNames.tabs[firstBusinessCardId].company.value}}
        </div>
-       <div class="" ng-show="!tabNames.tabs[firstBusinessCardId].phone.value">
+       <div class="user-main-text" ng-show="!tabNames.tabs[firstBusinessCardId].phone.value">
            <span style="color: #{{tabNames.tabs[firstBusinessCardId].layout.secondaryColor}}">m: </span>1-888-555-5555
        </div>
-       <div class="" ng-show="tabNames.tabs[firstBusinessCardId].phone.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].phone.bold ? 'bold' : 'normal',
+       <div class="user-main-text" ng-show="tabNames.tabs[firstBusinessCardId].phone.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].phone.bold ? 'bold' : 'normal',
                     'font-style': tabNames.tabs[firstBusinessCardId].phone.italic ? 'italic' : 'normal',
                     'text-decoration': tabNames.tabs[firstBusinessCardId].phone.underline ? 'underline' : 'normal'}">
            <span style="color: #{{tabNames.tabs[firstBusinessCardId].layout.secondaryColor}}">m: </span>{{tabNames.tabs[firstBusinessCardId].phone.value}}
        </div>
 
        <div style="display: inline-block;">
-           <div class="" ng-show="!tabNames.tabs[firstBusinessCardId].userEmail.value">
+           <div class="user-main-text" ng-show="!tabNames.tabs[firstBusinessCardId].userEmail.value">
                <span style="color: #{{tabNames.tabs[firstBusinessCardId].layout.secondaryColor}}">e: </span>fabian.abshireabsh@wilford.biz
            </div>
-           <div class="" ng-show="tabNames.tabs[firstBusinessCardId].userEmail.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].userEmail.bold ? 'bold' : 'normal',
+           <div class="user-main-text" ng-show="tabNames.tabs[firstBusinessCardId].userEmail.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].userEmail.bold ? 'bold' : 'normal',
                                 'font-style': tabNames.tabs[firstBusinessCardId].userEmail.italic ? 'italic' : 'normal',
                                 'text-decoration': tabNames.tabs[firstBusinessCardId].userEmail.underline ? 'underline' : 'normal'}">
                <span style="color: #{{tabNames.tabs[firstBusinessCardId].layout.secondaryColor}}">e: </span><a href="mailto:{{tabNames.tabs[firstBusinessCardId].userEmail.value}}">{{tabNames.tabs[firstBusinessCardId].userEmail.value}}</a>
@@ -39,11 +39,11 @@
            </div>
        </div>
        <div style="display: inline-block; margin-left: 15px;">
-           <div class="" ng-show="!tabNames.tabs[firstBusinessCardId].site.value">
+           <div class="user-main-text" ng-show="!tabNames.tabs[firstBusinessCardId].site.value">
                <span style="color: #{{tabNames.tabs[firstBusinessCardId].layout.secondaryColor}}">w: </span>www.websitewebsite.com
            </div>
 
-           <div class="" ng-show="tabNames.tabs[firstBusinessCardId].site.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].site.bold ? 'bold' : 'normal',
+           <div class="user-main-text" ng-show="tabNames.tabs[firstBusinessCardId].site.value" ng-style="{'font-weight': tabNames.tabs[firstBusinessCardId].site.bold ? 'bold' : 'normal',
                         'font-style': tabNames.tabs[firstBusinessCardId].site.italic ? 'italic' : 'normal',
                         'text-decoration': tabNames.tabs[firstBusinessCardId].site.underline ? 'underline' : 'normal'}">
                <span style="color: #{{tabNames.tabs[firstBusinessCardId].layout.secondaryColor}}">w: </span><a target="_blank" href="{{tabNames.tabs[firstBusinessCardId].site.value}}">{{tabNames.tabs[firstBusinessCardId].site.value}}</a>
