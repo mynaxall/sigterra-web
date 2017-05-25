@@ -507,7 +507,12 @@
             }
         }
 
+
+        $scope.positionChecking = false;
+
         $scope.positionCheck = function(){
+            $scope.positionChecking = true;
+
 
             for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                 $scope.tabNames.tabs[i].position = i;
@@ -525,13 +530,8 @@
                     document.getElementsByClassName("tabcontent2")[i].style.display = "none";;
                     tabs2[i].className = tabs2[i].className.replace(" active", "");
                 }
+
             }
-            document.getElementsByClassName("tabcontent2")[0].style.display = "block";
-            document.getElementsByClassName("tabs2")[0].className += " active";
-            document.getElementsByClassName("tabcontent")[0].style.display = "block";;
-            document.getElementsByClassName("tabs")[0].className += " active";
-
-
 
             setTimeout(function() {
                 for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
@@ -542,6 +542,11 @@
                         $scope.firstBusinessCardId = '';
                     }
                 }
+                document.getElementsByClassName("tabcontent2")[0].style.display = "block";
+                document.getElementsByClassName("tabs2")[0].className += " active";
+                document.getElementsByClassName("tabcontent")[0].style.display = "block";;
+                document.getElementsByClassName("tabs")[0].className += " active";
+                $scope.positionChecking = false;
             }, 500);
         }
 
@@ -593,17 +598,19 @@
                     document.getElementsByClassName("tabcontent")[0].style.display = "block";;
                     document.getElementsByClassName("tabs")[0].className += " active";
 
+                    console.log($scope.firstBusinessCardId )
+                    console.log($scope.tabToDeleteID )
 
-                    if($scope.firstBusinessCardId === $scope.tabToDeleteID){
-                        for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
-                            if ($scope.tabNames.tabs[i].tabType == '1'){
-                                $scope.firstBusinessCardId = i;
-                                break
-                            }else{
-                                $scope.firstBusinessCardId = '';
-                            }
+
+                    for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
+                        if ($scope.tabNames.tabs[i].tabType == '1'){
+                            $scope.firstBusinessCardId = i;
+                            break
+                        }else{
+                            $scope.firstBusinessCardId = '';
                         }
                     }
+
 
                 }, 500);
 

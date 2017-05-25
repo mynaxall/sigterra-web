@@ -27,6 +27,8 @@
             title: "Yahoo"
         }];
 
+        $scope.showConent = true;
+
         $scope.selected = $scope.fieldTable[0];
 
         $scope.hasChanged = function() {

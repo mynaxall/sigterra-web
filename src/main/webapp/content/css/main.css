@@ -80,6 +80,7 @@ body {
     color: #333;
     min-height: 100%;
     min-width: 600px;
+    padding-right: 0px!important;
 }
 
 pre{
@@ -1140,20 +1141,6 @@ Social Buttons
     background-color: #66bdb4!important;
 }
 
-.upload-item-img{
-    background-color: #18C6B7!important;
-    border-color: #18C6B7!important;
-    border-radius: 0px!important;
-    min-width: 110px!important;
-    height: 34px!important;
-    padding: 1px 12px!important;
-    font-size: 13px;
-    font-weight: normal;
-}
-
-.upload-item-img:hover{
-    background-color: #66bdb4!important;
-}
 
 .saveButton{
     background-color: #E8645A;
@@ -1487,11 +1474,27 @@ Social Buttons
     background-color: #E8645A !important;
     border-color: #E8645A !important;
     border-radius: 0px !important;
-    min-width: 110px !important;
+    min-width: 108px !important;
     height: 34px !important;
     font-size: 13px;
     font-weight: normal;
     padding: 6px 12px;;
+}
+
+
+.upload-item-img{
+    background-color: #18C6B7!important;
+    border-color: #18C6B7!important;
+    border-radius: 0px!important;
+    min-width: 108px!important;
+    height: 34px!important;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 6px 12px!important;
+}
+
+.upload-item-img:hover{
+    background-color: #66bdb4!important;
 }
 
 .cardlet-top-control{
@@ -2383,7 +2386,27 @@ ul.tab2 li {
     margin-top: 43px;
 }
 
+.social-image-form-div{
+    float: left;
+    width: 130px;
+    padding-top: 7px;
+    padding-left: 22px;
+}
 
+.social-image-form-div-copy{
+    width: 130px;
+    padding-top: 25px;
+    padding-left: 25px;
+}
+
+.text-catdlet-spinner{
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+}
 
 
 
