@@ -87,8 +87,8 @@ public class AWSS3BucketService {
                                                                                                            .getFragment());
 
 
-
-                user.setImageUrl(uri.toString() + "?" + System.currentTimeMillis());
+                uri = URI.create(uri.toString() + '?' + System.currentTimeMillis());
+                user.setImageUrl(uri.toString());
                 log.info(uri.toString());
                 userRepository.save(user);
             } catch (Exception e) {
