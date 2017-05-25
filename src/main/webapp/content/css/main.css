@@ -80,6 +80,7 @@ body {
     color: #333;
     min-height: 100%;
     min-width: 600px;
+    padding-right: 0px!important;
 }
 
 pre{
