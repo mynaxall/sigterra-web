@@ -521,12 +521,12 @@
 
             }
 
-            document.getElementsByClassName("tabcontent2")[0].style.display = "block";
-            document.getElementsByClassName("tabs2")[0].className += " active";
-            document.getElementsByClassName("tabcontent")[0].style.display = "block";;
-            document.getElementsByClassName("tabs")[0].className += " active";
 
             setTimeout(function() {
+                document.getElementsByClassName("tabcontent2")[0].style.display = "block";
+                document.getElementsByClassName("tabs2")[0].className += " active";
+                document.getElementsByClassName("tabcontent")[0].style.display = "block";;
+                document.getElementsByClassName("tabs")[0].className += " active";
                 for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                     if ($scope.tabNames.tabs[i].tabType == '1') {
                         $scope.firstBusinessCardId = i;
