@@ -398,10 +398,6 @@
 
                         <div class="main">
 
-
-
-
-
                             <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 3">
                                 <div class="accordion-section" ng-repeat="item in tabName.items">
                                     <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">Enter Info {{$index+1}} Details <img class="status-icon" ng-click="accordionActive=0" ng-show="accordionActive==item.index" src="/content/images/Arrow_up.png"><img class="status-icon" ng-click="accordionActive=item.index" ng-show="accordionActive!=item.index" src="/content/images/Arrow_down.png"></a>
@@ -481,11 +477,6 @@
                                     </div><!--end .accordion-section-content-->
                                 </div><!--end .accordion-section-->
                             </div>
-
-
-
-
-
 
                             <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 2">
                                 <div class="accordion-section" ng-repeat="item in tabName.items">
@@ -773,8 +764,9 @@
                     </div>
 
 
-                    <div style="margin-top: 30px;">
+                    <div style="margin-top: 30px; position: relative;">
                         <ng-include src="'app/cardlets/cardNew.html'"></ng-include>
+                        <div ng-show="positionChecking" class="text-catdlet-spinner"><div style="position:absolute;top:25%; left:30%"><img src="/content/images/spinner.gif" style="width: 50px;position:relative;left: -50%"></div></div>
                     </div>
 
 

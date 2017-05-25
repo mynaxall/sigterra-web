@@ -2398,6 +2398,14 @@ ul.tab2 li {
     padding-left: 25px;
 }
 
+.text-catdlet-spinner{
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+}
 
 
 
