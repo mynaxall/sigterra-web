@@ -87,8 +87,8 @@ public class AWSS3BucketService {
                                                                                                            .getFragment());
 
 
-
-                user.setImageUrl(uri.toString() + "?" + System.currentTimeMillis());
+                uri = URI.create(uri.toString() + '?' + System.currentTimeMillis());
+                user.setImageUrl(uri.toString());
                 log.info(uri.toString());
                 userRepository.save(user);
             } catch (Exception e) {
@@ -164,6 +164,8 @@ public class AWSS3BucketService {
                 uri = new URI(url.toURI().getScheme(), url.toURI().getAuthority(), url.toURI()
                     .getPath(), null, url.toURI()
                     .getFragment());
+
+                uri = URI.create(uri.toString() + '?' + System.currentTimeMillis());
 
             } catch (Exception e) {
                 log.error("Error occurred while uploading the profile icon file", e);
