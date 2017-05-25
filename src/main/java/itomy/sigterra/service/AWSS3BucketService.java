@@ -165,6 +165,8 @@ public class AWSS3BucketService {
                     .getPath(), null, url.toURI()
                     .getFragment());
 
+                uri = URI.create(uri.toString() + '?' + System.currentTimeMillis());
+
             } catch (Exception e) {
                 log.error("Error occurred while uploading the profile icon file", e);
             }
