@@ -28,7 +28,6 @@
         vm.save = save;
         vm.settingsAccount = null;
         vm.success = null;
-        $scope.imageParam = "";
 
 
         /**
@@ -38,14 +37,12 @@
 
         Principal.identity().then(function(account) {
             vm.settingsAccount = account;
-            $scope.imageParam = new Date().getTime();
-            vm.settingsAccount.imageUrl = vm.settingsAccount.imageUrl +"?"+ $scope.imageParam;
+            vm.settingsAccount.imageUrl = vm.settingsAccount.imageUrl;
 
 
         });
 
         function save () {
-            $scope.imageParam = new Date().getTime();
             Auth.updateAccount(vm.settingsAccount).then(function() {
                 vm.error = null;
                 vm.success = 'OK';
@@ -175,7 +172,6 @@
         function saveImage(){
             vm.hideImageDialog();
             $scope.showSpinner = true;
-            $scope.imageParam = new Date().getTime();
             var img_b64 = $scope.myCroppedImage;
             var png = img_b64.split(',')[1];
             var file = b64toBlob(png, 'image/png')
@@ -188,7 +184,7 @@
                 })
                 .success(function (data, status, headers, config) {
                     $scope.showSpinner = false;
-                    vm.settingsAccount.imageUrl = data.url +"?"+ $scope.imageParam;
+                    vm.settingsAccount.imageUrl = data.url;
                 });
 
 
