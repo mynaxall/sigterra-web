@@ -3,7 +3,7 @@
 
 <div ng-show="showSpinner" class="spinner-shadow"><img src="/content/images/spinner.gif" style="position:absolute;top:40%"></div>
 <div class="modeal-custom-window ng-hide" ng-show="isCopyTiEmail"></div>
-<div class="modeal-custom-window ng-hide" ng-show="isCopyTiEmail" style="position: absolute; background-color: rgba(0, 0, 0, 0);;">
+<div class="modeal-custom-window ng-hide" ng-show="isCopyTiEmail" style="position: absolute; background-color: rgba(0, 0, 0, 0);">
     <div class="modal-dialog " style="margin-top: -100px; width: 1130px!important;">
         <div class="modal-content" uib-modal-transclude="">
             <div class="modal-header">
@@ -533,7 +533,7 @@
         }
 
     </style>
-    <div class="user-cardlet-panel">
+    <div class="user-cardlet-panel ng-hide" ng-show="showConent">
         <div class="portfolio-header">
             Portfolio
         </div>
