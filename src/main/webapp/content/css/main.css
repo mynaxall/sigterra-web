@@ -7,11 +7,7 @@
 
 @font-face {
     font-family: 'icomoon';
-    src:  url('/content/fonts/icomoon.eot?xuh7pk');
-    src:  url('/content/fonts/icomoon.eot?xuh7pk#iefix') format('embedded-opentype'),
-    url('/content/fonts/icomoon.ttf?xuh7pk') format('truetype'),
-    url('/content/fonts/icomoon.woff?xuh7pk') format('woff'),
-    url('/content/fonts/icomoon.svg?xuh7pk#icomoon') format('svg');
+    src:  url('/content/fonts/icomoon.ttf');
     font-weight: normal;
     font-style: normal;
 }
@@ -2412,6 +2408,15 @@ ul.tab2 li {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.7);
 }
+
+
+.select-signature-radio-div{
+    width:350px;
+    float: right;
+    top: 0px;
+    right: 0px
+}
+
 
 
 

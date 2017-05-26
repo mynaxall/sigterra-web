@@ -16,6 +16,13 @@
                 <div class="copy-to-email-step-number">1</div><div class="copy-to-email-steps">Choose your signature design:</div>
                 <div style="min-height: 300px">
                     <div class="row" style="margin-left: 15px;margin-right: 15px; margin-top: 30px;">
+                        <div  class="selectSignature" style="width: 550px">
+                            <input style=" margin-left: 20px;" ng-click="selectSignature(1)"  type="radio" name="signatureType" value="1" ng-checked="selectedSignature"></input></div>
+                        <div class="selectSignature select-signature-radio-div" >
+                            <input style=" margin-left: 20px;" ng-click="selectSignature(3)" type="radio" name="signatureType" value="0" ng-checked="!selectedSignature" ></input>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-left: 15px;margin-right: 15px; margin-top: 30px;">
                         <div class="selectSignature">
                             <div ng-click="selectSignature(1)" id="signature-selector">
                                 <div class="modal-signature-panel-shadow"></div>
@@ -24,7 +31,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="selectSignature" style="float: right;top: 30px; right: 90px">
+                        <div class="selectSignature" style="float: right;top: 30px; right: 0px">
                             <div ng-click="selectSignature(3)" style=" margin-top: -30px;"  id="signature-selector" ng-class="signatureSelected === 3 ? 'activeSignature' : ''">
                                 <div class="modal-signature-panel-shadow"></div>
                                 <div  id="thirdSignature" >

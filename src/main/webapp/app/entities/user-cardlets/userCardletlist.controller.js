@@ -447,9 +447,13 @@
         $scope.signatureSelected = 1;
         $scope.selectSignatureId;
 
+        $scope.selectedSignature = true;
+
         $scope.selectSignature = function(id){
             $scope.selectSignatureId = id;
             if(id == 1){
+
+                $scope.selectedSignature = true;
                 $scope.signatureSelected = 1;
                 var imgageData =  $scope.getCanvas.toDataURL("image/png");
                 // Now browser starts downloading it instead of just showing it
@@ -459,6 +463,7 @@
             }else if(id == 2){
                 $scope.isAddIcons = true;
             }else if(id == 3){
+                $scope.selectedSignature = false;
                 $scope.signatureSelected = 3;
                 $window.scrollTo(0, 0);
                 var urlField = document.getElementById('thirdSignature');
