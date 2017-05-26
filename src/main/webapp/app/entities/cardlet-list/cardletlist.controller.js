@@ -43,6 +43,7 @@
         $scope.closeCropDialog = function(){
             $scope.showCropDialog = false;
             $scope.myImage = "";
+            angular.element(document.querySelector('#fileInput')).val(null);
         };
 
         $scope.showSpinner = false;
@@ -116,6 +117,8 @@
                     $scope.showSpinner = false;
                     $scope.showCropDialog = false;
                 });
+
+             angular.element(document.querySelector('#fileInput')).val(null);
         };
 
         function setTabImage(){
