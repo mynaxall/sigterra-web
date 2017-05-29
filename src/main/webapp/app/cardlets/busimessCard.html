@@ -8,23 +8,25 @@
                 </div>
                 <div class="social-link-group">
                     <a class="social-link-1"  href="{{tabName.socialLinks.twitter}}" target="_blank" ng-show="tabName.socialLinks.twitter">
-                        <span class="icon-twitter" style="font-size: 27px; color:#{{tabName.layout.secondaryColor}}"></span>
+                        <span class="icon-twitter" ng-style="{'color': '#'+tabName.layout.secondaryColor}" style="font-size: 27px;"></span>
                     </a>
                     <a class="social-link-1"  href="{{tabName.socialLinks.facebook}}" target="_blank" ng-show="tabName.socialLinks.facebook">
-                        <span class="icon-facebook" style="font-size: 27px; color:#{{tabName.layout.secondaryColor}}"></span>
+                        <span class="icon-facebook" style="font-size: 27px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </a>
                     <a class="social-link-1" href="{{tabName.socialLinks.google}}" target="_blank" ng-show="tabName.socialLinks.google">
-                        <span class="icon-googleplus" style="font-size: 27px; color:#{{tabName.layout.secondaryColor}}"></span>
+                        <span class="icon-googleplus" style="font-size: 27px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </a>
                     <a class="last-social-link" href="{{tabName.socialLinks.linkedin}}" target="_blank" ng-show="tabName.socialLinks.linkedin">
-                        <span class="icon-linkedin" style="font-size: 27px; color:#{{tabName.layout.secondaryColor}}"></span>
+                        <span class="icon-linkedin" style="font-size: 27px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </a>
                 </div>
 
             </div>
             <div class="layouts main-layouts">
                 <div class="user-info">
-                    <div class="user-name" ng-show="!tabName.userName.value"  style="color: #{{tabName.layout.secondaryColor}}">Jon Dou</div>
+                    <div class="user-name" ng-show="!tabName.userName.value"   ng-style="{'font-weight': tabName.userName.bold ? 'bold' : 'normal',
+                            'font-style': tabName.userName.italic ? 'italic' : 'normal',
+                            'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}"  >Jon Dou</div>
                     <div class="user-name" ng-style="{'font-weight': tabName.userName.bold ? 'bold' : 'normal',
                             'font-style': tabName.userName.italic ? 'italic' : 'normal',
                             'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}"  ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
@@ -51,7 +53,7 @@
                     <div class="first-card-border-div" style="margin-bottom: 10px; border-color: #{{tabName.layout.secondaryColor}}"></div>
                     <div class="user-contacts-div">
                         <div class="svg-div">
-                            <span class="icon-mobile_white_icon" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                            <span class="icon-mobile_white_icon" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </div>
                         <div class="svg-description" ng-show="!tabName.phone.value">
                             1-888-555-5555
@@ -66,7 +68,7 @@
                     </div>
                     <div class="user-contacts-div">
                         <div class="svg-div" style="margin-top: 3px">
-                            <span class="icon-e-mail_white_icon" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                            <span class="icon-e-mail_white_icon" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </div>
                         <div class="svg-description" ng-show="!tabName.userEmail.value">
                             fabian.abshireabsh@wilford.biz
@@ -80,7 +82,7 @@
                     </div>
                     <div class="user-contacts-div">
                         <div class="svg-div" style="margin-top: 3px">
-                            <span class="icon-globe_white_icon" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                            <span class="icon-globe_white_icon" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </div>
                         <div class="svg-description" ng-show="!tabName.site.value">
                             www.websitewebsite.com
@@ -96,7 +98,7 @@
 
                     <div class="first-card-border-div" style="margin: 10px 0px; border-color: #{{tabName.layout.secondaryColor}}"></div>
                     <div class="svg-div" style="margin-top: 3px">
-                        <span class="icon-lacation_white_icon" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                        <span class="icon-lacation_white_icon" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
                     <div class="user-main-text svg-description" ng-show="!tabName.address.value">
                         0000 Lynch Pine Apt. 605, South Keagan, Croatia
