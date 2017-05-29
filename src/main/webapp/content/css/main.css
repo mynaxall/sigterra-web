@@ -700,6 +700,11 @@ Social Buttons
 
 }
 
+.profile-input::placeholder{
+    color:#9B9B9B
+
+}
+
 .register-link{
     font-size: 18px;
     color: #489B94;
