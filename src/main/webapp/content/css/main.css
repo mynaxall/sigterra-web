@@ -2329,6 +2329,13 @@ ul.tab2 li {
     font-weight: bold;
 }
 
+
+.user-main-text{
+    font-size: 15px;
+    color: #000000;
+}
+
+
 .svg-description{
     margin-left: 30px;
     font-size: 15px;
@@ -2484,7 +2491,6 @@ a.tablinks2{
     color: rgba(30, 73, 109, 0);
 
 }
-
 
 
 
