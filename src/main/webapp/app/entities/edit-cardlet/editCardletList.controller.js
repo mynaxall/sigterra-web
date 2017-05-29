@@ -14,6 +14,7 @@
         $scope.firstBusinessCardId ="";
         $scope.myImage='';
         $scope.myCroppedImage = '';
+        $scope.showConent = true;
 
         var handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];
@@ -41,6 +42,7 @@
         $scope.closeCropDialog = function(){
             $scope.showCropDialog = false;
             $scope.myImage = "";
+            angular.element(document.querySelector('#fileInput')).val(null);
         }
 
 
@@ -126,6 +128,7 @@
                     $scope.showCropDialog = false;
                     $scope.showSpinner = false;
                 });
+            angular.element(document.querySelector('#fileInput')).val(null);
         };
 
         function setTabImage(){

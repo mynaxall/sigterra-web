@@ -10,6 +10,7 @@ import itomy.sigterra.security.AuthoritiesConstants;
 import itomy.sigterra.security.SecurityUtils;
 import itomy.sigterra.service.util.RandomUtil;
 import itomy.sigterra.web.rest.vm.ManagedUserVM;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -148,22 +149,12 @@ public class UserService {
 
     public void updateUser(String username, String address, String companyName, String companySite, String jobTitle, String phoneNumber) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(u -> {
-            u.setUsername(username);
-            if(!address.isEmpty()) {
-                u.setAddress(address);
-            }
-            if(!companyName.isEmpty()) {
-                u.setCompanyName(companyName);
-            }
-            if(!companySite.isEmpty()) {
-                u.setCompanySite(companySite);
-            }
-            if(!jobTitle.isEmpty()) {
-                u.setJobTitle(jobTitle);
-            }
-            if(!phoneNumber.isEmpty()) {
-                u.setPhoneNumber(phoneNumber);
-            }
+            u.setUsername(StringUtils.trimToNull(username));
+            u.setAddress(StringUtils.trimToNull(address));
+            u.setCompanyName(StringUtils.trimToNull(companyName));
+            u.setCompanySite(StringUtils.trimToNull(companySite));
+            u.setJobTitle(StringUtils.trimToNull(jobTitle));
+            u.setPhoneNumber(StringUtils.trimToNull(phoneNumber));
             userRepository.save(u);
             log.debug("Changed Information for User: {}", u);
         });

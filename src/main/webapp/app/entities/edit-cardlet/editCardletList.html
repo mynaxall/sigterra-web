@@ -1,6 +1,6 @@
 <script src="/app/entities/cardlet-list/jscolor.js"></script>
 
-<div ng-show="showSpinner" class="spinner-shadow"><div style="position:absolute;top:40%; left:50%"><img src="/content/images/spinner.gif" style="position:relative;left: -50%"></div></div>
+<div ng-show="showSpinner" class="spinner-shadow"><div style="position:absolute;top:40%; left: 50%"><img src="/content/images/spinner.gif" style="margin-left: -100px;"></div></div>
 
 
 <ng-include src="'app/cardlets/deleteTabDialog.html'"></ng-include>
@@ -330,8 +330,7 @@
         }
 
     </style>
-    <div class="tab-panel">
-
+    <div class="tab-panel ng-hide" ng-show="showConent">
         <div class="cardlet-name-panel">
             <input type="text" placeholder="Templates name" class="cadletName" ng-model="tabNames.cardletName" maxlength="25">
         </div>
@@ -441,7 +440,7 @@
                                     </div>
                                     <br>
                                     <div style="width: 100%; text-align: right; padding-right: 5px">
-                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  item.index)" class="btn btn-primary main-btn item-btn" style="width: 110px"> Delete info</button>
+                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  item.index)" class="btn btn-primary main-btn item-btn"> Delete info</button>
                                     </div>
                                 </div>
                             </div>
@@ -521,7 +520,7 @@
                                     </div>
                                     <br>
                                     <div style="width: 100%; text-align: right; padding-right: 5px">
-                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  item.index)" class="btn btn-primary main-btn item-btn" style="width: 110px"> Delete item</button>
+                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  item.index)" class="btn btn-primary main-btn item-btn" style="width: 108px"> Delete item</button>
                                     </div>
                                 </div>
                             </div>
@@ -749,7 +748,7 @@
                         <ul class="tab2">
                             <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
                                 <div style="position: relative">
-                                    <a href="javascript:void(0)" style="color:#{{tabName.layout.secondaryColor}}" class="tablinks2"ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                                    <a href="javascript:void(0)" ng-style="{'color': '#'+tabName.layout.secondaryColor}" class="tablinks2"ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
                                 </div>
                             </li>
 

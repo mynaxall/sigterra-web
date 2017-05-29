@@ -32,7 +32,7 @@
         $scope.selected = $scope.fieldTable[0];
 
         $scope.hasChanged = function() {
-            $scope.instructions =$scope.selected.field;
+            $scope.instructions = $scope.selected.field;
         }
         $scope.closeCropDialog = function(){
             $scope.showCropDialog = false;
@@ -219,6 +219,7 @@
             $scope.selected = $scope.fieldTable[0];
             $scope.isAddBanner = false;
 
+            $scope.croppedImageUrl = null;
 
             $scope.isCopyTiEmail = true;
             $window.scrollTo(0, 0);
@@ -423,7 +424,7 @@
             $scope.isShowMailClientWindow = false;
             $scope.isAddIcons = false;
             $scope.showDelteCardletDialog = false;
-
+            $scope.instructions = 1;
             $("canvas").remove();
         };
 
