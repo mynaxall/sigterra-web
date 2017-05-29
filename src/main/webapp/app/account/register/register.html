@@ -133,14 +133,13 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div style="display: inline-block">
-                        <input type="checkbox" id="accept" name="accept"style="margin-top: 0px;width: 14px;height: 14px;" ng-model="vm.accept" required>
-                        <label style="margin-left: 5px;" class="login-lable" for="accept">I accept <a target="_blank" class="terms-and-conditions" href="/termsAndConditions.html">Terms and Conditions</a> of using</label>
-                    </div>
-                    <div style="color: #7F8C8C; font-size: 11px;float: right; margin-top: 3px">* Required</div>
+                <div style="text-align: right">
+                    <div style="color: #7F8C8C; font-size: 11px;">* Required</div>
                 </div>
-                <div style="text-align: center;margin-top: 45px">
+                <div style="color: #7F8C8C;text-align: center">
+                    Choosing Next means that you agree to the <a target="_blank" class="terms-and-conditions" href="/termsAndConditions.html">Terms and Conditions</a> of using.
+                </div>
+                <div style="text-align: center;margin-top: 35px">
                     <button ng-click="vm.nextStep()" type="submit" ng-disabled="form.$invalid" class="loginButton">Next</button>
                 </div>
             </form>
