@@ -1,5 +1,5 @@
 <div>
-    <div class="cardlet2" style="background-color: #{{tabName.layout.mainColor}}">
+    <div class="cardlet2" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
         <div class="top-div-2-new">
             <div class="top-div-2-new-first">
                 <div class="company" ng-show="!tabName.company.value">
@@ -17,16 +17,16 @@
             <div class="top-div-2-new-last">
                 <div class="">
                     <a class="social-link"  href="{{tabName.socialLinks.twitter}}" target="_blank" ng-show="tabName.socialLinks.twitter">
-                        <span class="icon-tweeter_icon_02" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                        <span class="icon-tweeter_icon_02" style="font-size: 19px;"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </a>
                     <a class="social-link"  href="{{tabName.socialLinks.facebook}}" target="_blank" ng-show="tabName.socialLinks.facebook">
-                        <span class="icon-facebook_icon_02" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                        <span class="icon-facebook_icon_02" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </a>
                     <a class="social-link" href="{{tabName.socialLinks.google}}" target="_blank" ng-show="tabName.socialLinks.google">
-                        <span class="icon-google_icon_02" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                        <span class="icon-google_icon_02" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </a>
                     <a  class="social-link" href="{{tabName.socialLinks.linkedin}}" target="_blank" ng-show="tabName.socialLinks.linkedin">
-                        <span class="icon-linkedin_icon_02" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                        <span class="icon-linkedin_icon_02" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </a>
                 </div>
 
@@ -62,12 +62,12 @@
                         {{tabName.phone.value}}
                     </div>
                     <div class="svg-div" style="float: right">
-                        <span class="icon-mobile_white_icon" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                        <span class="icon-mobile_white_icon" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
                 </td>
                 <td style="width: 50%; text-align: left; padding-left: 5px;">
                     <div class="svg-div" style="margin-top: 3px">
-                        <span class="icon-e-mail_white_icon" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                        <span class="icon-e-mail_white_icon" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
                     <div class="svg-description" ng-show="!tabName.userEmail.value">
                         fabian.abshireabsh@wilford.biz
@@ -86,7 +86,7 @@
             <div>
 
                 <div style="margin-top: 3px;display: inline">
-                    <span class="icon-globe_white_icon" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                    <span class="icon-globe_white_icon" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                 </div>
                 <div class="svg-description" ng-show="!tabName.site.value" style="display: inline; margin-left: 5px">
                     www.websitewebsite.com

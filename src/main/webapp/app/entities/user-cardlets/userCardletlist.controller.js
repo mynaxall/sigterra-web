@@ -219,6 +219,7 @@
             $scope.selected = $scope.fieldTable[0];
             $scope.isAddBanner = false;
 
+            $scope.croppedImageUrl = null;
 
             $scope.isCopyTiEmail = true;
             $window.scrollTo(0, 0);

@@ -14,6 +14,7 @@
         $scope.showCropDialog = false;
         $scope.myImage='';
         $scope.myCroppedImage = '';
+        $scope.showConent = true;
 
         var handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];

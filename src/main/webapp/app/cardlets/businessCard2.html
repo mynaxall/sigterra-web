@@ -6,10 +6,11 @@
                 <img class="avatar-img" crossorigin="anonymous"  ng-src="{{tabName.photo}}">
             </div>
             <div class="user-info-div">
-                <div ng-show="!tabName.userName.value" class="user-name" style="color: #{{tabName.layout.mainColor}}">Jon Dou</div>
+                <div ng-show="!tabName.userName.value" class="user-name"  ng-style="{'color': '#'+tabName.layout.mainColor}"
+                >Jon Dou</div>
                 <div class="user-name" ng-style="{'font-weight': tabName.userName.bold ? 'bold' : 'normal',
                     'font-style': tabName.userName.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.userName.underline ? 'underline' : 'normal'}" ng-show="tabName.userName.value" style="color: #{{tabName.layout.mainColor}}">{{tabName.userName.value}}</div>
+                    'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}" ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
 
 
                 <div  ng-show="!tabName.job.value" class="job-titile-3"  style="color: #{{tabName.layout.mainColor}}">General Manager</div>
@@ -18,16 +19,16 @@
                     'text-decoration': tabName.job.underline ? 'underline' : 'normal'}" ng-show="tabName.job.value"  style="color: #{{tabName.layout.mainColor}}">{{tabName.job.value}}</div>
                 <div class="social-links">
                     <a href="{{tabName.socialLinks.twitter}}" target="_blank" ng-show="tabName.socialLinks.twitter" class="social-links-2">
-                        <span class="icon-tweeter_icon_02" style="font-size: 19px; color:#{{tabName.layout.mainColor}}"></span>
+                        <span class="icon-tweeter_icon_02" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                     </a>
                     <a class="social-link social-links-2" href="{{tabName.socialLinks.facebook}}" target="_blank" ng-show="tabName.socialLinks.facebook">
-                        <span class="icon-facebook_icon_02" style="font-size: 19px; color:#{{tabName.layout.mainColor}}"></span>
+                        <span class="icon-facebook_icon_02" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                     </a>
                     <a class="social-link social-links-2" href="{{tabName.socialLinks.google}}" target="_blank" ng-show="tabName.socialLinks.google">
-                        <span class="icon-google_icon_02" style="font-size: 19px; color:#{{tabName.layout.mainColor}}"></span>
+                        <span class="icon-google_icon_02" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                     </a>
                     <a class="social-link social-links-2" href="{{tabName.socialLinks.linkedin}}" target="_blank" ng-show="tabName.socialLinks.linkedin">
-                        <span class="icon-linkedin_icon_02" style="font-size: 19px; color:#{{tabName.layout.mainColor}}"></span>
+                        <span class="icon-linkedin_icon_02" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                     </a>
                 </div>
             </div>
@@ -37,7 +38,7 @@
             <div class="user-contacts">
                 <div class="">
                     <div class="svg-div" style="margin-top: 3px">
-                        <span class="icon-e-mail_white_icon" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                        <span class="icon-e-mail_white_icon" style="font-size: 19px;"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
                     <div ng-show="!tabName.userEmail.value" class="svg-description">
                         fabian.abshireabsh@wilford.biz
@@ -51,7 +52,7 @@
                 </div>
                 <div class="user-contacts-div-3">
                     <div class="svg-div" style="margin-top: 3px">
-                        <span class="icon-globe_white_icon" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                        <span class="icon-globe_white_icon" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
                     <div ng-show="!tabName.site.value" class="svg-description">
                         www.websitewebsite.com
@@ -64,7 +65,7 @@
                 </div>
                 <div class="user-contacts-div-3">
                     <div class="svg-div">
-                        <span class="icon-mobile_white_icon" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                        <span class="icon-mobile_white_icon" style="font-size: 19px;"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
                     <div ng-show="!tabName.phone.value" class="svg-description">
                         1-888-555-5555
@@ -77,22 +78,22 @@
                 </div>
             </div>
             <div class="social-link-div">
-                <div ng-show="!tabName.company.value" class="svg-description" style=" color: #{{tabName.layout.secondaryColor}}">Company Name</div>
+                <div ng-show="!tabName.company.value" class="svg-description"  ng-style="{'color': '#'+tabName.layout.secondaryColor}">Company Name</div>
                 <div class="svg-description" ng-show="tabName.company.value" ng-style="{'font-weight': tabName.company.bold ? 'bold' : 'normal',
                     'font-style': tabName.company.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.company.underline ? 'underline' : 'normal'}" style=" color: #{{tabName.layout.secondaryColor}}">
+                    'text-decoration': tabName.company.underline ? 'underline' : 'normal'}"  ng-style="{'color': '#'+tabName.layout.secondaryColor}">
                     {{tabName.company.value}}
                 </div>
                 <div>
                     <div ng-show="!tabName.address.value">
                         <span class="" style="margin-top: 3px">
-                            <span class="icon-lacation_white_icon" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                            <span class="icon-lacation_white_icon" style="font-size: 19px;"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </span>0000 Lynch Pine Apt. 605, Croatia</div>
                     <div class="svg-description" ng-show="tabName.address.value" ng-style="{'font-weight': tabName.address.bold ? 'bold' : 'normal',
                     'font-style': tabName.address.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.address.underline ? 'underline' : 'normal'}">
                         <span class="" style="margin-top: 3px">
-                            <span class="icon-lacation_white_icon" style="font-size: 19px; color:#{{tabName.layout.secondaryColor}}"></span>
+                            <span class="icon-lacation_white_icon" style="font-size: 19px; "  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </span>
                         {{tabName.address.value}}
                     </div>
