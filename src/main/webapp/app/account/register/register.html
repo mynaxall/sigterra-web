@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="profile-input" id="email" name="email" placeholder="E-mail *"
+                    <input type="email" ng-change="vm.errorEmailExists = null;" class="profile-input" id="email" name="email" placeholder="E-mail *"
                            ng-model="vm.registerAccount.email" ng-minlength=5 ng-maxlength=100 required>
                     <div ng-show="form.email.$dirty && form.email.$invalid">
                         <p class="help-block"
