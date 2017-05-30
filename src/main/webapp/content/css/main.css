@@ -2484,16 +2484,25 @@ a.tablinks2{
     margin-right: 7px;
 }
 
-.social-link-1:hover{
+.social-link-1:hover, .social-link-1:active, .social-link-1:visited, .social-link-1:link{
     color: rgba(30, 73, 109, 0);
+    outline: none!important;
 }
 
-.last-social-link:hover{
+.last-social-link:hover, .last-social-link:active, .last-social-link:visited, .last-social-link:link{
     color: rgba(30, 73, 109, 0);
+    outline: none!important;
+
 }
 
-.social-link:hover{
+.social-link:hover,.social-link:active, .social-link:visited, .social-link:link{
     color: rgba(30, 73, 109, 0);
+    outline: none!important;
+
+}
+.social-links-2:hover,.social-links-2:active, .social-links-2:visited, .social-links-2:link{
+    color: rgba(30, 73, 109, 0);
+    outline: none!important;
 
 }
 
