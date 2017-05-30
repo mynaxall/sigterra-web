@@ -822,6 +822,8 @@ Social Buttons
     width: 100%;
     height: 100%;
     z-index:10;
+    top: 0;
+    bottom: 0;
 }
 
 .image-dialog{
@@ -829,7 +831,7 @@ Social Buttons
     background: #fff;
     width: 450px;
     margin: 30px auto;
-    margin-top: 100px;
+    margin-top: 200px;
     padding: 10px;
 }
 .image-dialog2{
@@ -2134,9 +2136,13 @@ Social Buttons
 
 }
 
-.footer-input{
+.footer-cover {
     margin-top: 25px;
     height: 40px;
+    width: 100%;
+}
+.footer-input {
+    height: 100%;
     width: 100%;
 }
 
@@ -2547,4 +2553,34 @@ input[disabled] {
     font-size: 14px;
 }
 
+.form-group input::-webkit-input-placeholder, .cover-input input::-webkit-input-placeholder, .cardlet-name-panel input::-webkit-input-placeholder, .input-text-div input::-webkit-input-placeholder { /* WebKit browsers */
+    color: transparent;
+}
+.form-group input:-moz-placeholder, .cover-input input:-moz-placeholder, .cardlet-name-panel input:-moz-placeholder, .input-text-div input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: transparent;
+}
+.form-group input::-moz-placeholder, .cover-input input::-moz-placeholder, .cardlet-name-panel input::-moz-placeholder, .input-text-div input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: transparent;
+}
+.form-group input:-ms-input-placeholder, .cover-input input:-ms-input-placeholder, .cardlet-name-panel input:-ms-input-placeholder, .input-text-div input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: transparent;
+}
+
+.form-group, .cover-input, .cardlet-name-panel, .input-text-div {
+    position: relative;
+}
+
+.custom-placeholder {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: #999;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: normal;
+}
+input::-ms-clear {
+    display: none;
+}
 

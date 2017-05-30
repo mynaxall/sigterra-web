@@ -59,7 +59,10 @@
                         <div class="footer-top-text">Newsletter</div>
                         <div class="footer-main-text">Subscribe to our newsletter and get all
                             the cool news</div>
-                        <input type="text" class="footer-input" placeholder="Enter Email">
+                        <div class="cover-input footer-cover">
+                            <input ng-model="footerEmailModel" type="text" class="footer-input" id="footer-email" placeholder="Enter Email">
+                            <label class="custom-placeholder" ng-hide="footerEmailModel" for="footer-email">Enter Email</label>
+                        </div>
                     </div>
                 </div>
                 <div class="footer-main-text" style="text-align: center; margin-top: 20px">All rights reserved 2017</div>

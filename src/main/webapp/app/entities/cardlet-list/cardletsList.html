@@ -336,7 +336,8 @@
     <div class="tab-panel ng-hide" ng-show="showConent">
 
         <div class="cardlet-name-panel">
-            <input type="text" placeholder="Templates name" class="cadletName" ng-model="tabNames.cardletName" maxlength="25">
+            <input id="cadletName" type="text" placeholder="Templates name" class="cadletName" ng-model="tabNames.cardletName" maxlength="25">
+            <label for="cadletName" class="custom-placeholder" ng-hide="tabNames.cardletName">Templates name</label>
         </div>
         <div class="row">
             <div class="col-lg-6">
@@ -382,6 +383,7 @@
 
                                 <input type="text" class="input-new" id="name" name="name" placeholder="Tab’s name" ng-minlength=1 maxlength="12"
                                        ng-model="tabName.name" required>
+                                <label for="cadletName" class="custom-placeholder" ng-hide="form.name.$error.minlength || tabName.name">Tab’s name</label>
                                 <div ng-show="form.name.$dirty && form.name.$invalid">
                                     <p class="help-block"
                                        ng-show="form.name.$error.required">
@@ -405,6 +407,7 @@
                                         <div class="form-group">
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="itemName" placeholder="Name" ng-model="item.name.value">
+                                                <label for="itemName" class="custom-placeholder" ng-hide="item.name.value">Name</label>
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="item.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{item.position}}"/><label for="boldName{{tabName.position}}{{item.position}}"></label>
@@ -416,6 +419,7 @@
                                         <div class="form-group">
                                             <div class="input-text-div">
                                                 <input type="text" ng-model="item.image" class="input-new" id="urlOne" placeholder="url:\\" >
+                                                <label for="urlOne" class="custom-placeholder" ng-hide="item.image">url:\\</label>
                                             </div>
                                             <div class="social-image-form-div" >
                                                 <button  type="submit" ng-disabled="for2m.$invalid" ng-click="openCropDialog($parent.$index, item.position, 'image')" class="btn btn-primary main-btn upload-item-img">Upload</button>
@@ -425,6 +429,7 @@
                                             <div class="input-text-div">
                                                 <input ng-hide="true" type="text" class="input-new" id="description" placeholder="Description" ng-model="item.description.value">
                                                 <textarea class="textarea-new" id="description" ng-keyup="autoExpand($event)" placeholder="Description" ng-model="item.description.value"></textarea>
+                                                <label for="description" class="custom-placeholder" ng-hide="item.description.value">Description</label>
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="item.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{item.position}}"/><label for="boldDescription{{tabName.position}}{{item.position}}"></label>
@@ -437,6 +442,7 @@
                                         <div class="form-group">
                                             <div style="width: 450px">
                                                 <input type="text" class="input-new" id="description" placeholder="Link" ng-model="item.link">
+                                                <label for="description" class="custom-placeholder" ng-hide="item.link">Link</label>
                                             </div>
                                             <div class="text-decoration-div" >
 
@@ -485,6 +491,7 @@
                                         <div class="form-group">
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="itemName" placeholder="Name" ng-model="item.name.value" maxlength="16">
+                                                <label for="itemName" class="custom-placeholder" ng-hide="item.name.value">Name</label>
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="item.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{item.position}}"/><label for="boldName{{tabName.position}}{{item.position}}"></label>
@@ -496,6 +503,7 @@
                                         <div class="form-group">
                                             <div class="input-text-div">
                                                 <input type="text" ng-model="item.image" class="input-new" id="urlOne" placeholder="url:\\" >
+                                                <label for="urlOne" class="custom-placeholder" ng-hide="item.image">url:\\</label>
                                             </div>
                                             <div class="social-image-form-div" >
                                                 <button  type="submit" ng-disabled="for2m.$invalid" ng-click="openCropDialog($parent.$index, item.position, 'image')" class="btn btn-primary main-btn upload-item-img">Upload</button>
@@ -504,6 +512,7 @@
                                         <div class="form-group">
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="description" placeholder="Description" ng-model="item.description.value" maxlength="40">
+                                                <label for="description" ng-hide="item.description.value">Description</label>
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="item.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{item.position}}"/><label for="boldDescription{{tabName.position}}{{item.position}}"></label>
@@ -516,6 +525,7 @@
                                         <div class="form-group">
                                             <div style="width: 450px">
                                                 <input type="text" class="input-new" id="description" placeholder="Link" ng-model="item.link">
+                                                <label for="description" class="custom-placeholder" ng-hide="item.link">Link</label>
                                             </div>
                                             <div class="text-decoration-div" >
 
@@ -568,6 +578,7 @@
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="userName" placeholder="Name" ng-model="tabName.userName.value" maxlength="20">
+                                                <label for="userName" class="custom-placeholder" ng-hide="tabName.userName.value">Name</label>
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.userName.bold" name='bold' class="checkboxBold" value='valuable' id="bold{{tabName.position}}"/><label for="bold{{tabName.position}}"></label>
@@ -581,6 +592,7 @@
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="userName" placeholder="Job title" ng-model="tabName.job.value" maxlength="25">
+                                                <label for="userName" class="custom-placeholder" ng-hide="tabName.job.value">Job title</label>
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.job.bold" name='bold' value='valuable' class="checkboxBold" id="boldJob{{tabName.position}}"/><label for="boldJob{{tabName.position}}"></label>
@@ -594,6 +606,7 @@
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="userName" placeholder="Phone number" ng-model="tabName.phone.value" maxlength="25">
+                                                <label for="userName" class="custom-placeholder" ng-hide="tabName.phone.value">Phone number</label>
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.phone.bold" name='bold' value='valuable' class="checkboxBold" id="boldPhone{{tabName.position}}"/><label for="boldPhone{{tabName.position}}"></label>
@@ -607,6 +620,7 @@
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="userName" placeholder="E-mail" ng-model="tabName.userEmail.value" maxlength="25">
+                                                <label for="userName" class="custom-placeholder" ng-hide="tabName.userEmail.value">E-mail</label>
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.userEmail.bold" name='boldEmail' value='valuableEmail' class="checkboxBold" id="boldEmail{{tabName.position}}"/><label for="boldEmail{{tabName.position}}"></label>
@@ -620,6 +634,7 @@
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="userName" placeholder="Company site" ng-model="tabName.site.value" maxlength="25">
+                                                <label for="userName" class="custom-placeholder" ng-hide="tabName.site.value">Company site</label>
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.site.bold" name='bold' value='valuable' class="checkboxBold" id="boldSite{{tabName.position}}"/><label for="boldSite{{tabName.position}}"></label>
@@ -635,6 +650,7 @@
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="userName" placeholder="Company Name" ng-model="tabName.company.value" maxlength="25">
+                                                <label for="userName" class="custom-placeholder" ng-hide="tabName.company.value">Company Name</label>
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.company.bold" name='bold' value='valuable' class="checkboxBold" id="boldCompany{{tabName.position}}"/><label for="boldCompany{{tabName.position}}"></label>
@@ -648,6 +664,7 @@
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="userName" placeholder="Address" ng-model="tabName.address.value" maxlength="45">
+                                                <label for="userName" class="custom-placeholder" ng-hide="tabName.address.value">Address</label>
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="tabName.address.bold" name='bold' value='valuable' class="checkboxBold" id="boldAddress{{tabName.position}}"/><label for="boldAddress{{tabName.position}}"></label>
@@ -660,6 +677,7 @@
                                         <div class="form-group">
                                             <div class="input-text-div">
                                                 <input type="text" ng-model="tabName.photo" class="input-new input-padding" id="urlOne" placeholder="Choose image">
+                                                <label for="urlOne" class="custom-placeholder" ng-hide="tabName.photo">Choose image</label>
                                             </div>
                                             <div class="social-image-form-div" >
                                                 <button  type="submit" ng-disabled="for2m.$invalid" ng-click="openCropDialog($index)" class="btn btn-primary main-btn upload-item-img">Upload</button>
@@ -677,6 +695,7 @@
 
                                                 <div class="input-text-div">
                                                     <input type="url" class="input-new" id="twitter" placeholder="Twitter" name="twitter" ng-model="tabName.socialLinks.twitter">
+                                                    <label for="twitter" class="custom-placeholder" ng-hide="tabName.socialLinks.twitter">Twitter</label>
                                                     <div ng-show="myForm.twitter.$dirty && myForm.twitter.$invalid">
                                                         <p class="help-block has-error"
                                                            ng-show="myForm.twitter.$error.url">
@@ -694,6 +713,7 @@
 
                                                 <div class="input-text-div">
                                                     <input type="url" class="input-new" id="facebook" placeholder="Facebook" name="facebook" ng-model="tabName.socialLinks.facebook">
+                                                    <label for="facebook" class="custom-placeholder" ng-hide="tabName.socialLinks.facebook">Facebook</label>
                                                     <div ng-show="myForm.facebook.$dirty && myForm.facebook.$invalid">
                                                         <p class="help-block has-error"
                                                            ng-show="myForm.facebook.$error.url">
@@ -710,6 +730,7 @@
 
                                                 <div class="input-text-div">
                                                     <input type="url" class="input-new" id="google" placeholder="Google" name="google" ng-model="tabName.socialLinks.google">
+                                                    <label for="google" class="custom-placeholder" ng-hide="tabName.socialLinks.google">Google</label>
                                                     <div ng-show="myForm.google.$dirty && myForm.google.$invalid">
                                                         <p class="help-block has-error"
                                                            ng-show="myForm.google.$error.url">
@@ -726,6 +747,7 @@
 
                                                 <div class="input-text-div">
                                                     <input type="url" class="input-new input-padding" id="linkedin" placeholder="Linkedin" name="linkedin" ng-model="tabName.socialLinks.linkedin">
+                                                    <label for="linkedin" class="custom-placeholder" ng-hide="tabName.socialLinks.linkedin">Linkedin</label>
                                                     <div ng-show="myForm.linkedin.$dirty && myForm.linkedin.$invalid">
                                                         <p class="help-block has-error"
                                                            ng-show="myForm.linkedin.$error.url">
