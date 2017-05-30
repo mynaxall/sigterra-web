@@ -150,7 +150,13 @@
 <ng-include src="'app/cardlets/deleteCardletDialog.html'"></ng-include>
 <ng-include src="'app/cardlets/cropDialogTabs.html'"></ng-include>
 <ng-include src="'app/cardlets/cropDialog.html'"></ng-include>
-
+<div class="add-new-header" ng-show="showImpersonate === 'true'">
+    <div style="position: relative">
+        <div class="add-new-btn">
+            <button class="saveButton" ng-show="showImpersonate === 'true'" ng-click="impersonate()" style="margin-top: 10px">Logout</button>
+        </div>
+    </div>
+</div>
 <div class="entiti-content">
     <style>
 

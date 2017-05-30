@@ -668,47 +668,73 @@
                             <div class="accordion-section">
                                 <a class="accordion-section-title" ng-class="{active:accordion==2}" ng-click="accordionActivete(2)">Social links  <img class="status-icon" ng-show="accordion==2" src="/content/images/Arrow_up.png"><img class="status-icon" ng-show="accordion!=2" src="/content/images/Arrow_down.png"></a>
                                 <div id="accordion-2" class="accordion-section-content"  ng-show="accordion==2">
+                                    <form name="myForm">
+                                        <div class="form-group">
 
-                                    <div class="form-group">
+                                            <div class="input-text-div">
+                                                <input type="url" class="input-new" id="twitter" placeholder="Twitter" name="twitter" ng-model="tabName.socialLinks.twitter">
+                                                <div ng-show="myForm.twitter.$dirty && myForm.twitter.$invalid">
+                                                    <p class="help-block has-error"
+                                                       ng-show="myForm.twitter.$error.url">
+                                                        Invalid URL string. It should starts from "http://" or "https://"
+                                                    </p>
 
-                                        <div class="input-text-div">
-                                            <input type="text" class="input-new" id="twitter" placeholder="Twitter" ng-model="tabName.socialLinks.twitter">
+                                                </div>
+                                            </div>
+                                            <div class="social-image-form-div" >
+                                                <img ng-show="tabName.socialLinks.twitter" src="/content/images/new/twitter_hover.png">
+                                                <img ng-show="!tabName.socialLinks.twitter" src="/content/images/new/twitter.png">
+                                            </div>
                                         </div>
-                                        <div class="social-image-form-div" >
-                                            <img ng-show="tabName.socialLinks.twitter" src="/content/images/new/twitter_hover.png">
-                                            <img ng-show="!tabName.socialLinks.twitter" src="/content/images/new/twitter.png">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
+                                        <div class="form-group">
 
-                                        <div class="input-text-div">
-                                            <input type="text" class="input-new" id="facebook" placeholder="Facebook" ng-model="tabName.socialLinks.facebook">
+                                            <div class="input-text-div">
+                                                <input type="url" class="input-new" id="facebook" placeholder="Facebook" name="facebook" ng-model="tabName.socialLinks.facebook">
+                                                <div ng-show="myForm.facebook.$dirty && myForm.facebook.$invalid">
+                                                    <p class="help-block has-error"
+                                                       ng-show="myForm.facebook.$error.url">
+                                                        Invalid URL string. It should starts from "http://" or "https://"
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="social-image-form-div" >
+                                                <img ng-show="tabName.socialLinks.facebook" src="/content/images/new/facebook_hover.png">
+                                                <img ng-show="!tabName.socialLinks.facebook" src="/content/images/new/facebook.png">
+                                            </div>
                                         </div>
-                                        <div class="social-image-form-div" >
-                                            <img ng-show="tabName.socialLinks.facebook" src="/content/images/new/facebook_hover.png">
-                                            <img ng-show="!tabName.socialLinks.facebook" src="/content/images/new/facebook.png">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
+                                        <div class="form-group">
 
-                                        <div class="input-text-div">
-                                            <input type="text" class="input-new" id="google" placeholder="Google" ng-model="tabName.socialLinks.google">
+                                            <div class="input-text-div">
+                                                <input type="url" class="input-new" id="google" placeholder="Google" name="google" ng-model="tabName.socialLinks.google">
+                                                <div ng-show="myForm.google.$dirty && myForm.google.$invalid">
+                                                    <p class="help-block has-error"
+                                                       ng-show="myForm.google.$error.url">
+                                                        Invalid URL string. It should starts from "http://" or "https://"
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="social-image-form-div" >
+                                                <img ng-show="tabName.socialLinks.google" src="/content/images/new/google_plus_hover.png">
+                                                <img ng-show="!tabName.socialLinks.google" src="/content/images/new/google_plus.png">
+                                            </div>
                                         </div>
-                                        <div class="social-image-form-div" >
-                                            <img ng-show="tabName.socialLinks.google" src="/content/images/new/google_plus_hover.png">
-                                            <img ng-show="!tabName.socialLinks.google" src="/content/images/new/google_plus.png">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
+                                        <div class="form-group">
 
-                                        <div class="input-text-div">
-                                            <input type="text" class="input-new input-padding" id="linkedin" placeholder="Linkedin" ng-model="tabName.socialLinks.linkedin">
+                                            <div class="input-text-div">
+                                                <input type="url" class="input-new input-padding" id="linkedin" placeholder="Linkedin" name="linkedin" ng-model="tabName.socialLinks.linkedin">
+                                                <div ng-show="myForm.linkedin.$dirty && myForm.linkedin.$invalid">
+                                                    <p class="help-block has-error"
+                                                       ng-show="myForm.linkedin.$error.url">
+                                                        Invalid URL string. It should starts from "http://" or "https://"
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="social-image-form-div" >
+                                                <img ng-show="tabName.socialLinks.linkedin" src="/content/images/new/linkedin_hover.png">
+                                                <img ng-show="!tabName.socialLinks.linkedin" src="/content/images/new/linkedin.png">
+                                            </div>
                                         </div>
-                                        <div class="social-image-form-div" >
-                                            <img ng-show="tabName.socialLinks.linkedin" src="/content/images/new/linkedin_hover.png">
-                                            <img ng-show="!tabName.socialLinks.linkedin" src="/content/images/new/linkedin.png">
-                                        </div>
-                                    </div>
+                                    </form>
 
                                  </div><!--end .accordion-section-content-->
                             </div><!--end .accordion-section-->
@@ -762,6 +788,11 @@
 
                     <div style="margin-top: 30px;">
                         <ng-include src="'app/cardlets/cardNew.html'"></ng-include>
+
+                        <div ng-show="positionChecking" class="text-catdlet-spinner">
+                            <div style="position:absolute;top:25%; left:30%"><img src="/content/images/spinner.gif" style="width: 50px;position:relative;left: -50%">
+                            </div>
+                        </div>
                     </div>
 
                     <div style="margin-top: 20px;">

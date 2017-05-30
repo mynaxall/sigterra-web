@@ -386,7 +386,7 @@
                     if($scope.userAccount.imageUrl){
                         $scope.tabNames.tabs[0].photo = $scope.userAccount.imageUrl
                     }else{
-                        $scope.tabNames.tabs[0].photo = $location.protocol() + '://' + $location.host() + ':' + $location.port()+"content/images/avatar_img.png"
+                        $scope.tabNames.tabs[0].photo = $location.protocol() + '://' + $location.host() + ':' + $location.port()+"/content/images/avatar_img.png"
                     }
 
 

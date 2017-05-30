@@ -29,8 +29,7 @@
         angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
 
         $scope.handleFileSelect=function(evt) {
-            console.log(evt.currentTarget.files[0])
-            alert(evt.currentTarget.files[0])
+
             var file=evt.currentTarget.files[0];
             var reader = new FileReader();
             reader.onload = function (evt) {
@@ -161,8 +160,12 @@
 
                     $scope.tabNames.tabs[0].job = {
                         "value": $scope.userAccount.jobTitle
-                    },
-                    $scope.tabNames.tabs[0].photo = $scope.userAccount.imageUrl
+                    }
+                    if($scope.userAccount.imageUrl){
+                        $scope.tabNames.tabs[0].photo = $scope.userAccount.imageUrl
+                    }else{
+                        $scope.tabNames.tabs[0].photo = $location.protocol() + '://' + $location.host() + ':' + $location.port()+"/content/images/avatar_img.png"
+                    }
 
                 });
         }
@@ -475,7 +478,6 @@
                 }
                 $scope.tabNames.tabs.push(newTab);
                 setTimeout(function(){
-                    console.log($scope.firstBusinessCardId)
                     if($scope.firstBusinessCardId === '' || $scope.firstBusinessCardId < 0){
                         $scope.firstBusinessCardId = newTab.position;
                     }
@@ -601,9 +603,6 @@
                     document.getElementsByClassName("tabs2")[0].className += " active";
                     document.getElementsByClassName("tabcontent")[0].style.display = "block";;
                     document.getElementsByClassName("tabs")[0].className += " active";
-
-                    console.log($scope.firstBusinessCardId )
-                    console.log($scope.tabToDeleteID )
 
 
                     for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
