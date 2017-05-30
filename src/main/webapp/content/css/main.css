@@ -486,9 +486,9 @@ Social Buttons
     margin-right: auto;
     margin-left: auto;
     position: relative;
-    -webkit-box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 3px 9px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.16);
+    -moz-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.16);
+    box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.16);
     z-index: 10;
     margin-top: 30px;
 }
@@ -2497,7 +2497,14 @@ a.tablinks2{
 
 }
 
+.modal-content {
+    -webkit-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.16);
+    -moz-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.16);
+    box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.16);
+}
 
-
+input[disabled] {
+    background-color: transparent;
+}
 
 
