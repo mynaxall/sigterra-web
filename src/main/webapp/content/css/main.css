@@ -2282,6 +2282,15 @@ div.navbar-collapse.in.collapse{
     border: 1px solid #D0D8D9;
     border-top-width: 0px;
 }
+
+.cardlet2{
+    width: 540px;
+    height: 240px;
+    border: 1px solid #D0D8D9;
+    border-top-width: 0px;
+}
+
+
 .cardlet3{
     border: 1px solid #D0D8D9;
     border-top-width: 0px;
@@ -2295,6 +2304,23 @@ div.navbar-collapse.in.collapse{
     border: 0px solid #ccc;
     width: 540px;
     background-color: #F9F9F9;
+}
+
+
+.top-div-2-new{
+    padding: 15px 30px;
+    height: 90px;
+}
+
+.top-div-2-new-first{
+    float: left;
+    width: 33.333%;
+}
+.top-div-2-new-last{
+    float: right;
+    width: 33.333%;
+    text-align: right;
+
 }
 
 .registration-steps-image{
