@@ -479,6 +479,7 @@ Social Buttons
     padding: 0!important;
     border: none;
     height: 100%;
+    box-shadow: none;
 }
 .registration-div{
     background-color: #fff;
