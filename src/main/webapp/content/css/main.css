@@ -2542,4 +2542,9 @@ input[disabled] {
     background-color: transparent;
 }
 
+.has-error{
+    color: #a94442;
+    font-size: 14px;
+}
+
 
