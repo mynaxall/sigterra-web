@@ -2649,9 +2649,14 @@ input::-ms-clear {
 }
 .alert-success {
     z-index: 100;
+    width: 100%;
+    top: 80px;
+    position: absolute;
+}
+
+.alert-success.top-fix {
     position: fixed;
     top: 0;
-    width: 100%;
 }
 
 .cardl.custom-placeholder {
