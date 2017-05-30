@@ -379,11 +379,11 @@
                     <div ng-repeat="tabName in tabNames.tabs " id="settings{{tabName.name}}{{tabName.position}}" class="tabcontent">
                         <form  name="form" role="form" novalidate show-validation>
 
-                            <div class="form-group" style="padding: 15px">
+                            <div class="form-group clearfix" style="padding: 15px">
 
                                 <input type="text" class="input-new" id="name" name="name" placeholder="Tab’s name" ng-minlength=1 maxlength="12"
                                        ng-model="tabName.name" required>
-                                <label for="cadletName" class="custom-placeholder" ng-hide="form.name.$error.minlength || tabName.name">Tab’s name</label>
+                                <label for="cadletName" class="custom-placeholder cardl" ng-hide="form.name.$error.minlength || tabName.name">Tab’s name</label>
                                 <div ng-show="form.name.$dirty && form.name.$invalid">
                                     <p class="help-block"
                                        ng-show="form.name.$error.required">
@@ -404,7 +404,7 @@
                                 <div class="accordion-section" ng-repeat="item in tabName.items">
                                     <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">Enter Info {{$index+1}} Details <img class="status-icon" ng-click="accordionActive=0" ng-show="accordionActive==item.index" src="/content/images/Arrow_up.png"><img class="status-icon" ng-click="accordionActive=item.index" ng-show="accordionActive!=item.index" src="/content/images/Arrow_down.png"></a>
                                     <div id="accordion2-item.index" class="accordion-section-content" ng-show="accordionActive==item.index">
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="itemName" placeholder="Name" ng-model="item.name.value">
                                                 <label for="itemName" class="custom-placeholder" ng-hide="item.name.value">Name</label>
@@ -416,7 +416,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
                                             <div class="input-text-div">
                                                 <input type="text" ng-model="item.image" class="input-new" id="urlOne" placeholder="url:\\" >
                                                 <label for="urlOne" class="custom-placeholder" ng-hide="item.image">url:\\</label>
@@ -425,7 +425,7 @@
                                                 <button  type="submit" ng-disabled="for2m.$invalid" ng-click="openCropDialog($parent.$index, item.position, 'image')" class="btn btn-primary main-btn upload-item-img">Upload</button>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
                                             <div class="input-text-div">
                                                 <input ng-hide="true" type="text" class="input-new" id="description" placeholder="Description" ng-model="item.description.value">
                                                 <textarea class="textarea-new" id="description" ng-keyup="autoExpand($event)" placeholder="Description" ng-model="item.description.value"></textarea>
@@ -439,10 +439,10 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <div style="width: 450px">
+                                        <div class="form-group clearfix">
+                                            <div class="cover-input" style="width: 450px">
                                                 <input type="text" class="input-new" id="description" placeholder="Link" ng-model="item.link">
-                                                <label for="description" class="custom-placeholder" ng-hide="item.link">Link</label>
+                                                <label for="description" class="custom-placeholder top" ng-hide="item.link">Link</label>
                                             </div>
                                             <div class="text-decoration-div" >
 
@@ -488,7 +488,7 @@
                                 <div class="accordion-section" ng-repeat="item in tabName.items">
                                     <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">Enter Item {{$index+1}} Details <img class="status-icon" ng-click="accordionActive=0" ng-show="accordionActive==item.index" src="/content/images/Arrow_up.png"><img class="status-icon" ng-click="accordionActive=item.index" ng-show="accordionActive!=item.index" src="/content/images/Arrow_down.png"></a>
                                     <div id="accordion2-item.index" class="accordion-section-content" ng-show="accordionActive==item.index">
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="itemName" placeholder="Name" ng-model="item.name.value" maxlength="16">
                                                 <label for="itemName" class="custom-placeholder" ng-hide="item.name.value">Name</label>
@@ -500,7 +500,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
                                             <div class="input-text-div">
                                                 <input type="text" ng-model="item.image" class="input-new" id="urlOne" placeholder="url:\\" >
                                                 <label for="urlOne" class="custom-placeholder" ng-hide="item.image">url:\\</label>
@@ -509,10 +509,10 @@
                                                 <button  type="submit" ng-disabled="for2m.$invalid" ng-click="openCropDialog($parent.$index, item.position, 'image')" class="btn btn-primary main-btn upload-item-img">Upload</button>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="description" placeholder="Description" ng-model="item.description.value" maxlength="40">
-                                                <label for="description" ng-hide="item.description.value">Description</label>
+                                                <label for="description" class="custom-placeholder" ng-hide="item.description.value">Description</label>
                                             </div>
                                             <div class="text-decoration-div" >
                                                 <input type='checkbox' ng-model="item.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{item.position}}"/><label for="boldDescription{{tabName.position}}{{item.position}}"></label>
@@ -522,10 +522,10 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <div style="width: 450px">
+                                        <div class="form-group clearfix">
+                                            <div class="cover-input" style="width: 450px">
                                                 <input type="text" class="input-new" id="description" placeholder="Link" ng-model="item.link">
-                                                <label for="description" class="custom-placeholder" ng-hide="item.link">Link</label>
+                                                <label for="description" class="custom-placeholder top" ng-hide="item.link">Link</label>
                                             </div>
                                             <div class="text-decoration-div" >
 
@@ -574,7 +574,7 @@
                                         <div class=""></div>
                                     </a>
                                     <div id="accordion-1" class="accordion-section-content"  ng-show="accordion==1">
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="userName" placeholder="Name" ng-model="tabName.userName.value" maxlength="20">
@@ -588,7 +588,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="userName" placeholder="Job title" ng-model="tabName.job.value" maxlength="25">
@@ -602,7 +602,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="userName" placeholder="Phone number" ng-model="tabName.phone.value" maxlength="25">
@@ -616,7 +616,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="userName" placeholder="E-mail" ng-model="tabName.userEmail.value" maxlength="25">
@@ -630,7 +630,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="userName" placeholder="Company site" ng-model="tabName.site.value" maxlength="25">
@@ -646,7 +646,7 @@
                                         </div>
 
 
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="userName" placeholder="Company Name" ng-model="tabName.company.value" maxlength="25">
@@ -660,7 +660,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="userName" placeholder="Address" ng-model="tabName.address.value" maxlength="45">
@@ -674,7 +674,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
                                             <div class="input-text-div">
                                                 <input type="text" ng-model="tabName.photo" class="input-new input-padding" id="urlOne" placeholder="Choose image">
                                                 <label for="urlOne" class="custom-placeholder" ng-hide="tabName.photo">Choose image</label>
@@ -691,7 +691,7 @@
                                     <a class="accordion-section-title" ng-class="{active:accordion==2}" ng-click="accordionActivete(2)">Social links <img class="status-icon" ng-click="accordion=0" ng-show="accordion==2" src="/content/images/Arrow_up.png"><img class="status-icon" ng-click="accordion=2" ng-show="accordion!=2" src="/content/images/Arrow_down.png"></a>
                                     <div id="accordion-2" class="accordion-section-content"  ng-show="accordion==2">
 
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="twitter" placeholder="Twitter" ng-model="tabName.socialLinks.twitter">
@@ -702,7 +702,7 @@
                                                 <img ng-show="!tabName.socialLinks.twitter" src="/content/images/new/twitter.png">
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="facebook" placeholder="Facebook" ng-model="tabName.socialLinks.facebook">
@@ -713,7 +713,7 @@
                                                 <img ng-show="!tabName.socialLinks.facebook" src="/content/images/new/facebook.png">
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new" id="google" placeholder="Google" ng-model="tabName.socialLinks.google">
@@ -724,7 +724,7 @@
                                                 <img ng-show="!tabName.socialLinks.google" src="/content/images/new/google_plus.png">
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group clearfix">
 
                                             <div class="input-text-div">
                                                 <input type="text" class="input-new input-padding" id="linkedin" placeholder="Linkedin" ng-model="tabName.socialLinks.linkedin">
