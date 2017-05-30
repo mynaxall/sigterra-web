@@ -642,17 +642,17 @@
             if($scope.tabNames) {
 
                 if($scope.tabNames.tabs.length == 1){
-                    cyrrentEl.style.width = "566px"
+                    cyrrentEl.style.width = "486px"
                 }
 
                 if ($scope.tabNames.tabs.length === 2) {
-                    cyrrentEl.style.width = "283px"
+                    cyrrentEl.style.width = "243px"
                 }
                 if ($scope.tabNames.tabs.length === 3) {
-                    cyrrentEl.style.width = "188px"
+                    cyrrentEl.style.width = "162px"
                 }
                 if ($scope.tabNames.tabs.length === 4) {
-                    cyrrentEl.style.width = "155px"
+                    cyrrentEl.style.width = "135px"
                 }
             }
         }

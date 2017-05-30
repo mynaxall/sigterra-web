@@ -204,12 +204,6 @@
             font-size: 11px;
             margin-left: 5px;
         }
-
-        .input-text-div{
-            float:left;
-            width: 420px
-        }
-
         .text-decoration-div{
             float: left;
             width: 130px;
@@ -280,7 +274,7 @@
         }
 
         .mainColor-input{
-            margin-right: 135px;
+            margin-right: 65px;
             width: 200px;
         }
 
@@ -312,8 +306,60 @@
             display: none;
         }
 
+
+        .user-cardlet-panel{
+            min-width: 600px;
+            padding-top: 50px;
+            padding-left: 3%;
+            padding-right: 3%;
+            padding-bottom: 50px;
+            box-shadow: none;
+        }
+        @media (min-width: 1220px) {
+            .user-cardlet-panel {
+                min-width: 600px;
+                padding-top: 50px;
+                padding-left: 4%;
+                padding-right: 4%;
+                padding-bottom: 50px;
+                box-shadow: none;
+            }
+        }
+        @media (min-width: 1400px) {
+            .user-cardlet-panel {
+                min-width: 600px;
+                padding-top: 50px;
+                padding-left: 8%;
+                padding-right: 8%;
+                padding-bottom: 50px;
+                box-shadow: none;
+            }
+        }
+
+        @media (min-width: 1470px) {
+            .user-cardlet-panel {
+                min-width: 600px;
+                padding-top: 50px;
+                padding-left: 10%;
+                padding-right: 10%;
+                padding-bottom: 50px;
+                box-shadow: none;
+            }
+        }
+
+        @media (min-width: 1650px) {
+            .user-cardlet-panel {
+                min-width: 600px;
+                padding-top: 50px;
+                padding-left: 17%;
+                padding-right: 17%;
+                padding-bottom: 50px;
+                box-shadow: none;
+            }
+        }
+
     </style>
-    <div class="tab-panel ng-hide" ng-show="showConent">
+    <div class="user-cardlet-panel ng-hide" ng-show="showConent">
         <div>
             <div class="cardlet-head-text-top">Email Signature Template Generator</div>
             <div class="cardlet-head-text">
@@ -803,7 +849,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="second-column" style="width: 550px;">
+                <div class="second-column">
                     <div class="cadlet-top-title">Interactive profile preview</div>
                     <div>
                         <ul class="tab2">
