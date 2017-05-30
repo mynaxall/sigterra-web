@@ -17,7 +17,8 @@
             'ngImgCrop',
             'dndLists',
             'ngclipboard',
-            'base64'
+            'base64',
+            'xeditable'
         ])
         .run(run);
 

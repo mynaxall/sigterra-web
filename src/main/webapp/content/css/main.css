@@ -1099,6 +1099,13 @@ Social Buttons
     top: 25px;
 }
 
+.cardlet-head-border{
+    background-color: #D0D8D9;
+    height: 1px;
+    width: 100%;
+    margin: 20px 0px;
+}
+
 .add-new-btn{
     background: #FFF;
     width:250px;
@@ -2584,3 +2591,51 @@ input::-ms-clear {
     display: none;
 }
 
+.cardlet-head-text{
+    font-size: 16px;
+    color: #595959;
+}
+
+.cardlet-head-text-top{
+    font-size: 26px;
+    color: #13BCB5;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.cadlet-top-title{
+    font-size: 20px;
+    color: #13BCB5;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.cadletName{
+    border-width: 0px;
+    width: 300px;
+    font-size:20px;
+    text-transform: uppercase;
+    height: 40px;
+    color: #000000;
+    background-color: #F8F8F8;
+    padding: 10px;
+}
+
+.cardlet-name-panel{
+    margin-bottom: 30px;
+    display: inline-block;
+}
+
+
+.saveInput-btn{
+    background-color: #18C6B7;
+    color: #FFFFFF;
+    border: none;
+
+}
+.closeInput-btn{
+    background-color: #E8645A;
+    color: #FFFFFF;
+    border: none;
+
+}
