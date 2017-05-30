@@ -40,6 +40,7 @@
                 rememberMe: vm.rememberMe
             }).then(function () {
                 vm.authenticationError = false;
+                localStorage.setItem("impersonate", false);
                 $uibModalInstance.close();
                 if ($state.current.name === 'register' || $state.current.name === 'activate' ||
                     $state.current.name === 'finishReset' || $state.current.name === 'requestReset') {
