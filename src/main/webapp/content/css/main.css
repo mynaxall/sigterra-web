@@ -1445,7 +1445,8 @@ Social Buttons
 
 .cardletNew{
     width: 540px;
-    height: 200px;
+    min-height: 200px;
+    max-height: 270px;
     padding:10px;
 }
 
