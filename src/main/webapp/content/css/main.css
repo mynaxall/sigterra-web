@@ -479,6 +479,7 @@ Social Buttons
     padding: 0!important;
     border: none;
     height: 100%;
+    box-shadow: none;
 }
 .registration-div{
     background-color: #fff;
@@ -2588,6 +2589,7 @@ input[disabled] {
     line-height: inherit;
     font-weight: normal;
 }
+
 input::-ms-clear {
     display: none;
 }
@@ -2639,4 +2641,23 @@ input::-ms-clear {
     color: #FFFFFF;
     border: none;
 
+}
+.alert-success {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.cardl.custom-placeholder {
+    left: 15px;
+    top: 30px;
+}
+
+.custom-placeholder.top {
+    top: 15px;
+}
+
+.input-text-div .custom-placeholder {
+    top: 15px;
 }
