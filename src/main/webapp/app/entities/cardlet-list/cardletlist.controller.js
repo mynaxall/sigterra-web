@@ -160,8 +160,12 @@
 
                     $scope.tabNames.tabs[0].job = {
                         "value": $scope.userAccount.jobTitle
-                    },
-                    $scope.tabNames.tabs[0].photo = $scope.userAccount.imageUrl
+                    }
+                    if($scope.userAccount.imageUrl){
+                        $scope.tabNames.tabs[0].photo = $scope.userAccount.imageUrl
+                    }else{
+                        $scope.tabNames.tabs[0].photo = $location.protocol() + '://' + $location.host() + ':' + $location.port()+"/content/images/avatar_img.png"
+                    }
 
                 });
         }
