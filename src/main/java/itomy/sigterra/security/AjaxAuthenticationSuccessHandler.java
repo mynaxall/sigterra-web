@@ -20,6 +20,7 @@ public class AjaxAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuc
         Authentication authentication)
         throws IOException, ServletException {
 
+        request.getSession().setMaxInactiveInterval(60*60*24);
         response.setStatus(HttpServletResponse.SC_OK);
     }
 }
