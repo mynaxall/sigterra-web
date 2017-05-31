@@ -2290,7 +2290,7 @@ div.navbar-collapse.in.collapse{
 
 .navbar-brand{
     position: relative;
-    z-index: 2000;
+    z-index: 200;
 }
 
 .modal-dialog{
@@ -2480,53 +2480,6 @@ a.tablinks2{
     white-space: nowrap;
 }
 
-
-.user-cardlet-panel-home{
-    padding-top: 50px;
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-bottom: 50px;
-    box-shadow: none;
-}
-@media (min-width: 1220px) {
-    .user-cardlet-panel-home {
-        padding-top: 50px;
-        padding-left: 5%;
-        padding-right: 5%;
-        padding-bottom: 50px;
-        box-shadow: none;
-    }
-}
-@media (min-width: 1400px) {
-    .user-cardlet-panel-home {
-        padding-top: 50px;
-        padding-left: 8%;
-        padding-right: 8%;
-        padding-bottom: 50px;
-        box-shadow: none;
-    }
-}
-
-@media (min-width: 1470px) {
-    .user-cardlet-panel-home {
-        padding-top: 50px;
-        padding-left: 10%;
-        padding-right: 10%;
-        padding-bottom: 50px;
-        box-shadow: none;
-    }
-}
-
-@media (min-width: 1650px) {
-    .user-cardlet-panel-home {
-        padding-top: 50px;
-        padding-left: 17%;
-        padding-right: 17%;
-        padding-bottom: 50px;
-        box-shadow: none;
-    }
-}
-
 .social-link-1{
     margin-right: 7px;
 }
@@ -2694,4 +2647,65 @@ input::-ms-clear {
 .close{
     opacity: 1;
     color: #13BCB5;
+}
+
+.close:hover{
+    opacity: .5;
+    color: #13BCB5;
+}
+
+.user-cardlet-panel{
+    min-width: 600px;
+    padding-top: 50px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 50px;
+    background-color: #FFFFFF;
+    box-shadow: none;
+}
+@media (min-width: 1300px) {
+    .user-cardlet-panel {
+        min-width: 600px;
+        padding-top: 50px;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom: 50px;
+        background-color: #FFFFFF;
+        box-shadow: none;
+    }
+}
+@media (min-width: 1400px) {
+    .user-cardlet-panel {
+        min-width: 600px;
+        padding-top: 50px;
+        padding-left: 8%;
+        padding-right: 8%;
+        padding-bottom: 50px;
+        background-color: #FFFFFF;
+        box-shadow: none;
+    }
+}
+
+@media (min-width: 1470px) {
+    .user-cardlet-panel {
+        min-width: 600px;
+        padding-top: 50px;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-bottom: 50px;
+        background-color: #FFFFFF;
+        box-shadow: none;
+    }
+}
+
+@media (min-width: 1660px) {
+    .user-cardlet-panel {
+        min-width: 600px;
+        padding-top: 50px;
+        padding-left: 17%;
+        padding-right: 17%;
+        padding-bottom: 50px;
+        background-color: #FFFFFF;
+        box-shadow: none;
+    }
 }
