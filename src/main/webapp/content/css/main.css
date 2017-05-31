@@ -2562,9 +2562,9 @@ input[disabled] {
     background-color: transparent;
 }
 
-.has-error{
+.has-error-new{
     color: #a94442;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .form-group input::-webkit-input-placeholder, .cover-input input::-webkit-input-placeholder, .cardlet-name-panel input::-webkit-input-placeholder, .input-text-div input::-webkit-input-placeholder { /* WebKit browsers */

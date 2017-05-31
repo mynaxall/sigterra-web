@@ -744,14 +744,14 @@
                             <div class="accordion-section">
                                 <a class="accordion-section-title" ng-class="{active:accordion==2}" ng-click="accordionActivete(2)">Social links  <img class="status-icon" ng-show="accordion==2" src="/content/images/Arrow_up.png"><img class="status-icon" ng-show="accordion!=2" src="/content/images/Arrow_down.png"></a>
                                 <div id="accordion-2" class="accordion-section-content"  ng-show="accordion==2">
-                                    <form name="myForm">
+                                    <form name="myForm" class="input-padding">
                                         <div class="form-group clearfix">
 
                                             <div class="input-text-div">
-                                                <input type="text" class="input-new" id="twitter{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" placeholder="Twitter" name="twitter" ng-model="tabName.socialLinks.twitter">
-                                                <label for="twitter{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" class="custom-placeholder" ng-hide="tabName.socialLinks.twitter">Twitter</label>
+                                                <input type="url" class="input-new" id="twitter{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" placeholder="Twitter" name="twitter" ng-model="tabName.socialLinks.twitter">
+                                                <label for="twitter{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" class="custom-placeholder" ng-hide="tabName.socialLinks.twitter || (myForm.twitter.$dirty && myForm.twitter.$invalid)">Twitter</label>
                                                 <div ng-show="myForm.twitter.$dirty && myForm.twitter.$invalid">
-                                                    <p class="help-block has-error"
+                                                    <p class="help-block has-error-new"
                                                        ng-show="myForm.twitter.$error.url">
                                                         Invalid URL string. It should starts from "http://" or "https://"
                                                     </p>
@@ -766,10 +766,10 @@
                                         <div class="form-group clearfix">
 
                                             <div class="input-text-div">
-                                                <input type="text" class="input-new" id="facebook{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" placeholder="Facebook" name="facebook" ng-model="tabName.socialLinks.facebook">
-                                                <label for="facebook{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" class="custom-placeholder" ng-hide="tabName.socialLinks.facebook">Facebook</label>
+                                                <input type="url" class="input-new" id="facebook{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" placeholder="Facebook" name="facebook" ng-model="tabName.socialLinks.facebook">
+                                                <label for="facebook{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" class="custom-placeholder" ng-hide="tabName.socialLinks.facebook || (myForm.facebook.$dirty && myForm.facebook.$invalid)">Facebook</label>
                                                 <div ng-show="myForm.facebook.$dirty && myForm.facebook.$invalid">
-                                                    <p class="help-block has-error"
+                                                    <p class="help-block has-error-new"
                                                        ng-show="myForm.facebook.$error.url">
                                                         Invalid URL string. It should starts from "http://" or "https://"
                                                     </p>
@@ -783,10 +783,10 @@
                                         <div class="form-group clearfix">
 
                                             <div class="input-text-div">
-                                                <input type="text" class="input-new" id="google{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" placeholder="Google" name="google" ng-model="tabName.socialLinks.google">
-                                                <label for="google{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" class="custom-placeholder" ng-hide="tabName.socialLinks.google">Google</label>
+                                                <input type="url" class="input-new" id="google{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" placeholder="Google" name="google" ng-model="tabName.socialLinks.google">
+                                                <label for="google{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" class="custom-placeholder" ng-hide="tabName.socialLinks.google || (myForm.google.$dirty && myForm.google.$invalid)">Google</label>
                                                 <div ng-show="myForm.google.$dirty && myForm.google.$invalid">
-                                                    <p class="help-block has-error"
+                                                    <p class="help-block has-error-new"
                                                        ng-show="myForm.google.$error.url">
                                                         Invalid URL string. It should starts from "http://" or "https://"
                                                     </p>
@@ -800,10 +800,10 @@
                                         <div class="form-group clearfix">
 
                                             <div class="input-text-div">
-                                                <input type="text" class="input-new input-padding" id="linkedin{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" placeholder="Linkedin" name="linkedin" ng-model="tabName.socialLinks.linkedin">
-                                                <label for="linkedin{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" class="custom-placeholder" ng-hide="tabName.socialLinks.linkedin">Linkedin</label>
+                                                <input type="url" class="input-new" id="linkedin{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" placeholder="Linkedin" name="linkedin" ng-model="tabName.socialLinks.linkedin">
+                                                <label for="linkedin{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" class="custom-placeholder" ng-hide="tabName.socialLinks.linkedin || (myForm.linkedin.$dirty && myForm.linkedin.$invalid)">Linkedin</label>
                                                 <div ng-show="myForm.linkedin.$dirty && myForm.linkedin.$invalid">
-                                                    <p class="help-block has-error"
+                                                    <p class="help-block has-error-new"
                                                        ng-show="myForm.linkedin.$error.url">
                                                         Invalid URL string. It should starts from "http://" or "https://"
                                                     </p>
