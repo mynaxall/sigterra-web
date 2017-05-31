@@ -125,16 +125,16 @@
 
 
                     <div class="form-group">
-                        <input type="text" class="profile-input" id="phoneNumber" name="phoneNumber" placeholder="Phone Number"
+                        <input type="text" class="profile-input" id="phoneNumber2" name="phoneNumber" placeholder="Phone Number"
                                ng-model="vm.settingsAccount.phoneNumber">
-                        <label for="phoneNumber" class="custom-placeholder" ng-hide="vm.settingsAccount.phoneNumber">Phone Number</label>
+                        <label for="phoneNumber2" class="custom-placeholder" ng-hide="vm.settingsAccount.phoneNumber">Phone Number</label>
                     </div>
 
 
                     <div class="form-group">
-                        <input type="text" class="profile-input" id="address" name="address" placeholder="Address"
+                        <input type="text" class="profile-input" id="address2" name="address" placeholder="Address"
                                ng-model="vm.settingsAccount.address">
-                        <label for="address" class="custom-placeholder" ng-hide="vm.settingsAccount.address">Address</label>
+                        <label for="address2" class="custom-placeholder" ng-hide="vm.settingsAccount.address">Address</label>
                     </div>
 
                     <button type="submit" ng-disabled="form.$invalid" class="saveButton">Update profile</button>
@@ -145,9 +145,9 @@
 
                 <form name="form2" role="form" novalidate ng-submit="vm.changePassword()" show-validation>
                     <div class="form-group">
-                        <input type="password" class="profile-input" id="password" name="password" placeholder="New password"
+                        <input type="password" class="profile-input" id="password2" name="password" placeholder="New password"
                                ng-model="vm.password" ng-minlength=4 ng-maxlength=50 required>
-                        <label for="password" class="custom-placeholder" ng-hide="vm.password || form2.password.$error.minlength || form2.password.$error.maxlength">New password</label>
+                        <label for="password2" class="custom-placeholder" ng-hide="vm.password || form2.password.$error.minlength || form2.password.$error.maxlength">New password</label>
                         <div ng-show="form2.password.$dirty && form2.password.$invalid">
                             <p class="help-block"
                                ng-show="form2.password.$error.required">
@@ -165,9 +165,9 @@
                         <password-strength-bar password-to-check="vm.password"></password-strength-bar>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="profile-input" id="confirmPassword" name="confirmPassword" placeholder="Confirm password"
+                        <input type="password" class="profile-input" id="confirmPassword2" name="confirmPassword" placeholder="Confirm password"
                                ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50  pw-check='password' required>
-                        <label for="confirmPassword" class="custom-placeholder" ng-hide="vm.confirmPassword || form2.confirmPassword.$error.minlength || form2.confirmPassword.$error.maxlength">Confirm password</label>
+                        <label for="confirmPassword2" class="custom-placeholder" ng-hide="vm.confirmPassword || form2.confirmPassword.$error.minlength || form2.confirmPassword.$error.maxlength">Confirm password</label>
                         <div ng-show="form2.confirmPassword.$dirty && form2.confirmPassword.$invalid">
                             <p class="help-block"
                                ng-show="form2.confirmPassword.$error.required">

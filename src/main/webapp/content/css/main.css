@@ -2593,6 +2593,13 @@ input[disabled] {
     font-size: inherit;
     line-height: inherit;
     font-weight: normal;
+    z-index: 0;
+}
+
+input, textarea {
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
 }
 
 input::-ms-clear {
