@@ -2678,3 +2678,7 @@ input::-ms-clear {
 .input-text-div .custom-placeholder {
     top: 15px;
 }
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus{
+    background-color: #E7E7E7;
+}
