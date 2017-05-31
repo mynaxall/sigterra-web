@@ -35,6 +35,10 @@ public class CardletService {
     private UserService userService;
 
     @Inject
+    private UserRepository userRepository;
+
+
+    @Inject
     private InputPropertiesRepository inputPropertiesRepository;
 
     @Inject
@@ -198,7 +202,7 @@ public class CardletService {
 
 
 
-    public UserCardletDTO createCardlet(UserCardletDTO cardletDTO, boolean update) {
+    public UserCardletDTO createCardlet(UserCardletDTO cardletDTO, boolean update, Long id) {
 
 
         log.info("asdasd==== "+cardletDTO);
@@ -209,7 +213,11 @@ public class CardletService {
             cardlet.setId(cardletDTO.getId());
         }
         cardlet.setName(cardletDTO.getCardletName());
-        cardlet.setUser(userService.getUserWithAuthorities());
+        User user = userService.getUserWithAuthorities();
+        if(user == null){
+            user = userRepository.findOneById(id);
+        }
+        cardlet.setUser(user);
         Set<Business> businesses  = new HashSet<>();
         Set <Item> items = new HashSet<>();
         List<CardletTab> tabs = cardletDTO.getTabs();

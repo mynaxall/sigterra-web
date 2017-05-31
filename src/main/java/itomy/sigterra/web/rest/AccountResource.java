@@ -123,9 +123,15 @@ public class AccountResource {
 
     @GetMapping("/accountActivate")
     @Timed
-    public ResponseEntity<UserDTO> getAccountActivate(@RequestParam(value = "key") String key) {
-        return userRepository.findOneByActivationKey(key)
-            .map(user -> new ResponseEntity<>(new UserDTO(user), HttpStatus.OK))
+    public ResponseEntity<User> getAccountActivate(@RequestParam(value = "key") String key) {
+        Optional<User> optionalUser = userRepository.findOneByActivationKey(key);
+        User user2 = null;
+        log.info("====== "+optionalUser);
+        if (optionalUser.isPresent()) {
+            user2 = optionalUser.get();
+        }
+        return Optional.ofNullable(user2)
+            .map(user -> new ResponseEntity<>(user, HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
     }
 

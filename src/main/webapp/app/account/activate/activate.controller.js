@@ -5,42 +5,70 @@
         .module('sigterraWebApp')
         .controller('ActivationController', ActivationController);
 
-    ActivationController.$inject = ['$stateParams', 'Auth', 'LoginService', '$scope', '$http'];
+    ActivationController.$inject = ['$stateParams', 'Auth', 'LoginService', '$scope', '$http', '$location'];
 
-    function ActivationController ($stateParams, Auth, LoginService, $scope, $http) {
+    function ActivationController ($stateParams, Auth, LoginService, $scope, $http, $location) {
         var vm = this;
 
-        $scope.userCard = function(){
-            $http.get("/api/userCardlets")
-                .success(function(response, status, headers) {
-                    $scope.userCardlets = response;
-                    if($scope.userCardlets.length === 0){
-                        $scope.saveCardlet();
 
-                    }
-                });
-        };
 
         $scope.saveCardlet = function(){
-            $http.post("/api/cardletFirst",  $scope.tabNames)
+            console.log($scope.userAccount.id)
+            $http.post("/api/cardletFirst?id="+$scope.userAccount.id,  $scope.tabNames)
                 .success(function (data, status, headers, config) {
-                    $scope.userCard();
                 });
-            Auth.activateAccount({key: $stateParams.key}).then(function () {
-                vm.error = null;
-                vm.success = 'OK';
-            }).catch(function () {
-                vm.success = null;
-                vm.error = 'ERROR';
-            });
-
         }
+
+        $scope.tabNames ={
+            "cardletName": "Business cards",
+            "tabs":
+                [{
+                    "name": "My info",
+                    'position': 0,
+                    "display": "block",
+                    "tabType": 1,
+                    "layout":{
+                        "mainColor": "FFFFFF",
+                        "secondaryColor": "4BABE2",
+                        "tabId": 1
+
+                    },
+                    "photo": "/content/images/avatar_img.png",
+
+
+                },
+                    {
+                        "name": "Items",
+                        "position": 1,
+                        "tabType": 2,
+                        "layout": {
+                            "mainColor": "FFFFFF",
+                            "secondaryColor": "4BABE2",
+                            "tabId": 4
+                        },
+                        "items": [
+                            {
+                                //"name": "1 item",
+                                "index": "2",
+                                "position": "0",
+                                "image": "/content/images/portfolio_img_01.png",
+                                "image2": "/content/images/portfolio_img_02.png",
+                                "image3": "/content/images/img/portfolio_img_03.png"
+
+                            }
+                        ]
+                    }
+                ]
+        };
+
+        $scope.userAccount;
 
         $scope.getUserProfile = function(){
             $http.get("/api/accountActivate?key="+ $stateParams.key)
                 .success(function(response, status, headers) {
 
                     $scope.userAccount = response;
+                    console.log($scope.userAccount)
                     $scope.tabNames.tabs[0].userName = {
                         "value": $scope.userAccount.username
                     };
@@ -72,10 +100,16 @@
                     }else{
                         $scope.tabNames.tabs[0].photo = $location.protocol() + '://' + $location.host() + ':' + $location.port()+"/content/images/avatar_img.png"
                     }
-
+                    $scope.saveCardlet();
 
                 });
-            $scope.userCard();
+            Auth.activateAccount({key: $stateParams.key}).then(function () {
+                vm.error = null;
+                vm.success = 'OK';
+            }).catch(function () {
+                vm.success = null;
+                vm.error = 'ERROR';
+            });
         };
         $scope.getUserProfile();
 
