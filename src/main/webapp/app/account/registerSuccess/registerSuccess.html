@@ -33,7 +33,7 @@
         <div>
             <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
 
-                <div class="form-group">
+                <div class="form-group form-group-new">
                     <label class="login-lable" for="firstName55">First name</label>
                     <input type="text" class="form-control profile-input" id="firstName55" name="firstName" placeholder="Your name"
                            ng-model="vm.registerAccount.firstName" ng-minlength=3 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
@@ -57,7 +57,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-new">
                     <label class="login-lable" for="lastName55">Last name</label>
                     <input type="text" class="form-control profile-input" id="lastName55" name="lastName" placeholder="Your last name"
                            ng-model="vm.registerAccount.lastName" ng-minlength=3 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
@@ -81,7 +81,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-new">
                     <label class="login-lable" for="email66">E-mail*</label>
                     <input type="email" class="form-control profile-input" id="email66" name="email" placeholder="Your e-mail"
                            ng-model="vm.registerAccount.email" ng-minlength=5 ng-maxlength=100 required>
@@ -105,7 +105,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-new">
                     <label class="login-lable" for="password44">New password*</label>
                     <input type="password" class="form-control profile-input" id="password44" name="password" placeholder="New password"
                            ng-model="vm.registerAccount.password" ng-minlength=3 ng-maxlength=50 required>
@@ -126,7 +126,7 @@
                     </div>
                     <password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-new">
                     <label class="login-lable" for="confirmPassword44">New password confirmation*</label>
                     <input type="password" class="form-control profile-input" id="confirmPassword44" name="confirmPassword" placeholder="Confirm the new password"
                            ng-model="vm.confirmPassword" ng-minlength=3 ng-maxlength=50 required>
@@ -147,7 +147,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group form-group-new">
                     <input type="checkbox" id="accept" name="accept" ng-model="vm.accept" required>
                     <label class="login-lable" for="accept">I accept <a class="terms-and-conditions" href="#">terms and conditions</a> of using</label>
                 </div>

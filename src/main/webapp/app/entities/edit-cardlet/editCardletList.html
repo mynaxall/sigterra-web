@@ -380,7 +380,7 @@
                 <div ng-repeat="tabName in tabNames.tabs " id="settings{{tabName.name}}{{tabName.position}}" class="tabcontent"  ng-class="tabName.position == 0 ? 'display' : 'none-display'">
                     <form  name="form" role="form" novalidate show-validation>
 
-                        <div class="form-group" style="padding: 15px">
+                        <div class="form-group form-group-new" style="padding: 15px">
 
                             <input type="text" class="input-new" id="name1{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" name="name" placeholder="Tab’s name"
                                    ng-model="tabName.name" maxlength="12" ng-minlength=1 required>

@@ -16,7 +16,7 @@
             <div ng-show="!vm.success" style="color: #7F8C8C; font-size: 13px; text-align: center;padding-bottom: 45px">Enter the e-mail address you used to register.</div>
 
             <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.requestReset()" show-validation>
-                <div class="form-group">
+                <div class="form-group form-group-new">
                     <input type="email" class="profile-input" id="email" name="email" placeholder="E-mail" ng-model="vm.resetAccount.email" ng-minlength=5 ng-maxlength=100 required>
                     <label for="email" class="custom-placeholder" ng-hide="vm.resetAccount.email || form.email.$error.email || form.email.$error.minlength || form.email.$error.maxlength">E-mail</label>
                     <div ng-show="form.email.$dirty && form.email.$invalid">

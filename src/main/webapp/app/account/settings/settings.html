@@ -61,7 +61,7 @@
 
                 <form name="form" role="form" novalidate ng-submit="vm.save()" show-validation>
 
-                    <div class="form-group">
+                    <div class="form-group form-group-new">
                         <input type="text" class="profile-input" id="username" name="username" placeholder="First and Last Name"
                                ng-model="vm.settingsAccount.username" required>
                         <label for="username" class="custom-placeholder" ng-hide="vm.settingsAccount.username || form.username.$error.minlength || form.username.$error.maxlength">First and Last Name</label>
@@ -80,26 +80,26 @@
                             </p>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-new">
                         <input type="text" class="profile-input" id="jobTitle" name="jobTitle" placeholder="Job Title"
                                ng-model="vm.settingsAccount.jobTitle">
                         <label for="jobTitle" class="custom-placeholder" ng-hide="vm.settingsAccount.jobTitle">Job Title</label>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group form-group-new">
                         <input type="text" class="profile-input" id="companyName" name="companyName" placeholder="Company Name"
                                ng-model="vm.settingsAccount.companyName">
                         <label for="companyName" class="custom-placeholder" ng-hide="vm.settingsAccount.companyName">Company Name</label>
                     </div>
 
 
-                    <div class="form-group">
+                    <div class="form-group form-group-new">
                         <input type="text" class="profile-input" id="companySite" name="companySite" placeholder="Company Website"
                                ng-model="vm.settingsAccount.companySite">
                         <label for="companySite" class="custom-placeholder" ng-hide="vm.settingsAccount.companySite">Company Website</label>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group form-group-new">
                         <input type="email" class="profile-input" id="email" name="email" placeholder="E-mail"
                                ng-model="vm.settingsAccount.email"  ng-disabled="true"  ng-minlength=5 ng-maxlength=100 required maxlength="100">
                         <label for="email" class="custom-placeholder" ng-hide="vm.settingsAccount.email || form.email.$error.email || form.email.$error.minlength || form.email.$error.maxlength">E-mail</label>
@@ -124,14 +124,14 @@
                     </div>
 
 
-                    <div class="form-group">
+                    <div class="form-group form-group-new">
                         <input type="text" class="profile-input" id="phoneNumber2" name="phoneNumber" placeholder="Phone Number"
                                ng-model="vm.settingsAccount.phoneNumber">
                         <label for="phoneNumber2" class="custom-placeholder" ng-hide="vm.settingsAccount.phoneNumber">Phone Number</label>
                     </div>
 
 
-                    <div class="form-group">
+                    <div class="form-group form-group-new">
                         <input type="text" class="profile-input" id="address2" name="address" placeholder="Address"
                                ng-model="vm.settingsAccount.address">
                         <label for="address2" class="custom-placeholder" ng-hide="vm.settingsAccount.address">Address</label>
@@ -144,7 +144,7 @@
                 <jhi-alert-error></jhi-alert-error>
 
                 <form name="form2" role="form" novalidate ng-submit="vm.changePassword()" show-validation>
-                    <div class="form-group">
+                    <div class="form-group form-group-new">
                         <input type="password" class="profile-input" id="password2" name="password" placeholder="New password"
                                ng-model="vm.password" ng-minlength=4 ng-maxlength=50 required>
                         <label for="password2" class="custom-placeholder" ng-hide="vm.password || form2.password.$error.minlength || form2.password.$error.maxlength">New password</label>
@@ -164,7 +164,7 @@
                         </div>
                         <password-strength-bar password-to-check="vm.password"></password-strength-bar>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group form-group-new">
                         <input type="password" class="profile-input" id="confirmPassword2" name="confirmPassword" placeholder="Confirm password"
                                ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50  pw-check='password' required>
                         <label for="confirmPassword2" class="custom-placeholder" ng-hide="vm.confirmPassword || form2.confirmPassword.$error.minlength || form2.confirmPassword.$error.maxlength">Confirm password</label>

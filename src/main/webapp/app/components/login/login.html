@@ -12,16 +12,16 @@
         <div class="col-md-12">
             <div class="login-head-text">Sign in</div>
             <form class="form login-form" role="form" ng-submit="vm.login($event)">
-                <div class="form-group">
+                <div class="form-group form-group-new">
                     <input type="text" class="profile-input" id="username" placeholder="E-mail" ng-model="vm.username">
                     <label class="custom-placeholder" ng-hide="vm.username" for="username">E-mail</label>
                 </div>
-                <div class="form-group">
+                <div class="form-group form-group-new">
                     <input type="password" class="profile-input" id="password" placeholder="Password"
                            ng-model="vm.password">
                     <label class="custom-placeholder" ng-hide="vm.password" for="password">Password</label>
                 </div>
-                <div class="form-group" style="margin-bottom: 30px">
+                <div class="form-group form-group-new" style="margin-bottom: 30px">
                     <div style="display: inline-block; width: 50%;">
                     <label for="rememberMe">
                         <input type="checkbox" id="rememberMe" ng-model="vm.rememberMe" style="margin-top: 0px;width: 14px;height: 14px;" checked>

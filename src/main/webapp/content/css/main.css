@@ -505,6 +505,10 @@ Social Buttons
 }
 
 .form-group{
+    margin-bottom: 0px;
+}
+
+.form-group-new{
     margin-bottom: 20px;
 }
 

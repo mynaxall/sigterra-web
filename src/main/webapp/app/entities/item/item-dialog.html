@@ -8,24 +8,24 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.item.id">
+        <div class="form-group form-group-new" ng-show="vm.item.id">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.item.id" readonly />
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label class="control-label" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                     ng-model="vm.item.name"
                      />
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label class="control-label" for="field_icon">Icon</label>
             <input type="text" class="form-control" name="icon" id="field_icon"
                     ng-model="vm.item.icon"
                      />
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label class="control-label" for="field_createdDate">Created Date</label>
                 <div class="input-group">
                     <input id="field_createdDate" type="text" class="form-control" name="createdDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.item.createdDate" is-open="vm.datePickerOpenStatus.createdDate"
@@ -35,7 +35,7 @@
                     </span>
                 </div>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label class="control-label" for="field_modifiDate">Modifi Date</label>
                 <div class="input-group">
                     <input id="field_modifiDate" type="text" class="form-control" name="modifiDate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.item.modifiDate" is-open="vm.datePickerOpenStatus.modifiDate"
@@ -45,39 +45,39 @@
                     </span>
                 </div>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label class="control-label" for="field_mainColor">Main Color</label>
             <input type="text" class="form-control" name="mainColor" id="field_mainColor"
                     ng-model="vm.item.mainColor"
                      />
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label class="control-label" for="field_color">Color</label>
             <input type="text" class="form-control" name="color" id="field_color"
                     ng-model="vm.item.color"
                      />
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label class="control-label" for="field_pisition">Pisition</label>
             <input type="number" class="form-control" name="pisition" id="field_pisition"
                     ng-model="vm.item.pisition"
                      />
         </div>
 
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label for="field_cardlet">Cardlet</label>
             <select class="form-control" id="field_cardlet" name="cardlet" ng-model="vm.item.cardlet" ng-options="cardlet as cardlet.id for cardlet in vm.cardlets track by cardlet.id">
                 <option value=""></option>
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label for="field_tabType">Tab Type</label>
             <select class="form-control" id="field_tabType" name="tabType" ng-model="vm.item.tabType" ng-options="tabType as tabType.id for tabType in vm.tabtypes track by tabType.id">
                 <option value=""></option>
             </select>
         </div>
     </div>
-    <div class="modal-footer">
+    <div class="modal-footer form-group-new">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
         </button>

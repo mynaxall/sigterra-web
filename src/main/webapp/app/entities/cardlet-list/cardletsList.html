@@ -387,7 +387,7 @@
                     <div ng-repeat="tabName in tabNames.tabs " id="settings{{tabName.name}}{{tabName.position}}" class="tabcontent">
                         <form  name="form" role="form" novalidate show-validation>
 
-                            <div class="form-group clearfix" style="padding: 15px">
+                            <div class="form-group form-group-new clearfix" style="padding: 15px">
 
                                 <input type="text" class="input-new" id="name{{tabName.tabType}}" name="name" placeholder="Tab’s name" ng-minlength=1 maxlength="12"
                                        ng-model="tabName.name" required>

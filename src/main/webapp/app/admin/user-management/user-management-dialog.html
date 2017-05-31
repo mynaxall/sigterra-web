@@ -8,13 +8,13 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label>ID</label>
             <input type="text" class="form-control" name="id"
                    ng-model="vm.user.id" readonly>
         </div>
 
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label class="control-label">Login</label>
             <input disabled="true"  type="text" class="form-control" name="login"
                    ng-model="vm.user.login" ng-required="vm.user.id == null" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/">
@@ -32,7 +32,7 @@
                 </p>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label class="control-label">First Name</label>
             <input type="text" class="form-control" name="firstName"
                    ng-model="vm.user.firstName" ng-maxlength="50">
@@ -45,7 +45,7 @@
                 </p>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label>Last Name</label>
             <input type="text" class="form-control" name="lastName"
                    ng-model="vm.user.lastName" ng-maxlength="50">
@@ -58,7 +58,7 @@
                 </p>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label class="control-label">Email</label>
             <input disabled="true" type="email" class="form-control" name="email"
                    ng-model="vm.user.email" required ng-maxlength="100">
@@ -80,14 +80,14 @@
                  </p>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label for="activated">
                 <input ng-disabled="vm.user.id === null" type="checkbox" id="activated" name="activated" ng-model="vm.user.activated">
                 <span>Activated</span>
             </label>
         </div>
 
-        <div class="form-group">
+        <div class="form-group form-group-new">
             <label>Profiles</label>
             <select class="form-control" multiple name="authority" ng-model="vm.user.authorities"
                     ng-options="authority for authority in vm.authorities">

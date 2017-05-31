@@ -25,7 +25,7 @@
 
             <div ng-hide="vm.keyMissing">
                 <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.finishReset()" show-validation>
-                    <div class="form-group">
+                    <div class="form-group form-group-new">
                         <input type="password" class="profile-input" id="password" name="password" placeholder="New password"
                                ng-model="vm.resetAccount.password" ng-minlength=4 ng-maxlength=50 required>
                         <label for="password" class="custom-placeholder" ng-hide="vm.resetAccount.password || form.password.$error.minlength || form.password.$error.maxlength">New password</label>
@@ -46,7 +46,7 @@
                         <password-strength-bar password-to-check="vm.resetAccount.password"></password-strength-bar>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group form-group-new">
                         <input type="password" class="profile-input" id="confirmPassword" name="confirmPassword" placeholder="Confirm the new password"
                                ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50 required>
                         <label for="confirmPassword" class="custom-placeholder" ng-hide="vm.confirmPassword || form.confirmPassword.$error.minlength || form.confirmPassword.$error.maxlength">Confirm the new password</label>
