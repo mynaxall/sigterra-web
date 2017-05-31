@@ -497,16 +497,24 @@
 
                                             </div>
                                         </div>
+                                        <form name="myInfoForm">
+                                            <div class="form-group clearfix">
+                                                <div class="cover-input" style="width: 450px">
+                                                    <input type="url" name="infoLink" class="input-new" id="description1{{tabName.tabType}}" placeholder="Link" ng-model="item.link">
+                                                    <label for="description1{{tabName.tabType}}" class="custom-placeholder top" ng-hide="item.link || (myInfoForm.infoLink.$dirty && myInfoForm.infoLink.$invalid)">Link</label>
+                                                </div>
+                                                <div ng-show="myInfoForm.infoLink.$dirty && myInfoForm.infoLink.$invalid">
+                                                    <p class="help-block has-error-new"
+                                                       ng-show="myInfoForm.infoLink.$error.url">
+                                                        Invalid URL string. It should starts from "http://" or "https://"
+                                                    </p>
 
-                                        <div class="form-group clearfix">
-                                            <div class="cover-input" style="width: 450px">
-                                                <input type="text" class="input-new" id="description1{{tabName.tabType}}" placeholder="Link" ng-model="item.link">
-                                                <label for="description1{{tabName.tabType}}" class="custom-placeholder top" ng-hide="item.link">Link</label>
-                                            </div>
-                                            <div class="text-decoration-div" >
+                                                </div>
+                                                <div class="text-decoration-div" >
 
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                         <br>
                                         <div style="width: 100%; text-align: right; padding-right: 5px">
                                             <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  item.index)"  class="btn btn-primary main-btn item-btn" > Delete info</button>
@@ -580,16 +588,24 @@
 
                                             </div>
                                         </div>
+                                        <form name="myItemForm">
+                                            <div class="form-group clearfix">
+                                                <div class="cover-input" style="width: 450px">
+                                                    <input type="url" class="input-new" name="itemLink" id="description3{{item.index}}" placeholder="Link" ng-model="item.link">
+                                                    <label for="description3{{item.index}}" class="custom-placeholder top" ng-hide="item.link || (myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid)">Link</label>
+                                                </div>
+                                                <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid">
+                                                    <p class="help-block has-error-new"
+                                                       ng-show="myItemForm.itemLink.$error.url">
+                                                        Invalid URL string. It should starts from "http://" or "https://"
+                                                    </p>
 
-                                        <div class="form-group clearfix">
-                                            <div class="cover-input" style="width: 450px">
-                                                <input type="text" class="input-new" id="description3{{item.index}}" placeholder="Link" ng-model="item.link">
-                                                <label for="description3{{item.index}}" class="custom-placeholder top" ng-hide="item.link">Link</label>
-                                            </div>
-                                            <div class="text-decoration-div" >
+                                                </div>
+                                                <div class="text-decoration-div" >
 
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                         <br>
                                         <div style="width: 100%; text-align: right; padding-right: 5px">
                                             <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  item.index)"  class="btn btn-primary main-btn item-btn" style="width: 108px"> Delete item</button>
