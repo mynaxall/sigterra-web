@@ -2689,3 +2689,8 @@ input::-ms-clear {
     text-align: left;
     margin: auto;
 }
+
+.close{
+    opacity: 1;
+    color: #13BCB5;
+}
