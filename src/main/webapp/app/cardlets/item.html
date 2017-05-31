@@ -1,11 +1,11 @@
 
 <div>
-	<div class="cardlet3" ng-style="{'background-color': '#'+tabName.layout.mainColor}" ng-init="initSlide(tabName)" style="position:relative;">
+	<div class="cardlet3" ng-style="{'background-color': '#'+tabName.layout.mainColor}"style="position:relative;">
         <div>
             <div class="firstItemTop" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}"></div>
             <div ng-show="tabName.items.length <= 3">
                 <div class="main-carousel-image-div">
-                    <div  ng-repeat="slide in tabName.items"  class="main-carousel-item-div">
+                    <div ng-repeat="slide in tabName.items"  class="main-carousel-item-div">
                         <div id="cf4a" style="margin-bottom: 5px">
 
                             <img id="ing-1" class="item-images imgFirst" ng-show="!slide.link" ng-src="{{slide.image}}">
@@ -26,7 +26,9 @@
                 </div>
 
             </div>
-            <div uib-carousel active="slide.active" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 3">
+
+
+            <div uib-carousel active="slide.active" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 3" ng-if="tabName.items.length > 3" ng-init="initSlide(tabName)" >
                 <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position">
 
                     <div class="carousel-image-div-item">
@@ -58,12 +60,12 @@
                             </div>
                             <div class="carousel-item-name-div-first" ng-show="tabName.items[$index+1].name.value"
                                  ng-style="{'font-weight': tabName.items[$index+1].name.bold ? 'bold' : 'normal',
-                    'font-style': tabName.items[$index+1].name.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[$index+1].name.underline ? 'underline' : 'normal'}" style="color: #{{tabName.layout.mainColor}}">{{tabName.items[$index+1].name.value}}</div>
+                            'font-style': tabName.items[$index+1].name.italic ? 'italic' : 'normal',
+                            'text-decoration': tabName.items[$index+1].name.underline ? 'underline' : 'normal'}" style="color: #{{tabName.layout.mainColor}}">{{tabName.items[$index+1].name.value}}</div>
                             <div class="carousel-item-name-div-first" ng-show="!tabName.items[$index+1].name.value" style="color: #{{tabName.layout.mainColor}}">Maui Hotel</div>
                             <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="tabName.items[$index+1].description.value" ng-style="{'font-weight': tabName.items[$index+1].description.bold ? 'bold' : 'normal',
-                    'font-style': tabName.items[$index+1].description.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[$index+1].description.underline ? 'underline' : 'normal'}">{{tabName.items[$index+1].description.value}}</div>
+                            'font-style': tabName.items[$index+1].description.italic ? 'italic' : 'normal',
+                            'text-decoration': tabName.items[$index+1].description.underline ? 'underline' : 'normal'}">{{tabName.items[$index+1].description.value}}</div>
                             <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="!tabName.items[$index+1].description.value">How To Fly A Private Jet On Your Next Trip</div>
                         </div>
 
@@ -75,13 +77,13 @@
                                 </a>
                             </div>
                             <div class="carousel-item-name-div-first" ng-show="tabName.items[$index+2].name.value" ng-style="{'font-weight': tabName.items[$index+2].name.bold ? 'bold' : 'normal',
-                    'font-style': tabName.items[$index+2].name.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[$index+2].name.underline ? 'underline' : 'normal'}" style="color: #{{tabName.layout.mainColor}}">{{tabName.items[$index+2].name.value}}</div>
+                        'font-style': tabName.items[$index+2].name.italic ? 'italic' : 'normal',
+                        'text-decoration': tabName.items[$index+2].name.underline ? 'underline' : 'normal'}" style="color: #{{tabName.layout.mainColor}}">{{tabName.items[$index+2].name.value}}</div>
                             <div class="carousel-item-name-div-first" ng-show="!tabName.items[$index+2].name.value" style="color: #{{tabName.layout.mainColor}}">Maui Hotel</div>
                             <div ng-show="tabName.items[$index+2].description.value" class="carousel-item-name-div-first carousel-item-deskript-div"
                                  ng-style="{'font-weight': tabName.items[$index+2].description.bold ? 'bold' : 'normal',
-                    'font-style': tabName.items[$index+2].description.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[$index+2].description.underline ? 'underline' : 'normal'}"
+                        'font-style': tabName.items[$index+2].description.italic ? 'italic' : 'normal',
+                        'text-decoration': tabName.items[$index+2].description.underline ? 'underline' : 'normal'}"
                             >{{tabName.items[$index+2].description.value}}</div>
                             <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="!tabName.items[$index+2].description.value">How To Fly A Private Jet On Your Next Trip</div>
                         </div>
@@ -126,9 +128,7 @@
                 </div>
             </div>
         </div>
-
 	</div>
-
 </div>
 
 
