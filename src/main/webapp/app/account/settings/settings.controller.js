@@ -19,9 +19,9 @@
         }])
         .controller('SettingsController', SettingsController);
 
-    SettingsController.$inject = ['Principal', 'Auth', '$scope', '$http'];
+    SettingsController.$inject = ['Principal', 'Auth', '$scope', '$http', '$timeout'];
 
-    function SettingsController (Principal, Auth, $scope, $http) {
+    function SettingsController (Principal, Auth, $scope, $http, $timeout) {
         var vm = this;
 
         vm.error = null;
@@ -46,6 +46,9 @@
             Auth.updateAccount(vm.settingsAccount).then(function() {
                 vm.error = null;
                 vm.success = 'OK';
+                $timeout(function() {
+                    vm.success = null;
+                }, 3000);
                 Principal.identity(true).then(function(account) {
                     vm.settingsAccount = copyAccount(account);
                 });
@@ -76,6 +79,9 @@
                 Auth.changePassword(vm.password).then(function () {
                     vm.error = null;
                     vm.successPassword = 'OK';
+                    $timeout(function() {
+                        vm.successPassword = null;
+                    }, 3000);
                 }).catch(function () {
                     vm.errorPassword = null;
                     vm.error = 'ERROR';
