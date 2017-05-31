@@ -2682,3 +2682,10 @@ input::-ms-clear {
 .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus{
     background-color: #E7E7E7;
 }
+
+.copy-to-web-div{
+    min-width: 300px;
+    max-width: 470px;
+    text-align: left;
+    margin: auto;
+}
