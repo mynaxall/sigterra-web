@@ -121,6 +121,14 @@ public class AccountResource {
             .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
     }
 
+    @GetMapping("/accountActivate")
+    @Timed
+    public ResponseEntity<UserDTO> getAccountActivate(@RequestParam(value = "key") String key) {
+        return userRepository.findOneByActivationKey(key)
+            .map(user -> new ResponseEntity<>(new UserDTO(user), HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
+    }
+
     /**
      * GET  /authenticate : check if the user is authenticated, and return its login.
      *

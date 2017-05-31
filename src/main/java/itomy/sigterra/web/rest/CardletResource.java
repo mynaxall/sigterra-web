@@ -183,6 +183,17 @@ public class CardletResource {
     }
 
 
+    @PostMapping(value = "/cardletFirst", produces=MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<UserCardletDTO> createFirstCardlet(@RequestBody UserCardletDTO cardletDTO)
+        throws URISyntaxException {
+
+        cardletService.createCardlet(cardletDTO, false);
+
+        return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
+    }
+
+
 
 
     @PostMapping(value = "/cardlet", produces=MediaType.APPLICATION_JSON_VALUE)
