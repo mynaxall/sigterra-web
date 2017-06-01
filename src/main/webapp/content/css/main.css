@@ -2817,3 +2817,8 @@ input:invalid {
 .static {
     position: static;
 }
+
+
+.new-cardlet-marks{
+    color: #4BABE2;
+}
