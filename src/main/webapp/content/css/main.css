@@ -2532,6 +2532,10 @@ a.tablinks2{
 
 input[disabled] {
     background-color: transparent;
+    color:#7F8C8C!important;
+    -webkit-text-fill-color: rgba(127, 140,140, 1);
+    -webkit-opacity: 1;
+    color: rgba(127, 140,140, 1);;
 }
 
 .has-error-new{
