@@ -17,9 +17,12 @@
                 <div style="min-height: 300px">
                     <div class="row" style="margin-left: 15px;margin-right: 15px; margin-top: 30px;">
                         <div  class="selectSignature" style="width: 550px">
-                            <input style=" margin-left: 20px;" ng-click="selectSignature(1)"  type="radio" name="signatureType" value="1" ng-checked="selectedSignature"></input></div>
+                            <input style=" margin-left: 20px;" ng-click="selectSignature(1)" id="radio01"  type="radio" name="signatureType" value="1" ng-checked="selectedSignature"/>
+                            <label for="radio01"><span></span></label>
+                        </div>
                         <div class="selectSignature select-signature-radio-div" >
-                            <input style=" margin-left: 20px;" ng-click="selectSignature(3)" type="radio" name="signatureType" value="0" ng-checked="!selectedSignature" ></input>
+                            <input style=" margin-left: 20px;" ng-click="selectSignature(3)" type="radio" id="radio02" name="signatureType" value="0" ng-checked="!selectedSignature"/>
+                            <label for="radio02"><span></span></label>
                         </div>
                     </div>
                     <div class="row" style="margin-left: 15px;margin-right: 15px; margin-top: 30px;">

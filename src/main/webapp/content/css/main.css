@@ -2731,3 +2731,47 @@ input::-ms-clear {
         box-shadow: none;
     }
 }
+
+input[type="radio"] {
+    display:none;
+}
+input[type="radio"] + label {
+    color: #292321;
+    border: 1px solid #333;
+    border-radius: 100%;
+    font-size:14px;
+    width: 20px;
+    height: 20px;
+}
+input[type="radio"] + label span {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: -4px 0px 0 2px;
+    vertical-align: middle;
+    cursor: pointer;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+input[type="radio"]:checked + label {
+    border: 1px solid #18C6B7;
+
+}
+
+input[type="radio"] + label span {
+    background: transparent;
+}
+
+input[type="radio"]:checked + label span{
+    background-color:#18C6B7;
+}
+
+input[type="radio"] + label span,
+input[type="radio"]:checked + label span {
+    -webkit-transition:background-color 0.4s linear;
+    -o-transition:background-color 0.4s linear;
+    -moz-transition:background-color 0.4s linear;
+    transition:background-color 0.4s linear;
+}
+
