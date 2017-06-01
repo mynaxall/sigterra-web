@@ -2572,6 +2572,10 @@ input, textarea {
     background-color: transparent;
 }
 
+textarea{
+    border: 1px solid #333!important;
+}
+
 input::-ms-clear {
     display: none;
 }
