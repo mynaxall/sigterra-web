@@ -2692,6 +2692,11 @@ input::-ms-clear {
 .navbar-default .navbar-toggle:focus {
     background-color: inherit;
 }
+
 .static {
     position: static;
+}
+
+.footer-cover .custom-placeholder {
+    left: 5px;
 }
