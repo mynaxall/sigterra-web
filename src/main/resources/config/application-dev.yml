@@ -57,12 +57,20 @@ spring:
         cache-seconds: 1
     thymeleaf:
         cache: false
+    http:
+        multipart:
+          max-request-size: 20Mb
+          max-file-size: 20Mb
 
 liquibase:
     contexts: dev
 
 server:
     port: 8080
+    session:
+      timeout: 31536000
+      cookie:
+        max-age: 31536000
 
 # ===================================================================
 # JHipster specific properties

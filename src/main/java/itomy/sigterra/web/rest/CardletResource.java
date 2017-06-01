@@ -209,8 +209,6 @@ public class CardletResource {
     @PostMapping(value = "cardlet/upload/icon/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<?> uploadProfileIcon(@RequestBody MultipartFile file, @PathVariable String id) throws JSONException {
-        log.info("asdasdasd========== "+id);
-
         JSONObject successObject = new JSONObject();
         if(file != null && !file.isEmpty()) {
             if(file.getSize() > MAX_ALLOWED_PROFILE_ICON_SIZE) {
@@ -240,8 +238,6 @@ public class CardletResource {
     @PostMapping(value = "signature/upload/icon/{id}/{name}", produces=MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<?> uploadSignatureIcon(@RequestBody MultipartFile file, @PathVariable String id, @PathVariable String name) throws JSONException {
-        log.info("asdasdasd========== "+id);
-
         JSONObject successObject = new JSONObject();
         if(file != null && !file.isEmpty()) {
             if(file.getSize() > MAX_ALLOWED_PROFILE_ICON_SIZE) {
