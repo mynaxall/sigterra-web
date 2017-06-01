@@ -214,8 +214,10 @@ public class CardletService {
         }
         cardlet.setName(cardletDTO.getCardletName());
         User user = userService.getUserWithAuthorities();
+        log.info("Current USer cardler ---------"+ user);
         if(user == null){
             user = userRepository.findOneById(id);
+            log.info("newUser Cardlet ==========  "+ user);
         }
         cardlet.setUser(user);
         Set<Business> businesses  = new HashSet<>();
