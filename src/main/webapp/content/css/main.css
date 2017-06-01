@@ -2816,3 +2816,6 @@ input:invalid {
 .navbar-default .navbar-toggle:focus {
     background-color: inherit;
 }
+.static {
+    position: static;
+}
