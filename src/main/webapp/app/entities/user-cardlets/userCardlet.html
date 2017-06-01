@@ -50,7 +50,7 @@
                 <div class="add-banner-panel" style="padding-bottom: 35px; padding-top: 35px; margin-top: 25px">
                     <div class="copy-to-email-step-number">2</div><div class="copy-to-email-steps" style="display: inline-block">Add banner to your signature:</div>
                     <div style="display: inline-block; color: #595959; font-size: 14px; margin-left: 20px;">
-                        <input class="add-banner-checkbox" type="checkbox" ng-model="isAddBanner" ng-click="addBanner()" width="20px" height="20px" style="margin-right: 10px">
+                        <input ng-disabled="!banner" class="add-banner-checkbox" type="checkbox" ng-model="isAddBanner" ng-click="addBanner()" width="20px" height="20px" style="margin-right: 10px">
                     </div>
                     <div class="social-image-form-div-copy"  style="padding: 0px; padding-left: 30px; display: inline-block">
                         <div class="fileUpload btn btn-primary upload-banner-img choose-photo-btn" style="margin: 0px; border-radius: 0px!important;">
