@@ -2134,6 +2134,8 @@ Social Buttons
     border-width: 2px;
     border-style: solid;
     min-height: 300px;
+    padding-left: 5px;
+    padding-top: 6px;
 }
 
 .footer-panel{
