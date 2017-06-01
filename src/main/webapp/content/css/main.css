@@ -1306,6 +1306,14 @@ Social Buttons
     padding: 40px 20px;
     border-width: 1px;
     border-style: dashed;
+
+}
+
+#gmailDiv a{
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
 }
 
 .disabled {
@@ -2299,6 +2307,10 @@ div.navbar-collapse.in.collapse{
 
 .modal-dialog{
     margin: 30px auto!important;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .cardlet{
