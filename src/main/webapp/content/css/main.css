@@ -1176,6 +1176,23 @@ Social Buttons
 
 }
 
+.uploadProfileBtn{
+    height: 40px;
+    padding: 10px;
+    background-color: #13BCB5;
+    color: #FFF;
+    text-transform: uppercase;
+    width: 200px;
+    border:none;
+    border-radius: 0px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.uploadProfileBtn:hover{
+    background-color: rgba(19, 188, 181, 0.84);
+}
+
 .loginButton{
     background-color: #13BCB5;
     color: #FFF;
