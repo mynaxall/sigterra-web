@@ -2700,3 +2700,7 @@ input::-ms-clear {
 .footer-cover .custom-placeholder {
     left: 5px;
 }
+
+/*.navbar-collapse {*/
+    /*height: auto!important;*/
+/*}*/
