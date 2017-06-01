@@ -149,7 +149,7 @@
 
 
 <ng-include ng-show="isShowMailClientWindow" src="'app/cardlets/emailClientDialog.html'"></ng-include>
-<ng-include src="'app/cardlets/copyToWeb.html'"></ng-include>
+<ng-include ng-if="isShowModal" src="'app/cardlets/copyToWeb.html'"></ng-include>
 <ng-include src="'app/cardlets/deleteCardletDialog.html'"></ng-include>
 <ng-include src="'app/cardlets/cropDialogTabs.html'"></ng-include>
 <ng-include src="'app/cardlets/cropDialog.html'"></ng-include>
