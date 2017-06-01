@@ -202,10 +202,7 @@ public class CardletService {
 
 
 
-    public UserCardletDTO createCardlet(UserCardletDTO cardletDTO, boolean update, Long id) {
-
-
-        log.info("asdasd==== "+cardletDTO);
+    public UserCardletDTO createCardlet(UserCardletDTO cardletDTO, boolean update, Long id, boolean isFirstLogin) {
 
         log.debug("REST request to get a page of Cardlets22");
         Cardlet cardlet = new Cardlet();
@@ -213,11 +210,11 @@ public class CardletService {
             cardlet.setId(cardletDTO.getId());
         }
         cardlet.setName(cardletDTO.getCardletName());
-        User user = userService.getUserWithAuthorities();
-        log.info("Current USer cardler ---------"+ user);
-        if(user == null){
+        User user = null;
+        if(isFirstLogin){
             user = userRepository.findOneById(id);
-            log.info("newUser Cardlet ==========  "+ user);
+        }else{
+            user = userService.getUserWithAuthorities();
         }
         cardlet.setUser(user);
         Set<Business> businesses  = new HashSet<>();
@@ -241,7 +238,6 @@ public class CardletService {
                 business.setMainColor(tab.getLayout().getMainColor());
                 business.setColor(tab.getLayout().getSecondaryColor());
                 business.setCardlet(cardlet);
-                log.info("asdasd=------------- "+tab.getPhoto());
                 business.setPhoto(tab.getPhoto());
                 if (tab.getUserName() != null) {
                     inputPropertiesRepository.save(tab.getUserName());
@@ -287,7 +283,6 @@ public class CardletService {
                 item.setColor(tab.getLayout().getSecondaryColor());
                 item.setMainColor(tab.getLayout().getMainColor());
                 item.setCardlet(cardlet);
-                log.info("+++++++++++++ "+tab.getLayout().getTabId());
                 item.setTabType(tabTypeRepository.findOne(tab.getLayout().getTabId()));
                 item = itemRepository.save(item);
                 List<ItemModel> inputModels = tab.getItems();
