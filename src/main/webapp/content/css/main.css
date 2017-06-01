@@ -564,7 +564,7 @@ Social Buttons
 }
 
 .terms-and-conditions{
-    color: #489B94;
+    color: #13BCB5;
     text-decoration: none;
 }
 .terms-and-conditions:hover{
@@ -2814,6 +2814,7 @@ input:invalid {
 .navbar-default .navbar-toggle:focus {
     background-color: inherit;
 }
+
 .static {
     position: static;
 }
@@ -2822,3 +2823,11 @@ input:invalid {
 .new-cardlet-marks{
     color: #4BABE2;
 }
+
+.footer-cover .custom-placeholder {
+    left: 5px;
+}
+
+/*.navbar-collapse {*/
+    /*height: auto!important;*/
+/*}*/
