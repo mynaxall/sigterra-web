@@ -161,6 +161,12 @@
                             $scope.firstBusinessCardId = '';
                         }
                     }
+                    setTimeout(function () {
+                        document.getElementsByClassName("tabcontent2")[0].style.display = "block";
+                        document.getElementsByClassName("tabs2")[0].className += " active";
+                        document.getElementsByClassName("tabcontent")[0].style.display = "block";
+                        document.getElementsByClassName("tabs")[0].className += " active";
+                    }, 500)
                 });
         };
 
@@ -294,16 +300,6 @@
         $scope.getItemTypes();
         $scope.getTabTypes();
         $scope.getInfoTypes();
-
-
-        angular.element(document).ready(function () {
-            setTimeout(function() {
-                document.getElementsByClassName("tabcontent2")[0].style.display = "block";
-                document.getElementsByClassName("tabs2")[0].className += " active";
-                document.getElementsByClassName("tabcontent")[0].style.display = "block";
-                document.getElementsByClassName("tabs")[0].className += " active";
-            } , 500)
-        });
 
 
         $scope.addInfo = function() {
