@@ -2747,8 +2747,8 @@ input::-ms-clear {
     .user-cardlet-panel {
         min-width: 600px;
         padding-top: 50px;
-        padding-left: 17%;
-        padding-right: 17%;
+        padding-left: 15%;
+        padding-right: 15%;
         padding-bottom: 50px;
         background-color: #FFFFFF;
         box-shadow: none;
