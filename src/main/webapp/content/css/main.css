@@ -2834,3 +2834,7 @@ input:invalid {
 /*.navbar-collapse {*/
     /*height: auto!important;*/
 /*}*/
+
+button span{
+    position: relative;
+}
