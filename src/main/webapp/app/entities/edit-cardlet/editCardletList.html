@@ -321,26 +321,16 @@
         <form editable-form name="editableForm">
             <div class="cardlet-name-panel">
 
-              <span class="cadletName"  editable-text="tabNames.cardletName" e-name="group">
-                    {{tabNames.cardletName || 'Templates name' }}
-              </span>
+                <input type="text" class="cadletName" ng-model="tabNames.cardletName">
+
             </div>
 
             <div  class="cardlet-name-panel">
-                <div class="cardlet-name-panel"  ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                <div class="cardlet-name-panel" >
                     <img src="/content/images/edit_icon.png" style="margin-top: -5px; margin-left: 10px">
                 </div>
-                <!-- button to show form -->
-                <!-- buttons to submit / cancel form -->
-                  <span ng-show="editableForm.$visible">
-                    <button type="submit" class="saveInput-btn" ng-disabled="editableForm.$waiting">
-                        Save
-                    </button>
-                    <button type="button" class="closeInput-btn" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
-                        Cancel
-                    </button>
-                  </span>
             </div>
+
         </form>
         <div class="row">
             <div class="col-lg-6">
