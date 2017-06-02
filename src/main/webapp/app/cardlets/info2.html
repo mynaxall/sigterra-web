@@ -1,5 +1,5 @@
 <div>
-    <div ng-style="{'background-color': '#'+tabName.layout.mainColor}" class="cardlet3" ng-init="initSlide(tabName)" style="position: relative;height: 240px">
+    <div ng-style="{'background-color': '#'+tabName.layout.mainColor}" class="cardlet3"style="position: relative;height: 240px">
         <div>
             <div ng-show="tabName.items.length == 1">
                 <div class="main-carousel-image-div-info">
@@ -27,7 +27,7 @@
                 </div>
 
             </div>
-            <div class="main-carousel-image-div-info" uib-carousel active interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1">
+            <div class="main-carousel-image-div-info" uib-carousel active interval="myInterval" no-wrap="noWrapSlides" ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)">
                 <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" style="margin-top: 25px" >
 
                     <div class="carousel-image-div">
