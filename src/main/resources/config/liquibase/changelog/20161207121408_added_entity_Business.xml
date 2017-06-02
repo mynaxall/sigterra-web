@@ -24,51 +24,51 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="created_date" type="date">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="modified_date" type="date">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="pisition" type="integer">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="icon" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="twitter" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="facebook" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="google" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="linked_in" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="photo" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="main_color" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="color" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="cardlet_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -76,23 +76,36 @@
             <column name="tab_type_id" type="bigint">
                 <constraints nullable="true" />
             </column>
+
             <column name="user_name_id" type="bigint">
                 <constraints unique="true" nullable="true" />
-            </column>            <column name="user_email_id" type="bigint">
+            </column>
+
+            <column name="user_email_id" type="bigint">
                 <constraints unique="true" nullable="true" />
-            </column>            <column name="phone_id" type="bigint">
+            </column>
+
+            <column name="phone_id" type="bigint">
                 <constraints unique="true" nullable="true" />
-            </column>            <column name="address_id" type="bigint">
+            </column>
+
+            <column name="address_id" type="bigint">
                 <constraints unique="true" nullable="true" />
-            </column>            <column name="company_id" type="bigint">
+            </column>
+
+            <column name="company_id" type="bigint">
                 <constraints unique="true" nullable="true" />
-            </column>            <column name="site_id" type="bigint">
+            </column>
+
+            <column name="site_id" type="bigint">
                 <constraints unique="true" nullable="true" />
-            </column>            <column name="job_id" type="bigint">
+            </column>
+
+            <column name="job_id" type="bigint">
                 <constraints unique="true" nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-        
+
     </changeSet>
 </databaseChangeLog>
