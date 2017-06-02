@@ -572,8 +572,11 @@
         $scope.removeTab = function() {
 
             var index = $scope.tabToDeleteID;
-
-            if($scope.tabNames.tabs.length >1) {
+            console.log($scope.tabNames.tabs.length);
+            if($scope.tabNames.tabs.length == 2){
+                $scope.firstBusinessCardId = 0;
+            }
+            if($scope.tabNames.tabs.length > 1) {
                 $scope.tabNames.tabs.splice(index, 1);
                 for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                     $scope.tabNames.tabs[i].position = i;
@@ -604,15 +607,16 @@
                     document.getElementsByClassName("tabcontent")[0].style.display = "block";;
                     document.getElementsByClassName("tabs")[0].className += " active";
 
-
-                    for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
-                        if ($scope.tabNames.tabs[i].tabType == '1'){
-                            $scope.firstBusinessCardId = i;
-                            break
-                        }else{
-                            $scope.firstBusinessCardId = '';
+                    if($scope.tabNames.tabs.length > 1) {
+                        for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
+                            if ($scope.tabNames.tabs[i].tabType == '1') {
+                                $scope.firstBusinessCardId = i;
+                                console.log($scope.firstBusinessCardId)
+                                break
+                            }
                         }
                     }
+
 
 
                 }, 500);
