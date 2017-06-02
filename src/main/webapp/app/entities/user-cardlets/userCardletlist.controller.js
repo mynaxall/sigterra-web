@@ -423,7 +423,6 @@
             }else if(id == 3){
                 $scope.selectedSignature = false;
                 $scope.signatureSelected = 3;
-                $window.scrollTo(0, 0);
                 var urlField = document.getElementById('thirdSignature');
 
                 if($scope.isAddBanner == true){
@@ -434,7 +433,6 @@
                 document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText
             }else if(id = 4){
                 $scope.isShowMailClientWindow = true;
-                $window.scrollTo(0, 0);
                 $scope.isAddIcons = false;
                 var urlField = document.getElementById('secondSignaturePreview');
                 $scope.coptToEmailText = urlField.outerHTML;
@@ -778,7 +776,6 @@
                         $scope.showCropDialog = false;
                         $scope.showCropDialogTabs = false;
                         if (name == "signature") {
-                            $window.scrollTo(0, 0);
                             $scope.coptToEmailText = '<a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a>';
                             if ($scope.isAddBanner == true) {
                                 $scope.coptToEmailText = '<div style="width: 430px;"><a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a><div><div style=\"text-transform: scale(0.59);\"><img style="text-transform: scale(0.59); width:427px" src="' + $scope.banner + '"></div></div>'
@@ -797,7 +794,6 @@
                     });
             }else{
                 if (name == "signature") {
-                    $window.scrollTo(0, 0);
                     $scope.coptToEmailText = '<a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a>';
                     if ($scope.isAddBanner == true) {
                         $scope.coptToEmailText = '<div style="width: 430px;"><a href="' + $scope.signatureLink + '"><img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a><div><div style=\"text-transform: scale(0.59);\"><img style="text-transform: scale(0.59); width:427px" src="' + $scope.banner + '"></div></div>'
