@@ -104,5 +104,5 @@ jhipster:
             queueSize: 512
     awss3Bucket:
             credentials: config/aws/s3staging.properties
-            name: sigterra-s3-storage
+            name: sigterra-s3-storage-staging
             region: us-west-1
