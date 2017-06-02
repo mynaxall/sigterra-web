@@ -24,45 +24,48 @@
             <column name="created_date" type="date">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="modified_date" type="date">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="first_image" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="second_image" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="third_image" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="link" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="position" type="integer">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="tab_index" type="integer">
                 <constraints nullable="true" />
             </column>
-            
+
             <column name="item_id" type="bigint">
                 <constraints nullable="true" />
             </column>
+
             <column name="name_id" type="bigint">
                 <constraints unique="true" nullable="true" />
-            </column>            <column name="description_id" type="bigint">
+            </column>
+
+            <column name="description_id" type="bigint">
                 <constraints unique="true" nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
-        
+
     </changeSet>
 </databaseChangeLog>

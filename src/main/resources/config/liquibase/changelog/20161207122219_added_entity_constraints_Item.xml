@@ -7,18 +7,22 @@
         Added the constraints for entity Item.
     -->
     <changeSet id="20161207122219-2" author="jhipster">
-        
+
         <addForeignKeyConstraint baseColumnNames="cardlet_id"
                                  baseTableName="item"
                                  constraintName="fk_item_cardlet_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="cardlet"/>
+                                 referencedTableName="cardlet"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
 
         <addForeignKeyConstraint baseColumnNames="tab_type_id"
                                  baseTableName="item"
                                  constraintName="fk_item_tab_type_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="tab_type"/>
+                                 referencedTableName="tab_type"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
 
     </changeSet>
 </databaseChangeLog>

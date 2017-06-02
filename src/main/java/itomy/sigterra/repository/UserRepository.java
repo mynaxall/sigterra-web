@@ -3,6 +3,9 @@ package itomy.sigterra.repository;
 import itomy.sigterra.domain.User;
 
 import java.time.ZonedDateTime;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -32,6 +35,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
         countQuery = "select count(user) from User user")
     Page<User> findAllWithAuthorities(Pageable pageable);
 
+    @Cascade(CascadeType.ALL)
     @Override
     void delete(User t);
 

@@ -7,60 +7,77 @@
         Added the constraints for entity Business.
     -->
     <changeSet id="20161207121408-2" author="jhipster">
-        
+
         <addForeignKeyConstraint baseColumnNames="cardlet_id"
                                  baseTableName="business"
                                  constraintName="fk_business_cardlet_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="cardlet"/>
+                                 referencedTableName="cardlet"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
 
         <addForeignKeyConstraint baseColumnNames="tab_type_id"
                                  baseTableName="business"
                                  constraintName="fk_business_tab_type_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="tab_type"/>
+                                 referencedTableName="tab_type"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
 
         <addForeignKeyConstraint baseColumnNames="user_name_id"
                                  baseTableName="business"
                                  constraintName="fk_business_user_name_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="input_properties"/>
+                                 referencedTableName="input_properties"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
 
         <addForeignKeyConstraint baseColumnNames="user_email_id"
                                  baseTableName="business"
                                  constraintName="fk_business_user_email_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="input_properties"/>
+                                 referencedTableName="input_properties"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
 
         <addForeignKeyConstraint baseColumnNames="phone_id"
                                  baseTableName="business"
                                  constraintName="fk_business_phone_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="input_properties"/>
+                                 referencedTableName="input_properties"
+                                 onDelete="CASCADE"/>
 
         <addForeignKeyConstraint baseColumnNames="address_id"
                                  baseTableName="business"
                                  constraintName="fk_business_address_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="input_properties"/>
+                                 referencedTableName="input_properties"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
 
         <addForeignKeyConstraint baseColumnNames="company_id"
                                  baseTableName="business"
                                  constraintName="fk_business_company_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="input_properties"/>
+                                 referencedTableName="input_properties"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
 
         <addForeignKeyConstraint baseColumnNames="site_id"
                                  baseTableName="business"
                                  constraintName="fk_business_site_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="input_properties"/>
+                                 referencedTableName="input_properties"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
 
         <addForeignKeyConstraint baseColumnNames="job_id"
                                  baseTableName="business"
                                  constraintName="fk_business_job_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="input_properties"/>
+                                 referencedTableName="input_properties"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
 
     </changeSet>
 </databaseChangeLog>

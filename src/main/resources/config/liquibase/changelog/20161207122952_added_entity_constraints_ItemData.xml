@@ -7,24 +7,29 @@
         Added the constraints for entity ItemData.
     -->
     <changeSet id="20161207122952-2" author="jhipster">
-        
+
         <addForeignKeyConstraint baseColumnNames="item_id"
                                  baseTableName="item_data"
                                  constraintName="fk_item_data_item_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="item"/>
+                                 referencedTableName="item"
+                                 onDelete="CASCADE"/>
 
         <addForeignKeyConstraint baseColumnNames="name_id"
                                  baseTableName="item_data"
                                  constraintName="fk_item_data_name_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="input_properties"/>
+                                 referencedTableName="input_properties"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
 
         <addForeignKeyConstraint baseColumnNames="description_id"
                                  baseTableName="item_data"
                                  constraintName="fk_item_data_description_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="input_properties"/>
+                                 referencedTableName="input_properties"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
 
     </changeSet>
 </databaseChangeLog>
