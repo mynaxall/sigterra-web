@@ -321,26 +321,16 @@
         <form editable-form name="editableForm">
             <div class="cardlet-name-panel">
 
-              <span class="cadletName"  editable-text="tabNames.cardletName" e-name="group">
-                    {{tabNames.cardletName || 'Templates name' }}
-              </span>
+                <input type="text" class="cadletName" ng-model="tabNames.cardletName">
+
             </div>
 
             <div  class="cardlet-name-panel">
-                <div class="cardlet-name-panel"  ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                <div class="cardlet-name-panel" >
                     <img src="/content/images/edit_icon.png" style="margin-top: -5px; margin-left: 10px">
                 </div>
-                <!-- button to show form -->
-                <!-- buttons to submit / cancel form -->
-                  <span ng-show="editableForm.$visible">
-                    <button type="submit" class="saveInput-btn" ng-disabled="editableForm.$waiting">
-                        Save
-                    </button>
-                    <button type="button" class="closeInput-btn" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
-                        Cancel
-                    </button>
-                  </span>
             </div>
+
         </form>
         <div class="row">
             <div class="col-lg-6">
@@ -479,7 +469,7 @@
                                     </script>
                                     <div class="color-tnput-div">
                                         <label class="login-lable cardlet-label" style="margin-left: 0px;" for="mainColor{{tabName.name}}">Background colour</label>
-                                        <label class="login-lable cardlet-label" style="margin-left: 175px;">Feature colour</label>
+                                        <label class="login-lable cardlet-label" style="margin-left: 178px;">Feature colour</label>
                                     </div>
                                     <div class="color-tnput-div">
                                         <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
@@ -570,7 +560,7 @@
                                     </script>
                                     <div class="color-tnput-div">
                                         <label class="login-lable cardlet-label" style="margin-left: 0px;" for="mainColor{{tabName.name}}">Background colour</label>
-                                        <label class="login-lable cardlet-label" style="margin-left: 175px;">Feature colour</label>
+                                        <label class="login-lable cardlet-label" style="margin-left: 178px;">Feature colour</label>
                                     </div>
                                     <div class="color-tnput-div">
                                         <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
@@ -794,7 +784,7 @@
                                     </script>
                                     <div class="color-tnput-div">
                                         <label class="login-lable cardlet-label" style="margin-left: 0px;" for="mainColor{{tabName.name}}">Background colour</label>
-                                        <label class="login-lable cardlet-label" style="margin-left: 175px;">Feature colour</label>
+                                        <label class="login-lable cardlet-label" style="margin-left: 178px;">Feature colour</label>
                                     </div>
                                     <div class="color-tnput-div">
                                     <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
@@ -833,6 +823,7 @@
 
                     <div style="margin-top: 30px;">
                         <div class="cadlet-top-title">Text Profile Preview</div>
+                        {{firstBusinessCardId}}
                         <ng-include src="'app/cardlets/cardNew.html'"></ng-include>
 
                         <div ng-show="positionChecking" class="text-catdlet-spinner">

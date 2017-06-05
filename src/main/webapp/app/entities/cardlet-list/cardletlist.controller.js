@@ -572,11 +572,24 @@
         $scope.removeTab = function() {
 
             var index = $scope.tabToDeleteID;
-
-            if($scope.tabNames.tabs.length >1) {
+            console.log($scope.tabNames.tabs.length);
+            if($scope.tabNames.tabs.length == 2){
+                $scope.firstBusinessCardId = 0;
+            }
+            if($scope.tabNames.tabs.length > 1) {
                 $scope.tabNames.tabs.splice(index, 1);
                 for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                     $scope.tabNames.tabs[i].position = i;
+                }
+
+                if($scope.tabNames.tabs.length > 1) {
+                    for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
+                        if ($scope.tabNames.tabs[i].tabType == '1') {
+                            $scope.firstBusinessCardId = i;
+                            console.log($scope.firstBusinessCardId)
+                            break
+                        }
+                    }
                 }
 
                 setTimeout(function(){
@@ -603,16 +616,6 @@
                     document.getElementsByClassName("tabs2")[0].className += " active";
                     document.getElementsByClassName("tabcontent")[0].style.display = "block";;
                     document.getElementsByClassName("tabs")[0].className += " active";
-
-
-                    for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
-                        if ($scope.tabNames.tabs[i].tabType == '1'){
-                            $scope.firstBusinessCardId = i;
-                            break
-                        }else{
-                            $scope.firstBusinessCardId = '';
-                        }
-                    }
 
 
                 }, 500);
@@ -662,30 +665,32 @@
 
             var cyrrentEl = document.getElementById(id);
             if(cyrrentEl) {
-                cyrrentEl.style.background = "#F9F9F9";
-                cyrrentEl.style.borderTop = "1px solid #D0D8D9"
-                cyrrentEl.style.borderBottom ="1px solid #D0D8D9";
-                if (angular.element(document.getElementById(id)).hasClass('active')) {
-                    cyrrentEl.style.background = "#FFFFFF";
-                    cyrrentEl.style.borderTop = "2px solid #"+colorSecond;
-                    cyrrentEl.style.borderBottom ="0px";
-                }
-            }
-            if($scope.tabNames) {
+                if($scope.tabNames) {
 
-                if($scope.tabNames.tabs.length == 1){
-                    cyrrentEl.style.width = "540px"
-                }
+                    if($scope.tabNames.tabs.length == 1){
+                        cyrrentEl.style.width = "540px"
+                    }
 
-                if ($scope.tabNames.tabs.length === 2) {
-                    cyrrentEl.style.width = "270px"
+                    if ($scope.tabNames.tabs.length === 2) {
+                        cyrrentEl.style.width = "270px"
+                    }
+                    if ($scope.tabNames.tabs.length === 3) {
+                        cyrrentEl.style.width = "180px"
+                    }
+                    if ($scope.tabNames.tabs.length === 4) {
+                        cyrrentEl.style.width = "135px"
+                    }
                 }
-                if ($scope.tabNames.tabs.length === 3) {
-                    cyrrentEl.style.width = "180px"
-                }
-                if ($scope.tabNames.tabs.length === 4) {
-                    cyrrentEl.style.width = "135px"
-                }
+                setTimeout(function() {
+                    cyrrentEl.style.background = "#F9F9F9";
+                    cyrrentEl.style.borderTop = "1px solid #D0D8D9"
+                    cyrrentEl.style.borderBottom = "1px solid #D0D8D9";
+                    if (angular.element(document.getElementById(id)).hasClass('active')) {
+                        cyrrentEl.style.background = "#FFFFFF";
+                        cyrrentEl.style.borderTop = "2px solid #" + colorSecond;
+                        cyrrentEl.style.borderBottom = "0px";
+                    }
+                },700)
             }
         }
 

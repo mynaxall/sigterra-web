@@ -325,25 +325,14 @@
         <form editable-form name="editableForm">
             <div class="cardlet-name-panel">
 
-              <span class="cadletName"  editable-text="tabNames.cardletName" e-name="group">
-                    {{tabNames.cardletName || 'Templates name' }}
-              </span>
+                <input type="text" class="cadletName" ng-model="tabNames.cardletName">
+
             </div>
 
             <div  class="cardlet-name-panel">
-                <div class="cardlet-name-panel"  ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                <div class="cardlet-name-panel" >
                     <img src="/content/images/edit_icon.png" style="margin-top: -5px; margin-left: 10px">
                 </div>
-                <!-- button to show form -->
-                <!-- buttons to submit / cancel form -->
-                  <span ng-show="editableForm.$visible">
-                    <button type="submit" class="saveInput-btn" ng-disabled="editableForm.$waiting">
-                        Save
-                    </button>
-                    <button type="button" class="closeInput-btn" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
-                        Cancel
-                    </button>
-                  </span>
             </div>
         </form>
         <div class="row">
@@ -483,7 +472,7 @@
                                         </script>
                                         <div class="color-tnput-div">
                                             <label class="login-lable cardlet-label" style="margin-left: 0px;" for="mainColor{{tabName.name}}">Background colour</label>
-                                            <label class="login-lable cardlet-label" style="margin-left: 175px;" for="secondaryColor{{tabName.name}}">Feature colour</label>
+                                            <label class="login-lable cardlet-label" style="margin-left: 178px" for="secondaryColor{{tabName.name}}">Feature colour</label>
                                         </div>
                                         <div class="color-tnput-div">
                                             <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
@@ -527,7 +516,7 @@
                                         </div>
                                         <div class="form-group clearfix">
                                             <div class="input-text-div">
-                                                <input type="text" class="input-new" id="description2{{item.index}}" placeholder="Description" ng-model="item.description.value" maxlength="40">
+                                                <input type="text" class="input-new" id="description2{{item.index}}" placeholder="Description" ng-model="item.description.value">
                                                 <label for="description2{{item.index}}" class="custom-placeholder" ng-hide="item.description.value">Description</label>
                                             </div>
                                             <div class="text-decoration-div" >
@@ -574,7 +563,7 @@
                                         </script>
                                         <div class="color-tnput-div">
                                             <label class="login-lable cardlet-label" style="margin-left: 0px;" for="mainColor{{tabName.name}}">Background colour</label>
-                                            <label class="login-lable cardlet-label" style="margin-left: 175px;" for="secondaryColor{{tabName.name}}">Feature colour</label>
+                                            <label class="login-lable cardlet-label" style="margin-left: 178px;" for="secondaryColor{{tabName.name}}">Feature colour</label>
                                         </div>
                                         <div class="color-tnput-div">
                                             <input ng-model="tabName.layout.mainColor" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
@@ -798,7 +787,7 @@
                                         </script>
                                         <div class="color-tnput-div">
                                             <label class="login-lable cardlet-label" style="margin-left: 0px;" for="mainColor{{tabName.name}}">Background colour</label>
-                                            <label class="login-lable cardlet-label" style="margin-left: 175px;" for="secondaryColor{{tabName.name}}">Feature colour</label>
+                                            <label class="login-lable cardlet-label" style="margin-left: 178px;" for="secondaryColor{{tabName.name}}">Feature colour</label>
                                         </div>
                                         <div class="color-tnput-div">
                                             <input ng-model="tabName.layout.mainColor" type="text" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">

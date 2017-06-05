@@ -85,7 +85,10 @@ pre{
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
     white-space: -pre-wrap;      /* Opera 4-6 */
     white-space: -o-pre-wrap;    /* Opera 7 */
-    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    word-wrap: break-word;
+    -webkit-word-wrap: break-word;
+    -o-word-wrap: break-word;
+    -moz-word-wrap: break-word;
 }
 
 .footer {
@@ -783,11 +786,9 @@ Social Buttons
     font-size: 10px;
     margin-top: 35px;
     text-align: center;
-    border-width: 0px;
-    border-style: solid;
+    border:  0px solid #D0D8D9;
     border-top-width: 1px;
     border-bottom-width: 1px;
-    border-color: #D0D8D9;
     padding: 15px;
 }
 
@@ -2172,10 +2173,8 @@ Social Buttons
 }
 
 .footer-border{
-    border-width: 0px;
+    border: 0px solid #ffffff;
     border-bottom-width: 1px;
-    border-style: solid;
-    border-color: #FFFFFF;
     padding-bottom: 60px;
 
 }
@@ -2744,8 +2743,8 @@ input::-ms-clear {
     .user-cardlet-panel {
         min-width: 600px;
         padding-top: 50px;
-        padding-left: 17%;
-        padding-right: 17%;
+        padding-left: 15%;
+        padding-right: 15%;
         padding-bottom: 50px;
         background-color: #FFFFFF;
         box-shadow: none;
@@ -2831,3 +2830,7 @@ input:invalid {
 /*.navbar-collapse {*/
     /*height: auto!important;*/
 /*}*/
+
+button span{
+    position: relative;
+}
