@@ -1,0 +1,52 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+apply plugin: 'org.springframework.boot'
+apply plugin: 'com.moowork.node'
+apply plugin: 'com.moowork.gulp'
+
+
+ext {
+    logbackLoglevel = "INFO"
+}
+
+dependencies {
+
+}
+
+def profiles = 'staging'
+if (project.hasProperty('no-liquibase')) {
+    profiles += ',no-liquibase'
+}
+
+profiles += ',swagger'
+
+bootRun {
+    args = []
+}
+
+task gulpConstantStaging(type: GulpTask) {
+    args = ["ngconstant:staging", "--no-notification"]
+}
+
+war {
+    webAppDirName = 'build/www/'
+}
+
+processResources {
+    filesMatching('**/logback-spring.xml') {
+        filter {
+            it.replace('#logback.loglevel#', logbackLoglevel)
+        }
+    }
+    filesMatching('**/application.yml') {
+        filter {
+            it.replace('#spring.profiles.active#', profiles)
+        }
+    }
+}
+
+
+gulpConstantStaging.dependsOn 'npmInstall'
+gulpConstantStaging.dependsOn 'bower'
+processResources.dependsOn gulpConstantStaging
+test.dependsOn gulp_test
+bootRun.dependsOn gulp_test
