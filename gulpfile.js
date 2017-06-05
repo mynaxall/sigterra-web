@@ -76,6 +76,8 @@ gulp.task('inject:troubleshoot', inject.troubleshoot);
 
 gulp.task('assets:prod', ['images', 'styles', 'html', 'copy:swagger', 'copy:images'], build);
 
+gulp.task('assets:staging', ['images', 'styles', 'html', 'copy:swagger', 'copy:images'], build);
+
 gulp.task('html', function () {
     return gulp.src(config.app + 'app/**/*.html')
         .pipe(htmlmin({collapseWhitespace: true}))
@@ -113,6 +115,20 @@ gulp.task('ngconstant:prod', function () {
     })
     .pipe(rename('app.constants.js'))
     .pipe(gulp.dest(config.app + 'app/'));
+});
+
+gulp.task('ngconstant:staging', function () {
+    return ngConstant({
+        name: 'sigterraWebApp',
+        constants: {
+            VERSION: util.parseVersion(),
+            DEBUG_INFO_ENABLED: false
+        },
+        template: config.constantTemplate,
+        stream: true
+    })
+        .pipe(rename('app.constants.js'))
+        .pipe(gulp.dest(config.app + 'app/'));
 });
 
 // check app for eslint errors
@@ -160,6 +176,10 @@ gulp.task('serve', ['install'], serve);
 
 gulp.task('build', ['clean'], function (cb) {
     runSequence(['copy', 'inject:vendor', 'ngconstant:prod'], 'inject:app', 'inject:troubleshoot', 'assets:prod', cb);
+});
+
+gulp.task('build-staging', ['clean'], function (cb) {
+    runSequence(['copy', 'inject:vendor', 'ngconstant:staging'], 'inject:app', 'inject:troubleshoot', 'assets:staging', cb);
 });
 
 gulp.task('default', ['serve']);

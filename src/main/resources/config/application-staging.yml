@@ -1,5 +1,5 @@
 # ===================================================================
-# Spring Boot configuration for the "prod" profile.
+# Spring Boot configuration for the "staging" profile.
 #
 # This configuration overrides the application.yml file.
 # ===================================================================
@@ -12,6 +12,9 @@
 
 
 spring:
+    profiles:
+        active: staging
+        include: swagger
     devtools:
         restart:
             enabled: false
@@ -19,7 +22,7 @@ spring:
             enabled: false
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://aa1dcb1bb88zvh2.cyic96sjlndy.us-west-1.rds.amazonaws.com:3306/sigterra_web?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://aa1bxupqqbympe7.cyic96sjlndy.us-west-1.rds.amazonaws.com:3306/sigterra_web?useUnicode=true&characterEncoding=utf8&useSSL=false
         name:
         username: sigterra
         password: qfe8zLbq
@@ -103,6 +106,6 @@ jhipster:
             port: 5000
             queueSize: 512
     awss3Bucket:
-            credentials: config/aws/s3production.properties
-            name: sigterra-s3-storage
+            credentials: config/aws/s3staging.properties
+            name: sigterra-s3-storage-staging-us
             region: us-west-1

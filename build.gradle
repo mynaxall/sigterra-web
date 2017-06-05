@@ -78,6 +78,8 @@ apply from: 'gradle/docker.gradle'
 
 if (project.hasProperty('prod')) {
     apply from: 'gradle/profile_prod.gradle'
+} else if(project.hasProperty('staging')) {
+    apply from: 'gradle/profile_staging.gradle'
 } else {
     apply from: 'gradle/profile_dev.gradle'
 }
