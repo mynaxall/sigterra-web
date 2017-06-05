@@ -819,13 +819,14 @@
 
                         </ul>
                     </div>
-
+                    {{positionChecking}}
                     <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="business.pisition === 1 ? 'display' : 'none-display'">
                             <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
                     </div>
 
 
                     <div style="margin-top: 30px; position: relative;">
+
                         <div class="cadlet-top-title">Text Profile Preview</div>
                         <ng-include src="'app/cardlets/cardNew.html'"></ng-include>
                         <div ng-show="positionChecking" class="text-catdlet-spinner"><div style="position:absolute;top:25%; left:30%"><img src="/content/images/spinner.gif" style="width: 50px;position:relative;left: -50%"></div></div>
