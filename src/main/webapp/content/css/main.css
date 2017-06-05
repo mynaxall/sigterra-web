@@ -2397,13 +2397,36 @@ a:focus, button:focus, div:focus, span:focus, img:focus ,textarea:focus{
     outline: none!important;
 }
 
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+    text-transform: none;
+    font-weight: normal;
+    transition: 0.3s;
+    font-size: 15px;
+    word-break: keep-all;
+
+
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {
+    background-color: #ddd;
+}
+
 ul.tab2 li a {
     display: inline-block;
     text-align: center;
-    padding: 10px 16px;
+    padding: 10px 10px;
     text-decoration: none;
+    text-transform: none;
+    font-weight: normal;
     transition: 0.3s;
-    font-size: 14px;
+    font-size: 15px;
+    word-break: keep-all;
 
 
 }

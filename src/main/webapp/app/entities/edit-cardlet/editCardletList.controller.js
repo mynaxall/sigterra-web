@@ -304,7 +304,7 @@
 
         $scope.addInfo = function() {
             if ($scope.tabNames.tabs.length <= 3) {
-                var newTab = {"name":"Info"+$scope.tabNames.tabs.length,
+                var newTab = {"name":"Text Items "+$scope.tabNames.tabs.length,
                     "position": $scope.tabNames.tabs.length,
                     "tabType": 3,
                     "layout":{
@@ -336,7 +336,7 @@
 
         $scope.addItem = function() {
             if ($scope.tabNames.tabs.length <= 3) {
-                var newTab = {"name":"Item"+$scope.tabNames.tabs.length,
+                var newTab = {"name":"Image Items "+$scope.tabNames.tabs.length,
                     "position": $scope.tabNames.tabs.length,
                     "tabType": 2,
                     "layout":{
@@ -421,7 +421,7 @@
 
         $scope.addTab = function() {
             if ($scope.tabNames.tabs.length <= 3) {
-                var newTab = {"name":"My info "+$scope.tabNames.tabs.length,
+                var newTab = {"name":"Business Card "+$scope.tabNames.tabs.length,
                     "position": $scope.tabNames.tabs.length,
                     "tabType": 1,
                     "layout":{

@@ -133,24 +133,6 @@
             background: #13BCB5 ;
             color: #FFFFFF;
         }
-
-        /* Style the links inside the list items */
-        ul.tab li a {
-            display: inline-block;
-            text-align: center;
-            padding: 10px 16px;
-            text-decoration: none;
-            transition: 0.3s;
-            font-size: 14px;
-
-
-        }
-
-        /* Change background color of links on hover */
-        ul.tab li a:hover {
-            background-color: #ddd;
-        }
-
         /* Create an active/current tablink class */
 
         .tabs a{
@@ -350,17 +332,17 @@
                         <ul class="dropdown-menu cardlet-dropdown" >
                             <li class="dropdown-tab" ui-sref-active="active">
                                 <a ng-click="addTab()" style="width: 100%">
-                                    <span >My info</span>
+                                    <span >Business Card</span>
                                 </a>
                             </li>
                             <li class="dropdown-tab">
                                 <a ng-click="addItem()" style="width: 100%">
-                                    <span >Items</span>
+                                    <span >Image Items</span>
                                 </a>
                             </li>
                             <li class="dropdown-tab">
                                 <a ng-click="addInfo()" style="width:100%;">
-                                    <span >Info</span>
+                                    <span >Text Items</span>
                                 </a>
                             </li>
                         </ul>
@@ -373,7 +355,7 @@
                         <div class="form-group form-group-new" style="padding: 15px">
 
                             <input type="text" class="input-new" id="name1{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" name="name" placeholder="Tab’s name"
-                                   ng-model="tabName.name" maxlength="12" ng-minlength=1 required>
+                                   ng-model="tabName.name" maxlength="15" ng-minlength=1 required>
                             <label for="name1{{tabName.items[tabName.items.length-1].index}}-{{tabName.items[tabName.items.length-1].position}}" class="custom-placeholder cardl" ng-hide="tabName.name || form.name.$error.minlength">Tab’s name</label>
                             <div ng-show="form.name.$dirty && form.name.$invalid">
                                 <p class="help-block"
