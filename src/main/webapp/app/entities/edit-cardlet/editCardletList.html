@@ -334,7 +334,7 @@
         </form>
         <div class="row">
             <div class="col-lg-6">
-                <div class="cadlet-top-title"> Your Profile details</div>
+                <div class="cadlet-top-title">Your Profile Details</div>
                 <ul class="tab" dnd-list="tabNames.tabs" dnd-horizontal-list="true" dnd-external-sources="true">
 
                     <li class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-draggable="tabName" dnd-moved="tabNames.tabs.splice($index, 1)" id="{{tabName.position}}" ng-style="tabWidth(tabName.position)" dnd-dragend="positionCheck()">
@@ -805,7 +805,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="second-column">
-                    <div class="cadlet-top-title">Interactive profile preview</div>
+                    <div class="cadlet-top-title">Interactive Profile Preview</div>
                     <div>
                         <ul class="tab2">
                             <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}">
@@ -831,8 +831,8 @@
                         </div>
                     </div>
 
-                    <div style="margin-top: 20px;">
-                        <button class="saveButton" ng-disabled="disableSaveBtn" ng-click="saveCardlet()">save</button>
+                    <div class="saveButtonDiv">
+                        <button class="saveButton saveButtonNew" ng-disabled="disableSaveBtn" ng-click="saveCardlet()">Save Sigterra Profile</button>
                     </div>
                 </div>
             </div>

@@ -1177,6 +1177,17 @@ Social Buttons
 
 }
 
+.saveButtonDiv{
+    margin-top: 20px;
+    width: 540px;
+    text-align: right;
+}
+
+
+.saveButtonNew{
+    width: 300px;
+}
+
 .uploadProfileBtn{
     height: 40px;
     padding: 10px;
@@ -2624,7 +2635,6 @@ input::-ms-clear {
     border-width: 0px;
     width: 300px;
     font-size:20px;
-    text-transform: uppercase;
     height: 40px;
     color: #000000;
     background-color: #F8F8F8;

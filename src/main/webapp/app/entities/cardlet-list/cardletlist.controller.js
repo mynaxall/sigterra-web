@@ -174,7 +174,7 @@
         $scope.firstBusinessCardId = 0;
 
         $scope.tabNames ={
-            "cardletName": "Business cards",
+            "cardletName": "Your Sigterra Profile Name",
             "tabs":
                 [{
                     "name": "My info",
