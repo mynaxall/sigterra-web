@@ -2551,10 +2551,6 @@ ul.tab2 li {
     right: 0px
 }
 
-a.tablinks2{
-    white-space: nowrap;
-}
-
 .social-link-1{
     margin-right: 7px;
 }
@@ -2884,4 +2880,39 @@ button span{
 .svg-div{
     float: left;
     font-size: 18px;
+}
+
+a.tablinks{
+    width: 100%;
+    line-height: 105%;
+    height: 50px;
+    vertical-align: middle;
+    display: table-cell!important;
+}
+a.tablinks2{
+    width: 100%;
+    min-height: 50px;
+    line-height: 105%;
+    vertical-align: middle;
+    display: table-cell!important;
+    height: 50px;
+}
+
+ul.tab li.dropdown{
+    height:52px;
+    width: 54px;
+    background: #13BCB5;
+    border-width: 1px;
+    border-color: #13BCB5;
+    border-style: solid;
+}
+
+
+ul.tab li.dropdown a{
+    padding:14px;
+}
+
+ul.tab li.dropdown a:hover{
+    background: #13BCB5 ;
+    color: #FFFFFF;
 }

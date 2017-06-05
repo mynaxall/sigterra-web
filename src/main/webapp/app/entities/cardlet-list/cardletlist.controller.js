@@ -642,8 +642,8 @@
             element.style.height =  scrollHeight + "px";
         };
 
-        $scope.tabWidth = function( id ){
-            var cyrrentEl = document.getElementById("tab"+id);
+        $scope.tabWidth = function( id ,colorId){
+            var cyrrentEl = document.getElementById(id);
             if($scope.tabNames) {
 
                 if($scope.tabNames.tabs.length == 1){
@@ -658,6 +658,9 @@
                 }
                 if ($scope.tabNames.tabs.length === 4) {
                     cyrrentEl.style.width = "135px"
+                }
+                if(colorId){
+                    cyrrentEl.style.color = "#"+colorId;
                 }
             }
         }

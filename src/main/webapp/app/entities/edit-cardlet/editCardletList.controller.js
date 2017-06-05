@@ -628,7 +628,7 @@
 
         }
 
-        $scope.tabWidth = function( id ){
+        $scope.tabWidth = function( id , colorId){
             var cyrrentEl = document.getElementById(id);
             if($scope.tabNames) {
 
@@ -643,6 +643,9 @@
                 }
                 if ($scope.tabNames.tabs.length === 4) {
                     cyrrentEl.style.width = "135px"
+                }
+                if(colorId){
+                    cyrrentEl.style.color = "#"+colorId;
                 }
             }
         }

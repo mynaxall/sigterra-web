@@ -693,6 +693,25 @@
 
         }
 
+        $scope.addWidth = function(id, index){
+            var cyrrentEl = document.getElementById(id);
+            if($scope.tabNames) {
+                if($scope.userCardlets[index].tabs.length == 1){
+                    cyrrentEl.style.width = "540px"
+                }
+
+                if ($scope.userCardlets[index].tabs.length == 2) {
+                    cyrrentEl.style.width = "270px"
+                }
+                if ($scope.userCardlets[index].tabs.length == 3) {
+                    cyrrentEl.style.width = "180px"
+                }
+                if ($scope.userCardlets[index].tabs.length == 4) {
+                    cyrrentEl.style.width = "135px"
+                }
+            }
+        }
+
 
         $scope.addColors = function(id, colorMain, colorSecond, index){
             var cyrrentEl = document.getElementById(id);
