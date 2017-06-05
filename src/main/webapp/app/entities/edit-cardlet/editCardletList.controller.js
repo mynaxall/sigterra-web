@@ -168,6 +168,7 @@
                         document.getElementsByClassName("tabs")[0].className += " active";
                     }, 500)
                 });
+            $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ param1;
         };
 
         loadAll();

@@ -2867,3 +2867,8 @@ input:invalid {
 button span{
     position: relative;
 }
+
+.disabledLink{
+    cursor: not-allowed;
+    pointer-events: none;
+}
