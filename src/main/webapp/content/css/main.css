@@ -2184,8 +2184,8 @@ Social Buttons
 }
 
 .footer-border{
-    border: 0px solid #ffffff;
-    border-bottom-width: 1px;
+    border: 0 solid #ffffff;
+    border-bottom-width: 1px!important;
     padding-bottom: 60px;
 
 }
@@ -2456,6 +2456,14 @@ ul.tab2 li {
 
 
 .svg-description{
+    margin-left: 30px;
+    font-size: 13px;
+    font-weight: bold;
+
+}
+
+.svg-description-new{
+
     margin-left: 30px;
     font-size: 15px;
     font-weight: bold;
@@ -2871,4 +2879,9 @@ button span{
 .disabledLink{
     cursor: not-allowed;
     pointer-events: none;
+}
+
+.svg-div{
+    float: left;
+    font-size: 18px;
 }

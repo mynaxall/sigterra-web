@@ -40,11 +40,11 @@
                     <div class="svg-div" style="margin-top: 3px">
                         <span class="icon-e-mail_white_icon" style="font-size: 19px;"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
-                    <div ng-show="!tabName.userEmail.value" class="svg-description">
+                    <div ng-show="!tabName.userEmail.value" class="svg-description-new">
                         fabian.abshireabsh@wilford.biz
                     </div>
 
-                    <div class="svg-description" ng-show="tabName.userEmail.value" ng-style="{'font-weight': tabName.userEmail.bold ? 'bold' : 'normal',
+                    <div class="svg-description-new" ng-show="tabName.userEmail.value" ng-style="{'font-weight': tabName.userEmail.bold ? 'bold' : 'normal',
                             'font-style': tabName.userEmail.italic ? 'italic' : 'normal',
                             'text-decoration': tabName.userEmail.underline ? 'underline' : 'normal'}">
                         {{tabName.userEmail.value}}
@@ -54,10 +54,10 @@
                     <div class="svg-div" style="margin-top: 3px">
                         <span class="icon-globe_white_icon" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
-                    <div ng-show="!tabName.site.value" class="svg-description">
+                    <div ng-show="!tabName.site.value" class="svg-description-new">
                         www.websitewebsite.com
                     </div>
-                    <div class="svg-description" ng-show="tabName.site.value" ng-style="{'font-weight': tabName.site.bold ? 'bold' : 'normal',
+                    <div class="svg-description-new" ng-show="tabName.site.value" ng-style="{'font-weight': tabName.site.bold ? 'bold' : 'normal',
                     'font-style': tabName.site.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.site.underline ? 'underline' : 'normal'}">
                         {{tabName.site.value}}
@@ -67,10 +67,10 @@
                     <div class="svg-div">
                         <span class="icon-mobile_white_icon" style="font-size: 19px;"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
-                    <div ng-show="!tabName.phone.value" class="svg-description">
+                    <div ng-show="!tabName.phone.value" class="svg-description-new">
                         1-888-555-5555
                     </div>
-                    <div class="svg-description" ng-show="tabName.phone.value" ng-style="{'font-weight': tabName.phone.bold ? 'bold' : 'normal',
+                    <div class="svg-description-new" ng-show="tabName.phone.value" ng-style="{'font-weight': tabName.phone.bold ? 'bold' : 'normal',
                     'font-style': tabName.phone.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.phone.underline ? 'underline' : 'normal'}">
                         {{tabName.phone.value}}
@@ -78,8 +78,8 @@
                 </div>
             </div>
             <div class="social-link-div">
-                <div ng-show="!tabName.company.value" class="svg-description"  ng-style="{'color': '#'+tabName.layout.secondaryColor}">Company Name</div>
-                <div class="svg-description" ng-show="tabName.company.value" ng-style="{'font-weight': tabName.company.bold ? 'bold' : 'normal',
+                <div ng-show="!tabName.company.value" class="svg-description-new"  ng-style="{'color': '#'+tabName.layout.secondaryColor}">Company Name</div>
+                <div class="svg-description-new" ng-show="tabName.company.value" ng-style="{'font-weight': tabName.company.bold ? 'bold' : 'normal',
                     'font-style': tabName.company.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.company.underline ? 'underline' : 'normal'}"  ng-style="{'color': '#'+tabName.layout.secondaryColor}">
                     {{tabName.company.value}}
@@ -89,7 +89,7 @@
                         <span class="" style="margin-top: 3px">
                             <span class="icon-lacation_white_icon" style="font-size: 19px;"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </span>0000 Lynch Pine Apt. 605, Croatia</div>
-                    <div class="svg-description" ng-show="tabName.address.value" ng-style="{'font-weight': tabName.address.bold ? 'bold' : 'normal',
+                    <div class="svg-description-new" ng-show="tabName.address.value" ng-style="{'font-weight': tabName.address.bold ? 'bold' : 'normal',
                     'font-style': tabName.address.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.address.underline ? 'underline' : 'normal'}">
                         <span class="" style="margin-top: 3px">
@@ -147,11 +147,6 @@
     #mobile_icon{
         fill: #4BABE2;
     }
-
-    .svg-div{
-        float: left;
-    }
-
 
 
     .job-titile-3{

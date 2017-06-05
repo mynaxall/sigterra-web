@@ -30,16 +30,16 @@
                     <div class="user-name" ng-style="{'font-weight': tabName.userName.bold ? 'bold' : 'normal',
                             'font-style': tabName.userName.italic ? 'italic' : 'normal',
                             'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}"  ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
-                    <div style="height: 25px; margin-top: 10px">
+                    <div style="height: 45px; margin-top: 5px">
 
-                        <div style="width: 50%; float: left">
+                        <div >
 
-                            <div class="user-main-text job-titile" ng-show="!tabName.job.value">General Manager</div>
-                            <div class="user-main-text job-titile" ng-style="{'font-weight': tabName.job.bold ? 'bold' : 'normal',
+                            <div class="user-main-text" ng-show="!tabName.job.value">General Manager</div>
+                            <div class="user-main-text" ng-style="{'font-weight': tabName.job.bold ? 'bold' : 'normal',
                             'font-style': tabName.job.italic ? 'italic' : 'normal',
                             'text-decoration': tabName.job.underline ? 'underline' : 'normal'}" ng-show="tabName.job.value">{{tabName.job.value}}</div>
                         </div>
-                        <div  style="width: 50%; float: left">
+                        <div>
                             <div class="company" ng-show="!tabName.company.value">
                                 Company Name
                             </div>
@@ -53,7 +53,7 @@
                     <div class="first-card-border-div" style="margin-bottom: 10px; border-color: #{{tabName.layout.secondaryColor}}"></div>
                     <div class="user-contacts-div">
                         <div class="svg-div">
-                            <span class="icon-mobile_white_icon" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
+                            <span class="icon-mobile_white_icon" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </div>
                         <div class="svg-description" ng-show="!tabName.phone.value">
                             1-888-555-5555
@@ -67,8 +67,8 @@
 
                     </div>
                     <div class="user-contacts-div">
-                        <div class="svg-div" style="margin-top: 3px">
-                            <span class="icon-e-mail_white_icon" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
+                        <div class="svg-div">
+                            <span class="icon-e-mail_white_icon" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </div>
                         <div class="svg-description" ng-show="!tabName.userEmail.value">
                             fabian.abshireabsh@wilford.biz
@@ -81,8 +81,8 @@
 
                     </div>
                     <div class="user-contacts-div">
-                        <div class="svg-div" style="margin-top: 3px">
-                            <span class="icon-globe_white_icon" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
+                        <div class="svg-div">
+                            <span class="icon-globe_white_icon" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </div>
                         <div class="svg-description" ng-show="!tabName.site.value">
                             www.websitewebsite.com
@@ -97,8 +97,8 @@
                     </div>
 
                     <div class="first-card-border-div" style="margin: 10px 0px; border-color: #{{tabName.layout.secondaryColor}}"></div>
-                    <div class="svg-div" style="margin-top: 3px">
-                        <span class="icon-lacation_white_icon" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
+                    <div class="svg-div" >
+                        <span class="icon-lacation_white_icon" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
                     <div class="user-main-text svg-description" ng-show="!tabName.address.value">
                         0000 Lynch Pine Apt. 605, South Keagan, Croatia
@@ -140,16 +140,13 @@
     }
 
     .user-contacts-div{
-        margin-top: 5px;
+        margin-bottom: 7px;
     }
 
     .main-layouts{
         width: 300px;
     }
 
-    .svg-div{
-        float: left;
-    }
 
     #mobile_icon{
         fill: #4BABE2!important;
