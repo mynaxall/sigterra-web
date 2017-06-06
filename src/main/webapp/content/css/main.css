@@ -2408,7 +2408,7 @@ ul.tab li a {
     font-weight: normal;
     transition: 0.3s;
     font-size: 15px;
-    word-break: keep-all;
+    word-break: break-all;
 
 
 }
@@ -2427,7 +2427,7 @@ ul.tab2 li a {
     font-weight: normal;
     transition: 0.3s;
     font-size: 15px;
-    word-break: keep-all;
+    word-break: break-all;
 
 
 }
