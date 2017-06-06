@@ -2194,10 +2194,12 @@ Social Buttons
     height: 40px;
     width: 100%;
     background-color: #fff;
+    max-width: 350px;
 }
 .footer-input {
     height: 100%;
     width: 100%;
+    max-width: 350px;
 }
 
 div.navbar-collapse.in.collapse{
