@@ -24,7 +24,7 @@ bootRun {
 }
 
 task gulpConstantStaging(type: GulpTask) {
-    args = ["ngconstant:staging", "--no-notification"]
+    args = ["build-staging", "--no-notification"]
 }
 
 war {
