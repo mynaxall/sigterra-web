@@ -298,7 +298,7 @@
                         <li class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-draggable="tabName" dnd-selected="models.selected = tabName"
                             ng-class="{'selected': models.selected === tabName}"  dnd-effect-allowed="move" dnd-moved="tabNames.tabs.splice($index, 1)" id="tab{{tabName.position}}" dnd-dragend="positionCheck()" ng-style="tabWidth('tab'+tabName.position)">
                             <div style="position: relative">
-                                <a href="javascript:void(0)" id="tabLink{{tabName.position}}" ng-style="tabWidth('tabLink'+tabName.position)" class="tablinks" ng-click="openCity('settings'+tabName.name+tabName.position, 'tab'+tabName.position, tabName.name+tabName.position, tabName.position+tabName.name)">{{tabName.name}}</a>
+                                <a href="javascript:void(0)" id="tabLink{{tabName.position}}" ng-style="tabWidth('tabLink'+tabName.position)" class="tablinks" ng-click="openCity('settings'+tabName.name+tabName.position, 'tab'+tabName.position, tabName.name+tabName.position, 'li'+tabName.position+tabName.name)">{{tabName.name}}</a>
                                 <div ng-hide="tabNames.tabs.length == 1" class="remove" ng-click="showDeleteDialog(tabName.position)"><span style="font-size: 15px;color:#D0D8D9;" class="glyphicon glyphicon-remove-circle"></span></div>
                             </div>
                         </li>
@@ -765,9 +765,9 @@
                     <div class="cadlet-top-title">Interactive Profile Preview</div>
                     <div>
                         <ul class="tab2">
-                            <li style="background-color: #fff" class="tabs2" ng-style="addColors(tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="{{tabName.position}}{{tabName.name}}">
+                            <li style="background-color: #fff" class="tabs2" ng-style="addColors('li'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="li{{tabName.position}}{{tabName.name}}">
                                 <div style="position: relative">
-                                    <a href="javascript:void(0)"  id="tabLink{{tabName.name}}" ng-style="tabWidth('tabLink'+tabName.name, tabName.layout.secondaryColor)" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, 'tab'+tabName.position, tabName.name+tabName.position, tabName.position+tabName.name)">{{tabName.name}}</a>
+                                    <a href="javascript:void(0)"  id="tabLink{{tabName.name}}" ng-style="tabWidth('tabLink'+tabName.name, tabName.layout.secondaryColor)" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, 'tab'+tabName.position, tabName.name+tabName.position, 'li'+tabName.position+tabName.name)">{{tabName.name}}</a>
                                 </div>
                             </li>
 
