@@ -529,28 +529,6 @@ Social Buttons
     padding-left: 20px;
 }
 
-
-
-.skip-btn{
-    background-color: #FFFFFf;
-    color: #13BCB5;
-    text-transform: uppercase;
-    width: 100%;
-    border-radius: 0px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #13BCB5;
-    font-size: 15px;
-    padding: 9px;
-    font-weight: bold;
-}
-
-.skip-btn:hover{
-    background-color: #13BCB5;
-    color: #FFFFFF;
-    border-color: #13BCB5;
-
-}
 .main-btn:hover{
     background-color: #5aaea7;
 }
@@ -2917,4 +2895,25 @@ ul.tab li.dropdown a:hover{
 
 .activate-alert-link{
     color: #3c763d
+}
+
+.skip-btn{
+    background-color: #FFFFFf;
+    color: #13BCB5;
+    text-transform: uppercase;
+    width: 100%;
+    border-radius: 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #13BCB5;
+    font-size: 15px;
+    padding: 9px;
+    font-weight: bold;
+}
+
+.skip-btn:hover{
+    background-color: #13BCB5;
+    color: #FFFFFF;
+    border-color: #13BCB5;
+
 }
