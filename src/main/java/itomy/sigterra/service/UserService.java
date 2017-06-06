@@ -107,13 +107,13 @@ public class UserService {
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
         newUser.setAuthorities(authorities);
-        newUser.setUsername(username);
+        newUser.setUsername(StringUtils.trimToNull(username));
         //Sigterra specific user's parameter
-        newUser.setPhoneNumber(phoneNumber);
-        newUser.setAddress(address);
-        newUser.setCompanyName(companyName);
-        newUser.setCompanySite(companySite);
-        newUser.setJobTitle(jobTitle);
+        newUser.setPhoneNumber(StringUtils.trimToNull(phoneNumber));
+        newUser.setAddress(StringUtils.trimToNull(address));
+        newUser.setCompanyName(StringUtils.trimToNull(companyName));
+        newUser.setCompanySite(StringUtils.trimToNull(companySite));
+        newUser.setJobTitle(StringUtils.trimToNull(jobTitle));
         userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
         return newUser;
