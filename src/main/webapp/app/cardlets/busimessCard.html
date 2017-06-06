@@ -25,14 +25,12 @@
                 <div class="user-info">
                     <div class="user-name" ng-show="!tabName.userName.value"   ng-style="{'font-weight': tabName.userName.bold ? 'bold' : 'normal',
                             'font-style': tabName.userName.italic ? 'italic' : 'normal',
-                            'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}"  >Jon Dou</div>
+                            'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">Jon Dou</div>
                     <div class="user-name" ng-style="{'font-weight': tabName.userName.bold ? 'bold' : 'normal',
                             'font-style': tabName.userName.italic ? 'italic' : 'normal',
                             'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}"  ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
                     <div style="height: 45px; margin-top: 5px">
-
-                        <div >
-
+                        <div>
                             <div class="user-main-text" ng-show="!tabName.job.value">General Manager</div>
                             <div class="user-main-text" ng-style="{'font-weight': tabName.job.bold ? 'bold' : 'normal',
                             'font-style': tabName.job.italic ? 'italic' : 'normal',
@@ -49,7 +47,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="first-card-border-div" style="margin-bottom: 10px; border-color: #{{tabName.layout.secondaryColor}}"></div>
+                    <div class="first-card-border-div" ng-style="{'margin-bottom': '10px', 'border-color': '#'+tabName.layout.secondaryColor}"></div>
                     <div class="user-contacts-div">
                         <div class="svg-div">
                             <span class="icon-mobile_white_icon" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
@@ -95,7 +93,7 @@
 
                     </div>
 
-                    <div class="first-card-border-div" style="margin: 10px 0px; border-color: #{{tabName.layout.secondaryColor}}"></div>
+                    <div class="first-card-border-div" ng-style="{'margin': '10px 0px;', 'border-color': '#'+tabName.layout.secondaryColor}"></div>
                     <div class="svg-div" >
                         <span class="icon-lacation_white_icon" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
