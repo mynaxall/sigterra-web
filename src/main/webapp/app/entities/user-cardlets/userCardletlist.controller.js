@@ -402,7 +402,7 @@
 
         $scope.isAddIcons = false;
 
-        $scope.signatureSelected = 1;
+        $scope.signatureSelected;
         $scope.selectSignatureId;
 
         $scope.selectedSignature = true;
@@ -771,6 +771,7 @@
 
 
         $scope.saveImage = function(name, image64, isFile) {
+
             $scope.showSpinner = true;
             if (isFile) {
                 var fd = new FormData();
@@ -781,6 +782,7 @@
                 var file = b64toBlob(png, 'image/png')
                 var fd = new FormData();
                 fd.append('file', file);
+                $scope.signatureSelected = 1;
             }
 
 
@@ -807,7 +809,6 @@
 
                         }
                         document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText
-
                         $scope.showSpinner = false;
 
                     });
@@ -826,6 +827,7 @@
                 $scope.showSpinner = false;
                 document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText
             }
+
         };
 
 
