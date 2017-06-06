@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="form-group form-group-new">
-                    <input type="email" ng-change="vm.errorEmailExists = null;" class="profile-input" id="email" name="email" placeholder="E-mail *"
+                    <input type="text" ng-change="vm.errorEmailExists = null;" class="profile-input" id="email" name="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" placeholder="E-mail *"
                            ng-model="vm.registerAccount.email" ng-minlength=5 ng-maxlength=100 ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
                     <label ng-hide="form.email.$error.email || form.email.$error.minlength || form.email.$error.maxlength || vm.registerAccount.email || form.email.$error.pattern" for="email" class="custom-placeholder">E-mail *</label>
                     <div ng-show="form.email.$dirty && form.email.$invalid">
