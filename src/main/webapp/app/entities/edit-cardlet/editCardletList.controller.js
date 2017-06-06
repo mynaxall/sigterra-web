@@ -51,6 +51,7 @@
             $scope.tabImageId = tabId;
             $scope.itemImageId = itemId;
             $scope.imageItemMame =itemImgPosition;
+            $scope.myCroppedImage = '';
         }
 
         function dataURLtoFile(dataurl, filename) {
