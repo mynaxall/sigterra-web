@@ -2402,6 +2402,20 @@ ul.tab li a:hover {
     background-color: #ddd;
 }
 
+ul.tab li {
+    width: 135px;
+    min-height: 52px;
+    float: left;
+    background: #F9F9F9;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #E7E7E7;
+    color: #7F8C8C;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+}
+
 ul.tab2 li a {
     display: inline-block;
     text-align: center;
