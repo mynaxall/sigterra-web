@@ -48,7 +48,7 @@
 
                     <div class="form-group form-group-new">
                         <input type="password" class="profile-input" id="confirmPassword" name="confirmPassword" placeholder="Confirm the new password"
-                               ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50 required>
+                               ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50 pw-check='password' required>
                         <label for="confirmPassword" class="custom-placeholder" ng-hide="vm.confirmPassword || form.confirmPassword.$error.minlength || form.confirmPassword.$error.maxlength">Confirm the new password</label>
                         <div ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
                             <p class="help-block"
@@ -62,6 +62,10 @@
                             <p class="help-block"
                                ng-show="form.confirmPassword.$error.maxlength">
                                 Your password confirmation cannot be longer than 50 characters.
+                            </p>
+                            <p class="help-block"
+                               ng-show="form.confirmPassword.$error.pwmatch">
+                                Passwords don't match.
                             </p>
                         </div>
                     </div>
