@@ -2394,9 +2394,11 @@ div.navbar-collapse.in.collapse{
     z-index: 20;
 }
 
-a:focus, button:focus, div:focus, span:focus, img:focus ,textarea:focus{
+a:focus, button:focus, div:focus, span:focus, img:focus ,textarea:focus ,select:focus{
     outline: none!important;
 }
+
+select:-moz-focusring { color: transparent; text-shadow: 0 0 0 #000; }
 
 /* Style the links inside the list items */
 ul.tab li a {
