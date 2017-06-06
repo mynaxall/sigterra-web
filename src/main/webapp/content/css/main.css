@@ -2914,3 +2914,7 @@ ul.tab li.dropdown a:hover{
     background: #13BCB5 ;
     color: #FFFFFF;
 }
+
+.activate-alert-link{
+    color: #3c763d
+}
