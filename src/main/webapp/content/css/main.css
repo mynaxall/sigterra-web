@@ -759,6 +759,10 @@ Social Buttons
     text-align: center
 }
 
+.check-email-block b{
+    color: #242424
+}
+
 .check-span-block {
     color: #7F8C8C;
     font-size: 10px;
