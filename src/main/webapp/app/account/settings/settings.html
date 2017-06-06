@@ -15,7 +15,7 @@
                 <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
             </div>
             <div class="crop-btn-div">
-                <button class="saveButton" ng-click="vm.saveImage()">save</button>
+                <button ng-disabled="!myCroppedImage" class="saveButton" ng-click="vm.saveImage()">save</button>
             </div>
         </div>
     </div>
