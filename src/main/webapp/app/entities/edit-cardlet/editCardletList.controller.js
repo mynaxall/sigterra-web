@@ -210,6 +210,9 @@
 
 
         $scope.openCity = function(cityName, tabId, cardName, cardId) {
+
+            $scope.currentSlide = 1;
+            $scope.myInterval = 3000;
             var i, tabcontent, tablinks, tabs;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
@@ -489,12 +492,22 @@
 
         $scope.accordionActive = 2;
 
+        $scope.currentSlide = -1;
+
         $scope.changeAccordionActivity = function(id){
             if($scope.accordionActive != id){
                 $scope.accordionActive = id;
+
+                $scope.currentSlide = id -2;
+                if($scope.currentSlide == -1){
+                    $scope.myInterval = 3000;
+                }else{
+                    $scope.myInterval = 300000;
+                }
             }else{
                 $scope.accordionActive = 0
             }
+
         }
 
         $scope.positionChecking = false;
@@ -622,7 +635,8 @@
         }
 
         $scope.chooseType = function(id, url, tabId) {
-
+            $scope.currentSlide = 1;
+            $scope.myInterval = 3000;
             $scope.tabNames.tabs[id].layout.url = url;
             $scope.tabNames.tabs[id].layout.tabId = tabId;
 
