@@ -23,7 +23,7 @@
             "cardletName": "Business cards",
             "tabs":
                 [{
-                    "name": "My info",
+                    "name": "Business Card",
                     'position': 0,
                     "display": "block",
                     "tabType": 1,
@@ -38,7 +38,7 @@
 
                 },
                     {
-                        "name": "Items",
+                        "name": "Image Items",
                         "position": 1,
                         "tabType": 2,
                         "layout": {
