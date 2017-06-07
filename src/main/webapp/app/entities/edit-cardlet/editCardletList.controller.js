@@ -669,8 +669,8 @@
         $scope.addColors = function(id, colorMain, colorSecond){
 
             var cyrrentEl = document.getElementById(id);
-            if(cyrrentEl) {
 
+            if(cyrrentEl) {
 
                 if ($scope.tabNames) {
 

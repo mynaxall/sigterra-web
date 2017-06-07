@@ -78,30 +78,32 @@
         $scope.addColors = function(id, colorMain, colorSecond){
 
             var cyrrentEl = document.getElementById(id);
+
             if(cyrrentEl) {
                 cyrrentEl.style.background = "#F9F9F9";
                 cyrrentEl.style.borderTop = "1px solid #D0D8D9"
-                cyrrentEl.style.borderBottom ="1px solid #D0D8D9";
+                cyrrentEl.style.borderBottom = "1px solid #D0D8D9";
                 if (angular.element(document.getElementById(id)).hasClass('active')) {
-                    cyrrentEl.style.background = "#FFFFFF" ;
-                    cyrrentEl.style.borderTop = "2px solid #"+colorSecond
-                    cyrrentEl.style.borderBottom ="0px";
-                }
-            }
-            if($scope.tabNames) {
-
-                if($scope.tabNames.tabs.length == 1){
-                    cyrrentEl.style.width = "540px"
+                    cyrrentEl.style.background = "#FFFFFF";
+                    cyrrentEl.style.borderTop = "2px solid #" + colorSecond
+                    cyrrentEl.style.borderBottom = "0px";
                 }
 
-                if ($scope.tabNames.tabs.length === 2) {
-                    cyrrentEl.style.width = "270px"
-                }
-                if ($scope.tabNames.tabs.length === 3) {
-                    cyrrentEl.style.width = "180px"
-                }
-                if ($scope.tabNames.tabs.length === 4) {
-                    cyrrentEl.style.width = "135px"
+                if ($scope.tabNames) {
+
+                    if ($scope.tabNames.tabs.length == 1) {
+                        cyrrentEl.style.width = "540px"
+                    }
+
+                    if ($scope.tabNames.tabs.length === 2) {
+                        cyrrentEl.style.width = "270px"
+                    }
+                    if ($scope.tabNames.tabs.length === 3) {
+                        cyrrentEl.style.width = "180px"
+                    }
+                    if ($scope.tabNames.tabs.length === 4) {
+                        cyrrentEl.style.width = "135px"
+                    }
                 }
             }
         }

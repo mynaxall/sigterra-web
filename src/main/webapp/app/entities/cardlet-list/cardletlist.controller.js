@@ -254,12 +254,6 @@
 
         $scope.openCity = function(cityName, tabId, cardName, cardId) {
 
-
-            console.log(cityName)
-            console.log(tabId)
-            console.log(cardName)
-            console.log(cardId)
-
             $scope.currentSlide = 1;
             $scope.myInterval = 3000;
 
@@ -692,6 +686,7 @@
         $scope.addColors = function(id, colorMain, colorSecond){
 
             var cyrrentEl = document.getElementById(id);
+
             if(cyrrentEl) {
                 if($scope.tabNames) {
 
