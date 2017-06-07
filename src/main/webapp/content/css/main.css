@@ -2305,7 +2305,7 @@ div.navbar-collapse.in.collapse{
     color:#FFFFFF;
 }
 
-@media (min-width: 770px){
+@media (min-width: 900px){
     .navbar-default .navbar-nav .open .dropdown-menu > .sigterra-naigation > a{
         color: #000000;
     }
@@ -2987,4 +2987,8 @@ ul.tab li.dropdown a:hover{
         -webkit-box-shadow: none;
         box-shadow: none;
     }
+}
+
+.dropdown-menu{
+    z-index: 1000!important;
 }
