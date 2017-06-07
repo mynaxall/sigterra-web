@@ -2913,7 +2913,7 @@ ul.tab li.dropdown a:hover{
 }
 
 .activate-alert-link{
-    color: #3c763d
+    color: #3c763d!important;
 }
 
 .skip-btn{
