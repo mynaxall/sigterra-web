@@ -382,6 +382,7 @@
             $scope.isAddIcons = false;
             $scope.showDelteCardletDialog = false;
             $scope.instructions = 1;
+            $scope.signatureSelected = undefined;
             $("canvas").remove();
         };
 
