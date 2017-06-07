@@ -14,7 +14,7 @@
             url: '/user-cardlets?page&sort&search',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'Cardlets'
+                pageTitle: 'Sigterra'
             },
             views: {
                 'content@': {
