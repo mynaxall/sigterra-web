@@ -2966,7 +2966,7 @@ ul.tab li.dropdown a:hover{
     }
     .navbar-nav {
         float: none!important;
-        margin-top: 7.5px;
+        margin: 7.5px -15px!important;
     }
     .navbar-nav>li {
         float: none;
