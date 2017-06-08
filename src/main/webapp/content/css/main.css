@@ -2993,3 +2993,11 @@ ul.tab li.dropdown a:hover{
 .dropdown-menu{
     z-index: 1000!important;
 }
+
+.carousel-control:focus{
+    opacity: 0.5!important;
+}
+
+.carousel-control:hover{
+    opacity: 0.8!important;
+}
