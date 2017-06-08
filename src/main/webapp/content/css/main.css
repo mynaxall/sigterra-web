@@ -2843,7 +2843,11 @@ input:invalid {
 }
 
 .navbar-default .navbar-toggle:focus {
-    background-color: inherit;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-toggle:hover{
+    background-color: #DDDDDD;
 }
 
 .static {
@@ -3001,3 +3005,4 @@ ul.tab li.dropdown a:hover{
 .carousel-control:hover{
     opacity: 0.8!important;
 }
+
