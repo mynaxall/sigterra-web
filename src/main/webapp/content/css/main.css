@@ -2314,7 +2314,7 @@ div.navbar-collapse.in.collapse{
 
 .navbar-brand{
     position: relative;
-    z-index: 200;
+    z-index: 1001;
 }
 
 .modal-dialog{
