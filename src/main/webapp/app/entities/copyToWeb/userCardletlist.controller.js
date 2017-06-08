@@ -67,11 +67,13 @@
         $scope.addColors = function(id, colorMain, colorSecond) {
 
             var cyrrentEl = document.getElementById(id);
-            if (cyrrentEl) {
-                cyrrentEl.style.background = "#" + colorMain;
-                if (angular.element(document.getElementById(id)).hasClass('active')) {
-                    cyrrentEl.style.background = "#" + colorSecond;
-                }
+            cyrrentEl.style.background = "#F9F9F9";
+            cyrrentEl.style.borderTop = "1px solid #D0D8D9"
+            cyrrentEl.style.borderBottom = "1px solid #D0D8D9";
+            if (angular.element(document.getElementById(id)).hasClass('active')) {
+                cyrrentEl.style.background = "#FFFFFF";
+                cyrrentEl.style.borderTop = "2px solid #" + colorSecond
+                cyrrentEl.style.borderBottom = "0px";
             }
             if ($scope.tabNames){
 
