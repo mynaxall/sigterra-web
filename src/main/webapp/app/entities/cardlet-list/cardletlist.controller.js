@@ -481,7 +481,7 @@
 
                 }
                 if($scope.userAccount.imageUrl){
-                    newTab.photo = scope.userAccount.imageUrl
+                    newTab.photo = $scope.userAccount.imageUrl
                 }
 
                 $scope.tabNames.tabs.push(newTab);

@@ -3011,3 +3011,8 @@ button[disabled]{
     color: #FFFFFF;
 }
 
+button[disabled]:hover{
+    background-color: #E7E7E7!important;
+    color: #FFFFFF;
+}
+
