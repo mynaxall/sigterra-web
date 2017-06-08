@@ -456,9 +456,12 @@
                     "job":{
                         "value": $scope.userAccount.jobTitle
                     },
-                    "photo": $scope.userAccount.imageUrl
+                    "photo":  "/content/images/avatar_img.png"
 
                     }
+                if($scope.userAccount.imageUrl){
+                    newTab.photo = scope.userAccount.imageUrl
+                }
                 $scope.tabNames.tabs.push(newTab);
                 if($scope.firstBusinessCardId === '' || $scope.firstBusinessCardId < 0 || $scope.tabNames.tabs[$scope.firstBusinessCardId].tabType != '1'){
                     $scope.firstBusinessCardId = newTab.position;
