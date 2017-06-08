@@ -254,7 +254,7 @@
 
         $scope.openCity = function(cityName, tabId, cardName, cardId) {
 
-            $scope.currentSlide = 1;
+            $scope.currentSlide = undefined;
 
             var i, tabcontent, tablinks, tabs;
             tabcontent = document.getElementsByClassName("tabcontent");
@@ -639,7 +639,7 @@
         }
 
         $scope.chooseType = function(id, url, tabId) {
-            $scope.currentSlide = 1;
+            $scope.currentSlide = undefined;
             $scope.tabNames.tabs[id].layout.url = url;
             $scope.tabNames.tabs[id].layout.tabId = tabId;
 
