@@ -1,7 +1,7 @@
 
 </div>
 </div>
-<div ng-show="vm.isFirstStep && !vm.isDone" class="registration-div">
+<div ng-show="false" class="registration-div">
     <div class="register-head"></div>
     <div class="register-container">
         <div>
@@ -244,7 +244,7 @@
 </div>
 
 
-<div ng-show="vm.isDone" class="registration-div">
+<div ng-show="true" class="registration-div">
     <div class="register-head"></div>
     <div class="register-container">
         <div>
@@ -276,7 +276,7 @@
                 Please check your <b>{{vm.registerAccount.email}}</b> for confirmation.
             </div>
             <div class="check-span-block">
-                No email? Check your spam folder! <a href="">Click here to resend</a> or contact us at <a href="">costumer@sigterra.com.</a>
+                No email? Check your spam folder! Contact us at <a href="">costumer@sigterra.com.</a>
             </div>
             <div style="color: #7F8C8C; font-size: 13px; text-align: center; padding-top: 20px; padding-bottom: 45px">
                 Already have an account? <a class="alert-link register-link" style="color:#13BCB5;font-size: 13px;  font-weight: bold" href="" ng-click="vm.login()"> Sign in</a>
