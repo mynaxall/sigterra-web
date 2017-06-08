@@ -337,7 +337,7 @@
 
                             <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 3">
                                 <div class="accordion-section" ng-repeat="item in tabName.items">
-                                    <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">Enter Info {{$index+1}} Details <img class="status-icon" ng-click="accordionActive=0" ng-show="accordionActive==item.index" src="/content/images/Arrow_up.png"><img class="status-icon" ng-click="accordionActive=item.index" ng-show="accordionActive!=item.index" src="/content/images/Arrow_down.png"></a>
+                                    <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">Enter Info {{$index+1}} Details <img class="status-icon"  ng-show="accordionActive==item.index" src="/content/images/Arrow_up.png"><img class="status-icon"  ng-show="accordionActive!=item.index" src="/content/images/Arrow_down.png"></a>
                                     <div id="accordion2-item.index" class="accordion-section-content" ng-show="accordionActive==item.index">
                                         <div class="form-group clearfix">
                                             <div class="input-text-div">
@@ -401,7 +401,7 @@
                                     <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn">Add info</button>
                                 </div>
                                 <div class="accordion-section">
-                                    <a class="accordion-section-title" ng-class="{active:accordionActive==1}" ng-click="changeAccordionActivity(1)">Layout design <img class="status-icon" ng-show="accordionActive==1" ng-click="accordionActive=0" src="/content/images/Arrow_up.png"><img class="status-icon" ng-click="accordionActive=1" ng-show="accordionActive!=1" src="/content/images/Arrow_down.png"></a>
+                                    <a class="accordion-section-title" ng-class="{active:accordionActive==1}" ng-click="changeAccordionActivity(1)">Layout design <img class="status-icon" ng-show="accordionActive==1"src="/content/images/Arrow_up.png"><img class="status-icon" ng-show="accordionActive!=1" src="/content/images/Arrow_down.png"></a>
                                     <div id="accordion2-1" class="accordion-section-content" ng-show="accordionActive==1">
                                         <script>
                                             $(document).ready(function() {
@@ -429,7 +429,7 @@
 
                             <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 2">
                                 <div class="accordion-section" ng-repeat="item in tabName.items">
-                                    <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">Enter Item {{$index+1}} Details <img class="status-icon" ng-click="accordionActive=0" ng-show="accordionActive==item.index" src="/content/images/Arrow_up.png"><img class="status-icon" ng-click="accordionActive=item.index" ng-show="accordionActive!=item.index" src="/content/images/Arrow_down.png"></a>
+                                    <a class="accordion-section-title" ng-class="{active:accordionActive==item.index}" ng-click="changeAccordionActivity(item.index)">Enter Item {{$index+1}} Details <img class="status-icon" ng-show="accordionActive==item.index" src="/content/images/Arrow_up.png"><img class="status-icon" ng-show="accordionActive!=item.index" src="/content/images/Arrow_down.png"></a>
                                     <div id="accordion2-item.index" class="accordion-section-content" ng-show="accordionActive==item.index">
                                         <div class="form-group clearfix">
                                             <div class="input-text-div">
@@ -492,7 +492,7 @@
                                     <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn">Add item</button>
                                 </div>
                                 <div class="accordion-section">
-                                    <a class="accordion-section-title" ng-class="{active:accordionActive==1}" ng-click="changeAccordionActivity(1)">Layout design <img class="status-icon" ng-show="accordionActive==1" ng-click="accordionActive=0" src="/content/images/Arrow_up.png"><img class="status-icon" ng-click="accordionActive=1" ng-show="accordionActive!=1" src="/content/images/Arrow_down.png"></a>
+                                    <a class="accordion-section-title" ng-class="{active:accordionActive==1}" ng-click="changeAccordionActivity(1)">Layout design <img class="status-icon" ng-show="accordionActive==1"  src="/content/images/Arrow_up.png"><img class="status-icon" ng-show="accordionActive!=1" src="/content/images/Arrow_down.png"></a>
                                     <div id="accordion2-1" class="accordion-section-content" ng-show="accordionActive==1">
                                         <script>
                                             $(document).ready(function() {
@@ -521,7 +521,7 @@
                             <div class="accordion" ng-show="tabName.tabType === 1">
                                 <div class="accordion-section">
                                     <a class="accordion-section-title" ng-class="{active:accordion==1}" ng-click="accordionActivete(1)">
-                                        <div class="accordion-section-text">Personal details<img class="status-icon" ng-show="accordion==1" ng-click="accordion = 0" src="/content/images/Arrow_up.png"><img ng-click="accordion=1" class="status-icon" ng-show="accordion!=1" src="/content/images/Arrow_down.png"></div>
+                                        <div class="accordion-section-text">Personal details<img class="status-icon" ng-show="accordion==1" src="/content/images/Arrow_up.png"><img class="status-icon" ng-show="accordion!=1" src="/content/images/Arrow_down.png"></div>
                                         <div class=""></div>
                                     </a>
                                     <div id="accordion-1" class="accordion-section-content"  ng-show="accordion==1">
@@ -638,7 +638,7 @@
                                 </div><!--end .accordion-section-->
 
                                 <div class="accordion-section">
-                                    <a class="accordion-section-title" ng-class="{active:accordion==2}" ng-click="accordionActivete(2)">Social links <img class="status-icon" ng-click="accordion=0" ng-show="accordion==2" src="/content/images/Arrow_up.png"><img class="status-icon" ng-click="accordion=2" ng-show="accordion!=2" src="/content/images/Arrow_down.png"></a>
+                                    <a class="accordion-section-title" ng-class="{active:accordion==2}" ng-click="accordionActivete(2)">Social links <img class="status-icon" ng-show="accordion==2" src="/content/images/Arrow_up.png"><img class="status-icon" ng-show="accordion!=2" src="/content/images/Arrow_down.png"></a>
                                     <div id="accordion-2" class="accordion-section-content"  ng-show="accordion==2">
                                         <form name="myForm" class="input-padding">
                                             <div class="form-group clearfix">
@@ -716,7 +716,7 @@
                                 </div><!--end .accordion-section-->
 
                                 <div class="accordion-section">
-                                    <a class="accordion-section-title" ng-class="{active:accordion==3}" ng-click="accordionActivete(3)">Layout design <img class="status-icon" ng-show="accordion==3" ng-click="accordion = 0" src="/content/images/Arrow_up.png"><img class="status-icon" ng-click="accordion=3" ng-show="accordion!=3" src="/content/images/Arrow_down.png"></a>
+                                    <a class="accordion-section-title" ng-class="{active:accordion==3}" ng-click="accordionActivete(3)">Layout design <img class="status-icon" ng-show="accordion==3" src="/content/images/Arrow_up.png"><img class="status-icon" ng-show="accordion!=3" src="/content/images/Arrow_down.png"></a>
                                     <div id="accordion-3" class="accordion-section-content" ng-show="accordion==3">
                                         <script>
                                             $(document).ready(function() {
