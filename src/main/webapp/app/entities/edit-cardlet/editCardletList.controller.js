@@ -634,7 +634,7 @@
         }
 
         $scope.chooseType = function(id, url, tabId) {
-            $scope.currentSlide = undefined;
+            $scope.currentSlide = 1;
             $scope.tabNames.tabs[id].layout.url = url;
             $scope.tabNames.tabs[id].layout.tabId = tabId;
 

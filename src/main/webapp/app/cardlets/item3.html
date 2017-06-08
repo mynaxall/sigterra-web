@@ -4,6 +4,7 @@
         <div>
             <div ng-show="tabName.items.length == 1" style="position: relative;">
                 <div class="main-carousel-image-div-new-3" >
+                    <a href="{{slide.link}}" target="_blank" ng-class="{disabledLink: !slide.link}">
                     <div  ng-repeat="slide in tabName.items"  class="main-carousel-item-div-new-3" style="background-image:url({{slide.image}});background-repeat: no-repeat;background-size: 100%; text-align: center">
 
                         <div class="item-3-content" ng-hide="!slide.name.value && !slide.description.value" style="background-color: #{{tabName.layout.mainColor}};border-color: #{{tabName.layout.secondaryColor}}">
@@ -15,7 +16,9 @@
 
                             </div>
                         </div>
+                        </a>
                     </div>
+
                 </div>
 
             </div>
@@ -23,16 +26,17 @@
                 <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position">
 
                     <div class="main-carousel-image-div-new-3">
+                        <a href="{{slide.link}}" target="_blank" ng-class="{disabledLink: !slide.link}">
+                            <div  class="main-carousel-item-div-new-3" style="background-image:url({{slide.image}});background-repeat: no-repeat;background-size: 100%; text-align: center">
+                                <div class="item-3-content" style="background-color: #{{tabName.layout.mainColor}};border-color: #{{tabName.layout.secondaryColor}}" ng-hide="!slide.name.value && !slide.description.value">
+                                    <div class="carousel-item-name-div-new-3" ng-style="{'font-weight': slide.name.bold ? 'bold' : 'normal',
+                            'font-style': slide.name.italic ? 'italic' : 'normal',
+                            'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
+                                    <div class="carousel-item-name-div-new-3 carousel-item-deskript-div" ng-show="slide.description.value">{{slide.description.value}}</div>
 
-                        <div  class="main-carousel-item-div-new-3" style="background-image:url({{slide.image}});background-repeat: no-repeat;background-size: 100%; text-align: center">
-                            <div class="item-3-content" style="background-color: #{{tabName.layout.mainColor}};border-color: #{{tabName.layout.secondaryColor}}" ng-hide="!slide.name.value && !slide.description.value">
-                                <div class="carousel-item-name-div-new-3" ng-style="{'font-weight': slide.name.bold ? 'bold' : 'normal',
-                        'font-style': slide.name.italic ? 'italic' : 'normal',
-                        'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
-                                <div class="carousel-item-name-div-new-3 carousel-item-deskript-div" ng-show="slide.description.value">{{slide.description.value}}</div>
-
+                                </div>
                             </div>
-                        </div>
+                            </a>
                         </div>
                 </div>
             </div>
