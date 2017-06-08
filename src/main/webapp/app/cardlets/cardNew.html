@@ -65,7 +65,10 @@
                     'font-style': tabNames.tabs[firstBusinessCardId].address.italic ? 'italic' : 'normal',
                     'text-decoration': tabNames.tabs[firstBusinessCardId].address.underline ? 'underline' : 'normal'}">{{tabNames.tabs[firstBusinessCardId].address.value}}</div>
        </div>
-       <div style="font-size: 15px"><a ng-class="{disabledLink: !signatureLink}" target="_blank" href="{{signatureLink}}">My Sigterra Profile</a></div>
+       <div style="font-size: 15px">
+           <a ng-if="signatureLink" target="_blank" href="{{signatureLink}}">My Sigterra Profile</a>
+            <span style="color: #337ab7;" ng-if="!signatureLink">My Sigterra Profile</span>
+       </div>
 
    </div>
     <style>
