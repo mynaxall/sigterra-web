@@ -860,13 +860,11 @@
                     </div>
                 </div>
                 <div class="cropArea">
-
-                    {{myCroppedImage}}
                     <img-crop image="myImage" ng-show="myCroppedImage" result-image="myCroppedImage" ></img-crop>
                     <img ng-hide="myCroppedImage" src="/content/images/image_placeholder.png">
                 </div>
                 <div class="crop-btn-div">
-                    <button class="saveButton" ng-click="saveImage()">save</button>
+                    <button ng-disabled="!myCroppedImage" class="saveButton" ng-click="saveImage()">save</button>
                 </div>
             </div>
         </div>

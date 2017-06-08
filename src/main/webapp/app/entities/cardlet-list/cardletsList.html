@@ -851,7 +851,6 @@
             </div>
             <div  style="padding: 0px!important; text-align: center" class="modal-body">
                 <div>
-
                     <div class="fileUpload btn btn-primary choose-photo-btn">
                         <span>Choose photo</span>
                         <input accept="image/png, image/jpeg, image/jpg"  type="file" id="fileInput" class="upload" />
@@ -862,7 +861,7 @@
                     <img ng-hide="myCroppedImage" src="/content/images/image_placeholder.png">
                 </div>
                 <div class="crop-btn-div">
-                    <button class="saveButton" ng-click="saveImage()">save</button>
+                    <button ng-disabled="!myCroppedImage" class="saveButton" ng-click="saveImage()">save</button>
                 </div>
             </div>
         </div>

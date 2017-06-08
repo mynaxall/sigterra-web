@@ -3006,3 +3006,8 @@ ul.tab li.dropdown a:hover{
     opacity: 0.8!important;
 }
 
+button[disabled]{
+    background-color: #E7E7E7!important;
+    color: #FFFFFF;
+}
+
