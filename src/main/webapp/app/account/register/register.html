@@ -1,7 +1,7 @@
 
 </div>
 </div>
-<div ng-show="false" class="registration-div">
+<div ng-show="vm.isFirstStep && !vm.isDone" class="registration-div">
     <div class="register-head"></div>
     <div class="register-container">
         <div>
@@ -244,7 +244,7 @@
 </div>
 
 
-<div ng-show="true" class="registration-div">
+<div ng-show="vm.isDone" class="registration-div">
     <div class="register-head"></div>
     <div class="register-container">
         <div>
