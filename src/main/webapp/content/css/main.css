@@ -1318,7 +1318,7 @@ Social Buttons
     border-width: 1px;
     border-style: dashed;
     -webkit-user-select: auto;
-    -moz-user-select: auto;
+    -moz-user-select: text;
     -ms-user-select: auto;
     user-select: auto;
 
