@@ -3016,3 +3016,7 @@ button[disabled]:hover{
     color: #FFFFFF;
 }
 
+.modal-header{
+    height: 50px;
+}
+
