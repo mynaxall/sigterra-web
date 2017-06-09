@@ -2998,6 +2998,10 @@ ul.tab li.dropdown a:hover{
     z-index: 1000!important;
 }
 
+.carousel-control{
+    background-color: transparent;!important;
+}
+
 .carousel-control:focus{
     opacity: 0.5!important;
 }
