@@ -29,10 +29,8 @@
 
         $scope.showConent = true;
 
-        $scope.selected = $scope.fieldTable[0];
-
-        $scope.hasChanged = function() {
-            $scope.instructions = $scope.selected.field;
+        $scope.hasChanged = function(id) {
+            $scope.instructions = id.field;
         }
         $scope.closeCropDialog = function(){
             $scope.showCropDialog = false;
