@@ -4,9 +4,8 @@
         <div>
             <div ng-show="tabName.items.length == 1" style="position: relative;">
                 <div class="main-carousel-image-div-new-3" >
-                    <a href="{{slide.link}}" target="_blank" ng-class="{disabledLink: !slide.link}">
                     <div  ng-repeat="slide in tabName.items"  class="main-carousel-item-div-new-3" style="background-image:url({{slide.image}});background-repeat: no-repeat;background-size: 100%; text-align: center">
-
+                        <a style="position: absolute; width: 100%; height: 100%; left: 0px; top: 0" href="{{slide.link}}" target="_blank" ng-class="{disabledLink: !slide.link}">
                         <div class="item-3-content" ng-hide="!slide.name.value && !slide.description.value" style="background-color: #{{tabName.layout.mainColor}};border-color: #{{tabName.layout.secondaryColor}}">
                             <div class="carousel-item-name-div-new-3" ng-style="{'font-weight': slide.name.bold ? 'bold' : 'normal',
                         'font-style': slide.name.italic ? 'italic' : 'normal',
