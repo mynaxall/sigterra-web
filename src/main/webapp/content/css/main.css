@@ -2998,9 +2998,6 @@ ul.tab li.dropdown a:hover{
     z-index: 1000!important;
 }
 
-.carousel-control{
-    background-color: transparent!important;
-}
 
 .carousel-control:focus{
     opacity: 0.5!important;
@@ -3009,6 +3006,27 @@ ul.tab li.dropdown a:hover{
 .carousel-control:hover{
     opacity: 0.8!important;
 }
+
+.carousel-indicators{
+    display: none;
+}
+
+.carousel-control{
+    box-shadow: none !important;
+    width: 25px!important;
+    background-color: transparent!important;
+}
+
+.carousel-control:hover, .carousel-control:focus{
+    background-color: rgba(255, 255 255 ,0)!important;
+}
+
+
+.carousel-control.left, .carousel-control.right {
+    background-image: none !important;
+    background-color: rgba(255, 255, 255, 0)!important;
+}
+
 
 button[disabled]{
     background-color: #E7E7E7!important;
