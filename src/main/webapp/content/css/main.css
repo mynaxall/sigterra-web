@@ -558,6 +558,11 @@ Social Buttons
     color: #666;
 }
 
+.terms-and-conditions:visited{
+    color: #13BCB5;
+    text-decoration: none;
+}
+
 .modal-dialog{
     width: 400px;
 }
