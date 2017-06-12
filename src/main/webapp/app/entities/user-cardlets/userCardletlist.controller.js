@@ -398,6 +398,7 @@
             $scope.showDelteCardletDialog = false;
             $scope.instructions = 1;
             $scope.signatureSelected = undefined;
+            angular.element('#fileInput3').val(null);
             $("canvas").remove();
         };
 
