@@ -62,18 +62,26 @@
 
         </div>
         <div class="central-div-new">
-            <div style="margin-top: 3px;display: inline">
-                <span class="icon-e-mail_white_icon" style="font-size: 18px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
-            </div>
-            <div class="svg-description" ng-show="!tabName.userEmail.value" style="display: inline; margin-left: 5px">
-                fabian.abshireabsh@wilford.biz
-            </div>
+            <table style="margin: 0 auto">
+                <tr>
+                    <td>
+                        <div style="margin-top: 3px">
+                            <span class="icon-e-mail_white_icon" style="font-size: 18px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="svg-description" ng-show="!tabName.userEmail.value" style=" margin-left: 5px">
+                            fabian.abshireabsh@wilford.biz
+                        </div>
 
-            <div style="display: inline; margin-left: 5px" class="svg-description" ng-show="tabName.userEmail.value" ng-style="{'font-weight': tabName.userEmail.bold ? 'bold' : 'normal',
-                            'font-style': tabName.userEmail.italic ? 'italic' : 'normal',
-                            'text-decoration': tabName.userEmail.underline ? 'underline' : 'normal'}">
-                {{tabName.userEmail.value}}
-            </div>
+                        <div style=" margin-left: 5px" class="svg-description" ng-show="tabName.userEmail.value" ng-style="{'font-weight': tabName.userEmail.bold ? 'bold' : 'normal',
+                                        'font-style': tabName.userEmail.italic ? 'italic' : 'normal',
+                                        'text-decoration': tabName.userEmail.underline ? 'underline' : 'normal'}">
+                            {{tabName.userEmail.value}} asdasd
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </div>
         <div class="central-div-new">
             <div>
