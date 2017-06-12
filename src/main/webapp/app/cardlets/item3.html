@@ -11,7 +11,9 @@
                         'font-style': slide.name.italic ? 'italic' : 'normal',
                         'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                             <div class="carousel-item-name-div-new-3" ng-style="{'color': '#'+tabName.layout.secondaryColor}" ng-show="!slide.name.value">Maui Hotel</div>
-                            <div class="carousel-item-name-div-new-3 carousel-item-deskript-div" ng-show="slide.description.value">{{slide.description.value}}</div>
+                            <div class="carousel-item-name-div-new-3 carousel-item-deskript-div" ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
+                        'font-style': slide.description.italic ? 'italic' : 'normal',
+                        'text-decoration': slide.description.underline ? 'underline' : 'normal' }" ng-show="slide.description.value">{{slide.description.value}}</div>
 
                             </div>
                         </div>
@@ -31,7 +33,9 @@
                                     <div class="carousel-item-name-div-new-3" ng-style="{'font-weight': slide.name.bold ? 'bold' : 'normal',
                             'font-style': slide.name.italic ? 'italic' : 'normal',
                             'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
-                                    <div class="carousel-item-name-div-new-3 carousel-item-deskript-div" ng-show="slide.description.value">{{slide.description.value}}</div>
+                                    <div class="carousel-item-name-div-new-3 carousel-item-deskript-div" ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
+                        'font-style': slide.description.italic ? 'italic' : 'normal',
+                        'text-decoration': slide.description.underline ? 'underline' : 'normal' }" ng-show="slide.description.value">{{slide.description.value}}</div>
 
                                 </div>
                             </div>
