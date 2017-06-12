@@ -3048,3 +3048,9 @@ button[disabled]:hover{
     height: 50px;
 }
 
+.cardlet-top-border{
+    border: 0px solid #D0D8D9;
+    width: 100%;
+    height: 0px;
+}
+
