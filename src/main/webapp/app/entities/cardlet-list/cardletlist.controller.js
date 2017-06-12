@@ -542,12 +542,18 @@
 
             for (var i = 0; i < tabs.length; i++) {
                 if(angular.element(tabs[i]).hasClass('active')){
-                    document.getElementsByClassName("tabcontent")[i].style.display = "none";;
+                    document.getElementsByClassName("tabcontent")[i].style.display = "none";
                     tabs[i].className = tabs[i].className.replace(" active", "");
                 }
                 if(angular.element(tabs2[i]).hasClass('active')){
-                    document.getElementsByClassName("tabcontent2")[i].style.display = "none";;
+                    document.getElementsByClassName("tabcontent2")[i].style.display = "none";
                     tabs2[i].className = tabs2[i].className.replace(" active", "");
+                }
+                if(i == tabs.length -1){
+                    document.getElementsByClassName("tabcontent2")[0].style.display = "block";
+                    document.getElementsByClassName("tabs2")[0].className += " active";
+                    document.getElementsByClassName("tabcontent")[0].style.display = "block";
+                    document.getElementsByClassName("tabs")[0].className += " active";
                 }
 
             }
@@ -562,11 +568,12 @@
             }
 
             $scope.positionChecking = false;
-
+            setTimeout(function() {
                 document.getElementsByClassName("tabcontent2")[0].style.display = "block";
                 document.getElementsByClassName("tabs2")[0].className += " active";
                 document.getElementsByClassName("tabcontent")[0].style.display = "block";
                 document.getElementsByClassName("tabs")[0].className += " active";
+            },100);
 
         }
 
