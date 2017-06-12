@@ -213,6 +213,21 @@
             return ($location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ id)
         }
 
+
+        $scope.testSelect = function(){
+            if (window.getSelection) {
+                console.log("123")
+                var selection = window.getSelection();
+                if (selection.rangeCount > 0) {
+                    window.getSelection().removeAllRanges();
+                }
+            } else if (document.selection) {
+                // Internet Explorer
+                console.log("qwe")
+                document.selection.empty();
+            }
+        }
+
         $scope.copyToEmail = function(id, cardId, sigId) {
             $scope.selected = $scope.fieldTable[0];
             $scope.isAddBanner = false;
@@ -242,6 +257,8 @@
                     $scope.selectSignature(1);
                 }
             });
+
+            $scope.testSelect();
         };
 
         $scope.convertImage = function(image){
@@ -811,6 +828,7 @@
 
 
     }
+
 
 
 })();
