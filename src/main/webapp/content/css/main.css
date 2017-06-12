@@ -484,6 +484,11 @@ Social Buttons
     height: 100%;
     box-shadow: none;
 }
+
+.reset-pass-container{
+    padding: 0px 90px;
+}
+
 .registration-div{
     background-color: #fff;
     max-width: 410px;
