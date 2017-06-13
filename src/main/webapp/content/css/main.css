@@ -2313,7 +2313,7 @@ div.navbar-collapse.in.collapse{
     height: 662px;
 }
 
-@media (min-width: 990px){
+@media (min-width: 992px){
     .sub-footer{
         height: 400px;
     }
