@@ -3056,6 +3056,7 @@ button[disabled]:hover{
 
 .modal-header{
     height: 50px;
+    border: none;
 }
 
 .cardlet-top-border{
