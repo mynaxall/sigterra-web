@@ -382,7 +382,7 @@
 
                 }
                 setTimeout(function(){
-                    $scope.openCity('settings'+newTab.name+newTab.position, 'tab'+newTab.position, newTab.name+newTab.position, newTab.position+newTab.name)}, 500)
+                    $scope.openCity('settings'+newTab.name+newTab.position, 'tab'+newTab.position, newTab.name+newTab.position, 'li'+newTab.position+newTab.name)}, 500)
                 $scope.tabNames.tabs.push(newTab);
             }
             if($scope.tabNames.tabs.length == 4){
@@ -490,7 +490,7 @@
                 }
                 setTimeout(function(){
 
-                $scope.openCity('settings'+newTab.name+newTab.position, 'tab'+newTab.position, newTab.name+newTab.position, newTab.position+newTab.name)}, 500)
+                $scope.openCity('settings'+newTab.name+newTab.position, 'tab'+newTab.position, newTab.name+newTab.position, 'li'+newTab.position+newTab.name)}, 500)
             }
             if($scope.tabNames.tabs.length == 4){
                 $scope.isNewTab = false;
