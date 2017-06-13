@@ -125,6 +125,10 @@
 
         vm.hideImageDialog = hideImageDialog;
         function hideImageDialog(){
+            angular.element('#fileInput').val(null);
+            $scope.myImage='';
+            $scope.myCroppedImage = '';
+
             vm.isShowDialog = false;
         }
 
