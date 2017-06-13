@@ -277,14 +277,14 @@
                 <div class="cadlet-top-title">Your Profile Details</div>
                 <ul class="tab" dnd-list="tabNames.tabs" dnd-horizontal-list="true" dnd-external-sources="true">
 
-                    <li class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-draggable="tabName" dnd-moved="tabNames.tabs.splice($index, 1)" id="{{tabName.position}}" ng-style="tabWidth(tabName.position)" dnd-dragend="positionCheck()">
+                    <li class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-disable-if="!isEmptyName()" dnd-draggable="tabName" dnd-moved="tabNames.tabs.splice($index, 1)" id="{{tabName.position}}" ng-style="tabWidth(tabName.position)" dnd-dragend="positionCheck()">
                         <div style="position: relative;display: table; width: 100%;">
-                            <a href="javascript:void(0)"class="tablinks" id="tabLink{{tabName.position}}" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                            <a href="javascript:void(0)"class="tablinks"  ng-class="{disabledLink: !isEmptyName()}" id="tabLink{{tabName.position}}" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
                             <div ng-hide="tabNames.tabs.length == 1"  class="remove" ng-click="showDeleteDialog(tabName.position)"><span style="font-size: 15px;color:#D0D8D9;" class="glyphicon glyphicon-remove-circle"></span></div>
                         </div>
                     </li>
                     <li  uib-dropdown class="dropdown pointer"  ng-show="tabNames.tabs.length < 4">
-                        <a class="dropdown-toggle" uib-dropdown-toggle href="" >
+                        <a class="dropdown-toggle" uib-dropdown-toggle href="" ng-class="{disabledLink: !isEmptyName()}">
                         <span class="glyphicon glyphicon-plus" style="color: #ffffff"></span>
                         </a>
                         <ul class="dropdown-menu cardlet-dropdown" >
@@ -753,7 +753,7 @@
                         <ul class="tab2">
                             <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}">
                                 <div style="position: relative;display: table; width: 100%;">
-                                    <a ng-style="{'color': '#'+tabName.layout.secondaryColor}" href="javascript:void(0)" id="tabLink{{tabName.name}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                                    <a ng-style="{'color': '#'+tabName.layout.secondaryColor}" href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}" id="tabLink{{tabName.name}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
                                 </div>
                             </li>
 
