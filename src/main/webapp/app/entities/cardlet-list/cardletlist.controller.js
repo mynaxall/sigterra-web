@@ -110,7 +110,11 @@
                 })
                 .success(function (data, status, headers, config) {
                     $scope.imageUrl = data.url;
-                    if($scope.itemImageId){
+                    console.log($scope.itemImageId)
+                    console.log($scope.imageItemMame)
+                    if($scope.itemImageId || $scope.itemImageId == 0){
+
+                        console.log( $scope.tabNames.tabs[$scope.tabImageId].items)
                         $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame] = $scope.imageUrl;
                     }else {
                         setTabImage();
