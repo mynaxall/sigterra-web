@@ -37,7 +37,7 @@
         <div>
             <div class="user-contacts">
                 <div class="">
-                    <div class="svg-div" style="margin-top: 3px">
+                    <div class="svg-div" style="margin-top: -1px">
                         <span class="icon-e-mail_white_icon" style="font-size: 19px;"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
                     <div ng-show="!tabName.userEmail.value" class="svg-description-new">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="user-contacts-div-3">
-                    <div class="svg-div" >
+                    <div class="svg-div" style="margin-top: -1px">
                         <span class="icon-globe_white_icon" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
                     <div ng-show="!tabName.site.value" class="svg-description-new">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="user-contacts-div-3">
-                    <div class="svg-div">
+                    <div class="svg-div" style="margin-top: -1px">
                         <span class="icon-mobile_white_icon" style="font-size: 19px;"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
                     <div ng-show="!tabName.phone.value" class="svg-description-new">
@@ -89,15 +89,15 @@
                 <div class="user-contacts-div-3">
                     <div ng-show="!tabName.address.value">
                         <span class="" style="margin-top: 3px">
-                            <span class="icon-lacation_white_icon" style="font-size: 19px;"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
+                            <span class="icon-lacation_white_icon" style="font-size: 19px;text-decoration:none"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </span>0000 Lynch Pine Apt. 605, Croatia</div>
-                    <div class="svg-description-new" ng-show="tabName.address.value" ng-style="{'font-weight': tabName.address.bold ? 'bold' : 'normal',
-                    'font-style': tabName.address.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.address.underline ? 'underline' : 'normal'}">
+                    <div class="svg-description-new" ng-show="tabName.address.value" >
                         <span class="" style="margin-top: 3px">
                             <span class="icon-lacation_white_icon" style="font-size: 19px; "  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </span>
-                        {{tabName.address.value}}
+                        <span ng-style="{'font-weight': tabName.address.bold ? 'bold' : 'normal',
+                    'font-style': tabName.address.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.address.underline ? 'underline' : 'normal'}">{{tabName.address.value}}</span>
                     </div>
                 </div>
             </div>
