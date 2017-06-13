@@ -555,6 +555,7 @@
                     document.getElementsByClassName("tabcontent")[0].style.display = "block";
                     document.getElementsByClassName("tabs")[0].className += " active";
                 }
+                document.getElementsByClassName("tablinks")[i].className += " disabledLink";
 
             }
 
@@ -573,6 +574,10 @@
                 document.getElementsByClassName("tabs2")[0].className += " active";
                 document.getElementsByClassName("tabcontent")[0].style.display = "block";
                 document.getElementsByClassName("tabs")[0].className += " active";
+
+                for (var i = 0; i < tabs.length; i++) {
+                    document.getElementsByClassName("tablinks")[i].className = document.getElementsByClassName("tablinks")[i].className.replace(" disabledLink", "");
+                }
             },100);
 
         }
