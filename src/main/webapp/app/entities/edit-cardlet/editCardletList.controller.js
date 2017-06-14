@@ -706,10 +706,11 @@
 
 
         $scope.isEmptyName =function(){
-
-            for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
-                if(!$scope.tabNames.tabs[i].name || $scope.tabNames.tabs[i].name == ''){
-                    return false;
+            if($scope.tabNames) {
+                for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
+                    if (!$scope.tabNames.tabs[i].name || $scope.tabNames.tabs[i].name == '') {
+                        return false;
+                    }
                 }
             }
             return true;
