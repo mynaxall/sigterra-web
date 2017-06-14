@@ -28,7 +28,7 @@
                 </div>
 
             </div>
-            <div class="main-carousel-image-div-2" uib-carousel interval="myInterval" active="currentSlide == -1 ? slide.active : currentSlide" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1"  ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)">
+            <div class="main-carousel-image-div-2" uib-carousel interval="myInterval" active="vm.currentSlide" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1"  ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)">
                 <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" class="main-carousel-item-div-new">
 
                     <div class="carousel-image-div">

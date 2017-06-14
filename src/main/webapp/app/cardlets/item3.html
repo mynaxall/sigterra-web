@@ -26,13 +26,14 @@
                 </div>
 
             </div>
-            <div uib-carousel active="currentSlide == -1 ? slide.active : currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1"  ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)">
+            <div uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1"  ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)">
                 <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position">
                     <div style="max-height: 240px;overflow: hidden">
                         <img style="width: 100%" crossorigin="anonymous" id="ing-1" ng-src="{{slide.image}}">
 
                     </div>
                     <div class="main-carousel-image-div-new-3" style="height: 240px">
+                        {{vm.currentSlide}}
                         <a href="{{slide.link}}" target="_blank" ng-class="{disabledLink: !slide.link}">
                             <div  class="main-carousel-item-div-new-3" ng-style="{'text-align': 'center'}">
                                 <div class="item-3-content" ng-style="{'background-color': '#'+tabName.layout.mainColor, 'border-color': '#'+tabName.layout.secondaryColor, 'text-align':'center'}" ng-hide="!slide.name.value && !slide.description.value">
