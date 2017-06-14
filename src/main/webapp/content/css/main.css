@@ -2873,6 +2873,8 @@ input:invalid {
 
 .new-cardlet-marks{
     color: #4BABE2;
+    margin-right: 3px;
+    display: inline-block;
 }
 
 .footer-cover .custom-placeholder {
