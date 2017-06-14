@@ -1336,7 +1336,7 @@ Social Buttons
     -moz-user-select: text;
     -ms-user-select: auto;
     user-select: auto;
-
+    line-height: 0%;
 }
 
 
