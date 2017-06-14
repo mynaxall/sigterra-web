@@ -1090,6 +1090,24 @@ Social Buttons
     margin-bottom: 30px;
 }
 
+.preview-url-div{
+    margin-top: 40px;
+    text-align: center;
+}
+
+.custom-slide-prev{
+    position: absolute;
+    top:50px;
+    left: 20px;
+}
+
+.custom-slide-next{
+    position: absolute;
+    top:50px;
+    right: 20px;
+}
+
+
 .border-line-new-header{
     background-color: #D0D8D9;
     position: absolute;
