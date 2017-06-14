@@ -524,6 +524,8 @@
             var tabs = document.getElementsByClassName("tabs");
 
             for (var i = 0; i < tabs.length; i++) {
+                document.getElementsByClassName("tablinks")[i].className += " disabledLink";
+
                 if(angular.element(tabs[i]).hasClass('active')){
                     document.getElementsByClassName("tabcontent")[i].style.display = "none";;
                     tabs[i].className = tabs[i].className.replace(" active", "");
@@ -533,7 +535,6 @@
                     tabs2[i].className = tabs2[i].className.replace(" active", "");
                 }
 
-                document.getElementsByClassName("tablinks")[i].className += " disabledLink";
             }
             for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                 if ($scope.tabNames.tabs[i].tabType == '1') {

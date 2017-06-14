@@ -536,7 +536,6 @@
         $scope.positionCheck = function(){
             $scope.positionChecking = true;
 
-
             for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                 $scope.tabNames.tabs[i].position = i;
             }
@@ -545,6 +544,7 @@
             var tabs = document.getElementsByClassName("tabs");
 
             for (var i = 0; i < tabs.length; i++) {
+                document.getElementsByClassName("tablinks")[i].className += " disabledLink";
                 if(angular.element(tabs[i]).hasClass('active')){
                     document.getElementsByClassName("tabcontent")[i].style.display = "none";
                     tabs[i].className = tabs[i].className.replace(" active", "");
@@ -559,7 +559,6 @@
                     document.getElementsByClassName("tabcontent")[0].style.display = "block";
                     document.getElementsByClassName("tabs")[0].className += " active";
                 }
-                document.getElementsByClassName("tablinks")[i].className += " disabledLink";
 
             }
 
