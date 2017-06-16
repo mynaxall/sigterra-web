@@ -5,7 +5,7 @@
                 <div class="company" ng-show="!tabName.company.value">
                     Company Name
                 </div>
-                <div class="company" ng-show="tabName.company.value" ng-style="{'font-weight': tabName.company.bold ? 'bold' : 'normal',
+                <div class="company" ng-show="tabName.company.value" ng-style="{'font-family': tabName.company.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.company.italic ? 'italic' : 'normal',
                         'text-decoration': tabName.company.underline ? 'underline' : 'normal'}">
                     {{tabName.company.value}}
@@ -34,14 +34,14 @@
         </div>
         <div class="central-div-new">
             <div class="user-name" ng-show="!tabName.userName.value"  style="color: #{{tabName.layout.secondaryColor}}">Jon Dou</div>
-            <div class="user-name" ng-style="{'font-weight': tabName.userName.bold ? 'bold' : 'normal',
+            <div class="user-name" ng-style="{'font-family': tabName.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': tabName.userName.italic ? 'italic' : 'normal',
                                 'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}"  ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
 
         </div>
         <div class="central-div-new">
             <div class="user-main-text" ng-show="!tabName.job.value">General Manager</div>
-            <div class="user-main-text" ng-style="{'font-weight': tabName.job.bold ? 'bold' : 'normal',
+            <div class="user-main-text" ng-style="{'font-family': tabName.job.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.job.italic ? 'italic' : 'normal',
                         'text-decoration': tabName.job.underline ? 'underline' : 'normal'}" ng-show="tabName.job.value">{{tabName.job.value}}</div>
         </div>
@@ -54,7 +54,7 @@
                 1-888-555-5555
             </div>
 
-            <div style="display: inline; margin-left: 5px" class="svg-description" ng-show="tabName.phone.value" ng-style="{'font-weight': tabName.phone.bold ? 'bold' : 'normal',
+            <div style="display: inline; margin-left: 5px" class="svg-description" ng-show="tabName.phone.value" ng-style="{'font-family': tabName.phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.phone.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.phone.underline ? 'underline' : 'normal'}"  style="float: right; margin-left: 5px">
                 {{tabName.phone.value}}
@@ -74,10 +74,10 @@
                             fabian.abshireabsh@wilford.biz
                         </div>
 
-                        <div style=" margin-left: 5px" class="svg-description" ng-show="tabName.userEmail.value" ng-style="{'font-weight': tabName.userEmail.bold ? 'bold' : 'normal',
+                        <div style=" margin-left: 5px" class="svg-description" ng-show="tabName.userEmail.value" ng-style="{'font-family': tabName.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                         'font-style': tabName.userEmail.italic ? 'italic' : 'normal',
                                         'text-decoration': tabName.userEmail.underline ? 'underline' : 'normal'}">
-                            {{tabName.userEmail.value}} asdasd
+                            {{tabName.userEmail.value}}
                         </div>
                     </td>
                 </tr>
@@ -93,7 +93,7 @@
                     www.websitewebsite.com
                 </div>
 
-                <div style="display: inline; margin-left: 5px" class="svg-description" ng-show="tabName.site.value" ng-style="{'font-weight': tabName.site.bold ? 'bold' : 'normal',
+                <div style="display: inline; margin-left: 5px" class="svg-description" ng-show="tabName.site.value" ng-style="{'font-family': tabName.site.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.site.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.site.underline ? 'underline' : 'normal'}">
                     {{tabName.site.value}}
@@ -104,7 +104,7 @@
             <div class="user-main-text svg-description" ng-show="!tabName.address.value">
                 0000 Lynch Pine Apt. 605, South Keagan, Croatia
             </div>
-            <div class="user-main-text svg-description" ng-show="tabName.address.value" ng-style="{'font-weight': tabName.address.bold ? 'bold' : 'normal',
+            <div class="user-main-text svg-description" ng-show="tabName.address.value" ng-style="{'font-family': tabName.address.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.address.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.address.underline ? 'underline' : 'normal'}">
                 {{tabName.address.value}}
@@ -155,11 +155,6 @@
         border-radius: 36px;
     }
 
-    .user-name{
-        font-size: 22px;
-        color: #4BABE2;
-        font-weight: bold;
-    }
 
 
 </style>

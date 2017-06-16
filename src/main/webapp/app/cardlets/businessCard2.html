@@ -8,13 +8,13 @@
             <div class="user-info-div">
                 <div ng-show="!tabName.userName.value" class="user-name"  ng-style="{'color': '#'+tabName.layout.mainColor}"
                 >Jon Dou</div>
-                <div class="user-name" ng-style="{'font-weight': tabName.userName.bold ? 'bold' : 'normal',
+                <div class="user-name" ng-style="{'font-family': tabName.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.userName.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}" ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
 
 
                 <div  ng-show="!tabName.job.value" class="job-titile-3"  style="color: #{{tabName.layout.mainColor}}">General Manager</div>
-                <div class="job-titile-3" ng-style="{'font-weight': tabName.job.bold ? 'bold' : 'normal',
+                <div class="job-titile-3" ng-style="{'font-family': tabName.job.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.job.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.job.underline ? 'underline' : 'normal'}" ng-show="tabName.job.value"  style="color: #{{tabName.layout.mainColor}}">{{tabName.job.value}}</div>
                 <div class="social-links">
@@ -44,7 +44,7 @@
                         fabian.abshireabsh@wilford.biz
                     </div>
 
-                    <div class="svg-description-new" ng-show="tabName.userEmail.value" ng-style="{'font-weight': tabName.userEmail.bold ? 'bold' : 'normal',
+                    <div class="svg-description-new" ng-show="tabName.userEmail.value" ng-style="{'font-family': tabName.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': tabName.userEmail.italic ? 'italic' : 'normal',
                             'text-decoration': tabName.userEmail.underline ? 'underline' : 'normal'}">
                         {{tabName.userEmail.value}}
@@ -57,7 +57,7 @@
                     <div ng-show="!tabName.site.value" class="svg-description-new">
                         www.websitewebsite.com
                     </div>
-                    <div class="svg-description-new" ng-show="tabName.site.value" ng-style="{'font-weight': tabName.site.bold ? 'bold' : 'normal',
+                    <div class="svg-description-new" ng-show="tabName.site.value" ng-style="{'font-family': tabName.site.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.site.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.site.underline ? 'underline' : 'normal'}">
                         {{tabName.site.value}}
@@ -70,7 +70,7 @@
                     <div ng-show="!tabName.phone.value" class="svg-description-new">
                         1-888-555-5555
                     </div>
-                    <div class="svg-description-new" ng-show="tabName.phone.value" ng-style="{'font-weight': tabName.phone.bold ? 'bold' : 'normal',
+                    <div class="svg-description-new" ng-show="tabName.phone.value" ng-style="{'font-family': tabName.phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.phone.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.phone.underline ? 'underline' : 'normal'}">
                         {{tabName.phone.value}}
@@ -80,7 +80,7 @@
             <div class="social-link-div">
                 <div>
                     <div ng-show="!tabName.company.value" class="svg-description-new"  ng-style="{'color': '#'+tabName.layout.secondaryColor}">Company Name</div>
-                    <div class="svg-description-new" ng-show="tabName.company.value" ng-style="{'font-weight': tabName.company.bold ? 'bold' : 'normal',
+                    <div class="svg-description-new" ng-show="tabName.company.value" ng-style="{'font-family': tabName.company.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.company.italic ? 'italic' : 'normal',
                         'text-decoration': tabName.company.underline ? 'underline' : 'normal'}"  ng-style="{'color': '#'+tabName.layout.secondaryColor}">
                         {{tabName.company.value}}
@@ -95,7 +95,7 @@
                         <span class="" style="margin-top: 3px">
                             <span class="icon-lacation_white_icon" style="font-size: 19px; "  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </span>
-                        <span ng-style="{'font-weight': tabName.address.bold ? 'bold' : 'normal',
+                        <span ng-style="{'font-family': tabName.address.bold ?  'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.address.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.address.underline ? 'underline' : 'normal'}">{{tabName.address.value}}</span>
                     </div>
@@ -153,16 +153,10 @@
 
     .job-titile-3{
         color: #fff;
-        font-weight: bold;
         text-transform: uppercase;
         font-size: 15px;
     }
 
-    .user-name{
-        font-size: 22px;
-        color: #FFF;
-        font-weight: bold;
-    }
 
     .user-info-div{
         padding: 20px 10px 10px 146px;

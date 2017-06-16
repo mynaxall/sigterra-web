@@ -6,6 +6,21 @@
 }
 
 @font-face {
+    font-family: 'Roboto-Bold';
+    src: url('/content/fonts/Roboto-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('/content/fonts/Roboto-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'icomoon';
     src:  url('/content/fonts/icomoon.ttf');
     font-weight: normal;
@@ -72,7 +87,7 @@ html{
 
 body {
     background: #ffffff;
-    font-family: "Lato-Regular"!important;
+    font-family: "Roboto-Regular"!important;
     color: #333;
     min-height: 100%;
     min-width: 600px;
@@ -80,7 +95,7 @@ body {
 }
 
 pre{
-    font-family: "Lato-Regular"!important;
+    font-family: "Roboto-Regular"!important;
     white-space: pre-wrap;       /* Since CSS 2.1 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
     white-space: -pre-wrap;      /* Opera 4-6 */
@@ -478,6 +493,7 @@ Social Buttons
 
 .well {
     margin-top: 0px;
+    margin-bottom: 0px;
     background-color: #FFFFFF;
     padding: 0!important;
     border: none;
@@ -515,6 +531,11 @@ Social Buttons
 .form-group{
     margin-bottom: 0px;
     min-height: 50px;
+}
+
+.form-group-editor{
+    margin-bottom: 0px;
+    min-height: 38px;
 }
 
 .form-group-new{
@@ -1189,8 +1210,8 @@ Social Buttons
 
 .saveButtonDiv{
     margin-top: 20px;
-    width: 540px;
     text-align: right;
+    margin-bottom: 60px;
 }
 
 
@@ -1369,18 +1390,18 @@ Social Buttons
 
 .checkboxBold + label
 {
-    background-image: url("/content/images/new/b.png");
-    height: 30px;
-    width: 38px;
+    background-image: url("/content/images/new/bold.png");
+    height: 23px;
+    width: 23px;
     display:inline-block;
     padding: 0 0 0 0px;
 }
 
 .checkboxBold + label:hover
 {
-    background-image: url("/content/images/new/b_hover.png");
-    height: 30px;
-    width: 38px;
+    background-image: url("/content/images/new/bold_active.png");
+    height: 23px;
+    width: 23px;
     display:inline-block;
     padding: 0 0 0 0px;
 }
@@ -1389,9 +1410,9 @@ Social Buttons
 
 .checkboxBold:checked + label
 {
-    background-image: url("/content/images/new/b_hover.png");
-    height: 30px;
-    width: 38px;
+    background-image: url("/content/images/new/bold_active.png");
+    height: 23px;
+    width: 23px;
     display:inline-block;
     padding: 0 0 0 0px;
 }
@@ -1402,9 +1423,9 @@ Social Buttons
 
 .checkboxItalic + label
 {
-    background-image: url("/content/images/new/i.png");
-    height: 30px;
-    width: 38px;
+    background-image: url("/content/images/new/italic.png");
+    height: 23px;
+    width: 23px;
     display:inline-block;
     padding: 0 0 0 0px;
     margin-left: -3px;
@@ -1412,9 +1433,9 @@ Social Buttons
 
 .checkboxItalic + label:hover
 {
-    background-image: url("/content/images/new/i_hover.png");
-    height: 30px;
-    width: 38px;
+    background-image: url("/content/images/new/italic_active.png");
+    height: 23px;
+    width: 23px;
     display:inline-block;
     padding: 0 0 0 0px;
     margin-left: -3px;
@@ -1422,9 +1443,9 @@ Social Buttons
 
 .checkboxItalic:checked + label
 {
-    background-image: url("/content/images/new/i_hover.png");
-    height: 30px;
-    width: 38px;
+    background-image: url("/content/images/new/italic_active.png");
+    height: 23px;
+    width: 23px;
     display:inline-block;
     padding: 0 0 0 0px;
     margin-left: -3px;
@@ -1435,9 +1456,9 @@ Social Buttons
 
 .checkboxUunderline + label
 {
-    background-image: url("/content/images/new/U.png");
-    height: 30px;
-    width: 38px;
+    background-image: url("/content/images/new/underline.png");
+    height: 23px;
+    width: 23px;
     display:inline-block;
     padding: 0 0 0 0px;
     margin-left: -3px;
@@ -1445,9 +1466,9 @@ Social Buttons
 
 .checkboxUunderline + label:hover
 {
-    background-image: url("/content/images/new/u_hover.png");
-    height: 30px;
-    width: 38px;
+    background-image: url("/content/images/new/underline_active.png");
+    height: 23px;
+    width: 23px;
     display:inline-block;
     padding: 0 0 0 0px;
     margin-left: -3px;
@@ -1455,9 +1476,9 @@ Social Buttons
 
 .checkboxUunderline:checked + label
 {
-    background-image: url("/content/images/new/u_hover.png");
-    height: 30px;
-    width: 38px;
+    background-image: url("/content/images/new/underline_active.png");
+    height: 23px;
+    width: 23px;
     display:inline-block;
     padding: 0 0 0 0px;
     margin-left: -3px;
@@ -1504,6 +1525,35 @@ Social Buttons
     min-height: 200px;
     max-height: 270px;
     padding:10px;
+}
+
+.input-new-editor{
+    width: 334px;
+    height: 34px;
+    background-color: #F6F8FA;
+    border-width: 0px;
+    border-radius: 0px;
+    border-style: solid;
+    margin-top: 4px;
+    color: #4A4A4A;
+
+}
+
+.input-new-tabs-name{
+    width: 100%;
+    height: 25px;
+    background-color: #F6F8FA;
+    border-width: 0px;
+    border-radius: 0px;
+    border-style: solid;
+    margin-top: 4px;
+    color: #4A4A4A;
+
+}
+
+.input-new-editor:focus{
+    border: 1px solid  #BFBFBF;
+    background-color: #FFFFFF;
 }
 
 .input-new{
@@ -2338,7 +2388,7 @@ div.navbar-collapse.in.collapse{
 
 @media (min-width: 992px){
     .sub-footer{
-        height: 400px;
+        height: 346px;
     }
 }
 .navbar-default .navbar-nav .open .dropdown-menu > .sigterra-naigation > a{
@@ -2447,9 +2497,7 @@ ul.tab li {
     min-height: 52px;
     float: left;
     background: #F9F9F9;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #E7E7E7;
+    border: 1px solid #BFBFBF;
     color: #7F8C8C;
     text-transform: uppercase;
     text-align: center;
@@ -2497,7 +2545,6 @@ ul.tab2 li {
 .svg-description{
     margin-left: 30px;
     font-size: 13px;
-    font-weight: bold;
 
 }
 
@@ -2505,7 +2552,6 @@ ul.tab2 li {
 
     margin-left: 30px;
     font-size: 15px;
-    font-weight: bold;
 }
 
 .main:before {
@@ -2553,9 +2599,9 @@ ul.tab2 li {
 .tabcontent {
     display: none;
     padding: 6px 0px;
-    padding-bottom: 0px;
-    border: 1px solid #E7E7E7;
-    width: 540px;
+    padding-top: 1px;
+    border: 0px solid #E7E7E7;
+    width: 700px;
     background-color: #ffffff;
     margin-top: 51px;
 }
@@ -2564,6 +2610,13 @@ ul.tab2 li {
     float: left;
     width: 130px;
     padding-top: 7px;
+    padding-left: 22px;
+}
+
+.social-image-form-editor{
+    float: left;
+    width: 60px;
+    padding-top: 2px;
     padding-left: 22px;
 }
 
@@ -2655,14 +2708,45 @@ input[disabled] {
 .custom-placeholder {
     position: absolute;
     top: 10px;
-    left: 0;
+    left: 2px;
     color: #9B9B9B;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
     font-weight: normal;
-    z-index: 0;
+    z-index: 1;
 }
+
+.editable-inputs{
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    color: #9B9B9B;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: normal;
+    z-index: 2;
+    display: none;
+    background-color: #ECEFF4;
+    padding: 7px 10px
+}
+
+.custom-placeholder-editor {
+    position: absolute;
+    color: #BFBFBF;
+    top: 5px;
+    left: 2px;
+}
+
+.input-new-editor:hover + label.editable-inputs{
+    display: inline;
+}
+
+.input-new-editor:focus + label.editable-inputs{
+    display: none;
+}
+
 
 input, textarea {
     position: relative;
@@ -2691,8 +2775,8 @@ input::-ms-clear {
 }
 
 .cadlet-top-title{
-    font-size: 20px;
-    color: #13BCB5;
+    font-size: 24px;
+    color: #4A4A4A;
     margin-bottom: 20px;
     font-weight: bold;
 }
@@ -2702,13 +2786,41 @@ input::-ms-clear {
     width: 300px;
     font-size:20px;
     height: 40px;
-    color: #000000;
+    color: #4A4A4A;
     background-color: #F8F8F8;
     padding: 10px;
 }
 
+.editable-input-name {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: #9B9B9B;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: normal;
+    z-index: 2;
+    display: none;
+    background-color: #ECEFF4;
+    padding: 10px 12px
+}
+
+.cadletName:focus{
+    border: 1px solid  #BFBFBF;
+    background-color: #FFFFFF;
+}
+
+.cadletName:hover + label.editable-input-name{
+    display: inline;
+}
+
+.cadletName:focus + label.editable-input-name{
+    display: none;
+}
+
+
 .cardlet-name-panel{
-    margin-bottom: 30px;
     display: inline-block;
 }
 
@@ -2748,6 +2860,11 @@ input::-ms-clear {
 
 .input-text-div .custom-placeholder {
     top: 15px;
+}
+
+
+.input-text-div .custom-placeholder-editor {
+    top: 11px;
 }
 
 .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus{
@@ -3093,4 +3210,275 @@ button[disabled]:hover{
 .carousel-control .icon-prev, .carousel-control .icon-next, .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right{
     top:115px
 }
+
+.user-name{
+    font-size: 22px;
+    color: #4BABE2;
+}
+
+.right-column{
+    height:100%;
+    background-color: rgba(115, 140, 158, 0.37);
+    padding-right: 50px!important;
+    padding-left: 50px!important;
+    padding-bottom: 180px;
+    float: none;
+}
+
+.left-column{
+    padding-left: 50px!important;
+    padding-right: 50px!important;
+    float: none;
+    margin: 0 auto;
+    height: 100%;
+
+}
+
+.left-column-content{
+    padding-top: 30px;
+    width: 700px;
+    float: none;
+    margin: 0 auto;
+}
+
+.second-column {
+    padding-top: 30px;
+    width: 540px;
+    margin: 0px auto;
+}
+
+@media (min-width: 1270px) {
+
+    .second-column {
+        padding-top: 100px;
+        width: 540px;
+        margin: 0px 0px;
+    }
+
+    .left-column-content{
+        width: 700px;
+        float: right;
+    }
+    .right-column {
+        width: 44%;
+        padding-right: 10px !important;
+        padding-left: 5px !important;
+        float: left;
+    }
+
+    .left-column {
+        width: 56%;
+        padding-left: 10px !important;
+        padding-right: 5px !important;
+        float: left;
+
+    }
+}
+
+@media (min-width: 1340px) {
+
+    .right-column {
+        width: 43%;
+        padding-right: 25px !important;
+        padding-left: 25px !important;
+        float: left;
+    }
+
+    .left-column {
+        width: 57%;
+        padding-left: 25px !important;
+        padding-right: 25px !important;
+        float: left;
+
+    }
+}
+
+
+@media (min-width: 1440px) {
+
+    .right-column {
+        width: 45%;
+        padding-right: 50px !important;
+        padding-left: 50px !important;
+        float: left;
+    }
+
+    .left-column {
+        width: 55%;
+        padding-left: 50px !important;
+        padding-right: 50px !important;
+        float: left;
+
+    }
+}
+
+
+@media (min-width: 1550px) {
+    .right-column {
+        width: 40%;
+        padding-right: 100px !important;
+        padding-left: 50px !important;
+        float: left;
+    }
+
+    .left-column {
+        width: 60%;
+        padding-left: 100px !important;
+        padding-right: 50px !important;
+        float: left;
+
+    }
+}
+
+
+@media (min-width: 1660px) {
+    .right-column {
+        width: 40%;
+        padding-right: 150px !important;
+        padding-left: 50px !important;
+        float: left;
+    }
+
+    .left-column {
+        width: 60%;
+        padding-left: 150px !important;
+        padding-right: 50px !important;
+        float: left;
+
+    }
+}
+
+.input-text-div-editor{
+    width: 340px;
+}
+
+.text-decoration-div-editor{
+    float: left;
+    width: 80px;
+    text-align: right;
+    padding-top: 9px;
+}
+
+.editor-avatar-panel{
+    float: left;
+    width: 240px;
+}
+
+.editor-inputs-panel{
+    float: left;
+    width: 425px;
+}
+
+.accordion-section-content {
+    padding:15px;
+}
+
+.avatar-editor{
+    width: 175px;
+    height: 175px;
+    border-radius: 175px;
+}
+
+.avatar-editor-div{
+    width: 175px;
+    height: 175px;
+    position: relative;
+}
+
+.avatar-upload-editor{
+    position: absolute;
+    top:0px;
+    right: 0px;
+    width: 33px;
+    height: 33px;
+    background-color: #E8645A;
+    border: none!important;
+    border-radius: 33px;
+
+}
+
+.social-link-descript{
+    color: #4A4A4A;
+    font-size: 16px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    margin-left: 45px;
+}
+
+.social-link-group-editor{
+    padding-left: 25px;
+    padding-bottom: 10px;
+}
+
+.social-link-editor{
+    margin-right: 10px;
+}
+
+.editor-business-card{
+    height: 330px;
+    border: 1px solid #BFBFBF;
+    border-top: 0px;
+}
+
+.cardlet-label-editor{
+    font-size: 15px;
+    color: #4A4A4A;
+}
+
+.color-input-div{
+    margin: 25px 0px;
+}
+
+.cadlet-top-title-border{
+    width: 48px;
+    height: 4px;
+    background-color: #13BCB5;
+}
+
+.accordion {
+    overflow:hidden;
+    border-radius:3px;
+    background:#ffffff;
+}
+
+.mainColor-input{
+    width: 82px;
+    height: 34px;
+    border: 1px solid #C0C0C0;
+    margin-right: 25px;
+}
+
+.secondaryColor-input{
+    width: 82px;
+    height: 34px;
+    border: 1px solid #C0C0C0;
+}
+
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #FFF;
+    width: 700px;
+}
+
+ul.tab li.active {
+    background: #FFFFFF!important;
+    color: #13BCB5!important;
+    border-width: 0px;
+    border-top-width: 2px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-left-color: #BFBFBF;
+    border-top-color: #BFBFBF;
+    border-style: solid;
+}
+
+.input-new-editor-social{
+    width: 340px;
+}
+
+
+
+
 

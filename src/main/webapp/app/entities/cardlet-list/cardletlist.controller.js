@@ -41,12 +41,30 @@
         };
 
         $scope.closeCropDialog = function(){
+            $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
             $scope.showCropDialog = false;
+            $scope.showSocialDialog = false;
             $scope.myImage = "";
+            $scope.socialLinks = ""
             angular.element(document.querySelector('#fileInput')).val(null);
         };
 
         $scope.showSpinner = false;
+        $scope.showSocialDialog = false;
+
+        $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
+
+        $scope.openSocialDialog = function(index, links){
+            console.log(index)
+            $scope.tabIndex = index;
+            $scope.showSocialDialog = true;
+            $scope.socialLinks = links;
+        }
+
+        $scope.saveSocialLinks = function(){
+            $scope.tabNames.tabs[$scope.tabIndex].socialLinks = $scope.socialLinks;
+            $scope.showSocialDialog = false;
+        }
 
 
 
@@ -677,17 +695,17 @@
             if($scope.tabNames) {
 
                 if($scope.tabNames.tabs.length == 1){
-                    cyrrentEl.style.width = "486px"
+                    cyrrentEl.style.width = "646px"
                 }
 
                 if ($scope.tabNames.tabs.length === 2) {
-                    cyrrentEl.style.width = "243px"
+                    cyrrentEl.style.width = "323px"
                 }
                 if ($scope.tabNames.tabs.length === 3) {
-                    cyrrentEl.style.width = "162px"
+                    cyrrentEl.style.width = "215px"
                 }
                 if ($scope.tabNames.tabs.length === 4) {
-                    cyrrentEl.style.width = "135px"
+                    cyrrentEl.style.width = "175px"
                 }
                 if(colorId){
                     cyrrentEl.style.color = "#"+colorId;

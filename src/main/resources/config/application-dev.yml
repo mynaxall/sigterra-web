@@ -102,6 +102,6 @@ jhipster:
             port: 5000
             queueSize: 512
     awss3Bucket:
-            credentials: config/aws/s3production.properties
+            credentials: config/aws/s3staging.properties
             name: sigterra-s3-storage-dev
             region: us-west-1
