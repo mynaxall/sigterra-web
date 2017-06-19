@@ -1,189 +1,130 @@
 <div>
-	<div class="cardlet3" ng-style="{'background-color': '#'+tabName.layout.mainColor}"style="position:relative;">
+    <div class="cardlet3" style="position: relative;">
+        <div ng-style="{'background-color': '#'+tabName.layout.secondaryColor}" class="item-top-div"></div>
+        <div ng-style="{'background-color': '#'+tabName.layout.mainColor}" class="item-central-div"></div>
+        <div ng-style="{'background-color': '#'+tabName.layout.secondaryColor}" class="item-bottom-div"></div>
         <div>
-            <div class="firstItemTop" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}"></div>
-            <div ng-show="tabName.items.length <= 3">
-                <div class="main-carousel-image-div">
-                    <div ng-repeat="slide in tabName.items"  class="main-carousel-item-div">
-                        <div id="cf4a" style="margin-bottom: 5px">
-
-                            <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="!slide.link" ng-src="{{slide.image}}">
+            <div ng-show="tabName.items.length == 1">
+                <div class="main-carousel-image-div-2">
+                    <div  ng-repeat="slide in tabName.items"  class="main-carousel-item-div-new" style="margin-top: 10px; ">
+                        <div id="cf4a" style="float: left; width: 190px; height: 190px">
+                            <img crossorigin="anonymous" id="ing-1" class="item-images-3" ng-show="!slide.link" ng-src="{{slide.image}}" style=" margin-left: 15px">
                             <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
-                                <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="slide.image" ng-src="{{slide.image}}">
+                                <img crossorigin="anonymous" id="ing-1" class="item-images-3" ng-show="slide.image" ng-src="{{slide.image}}" style=" margin-left: 15px">
                             </a>
                         </div>
-                        <div class="carousel-item-name-div-first" ng-show="slide.name.value" ng-style="{'font-weight': slide.name.bold ? 'bold' : 'normal',
-                    'font-style': slide.name.italic ? 'italic' : 'normal',
-                    'text-decoration': slide.name.underline ? 'underline' : 'normal'}" style="color: #{{tabName.layout.mainColor}}">{{slide.name.value}}</div>
-                        <div class="carousel-item-name-div-first" ng-show="!slide.name.value" style="color: #{{tabName.layout.mainColor}}">Maui Hotel</div>
-                        <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="slide.description.value"
-                             ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
-                    'font-style': slide.description.italic ? 'italic' : 'normal',
-                    'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.value}}</div>
-                        <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="!slide.description.value">How To Fly A Private Jet On Your Next Trip</div>
+                        <div style="float: left; margin-left: 40px; margin-top: 60px;">
+                            <div class="carousel-item-name-div-first-second" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                            'font-style': slide.name.italic ? 'italic' : 'normal',
+                            'text-decoration': slide.name.underline ? 'underline' : 'normal'}" ng-show="slide.name.value">{{slide.name.value}}</div>
+                            <div class="carousel-item-name-div-first-second" ng-show="!slide.name.value">Maui Hotel</div>
+                            <div class="carousel-item-name-div-first-second carousel-item-deskript-div" ng-show="slide.description.value"
+                                 ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                        'font-style': slide.description.italic ? 'italic' : 'normal',
+                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.value}}</div>
+                            <div class="carousel-item-name-div-first-second carousel-item-deskript-div" ng-show="!slide.description.value">How To Fly A Private Jet On Your Next Trip</div>
+                        </div>
                     </div>
                 </div>
 
             </div>
+            <div class="main-carousel-image-div-2" uib-carousel interval="myInterval" active="vm.currentSlide" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1"  ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)">
+                <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" class="main-carousel-item-div-new">
 
+                    <div class="carousel-image-div">
 
-            <div uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 3" ng-if="tabName.items.length > 3" ng-init="initSlide(tabName)" >
-                <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" >
-
-                    <div class="carousel-image-div-item">
-
-                        <div  class="carousel-item-div">
-                            <div id="cf4a" style="margin-bottom: 5px">
-                                <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="!slide.link" ng-src="{{slide.image}}">
-                                <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
-                                    <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="slide.image" ng-src="{{slide.image}}">
+                        <div  class="carousel-item-div-new">
+                            <div id="cf4a" style="float: left; width: 190px; height: 190px">
+                                <a href="{{slide.link}}" target="_blank" ng-class="{'disabled': !slide.link}">
+                                    <img crossorigin="anonymous" id="ing-1" class="item-images-3 imgFirst" ng-show="slide.image" ng-src="{{slide.image}}">
                                 </a>
                             </div>
-                            <div class="carousel-item-name-div-first" ng-show="slide.name.value"  ng-style="{'color':'#'+tabName.layout.mainColor, 'font-weight': slide.name.bold ? 'bold' : 'normal','font-style': slide.name.italic ? 'italic' : 'normal','text-decoration': slide.name.underline ? 'underline' : 'normal'}"
-                            >{{slide.name.value}}</div>
-                            <div class="carousel-item-name-div-first" ng-show="!slide.name.value"  ng-style="{'color':'#'+tabName.layout.mainColor}">Maui Hotel</div>
-                            <div ng-show="slide.description.value" class="carousel-item-name-div-first carousel-item-deskript-div"
-                                 ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
-                    'font-style': slide.description.italic ? 'italic' : 'normal',
-                    'text-decoration': slide.description.underline ? 'underline' : 'normal' ,}">{{slide.description.value}}</div>
-                            <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="!slide.description.value">How To Fly A Private Jet On Your Next Trip</div>
+                            <div style="float: left; margin-left: 40px; margin-top: 60px;">
+                                <div class="carousel-item-name-div-first-second"  ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular'',
+                        'font-style': slide.name.italic ? 'italic' : 'normal',
+                        'text-decoration': slide.name.underline ? 'underline' : 'normal'}" ng-show="slide.name.value">{{slide.name.value}}</div>
+                                <div class="carousel-item-name-div-first-second" ng-show="!slide.name.value">Maui Hotel</div>
+                                <div class="carousel-item-name-div-first-second carousel-item-deskript-div" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                        'font-style': slide.description.italic ? 'italic' : 'normal',
+                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}"  ng-show="slide.description.value">{{slide.description.value}}</div>
+                                <div class="carousel-item-name-div-first-second carousel-item-deskript-div" ng-show="!slide.description.value">How To Fly A Private Jet On Your Next Trip</div>
+                            </div>
                         </div>
 
-                        <div  class="carousel-item-div" ng-show="tabName.items.length >$index+1">
-                            <div id="cf4a" style="margin-bottom: 5px">
-                                <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="!tabName.items[$index+1].link" ng-src="{{tabName.items[$index+1].image}}">
-                                <a href="{{tabName.items[$index+1].link}}" target="_blank" ng-show="tabName.items[$index+1].link">
-                                    <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="tabName.items[$index+1].image" ng-src="{{tabName.items[$index+1].image}}">
-                                </a>
-                            </div>
-                            <div class="carousel-item-name-div-first" ng-show="tabName.items[$index+1].name.value"
-                                 ng-style="{'font-weight': tabName.items[$index+1].name.bold ? 'bold' : 'normal',
-                            'font-style': tabName.items[$index+1].name.italic ? 'italic' : 'normal',
-                            'text-decoration': tabName.items[$index+1].name.underline ? 'underline' : 'normal', 'color':'#'+tabName.layout.mainColor}">{{tabName.items[$index+1].name.value}}</div>
-                            <div class="carousel-item-name-div-first" ng-show="!tabName.items[$index+1].name.value" ng-style="{'color':'#'+tabName.layout.mainColor}">Maui Hotel</div>
-                            <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="tabName.items[$index+1].description.value" ng-style="{'font-weight': tabName.items[$index+1].description.bold ? 'bold' : 'normal',
-                            'font-style': tabName.items[$index+1].description.italic ? 'italic' : 'normal',
-                            'text-decoration': tabName.items[$index+1].description.underline ? 'underline' : 'normal'}">{{tabName.items[$index+1].description.value}}</div>
-                            <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="!tabName.items[$index+1].description.value">How To Fly A Private Jet On Your Next Trip</div>
-                        </div>
-
-                        <div class="carousel-item-div"  ng-show="tabName.items.length >$index+2">
-                            <div id="cf4a" style="margin-bottom: 5px">
-                                <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="!tabName.items[$index+2].link" ng-src="{{tabName.items[$index+2].image}}">
-                                <a href="{{tabName.items[$index+2].link}}" target="_blank" ng-show="tabName.items[$index+2].link">
-                                    <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="tabName.items[$index+2].image" ng-src="{{tabName.items[$index+2].image}}">
-                                </a>
-                            </div>
-                            <div class="carousel-item-name-div-first" ng-show="tabName.items[$index+2].name.value" ng-style="{'font-weight': tabName.items[$index+2].name.bold ? 'bold' : 'normal',
-                        'font-style': tabName.items[$index+2].name.italic ? 'italic' : 'normal',
-                        'text-decoration': tabName.items[$index+2].name.underline ? 'underline' : 'normal', 'color':'#'+tabName.layout.mainColor}">{{tabName.items[$index+2].name.value}}</div>
-                            <div class="carousel-item-name-div-first" ng-show="!tabName.items[$index+2].name.value" ng-style="{'color':'#'+tabName.layout.mainColor}">Maui Hotel</div>
-                            <div ng-show="tabName.items[$index+2].description.value" class="carousel-item-name-div-first carousel-item-deskript-div"
-                                 ng-style="{'font-weight': tabName.items[$index+2].description.bold ? 'bold' : 'normal',
-                        'font-style': tabName.items[$index+2].description.italic ? 'italic' : 'normal',
-                        'text-decoration': tabName.items[$index+2].description.underline ? 'underline' : 'normal'}"
-                            >{{tabName.items[$index+2].description.value}}</div>
-                            <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="!tabName.items[$index+2].description.value">How To Fly A Private Jet On Your Next Trip</div>
-                        </div>
-                        <div class="carousel-item-div" ng-show="tabName.items.length-3 < $index && tabName.items.length > 3">
-                            <div id="cf4a" style="margin-bottom: 5px">
-                                <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="!tabName.items[0].link" ng-src="{{tabName.items[0].image}}">
-                                <a href="{{tabName.items[0].link}}" target="_blank" ng-show="tabName.items[0].link">
-                                    <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="tabName.items[0].image" ng-src="{{tabName.items[0].image}}">
-                                </a>
-                            </div>
-                            <div class="carousel-item-name-div-first"  ng-show="tabName.items[0].name.value"
-                                 ng-style="{'font-weight': tabName.items[0].name.bold ? 'bold' : 'normal',
-                    'font-style': tabName.items[0].name.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[0].name.underline ? 'underline' : 'normal', 'color':'#'+tabName.layout.mainColor}">{{tabName.items[0].name.value}}</div>
-                            <div class="carousel-item-name-div-first" ng-show="!tabName.items[0].name.value" ng-style="{'color':'#'+tabName.layout.mainColor}">Maui Hotel</div>
-                            <div ng-show="tabName.items[0].description.value" class="carousel-item-name-div-first carousel-item-deskript-div"
-                                 ng-style="{'font-weight': tabName.items[0].description.bold ? 'bold' : 'normal',
-                    'font-style': tabName.items[0].description.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[0].description.underline ? 'underline' : 'normal'}">{{tabName.items[0].description.value}}</div>
-                            <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="!tabName.items[0].description.value">How To Fly A Private Jet On Your Next Trip</div>
-                        </div>
-
-                        <div  class="carousel-item-div" ng-show="tabName.items.length-2 < $index && tabName.items.length > 3">
-                            <div id="cf4a" style="margin-bottom: 5px">
-                                <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="!tabName.items[1].link" ng-src="{{tabName.items[1].image}}">
-                                <a href="{{tabName.items[1].link}}" target="_blank" ng-show="tabName.items[1].link">
-                                    <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="tabName.items[1].image" ng-src="{{tabName.items[1].image}}">
-                                </a>
-                            </div>
-                            <div class="carousel-item-name-div-first" ng-show="tabName.items[1].name.value"
-                                 ng-style="{'font-weight': tabName.items[1].name.bold ? 'bold' : 'normal',
-                    'font-style': tabName.items[1].name.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[1].name.underline ? 'underline' : 'normal', 'color':'#'+tabName.layout.mainColor}">{{tabName.items[1].name.value}}</div>
-                            <div class="carousel-item-name-div-first" ng-show="!tabName.items[1].name.value" ng-style="{'color':'#'+tabName.layout.mainColor}">Maui Hotel</div>
-                            <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="tabName.items[1].description.value"
-                                 ng-style="{'font-weight': tabName.items[1].description.bold ? 'bold' : 'normal',
-                    'font-style': tabName.items[1].description.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.items[1].description.underline ? 'underline' : 'normal'}">{{tabName.items[1].description.value}}</div>
-                            <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="!tabName.items[1].description.value">How To Fly A Private Jet On Your Next Trip</div>
-                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
-	</div>
-</div>
+
+    </div>
 
 
-<style type="text/css">
+    <style type="text/css">
 
-    #cf4a{
-        width: 150px;
-        height:150px;
+        .left-catusel-panel{
+            float: left;
+        }
 
-    }
+        .main-carousel-image-div-2{
+            text-align: center;
+            position: absolute!important;
+            top:10px;
+            width: 100%;
+        }
 
-
-
-    .main-carousel-image-div{
-        text-align: center;
-    }
-
-    .main-carousel-item-div{
-        vertical-align: top;
-        display: inline-block;
-        width: 160px;
-    }
-
-
-    .carousel-image-div-item{
-        margin-left: 25px;
-    }
-
-    .carousel-item-name-div-first{
-        width: 140px;
-        height: 30px;
-        max-height:30px;
-        min-height: 30px;
-        font-weight: bold;
-        font-size: 16px;
-        margin-left: 10px;
-        max-width: 140px;
-        position: relative;
-        z-index: 2;
-        text-align: left;
-    }
+        .main-carousel-item-div-new{
+            display: inline-block;
+            width: 480px;
+            vertical-align: top;
+            text-align: left;
+        }
 
 
-    .carousel-item-deskript-div{
-        font-weight: normal;
-        font-size: 14px;
-        height: 40px;
-        max-height:40px;
-        min-height: 40px;
-    }
+        .carousel-image-div{
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        .carousel-item-name-div-first-second{
+            width: 200px;
+            height: 30px;
+            font-weight: bold;
+            font-size: 24px;
+            margin-left: 15px;
+            max-height:30px;
+            min-height: 30px;
+            margin-bottom: 20px;
+        }
 
 
-    .carousel-item-div{
-        float: left;
-        width: 160px;
+        .carousel-item-deskript-div{
+            font-weight: normal;
+            font-size: 14px;
+            max-height:40px;
+            min-height: 40px;
+        }
 
-    }
+
+        .carousel-item-div-new{
+            float: left;
+            width: 480px;
+        }
 
 
-</style>
+        .item-images-3 {
+            width: 183px;
+            height: 183px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #CFCFCF;
+            margin-left: 20px;
+            font-weight: 3px;
+            border-style: solid;
+            border-color: #ffffff;
+
+        }
+
+
+
+    </style>

@@ -1556,6 +1556,24 @@ Social Buttons
     background-color: #FFFFFF;
 }
 
+.textarea-new-editor {
+    width: 100%;
+    max-width: 334px;
+    height: 34px;
+    max-height: 100px;
+    background-color: #F6F8FA;
+    border-width: 0px;
+    border-radius: 0px;
+    border-style: solid;
+    margin-top: 4px;
+    color: #4A4A4A;
+}
+
+.textarea-new-editor:focus{
+    border: 1px solid  #BFBFBF;
+    background-color: #FFFFFF;
+}
+
 .input-new{
     width: 300px;
     height: 34px;
@@ -1606,6 +1624,55 @@ Social Buttons
     font-size: 13px;
     font-weight: normal;
     padding: 6px 12px;;
+}
+
+.item-btn-editor{
+  background-color: transparent;
+    width: 24px!important;
+    height: 24px;
+    border: none;
+    min-width: 24px;
+    padding:0px;
+    font-size: 14px;
+}
+
+.item-btn-editor:hover{
+    background-color: transparent!important;
+    width: 24px!important;
+    height: 24px;
+    border: none;
+}
+
+.item-btn-editor:focus, .item-btn-editor-delete:focus{
+    background:transparent!important;
+    font-size: 14px;
+    color: #E8645A!important;
+}
+
+.item-btn-editor:active , .item-btn-editor-delete:active {
+    background:transparent!important;
+    font-size: 14px;
+    box-shadow: none!important;
+    color: #E8645A!important;
+}
+
+.item-btn-editor-delete{
+    background-color: transparent!important;
+    height: 24px;
+    border: none;
+    min-width: 24px;
+    padding:0px;
+    font-size: 14px;
+    color: #E8645A;
+    position: absolute;
+    top:0;
+    right: 25px;
+}
+
+.item-btn-editor-delete:hover{
+    background-color: transparent!important;
+    font-size: 14px;
+    color: #E8645A;
 }
 
 
@@ -2433,6 +2500,7 @@ div.navbar-collapse.in.collapse{
     border: 1px solid #D0D8D9;
     border-top-width: 0px;
     height: 240px;
+    width: 540px;
 }
 
 
@@ -2482,6 +2550,7 @@ ul.tab li a {
     font-weight: normal;
     transition: 0.3s;
     font-size: 15px;
+    height: 58px;
     word-break: break-all;
 
 
@@ -2494,7 +2563,7 @@ ul.tab li a:hover {
 
 ul.tab li {
     width: 135px;
-    min-height: 52px;
+    min-height: 60px;
     float: left;
     background: #F9F9F9;
     border: 1px solid #BFBFBF;
@@ -2598,12 +2667,10 @@ ul.tab2 li {
 
 .tabcontent {
     display: none;
-    padding: 6px 0px;
-    padding-top: 1px;
     border: 0px solid #E7E7E7;
     width: 700px;
     background-color: #ffffff;
-    margin-top: 51px;
+    margin-top: 60px;
 }
 
 .social-image-form-div{
@@ -2709,7 +2776,7 @@ input[disabled] {
     position: absolute;
     top: 10px;
     left: 2px;
-    color: #9B9B9B;
+    color: #BFBFBF;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
@@ -2752,10 +2819,6 @@ input, textarea {
     position: relative;
     z-index: 1;
     background-color: transparent;
-}
-
-textarea{
-    border: 1px solid #333!important;
 }
 
 input::-ms-clear {
@@ -2821,7 +2884,7 @@ input::-ms-clear {
 
 
 .cardlet-name-panel{
-    display: inline-block;
+    display: inline;
 }
 
 
@@ -2829,12 +2892,14 @@ input::-ms-clear {
     background-color: #18C6B7;
     color: #FFFFFF;
     border: none;
+    padding: 3px;
 
 }
 .closeInput-btn{
     background-color: #E8645A;
     color: #FFFFFF;
     border: none;
+    padding: 3px;
 
 }
 .alert-success {
@@ -3067,7 +3132,7 @@ ul.tab li.dropdown{
 
 
 ul.tab li.dropdown a{
-    padding:14px;
+    padding:19px 14px;
 }
 
 ul.tab li.dropdown a:hover{
@@ -3364,9 +3429,31 @@ button[disabled]:hover{
     width: 240px;
 }
 
+.editor-item-image-panel{
+    float: left;
+    width: 240px;
+}
+
 .editor-inputs-panel{
     float: left;
     width: 425px;
+}
+
+.editor-info-image-panel{
+    float: left;
+    width: 240px;
+}
+
+.editor-info-inputs-panel{
+    float: left;
+    width: 425px;
+    padding-top: 25px;
+}
+
+.editor-item-inputs-panel{
+    float: left;
+    width: 425px;
+    padding-top: 70px;
 }
 
 .accordion-section-content {
@@ -3379,9 +3466,36 @@ button[disabled]:hover{
     border-radius: 175px;
 }
 
+.info-image-editor{
+    width: 125px;
+    height: 125px;
+    margin-left: 60px;
+    border: none;
+}
+
+.item-image-editor{
+    width: 215px;
+    height: 215px;
+    margin-left: 15px;
+    margin-top: 15px;
+    border: 8px solid #FFFFFF;
+}
+
 .avatar-editor-div{
     width: 175px;
     height: 175px;
+    position: relative;
+}
+
+.item-image-div{
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+.info-image-div{
+    width: 185px;
+    height: 125px;
     position: relative;
 }
 
@@ -3395,6 +3509,28 @@ button[disabled]:hover{
     border: none!important;
     border-radius: 33px;
 
+}
+
+.info-image-upload-editor{
+    position: absolute;
+    top: -15px;
+    right: -20px;
+    width: 33px;
+    height: 33px;
+    background-color: #E8645A;
+    border: none!important;
+    border-radius: 33px;
+}
+
+.item-image-upload-editor{
+    position: absolute;
+    top:0px;
+    right: -40px;
+    width: 33px;
+    height: 33px;
+    background-color: #E8645A;
+    border: none!important;
+    border-radius: 33px;
 }
 
 .social-link-descript{
@@ -3479,6 +3615,83 @@ ul.tab li.active {
 }
 
 
+.editor-item-top{
+    position: absolute;
+    width: 100%;
+    height: 48px;
+    top:0;
+    left: 0;
+    background-color: #ECEFF4;
+}
+
+.editor-item-bottom{
+    position: absolute;
+    width: 100%;
+    height: 83px;
+    bottom: 1px;
+    left: 0;
+    background-color: #ECEFF4;
+}
+
+.editor-item-card{
+    position: relative;
+    height: 330px;
+    border: 1px solid #BFBFBF;
+    border-top: 0px;
+}
+
+.item-selection-panel{
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    bottom: 10px;
+    left: 0px;
+    text-align: center;
+    background: transparent;
+}
+
+.item-catousel-editor{
+    height: 330px;
+    width: 700px;
+}
+
+.item-selection{
+    display: inline-block;
+    padding-top: 2px;
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+    min-height: 24px;
+    min-width: 24px;
+    background-color: #CBD4DF;
+    color: #FFFFFF;
+}
+
+@keyframes selectionHover {
+    0%   {
+    }
+    100%{
+        background-color: #13BCB5;
+    }
+
+}
+
+
+.item-selection:hover{
+    animation-name: selectionHover;
+    animation-duration: 1s;
+}
+
+.item-selected{
+    width: 33px;
+    height: 33px;
+    background-color: #13BCB5;
+    padding-top: 5px;
+}
+
+.editable-input{
+    width: 100px!important;
+}
 
 
 

@@ -11,11 +11,11 @@
                             </div>
                             <div class="item-3-content" ng-hide="!slide.name.value && !slide.description.value" ng-style="{'background-color': '#'+tabName.layout.mainColor, 'border-color': '#'+tabName.layout.secondaryColor, 'text-align':'center'}">
                                 <a style="max-height: 240px;overflow: hidden" href="{{slide.link}}" target="_blank" ng-show="slide.link">
-                                    <div class="carousel-item-name-div-new-3" ng-style="{'font-weight': slide.name.bold ? 'bold' : 'normal',
+                                    <div class="carousel-item-name-div-new-3" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': slide.name.italic ? 'italic' : 'normal',
                                 'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                                     <div class="carousel-item-name-div-new-3" ng-style="{'color': '#'+tabName.layout.secondaryColor}" ng-show="!slide.name.value">Maui Hotel</div>
-                                    <div class="carousel-item-name-div-new-3 carousel-item-deskript-div" ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
+                                    <div class="carousel-item-name-div-new-3 carousel-item-deskript-div" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': slide.description.italic ? 'italic' : 'normal',
                                 'text-decoration': slide.description.underline ? 'underline' : 'normal' }" ng-show="slide.description.value">{{slide.description.value}}</div>
                                 </a>
@@ -36,10 +36,10 @@
                         <a href="{{slide.link}}" target="_blank" ng-class="{disabledLink: !slide.link}">
                             <div  class="main-carousel-item-div-new-3" ng-style="{'text-align': 'center'}">
                                 <div class="item-3-content" ng-style="{'background-color': '#'+tabName.layout.mainColor, 'border-color': '#'+tabName.layout.secondaryColor, 'text-align':'center'}" ng-hide="!slide.name.value && !slide.description.value">
-                                    <div class="carousel-item-name-div-new-3" ng-style="{'font-weight': slide.name.bold ? 'bold' : 'normal',
+                                    <div class="carousel-item-name-div-new-3" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': slide.name.italic ? 'italic' : 'normal',
                             'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
-                                    <div class="carousel-item-name-div-new-3 carousel-item-deskript-div" ng-style="{'font-weight': slide.description.bold ? 'bold' : 'normal',
+                                    <div class="carousel-item-name-div-new-3 carousel-item-deskript-div" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': slide.description.italic ? 'italic' : 'normal',
                         'text-decoration': slide.description.underline ? 'underline' : 'normal' }" ng-show="slide.description.value">{{slide.description.value}}</div>
 
@@ -99,7 +99,6 @@
     .carousel-item-name-div-new-3{
         max-width: 200px;
         height: 30px;
-        font-weight: bold;
         font-size: 16px;
         margin-left: 15px;
         max-height:30px;

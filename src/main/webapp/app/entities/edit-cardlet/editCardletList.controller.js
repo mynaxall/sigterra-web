@@ -44,7 +44,6 @@
             $scope.showCropDialog = false;
             $scope.showSocialDialog = false;
             $scope.myImage = "";
-            $scope.socialLinks = ""
             angular.element(document.querySelector('#fileInput')).val(null);
         }
 
@@ -122,7 +121,9 @@
             fd.append('file', file);
             var url = "";
 
-
+            console.log($scope.itemImageId)
+            console.log($scope.imageItemMame)
+            console.log($scope.tabImageId)
             if($scope.itemImageId != null){
                  url =  $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame];
 
@@ -686,6 +687,11 @@
                     cyrrentEl.style.color = "#"+colorId;
                 }
             }
+        };
+
+
+        $scope.itemPosition = function(index){
+            return index + 1;
         }
 
 
