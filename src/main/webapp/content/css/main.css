@@ -3600,7 +3600,7 @@ button[disabled]:hover{
 
 .accordion {
     overflow:hidden;
-    border-radius:3px;
+    border-radius:0px;
     background:#ffffff;
 }
 
