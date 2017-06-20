@@ -1284,9 +1284,7 @@ Social Buttons
 }
 
 .choose-tab-active{
-    -webkit-box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
+    border: 5px solid #13BCB5;
 }
 
 .delete-dialog-title{
@@ -2772,6 +2770,35 @@ input[disabled] {
 .form-group, .cover-input, .cardlet-name-panel, .input-text-div {
     position: relative;
 }
+
+.input-text-div-editor input::-webkit-input-placeholder{
+    color: #CBD4DF;
+}
+.input-text-div-editor input:-moz-placeholder{
+    color: #CBD4DF;
+}
+.input-text-div-editor input::-moz-placeholder{
+    color: #CBD4DF;
+}
+.input-text-div-editor input:-ms-input-placeholder{
+    color: #CBD4DF;
+}
+
+.input-text-div-editor textarea::-webkit-input-placeholder{
+    color: #CBD4DF;
+}
+.input-text-div-editor textarea:-moz-placeholder{
+    color: #CBD4DF;
+}
+.input-text-div-editor textarea::-moz-placeholder{
+    color: #CBD4DF;
+}
+.input-text-div-editor textarea:-ms-input-placeholder{
+    color: #CBD4DF;
+}
+
+
+
 
 .custom-placeholder {
     position: absolute;
