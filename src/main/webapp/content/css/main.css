@@ -2448,7 +2448,7 @@ div.navbar-collapse.in.collapse{
 }
 
 .sub-footer{
-    height: 662px;
+    height: 625px;
 }
 
 @media (min-width: 992px){
@@ -3718,6 +3718,18 @@ ul.tab li.active {
 
 .editable-input{
     width: 100px!important;
+}
+
+.first-cardler-example{
+    left: -160px;
+}
+
+.second-cardler-example{
+    left: -152px;
+}
+
+.third-cardler-example{
+    left: -145px
 }
 
 
