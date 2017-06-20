@@ -3710,10 +3710,10 @@ ul.tab li.active {
 }
 
 .item-selected{
-    width: 33px;
-    height: 33px;
+    width: 34px;
+    height: 34px;
     background-color: #13BCB5;
-    padding-top: 5px;
+    padding: 7px;
 }
 
 .editable-input{
