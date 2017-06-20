@@ -4,10 +4,8 @@
             $(document).click(function (event) {
                 var clickover = $(event.target);
                 var _opened = $(".navbar-collapse").hasClass("navbar-collapse in");
-                console.log(clickover);
                 if (_opened === true && !clickover.hasClass("navbar-toggle") && !clickover.hasClass("newNavbar")) {
                     $("button.navbar-toggle").click();
-                    console.log("asdasd")
                 }
             });
         });
