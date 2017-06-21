@@ -233,7 +233,7 @@
 
         $scope.openCity = function(cityName, tabId, cardName, cardId) {
 
-            vm.currentSlide = 1;
+
             var i, tabcontent, tablinks, tabs;
             tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
@@ -250,7 +250,6 @@
                 tabs[i].className = tabs[i].className.replace(" active", "");
 
             }
-            console.log(tabId)
             document.getElementById(cityName).style.display = "block";
             document.getElementById(tabId).className += " active";
 
@@ -270,7 +269,7 @@
                 tabs2[i].className = tabs2[i].className.replace(" active", "");
 
             }
-
+            vm.currentSlide = 0;
             document.getElementById(cardName).style.display = "block";
             document.getElementById(cardId).className += " active";
         }

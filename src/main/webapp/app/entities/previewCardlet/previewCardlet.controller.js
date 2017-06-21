@@ -20,20 +20,35 @@
             $http.get("/api/cardlet/"+param1)
                 .success(function(response, status, headers) {
                     $scope.tabNames = response;
+
+
                     if($scope.tabNames.tabs[0].tabType == 1){
-                        $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[0].site.value);
-                        $scope.tabType = 1
-                        $scope.currentLink =  $scope.getLink($scope.tabNames.tabs[0].site.value);
+                        $scope.tabType = 1;
+                        $scope.currentName = $scope.tabNames.tabs[0].name;
+                        if($scope.tabNames.tabs[0].site.value) {
+                            $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[0].site.value);
+                            $scope.currentLink = $scope.getLink($scope.tabNames.tabs[0].site.value);
+                        }
                     }
                     else{
-                        var buttons = document.getElementsByClassName("carousel-control");
+                        $scope.tabType = $scope.tabNames.tabs[0].tabType
 
+                        var buttons = document.getElementsByClassName("carousel-control");
                         for(var j = 0; j < buttons.length; j++){
                             document.getElementsByClassName("carousel-control")[j].className += " disabledLink"
                         }
-                        $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[0].items[0].link);
-                        $scope.currentLink = $scope.getLink($scope.tabNames.tabs[0].items[0].link);
-                        $scope.tabType = $scope.tabNames.tabs[0].tabType
+
+                        angular.forEach($scope.tabNames.tabs[0].items, function (item) {
+
+                            if(item.position  === 0){
+                                if(item.link) {
+                                    $scope.currentUrl = $scope.createURL(item.link);
+                                    $scope.currentLink = $scope.getLink(item.link);
+                                }
+                                $scope.currentName = item.name.value;
+                            }
+
+                        });
                     }
                 });
         };
@@ -54,7 +69,7 @@
 
 
         $scope.prevSlide = function(index){
-            $scope.currentUrl = undefined
+            $scope.currentUrl = undefined;
             if( vm.currentSlide == 0){
                 vm.currentSlide = $scope.tabNames.tabs[index].items.length -1
             }else{
@@ -62,8 +77,17 @@
             }
             console.log(vm.currentSlide)
             setTimeout(function() {
-                $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[index].items[vm.currentSlide].link);
-                $scope.currentLink = $scope.getLink($scope.tabNames.tabs[index].items[vm.currentSlide].link);
+
+                angular.forEach($scope.tabNames.tabs[index].items, function (item) {
+
+                    if(item.position  === vm.currentSlide){
+                        $scope.currentUrl = $scope.createURL(item.link);
+                        $scope.currentLink = $scope.getLink(item.link);
+                        $scope.currentName = item.name.value;
+                    }
+
+                });
+
             },10);
         };
 
@@ -75,8 +99,15 @@
                 vm.currentSlide = vm.currentSlide + 1;
             }
             setTimeout(function() {
-                $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[index].items[vm.currentSlide].link);
-                $scope.currentLink = $scope.getLink($scope.tabNames.tabs[index].items[vm.currentSlide].link);
+                angular.forEach($scope.tabNames.tabs[index].items, function (item) {
+
+                    if(item.position  === vm.currentSlide){
+                        $scope.currentUrl = $scope.createURL(item.link);
+                        $scope.currentLink = $scope.getLink(item.link);
+                        $scope.currentName = item.name.value;
+                    }
+
+                });
             },10)
         };
 
@@ -91,10 +122,21 @@
 
         }
 
+        vm.hideFrame = false;
 
-        $scope.next = function(){
-            console.log("asd")
+        $scope.test123 = function(){
+            console.log("123123");
+            vm.hideFrame= true;
+            document.getElementById("myFrame").style.height = "800px"
         }
+
+        $scope.sethide = function(){
+            console.log("asdasd");
+            vm.hideFrame = false;
+            console.log(vm.hideFrame )
+        }
+
+
 
         function transition () {
             $state.transitionTo($state.$current, {
@@ -114,16 +156,32 @@
 
             vm.currentSlide = 0;
             setTimeout(function() {
-                if ($scope.tabNames.tabs[id].tabType == 1) {
-                    $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[id].site.value);
-                    $scope.currentLink = $scope.getLink($scope.tabNames.tabs[id].site.value);
-                    $scope.tabType = $scope.tabNames.tabs[id].tabType
+
+                console.log($scope.tabNames.tabs[id].tabType === 1);
+                if ($scope.tabNames.tabs[id].tabType === 1) {
+                    $scope.tabType = 1;
+                    $scope.currentName = $scope.tabNames.tabs[id].name;
+                    if($scope.tabNames.tabs[id].site.value) {
+                        $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[id].site.value);
+                        $scope.currentLink = $scope.getLink($scope.tabNames.tabs[id].site.value);
+                    }
+
                 }
                 else {
-                    $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[id].items[0].link);
-                    $scope.currentLink = $scope.getLink($scope.tabNames.tabs[id].items[0].link);
                     $scope.tabType = $scope.tabNames.tabs[id].tabType
+                    angular.forEach($scope.tabNames.tabs[id].items, function (item) {
+
+                        if(item.position  === 0){
+                            $scope.currentName = item.name.value;
+                            if(item.link) {
+                                $scope.currentUrl = $scope.createURL(item.link);
+                                $scope.currentLink = $scope.getLink(item.link);
+                            }
+                        }
+
+                    });
                 }
+
             },10)
 
             var i, tabcontent2, tablinks2, tabs2;
@@ -145,6 +203,7 @@
 
             document.getElementById(cardName).style.display = "block";
             document.getElementById(cardId).className += " active";
+
         };
 
 
@@ -163,6 +222,16 @@
             document.getElementsByClassName("tabcontent")[0].style.display = "block";;
             document.getElementsByClassName("tabs")[0].className += " active";
         });
+
+
+        $scope.reloadFrame = function(){
+            var url = $scope.currentUrl;
+            $scope.currentUrl = null
+            setTimeout(function() {
+                $scope.currentUrl = url
+            },10)
+
+        }
 
 
 

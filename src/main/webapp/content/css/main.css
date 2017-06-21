@@ -1118,14 +1118,14 @@ Social Buttons
 
 .custom-slide-prev{
     position: absolute;
-    top:50px;
-    left: 20px;
+    top: 170px;
+    left: 0px;
 }
 
 .custom-slide-next{
     position: absolute;
-    top:50px;
-    right: 20px;
+    top: 170px;
+    right: 0px;
 }
 
 
@@ -3730,6 +3730,85 @@ ul.tab li.active {
 
 .third-cardler-example{
     left: -145px
+}
+
+.preview-iframe{
+    width: 80%;
+    min-width: 600px;
+    margin: 0 auto;
+    margin-top: -61px;
+    border: 1px solid #CBD4DF;
+}
+
+.preview-border{
+    background-color: #E3E8EE;
+    width: 100%;
+    height: 125px;
+    text-align: center;
+    padding: 15px;
+}
+
+.preview-header-iframe{
+    width: 100%;
+    height: 60px;
+    background-color: #CBD4DF;
+    padding: 12px;
+}
+
+.preview-header-navigation{
+    width: 500px;
+    height: 36px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.preview-header-url{
+    width: 440px;
+    height: 36px;
+    background: #F6F8FA;
+    font-size: 17px;
+    color: #4D4D4D;
+    padding: 7px;
+    display: inline-block;
+}
+
+.preview-header-reload{
+    position: absolute;
+    top:8px;
+    right: 0px;
+}
+
+.preview-iframe-name{
+    margin: auto;
+    font-size: 24px;
+    color: #4A4A4A;
+}
+
+
+.preview-create-button{
+    background-color: #E8645A;
+    color: #FFF;
+    text-transform: uppercase;
+    width: 260px;
+    border: 1px solid #E8645A;
+    border-radius: 0px;
+    font-size: 15px;
+    padding: 12px;
+
+}
+
+
+.preview-add-button{
+    margin-left: 18px;
+    background-color: #FFF;
+    color: #E8645A;
+    border: 1px solid #E8645A;
+    text-transform: uppercase;
+    width: 260px;
+    border-radius: 0px;
+    font-size: 15px;
+    padding: 12px;
+
 }
 
 

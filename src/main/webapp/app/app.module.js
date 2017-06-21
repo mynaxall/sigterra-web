@@ -18,7 +18,8 @@
             'dndLists',
             'ngclipboard',
             'base64',
-            'xeditable'
+            'xeditable',
+            'ngOnload'
         ])
         .run(run);
 
