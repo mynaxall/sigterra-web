@@ -7,7 +7,7 @@
 
                     <div ng-repeat="slide in tabName.items"  class="main-carousel-item-div-new-3">
                             <div style="max-height: 240px;overflow: hidden">
-                                <img style="width: 100%" crossorigin="anonymous" id="ing-1" ng-src="{{slide.image}}">
+                                <img crossorigin="anonymous"  style="width: 100%" id="ing-1" ng-src="{{slide.image}}">
                             </div>
                             <div class="item-3-content" ng-hide="!slide.name.value && !slide.description.value" ng-style="{'background-color': '#'+tabName.layout.mainColor, 'border-color': '#'+tabName.layout.secondaryColor, 'text-align':'center'}">
                                 <a style="max-height: 240px;overflow: hidden" href="{{slide.link}}" target="_blank" ng-show="slide.link">
@@ -29,7 +29,7 @@
             <div uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1"  ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)">
                 <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position">
                     <div style="max-height: 240px;overflow: hidden">
-                        <img style="width: 100%" crossorigin="anonymous" id="ing-1" ng-src="{{slide.image}}">
+                        <img crossorigin="anonymous" style="width: 100%" id="ing-1" ng-src="{{slide.image}}">
 
                     </div>
                     <div class="main-carousel-image-div-new-3" style="height: 240px">
@@ -111,8 +111,9 @@
     .carousel-item-deskript-div{
         font-weight: normal;
         font-size: 14px;
-        max-height:40px;
-        min-height: 40px;
+        max-height:60px;
+        min-height: 60px;
+        overflow: hidden;
     }
 
 
