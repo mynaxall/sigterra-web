@@ -13,10 +13,12 @@
                     Copy to e-mail</h4>
             </div>
             <div  style=" padding: 50px!important;" class="modal-body">
-                <div class="copy-to-email-step-number">
-                    <div class="registration-steps-number">1</div>
+                <div style="position: relative">
+                    <div class="copy-to-email-step-number">
+                        <div class="registration-steps-number">1</div>
+                    </div>
+                    <div class="copy-to-email-steps">Choose your signature design:</div>
                 </div>
-                <div class="copy-to-email-steps">Choose your signature design:</div>
                 <div style="min-height: 400px">
                     <div class="row" style="margin-left: 15px;margin-right: 15px; margin-top: 30px;">
                         <div  class="selectSignature" style="width: 550px">
@@ -50,8 +52,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="add-banner-panel" style="padding-bottom: 35px; padding-top: 35px; margin-top: 25px">
-                    <div class="copy-to-email-step-number">
+                <div class="add-banner-panel" style="padding-bottom: 35px; padding-top: 35px; margin-top: 25px; position:relative;">
+
+                    <div class="copy-to-email-step-number" style="top: 35px">
                         <div class="registration-steps-number">2</div>
                     </div>
                     <div class="copy-to-email-steps" style="display: inline-block">Add banner to your signature:</div>
@@ -71,10 +74,12 @@
                 </div>
 
                 <div style="padding-top: 40px">
-                    <div class="copy-to-email-step-number">
-                        <div class="registration-steps-number">3</div>
+                    <div style="position:relative; display: inline-block;">
+                        <div class="copy-to-email-step-number">
+                            <div class="registration-steps-number">3</div>
+                        </div>
+                        <div class="copy-to-email-steps" style="display: inline-block;">Choose e-mail client:</div>
                     </div>
-                    <div class="copy-to-email-steps" style="display: inline-block;">Choose e-mail client:</div>
                     <div style="display: inline-block">
                         <select class="form-control" ng-options="item.title for item in fieldTable"  ng-model="selected" ng-change="hasChanged(selected)" style="margin-left: 20px; width: 150px; background-color: #FFF">
                         </select>
@@ -130,10 +135,12 @@
                     <div style="text-align: center; padding: 10px; border-width: 0px; border-color: #F1F1F1; border-style: solid;border-bottom-width: 1px">
                     </div>
                     <div>
-                        <div class="copy-to-email-step-number">
-                            <div class="registration-steps-number">4</div>
+                        <div style="position: relative">
+                            <div class="copy-to-email-step-number" style="top: 35px">
+                                <div class="registration-steps-number">4</div>
+                            </div>
+                            <div class="copy-to-email-steps" style="padding-top: 35px">Copy this zone:</div>
                         </div>
-                        <div class="copy-to-email-steps" style="padding-top: 35px">Copy this zone:</div>
                         <div class="mail-copy-div">
 
                             <div class="copy-to-web-div">
