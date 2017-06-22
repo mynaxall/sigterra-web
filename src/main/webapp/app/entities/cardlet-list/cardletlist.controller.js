@@ -272,6 +272,19 @@
         }
 
 
+        $scope.isDisabledTabs = false;
+
+        $scope.disableTabs = function(){
+            $scope.isDisabledTabs = true;
+        }
+
+        $scope.enableTabs = function(){
+            console.log("enableTabs")
+            $scope.isDisabledTabs = false;
+        }
+
+
+
         $scope.openCity = function(cityName, tabId, cardName, cardId) {
 
             vm.currentSlide = 1;

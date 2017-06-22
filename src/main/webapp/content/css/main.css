@@ -737,6 +737,7 @@ Social Buttons
 
 .register-container{
     padding: 0px 65px 0px 65px;
+    margin-bottom: 40px;
 }
 
 .steps{
@@ -1278,13 +1279,17 @@ Social Buttons
 }
 
 .choose-tab:hover{
-    border-width: 1px;
+    border-width: 2px;
     border-style: solid;
     border-color: #268d83 ;
 }
 
 .choose-tab-active{
     border: 5px solid #13BCB5;
+}
+
+.choose-tab-active:hover{
+    border: 5px solid #268d83;
 }
 
 .delete-dialog-title{
@@ -1534,6 +1539,7 @@ Social Buttons
     border-style: solid;
     margin-top: 4px;
     color: #4A4A4A;
+    padding-left: 5px;
 
 }
 
@@ -2539,6 +2545,26 @@ a:focus, button:focus, div:focus, span:focus, img:focus ,textarea:focus ,select:
 select:-moz-focusring { color: transparent; text-shadow: 0 0 0 #000; }
 
 /* Style the links inside the list items */
+ul.tab li span.tablinks {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 10px;
+    text-decoration: none;
+    text-transform: none;
+    font-weight: normal;
+    transition: 0.3s;
+    font-size: 15px;
+    height: 58px;
+    word-break: break-all;
+
+
+}
+
+/* Change background color of links on hover */
+ul.tab li span.tablinks:hover {
+    background-color: #ddd;
+}
+
 ul.tab li a {
     display: inline-block;
     text-align: center;
@@ -2567,12 +2593,10 @@ ul.tab li {
     background: #F9F9F9;
     border: 1px solid #BFBFBF;
     color: #7F8C8C;
-    text-transform: uppercase;
     text-align: center;
-    font-weight: bold;
 }
 
-ul.tab2 li a {
+ul.tab2 li span {
     display: inline-block;
     text-align: center;
     padding: 10px 10px;
@@ -2586,7 +2610,7 @@ ul.tab2 li a {
 
 }
 
-ul.tab2 li a:hover {
+ul.tab2 li span:hover {
     background-color: #ddd;
 }
 
@@ -2598,9 +2622,7 @@ ul.tab2 li {
     background: #FFFFFF;
     border: 1px #D0D8D9 solid;
     color: #7F8C8C!important;
-    text-transform: uppercase;
     text-align: center;
-    font-weight: bold;
 }
 
 
@@ -2879,6 +2901,7 @@ input::-ms-clear {
     height: 40px;
     color: #4A4A4A;
     background-color: #F8F8F8;
+    padding-left: 5px;
 }
 
 .editable-input-name {
@@ -3131,7 +3154,7 @@ button span{
     font-size: 18px;
 }
 
-a.tablinks{
+span.tablinks{
     width: 100%;
     line-height: 105%;
     height: 50px;
@@ -3295,7 +3318,7 @@ button[disabled]:hover{
 
 .cardlet-top-border{
     border: 0px solid #D0D8D9;
-    width: 100%;
+    width: 540px;
     height: 0px;
 }
 
@@ -3577,6 +3600,12 @@ button[disabled]:hover{
     margin-right: 10px;
 }
 
+.social-link-editor:hover,.social-link-editor:active, .social-link-editor:visited, .social-link-editor:link{
+    color: rgba(30, 73, 109, 0);
+    outline: none!important;
+
+}
+
 .editor-business-card{
     height: 330px;
     border: 1px solid #BFBFBF;
@@ -3609,12 +3638,14 @@ button[disabled]:hover{
     height: 34px;
     border: 1px solid #C0C0C0;
     margin-right: 25px;
+    margin-left: 10px;
 }
 
 .secondaryColor-input{
     width: 82px;
     height: 34px;
     border: 1px solid #C0C0C0;
+    margin-left: 10px;
 }
 
 ul.tab {
@@ -3694,19 +3725,13 @@ ul.tab li.active {
     color: #FFFFFF;
 }
 
-@keyframes selectionHover {
-    0%   {
-    }
-    100%{
-        background-color: #13BCB5;
-    }
-
-}
 
 
 .item-selection:hover{
-    animation-name: selectionHover;
-    animation-duration: 1s;
+    background-color: #13BCB5;
+    width: 30px;
+    height: 30px;
+    padding-top: 4px;
 }
 
 .item-selected{
@@ -3716,8 +3741,29 @@ ul.tab li.active {
     padding: 7px;
 }
 
+.add-item-icon{
+    color: #13BCB5;
+    font-size: 24px;
+    margin-top: -2px;
+}
+
+
+.add-item-icon:hover{
+    color: #268d83;
+}
+
+.item-selected:hover{
+    width: 34px;
+    height: 34px;
+    background-color: #268d83;
+    padding: 7px;
+}
+
 .editable-input{
     width: 100px!important;
+    height: 35px;
+    border: 1px solid #F6F8FA;
+    background-color: #FFFFFF;
 }
 
 .first-cardler-example{
@@ -3809,6 +3855,15 @@ ul.tab li.active {
     font-size: 15px;
     padding: 12px;
 
+}
+
+.tabs-div{
+    position: relative;display: table; width: 100%;
+}
+
+
+.hidenLink{
+    display: none;
 }
 
 

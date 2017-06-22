@@ -233,45 +233,52 @@
 
         $scope.openCity = function(cityName, tabId, cardName, cardId) {
 
+            console.log($scope.isEmptyName())
+            console.log(!$scope.isDisabledTabs)
 
-            var i, tabcontent, tablinks, tabs;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
+
+
+            if(!$scope.isDisabledTabs && $scope.isEmptyName()) {
+
+                var i, tabcontent, tablinks, tabs;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+
+                }
+                tabs = document.getElementsByClassName("tabs");
+
+                for (i = 0; i < tabs.length; i++) {
+                    tabs[i].className = tabs[i].className.replace(" active", "");
+
+                }
+                document.getElementById(cityName).style.display = "block";
+                document.getElementById(tabId).className += " active";
+
+                var i, tabcontent2, tablinks2, tabs2;
+                tabcontent2 = document.getElementsByClassName("tabcontent2");
+                for (i = 0; i < tabcontent2.length; i++) {
+                    tabcontent2[i].style.display = "none";
+                }
+                tablinks2 = document.getElementsByClassName("tablinks2");
+                for (i = 0; i < tablinks2.length; i++) {
+                    tablinks2[i].className = tablinks2[i].className.replace(" active", "");
+
+                }
+                tabs2 = document.getElementsByClassName("tabs2");
+
+                for (i = 0; i < tabs2.length; i++) {
+                    tabs2[i].className = tabs2[i].className.replace(" active", "");
+
+                }
+                vm.currentSlide = 0;
+                document.getElementById(cardName).style.display = "block";
+                document.getElementById(cardId).className += " active";
             }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-
-            }
-            tabs = document.getElementsByClassName("tabs");
-
-            for (i = 0; i < tabs.length; i++) {
-                tabs[i].className = tabs[i].className.replace(" active", "");
-
-            }
-            document.getElementById(cityName).style.display = "block";
-            document.getElementById(tabId).className += " active";
-
-            var i, tabcontent2, tablinks2, tabs2;
-            tabcontent2 = document.getElementsByClassName("tabcontent2");
-            for (i = 0; i < tabcontent2.length; i++) {
-                tabcontent2[i].style.display = "none";
-            }
-            tablinks2 = document.getElementsByClassName("tablinks2");
-            for (i = 0; i < tablinks2.length; i++) {
-                tablinks2[i].className = tablinks2[i].className.replace(" active", "");
-
-            }
-            tabs2 = document.getElementsByClassName("tabs2");
-
-            for (i = 0; i < tabs2.length; i++) {
-                tabs2[i].className = tabs2[i].className.replace(" active", "");
-
-            }
-            vm.currentSlide = 0;
-            document.getElementById(cardName).style.display = "block";
-            document.getElementById(cardId).className += " active";
         }
 
 
@@ -665,7 +672,20 @@
 
         }
 
+
+        $scope.isDisabledTabs = false;
+
+        $scope.disableTabs = function(){
+            $scope.isDisabledTabs = true;
+        }
+
+        $scope.enableTabs = function(){
+            console.log("enableTabs")
+            $scope.isDisabledTabs = false;
+        }
+
         $scope.tabWidth = function( id , colorId){
+
             var cyrrentEl = document.getElementById(id);
             if($scope.tabNames) {
 

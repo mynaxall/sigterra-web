@@ -35,7 +35,7 @@
 
                         var buttons = document.getElementsByClassName("carousel-control");
                         for(var j = 0; j < buttons.length; j++){
-                            document.getElementsByClassName("carousel-control")[j].className += " disabledLink"
+                            document.getElementsByClassName("carousel-control")[j].className += " hidenLink"
                         }
 
                         angular.forEach($scope.tabNames.tabs[0].items, function (item) {
@@ -151,7 +151,7 @@
             var buttons = document.getElementsByClassName("carousel-control");
 
             for(var j = 0; j < buttons.length; j++){
-                document.getElementsByClassName("carousel-control")[j].className += " disabledLink"
+                document.getElementsByClassName("carousel-control")[j].className += " hidenLink"
             }
 
             vm.currentSlide = 0;
