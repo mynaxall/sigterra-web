@@ -1,6 +1,5 @@
 <script src="/app/entities/cardlet-list/jscolor.js"></script>
 
-
 <div ng-show="showSpinner" class="spinner-shadow"><div style="position:absolute;top:40%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -100px;"></div></div>
 <div class="modeal-custom-window ng-hide" ng-show="isCopyTiEmail"></div>
 <div class="modeal-custom-window ng-hide" ng-show="isCopyTiEmail" style="position: absolute; background-color: rgba(0, 0, 0, 0);">
@@ -466,7 +465,7 @@
     </style>
     <div class="user-cardlet-panel ng-hide" ng-show="showConent">
         <div class="portfolio-header">
-            Portfolio
+            Portfolio {{showSpinner}}
         </div>
         <div class="row" >
             <div style="margin-bottom: 70px;" class="col-lg-6" ng-repeat="tabNames in userCardlets">

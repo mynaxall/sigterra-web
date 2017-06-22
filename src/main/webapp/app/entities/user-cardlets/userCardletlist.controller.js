@@ -29,6 +29,8 @@
             title: "Yahoo"
         }];
 
+        $scope.showSpinner = true;
+
         $scope.showConent = true;
 
         $scope.hasChanged = function(id) {
@@ -322,6 +324,11 @@
                     $scope.userCardlets = response;
 
                 });
+
+
+            setTimeout(function() {
+                $scope.showSpinner = false;
+            }, 500)
         };
 
         $scope.tabNames ={
