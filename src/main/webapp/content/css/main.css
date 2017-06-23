@@ -3874,5 +3874,12 @@ ul.tab li.active {
     display: none;
 }
 
+.editable-error{
+    color: #a94442;
+    position: absolute;
+    top: 25px;
+    left: -10px;
+}
+
 
 

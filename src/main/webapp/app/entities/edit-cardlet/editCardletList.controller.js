@@ -762,6 +762,13 @@
             return true;
         }
 
+        $scope.checkName = function(data){
+            console.log(data)
+            if(!data || data === ""){
+                return "Your tab name is required."
+            }
+        }
+
         $scope.disableSaveBtn = false;
 
         $scope.saveCardlet = function(){

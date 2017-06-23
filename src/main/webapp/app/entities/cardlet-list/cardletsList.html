@@ -251,8 +251,8 @@
                                     <span href="javascript:void(0)" id="tabLink{{tabName.position}}"  ng-class="{disabledLink: !isEmptyName()}" class="tablinks" ng-click="openCity('settings'+tabName.name+tabName.position, 'tab'+tabName.position, tabName.name+tabName.position, 'li'+tabName.position+tabName.name)">
                                         <form editable-form name="editableForm">
                                             <div class="cardlet-name-panel">
-                                              <span class="cadletName"  editable-text="tabName.name" e-name="group" style="background: transparent;" e-maxlength="25">
-                                                    {{tabName.name || 'Tab’s name' }}
+                                              <span class="cadletName"  editable-text="tabName.name" e-name="group" style="background: transparent;" e-maxlength="25"  onbeforesave="checkName($data)">
+                                                    {{tabName.name}}
                                               </span>
                                             </div>
                                             <div  class="cardlet-name-panel">

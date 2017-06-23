@@ -216,7 +216,6 @@
 
         <div class="row" style="margin: 0px">
             <div class="left-column">
-
                 <div class="left-column-content">
                     <form editable-form name="editableForm">
                         <div class="cardlet-name-panel">
@@ -235,8 +234,8 @@
                                 <span class="tablinks"  id="tabLink{{tabName.position}}" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">
                                     <form editable-form name="editableForm">
                                         <div class="cardlet-name-panel">
-                                              <span class="cadletName"  editable-text="tabName.name" e-name="group" style="background: transparent;" e-maxlength="25">
-                                                    {{tabName.name || '' }}
+                                              <span class="cadletName"  editable-text="tabName.name" e-name="group" style="background: transparent;" e-maxlength="25" onbeforesave="checkName($data)">
+                                                    {{tabName.name}}
                                               </span>
                                         </div>
                                         <div  class="cardlet-name-panel">
@@ -244,6 +243,7 @@
                                                 <img src="/content/images/new/pencil_inputfields.png" style="margin-top: -5px;">
                                             </div>
                                                   <span ng-show="editableForm.$visible">
+
                                                     <button type="submit" class="saveInput-btn" ng-disabled="editableForm.$waiting" ng-click="enableTabs()">
                                                         <span class="glyphicon glyphicon-ok"></span>
                                                     </button>
