@@ -328,7 +328,7 @@
 
             setTimeout(function() {
                 $scope.showSpinner = false;
-            }, 500)
+            }, 100)
         };
 
         $scope.tabNames ={

@@ -913,12 +913,13 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                         ng-click="closeCropDialog()">&times;</button>
+                <div class="crop-dialog-header">Your social profiles link</div>
             </div>
             <div  style="padding: 20px!important; text-align: center" class="modal-body">
                 <form name="myForm" class="input-padding">
                     <div class="form-group clearfix">
-                        <div class="input-text-div">
-                            <input type="url" class="input-new-editor input-new-editor-social" id="twitter" name="twitter" ng-model="socialLinks.twitter">
+                        <div class="input-text-div input-text-div-editor">
+                            <input type="url" class="input-new-editor input-new-editor-social" id="twitter" placeholder="Twitter" name="twitter" ng-model="socialLinks.twitter">
                             <div ng-show="myForm.twitter.$dirty && myForm.twitter.$invalid">
                                 <p class="help-block has-error-new"
                                    ng-show="myForm.twitter.$error.url">
@@ -934,7 +935,7 @@
                     </div>
                     <div class="form-group clearfix">
 
-                        <div class="input-text-div clearfix">
+                        <div class="input-text-div input-text-div-editor clearfix">
                             <input type="url" class="input-new-editor input-new-editor-social" id="facebook" placeholder="Facebook" name="facebook" ng-model="socialLinks.facebook">
 
                             <div ng-show="myForm.facebook.$dirty && myForm.facebook.$invalid">
@@ -951,7 +952,7 @@
                     </div>
                     <div class="form-group clearfix">
 
-                        <div class="input-text-div">
+                        <div class="input-text-div input-text-div-editor">
                             <input type="url" class="input-new-editor input-new-editor-social" id="google" placeholder="Google" name="google" ng-model="socialLinks.google">
                             <div ng-show="myForm.google.$dirty && myForm.google.$invalid">
                                 <p class="help-block has-error-new"
@@ -967,7 +968,7 @@
                     </div>
                     <div class="form-group clearfix">
 
-                        <div class="input-text-div">
+                        <div class="input-text-div input-text-div-editor">
                             <input type="url" class="input-new-editor input-new-editor-social" id="linkedin" placeholder="Linkedin" name="linkedin" ng-model="socialLinks.linkedin">
                             <div ng-show="myForm.linkedin.$dirty && myForm.linkedin.$invalid">
                                 <p class="help-block has-error-new"

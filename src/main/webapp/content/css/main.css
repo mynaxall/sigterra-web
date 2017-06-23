@@ -1,12 +1,12 @@
 @font-face {
-    font-family: 'Lato-Regular';
+    font-family: Lato-Regular;
     src: url('/content/fonts/Lato-Regular.ttf');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Roboto-Bold';
+    font-family: Roboto-Bold;
     src: url('/content/fonts/Roboto-Bold.ttf');
     font-weight: normal;
     font-style: normal;
@@ -14,7 +14,7 @@
 
 
 @font-face {
-    font-family: 'Roboto-Regular';
+    font-family: Roboto-Regular;
     src: url('/content/fonts/Roboto-Regular.ttf');
     font-weight: normal;
     font-style: normal;
@@ -87,7 +87,7 @@ html{
 
 body {
     background: #ffffff;
-    font-family: "Roboto-Regular"!important;
+    font-family: Roboto-Regular!important;
     color: #333;
     min-height: 100%;
     min-width: 600px;
@@ -95,7 +95,7 @@ body {
 }
 
 pre{
-    font-family: "Roboto-Regular"!important;
+    font-family: Roboto-Regular!important;
     white-space: pre-wrap;       /* Since CSS 2.1 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
     white-space: -pre-wrap;      /* Opera 4-6 */
@@ -961,7 +961,6 @@ Social Buttons
 
 .crop-dialog-header{
     font-size: 20px;
-    text-transform: uppercase;
     text-align: center;
     padding-top: 20px;
 }
@@ -1272,6 +1271,7 @@ Social Buttons
     height: 242px;
     width: 100%;
     z-index: 10;
+    border: 2px solid #BFBFBF;
 }
 
 .choose-tab:focus{
@@ -1673,10 +1673,11 @@ Social Buttons
     right: 25px;
 }
 
+
 .item-btn-editor-delete:hover{
     background-color: transparent!important;
     font-size: 14px;
-    color: #E8645A;
+    color: #e87771;
 }
 
 
@@ -2694,7 +2695,8 @@ ul.tab2 li {
     border: 0px solid #E7E7E7;
     width: 700px;
     background-color: #ffffff;
-    margin-top: 60px;
+    margin-top: 59px;
+    border-top: 1px solid #BFBFBF;
 }
 
 .social-image-form-div{
@@ -2706,9 +2708,9 @@ ul.tab2 li {
 
 .social-image-form-editor{
     float: left;
-    width: 60px;
+    width: 65px;
     padding-top: 2px;
-    padding-left: 22px;
+    padding-left: 32px;
 }
 
 .social-image-form-div-copy{
@@ -2894,13 +2896,13 @@ input::-ms-clear {
     font-size: 24px;
     color: #4A4A4A;
     margin-bottom: 20px;
-    font-weight: bold;
+    font-family: Roboto-Bold;
 }
 
 .cadletName{
     border-width: 0px;
     width: 300px;
-    font-size:20px;
+    font-size:18px;
     height: 40px;
     color: #4A4A4A;
     background-color: #F8F8F8;
@@ -3642,6 +3644,8 @@ button[disabled]:hover{
     border: 1px solid #C0C0C0;
     margin-right: 25px;
     margin-left: 10px;
+    padding-left: 5px;
+
 }
 
 .secondaryColor-input{
@@ -3649,6 +3653,7 @@ button[disabled]:hover{
     height: 34px;
     border: 1px solid #C0C0C0;
     margin-left: 10px;
+    padding-left: 5px;
 }
 
 ul.tab {
