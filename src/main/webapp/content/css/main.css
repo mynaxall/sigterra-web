@@ -696,6 +696,10 @@ Social Buttons
     font-weight: normal;
 }
 
+.login-lable:visited{
+    color: #7F8C8C;
+}
+
 .profile-input{
     height: 40px;
     border-width: 0;
