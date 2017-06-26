@@ -3885,5 +3885,9 @@ ul.tab li.active {
     left: -10px;
 }
 
+.navbar{
+    border: 0px!important;
+}
+
 
 
