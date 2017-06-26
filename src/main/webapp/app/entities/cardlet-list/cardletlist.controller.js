@@ -207,7 +207,8 @@
                         "secondaryColor": "4BABE2"
 
                     },
-                    "photo": "/content/images/avatar_img.png",
+                    "photo": "/content/images/avatar_img.png"
+
 
 
                 },
