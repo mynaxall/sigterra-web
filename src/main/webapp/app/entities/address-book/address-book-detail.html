@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span>Address Book</span> {{vm.addressBook.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Created Date</span></dt>
+        <dd>
+            <span>{{vm.addressBook.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Modified Date</span></dt>
+        <dd>
+            <span>{{vm.addressBook.modifiedDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{vm.addressBook.user.userId}}
+        </dd>
+        <dt><span>Cardlet</span></dt>
+        <dd>
+            <a ui-sref="cardlet-detail({id:vm.addressBook.cardlet.id})">{{vm.addressBook.cardlet.cardletId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="address-book-detail.edit({id:vm.addressBook.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>
