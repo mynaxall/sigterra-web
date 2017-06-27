@@ -59,6 +59,12 @@
                     </a>
                     <ul class="newNavbar dropdown-menu" uib-dropdown-menu>
                         <li class="newNavbar sigterra-naigation" ui-sref-active="active" ng-switch-when="true">
+                            <a ng-click="vm.collapseNavbar()" ui-sref="address-book">
+                                <span class="newNavbar glyphicon glyphicon-wrench"></span>&nbsp;
+                                <span class="newNavbar">Address book</span>
+                            </a>
+                        </li>
+                        <li class="newNavbar sigterra-naigation" ui-sref-active="active" ng-switch-when="true">
                             <a ui-sref="settings" ng-click="vm.collapseNavbar()">
                                 <span class="newNavbar glyphicon glyphicon-wrench"></span>&nbsp;
                                 <span class="newNavbar">Profile</span>
@@ -151,9 +157,7 @@
                 </li>
 
                 <li  ng-hide="vm.isAuthenticated()" ng-switch-when="false"  style="margin-top: 15px;"  uib-dropdown class="dropdown pointer">
-                    <a class="newNavbar saveButton" href="mailto:Santosh@sharan.me?subject=Demo for sigterra">
-                        Request for demo
-                    </a>
+                    <a class="newNavbar navigationButton" href="mailto:Santosh@sharan.me?subject=Demo for sigterra">Request for demo</a>
                 </li>
             </ul>
         </div>
