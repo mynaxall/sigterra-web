@@ -1,70 +1,419 @@
-<div>
-    <h2>Address Books</h2>
-    <jhi-alert></jhi-alert>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="address-book.new" >
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <span >
-                        Create new Address Book
-                    </span>
-                </button>
-            </div>
+<script src="/app/entities/cardlet-list/jscolor.js"></script>
+
+<div ng-show="showSpinner" class="spinner-shadow"><div style="position:absolute;top:40%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -100px;"></div></div>
+<ng-include src="'app/cardlets/deleteCardletDialog.html'"></ng-include>
+<div class="add-new-header ng-hide" ng-show="showImpersonate === 'true'">
+    <div style="position: relative">
+        <div class="add-new-btn">
+            <button class="saveButton" ng-show="showImpersonate === 'true'" ng-click="impersonate()" style="margin-top: 10px">Logout</button>
         </div>
     </div>
-    <br/>
-    <div class="table-responsive">
-        <table class="jh-table table table-striped">
-            <thead>
-                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="createdDate"><span>Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="modifiedDate"><span>Modified Date</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="user.userId"><span>User</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="cardlet.cardletId"><span>Cardlet</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="addressBook in vm.addressBooks track by addressBook.id">
-                    <td><a ui-sref="address-book-detail({id:addressBook.id})">{{addressBook.id}}</a></td>
-                        <td>{{addressBook.createdDate | date:'mediumDate'}}</td>
-                        <td>{{addressBook.modifiedDate | date:'mediumDate'}}</td>
-                    <td>
-                        {{addressBook.user.userId}}
-                    </td>
-                    <td>
-                        <a ui-sref="cardlet-detail({id:addressBook.cardlet.id})">{{addressBook.cardlet.cardletId}}</a>
-                    </td>
-                    <td class="text-right">
-                        <div class="btn-group flex-btn-group-container">
-                            <button type="submit"
-                                    ui-sref="address-book-detail({id:addressBook.id})"
-                                    class="btn btn-info btn-sm">
-                                <span class="glyphicon glyphicon-eye-open"></span>
-                                <span class="hidden-xs hidden-sm"></span>
-                            </button>
-                            <button type="submit"
-                                    ui-sref="address-book.edit({id:addressBook.id})"
-                                    class="btn btn-primary btn-sm">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                                <span class="hidden-xs hidden-sm"></span>
-                            </button>
-                            <button type="submit"
-                                    ui-sref="address-book.delete({id:addressBook.id})"
-                                    class="btn btn-danger btn-sm">
-                                <span class="glyphicon glyphicon-remove-circle"></span>
-                                <span class="hidden-xs hidden-sm"></span>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="text-center">
-        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
-    </div>
-    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
 </div>
+<div class="entiti-content">
+    <style>
+
+        .modal-content{
+            margin-top: 100px;
+        }
+
+        .modal-title{
+            color: #00C6C2;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .modal-header{
+            text-align: center;
+        }
+
+        .modal-footer{
+            background-color: #FFFFFF;
+            padding: 10px 10% 30px 10%!important;
+            text-align: center;
+            border-width: 0px;
+        }
+        .modal-body{
+            background-color: #FFFFFF;
+            padding: 30px 10%!important;
+
+        }
+
+
+
+        .add-new-header{
+            position: relative;
+            height: 200px;
+            background-color: #fff;
+            text-align: center;
+            padding-top: 40px;
+            font-size: 14px;
+            color: #4A4A4A;
+        }
+
+        .user-cardlets-footer{
+            height: 250px;
+            background-color: #fff;
+            text-align: center;
+            padding-top: 40px;
+            font-size: 14px;
+            color: #4A4A4A;
+            position: relative;
+        }
+
+        .add-new-header-text{
+            padding-right: 10%;
+            padding-left: 10%;
+            width: 100%;
+        }
+
+        ul.tab {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #FFF;
+            width: 620px;
+        }
+
+        /* Float the list items side by side */
+        ul.tab li {
+            width: 150px;
+            float: left;
+            background: #FFFFFF;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #D0D8D9;
+            margin-right: 5px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom: none;
+            color: #7F8C8C!important;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .tabs a{
+            color: #7F8C8C;
+        }
+
+
+        .remove{
+            padding: 0px!important;
+            position: absolute;
+            background: #fff;
+            color: #000!important;
+            border-radius: 20px;
+            width: 15px;
+            height: 15px;
+            top: -7px;
+            right: -7px;
+            text-transform: none;
+        }
+
+        ul.tab{
+            padding-top: 10px;
+        }
+
+        /* Style the tab content */
+
+
+        .tabs2 a{
+            color: #7F8C8C;
+        }
+
+        .active a{
+            color: #4BABE2;
+        }
+
+        ul.tab2 {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 550px;
+        }
+
+        .display{
+            display: block;
+        }
+        .none-display{
+            display: none;
+        }
+
+        .cardlet-label{
+            font-size: 11px;
+        }
+
+        .text-decoration-div{
+            float: left;
+            width: 130px;
+            text-align: right;
+            padding-top: 25px;
+        }
+
+        ul.tab li.active {
+            background: #18C6B7;
+        }
+
+        .dropdown-tab{
+            border:none!important;
+            width: 100%!important;
+            background-color: #FAFAFA!important;
+        }
+        .cardlet-dropdown{
+            background-color: #FAFAFA!important;
+        }
+
+        .add-item-btn{
+            margin: 10px;
+        }
+
+        .delete-item-btn{
+            background: none!important;
+            border: none!important;
+            color: #18C6B7!important;
+            text-decoration: underline;
+        }
+
+        input:focus{
+            outline: none;
+        }
+
+        ul[dnd-list], ul[dnd-list] > li {
+            position: relative;
+        }
+
+        .dndPlaceholder{
+            display: inline-block;
+            position: relative;
+            background-color: #ddd;
+            width: 150px;
+            min-height:44px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .cardlet-panel{
+            width: 585px;
+            margin: auto;
+            background-color: #FFFFFF;
+            border-width: 0px;
+            position: relative;
+        }
+
+        .cardlet-name{
+            width: 100%;
+            font-size: 26px;
+            background: #FFF;
+            text-align: left;
+            font-weight: bold;
+            color: #595959;
+            border-width: 0px;
+            padding: 20px;
+            padding-bottom: 0px;
+            height: 60px;
+        }
+
+
+
+        .cardlet-button-panel{
+            margin: 0px!important;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            padding-top: 0px;
+
+        }
+
+        .catdlet-btn{
+            height:80px;
+            background: #fff;
+            border-radius: 5px;
+            text-align: center;
+            border-width: 0px;
+            border-style: solid;
+            border-color: #c4c4c4;
+        }
+
+        .catdlet-btn:hover{
+            border-width: 2px;
+            border-color: #18C6B7;
+        }
+
+        .catdlet-btn-col{
+            padding: 0px!important;
+            width: 25%;
+            float: left;
+        }
+
+
+        .catdlet-btn-margin{
+            margin-right: 10px;
+        }
+
+        .crate-new-btn{
+            margin-top: 20px;
+        }
+
+        .add-new-panel{
+            margin-top: 120px;
+        }
+
+        .mail-us-btn{
+            width: 100px;
+            position: relative;
+            z-index: 100;
+            margin: auto;
+            margin-top: 15px;
+            background: #fff;
+            margin-bottom: 30px;
+        }
+
+        a.tablinks{
+            width: 100%;
+        }
+        a.tablinks2{
+            width: 100%;
+        }
+
+        .modeal-custom-window{
+            top:0;
+            position: fixed;
+            display: block;
+            width: 100%;
+            height:100%;
+            background-color: rgba(0,0,0, 0.6);
+            z-index: 1000;
+        }
+
+        .back-btn{
+            background-color: #e7e7e7;
+            color: #cf3d37;
+            width: auto;
+            padding-left: 0px;
+        }
+
+    </style>
+    <div class="user-cardlet-panel ng-hide" ng-show="showConent">
+        <div class="portfolio-header address-book-header">
+            Address book
+            <div class="search-address-book">
+                <input type="text" ng-model="searchText" id="searchText" class="cadletName">
+                <label for="searchText" class="search-input-name"><img style="position: absolute; top:10px; right: 10px;" src="/content/images/new/search.png"></label>
+            </div>
+        </div>
+        <div class="row" >
+            <div style="margin-bottom: 70px;" class="col-lg-6" ng-repeat="tabNames in userCardlets | filter:searchText">
+                <div class="cardlet-panel">
+                    <div class="address-book-top-control">
+
+                        <div class="address-book--btn-col-top">
+                            <div class="catdlet-btn-top">
+                                <a href="{{gerPreviewLink(tabNames.id)}}"><img src="/content/images/share.png" style="margin-top: 5px;"></a>
+                            </div>
+                        </div>
+                        <div class="address-book--btn-col-top">
+                            <div class="catdlet-btn-top" ng-click="delteCardletDialog(tabNames.id)">
+                                <img src="/content/images/delete_icon.png" style="margin-top: 5px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cardlet-name"></div>
+                    <div class="cardlet-central-panel" >
+                        <div id="copy-to-clip{{tabNames.id}}" >
+                            <div>
+                                <ul class="tab2">
+                                    <li style="background-color: #fff" class="tabs2 tabs2{{tabNames.id}}" ng-style="addColors('tab'+tabName.position+tabName.name+tabNames.id, tabName.layout.mainColor, tabName.layout.secondaryColor, tabNames.id)" ng-repeat="tabName in tabNames.tabs" ng-class="tabName.position == 0 ? 'active' : ''"
+                                        id="tab{{tabName.position}}{{tabName.name}}{{tabNames.id}}">
+                                        <div style="position: relative;display: table; width: 100%">
+                                            <a href="javascript:void(0)" id="tabLink{{tabName.position}}{{tabName.name}}{{tabNames.id}}" class="tablinks2 tablinks2{{tabNames.id}}" ng-style="{'color': '#'+tabName.layout.secondaryColor}"  ng-click="openCard(tabName.name+tabName.position+tabNames.id, 'tab'+tabName.position+tabName.name+tabNames.id, tabNames.id)">{{tabName.name}}</a>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            <div ng-repeat="tabName in tabNames.tabs" id="{{tabName.name}}{{tabName.position}}{{tabNames.id}}" class="tabcontent2 tabcontent2{{tabNames.id}}" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
+                                <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cardlet-button-panel row">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+
+    a.accordion-section-title.active{
+        background-color: #ECECEC!important;
+    }
+
+    .site-header-wrap {
+        margin-bottom:60px;
+        border-bottom:1px solid #cd9ad6;
+    }
+
+    /*------------------------------------*\
+    -------- DEMO Code: accordion
+    \*------------------------------------*/
+    /*----- Accordion -----*/
+    .accordion, .accordion * {
+        -webkit-box-sizing:border-box;
+        -moz-box-sizing:border-box;
+        box-sizing:border-box;
+    }
+
+    .accordion {
+        overflow:hidden;
+        box-shadow:0px 1px 3px rgba(0,0,0,0.25);
+        border-radius:3px;
+        background:#f7f7f7;
+    }
+
+    /*----- Section Titles -----*/
+    .accordion-section-title {
+        width: 100%;
+        padding: 15px;
+        display: inline-block;
+        border-top: 1px solid #D0D8D9;
+        border-bottom: 1px solid #D0D8D9;
+        background: #F9F9F9;
+        font-size: 1.200em;
+        color: #7F8C8C;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .accordion-section-title.active, .accordion-section-title:hover {
+        background:#ECECEC;
+        /* Type */
+        text-decoration:none;
+        color: #7F8C8C;
+    }
+
+    .accordion-section:last-child .accordion-section-title {
+        border-bottom:none;
+    }
+
+    /*----- Section Content -----*/
+    .accordion-section-content {
+        padding:15px;
+    }
+
+</style>
+
+</div>
+
+
+
+
+
+
+
+

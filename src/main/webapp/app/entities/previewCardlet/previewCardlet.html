@@ -178,8 +178,14 @@
 
     </style>
 
-    <div style="margin: auto;width: 600px;padding-top: 30px; padding-left: 30px; position: relative">
+    <div style="margin: auto;width: 570px;padding-top: 30px; padding-left: 30px; position: relative">
+        <div class="alert alert-success-added" check-position-scroll ng-show="successfulyAdded">
+            <strong>{{successfulyAdded}}</strong>
+        </div>
 
+        <div class="alert alert-danger" check-position-scroll ng-show="errorAddeding">
+            <strong>{{errorAddeding}}</strong>
+        </div>
         <div>
             <ul class="tab2">
                 <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
@@ -199,7 +205,7 @@
 
         <div style="margin-top: 30px; margin-bottom: 60px; position: relative; z-index: 10">
             <button class="preview-create-button" ui-sref="cardletlist">Create your business card</button>
-            <button class="preview-add-button" ui-sref="cardletlist"> Add to address book</button>
+            <button class="preview-add-button" ng-click="addToAddressBook()"> Add to address book</button>
         </div>
     </div>
 

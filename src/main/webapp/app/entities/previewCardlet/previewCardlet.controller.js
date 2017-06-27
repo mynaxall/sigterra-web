@@ -53,6 +53,28 @@
                 });
         };
 
+        $scope.successfulyAdded = "";
+        $scope.errorAddeding = "";
+
+        $scope.addToAddressBook = function(){
+            var param1 = $location.search().cardletId;
+            $http.post("/api/address-book/"+param1)
+                .success(function(response, status, headers) {
+
+                    $scope.successfulyAdded = response.message;
+                    $timeout(function() {
+                        $scope.successfulyAdded = "";
+                    }, 3000);
+                })
+                .error(function(response, status, headers) {
+                    $scope.errorAddeding = response.message;
+                    $timeout(function() {
+                        $scope.errorAddeding = "";
+                    }, 3000);
+
+                });
+        }
+
         $scope.trustSrc = function(src) {
             return $sce.trustAsResourceUrl(src);
         };

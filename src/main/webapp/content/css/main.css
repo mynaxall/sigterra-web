@@ -1129,7 +1129,7 @@ Social Buttons
 .custom-slide-next{
     position: absolute;
     top: 170px;
-    right: 0px;
+    right: -30px;
 }
 
 
@@ -1196,6 +1196,22 @@ Social Buttons
 
 .upload-banner-img:hover{
     background-color: #66bdb4!important;
+}
+
+.navigationButton{
+    background-color: #E8645A;
+    color: #FFF;
+    text-transform: uppercase;
+    border:none;
+    border-radius: 0px;
+    font-size: 15px;
+    padding: 12px;
+    font-weight: bold;
+}
+
+.navigationButton:hover{
+    background-color: #e87771!important;
+    color: #ffffff;
 }
 
 
@@ -1700,6 +1716,21 @@ Social Buttons
     background-color: #66bdb4!important;
 }
 
+.address-book-top-control{
+    position: absolute;
+    top:20px;
+    right:20px;
+    width: 90px;
+    height: 30px;
+}
+
+.address-book--btn-col-top{
+    padding: 0px!important;
+    width: 50%;
+    height: 30px;
+    float: left;
+}
+
 .cardlet-top-control{
     position: absolute;
     top:20px;
@@ -1749,6 +1780,10 @@ Social Buttons
     font-size: 34px;
     margin-bottom: 40px;
     font-weight: bold;
+}
+
+.address-book-header{
+    position: relative;
 }
 
 .copy-btn-part{
@@ -2928,6 +2963,28 @@ input::-ms-clear {
     padding: 10px 12px
 }
 
+.search-input-name{
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    color: #9B9B9B;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: normal;
+    z-index: 2;
+    display: none;
+    background-color: #CBD4DF;
+    padding: 10px 12px;
+    display: inline;
+    width: 40px;
+    height:40px;
+}
+
+.cadletName:focus + label.search-input-name{
+    display: none;
+}
+
 .cadletName:focus{
     border: 1px solid  #BFBFBF;
     background-color: #FFFFFF;
@@ -2966,6 +3023,12 @@ input::-ms-clear {
     width: 100%;
     top: 80px;
     position: absolute;
+}
+
+.alert-success-added{
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
 }
 
 .alert-success.top-fix {
@@ -3857,7 +3920,7 @@ ul.tab li.active {
 
 
 .preview-add-button{
-    margin-left: 18px;
+    margin-left: 16px;
     background-color: #FFF;
     color: #E8645A;
     border: 1px solid #E8645A;
@@ -3888,6 +3951,23 @@ ul.tab li.active {
 .navbar{
     border: 0px!important;
 }
+
+.search-address-book{
+    position: absolute;
+    top:0px;
+    right: 0px;
+}
+
+@media (max-width: 990px) {
+
+    .search-address-book {
+        position: relative;
+        margin: 0 auto;
+        width: 300px;
+
+    }
+}
+
 
 
 
