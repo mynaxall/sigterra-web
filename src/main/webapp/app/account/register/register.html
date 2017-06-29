@@ -56,7 +56,7 @@
                 <div class="form-group form-group-new">
                     <input type="text" class="profile-input" id="username" name="username" placeholder="Your Name *"
                            ng-model="vm.registerAccount.username" ng-minlength=1 ng-maxlength=50 required>
-                    <label ng-hide="vm.registerAccount.username" for="username" class="custom-placeholder">Your Name *</label>
+                    <label ng-hide="vm.registerAccount.username || form.username.$error.maxlength" for="username" class="custom-placeholder">Your Name *</label>
                     <div ng-show="form.username.$dirty && form.username.$invalid">
                         <p class="help-block"
                            ng-show="form.username.$error.required">
