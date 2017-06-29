@@ -3624,7 +3624,7 @@ button[disabled]:hover{
 .avatar-upload-editor{
     position: absolute;
     top:0px;
-    right: 0px;
+    right: 5px;
     width: 33px;
     height: 33px;
     background-color: #E8645A;
