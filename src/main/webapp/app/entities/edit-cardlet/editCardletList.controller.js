@@ -547,8 +547,6 @@
                 $scope.tabNames.tabs[i].position = i;
             }
 
-
-
             var tabs2 = document.getElementsByClassName("tabs2");
             var tabs = document.getElementsByClassName("tabs");
 

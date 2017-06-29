@@ -589,12 +589,7 @@
                     document.getElementsByClassName("tabcontent2")[i].style.display = "none";
                     tabs2[i].className = tabs2[i].className.replace(" active", "");
                 }
-                if(i == tabs.length -1){
-                    document.getElementsByClassName("tabcontent2")[0].style.display = "block";
-                    document.getElementsByClassName("tabs2")[0].className += " active";
-                    document.getElementsByClassName("tabcontent")[0].style.display = "block";
-                    document.getElementsByClassName("tabs")[0].className += " active";
-                }
+
 
             }
 
