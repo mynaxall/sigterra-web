@@ -522,7 +522,7 @@
 
         $scope.accordionActive = 2;
 
-        $scope.currentSlide = 0;
+        vm.currentSlide = 0;
 
         $scope.changeAccordionActivity = function(id){
             if($scope.accordionActive != id){
