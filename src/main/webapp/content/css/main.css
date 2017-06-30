@@ -2668,6 +2668,7 @@ ul.tab2 li {
     border: 1px #D0D8D9 solid;
     color: #7F8C8C!important;
     text-align: center;
+    word-break: break-all;
 }
 
 
