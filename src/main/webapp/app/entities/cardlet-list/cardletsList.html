@@ -360,7 +360,7 @@
                                                     <div class="item-selection-panel">
                                                         <div class="item-selection item-selected" ng-repeat="slide in tabName.items" ng-click="vm.currentSlide = $index">{{itemPosition($index)}}</div>
                                                         <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn-editor"><span class="glyphicon glyphicon-plus add-item-icon"></span></button>
-                                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  slide.index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete info</button>
+                                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  slide.index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -423,7 +423,7 @@
                                                     <div class="item-selection-panel">
                                                         <div class="item-selection" ng-repeat="slide in tabName.items" ng-click="vm.currentSlide = $index"  ng-class="$index == vm.currentSlide ? 'item-selected': '' ">{{itemPosition($index)}}</div>
                                                         <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn-editor"><span class="glyphicon glyphicon-plus add-item-icon" ></span></button>
-                                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  slide.index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete info</button>
+                                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  slide.index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
                                                     </div>
 
                                                 </div>
