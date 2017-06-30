@@ -124,8 +124,11 @@
         }
 
         vm.hideImageDialog = hideImageDialog;
-        function hideImageDialog(){
-
+        function hideImageDialog(clean){
+            if(clean){
+                $scope.myImage='';
+                $scope.myCroppedImage = '';
+            }
             vm.isShowDialog = false;
         }
 
