@@ -1207,6 +1207,7 @@ Social Buttons
     font-size: 15px;
     padding: 12px;
     font-weight: bold;
+    max-width: 200px;
 }
 
 .navigationButton:hover{
