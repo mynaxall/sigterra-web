@@ -23,7 +23,7 @@
 
 
                     if($scope.tabNames.tabs[0].tabType == 1){
-                        $scope.tabType = 1;
+                        vm.tabType = 1;
                         $scope.currentName = $scope.tabNames.tabs[0].name;
                         if($scope.tabNames.tabs[0].site.value) {
                             $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[0].site.value);
@@ -31,7 +31,7 @@
                         }
                     }
                     else{
-                        $scope.tabType = $scope.tabNames.tabs[0].tabType
+                        vm.tabType = $scope.tabNames.tabs[0].tabType
 
                         var buttons = document.getElementsByClassName("carousel-control");
                         for(var j = 0; j < buttons.length; j++){
@@ -177,34 +177,36 @@
             }
 
             vm.currentSlide = 0;
-            setTimeout(function() {
 
-                console.log($scope.tabNames.tabs[id].tabType === 1);
-                if ($scope.tabNames.tabs[id].tabType === 1) {
-                    $scope.tabType = 1;
-                    $scope.currentName = $scope.tabNames.tabs[id].name;
-                    if($scope.tabNames.tabs[id].site.value) {
-                        $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[id].site.value);
-                        $scope.currentLink = $scope.getLink($scope.tabNames.tabs[id].site.value);
+            if ($scope.tabNames.tabs[id].tabType === 1) {
+                vm.tabType = 1;
+                $scope.currentName = $scope.tabNames.tabs[id].name;
+                if($scope.tabNames.tabs[id].site.value) {
+                    $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[id].site.value);
+                    $scope.currentLink = $scope.getLink($scope.tabNames.tabs[id].site.value);
+                }
+
+            }
+            else {
+                vm.tabType = $scope.tabNames.tabs[id].tabType
+                angular.forEach($scope.tabNames.tabs[id].items, function (item) {
+
+                    if(item.position  === 0){
+                        if(item.name) {
+                            $scope.currentName = item.name.value;
+                        }else{
+                            $scope.currentName  = ""
+                        }
+                        if(item.link) {
+                            $scope.currentUrl = $scope.createURL(item.link);
+                            $scope.currentLink = $scope.getLink(item.link);
+                        }
                     }
 
-                }
-                else {
-                    $scope.tabType = $scope.tabNames.tabs[id].tabType
-                    angular.forEach($scope.tabNames.tabs[id].items, function (item) {
+                });
+            }
 
-                        if(item.position  === 0){
-                            $scope.currentName = item.name.value;
-                            if(item.link) {
-                                $scope.currentUrl = $scope.createURL(item.link);
-                                $scope.currentLink = $scope.getLink(item.link);
-                            }
-                        }
 
-                    });
-                }
-
-            },10)
 
             var i, tabcontent2, tablinks2, tabs2;
             tabcontent2 = document.getElementsByClassName("tabcontent2");

@@ -198,9 +198,9 @@
         </div>
 
         <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-            <div class="custom-slide-prev"><img src="/content/images/new/arrow_left.png" ng-hide="tabType === 1" ng-click="prevSlide($index)"></div>
+            <div class="custom-slide-prev"><img src="/content/images/new/arrow_left.png" ng-hide="vm.tabType === 1  || tabName.items.length < 2" ng-click="prevSlide($index)"></div>
             <ng-include style="display: block!important" src="tabName.layout.url"></ng-include>
-            <div class="custom-slide-next"><img src="/content/images/new/arrow_right.png" ng-hide="tabType === 1"  ng-click="nextSlide($index)"></div>
+            <div class="custom-slide-next"><img src="/content/images/new/arrow_right.png" ng-hide="vm.tabType === 1 || tabName.items.length < 2"  ng-click="nextSlide($index)"></div>
         </div>
 
         <div style="margin-top: 30px; margin-bottom: 60px; position: relative; z-index: 10">
