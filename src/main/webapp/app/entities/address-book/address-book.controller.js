@@ -65,10 +65,7 @@
 
                 });
 
-
-            setTimeout(function() {
-                $scope.showSpinner = false;
-            }, 100)
+            $scope.showSpinner = false;
         };
 
         $scope.searchText = "";
