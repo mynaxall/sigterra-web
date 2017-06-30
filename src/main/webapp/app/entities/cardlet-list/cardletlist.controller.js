@@ -11,6 +11,9 @@
         var vm = this;
 
 
+        $scope.noSocialChanges = false;
+
+
         $scope.showCropDialog = false;
         $scope.myImage='';
         $scope.myCroppedImage = '';

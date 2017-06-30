@@ -927,13 +927,12 @@
                 <form name="myForm" class="input-padding">
                     <div class="form-group clearfix">
                         <div class="input-text-div input-text-div-editor">
-                            <input type="url" class="input-new-editor input-new-editor-social" placeholder="Twitter" id="twitter" name="twitter" ng-model="socialLinks.twitter">
+                            <input ng-change="noSocialChanges = true" type="url" class="input-new-editor input-new-editor-social" placeholder="Twitter" id="twitter" name="twitter" ng-model="socialLinks.twitter">
                             <div ng-show="myForm.twitter.$dirty && myForm.twitter.$invalid">
                                 <p class="help-block has-error-new"
                                    ng-show="myForm.twitter.$error.url">
                                     Invalid URL string. It should starts from "http://" or "https://"
                                 </p>
-
                             </div>
                         </div>
                         <div class="social-image-form-editor" >
@@ -944,7 +943,7 @@
                     <div class="form-group clearfix">
 
                         <div class="input-text-div input-text-div-editor clearfix">
-                            <input type="url" class="input-new-editor input-new-editor-social" id="facebook" placeholder="Facebook" name="facebook" ng-model="socialLinks.facebook">
+                            <input ng-change="noSocialChanges = true" type="url" class="input-new-editor input-new-editor-social" id="facebook" placeholder="Facebook" name="facebook" ng-model="socialLinks.facebook">
 
                             <div ng-show="myForm.facebook.$dirty && myForm.facebook.$invalid">
                                 <p class="help-block has-error-new"
@@ -961,7 +960,7 @@
                     <div class="form-group clearfix">
 
                         <div class="input-text-div input-text-div-editor">
-                            <input type="url" class="input-new-editor input-new-editor-social" id="google" placeholder="Google" name="google" ng-model="socialLinks.google">
+                            <input ng-change="noSocialChanges = true" type="url" class="input-new-editor input-new-editor-social" id="google" placeholder="Google" name="google" ng-model="socialLinks.google">
                             <div ng-show="myForm.google.$dirty && myForm.google.$invalid">
                                 <p class="help-block has-error-new"
                                    ng-show="myForm.google.$error.url">
@@ -977,7 +976,7 @@
                     <div class="form-group clearfix">
 
                         <div class="input-text-div input-text-div-editor">
-                            <input type="url" class="input-new-editor input-new-editor-social" id="linkedin" placeholder="Linkedin" name="linkedin" ng-model="socialLinks.linkedin">
+                            <input ng-change="noSocialChanges = true" type="url" class="input-new-editor input-new-editor-social" id="linkedin" placeholder="Linkedin" name="linkedin" ng-model="socialLinks.linkedin">
                             <div ng-show="myForm.linkedin.$dirty && myForm.linkedin.$invalid">
                                 <p class="help-block has-error-new"
                                    ng-show="myForm.linkedin.$error.url">
@@ -990,10 +989,11 @@
                             <img ng-show="!socialLinks.linkedin" src="/content/images/new/linkedin.png">
                         </div>
                     </div>
+                    <div class="crop-btn-div">
+                        <button class="saveButton" ng-disabled="myForm.$invalid || !noSocialChanges" ng-click="saveSocialLinks()">save</button>
+                    </div>
                 </form>
-                <div class="crop-btn-div">
-                    <button ng-disabled="!myCroppedImage" class="saveButton" ng-click="saveSocialLinks()">save</button>
-                </div>
+
             </div>
         </div>
     </div>
