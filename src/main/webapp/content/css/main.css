@@ -1598,6 +1598,8 @@ Social Buttons
     border-style: solid;
     margin-top: 4px;
     color: #4A4A4A;
+    padding-left: 5px;
+    padding-top: 7px;
 }
 
 .textarea-new-editor:focus{
