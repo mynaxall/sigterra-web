@@ -1585,6 +1585,7 @@ Social Buttons
     width: 100%;
     max-width: 334px;
     height: 34px;
+    min-height: 34px;
     max-height: 100px;
     background-color: #F6F8FA;
     border-width: 0px;
