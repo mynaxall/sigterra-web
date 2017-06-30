@@ -1210,6 +1210,11 @@ Social Buttons
     max-width: 200px;
 }
 
+.navigationButton:focus{
+    background-color: #e87771!important;
+    color: #ffffff;
+}
+
 .navigationButton:hover{
     background-color: #e87771!important;
     color: #ffffff;
