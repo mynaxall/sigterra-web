@@ -736,6 +736,9 @@
                         cyrrentEl.style.width = "135px"
                     }
                 }
+                if (angular.element(document.getElementById(id)).hasClass('active')){
+                    cyrrentEl.style.borderTop = "2px solid #" + colorSecond
+                }
                 setTimeout(function() {
                     cyrrentEl.style.background = "#F9F9F9";
                     cyrrentEl.style.borderTop = "1px solid #D0D8D9"
