@@ -3869,6 +3869,8 @@ ul.tab li.active {
     margin: 0 auto;
     margin-top: -61px;
     border: 1px solid #CBD4DF;
+    position: relative;
+    min-height: 300px;
 }
 
 .preview-border{
@@ -3894,6 +3896,16 @@ ul.tab li.active {
 }
 
 .preview-header-url{
+    width: 440px;
+    height: 36px;
+    background: #F6F8FA;
+    font-size: 17px;
+    color: #4D4D4D;
+    padding: 7px;
+    display: inline-block;
+}
+
+.preview-header-url[disabled]{
     width: 440px;
     height: 36px;
     background: #F6F8FA;
