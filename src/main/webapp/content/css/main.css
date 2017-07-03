@@ -2639,7 +2639,7 @@ ul.tab li a:hover {
 
 ul.tab li {
     width: 135px;
-    min-height: 60px;
+    min-height: 62px;
     height: 60px;
     float: left;
     background: #F9F9F9;
@@ -2744,7 +2744,7 @@ ul.tab2 li {
     border: 0px solid #E7E7E7;
     width: 700px;
     background-color: #ffffff;
-    margin-top: 59px;
+    margin-top: 61px;
     border-top: 1px solid #BFBFBF;
 }
 
@@ -3254,7 +3254,7 @@ a.tablinks2{
 }
 
 ul.tab li.dropdown{
-    height:60px;
+    height:62px;
     width: 54px;
     background: #13BCB5;
     border-width: 1px;
@@ -3717,7 +3717,7 @@ button[disabled]:hover{
 
 .mainColor-input{
     width: 82px;
-    height: 34px;
+    height: 30px;
     border: 1px solid #C0C0C0;
     margin-right: 25px;
     margin-left: 10px;
@@ -3727,7 +3727,7 @@ button[disabled]:hover{
 
 .secondaryColor-input{
     width: 82px;
-    height: 34px;
+    height: 30px;
     border: 1px solid #C0C0C0;
     margin-left: 10px;
     padding-left: 5px;

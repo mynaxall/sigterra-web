@@ -54,7 +54,7 @@
         }
 
         $scope.gerPreviewLink = function(id){
-            return "mailto:?subject=Link to the Sigterra Profile Page.&body=Hi,%0D%0A %0D%0A Take a look at this Sigterra Profile Page: "+ ($location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ id);
+            return "mailto:?subject=Link to the Sigterra Profile Page.&body=Hi,%0D%0A %0D%0A Take a look at this Sigterra Profile Page: "+ ($location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/previewCardlet?cardletId=' + id);
         }
 
         $scope.showImpersonate = window.localStorage['impersonate'];

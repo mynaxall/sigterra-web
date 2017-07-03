@@ -70,7 +70,7 @@ public class AddressBookResource {
 
         if (cardlet == null) {
             successObject.put("success", false);
-            successObject.put("message", "Cardlet not exist");
+            successObject.put("message", "Cardlet does not exist");
 
             return  new ResponseEntity<>(successObject.toString(), HttpStatus.BAD_REQUEST);
         }
@@ -79,7 +79,7 @@ public class AddressBookResource {
 
         if (existing != null) {
             successObject.put("success", false);
-            successObject.put("message", "This cardlert already exists in your address book");
+            successObject.put("message", "This cardlet already exists in your address book");
 
             return  new ResponseEntity<>(successObject.toString(), HttpStatus.BAD_REQUEST);
         }

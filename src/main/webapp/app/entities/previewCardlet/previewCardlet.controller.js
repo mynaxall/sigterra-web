@@ -28,6 +28,7 @@
                         if($scope.tabNames.tabs[0].site.value) {
                             $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[0].site.value);
                             $scope.currentLink = $scope.getLink($scope.tabNames.tabs[0].site.value);
+                            vm.showSpinner = true;
                         }
                     }
                     else{
@@ -44,12 +45,14 @@
                                 if(item.link) {
                                     $scope.currentUrl = $scope.createURL(item.link);
                                     $scope.currentLink = $scope.getLink(item.link);
+                                    vm.showSpinner = true;
                                 }
                                 $scope.currentName = item.name.value;
                             }
 
                         });
                     }
+                    $timeout(function() {vm.showSpinner = false; },4000)
                 });
         };
 
@@ -98,19 +101,26 @@
                 vm.currentSlide = vm.currentSlide - 1;
             }
             console.log(vm.currentSlide)
-            setTimeout(function() {
+            $timeout(function() {
 
                 angular.forEach($scope.tabNames.tabs[index].items, function (item) {
 
-                    if(item.position  === vm.currentSlide){
+                    $scope.currentUrl = "";
+                    $scope.currentLink = "";
+                    $scope.currentName = "";
+                    if(item.link){
                         $scope.currentUrl = $scope.createURL(item.link);
                         $scope.currentLink = $scope.getLink(item.link);
+                    }
+                    if(item.link){
                         $scope.currentName = item.name.value;
+                        vm.showSpinner = true;
                     }
 
                 });
 
             },10);
+            $timeout(function() {vm.showSpinner = false; },4000)
         };
 
         $scope.nextSlide = function(index){
@@ -120,17 +130,26 @@
             }else{
                 vm.currentSlide = vm.currentSlide + 1;
             }
-            setTimeout(function() {
+            $timeout(function() {
                 angular.forEach($scope.tabNames.tabs[index].items, function (item) {
 
                     if(item.position  === vm.currentSlide){
+                        $scope.currentUrl = "";
+                        $scope.currentLink = "";
+                        $scope.currentName = "";
+                        if(item.link){
                         $scope.currentUrl = $scope.createURL(item.link);
                         $scope.currentLink = $scope.getLink(item.link);
-                        $scope.currentName = item.name.value;
+                        }
+                        if(item.link){
+                            $scope.currentName = item.name.value;
+                            vm.showSpinner = true;
+                        }
                     }
 
                 });
             },10)
+            $timeout(function() {vm.showSpinner = false; },4000)
         };
 
         $scope.getLink = function(link){
@@ -144,12 +163,16 @@
 
         }
 
+        vm.showSpinner = false;
+
         vm.hideFrame = false;
 
         $scope.test123 = function(){
             console.log("123123");
             vm.hideFrame= true;
             document.getElementById("myFrame").style.height = "800px"
+            vm.showSpinner = false;
+            console.log(vm.showSpinner)
         }
 
         $scope.sethide = function(){
@@ -181,9 +204,12 @@
             if ($scope.tabNames.tabs[id].tabType === 1) {
                 vm.tabType = 1;
                 $scope.currentName = $scope.tabNames.tabs[id].name;
+                $scope.currentUrl = "";
+                $scope.currentLink = "";
                 if($scope.tabNames.tabs[id].site.value) {
                     $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[id].site.value);
                     $scope.currentLink = $scope.getLink($scope.tabNames.tabs[id].site.value);
+                    vm.showSpinner = true;
                 }
 
             }
@@ -192,6 +218,8 @@
                 angular.forEach($scope.tabNames.tabs[id].items, function (item) {
 
                     if(item.position  === 0){
+                        $scope.currentUrl = "";
+                        $scope.currentLink = "";
                         if(item.name) {
                             $scope.currentName = item.name.value;
                         }else{
@@ -200,11 +228,15 @@
                         if(item.link) {
                             $scope.currentUrl = $scope.createURL(item.link);
                             $scope.currentLink = $scope.getLink(item.link);
+                            vm.showSpinner = true;
                         }
+
                     }
 
                 });
             }
+
+            $timeout(function() {vm.showSpinner = false; },4000)
 
 
 
@@ -251,7 +283,7 @@
         $scope.reloadFrame = function(){
             var url = $scope.currentUrl;
             $scope.currentUrl = null
-            setTimeout(function() {
+            $timeout(function() {
                 $scope.currentUrl = url
             },10)
 

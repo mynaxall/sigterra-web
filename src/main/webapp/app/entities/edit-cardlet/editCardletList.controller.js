@@ -191,6 +191,7 @@
                         document.getElementsByClassName("tabs")[0].className += " active";
                     }, 500)
                 });
+            $scope.showSpinner = false;
             $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ param1;
         };
 
@@ -519,7 +520,7 @@
             }
         }
 
-        $scope.showSpinner = false;
+        $scope.showSpinner = true;
 
         $scope.accordionActive = 2;
 
