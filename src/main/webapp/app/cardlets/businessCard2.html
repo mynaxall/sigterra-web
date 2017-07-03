@@ -80,13 +80,13 @@
             <div class="social-link-div">
                 <div>
                     <div ng-show="!tabName.company.value" class="svg-description-new"  ng-style="{'color': '#'+tabName.layout.secondaryColor}">Company Name</div>
-                    <div class="svg-description-new" ng-show="tabName.company.value" ng-style="{'font-family': tabName.company.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                    <div class="svg-description-new" ng-show="tabName.company.value" style="margin-left: 0px" ng-style="{'font-family': tabName.company.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.company.italic ? 'italic' : 'normal',
-                        'text-decoration': tabName.company.underline ? 'underline' : 'normal'}"  ng-style="{'color': '#'+tabName.layout.secondaryColor}">
+                        'text-decoration': tabName.company.underline ? 'underline' : 'normal' }"  ng-style="{'color': '#'+tabName.layout.secondaryColor}">
                         {{tabName.company.value}}
                     </div>
                 </div>
-                <div class="user-contacts-div-3">
+                <div style="margin-top: 5px">
                     <div ng-show="!tabName.address.value">
                         <span class="" style="margin-top: 3px">
                             <span class="icon-lacation_white_icon" style="font-size: 19px;text-decoration:none"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
