@@ -815,9 +815,9 @@
                     </div>
                     <div>
                         <ul class="tab2">
-                            <li style="background-color: #fff" class="tabs2" ng-style="addColors('li'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="li{{tabName.position}}{{tabName.name}}">
+                            <li style="background-color: #fff" class="tabs2" ng-style="addColors('li'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink'+tabName.name)" ng-repeat="tabName in tabNames.tabs" id="li{{tabName.position}}{{tabName.name}}">
                                 <div style="position: relative;display: table; width: 100%;">
-                                    <a href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}" ng-style="{'color': '#'+tabName.layout.secondaryColor}"  id="tabLink{{tabName.name}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, 'tab'+tabName.position, tabName.name+tabName.position, 'li'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                                    <a href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}"  id="tabLink{{tabName.name}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, 'tab'+tabName.position, tabName.name+tabName.position, 'li'+tabName.position+tabName.name)">{{tabName.name}}</a>
                                 </div>
                             </li>
 

@@ -719,13 +719,16 @@
 
         }
 
-        $scope.addColors = function(id, colorMain, colorSecond, index){
+        $scope.addColors = function(id, colorMain, colorSecond, index, linkId){
             var cyrrentEl = document.getElementById(id);
+            var link = document.getElementById(linkId);
             if(cyrrentEl) {
                 cyrrentEl.style.background = "#F9F9F9";
                 cyrrentEl.style.borderTop = "1px solid #D0D8D9"
                 cyrrentEl.style.borderBottom = "1px solid #D0D8D9";
+                link.style.color = "#7F8C8C"
                 if (angular.element(document.getElementById(id)).hasClass('active')) {
+                    link.style.color = "#"+colorSecond;
                     cyrrentEl.style.background = "#FFFFFF";
                     cyrrentEl.style.borderTop = "2px solid #" + colorSecond;
                     cyrrentEl.style.borderBottom = "0px";

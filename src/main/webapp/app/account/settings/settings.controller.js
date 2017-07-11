@@ -34,13 +34,16 @@
          * Store the "settings account" in a separate variable, and not in the shared "account" variable.
          */
 
+        $scope.getAccount = function(){
+            $http.get("/api/account")
+                .success(function (data, status, headers, config) {
+                    vm.settingsAccount = data;
+                    vm.settingsAccount.imageUrl = vm.settingsAccount.imageUrl;
+                });
+        }
 
-        Principal.identity().then(function(account) {
-            vm.settingsAccount = account;
-            vm.settingsAccount.imageUrl = vm.settingsAccount.imageUrl;
 
 
-        });
 
         function save () {
             Auth.updateAccount(vm.settingsAccount).then(function() {
