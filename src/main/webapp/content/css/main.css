@@ -3812,6 +3812,22 @@ ul.tab li.active {
     color: #FFFFFF;
 }
 
+.preview-selection{
+    display: inline-block;
+    padding-top: 2px;
+    margin-right: 8px;
+    width: 44px;
+    height: 44px;
+    min-height: 24px;
+    min-width: 24px;
+    color: #FFFFFF;
+}
+
+.preview-selection:hover{
+    width: 54px;
+    height: 54px;
+}
+
 
 
 .item-selection:hover{
@@ -3819,6 +3835,11 @@ ul.tab li.active {
     width: 30px;
     height: 30px;
     padding-top: 4px;
+}
+
+.preview-selected{
+    width: 54px;
+    height: 54px;
 }
 
 .item-selected{

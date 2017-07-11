@@ -100,7 +100,6 @@
             }else{
                 vm.currentSlide = vm.currentSlide - 1;
             }
-            console.log(vm.currentSlide)
             $timeout(function() {
 
                 angular.forEach($scope.tabNames.tabs[index].items, function (item) {
@@ -124,6 +123,36 @@
             },10);
             $timeout(function() {vm.showSpinner = false; },4000)
         };
+
+        $scope.setCurrentSlide = function(index, parent){
+            vm.currentSlide = index;
+            $timeout(function() {
+
+                angular.forEach($scope.tabNames.tabs[parent].items, function (item) {
+                    if(item.position  === vm.currentSlide) {
+                        $scope.currentUrl = "";
+                        $scope.currentLink = "";
+                        $scope.currentName = "";
+                        if (item.link) {
+                            $scope.currentUrl = $scope.createURL(item.link);
+                            $scope.currentLink = $scope.getLink(item.link);
+                        }
+                        if (item.link) {
+                            $scope.currentName = item.name.value;
+                            vm.showSpinner = true;
+                        }
+
+                    }
+
+                });
+
+            },10);
+            $timeout(function() {vm.showSpinner = false; },4000)
+        }
+
+        $scope.itemPosition = function(index){
+            return index + 1;
+        }
 
         $scope.nextSlide = function(index){
             $scope.currentUrl = undefined
@@ -170,17 +199,13 @@
         vm.hideFrame = false;
 
         $scope.test123 = function(){
-            console.log("123123");
             vm.hideFrame= true;
             document.getElementById("myFrame").style.height = "800px"
             vm.showSpinner = false;
-            console.log(vm.showSpinner)
         }
 
         $scope.sethide = function(){
-            console.log("asdasd");
             vm.hideFrame = false;
-            console.log(vm.hideFrame )
         }
 
 

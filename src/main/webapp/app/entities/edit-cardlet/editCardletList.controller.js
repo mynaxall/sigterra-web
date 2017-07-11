@@ -70,8 +70,11 @@
             $scope.showCropDialog = true;
             $scope.tabImageId = tabId;
             $scope.itemImageId = itemId;
-            $scope.imageItemMame =itemImgPosition;
+            $scope.imageItemMame = itemImgPosition;
             $scope.myCroppedImage = '';
+            console.log($scope.tabImageId)
+            console.log($scope.itemImageId)
+            console.log($scope.imageItemMame)
         }
 
         function dataURLtoFile(dataurl, filename) {
@@ -115,42 +118,33 @@
             $scope.showSpinner = true;
             $scope.myImage = ""
 
+            console.log($scope.tabImageId)
+            console.log($scope.itemImageId)
+            console.log($scope.imageItemMame)
+
             var img_b64 = $scope.myCroppedImage;
             var png = img_b64.split(',')[1];
             var file = b64toBlob(png, 'image/png')
             var fd = new FormData();
             fd.append('file', file);
-            var url = "";
-
-            console.log($scope.itemImageId)
-            console.log($scope.imageItemMame)
-            console.log($scope.tabImageId)
-            if($scope.itemImageId != null){
-                 url =  $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame];
-
-            }else{
-                 url = $scope.tabNames.tabs[$scope.tabImageId].photo;
-
-            }
-            var filename = url.substring(url.lastIndexOf('/')+1);
-            if(filename.indexOf(".")!= -1){
-                filename = "name"
-            }
-
-            $http.post("/api/cardlet/upload/icon/"+filename,  fd, {
+            $http.post("/api/cardlet/upload/icon/test",  fd, {
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
                 })
                 .success(function (data, status, headers, config) {
                     $scope.imageUrl = data.url;
+
                     if($scope.itemImageId != null){
+
+                        console.log( $scope.tabNames)
                         $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame] = $scope.imageUrl;
                     }else {
                         setTabImage();
                     }
-                    $scope.showCropDialog = false;
                     $scope.showSpinner = false;
+                    $scope.showCropDialog = false;
                 });
+
             angular.element(document.querySelector('#fileInput')).val(null);
         };
 

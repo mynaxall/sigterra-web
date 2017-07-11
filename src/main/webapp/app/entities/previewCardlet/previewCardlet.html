@@ -194,16 +194,21 @@
                             <a href="javascript:void(0)" id="tabLink{{tabName.name}}" class="tablinks2" style="color:#{{tabName.layout.secondaryColor}}" ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name, tabName.position)">{{tabName.name}}</a>
                         </div>
                     </li>
-    
+
                 </ul>
             </div>
-    
+
             <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
                 <div class="custom-slide-prev"><img src="/content/images/new/arrow_left.png" ng-hide="vm.tabType === 1  || tabName.items.length < 2" ng-click="prevSlide($index)"></div>
                 <ng-include style="display: block!important" src="tabName.layout.url"></ng-include>
                 <div class="custom-slide-next"><img src="/content/images/new/arrow_right.png" ng-hide="vm.tabType === 1 || tabName.items.length < 2"  ng-click="nextSlide($index)"></div>
+                <div style="text-align: center;padding-top: 10px; background: #FFF;">
+                    <div class="preview-selection" ng-repeat="slide in tabName.items  | orderBy:'position'" ng-click="setCurrentSlide($index, $parent.$index)"  ng-class="$index == vm.currentSlide ? 'preview-selected': '' ">
+                        <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="slide.image" ng-src="{{slide.image}}">
+                        {{slide.position}}
+                    </div>
+                </div>
             </div>
-    
             <div style="margin-top: 30px; margin-bottom: 60px; position: relative; z-index: 10">
                 <button class="preview-create-button" ui-sref="cardletlist">Create your business card</button>
                 <button class="preview-add-button" ng-click="addToAddressBook()"> Add to address book</button>
