@@ -104,17 +104,19 @@
             $timeout(function() {
 
                 angular.forEach($scope.tabNames.tabs[index].items, function (item) {
+                    if(item.position  === vm.currentSlide) {
+                        $scope.currentUrl = "";
+                        $scope.currentLink = "";
+                        $scope.currentName = "";
+                        if (item.link) {
+                            $scope.currentUrl = $scope.createURL(item.link);
+                            $scope.currentLink = $scope.getLink(item.link);
+                        }
+                        if (item.link) {
+                            $scope.currentName = item.name.value;
+                            vm.showSpinner = true;
+                        }
 
-                    $scope.currentUrl = "";
-                    $scope.currentLink = "";
-                    $scope.currentName = "";
-                    if(item.link){
-                        $scope.currentUrl = $scope.createURL(item.link);
-                        $scope.currentLink = $scope.getLink(item.link);
-                    }
-                    if(item.link){
-                        $scope.currentName = item.name.value;
-                        vm.showSpinner = true;
                     }
 
                 });

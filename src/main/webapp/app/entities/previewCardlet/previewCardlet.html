@@ -186,26 +186,28 @@
         <div class="alert alert-danger" check-position-scroll ng-show="errorAddeding">
             <strong>{{errorAddeding}}</strong>
         </div>
-        <div>
-            <ul class="tab2">
-                <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
-                    <div style="position: relative; display: table; width: 100%;">
-                        <a href="javascript:void(0)" id="tabLink{{tabName.name}}" class="tablinks2" style="color:#{{tabName.layout.secondaryColor}}" ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name, tabName.position)">{{tabName.name}}</a>
-                    </div>
-                </li>
-
-            </ul>
-        </div>
-
-        <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-            <div class="custom-slide-prev"><img src="/content/images/new/arrow_left.png" ng-hide="vm.tabType === 1  || tabName.items.length < 2" ng-click="prevSlide($index)"></div>
-            <ng-include style="display: block!important" src="tabName.layout.url"></ng-include>
-            <div class="custom-slide-next"><img src="/content/images/new/arrow_right.png" ng-hide="vm.tabType === 1 || tabName.items.length < 2"  ng-click="nextSlide($index)"></div>
-        </div>
-
-        <div style="margin-top: 30px; margin-bottom: 60px; position: relative; z-index: 10">
-            <button class="preview-create-button" ui-sref="cardletlist">Create your business card</button>
-            <button class="preview-add-button" ng-click="addToAddressBook()"> Add to address book</button>
+        <div style="position:relative;">
+            <div>
+                <ul class="tab2">
+                    <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
+                        <div style="position: relative; display: table; width: 100%;">
+                            <a href="javascript:void(0)" id="tabLink{{tabName.name}}" class="tablinks2" style="color:#{{tabName.layout.secondaryColor}}" ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name, tabName.position)">{{tabName.name}}</a>
+                        </div>
+                    </li>
+    
+                </ul>
+            </div>
+    
+            <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
+                <div class="custom-slide-prev"><img src="/content/images/new/arrow_left.png" ng-hide="vm.tabType === 1  || tabName.items.length < 2" ng-click="prevSlide($index)"></div>
+                <ng-include style="display: block!important" src="tabName.layout.url"></ng-include>
+                <div class="custom-slide-next"><img src="/content/images/new/arrow_right.png" ng-hide="vm.tabType === 1 || tabName.items.length < 2"  ng-click="nextSlide($index)"></div>
+            </div>
+    
+            <div style="margin-top: 30px; margin-bottom: 60px; position: relative; z-index: 10">
+                <button class="preview-create-button" ui-sref="cardletlist">Create your business card</button>
+                <button class="preview-add-button" ng-click="addToAddressBook()"> Add to address book</button>
+            </div>
         </div>
     </div>
 

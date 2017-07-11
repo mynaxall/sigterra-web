@@ -1123,7 +1123,7 @@ Social Buttons
 .custom-slide-prev{
     position: absolute;
     top: 170px;
-    left: 0px;
+    left: -30px;
 }
 
 .custom-slide-next{
