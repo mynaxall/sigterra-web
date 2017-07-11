@@ -23,82 +23,66 @@
             </div>
             <div class="layouts main-layouts">
                 <div class="user-info">
-                    <div class="user-name" ng-show="!tabName.userName.value"   ng-style="{'font-family': tabName.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                            'font-style': tabName.userName.italic ? 'italic' : 'normal',
-                            'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">Jon Dou</div>
+                    <div style="height: 31px">
                     <div class="user-name" ng-style="{'font-family': tabName.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': tabName.userName.italic ? 'italic' : 'normal',
                             'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}"  ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
+                    </div>
                     <div style="height: 45px; margin-top: 5px">
-                        <div>
-                            <div class="user-main-text" ng-show="!tabName.job.value">General Manager</div>
-                            <div class="user-main-text" ng-style="{'font-family': tabName.job.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                            'font-style': tabName.job.italic ? 'italic' : 'normal',
-                            'text-decoration': tabName.job.underline ? 'underline' : 'normal'}" ng-show="tabName.job.value">{{tabName.job.value}}</div>
+                    <div>
+                        <div class="user-main-text" ng-style="{'font-family': tabName.job.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                        'font-style': tabName.job.italic ? 'italic' : 'normal',
+                        'text-decoration': tabName.job.underline ? 'underline' : 'normal'}" ng-show="tabName.job.value">{{tabName.job.value}}</div>
+                    </div>
+                    <div>
+                        <div class="company" ng-show="tabName.company.value" ng-style="{'font-family': tabName.company.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                    'font-style': tabName.company.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.company.underline ? 'underline' : 'normal'}">
+                            {{tabName.company.value}}
                         </div>
-                        <div>
-                            <div class="company" ng-show="!tabName.company.value">
-                                Company Name
-                            </div>
-                            <div class="company" ng-show="tabName.company.value" ng-style="{'font-family': tabName.company.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                        'font-style': tabName.company.italic ? 'italic' : 'normal',
-                        'text-decoration': tabName.company.underline ? 'underline' : 'normal'}">
-                                {{tabName.company.value}}
-                            </div>
-                        </div>
+                    </div>
                     </div>
                     <div class="first-card-border-div" ng-style="{'margin-bottom': '10px', 'border-color': '#'+tabName.layout.secondaryColor}"></div>
-                    <div class="user-contacts-div">
-                        <div class="svg-div" style="margin-top: -3px">
-                            <span class="icon-mobile_white_icon" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
-                        </div>
-                        <div class="svg-description" ng-show="!tabName.phone.value">
-                            1-888-555-5555
-                        </div>
-                        <div class="svg-description" ng-show="tabName.phone.value" ng-style="{'font-family': tabName.phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                    'font-style': tabName.phone.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.phone.underline ? 'underline' : 'normal'}">
-                            {{tabName.phone.value}}
-                        </div>
+                    <div style="height: 65px">
+                        <div class="user-contacts-div" ng-show="tabName.phone.value">
+                            <div class="svg-div" style="margin-top: -3px">
+                                <span class="icon-mobile_white_icon" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
+                            </div>
+                            <div class="svg-description" ng-style="{'font-family': tabName.phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                        'font-style': tabName.phone.italic ? 'italic' : 'normal',
+                        'text-decoration': tabName.phone.underline ? 'underline' : 'normal'}">
+                                {{tabName.phone.value}}
+                            </div>
 
 
-                    </div>
-                    <div class="user-contacts-div">
-                        <div class="svg-div" style="margin-top: -1px">
-                            <span class="icon-e-mail_white_icon" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </div>
-                        <div class="svg-description" ng-show="!tabName.userEmail.value">
-                            fabian.abshireabsh@wilford.biz
-                        </div>
-                        <div class="svg-description" ng-show="tabName.userEmail.value" ng-style="{'font-family': tabName.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                            'font-style': tabName.userEmail.italic ? 'italic' : 'normal',
-                            'text-decoration': tabName.userEmail.underline ? 'underline' : 'normal'}">
-                           {{tabName.userEmail.value}}
-                        </div>
+                        <div class="user-contacts-div" ng-show="tabName.userEmail.value">
+                            <div class="svg-div" style="margin-top: -1px">
+                                <span class="icon-e-mail_white_icon" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
+                            </div>
+                            <div class="svg-description" ng-style="{'font-family': tabName.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                                'font-style': tabName.userEmail.italic ? 'italic' : 'normal',
+                                'text-decoration': tabName.userEmail.underline ? 'underline' : 'normal'}">
+                               {{tabName.userEmail.value}}
+                            </div>
 
-                    </div>
-                    <div class="user-contacts-div">
-                        <div class="svg-div" style="margin-top: -3px">
-                            <span class="icon-globe_white_icon" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </div>
-                        <div class="svg-description" ng-show="!tabName.site.value">
-                            www.websitewebsite.com
-                        </div>
+                        <div class="user-contacts-div" ng-show="tabName.site.value" >
+                            <div class="svg-div" style="margin-top: -3px">
+                                <span class="icon-globe_white_icon" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
+                            </div>
+                            <div class="svg-description" ng-style="{'font-family': tabName.site.bold ?  'Roboto-Bold' : 'Roboto-Regular',
+                        'font-style': tabName.site.italic ? 'italic' : 'normal',
+                        'text-decoration': tabName.site.underline ? 'underline' : 'normal'}">
+                                {{tabName.site.value}}
+                            </div>
 
-                        <div class="svg-description" ng-show="tabName.site.value" ng-style="{'font-family': tabName.site.bold ?  'Roboto-Bold' : 'Roboto-Regular',
-                    'font-style': tabName.site.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.site.underline ? 'underline' : 'normal'}">
-                            {{tabName.site.value}}
                         </div>
-
                     </div>
 
                     <div class="first-card-border-div" ng-style="{'margin-top': '10px','margin-bottom': '10px', 'border-color': '#'+tabName.layout.secondaryColor}"></div>
-                    <div class="svg-div" style="margin-top: -3px">
+                    <div class="svg-div" style="margin-top: -3px" ng-show="tabName.address.value">
                         <span class="icon-lacation_white_icon" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
-                    </div>
-                    <div class="user-main-text svg-description" ng-show="!tabName.address.value">
-                        0000 Lynch Pine Apt. 605, South Keagan, Croatia
                     </div>
                     <div class="user-main-text svg-description" ng-show="tabName.address.value" ng-style="{'font-family': tabName.address.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.address.italic ? 'italic' : 'normal',

@@ -2,10 +2,7 @@
     <div class="cardlet2" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
         <div class="top-div-2-new">
             <div class="top-div-2-new-first">
-                <div class="company" ng-show="!tabName.company.value">
-                    Company Name
-                </div>
-                <div class="company" ng-show="tabName.company.value" ng-style="{'font-family': tabName.company.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                <div class="company" ng-style="{'font-family': tabName.company.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.company.italic ? 'italic' : 'normal',
                         'text-decoration': tabName.company.underline ? 'underline' : 'normal'}">
                     {{tabName.company.value}}
@@ -33,35 +30,30 @@
             </div>
         </div>
         <div class="central-div-new">
-            <div class="user-name" ng-show="!tabName.userName.value"  style="color: #{{tabName.layout.secondaryColor}}">Jon Dou</div>
             <div class="user-name" ng-style="{'font-family': tabName.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': tabName.userName.italic ? 'italic' : 'normal',
                                 'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}"  ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
 
         </div>
         <div class="central-div-new">
-            <div class="user-main-text" ng-show="!tabName.job.value">General Manager</div>
             <div class="user-main-text" ng-style="{'font-family': tabName.job.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.job.italic ? 'italic' : 'normal',
                         'text-decoration': tabName.job.underline ? 'underline' : 'normal'}" ng-show="tabName.job.value">{{tabName.job.value}}</div>
         </div>
 
-        <div class="central-div-new">
+        <div class="central-div-new" ng-show="tabName.phone.value">
             <div style="margin-top: 3px;display: inline">
                 <span class="icon-mobile_white_icon" style="font-size: 18px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
             </div>
-            <div class="svg-description" ng-show="!tabName.phone.value" style="display: inline; margin-left: 5px">
-                1-888-555-5555
-            </div>
 
-            <div style="display: inline; margin-left: 5px" class="svg-description" ng-show="tabName.phone.value" ng-style="{'font-family': tabName.phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+            <div style="display: inline; margin-left: 5px" class="svg-description" ng-style="{'font-family': tabName.phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.phone.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.phone.underline ? 'underline' : 'normal'}"  style="float: right; margin-left: 5px">
                 {{tabName.phone.value}}
             </div>
 
         </div>
-        <div class="central-div-new">
+        <div class="central-div-new" ng-show="tabName.userEmail.value">
             <table style="margin: 0 auto">
                 <tr>
                     <td>
@@ -70,11 +62,8 @@
                         </div>
                     </td>
                     <td>
-                        <div class="svg-description" ng-show="!tabName.userEmail.value" style=" margin-left: 5px">
-                            fabian.abshireabsh@wilford.biz
-                        </div>
 
-                        <div style=" margin-left: 5px" class="svg-description" ng-show="tabName.userEmail.value" ng-style="{'font-family': tabName.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                        <div style=" margin-left: 5px" class="svg-description" ng-style="{'font-family': tabName.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                         'font-style': tabName.userEmail.italic ? 'italic' : 'normal',
                                         'text-decoration': tabName.userEmail.underline ? 'underline' : 'normal'}">
                             {{tabName.userEmail.value}}
@@ -84,16 +73,13 @@
             </table>
         </div>
         <div class="central-div-new">
-            <div>
+            <div ng-show="tabName.site.value">
 
                 <div style="margin-top: 3px;display: inline">
                     <span class="icon-globe_white_icon" style="font-size: 18px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                 </div>
-                <div class="svg-description" ng-show="!tabName.site.value" style="display: inline; margin-left: 5px">
-                    www.websitewebsite.com
-                </div>
 
-                <div style="display: inline; margin-left: 5px" class="svg-description" ng-show="tabName.site.value" ng-style="{'font-family': tabName.site.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                <div style="display: inline; margin-left: 5px" class="svg-description" ng-style="{'font-family': tabName.site.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.site.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.site.underline ? 'underline' : 'normal'}">
                     {{tabName.site.value}}
@@ -101,9 +87,6 @@
 
             </div>
             <div class="first-card-border-div" style="margin: 3px 0px; color: #{{tabName.layout.secondaryColor}}"></div>
-            <div class="user-main-text svg-description" ng-show="!tabName.address.value">
-                0000 Lynch Pine Apt. 605, South Keagan, Croatia
-            </div>
             <div class="user-main-text svg-description" ng-show="tabName.address.value" ng-style="{'font-family': tabName.address.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.address.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.address.underline ? 'underline' : 'normal'}">

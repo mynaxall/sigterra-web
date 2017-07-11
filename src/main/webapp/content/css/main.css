@@ -2578,6 +2578,7 @@ div.navbar-collapse.in.collapse{
 .top-div-2-new-first{
     float: left;
     width: 33.333%;
+    min-height: 10px;
 }
 .top-div-2-new-last{
     float: right;

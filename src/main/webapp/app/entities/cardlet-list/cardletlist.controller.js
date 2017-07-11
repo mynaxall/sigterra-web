@@ -159,31 +159,76 @@
             $http.get("/api/account")
                 .success(function(response, status, headers) {
                     $scope.userAccount = response;
-                    $scope.tabNames.tabs[0].userName = {
-                        "value": $scope.userAccount.username
-                    }
-                    $scope.tabNames.tabs[0].userEmail = {
-                        "value": $scope.userAccount.email
-                    }
-
-                    $scope.tabNames.tabs[0].phone = {
-                        "value": $scope.userAccount.phoneNumber
-                    }
-
-                    $scope.tabNames.tabs[0].address = {
-                        "value": $scope.userAccount.address
+                    if ($scope.userAccount.username){
+                            $scope.tabNames.tabs[0].userName = {
+                                "value": $scope.userAccount.username
+                            }
+                    }else{
+                        $scope.tabNames.tabs[0].userName = {
+                            "value": "Jon Dou"
+                        }
                     }
 
-                    $scope.tabNames.tabs[0].company = {
-                        "value": $scope.userAccount.companyName
+                    if ($scope.userAccount.email) {
+                        $scope.tabNames.tabs[0].userEmail = {
+                            "value": $scope.userAccount.email
+                        }
+                    }else{
+                        $scope.tabNames.tabs[0].userEmail = {
+                            "value": "fabian.abshireabsh@wilford.biz"
+                        }
                     }
 
-                    $scope.tabNames.tabs[0].site = {
-                        "value": $scope.userAccount.companySite
+                    if ($scope.userAccount.phoneNumber) {
+                        $scope.tabNames.tabs[0].phone = {
+                            "value": $scope.userAccount.phoneNumber
+                        }
+                    }else {
+                        $scope.tabNames.tabs[0].phone = {
+                            "value": "1-888-555-5555"
+                        }
                     }
 
-                    $scope.tabNames.tabs[0].job = {
-                        "value": $scope.userAccount.jobTitle
+
+                    if ($scope.userAccount.address) {
+                        $scope.tabNames.tabs[0].address = {
+                            "value": $scope.userAccount.address
+                        }
+                    }else{
+                        $scope.tabNames.tabs[0].address = {
+                            "value": "0000 Lynch Pine Apt. 605, South Keagan, Croatia"
+                        }
+                    }
+
+                    if ($scope.userAccount.companyName) {
+                        $scope.tabNames.tabs[0].company = {
+                            "value": $scope.userAccount.companyName
+                        }
+                    }else{
+                        $scope.tabNames.tabs[0].company = {
+                            "value": "Company Name"
+                        }
+                    }
+
+
+                    if ($scope.userAccount.companySite) {
+                        $scope.tabNames.tabs[0].site = {
+                            "value": $scope.userAccount.companySite
+                        }
+                    }else{
+                        $scope.tabNames.tabs[0].site = {
+                            "value": "www.websitewebsite.com"
+                        }
+                    }
+
+                    if ($scope.userAccount.jobTitle) {
+                        $scope.tabNames.tabs[0].job = {
+                            "value": $scope.userAccount.jobTitle
+                        }
+                    }else{
+                        $scope.tabNames.tabs[0].job = {
+                            "value": "General Manager"
+                        }
                     }
                     if($scope.userAccount.imageUrl){
                         $scope.tabNames.tabs[0].photo = $scope.userAccount.imageUrl
