@@ -516,6 +516,7 @@ Social Buttons
     box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.16);
     z-index: 5;
     margin-top: 30px;
+    margin-bottom: 40px;
 }
 .main-head-text{
     color: #13BCB5;
