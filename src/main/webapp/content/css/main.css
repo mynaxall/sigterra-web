@@ -2966,7 +2966,7 @@ input::-ms-clear {
 
 .editable-input-name {
     position: absolute;
-    top: -15px;
+    top: 0px;
     right: 0px;
     color: #9B9B9B;
     font-family: inherit;
