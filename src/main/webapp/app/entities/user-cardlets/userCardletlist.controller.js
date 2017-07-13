@@ -332,7 +332,7 @@
         };
 
         $scope.tabNames ={
-            "cardletName": "Business cards",
+            "cardletName": "Contact Info",
             "tabs":
                 [{
                     "name": "My info",

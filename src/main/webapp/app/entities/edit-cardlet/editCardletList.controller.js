@@ -466,7 +466,7 @@
 
         $scope.addTab = function() {
             if ($scope.tabNames.tabs.length <= 3) {
-                var newTab = {"name":"Business Card "+$scope.tabNames.tabs.length,
+                var newTab = {"name":"Contact Info "+$scope.tabNames.tabs.length,
                     "position": $scope.tabNames.tabs.length,
                     "tabType": 1,
                     "layout":{
