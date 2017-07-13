@@ -218,10 +218,10 @@
 
 
 
-    <div class="preview-border">
+    <div ng-show="currentLink" class="preview-border">
         <div class="preview-iframe-name"> {{currentName}}</div>
     </div>
-    <div class="preview-iframe">
+    <div class="preview-iframe" ng-show="currentLink">
         <div class="preview-header-iframe">
             <div class="preview-header-navigation">
                 <input class="preview-header-url" ng-disabled="true" type="text" ng-model="currentLink">
