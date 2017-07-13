@@ -347,7 +347,13 @@
                             "position": "0",
                             "image": "/content/images/portfolio_img_01.png",
                             "image2": "/content/images/portfolio_img_02.png",
-                            "image3": "/content/images/portfolio_img_03.png"
+                            "image3": "/content/images/portfolio_img_03.png",
+                            "name":{
+                                "value": "Item Header"
+                            },
+                            "description": {
+                                "value": "Item Description( Product, Service etc.)"
+                            }
                         }
                     ]
 
@@ -379,7 +385,13 @@
                             "position": "0",
                             "image": "/content/images/portfolio_img_01.png",
                             "image2": "/content/images/portfolio_img_02.png",
-                            "image3": "/content/images/portfolio_img_03.png"
+                            "image3": "/content/images/portfolio_img_03.png",
+                            "name":{
+                                "value": "Item Header"
+                            },
+                            "description": {
+                                "value": "Item Description( Product, Service etc.)"
+                            }
                         }
                     ]
 
@@ -399,6 +411,12 @@
                     "image": "/content/images/portfolio_img_01.png",
                     "image2": "/content/images/portfolio_img_02.png",
                     "image3": "/content/images/portfolio_img_03.png",
+                    "name":{
+                        "value": "Item Header"
+                    },
+                    "description": {
+                        "value": "Item Description( Product, Service etc.)"
+                    }
                 }
                 $scope.tabNames.tabs[tabId].items.push(newItem);
                 $scope.changeAccordionActivity(index+2)
