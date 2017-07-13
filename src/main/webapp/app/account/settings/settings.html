@@ -64,7 +64,7 @@
 
                     <div class="form-group form-group-new">
                         <input type="text" class="profile-input" id="username" name="username" placeholder="First and Last Name"
-                               ng-model="vm.settingsAccount.username" required>
+                               ng-model="vm.settingsAccount.username" maxlength="20" required>
                         <label for="username" class="custom-placeholder" ng-hide="vm.settingsAccount.username || form.username.$error.minlength || form.username.$error.maxlength">First and Last Name</label>
                         <div ng-show="form.username.$dirty && form.username.$invalid">
                             <p class="help-block"
@@ -82,27 +82,27 @@
                         </div>
                     </div>
                     <div class="form-group form-group-new">
-                        <input type="text" class="profile-input" id="jobTitle" name="jobTitle" placeholder="Job Title"
+                        <input type="text" class="profile-input" id="jobTitle" name="jobTitle" placeholder="Job Title" maxlength="25"
                                ng-model="vm.settingsAccount.jobTitle">
                         <label for="jobTitle" class="custom-placeholder" ng-hide="vm.settingsAccount.jobTitle">Job Title</label>
                     </div>
 
                     <div class="form-group form-group-new">
                         <input type="text" class="profile-input" id="companyName" name="companyName" placeholder="Company Name"
-                               ng-model="vm.settingsAccount.companyName">
+                               ng-model="vm.settingsAccount.companyName" maxlength="25">
                         <label for="companyName" class="custom-placeholder" ng-hide="vm.settingsAccount.companyName">Company Name</label>
                     </div>
 
 
                     <div class="form-group form-group-new">
                         <input type="text" class="profile-input" id="companySite" name="companySite" placeholder="Company Website"
-                               ng-model="vm.settingsAccount.companySite">
+                               ng-model="vm.settingsAccount.companySite" maxlength="25">
                         <label for="companySite" class="custom-placeholder" ng-hide="vm.settingsAccount.companySite">Company Website</label>
                     </div>
 
                     <div class="form-group form-group-new">
                         <input type="email" class="profile-input" id="email" name="email" placeholder="Email"
-                               ng-model="vm.settingsAccount.email"  ng-disabled="true"  ng-minlength=5 ng-maxlength=100 required maxlength="100">
+                               ng-model="vm.settingsAccount.email"  ng-disabled="true"  ng-minlength=5 ng-maxlength=25 required maxlength="25">
                         <label for="email" class="custom-placeholder" ng-hide="vm.settingsAccount.email || form.email.$error.email || form.email.$error.minlength || form.email.$error.maxlength">E-mail</label>
                         <div ng-show="form.email.$dirty && form.email.$invalid">
                             <p class="help-block"
@@ -119,7 +119,7 @@
                             </p>
                             <p class="help-block"
                                ng-show="form.email.$error.maxlength">
-                                Your e-mail cannot be longer than 100 characters.
+                                Your e-mail cannot be longer than 25 characters.
                             </p>
                         </div>
                     </div>
@@ -127,14 +127,14 @@
 
                     <div class="form-group form-group-new">
                         <input type="text" class="profile-input" id="phoneNumber2" name="phoneNumber" placeholder="Phone Number"
-                               ng-model="vm.settingsAccount.phoneNumber">
+                               ng-model="vm.settingsAccount.phoneNumber"  maxlength="25">
                         <label for="phoneNumber2" class="custom-placeholder" ng-hide="vm.settingsAccount.phoneNumber">Mobile Number</label>
                     </div>
 
 
                     <div class="form-group form-group-new">
                         <input type="text" class="profile-input" id="address2" name="address" placeholder="Address"
-                               ng-model="vm.settingsAccount.address">
+                               ng-model="vm.settingsAccount.address" maxlength="55">
                         <label for="address2" class="custom-placeholder" ng-hide="vm.settingsAccount.address">Address</label>
                     </div>
 
