@@ -4017,6 +4017,14 @@ ul.tab li.active {
     }
 }
 
+.third-cardlet-bg{
+    position: absolute;
+    bottom:0;
+    left:0;
+    height: 140px;
+    width: 100%;
+}
+
 
 
 
