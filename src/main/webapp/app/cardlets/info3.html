@@ -4,7 +4,7 @@
             <div ng-show="tabName.items.length == 1">
                 <div class="main-carousel-image-div-info-3">
                     <div  ng-repeat="slide in tabName.items"  class="main-carousel-info-div-new-3" style="margin-top: 10px">
-                        <pre  style="margin-top: 10px">
+                        <div  style="margin-top: 10px">
                             <pre class="carousel-info-name-div-new-3" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': slide.name.italic ? 'italic' : 'normal',
                             'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>

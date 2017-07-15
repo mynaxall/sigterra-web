@@ -303,8 +303,9 @@
                                                 <div class="editor-info-inputs-panel">
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
-                                                            <input type="text" class="input-new-editor" id="infoName1{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="25">
-                                                            <label for="infoName1{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                            <input ng-hide="true" type="text" class="input-new"  id="infoName1{{slide.index}}" placeholder="Name" ng-model="slide.name.value">
+                                                            <textarea class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="35"></textarea>
+                                                            <label  id="infoName1{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
                                                             <input type='checkbox' ng-model="slide.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{slide.position}}"/><label for="boldName{{tabName.position}}{{slide.position}}"></label>
@@ -316,7 +317,7 @@
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
                                                             <input ng-hide="true" type="text" class="input-new" id="description4{{slide.index}}" placeholder="Description" ng-model="item.description.value">
-                                                            <textarea class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Description"  ng-model="slide.description.value" ></textarea>
+                                                            <textarea class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Description"  ng-model="slide.description.value" maxlength="270" ></textarea>
                                                             <label for="description4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
@@ -365,8 +366,10 @@
                                                     <div class="editor-info-inputs-panel">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
-                                                                <input type="text" class="input-new-editor" id="itemName2{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="25">
-                                                                <label for="itemName2{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                <input ng-hide="true" type="text" class="input-new"  id="itemName2{{slide.index}}" placeholder="Name" ng-model="slide.name.value">
+                                                                <textarea class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="35"></textarea>
+                                                                <label  id="itemName2{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+
                                                             </div>
                                                             <div class="text-decoration-div-editor" >
                                                                 <input type='checkbox' ng-model="slide.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{slide.position}}"/><label for="boldName{{tabName.position}}{{slide.position}}"></label>
@@ -378,7 +381,7 @@
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
                                                                 <input ng-hide="true" type="text" class="input-new" id="description4{{slide.index}}" placeholder="Description" ng-model="item.description.value">
-                                                                <textarea class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Description"  ng-model="slide.description.value" ></textarea>
+                                                                <textarea class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Description"  ng-model="slide.description.value" maxlength="270"></textarea>
                                                                 <label for="description4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div class="text-decoration-div-editor" >
