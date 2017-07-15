@@ -367,6 +367,9 @@
                                             </div>
                                             <div uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1" ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)" >
                                                 <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" class="item-catousel-editor">
+                                                    <div class="custom-slide-prev-editor"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
+                                                    <div class="custom-slide-next-editor"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
+
                                                     <div class="editor-info-image-panel">
                                                         <div style="padding-top: 25px">
                                                             <div class="info-image-div">
@@ -531,6 +534,8 @@
                                             </div>
                                             <div uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1" ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)" >
                                                 <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" class="item-catousel-editor">
+                                                    <div class="custom-slide-prev-editor"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
+                                                    <div class="custom-slide-next-editor"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
                                                     <div class="editor-item-top"></div>
                                                     <div class="editor-item-bottom"></div>
                                                     <div class="editor-item-image-panel">
@@ -889,6 +894,10 @@
             border-bottom:none;
         }
 
+        .right.carousel-control,  .left.carousel-control {
+            display: none;
+        }
+
     </style>
 </div>
 <div class="modeal-custom-window ng-hide" ng-show="showCropDialog">
@@ -1000,6 +1009,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 

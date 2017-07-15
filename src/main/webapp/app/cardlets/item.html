@@ -27,6 +27,8 @@
 
             </div>
             <div class="main-carousel-image-div-2" uib-carousel interval="myInterval" active="vm.currentSlide" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1"  ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)">
+                <div ng-show="showEditorNavigation" class="custom-slide-prev-editor" style="top: 100px"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
+                <div ng-show="showEditorNavigation"  class="custom-slide-next-editor"  style="top: 100px"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
                 <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" class="main-carousel-item-div-new">
 
                     <div class="carousel-image-div">

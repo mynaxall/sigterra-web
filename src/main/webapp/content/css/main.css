@@ -1121,9 +1121,21 @@ Social Buttons
     text-align: center;
 }
 
-.custom-slide-prev{
+.custom-slide-prev-editor{
     position: absolute;
     top: 170px;
+    left: 0px;
+}
+
+.custom-slide-next-editor{
+    position: absolute;
+    top: 150px;
+    right: 0px;
+}
+
+.custom-slide-prev{
+    position: absolute;
+    top: 150px;
     left: -30px;
 }
 
@@ -3629,7 +3641,6 @@ button[disabled]:hover{
 .item-image-editor{
     width: 215px;
     height: 215px;
-    margin-left: 15px;
     margin-top: 15px;
     border: 8px solid #FFFFFF;
 }
@@ -3643,6 +3654,7 @@ button[disabled]:hover{
 .item-image-div{
     width: 200px;
     height: 200px;
+    margin-left: 20px;
     position: relative;
 }
 

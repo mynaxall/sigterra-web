@@ -10,6 +10,8 @@
     function EditCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location) {
         var vm = this;
 
+
+        $scope.showEditorNavigation = true;
         $scope.showCropDialog = false;
         $scope.firstBusinessCardId ="";
         $scope.myImage='';
@@ -810,6 +812,30 @@
                 $scope.accordion = 0
             }
         }
+
+
+        $scope.prevSlide = function(index){
+            $scope.currentUrl = undefined;
+            if( vm.currentSlide == 0){
+                vm.currentSlide = $scope.tabNames.tabs[index].items.length -1
+            }else{
+                vm.currentSlide = parseInt(vm.currentSlide) - 1;
+            }
+
+        };
+
+        $scope.nextSlide = function(index){
+            $scope.currentUrl = undefined
+            if( vm.currentSlide == $scope.tabNames.tabs[index].items.length -1){
+                vm.currentSlide = 0
+            }else{
+                vm.currentSlide = parseInt(vm.currentSlide) + 1;
+            }
+
+
+            $timeout(function() {vm.showSpinner = false; },4000)
+        };
+
     }
 
 
