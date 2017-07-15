@@ -228,8 +228,8 @@
                     <div class="cadlet-top-title" style="margin-top: 30px">Your Profile Details
                         <div class="cadlet-top-title-border"></div>
                     </div>
-                    <div style="min-height: 700px">
-                        <ul class="tab" dnd-list="tabNames.tabs" dnd-horizontal-list="false" dnd-external-sources="false">
+                    <div style="min-height: 700px; position:relative;">
+                        <ul style="position: relative; z-index:5;" class="tab" dnd-list="tabNames.tabs" dnd-horizontal-list="false" dnd-external-sources="false">
 
                             <li ng-disable="true" class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-disable-if="!isEmptyName() || isDisabledTabs" dnd-draggable="tabName" dnd-moved="tabNames.tabs.splice($index, 1)" id="{{tabName.position}}" ng-style="tabWidth(tabName.position)" dnd-dragend="positionCheck()">
                                 <div class="tabs-div">

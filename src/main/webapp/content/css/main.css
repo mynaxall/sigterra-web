@@ -2746,8 +2746,10 @@ ul.tab2 li {
     border: 0px solid #E7E7E7;
     width: 700px;
     background-color: #ffffff;
-    margin-top: 61px;
     border-top: 1px solid #BFBFBF;
+    position: absolute;
+    top:70px;
+    left:0;
 }
 
 .social-image-form-div{
