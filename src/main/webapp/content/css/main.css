@@ -2485,6 +2485,13 @@ div.navbar-collapse.in.collapse{
     display: table-cell;
     width: 26px;
     vertical-align: middle;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .profile-title{
@@ -3159,7 +3166,6 @@ input[type="radio"] + label span {
     display: table;
     width: 14px;
     height: 14px;
-    margin: 2px 0px 0 2px;
     vertical-align: middle;
     cursor: pointer;
     -moz-border-radius: 50%;
@@ -3168,6 +3174,13 @@ input[type="radio"] + label span {
 
 input[type="radio"]:checked + label {
     border: 1px solid #18C6B7;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 
