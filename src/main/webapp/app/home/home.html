@@ -1,5 +1,51 @@
+
+
 <div ng-cloak>
+
+    <script>
+        $(document).ready(function(){
+            var scroll_start = 0;
+            $(window).scroll(function(){
+                var scroll = $(window).scrollTop();
+                if (scroll > 50) {
+                    $("#default-navbar").addClass("scrolled-navbar");
+                }
+                else{
+                    $("#default-navbar").removeClass("scrolled-navbar");
+                }
+            });
+        });
+    </script>
     <style>
+
+        .navbar-default .navbar-nav > li > a{
+            color: #35353b!important;
+        }
+
+        div.navbar-collapse.in.collapse{
+            background: #FFFFFF!important;
+        }
+
+        li.newNavbar.dropdown.pointer{
+            padding-left: 40px;
+        }
+
+        div.user-cardlet-panel{
+            background-color: transparent!important;
+        }
+
+        .navbar-custom{
+            background-color: transparent!important;
+        }
+
+        .scrolled-navbar{
+            background: rgba(255,255,255, 0.8)!important;
+        }
+
+        .navbar-default .navbar-nav .open .dropdown-menu > .sigterra-naigation > a{
+            color: #35353b!important;
+        }
+
         .user-cardlet-panel-home{
             padding-top: 50px;
             padding-left: 3%;
@@ -48,157 +94,182 @@
     </style>
     <div class="landing-first-panel">
         <div class="user-cardlet-panel-home">
-            <div style="font-weight: bold;font-size: 50px;padding-top: 120px">Business Card Marketing</div>
-            <div style="font-size: 20px;">We help you convert your <span style="font-size: 26px; font-weight: bold">personal traffic</span> into <span style="font-size: 26px; font-weight: bold">leads</span></div>
-            <div style="padding-top: 110px; text-align: left" class="row">
-                <div style="font-size: 20px;font-weight: bold" class="col-md-6">
-                    <div>Who said Business Cards were supposed
-                        to be just Contact Info?</div>
-                    <div style="font-size: 14px;padding-top: 20px">
-                        Every email, Every profile lookup, Every web interaction is an opportunity to “passively” communicate what you are selling, marketing or passionate about
+           <div style="padding-top: 180px;padding-bottom: 100px; text-align: left" class="row">
+                <div style="font-size: 20px;" class="col-md-8">
+                    <div class="landing-first-title">CONVERT YOUR <b>TRAFFIC</b> INTO <b>LEADS</b> USING <b style="color:#1798e3;">INTERACTIVE</b> SIGNATURE MARKETING</div>
+                    <div class="how-it-works-description" style="color: #656b6f">
+                        With Sigterra’s Interactive Profile Generator, you can include product documents, market data, customer testimonials and the like into one miniature business card like format. Your Sigterra Interactive Profile can become an email signature or be attached to a website or even a document. Every engagement is an opportunity
                     </div>
-                    <button style="height:40px;padding: 10px; margin-top: 30px;margin-bottom: 200px" type="submit" class="saveButton" ng-click="gotoBottom()">LEARN MORE</button>
+                    <button style="height:40px;padding: 10px; margin-top: 30px;margin-bottom: 300px" type="submit" class="landing-learn-brn" ng-click="gotoBottom()">Yes, I’d like to see a DEMO</button>
 
                 </div>
-                <div class="col-md-6">
-                    <img style="width: 100%;" src="/content/images/new/business-card.png">
+                <div class="col-md-4">
+
                 </div>
             </div>
         </div>
     </div>
-    <div style="background-color: #FFFFFF;" id="howItWorks">
-        <div class="user-cardlet-panel-home">
-            <div style="width: 100%; text-align: center; color: #595959; font-size: 35px; padding-top: 135px">How it Works ? </div>
-            <div class="row" style="padding-top: 110px;  text-align: center;">
-                <div class="col-md-3" style="text-align: center; height: 275px">
-                    <div class="landing_create">
-                        <div style="width: 100%;height:91px; margin: 0 auto">
-                            <img src="/content/images/new/1_create.png">
-                        </div>
-                        <div style="color:#595959; font-size: 14px; padding-top: 35px">Create your Free Sigterra Profile</div>
-                    </div>
-                </div>
-                <div class="col-md-3"  style="text-align: center; height: 275px">
-                    <div class="landing_add">
-                        <img src="/content/images/new/2_add.png">
-                        <div style="color:#595959; font-size: 14px; padding-top: 35px">Add it to your email signature</div>
-                    </div>
-                </div>
-                <div class="col-md-3"  style="text-align: center; height: 275px">
-                    <div class="landing_add_to_web">
-                        <img src="/content/images/new/3_add_to_web.png">
-                        <div style="color:#595959; font-size: 14px; padding-top: 35px">Add it to your Web Profiles, Blogs, Documents</div>
-                    </div>
-                </div>
-                <div class="col-md-3"  style="text-align: center; height: 275px">
-                    <div class="landing_see">
-                        <img src="/content/images/new/4_see.png">
-                        <div style="color:#595959; font-size: 14px; padding-top: 35px">See how many people have engaged with it</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row landing-steps">
-                <div class="col-md-3" style="padding: 0px">
-                    <div class="landing-steps-one">1</div>
-                    <div style="position: relative; float: right;width: 50%;">
-                        <div class="landing-steps-border-right"></div>
-                    </div>
-                </div>
-                <div class="col-md-3"  style="padding: 0px">
-                    <div style="position: relative; float: left;width: 50%;">
-                        <div class="landing-steps-border"></div>
-                    </div>
-                    <div class="landing-steps-two">2</div>
-                    <div style="position: relative; float: right;width: 50%;">
-                        <div class="landing-steps-border-right"></div>
-                    </div>
-                </div>
-                <div class="col-md-3"  style="padding: 0px">
-                    <div style="position: relative; float: left;width: 50%;">
-                        <div class="landing-steps-border"></div>
-                    </div>
-                    <div class="landing-steps-three">3</div>
-                    <div style="position: relative; float: right;width: 50%;">
-                        <div class="landing-steps-border-right"></div>
-                    </div>
-                </div>
-                <div class="col-md-3"  style="padding: 0px">
-                    <div style="position: relative; float: left;width: 50%;">
-                        <div class="landing-steps-border"></div>
-                    </div>
-                    <div class="landing-steps-four">4</div>
-                </div>
-
-            </div>
-        </div>
+    <div>
+        <div class="home-title">What is a Sigterra Profile</div>
     </div>
-    <div class="landing-use">
+    <div class="home-use-panel">
+        <div class="home-title">Where can you use it ?</div>
+        <div class="home-sub-title">Email, Web, Documents, Linkedin, anywhere you can put a hyperlink</div>
         <div class="user-cardlet-panel" style="text-align: center">
             <div class="row">
-                <div class="col-md-4">
-                    <div style="padding: 15px">
-                        <div class="landing-head-text">Email Signatures</div>
-                        <div class="landing-text" style="min-height: 40px">Drive ROI and traffic to your Products and Content </div>
-                        <div style="padding-top: 40px;padding-bottom: 40px"><img src="/content/images/new/business-card.png"></div>
+                <div class="col-md-4 ">
+                    <div class="home-use-col" style="padding: 15px 5px">
+                        <div >
+                            <div class="landing-head-text">Email Signatures</div>
+                            <div class="landing-sub-head-text" style="min-height: 40px">Drive ROI and traffic to your Products and Content </div>
+                        </div>
+                        <div class="landing-col-img"><img src="/content/images/new/business-card.png"></div>
                         <div class="landing-text" style="min-height: 130px">
                             Every email, Every profile lookup, Every web interaction is an opportunity to “passively” communicate what you are selling, marketing or passionate about
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div  style="padding: 15px">
-                      <div class="landing-head-text">Business Card Marketing</div>
-                        <div lass="landing-text" style="min-height: 40px">Go tell the world what you are working on Today</div>
-                        <div style="padding-top: 40px;padding-bottom: 40px"><img src="/content/images/new/business-card.png"></div>
+                    <div class="home-use-col" style="padding:15px 5px">
+                        <div>
+                            <div class="landing-head-text">Business Card Marketing</div>
+                            <div class="landing-sub-head-text" style="min-height: 40px">Go tell the world what you are working on Today</div>
+                        </div>
+                        <div class="landing-col-img"><img src="/content/images/new/business-card.png"></div>
                         <div class="landing-text" style="min-height: 130px">
                             Your web profile is being looked up between 4K – 8K per year. Use this opportunity to “passively” communicate with people interested in you. Add your Sigterra profile to linkedin, twitter, facebook, blogs or forums that you frequent.
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div style="padding: 15px">
-                        <div class="landing-head-text">Documents/Blogs</div>
-                        <div lass="landing-text" style="min-height: 40px">Provide more details on yourself to the PDFs or Blogs that you publish </div>
-                        <div style="padding-top: 40px;padding-bottom: 40px"><img src="/content/images/new/business-card.png"></div>
+                    <div class="home-use-col" style="padding:15px 5px">
+                        <div>
+                            <div class="landing-head-text">Documents/Blogs</div>
+                            <div class="landing-sub-head-text" style="min-height: 40px">Provide more details on yourself to the PDFs or Blogs that you publish </div>
+                        </div>
+                        <div class="landing-col-img"><img src="/content/images/new/business-card.png"></div>
                         <div class="landing-text" style="min-height: 130px">
                             Every pdf that you write or a blog post that you publish can have a link to your Sigterra Profile. Unlike Linkedin, Sigterra Profile is designed to capture the projects you are working on today.
                         </div>
-                    <div>
+                        <div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+        </div>
+    </div>
+    <div style="background-color: #FFFFFF;" id="howItWorks">
+        <div class="user-cardlet-panel-home">
+            <div class="home-title">How it Works ?</div>
+            <div class="home-sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+            <div style="position:relative; height: 550px">
+                <div>
+                    <div class="row" style="padding-top: 110px;  text-align: center;">
+                        <div class="col-md-3" style="text-align: center;">
+                            <div class="landing_create-1">1</div>
+                        </div>
+                        <div class="col-md-3" style="text-align: center;">
+                            <div class="landing_add-2">2</div>
+                        </div>
+                        <div class="col-md-3" style="text-align: center;">
+                            <div class="landing_add_to_web-3">3</div>
+                        </div>
+                        <div class="col-md-3" style="text-align: center;">
+                            <div class="landing_see-4">4</div>
+                        </div>
 
+                    </div>
+                </div>
+                <div class="landing-animation-div">
+                    <div class="row" style="text-align: center;">
+                        <div class="col-md-3" style="text-align: center; height: 275px">
+                            <div class="landing_create">
+                                <div >
+                                    <img src="/content/images/landing/01_create.png">
+                                    <div class="how-it-works-description">Create your Free Sigterra Profile</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3"  style="text-align: center; height: 275px">
+                            <div class="landing_add">
+                                <div>
+                                    <img src="/content/images/landing/02_add_tabs.png">
+                                    <div class="how-it-works-description">Make your Sigterra Profile interactive by adding Tabs that describe all aspects of your product/service</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3"  style="text-align: center; height: 275px">
+                            <div class="landing_add_to_web">
+                                <div>
+                                    <img src="/content/images/landing/03_add_to_web.png">
+                                    <div class="how-it-works-description">Copy your Sigterra Profiles  to your email signature, website or a document</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3"  style="text-align: center; height: 275px">
+                            <div class="landing_see">
+                                <div>
+                                    <img src="/content/images/landing/04_see.png">
+                                    <div class="how-it-works-description">People who receive emails, docs or come to your website can interact with your Sigterra Profile and learn more about your product/service</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-            <div>
-                <button style="height:40px;padding: 10px; margin-top: 30px;" type="submit" ng-click="vm.login()" class="saveButton">SIGN UP</button>
-            </div>
     </div>
-        <div class="landing-statistics">
-            <div class="user-cardlet-panel" style="text-align: center">
+    <div class="home-use-panel">
+        <div class="user-cardlet-panel" style="text-align: center">
+            <div class="home-title">Statistics that Benefit you</div>
+            <div class="home-sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
+            <div style="background-color: #FFFFFF; padding: 30px 0px; margin-top: 50px; margin-bottom: 100px">
                 <div class="row">
                     <div class="col-md-3">
-                        <img class="landing-image" src="/content/images/chart-bars/Group 28.png">
+                        <div style="max-width: 200px; margin: 0 auto">
+                            <img src="/content/images/landing/40_traffic.png">
+                            <div class="how-it-works-description">
+                                40% More Traffic to your website
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-3">
-                        <img class="landing-image" src="/content/images/chart-bars/Group 29.png">
+                        <div  style="width: 200px; margin: 0 auto">
+                            <img src="/content/images/landing/10_increase.png">
+                            <div class="how-it-works-description">
+                                10% Increase in LinkedIn Profile Views
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-3">
-                        <img class="landing-image" src="/content/images/chart-bars/Group 30.png">
+                        <div  style="width: 200px; margin: 0 auto">
+                            <img src="/content/images/landing/20_graphic.png">
+                            <div class="how-it-works-description">
+                                20% Increase in Leads
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-3">
-                        <img class="landing-image" src="/content/images/chart-bars/Group 31.png">
+                        <div  style="width: 200px; margin: 0 auto">
+                            <img src="/content/images/landing/50_graphic.png">
+                            <div class="how-it-works-description">
+                                50% More awareness about your product and differentations
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
+    </div>
         <div style="background-color: #FFFFFF">
             <div class="user-cardlet-panel" style="text-align: center">
-                <div style="width: 100%; text-align: center; color: #595959; font-size: 35px; padding-top: 130px; font-weight: bold"> Demo - Business Card Re-Innovation</div>
-                <div style="color: #595959; font-size: 20px; max-width: 750px;margin: 0 auto; padding-top: 10px; font-weight: normal">Business cards lacked details on the projects you are working on right now, or the products and services you are selling or your portfolio. We went back to the drawing board and build a new digital Business Card that enables you to best promote yourself </div>
+                <div class="home-title"> Statistics that Benefit you</div>
+
                 <div>
                     <div class="row" style="padding-top: 120px; padding-bottom: 10px">
-                        <div class="col-md-4" style="height: 210px">
+                        <div class="col-md-6" style="height: 210px">
                             <div class="landing-demo-div">
                                 <div style="width: 100%;padding-bottom: 10px"><div class="landing-demo-img"></div></div>
                                 <div class="image-shadow" style="text-align: left; padding: 20px">
@@ -209,18 +280,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4"  style="height: 210px">
-                            <div class="landing-demo-div">
-                                <div style="width: 100%;padding-bottom: 10px"><div class="landing-demo-img"></div></div>
-                                <div class="image-shadow" style="text-align: left; padding: 20px">
-                                    <div style="position: absolute; bottom: 20px; left: 20px">
-                                        <div style="color:#ffffff; font-size: 30px">Jarred Payer</div>
-                                        <div style="color:#ffffff; font-size: 20px">Art dealer</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4"  style="height: 210px">
+                        <div class="col-md-6"  style="height: 210px">
                             <div class="landing-demo-div">
                                 <div style="width: 100%;padding-bottom: 10px"><div class="landing-demo-img"></div></div>
                                 <div class="image-shadow" style="text-align: left; padding: 20px">
@@ -233,7 +293,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4"  style="height: 210px">
+                        <div class="col-md-6"  style="height: 210px">
                             <div class="landing-demo-div">
                                 <div style="width: 100%;padding-bottom: 10px"><div class="landing-demo-img"></div></div>
                                 <div class="image-shadow" style="text-align: left; padding: 20px">
@@ -244,18 +304,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4"  style="height: 210px">
-                            <div class="landing-demo-div">
-                                <div style="width: 100%;padding-bottom: 10px"><div class="landing-demo-img"></div></div>
-                                <div class="image-shadow" style="text-align: left; padding: 20px">
-                                    <div style="position: absolute; bottom: 20px; left: 20px">
-                                        <div style="color:#ffffff; font-size: 30px">Jarred Payer</div>
-                                        <div style="color:#ffffff; font-size: 20px">Art dealer</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4"  style="height: 210px">
+                        <div class="col-md-6"  style="height: 210px">
                             <div class="landing-demo-div">
                                 <div style="width: 100%;padding-bottom: 10px"><div class="landing-demo-img"></div></div>
                                 <div class="image-shadow" style="text-align: left; padding: 20px">
@@ -270,55 +319,6 @@
 
                 </div>
             </div>
-        </div>
-        <div style="background-color: #F6F6F6">
-            <div class="user-cardlet-panel" style="text-align: center">
-                <div style="width: 100%; text-align: center; color: #595959; font-size: 35px; padding-top: 130px; font-weight: bold"> Use Sigterra with  </div>
-                <div style="margin-top: 120px">
-                    <div>
-                        <div class="agents">
-                            <img src="/content/images/new/Outlook.com_icon.png">
-                            <div class="landing-image-description">Outlook</div>
-                        </div>
-                        <div class="agents">
-                            <img src="/content/images/new/aol.png">
-                            <div class="landing-image-description">Aol mail</div>
-                        </div>
-                        <div class="agents">
-                            <img src="/content/images/new/gmail.png">
-                            <div class="landing-image-description">Gmail</div>
-                        </div>
-                        <div class="agents">
-                            <img src="/content/images/new/google_apps.png">
-                            <div class="landing-image-description">Google Apps</div>
-                        </div>
-                        <div class="agents">
-                            <img src="/content/images/new/Microsoft-office-365-logo.png">
-                            <div class="landing-image-description">Office 365</div>
-                        </div>
-                        <div class="agents">
-                            <img src="/content/images/new/Exchange.png">
-                            <div class="landing-image-description">Exchange</div>
-                        </div>
-                        <div class="agents">
-                            <img src="/content/images/new/Microsoft-Outlook-Mac-icon.png">
-                            <div class="landing-image-description">Outlook (Mac)</div>
-                        </div>
-                        <div class="agents">
-                            <img src="/content/images/new/Mozilla_Thunderbird.png">
-                            <div class="landing-image-description">Thunderbird</div>
-                        </div>
-                        <div class="agents">
-                            <img src="/content/images/new/apple_mail.png">
-                            <div class="landing-image-description">Apple mail</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="user-cardlets-footer" style="background-color: #FFFFFF; text-align: center">
-            <div style="font-size: 34px; color: #595959; padding-top: 135px">We’d love to hear from you</div>
-            <div style="font-size: 20px; padding-bottom: 135px"><span style=" color: #595959;">Email us: </span><a style="color: #18C6B7"  href="mailto:support@sigterra.com">support@sigterra.com</a></div>
         </div>
 
 </div>

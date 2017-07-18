@@ -1814,7 +1814,7 @@ Social Buttons
 }
 
 .landing-first-panel{
-    background: url(/content/images/new/slider.png) no-repeat center center fixed;
+    background: url(/content/images/landing/bg_1screen.png) no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -1825,116 +1825,168 @@ Social Buttons
 
 @keyframes landing_create_animation {
     0%   {
-        height: 255px;
-        width: 185px;
-        border-color: #EEEEEE;
+        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
     }
     12%{
-        height: 275px;
-        width: 225px;
-        border-color: #18C6B7;
-        -webkit-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
-        -moz-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
-        box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
-        z-index: 10;
+        -webkit-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
     }
     25%{
-        height: 255px;
-        width: 185px;
-        border-color: #EEEEEE;
+        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
     }
 
     100% {
-        height: 255px;
-        width: 185px;
-        border-color: #EEEEEE;
+        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
     }
 
 }
 
 @keyframes landing_add_animation {
     0%   {
-        height: 255px;
-        width: 185px;
-        border-color: #EEEEEE;
+        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
     }
     25%   {
-        height: 255px;
-        width: 185px;
-        border-color: #EEEEEE;
+        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
     }
 
     37%{
-        height: 275px;
-        width: 225px;
-        border-color: #18C6B7;
-        -webkit-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
-        -moz-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
-        box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
-        z-index: 10;
+        -webkit-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
     }
     50%{
-        height: 255px;
-        width: 185px;
-        border-color: #EEEEEE;
+        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
     }
 
 }
 
 @keyframes landing_add_to_web_animation {
     0%   {
-        height: 255px;
-        width: 185px;
-        border-color: #EEEEEE;
+        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
     }
     50%   {
-        height: 255px;
-        width: 185px;
-        border-color: #EEEEEE;
+        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
     }
 
     62%{
-        height: 275px;
-        width: 225px;
-        border-color: #18C6B7;
-        -webkit-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
-        -moz-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
-        box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
-        z-index: 10;
+        -webkit-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
     }
     75%{
-        height: 255px;
-        width: 185px;
-        border-color: #EEEEEE;
+        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
     }
 
 }
 
 @keyframes landing_see_animation {
     0%   {
-        height: 255px;
-        width: 185px;
-        border-color: #EEEEEE;
+        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
     }
     75%   {
-        height: 255px;
-        width: 185px;
-        border-color: #EEEEEE;
+        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
     }
 
     89%{
-        height: 275px;
-        width: 225px;
-        border-color: #18C6B7;
-        -webkit-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
-        -moz-box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
-        box-shadow: 3px 3px 12px -1px rgba(0,0,0,0.75);
-        z-index: 10;
+        -webkit-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
     }
     100%{
-        height: 255px;
-        width: 185px;
-        border-color: #EEEEEE;
+        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+    }
+
+}
+
+@keyframes landing_create_animation-1 {
+    0%   {
+        color: #f8f8f8;
+    }
+    12%{
+        color: #1798e3;
+    }
+    25%{
+        color: #f8f8f8;
+    }
+
+    100% {
+        color: #f8f8f8;
+    }
+
+}
+
+@keyframes landing_add_animation-2 {
+    0%   {
+        color: #f8f8f8;
+    }
+    25%   {
+        color: #f8f8f8;
+    }
+
+    37%{
+        color: #1798e3;
+    }
+    50%{
+        color: #f8f8f8;
+    }
+
+}
+
+@keyframes landing_add_to_web_animation-3 {
+    0%   {
+        color: #f8f8f8;
+    }
+    50%   {
+        color: #f8f8f8;
+    }
+
+    62%{
+        color: #1798e3;
+    }
+    75%{
+        color: #f8f8f8;
+    }
+
+}
+
+@keyframes landing_see_animation-4 {
+    0%   {
+        color: #f8f8f8;
+    }
+    75%   {
+        color: #f8f8f8;
+    }
+
+    89%{
+        color: #1798e3;
+    }
+    100%{
+        color: #f8f8f8;
     }
 
 }
@@ -2175,53 +2227,125 @@ Social Buttons
 
 
 .landing_create{
-    border-width: 1px;
-    border-color: #EEEEEE;
-    border-style: solid;
-    height: 255px;
-    width: 185px;
+    background-color: #ffffff;
+    border-width: 0px;
+    height: 275px;
     margin: 0 auto;
-    padding: 35px;
+    padding: 35px 15px;
+    vertical-align: middle;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+    -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+    box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
     animation-name: landing_create_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
 }
 
-.landing_add_to_web{
-    border-width: 1px;
-    border-color: #EEEEEE;
-    border-style: solid;
-    height: 255px;
-    width: 185px;
-    margin: 0 auto;
-    padding: 35px;
-    animation-name: landing_add_to_web_animation;
+.landing_create-1{
+    font-size: 50pt;
+    color: #f8f8f8;
+    font-weight: bold;
+    animation-name: landing_create_animation-1;
     animation-duration: 16s;
     animation-iteration-count: infinite;
 }
 
 .landing_add{
-    border-width: 1px;
-    border-color: #EEEEEE;
-    border-style: solid;
-    height: 255px;
-    width: 185px;
+    background-color: #ffffff;
+    border-width: 0px;
+    height: 275px;
+    padding: 35px 15px;
     margin: 0 auto;
-    padding: 35px;
+    vertical-align: middle;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+    -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+    box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
     animation-name: landing_add_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
 }
 
+
+.landing_add-2{
+    font-size: 50pt;
+    color: #f8f8f8;
+    font-weight: bold;
+    animation-name: landing_add_animation-2;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+}
+
+.landing_add_to_web{
+    background-color: #ffffff;
+    border-width: 0px;
+    height: 275px;
+    padding: 35px 15px;
+    vertical-align: middle;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+    -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+    box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+    animation-name: landing_add_to_web_animation;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+}
+
+.landing_add_to_web-3{
+    font-size: 50pt;
+    color: #f8f8f8;
+    font-weight: bold;
+    animation-name: landing_add_to_web_animation-3;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+}
+
 .landing_see{
-    border-width: 1px;
-    border-color: #EEEEEE;
-    border-style: solid;
-    height: 255px;
-    width: 185px;
+    background-color: #ffffff;
+    border-width: 0px;
+    height: 275px;
     margin: 0 auto;
-    padding: 35px;
+    padding: 35px 15px;
+    vertical-align: middle;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: top;
+    justify-content: center;
+    -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+    -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+    box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
     animation-name: landing_see_animation;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+}
+
+.landing_see-4{
+    font-size: 50pt;
+    font-weight: bold;
+    color: #f8f8f8;
+    animation-name: landing_see_animation-4;
     animation-duration: 16s;
     animation-iteration-count: infinite;
 }
@@ -2231,14 +2355,20 @@ Social Buttons
 }
 
 .landing-head-text{
-    font-size: 30px;
+    font-size: 24pt;
     font-weight: bold;
-    color: #595959;
+    color: #35353b;
+}
+
+.landing-sub-head-text{
+    color: #1798e3;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
 .landing-text{
-    color: #595959;
-    font-size: 16px;
+    color: #5c5c66;
+    font-size: 12pt;
     font-weight: normal;
 }
 .landing-statistics{
@@ -4057,6 +4187,66 @@ ul.tab li.active {
     padding-left: 5px;
 }
 
+.home-title{
+    text-align: center;
+    font-weight: bold;
+    color: #35353b;
+    font-size: 40pt;
+    padding-top: 100px
+}
+
+.home-use-panel{
+    background-color: #f4f7f9;
+}
+
+.home-sub-title{
+    color: #5c5c66;
+    font-size: 16pt;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.how-it-works-description{
+    color: #5c5c66;
+    font-size: 12pt;
+    margin-top: 25px;
+}
+
+.home-use-col{
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(166,164,166,0.35);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(166,164,166,0.35);
+    box-shadow: 0px 0px 8px 0px rgba(166,164,166,0.35);
+}
+
+.landing-col-img{
+    margin: 20px 0px;
+}
+
+.landing-animation-div{
+    position: absolute;
+    z-index: 10;
+    top: 175px;
+    left: 0;
+}
+
+.landing-first-title{
+    font-size: 35px;
+    color: #35353b;
+}
+
+.landing-learn-brn{
+    background-color: #3aa5e2;
+    color: #FFF;
+    width: 200px;
+    border:none;
+    font-size: 15px;
+    padding: 12px;
+    border-radius: 10px;
+
+}
 
 
 

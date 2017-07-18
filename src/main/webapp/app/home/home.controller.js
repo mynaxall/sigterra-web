@@ -10,6 +10,9 @@
     function HomeController ($scope, Principal, LoginService, $state, $location, $anchorScroll) {
         var vm = this;
 
+
+        vm.showHaeder = false;
+
         vm.account = null;
         vm.isAuthenticated = null;
         vm.login = LoginService.open;
@@ -17,6 +20,13 @@
         $scope.$on('authenticationSuccess', function() {
             getAccount();
         });
+
+
+        function setFixedNavbar(){
+            document.getElementById("default-navbar").className += " navbar-fixed-top";
+        }
+
+        setFixedNavbar();
 
         getAccount();
 
