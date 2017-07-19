@@ -14,9 +14,22 @@
                     $("#default-navbar").removeClass("scrolled-navbar");
                 }
             });
+            $("#main-footer").addClass("ng-hide");
         });
     </script>
     <style>
+
+        .footer-panel{
+            background: #ffffff!important;
+        }
+
+        .footer-top-text{
+            color: #35353b!important;
+        }
+
+        .footer-main-text{
+            color: #656b6f!important;
+        }
 
         .navbar-default .navbar-nav > li > a{
             color: #35353b!important;
@@ -110,7 +123,24 @@
         </div>
     </div>
     <div>
-        <div class="home-title">What is a Sigterra Profile</div>
+        <div class="home-title">What is a Sigterra Profile
+
+        </div>
+        <div class="user-cardlet-panel" style="text-align: center">
+            <div class="row">
+                <div class="col-md-6 director-bg" style="position: relative;">
+                    <div class="director-panel">
+                        <div class="director-name">Joe Black</div>
+                        <div class="director-job">Director Sales</div>
+                        <div class="landing-text" style="margin-top: 25px">Adaptive Insights</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div style="margin-top: 30px"><img src="/content/images/landing/business-card_01.png"></div>
+                    <div class="landing-text" style="text-align: left; width: 440px; margin: 0 auto;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="home-use-panel">
         <div class="home-title">Where can you use it ?</div>
@@ -267,51 +297,65 @@
             <div class="user-cardlet-panel" style="text-align: center">
                 <div class="home-title"> Statistics that Benefit you</div>
 
-                <div>
+                <div style="max-width: 800px; margin:0 auto;">
                     <div class="row" style="padding-top: 120px; padding-bottom: 10px">
-                        <div class="col-md-6" style="height: 210px">
-                            <div class="landing-demo-div">
-                                <div style="width: 100%;padding-bottom: 10px"><div class="landing-demo-img"></div></div>
-                                <div class="image-shadow" style="text-align: left; padding: 20px">
-                                    <div style="position: absolute; bottom: 20px; left: 20px">
-                                        <div style="color:#ffffff; font-size: 30px">Jarred Payer</div>
-                                        <div style="color:#ffffff; font-size: 20px">Art dealer</div>
-                                    </div>
+                        <div class="col-md-6">
+                            <div class="staff-col">
+                                <div  class="image">
+                                    <img src="/content/images/landing/avatar_01.png">
+                                    <div class="director-job marin-top-25">KATHIE EVANS</div>
+                                    <div class="how-it-works-description marin-top-0">Creative Director, Co-Founder</div>
+                                </div>
+                                <div class="overlay">
+                                    <img  style="width: 100%;" src="/content/images/landing/business-card_benefits.png">
+                                    <div class="director-job marin-top-25">KATHIE EVANS</div>
+                                    <div class="how-it-works-description marin-top-0">Creative Director, Co-Founder</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6"  style="height: 210px">
-                            <div class="landing-demo-div">
-                                <div style="width: 100%;padding-bottom: 10px"><div class="landing-demo-img"></div></div>
-                                <div class="image-shadow" style="text-align: left; padding: 20px">
-                                    <div style="position: absolute; bottom: 20px; left: 20px">
-                                        <div style="color:#ffffff; font-size: 30px">Jarred Payer</div>
-                                        <div style="color:#ffffff; font-size: 20px">Art dealer</div>
-                                    </div>
+                        <div class="col-md-6">
+                            <div class="staff-col">
+                                <div  class="image">
+                                    <img src="/content/images/landing/avatar_02.png">
+                                    <div class="director-job marin-top-25">MARTIN LITZEN</div>
+                                    <div class="how-it-works-description marin-top-0">Photographer</div>
+                                </div>
+                                <div class="overlay">
+                                    <img  style="width: 100%;" src="/content/images/landing/business-card_small.png">
+                                    <div class="director-job marin-top-25">MARTIN LITZEN</div>
+                                    <div class="how-it-works-description marin-top-0">Photographer</div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6"  style="height: 210px">
-                            <div class="landing-demo-div">
-                                <div style="width: 100%;padding-bottom: 10px"><div class="landing-demo-img"></div></div>
-                                <div class="image-shadow" style="text-align: left; padding: 20px">
-                                    <div style="position: absolute; bottom: 20px; left: 20px">
-                                        <div style="color:#ffffff; font-size: 30px">Jarred Payer</div>
-                                        <div style="color:#ffffff; font-size: 20px">Art dealer</div>
-                                    </div>
+                        <div class="col-md-6">
+                            <div class="staff-col">
+                                <div  class="image">
+                                    <img src="/content/images/landing/avatar_03.png">
+                                    <div class="director-job marin-top-25">COREY MICHAELS</div>
+                                    <div class="how-it-works-description marin-top-0">Art Director in Mediumv</div>
+                                </div>
+                                <div class="overlay">
+                                    <img style="width: 100%;" src="/content/images/landing/business-card_small.png">
+                                    <div class="director-job marin-top-25">COREY MICHAELS</div>
+                                    <div class="how-it-works-description marin-top-0">Art Director in Mediumv</div>
                                 </div>
                             </div>
+
                         </div>
-                        <div class="col-md-6"  style="height: 210px">
-                            <div class="landing-demo-div">
-                                <div style="width: 100%;padding-bottom: 10px"><div class="landing-demo-img"></div></div>
-                                <div class="image-shadow" style="text-align: left; padding: 20px">
-                                    <div style="position: absolute; bottom: 20px; left: 20px">
-                                        <div style="color:#ffffff; font-size: 30px">Jarred Payer</div>
-                                        <div style="color:#ffffff; font-size: 20px">Art dealer</div>
-                                    </div>
+                        <div class="col-md-6" >
+                            <div class="staff-col">
+                                <div class="image">
+                                    <img src="/content/images/landing/avatar_04.png">
+                                    <div class="director-job marin-top-25">JULIA PETROVA</div>
+                                    <div class="how-it-works-description marin-top-0">UI/UX Designer</div>
+                                </div>
+                                <div class="overlay">
+                                    <img  style="width: 100%;" src="/content/images/landing/business-card_small.png">
+                                    <div class="director-job marin-top-25">JULIA PETROVA</div>
+                                    <div class="how-it-works-description marin-top-0">UI/UX Designer</div>
                                 </div>
                             </div>
                         </div>
@@ -321,4 +365,41 @@
             </div>
         </div>
 
+</div>
+<div  class="footer" id="sigFooter" ng-cloak>
+    <div class="footer-panel">
+        <div class="user-cardlet-panel" style="background-color: #242424">
+            <div class="row footer-border" >
+                <div class="col-md-3">
+                    <div class="footer-top-text"><img style="height: 40px" src="/content/images/landing/Logo_footer.png"></div>
+                    <div class="footer-main-text">@: hi@sigterra.com</div>
+                    <div class="footer-main-text">p: +62 202 555 0117</div>
+                    <div class="footer-main-text">a: 610 Overlook Circle Suite 323
+                        Kalamazoo, MI 49009</div>
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-top-text">Company</div>
+                    <div class="footer-main-text">Demo</div>
+                    <div class="footer-main-text">Pricing</div>
+                    <div class="footer-main-text">Contact Us</div>
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-top-text">Others</div>
+                    <div class="footer-main-text">Help & Support</div>
+                    <div class="footer-main-text">Privacy Policy</div>
+
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-top-text">Newsletter</div>
+                    <div class="footer-main-text">Subscribe to our newsletter and get all
+                        the cool news</div>
+                    <div class="cover-input footer-cover">
+                        <input ng-model="footerEmailModel" type="text" class="footer-input" id="footer-email" placeholder="Enter Email">
+                        <label class="custom-placeholder" ng-hide="footerEmailModel" for="footer-email">Enter Email</label>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-main-text" style="text-align: center; margin-top: 20px">All rights reserved 2017</div>
+        </div>
+    </div>
 </div>

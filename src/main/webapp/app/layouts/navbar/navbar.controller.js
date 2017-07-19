@@ -5,9 +5,9 @@
         .module('sigterraWebApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService'];
+    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', '$scope', '$location'];
 
-    function NavbarController ($state, Auth, Principal, ProfileService, LoginService) {
+    function NavbarController ($state, Auth, Principal, ProfileService, LoginService, $scope, $location) {
         var vm = this;
 
         vm.isNavbarCollapsed = true;
@@ -17,6 +17,29 @@
             vm.inProduction = response.inProduction;
             vm.swaggerEnabled = response.swaggerEnabled;
         });
+
+        $scope.homeLogo = false;
+
+        $scope.$watch('$location.path()', function(value){
+            console.log($location.path());
+            if(($location.path()) === "/"){
+                $scope.homeLogo = true;
+            }else{
+                $scope.homeLogo = false;
+            }
+        })
+
+        $scope.$on('$locationChangeStart', function(event) {
+            console.log($location.path());
+            if(($location.path()) === "/"){
+                $scope.homeLogo = true;
+
+            }else{
+                $scope.homeLogo = false;
+            }
+        });
+
+
 
         vm.login = login;
         vm.logout = logout;

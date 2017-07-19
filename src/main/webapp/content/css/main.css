@@ -2375,62 +2375,6 @@ Social Buttons
     background-color: #595959;
 }
 
-.landing-demo-img{
-    width: 100%;
-    height: 100%;;
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-transition: all 1s ease-in-out;
-    background: url("/content/images/new/matthew-dix-31391.png");
-    background-size:     cover;
-    background-repeat:   no-repeat;
-    background-position: center center;
-
-}
-
-.landing-demo-div{
-    height: 100%;
-    width: 100%;
-    position: relative;
-    max-width: 400px;
-    margin: 0 auto;;
-}
-
-.landing-demo-div .image-shadow{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    background-color: rgba(0, 0, 0, 0.3);
-    top:0;
-    left: 0;
-}
-
-.landing-demo-div:hover .image-shadow{
-    background-color: rgba(0, 0, 0, 0);
-    z-index: 0;
-
-
-}
-
-
-.landing-demo-div:hover .landing-demo-img{
-    width: 120%;
-    height: 120%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-transition: all 1s ease-in-out;
-    z-index: 10;
-    background: url("/content/images/new/business-card.png");
-    background-size:     cover;
-    background-repeat:   no-repeat;
-    background-position: center center;
-
-
-
-}
 .agents{
     display: inline-block;
     width: 18%;
@@ -4248,5 +4192,109 @@ ul.tab li.active {
 
 }
 
+.director-panel{
+    position: absolute;
+    right: 0;
+    top:80px;
+    text-align: left;
+    background-color: #FFFFFF;
+    padding: 30px 80px;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(166,164,166,0.35);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(166,164,166,0.35);
+    box-shadow: 0px 0px 8px 0px rgba(166,164,166,0.35);
+
+
+}
+
+.director-name{
+    color: #1798e3;
+    font-size: 20pt;
+}
+
+.director-job{
+    color: #5c5c66;
+    font-size: 15pt;
+    text-transform: uppercase;
+}
+
+.director-bg{
+    background: url(/content/images/landing/photo_02.png) no-repeat left center;
+    height: 580px;
+}
+
+.staff-div{
+    text-align: center;
+    position: relative;
+}
+
+.staff-col{
+    width: 400px;
+    height: 300px;
+    padding: 30px;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(166,164,166,0.35);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(166,164,166,0.35);
+    box-shadow: 0px 0px 8px 0px rgba(166,164,166,0.35);
+}
+
+.marin-top-25{
+    margin-top: 25px;
+}
+.marin-top-0{
+    margin-top: 0px;
+}
+
+.image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+}
+
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    right: 0;
+    background-color: #ffffff;
+    overflow: hidden;
+    width: 0;
+    height: 100%;
+    transition: .5s ease;
+}
+
+.staff-col:hover .overlay {
+    width: 100%;
+}
+
+.text {
+    white-space: nowrap;
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
 
 
