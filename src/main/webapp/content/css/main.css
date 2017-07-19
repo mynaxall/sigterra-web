@@ -2783,6 +2783,7 @@ ul.tab2 li {
 .svg-description{
     margin-left: 30px;
     font-size: 13px;
+    word-break: break-all;
 
 }
 
