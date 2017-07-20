@@ -4315,4 +4315,8 @@ ul.tab li.active {
     -ms-transform: translate(-50%, -50%);
 }
 
+.carousel-item-name-div{
+    max-height: 55px;
+    overflow: hidden;
+}
 
