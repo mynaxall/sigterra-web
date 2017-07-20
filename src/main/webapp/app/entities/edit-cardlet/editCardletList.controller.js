@@ -160,6 +160,12 @@
             element.style.height =  scrollHeight + "px";
         };
 
+        $scope.autoExpand2 = function(id) {
+            var cyrrentEl = document.getElementById(id);
+            cyrrentEl.style.height = 'auto';
+            cyrrentEl.style.height = cyrrentEl.scrollHeight +"px"
+        };
+
 
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
@@ -230,10 +236,6 @@
 
 
         $scope.openCity = function(cityName, tabId, cardName, cardId) {
-
-            console.log($scope.isEmptyName())
-            console.log(!$scope.isDisabledTabs)
-
 
 
             if(!$scope.isDisabledTabs && $scope.isEmptyName()) {
