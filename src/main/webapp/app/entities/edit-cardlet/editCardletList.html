@@ -489,7 +489,7 @@
                                                     </div>
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
-                                                            <input type="text" class="input-new-editor" id="description2{{slide.index}}" placeholder="Description" ng-model="slide.description.value">
+                                                            <input type="text" class="input-new-editor" maxlength="33" id="description2{{slide.index}}" placeholder="Description"  ng-model="slide.description.value">
                                                             <label for="description2{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
@@ -568,7 +568,7 @@
                                                         <form name="myItemForm">
                                                             <div class="form-group form-group-editor clearfix">
                                                                 <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                    <input type="url" class="input-new-editor" name="itemLink" id="itemDescription4{{slide.index}}" placeholder="Link" ng-model="slide.link">
+                                                                    <input type="url" class="input-new-editor" maxlength="33" name="itemLink" id="itemDescription4{{slide.index}}" placeholder="Link" ng-model="slide.link">
                                                                     <label for="itemDescription4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                                 </div>
                                                                 <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
