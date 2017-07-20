@@ -5,6 +5,7 @@
 
 <ng-include src="'app/cardlets/deleteTabDialog.html'"></ng-include>
 
+
 <script>
     $(document).ready(function(){
         $("#main-footer").removeClass("ng-hide");
@@ -309,7 +310,7 @@
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
                                                             <input ng-hide="true" type="text" class="input-new"  placeholder="Name" ng-model="slide.name.value">
-                                                            <textarea class="textarea-new-editor" ng-style="autoExpand2('infoName1'+slide.index)" ng-keyup="autoExpand($event)" id="infoName1{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
+                                                            <textarea msd-elastic class="textarea-new-editor" id="infoName1{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
                                                             <label  id="infoName1{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
@@ -322,7 +323,7 @@
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
                                                             <input ng-hide="true" type="text" class="input-new" placeholder="Description" ng-model="item.description.value">
-                                                            <textarea ng-style="autoExpand2('itemDesctiption2'+slide.index)" id="itemDesctiption2{{slide.index}}" class="textarea-new-editor"  ng-keyup="autoExpand($event)" placeholder="Description"  ng-model="slide.description.value" maxlength="270" ></textarea>
+                                                            <textarea id="itemDesctiption2{{slide.index}}" class="textarea-new-editor" msd-elastic placeholder="Description"  ng-model="slide.description.value" maxlength="270" ></textarea>
                                                             <label for="itemDesctiption2{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
@@ -375,7 +376,7 @@
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
                                                                 <input ng-hide="true" type="text" class="input-new"  placeholder="Name" ng-model="slide.name.value">
-                                                                <textarea class="textarea-new-editor" ng-style="autoExpand2('itemName2'+slide.index)" ng-keyup="autoExpand($event)" id="itemName2{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
+                                                                <textarea class="textarea-new-editor" msd-elastic id="itemName2{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
                                                                 <label  id="itemName2{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
 
                                                             </div>
@@ -389,7 +390,7 @@
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
                                                                 <input ng-hide="true" type="text" class="input-new" placeholder="Description" ng-model="item.description.value">
-                                                                <textarea class="textarea-new-editor" ng-style="autoExpand2('itemDesctiption' + slide.index)" ng-keyup="autoExpand($event)" id="itemDesctiption{{slide.index}}" placeholder="Description"  ng-model="slide.description.value" maxlength="270"></textarea>
+                                                                <textarea class="textarea-new-editor" msd-elastic id="itemDesctiption{{slide.index}}" placeholder="Description"  ng-model="slide.description.value" maxlength="270"></textarea>
                                                                 <label for="itemDesctiption{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div class="text-decoration-div-editor" >
