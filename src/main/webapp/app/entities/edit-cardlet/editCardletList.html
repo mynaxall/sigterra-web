@@ -297,7 +297,7 @@
                                 <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 3">
                                     <div class="accordion-section" >
                                         <div id="accordion2-item.index" class="editor-item-card">
-                                            <div ng-repeat="slide in tabName.items" ng-show="tabName.items.length === 1" ng-if="tabName.items.length === 1">
+                                            <div ng-repeat="slide in tabName.items track by slide.position" ng-show="tabName.items.length === 1" ng-if="tabName.items.length === 1">
                                                 <div class="editor-info-image-panel">
                                                     <div style="padding-top: 25px">
                                                         <div class="info-image-div">
