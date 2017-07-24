@@ -76,7 +76,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "reset_date")
     private ZonedDateTime resetDate = null;
 
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 50)
     @Column(name = "phone_number", length = 30)
     private String phoneNumber;
 
