@@ -294,174 +294,8 @@
 
                             <div class="main">
 
-                                <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 3">
-                                    <div class="accordion-section" >
-                                        <div id="accordion2-item.index" class="editor-item-card">
-                                            <div ng-repeat="slide in tabName.items track by slide.position" ng-show="tabName.items.length === 1" ng-if="tabName.items.length === 1">
-                                                <div class="editor-info-image-panel">
-                                                    <div style="padding-top: 25px">
-                                                        <div class="info-image-div">
-                                                            <img crossorigin="anonymous" ng-src="{{slide.image}}" class="info-image-editor">
-                                                            <button class="info-image-upload-editor" ng-click="openCropDialog(tabName.position, slide.position, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="editor-info-inputs-panel">
-                                                    <div class="form-group form-group-editor clearfix">
-                                                        <div class="input-text-div input-text-div-editor">
-                                                            <input ng-hide="true" type="text" class="input-new"  placeholder="Name" ng-model="slide.name.value">
-                                                            <textarea msd-elastic class="textarea-new-editor" id="infoName1{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
-                                                            <label  id="infoName1{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
-                                                        </div>
-                                                        <div class="text-decoration-div-editor" >
-                                                            <input type='checkbox' ng-model="slide.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{slide.position}}"/><label for="boldName{{tabName.position}}{{slide.position}}"></label>
-                                                            <input type='checkbox' ng-model="slide.name.italic" name='italic'  class="checkboxItalic" value='valuable' id="italicName{{tabName.position}}{{slide.position}}"/><label for="italicName{{tabName.position}}{{slide.position}}"></label>
-                                                            <input type='checkbox' ng-model="slide.name.underline" name='underline' class="checkboxUunderline" value='valuable' id="underlineName{{tabName.position}}{{slide.position}}"/><label for="underlineName{{tabName.position}}{{slide.position}}"></label>
 
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group form-group-editor clearfix">
-                                                        <div class="input-text-div input-text-div-editor">
-                                                            <input ng-hide="true" type="text" class="input-new" placeholder="Description" ng-model="item.description.value">
-                                                            <textarea id="itemDesctiption2{{slide.index}}" class="textarea-new-editor" msd-elastic placeholder="Description"  ng-model="slide.description.value" maxlength="270" ></textarea>
-                                                            <label for="itemDesctiption2{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
-                                                        </div>
-                                                        <div class="text-decoration-div-editor" >
-                                                            <input type='checkbox' ng-model="slide.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{slide.position}}"/><label for="boldDescription{{tabName.position}}{{slide.position}}"></label>
-                                                            <input type='checkbox' ng-model="slide.description.italic" name='italic' value='valuable' class="checkboxItalic" id="italicDescription{{tabName.position}}{{slide.position}}"/><label for="italicDescription{{tabName.position}}{{slide.position}}"></label>
-                                                            <input type='checkbox' ng-model="slide.description.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineDescription{{tabName.position}}{{slide.position}}"/><label for="underlineDescription{{tabName.position}}{{slide.position}}"></label>
-
-                                                        </div>
-                                                    </div>
-                                                    <form name="myItemForm">
-                                                        <div class="form-group form-group-editor clearfix">
-                                                            <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                <input type="url" class="input-new-editor" name="itemLink" id="itemDescription3{{slide.index}}" placeholder="Link" ng-model="slide.link">
-                                                                <label for="itemDescription3{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
-                                                            </div>
-                                                            <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
-                                                                <p class="help-block has-error-new"
-                                                                   ng-show="myItemForm.itemLink.$error.url">
-                                                                    Invalid URL string. It should starts from "http://" or "https://"
-                                                                </p>
-
-                                                            </div>
-                                                            <div class="text-decoration-div" >
-
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                    <br>
-                                                    <div class="item-selection-panel">
-                                                        <div class="item-selection item-selected" ng-repeat="slide in tabName.items" ng-click="vm.currentSlide = $index">{{itemPosition($index)}}</div>
-                                                        <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn-editor"><span class="glyphicon glyphicon-plus add-item-icon"></span></button>
-                                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  slide.index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1" ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)" >
-                                                <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" class="item-catousel-editor">
-                                                    <div class="custom-slide-prev-editor"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
-                                                    <div class="custom-slide-next-editor"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
-
-                                                    <div class="editor-info-image-panel">
-                                                        <div style="padding-top: 25px">
-                                                            <div class="info-image-div">
-                                                                <img crossorigin="anonymous" ng-src="{{slide.image}}" class="info-image-editor">
-                                                                <button class="info-image-upload-editor" ng-click="openCropDialog(tabName.position, slide.position, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="editor-info-inputs-panel">
-                                                        <div class="form-group form-group-editor clearfix">
-                                                            <div class="input-text-div input-text-div-editor">
-                                                                <input ng-hide="true" type="text" class="input-new"  placeholder="Name" ng-model="slide.name.value">
-                                                                <textarea class="textarea-new-editor" msd-elastic id="itemName2{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
-                                                                <label  id="itemName2{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
-
-                                                            </div>
-                                                            <div class="text-decoration-div-editor" >
-                                                                <input type='checkbox' ng-model="slide.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{slide.position}}"/><label for="boldName{{tabName.position}}{{slide.position}}"></label>
-                                                                <input type='checkbox' ng-model="slide.name.italic" name='italic'  class="checkboxItalic" value='valuable' id="italicName{{tabName.position}}{{slide.position}}"/><label for="italicName{{tabName.position}}{{slide.position}}"></label>
-                                                                <input type='checkbox' ng-model="slide.name.underline" name='underline' class="checkboxUunderline" value='valuable' id="underlineName{{tabName.position}}{{slide.position}}"/><label for="underlineName{{tabName.position}}{{slide.position}}"></label>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group form-group-editor clearfix">
-                                                            <div class="input-text-div input-text-div-editor">
-                                                                <input ng-hide="true" type="text" class="input-new" placeholder="Description" ng-model="item.description.value">
-                                                                <textarea class="textarea-new-editor" msd-elastic id="itemDesctiption{{slide.index}}" placeholder="Description"  ng-model="slide.description.value" maxlength="270"></textarea>
-                                                                <label for="itemDesctiption{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
-                                                            </div>
-                                                            <div class="text-decoration-div-editor" >
-                                                                <input type='checkbox' ng-model="slide.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{slide.position}}"/><label for="boldDescription{{tabName.position}}{{slide.position}}"></label>
-                                                                <input type='checkbox' ng-model="slide.description.italic" name='italic' value='valuable' class="checkboxItalic" id="italicDescription{{tabName.position}}{{slide.position}}"/><label for="italicDescription{{tabName.position}}{{slide.position}}"></label>
-                                                                <input type='checkbox' ng-model="slide.description.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineDescription{{tabName.position}}{{slide.position}}"/><label for="underlineDescription{{tabName.position}}{{slide.position}}"></label>
-
-                                                            </div>
-                                                        </div>
-                                                        <form name="myItemForm">
-                                                            <div class="form-group form-group-editor clearfix">
-                                                                <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                    <input type="url" class="input-new-editor" name="itemLink" id="itemDescription1{{slide.index}}" placeholder="Link" ng-model="slide.link">
-                                                                    <label for="itemDescription1{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
-                                                                </div>
-                                                                <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
-                                                                    <p class="help-block has-error-new"
-                                                                       ng-show="myItemForm.itemLink.$error.url">
-                                                                        Invalid URL string. It should starts from "http://" or "https://"
-                                                                    </p>
-
-                                                                </div>
-                                                                <div class="text-decoration-div" >
-
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                        <br>
-                                                    </div>
-                                                    <div class="item-selection-panel">
-                                                        <div class="item-selection" ng-repeat="slide in tabName.items" ng-click="vm.currentSlide = $index"  ng-class="$index == vm.currentSlide ? 'item-selected': '' ">{{itemPosition($index)}}</div>
-                                                        <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn-editor"><span class="glyphicon glyphicon-plus add-item-icon"></span></button>
-                                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  slide.index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <script>
-                                            $(document).ready(function() {
-                                                jscolor.installByClassName("jscolor");
-                                            });
-                                        </script>
-                                        <div class="cadlet-top-title" style="margin-top: 40px;">Design Layouts
-                                            <div class="cadlet-top-title-border"></div>
-                                        </div>
-                                        <div class="color-input-div">
-                                            <label class="login-lable cardlet-label-editor" style="margin-left: 0px;" for="mainColor{{tabName.name}}">Background colour</label>
-                                            <input ng-model="tabName.layout.mainColor" type="text" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
-                                            <label class="login-lable cardlet-label-editor" style="margin-left: 0px;" for="secondaryColor{{tabName.name}}">Feature colour</label>
-                                            <input ng-model="tabName.layout.secondaryColor"  type="text" name='secondaryColor' value='secondaryColor' id="secondaryColor{{tabName.name}}" class="jscolor secondaryColor-input" value="4BABE2">
-                                        </div>
-
-                                        <table style="width: 100%; height: 110px; margin-bottom: 30px;">
-                                            <th>
-                                            <td ng-repeat="itemType in infoTypes"  style="max-width: 240px!important; max-height: 50px!important; position: relative; width: 233px">
-                                                <div style="transform: scale(0.40); display: inline-block; position: absolute; top:-70px; max-height: 242px" ng-class="$index === 1 ? 'second-cardler-example' : $index === 2 ? 'third-cardler-example': 'first-cardler-example'">
-                                                    <div ng-click="chooseType(tabName.position, itemType.path, itemType.id)" class="choose-tab" ng-class="tabNames.tabs[tabName.position].layout.tabId == itemType.id ? 'choose-tab-active' : ''"></div>
-                                                    <div class="cardlet-top-border" style="border-bottom-width: 1px"></div>
-                                                    <ng-include style="display: block!important" src="itemType.path" ></ng-include>
-                                                </div>
-                                            </td>
-                                            </th>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 2">
+                                <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 2" ng-if="tabName.tabType === 2">
                                     <div class="accordion-section" >
                                         <div id="accordion2-item.index" class="editor-item-card">
                                             <div ng-repeat="slide in tabName.items" ng-show="tabName.items.length === 1" ng-if="tabName.items.length === 1">
@@ -479,7 +313,7 @@
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
                                                             <input type="text" class="input-new-editor" id="itemName3{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="16">
-                                                            <label for="itemName2{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                            <label for="itemName3{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
                                                             <input type='checkbox' ng-model="slide.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{slide.position}}"/><label for="boldName{{tabName.position}}{{slide.position}}"></label>
@@ -803,6 +637,172 @@
                                     </div><!--end .accordion-section-->
 
                                 </div><!--end .accordion-->
+                                <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 3" ng-if="tabName.tabType === 3" >
+                                    <div class="accordion-section" >
+                                        <div id="accordion2-item.index" class="editor-item-card">
+                                            <div ng-repeat="slide in tabName.items track by slide.position" ng-show="tabName.items.length === 1" ng-if="tabName.items.length === 1">
+                                                <div class="editor-info-image-panel">
+                                                    <div style="padding-top: 25px">
+                                                        <div class="info-image-div">
+                                                            <img crossorigin="anonymous" ng-src="{{slide.image}}" class="info-image-editor">
+                                                            <button class="info-image-upload-editor" ng-click="openCropDialog(tabName.position, slide.position, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="editor-info-inputs-panel">
+                                                    <div class="form-group form-group-editor clearfix">
+                                                        <div class="input-text-div input-text-div-editor">
+                                                            <input ng-hide="true" type="text" class="input-new"  placeholder="Name" ng-model="slide.name.value">
+                                                            <textarea msd-elastic class="textarea-new-editor" id="infoName1{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
+                                                            <label  id="infoName1{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                        </div>
+                                                        <div class="text-decoration-div-editor" >
+                                                            <input type='checkbox' ng-model="slide.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{slide.position}}"/><label for="boldName{{tabName.position}}{{slide.position}}"></label>
+                                                            <input type='checkbox' ng-model="slide.name.italic" name='italic'  class="checkboxItalic" value='valuable' id="italicName{{tabName.position}}{{slide.position}}"/><label for="italicName{{tabName.position}}{{slide.position}}"></label>
+                                                            <input type='checkbox' ng-model="slide.name.underline" name='underline' class="checkboxUunderline" value='valuable' id="underlineName{{tabName.position}}{{slide.position}}"/><label for="underlineName{{tabName.position}}{{slide.position}}"></label>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group form-group-editor clearfix">
+                                                        <div class="input-text-div input-text-div-editor">
+                                                            <input ng-hide="true" type="text" class="input-new" placeholder="Description" ng-model="item.description.value">
+                                                            <textarea id="itemDesctiption2{{slide.index}}" class="textarea-new-editor" msd-elastic placeholder="Description"  ng-model="slide.description.value" maxlength="270" ></textarea>
+                                                            <label for="itemDesctiption2{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                        </div>
+                                                        <div class="text-decoration-div-editor" >
+                                                            <input type='checkbox' ng-model="slide.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{slide.position}}"/><label for="boldDescription{{tabName.position}}{{slide.position}}"></label>
+                                                            <input type='checkbox' ng-model="slide.description.italic" name='italic' value='valuable' class="checkboxItalic" id="italicDescription{{tabName.position}}{{slide.position}}"/><label for="italicDescription{{tabName.position}}{{slide.position}}"></label>
+                                                            <input type='checkbox' ng-model="slide.description.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineDescription{{tabName.position}}{{slide.position}}"/><label for="underlineDescription{{tabName.position}}{{slide.position}}"></label>
+
+                                                        </div>
+                                                    </div>
+                                                    <form name="myItemForm">
+                                                        <div class="form-group form-group-editor clearfix">
+                                                            <div class="cover-input input-text-div-editor" style="width: 340px">
+                                                                <input type="url" class="input-new-editor" name="itemLink" id="itemDescription3{{slide.index}}" placeholder="Link" ng-model="slide.link">
+                                                                <label for="itemDescription3{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                            </div>
+                                                            <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
+                                                                <p class="help-block has-error-new"
+                                                                   ng-show="myItemForm.itemLink.$error.url">
+                                                                    Invalid URL string. It should starts from "http://" or "https://"
+                                                                </p>
+
+                                                            </div>
+                                                            <div class="text-decoration-div" >
+
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <br>
+                                                    <div class="item-selection-panel">
+                                                        <div class="item-selection item-selected" ng-repeat="slide in tabName.items" ng-click="vm.currentSlide = $index">{{itemPosition($index)}}</div>
+                                                        <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn-editor"><span class="glyphicon glyphicon-plus add-item-icon"></span></button>
+                                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  slide.index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1" ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)" >
+                                                <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" class="item-catousel-editor">
+                                                    <div class="custom-slide-prev-editor"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
+                                                    <div class="custom-slide-next-editor"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
+
+                                                    <div class="editor-info-image-panel">
+                                                        <div style="padding-top: 25px">
+                                                            <div class="info-image-div">
+                                                                <img crossorigin="anonymous" ng-src="{{slide.image}}" class="info-image-editor">
+                                                                <button class="info-image-upload-editor" ng-click="openCropDialog(tabName.position, slide.position, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="editor-info-inputs-panel">
+                                                        <div class="form-group form-group-editor clearfix">
+                                                            <div class="input-text-div input-text-div-editor">
+                                                                <input ng-hide="true" type="text" class="input-new"  placeholder="Name" ng-model="slide.name.value">
+                                                                <textarea class="textarea-new-editor" msd-elastic id="itemName2{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
+                                                                <label  id="itemName2{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+
+                                                            </div>
+                                                            <div class="text-decoration-div-editor" >
+                                                                <input type='checkbox' ng-model="slide.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{slide.position}}"/><label for="boldName{{tabName.position}}{{slide.position}}"></label>
+                                                                <input type='checkbox' ng-model="slide.name.italic" name='italic'  class="checkboxItalic" value='valuable' id="italicName{{tabName.position}}{{slide.position}}"/><label for="italicName{{tabName.position}}{{slide.position}}"></label>
+                                                                <input type='checkbox' ng-model="slide.name.underline" name='underline' class="checkboxUunderline" value='valuable' id="underlineName{{tabName.position}}{{slide.position}}"/><label for="underlineName{{tabName.position}}{{slide.position}}"></label>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group form-group-editor clearfix">
+                                                            <div class="input-text-div input-text-div-editor">
+                                                                <input ng-hide="true" type="text" class="input-new" placeholder="Description" ng-model="item.description.value">
+                                                                <textarea class="textarea-new-editor" msd-elastic id="itemDesctiption{{slide.index}}" placeholder="Description"  ng-model="slide.description.value" maxlength="270"></textarea>
+                                                                <label for="itemDesctiption{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                            </div>
+                                                            <div class="text-decoration-div-editor" >
+                                                                <input type='checkbox' ng-model="slide.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{slide.position}}"/><label for="boldDescription{{tabName.position}}{{slide.position}}"></label>
+                                                                <input type='checkbox' ng-model="slide.description.italic" name='italic' value='valuable' class="checkboxItalic" id="italicDescription{{tabName.position}}{{slide.position}}"/><label for="italicDescription{{tabName.position}}{{slide.position}}"></label>
+                                                                <input type='checkbox' ng-model="slide.description.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineDescription{{tabName.position}}{{slide.position}}"/><label for="underlineDescription{{tabName.position}}{{slide.position}}"></label>
+
+                                                            </div>
+                                                        </div>
+                                                        <form name="myItemForm">
+                                                            <div class="form-group form-group-editor clearfix">
+                                                                <div class="cover-input input-text-div-editor" style="width: 340px">
+                                                                    <input type="url" class="input-new-editor" name="itemLink" id="itemDescription1{{slide.index}}" placeholder="Link" ng-model="slide.link">
+                                                                    <label for="itemDescription1{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                </div>
+                                                                <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
+                                                                    <p class="help-block has-error-new"
+                                                                       ng-show="myItemForm.itemLink.$error.url">
+                                                                        Invalid URL string. It should starts from "http://" or "https://"
+                                                                    </p>
+
+                                                                </div>
+                                                                <div class="text-decoration-div" >
+
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        <br>
+                                                    </div>
+                                                    <div class="item-selection-panel">
+                                                        <div class="item-selection" ng-repeat="slide in tabName.items" ng-click="vm.currentSlide = $index"  ng-class="$index == vm.currentSlide ? 'item-selected': '' ">{{itemPosition($index)}}</div>
+                                                        <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn-editor"><span class="glyphicon glyphicon-plus add-item-icon"></span></button>
+                                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  slide.index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <script>
+                                            $(document).ready(function() {
+                                                jscolor.installByClassName("jscolor");
+                                            });
+                                        </script>
+                                        <div class="cadlet-top-title" style="margin-top: 40px;">Design Layouts
+                                            <div class="cadlet-top-title-border"></div>
+                                        </div>
+                                        <div class="color-input-div">
+                                            <label class="login-lable cardlet-label-editor" style="margin-left: 0px;" for="mainColor{{tabName.name}}">Background colour</label>
+                                            <input ng-model="tabName.layout.mainColor" type="text" name='mainColorr' value='mainColor' id="mainColor{{tabName.name}}" class="jscolor mainColor-input" value="FFFFFF">
+                                            <label class="login-lable cardlet-label-editor" style="margin-left: 0px;" for="secondaryColor{{tabName.name}}">Feature colour</label>
+                                            <input ng-model="tabName.layout.secondaryColor"  type="text" name='secondaryColor' value='secondaryColor' id="secondaryColor{{tabName.name}}" class="jscolor secondaryColor-input" value="4BABE2">
+                                        </div>
+
+                                        <table style="width: 100%; height: 110px; margin-bottom: 30px;">
+                                            <th>
+                                            <td ng-repeat="itemType in infoTypes"  style="max-width: 240px!important; max-height: 50px!important; position: relative; width: 233px">
+                                                <div style="transform: scale(0.40); display: inline-block; position: absolute; top:-70px; max-height: 242px" ng-class="$index === 1 ? 'second-cardler-example' : $index === 2 ? 'third-cardler-example': 'first-cardler-example'">
+                                                    <div ng-click="chooseType(tabName.position, itemType.path, itemType.id)" class="choose-tab" ng-class="tabNames.tabs[tabName.position].layout.tabId == itemType.id ? 'choose-tab-active' : ''"></div>
+                                                    <div class="cardlet-top-border" style="border-bottom-width: 1px"></div>
+                                                    <ng-include style="display: block!important" src="itemType.path" ></ng-include>
+                                                </div>
+                                            </td>
+                                            </th>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                             <ng-include style="display: block!important" src="business.tabType.path" ></ng-include>
                         </div>
