@@ -435,33 +435,6 @@
             $http.get("/api/account")
                 .success(function(response, status, headers) {
                     $scope.userAccount = response;
-                    $scope.tabNames.tabs[0].userName = {
-                        "value": $scope.userAccount.username
-                    }
-                    $scope.tabNames.tabs[0].userEmail = {
-                        "value": $scope.userAccount.email
-                    }
-
-                    $scope.tabNames.tabs[0].phone = {
-                        "value": $scope.userAccount.phoneNumber
-                    }
-
-                    $scope.tabNames.tabs[0].address = {
-                        "value": $scope.userAccount.address
-                    }
-
-                    $scope.tabNames.tabs[0].company = {
-                        "value": $scope.userAccount.companyName
-                    }
-
-                    $scope.tabNames.tabs[0].site = {
-                        "value": $scope.userAccount.companySite
-                    }
-
-                    $scope.tabNames.tabs[0].job = {
-                        "value": $scope.userAccount.jobTitle
-                    }
-
 
                 });
         }
