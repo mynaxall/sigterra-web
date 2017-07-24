@@ -309,10 +309,12 @@
 
         $scope.reloadFrame = function(){
             var url = $scope.currentUrl;
-            $scope.currentUrl = null
+            $scope.currentUrl = null;
+            vm.showSpinner = true;
             $timeout(function() {
                 $scope.currentUrl = url
             },10)
+            $timeout(function() {vm.showSpinner = false; },4000)
 
         }
 
