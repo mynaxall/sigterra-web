@@ -3242,42 +3242,17 @@ input[type="radio"] {
     display:none;
 }
 input[type="radio"] + label {
-    color: #292321;
-    border: 1px solid #333;
-    border-radius: 100%;
-    font-size:14px;
+    background-image: url("/content/images/new/Radio_button_off.png");
     width: 20px;
     height: 20px;
 }
-input[type="radio"] + label span {
-    display: table;
-    width: 14px;
-    height: 14px;
-    vertical-align: middle;
-    cursor: pointer;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-}
+
 
 input[type="radio"]:checked + label {
-    border: 1px solid #18C6B7;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-image: url("/content/images/new/Radio_button_on.png");
 
 }
 
-input[type="radio"] + label span {
-    background: transparent;
-}
-
-input[type="radio"]:checked + label span{
-    background-color:#18C6B7;
-}
 
 input[type="radio"] + label span,
 input[type="radio"]:checked + label span {
