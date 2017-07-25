@@ -97,8 +97,11 @@
                     document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText
 
                     $scope.showSpinner = false;
-
+                })
+                .error(function (data, status, headers, config) {
+                    $scope.showSpinner = false;
                 });
+
 
         }
 
