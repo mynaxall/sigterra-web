@@ -761,8 +761,11 @@
                                                 <div class="form-group form-group-editor clearfix">
 
                                                     <div class="input-text-div input-text-div-editor">
-                                                        <input type="text" class="input-new-editor" id="userName9" placeholder="Address" ng-model="tabName.address.value" maxlength="55">
+
+                                                        <input ng-hide="true" type="text" class="input-new"  placeholder="Name" ng-model="slide.name.value">
+                                                        <textarea style="max-height: 50px" msd-elastic class="textarea-new-editor" id="userName9" placeholder="Address"  ng-model="tabName.address.value"  maxlength="55"></textarea>
                                                         <label for="userName9" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+
                                                     </div>
                                                     <div class="text-decoration-div-editor" >
                                                         <input type='checkbox' ng-model="tabName.address.bold" name='bold' value='valuable' class="checkboxBold" id="boldAddress{{tabName.position}}"/><label for="boldAddress{{tabName.position}}"></label>

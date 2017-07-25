@@ -83,13 +83,11 @@
                             <div class="svg-div" style="margin-top: -3px">
                                 <span class="icon-lacation_white_icon" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                             </div>
-                            <div class="svg-description" ng-style="{'font-family': tabName.site.bold ?  'Roboto-Bold' : 'Roboto-Regular',
-                        'font-style': tabName.site.italic ? 'italic' : 'normal',
-                        'text-decoration': tabName.site.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}" tyle="max-width: 320px; max-height: 40px">
-                                {{tabName.address.value}}
-                            </div>
+                             <pre class="pre-description" ng-style="{'font-family': tabName.address.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                            'font-style': tabName.address.italic ? 'italic' : 'normal',
+                            'text-decoration': tabName.address.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}" style="max-width: 320px; max-height: 38px; "> {{tabName.address.value}}</pre>
 
-                        </div>
+                            </div>
                     </div>
 
                     <!--<div class="svg-div" style="margin-top: -3px" ng-show="tabName.address.value">-->

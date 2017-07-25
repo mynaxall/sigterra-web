@@ -4299,3 +4299,11 @@ ul.tab li.active {
 .help-block{
     color: #a94442;
 }
+
+.pre-description{
+    background-color: transparent;
+    max-height: 50px;
+    overflow: hidden;
+    padding: 0px;
+    border: none;
+}
