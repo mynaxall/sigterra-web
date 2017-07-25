@@ -22,7 +22,7 @@
         function open () {
             if (modalInstance !== null) return;
             modalInstance = $uibModal.open({
-                animation: true,
+                animation: false,
                 templateUrl: 'app/components/login/login.html',
                 controller: 'LoginController',
                 controllerAs: 'vm'
