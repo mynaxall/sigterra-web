@@ -41,7 +41,7 @@
                     'font-style': firstBusinessCardCopyed.address.italic ? 'italic' : 'normal',
                     'text-decoration': firstBusinessCardCopyed.address.underline ? 'underline' : 'normal'}" style="max-width: 320px; max-height: 40px">
             <div class="new-cardlet-marks" style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}};display: inline;width: 20px">a: </div>
-            <div style="display: inline;">{{firstBusinessCardCopyed.address.value}}</div>
+            <div style="display: inline;word-break: break-all">{{firstBusinessCardCopyed.address.value}}</div>
         </div>
 
         <div style="font-size: 15px" ng-show="signatureLink"><a target="_blank" href="{{signatureLink}}">My Sigterra Profile</a></div>
