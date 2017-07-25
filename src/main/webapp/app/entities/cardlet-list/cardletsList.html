@@ -249,7 +249,7 @@
                             <li class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-disable-if="!isEmptyName() || isDisabledTabs" dnd-draggable="tabName" dnd-moved="tabNames.tabs.splice($index, 1)"  ng-class="{'selected': models.selected === tabName}" id="tab{{tabName.position}}" dnd-dragend="positionCheck()" ng-style="tabWidth('tab'+tabName.position)">
                                 <div class="tabs-div">
                                     <span href="javascript:void(0)" id="tabLink{{tabName.position}}"  ng-class="{disabledLink: !isEmptyName()}" class="tablinks" ng-click="openCity('settings'+tabName.name+tabName.position, 'tab'+tabName.position, tabName.name+tabName.position, 'li'+tabName.position+tabName.name)">
-                                        <form editable-form name="editableForm">
+                                        <form editable-form name="editableForm" style="position: relative; z-index: 1;">
                                             <div class="cardlet-name-panel">
                                               <span class="cadletName"  editable-text="tabName.name" e-name="group" style="background: transparent;" e-maxlength="25"  onbeforesave="checkName($data)">
                                                     {{tabName.name}}
