@@ -21,6 +21,27 @@
 }
 
 @font-face {
+    font-family: OpenSans-Light;
+    src: url('/content/fonts/OpenSans-Light.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: OpenSans-Semibold;
+    src: url('/content/fonts/OpenSans-Semibold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: OpenSans-Regular;
+    src: url('/content/fonts/OpenSans-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'icomoon';
     src:  url('/content/fonts/icomoon.ttf');
     font-weight: normal;
@@ -2229,7 +2250,7 @@ Social Buttons
 .landing_create{
     background-color: #ffffff;
     border-width: 0px;
-    height: 275px;
+    height: 375px;
     margin: 0 auto;
     padding: 35px 15px;
     vertical-align: middle;
@@ -2260,7 +2281,7 @@ Social Buttons
 .landing_add{
     background-color: #ffffff;
     border-width: 0px;
-    height: 275px;
+    height: 375px;
     padding: 35px 15px;
     margin: 0 auto;
     vertical-align: middle;
@@ -2292,7 +2313,7 @@ Social Buttons
 .landing_add_to_web{
     background-color: #ffffff;
     border-width: 0px;
-    height: 275px;
+    height: 375px;
     padding: 35px 15px;
     vertical-align: middle;
     display: -webkit-box;
@@ -2322,7 +2343,7 @@ Social Buttons
 .landing_see{
     background-color: #ffffff;
     border-width: 0px;
-    height: 275px;
+    height: 375px;
     margin: 0 auto;
     padding: 35px 15px;
     vertical-align: middle;
@@ -2361,14 +2382,16 @@ Social Buttons
 }
 
 .landing-sub-head-text{
+    font-family: OpenSans-Semibold;
     color: #1798e3;
     font-size: 16px;
     margin-top: 10px;
 }
 
 .landing-text{
+    font-family: OpenSans-Light;
     color: #5c5c66;
-    font-size: 12pt;
+    font-size: 16pt;
     font-weight: normal;
 }
 .landing-statistics{
@@ -4109,6 +4132,7 @@ ul.tab li.active {
 }
 
 .home-title{
+    font-family: Roboto-Bold;
     text-align: center;
     font-weight: bold;
     color: #35353b;
@@ -4121,15 +4145,30 @@ ul.tab li.active {
 }
 
 .home-sub-title{
+    font-family: OpenSans-Light;
     color: #5c5c66;
-    font-size: 16pt;
+    font-size: 18pt;
     text-align: center;
     margin-top: 20px;
 }
 
 .how-it-works-description{
+    font-family: OpenSans-Regular;
     color: #5c5c66;
-    font-size: 12pt;
+    font-size: 16pt;
+    margin-top: 25px;
+}
+
+.how-it-works-description-2{
+    font-family: OpenSans-Semibold;
+    color: #5c5c66;
+    font-size: 16pt;
+    margin-top: 25px;
+}
+.how-it-works-description-3{
+    font-family: OpenSans-Light;
+    color: #5c5c66;
+    font-size: 13pt;
     margin-top: 25px;
 }
 
@@ -4189,8 +4228,9 @@ ul.tab li.active {
 }
 
 .director-job{
+    font-family: OpenSans-Semibold;
     color: #5c5c66;
-    font-size: 15pt;
+    font-size: 16pt;
     text-transform: uppercase;
 }
 
