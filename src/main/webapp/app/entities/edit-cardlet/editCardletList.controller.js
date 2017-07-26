@@ -356,7 +356,7 @@
                                 "value": "Item Header"
                             },
                             "description": {
-                                "value": "Item Description( Product, Service etc.)"
+                                "value": "Item Description"
                             }
                         }
                     ]
@@ -394,7 +394,7 @@
                                 "value": "Item Header"
                             },
                             "description": {
-                                "value": "Item Description( Product, Service etc.)"
+                                "value": "Item Description"
                             }
                         }
                     ]
@@ -419,7 +419,7 @@
                         "value": "Item Header"
                     },
                     "description": {
-                        "value": "Item Description( Product, Service etc.)"
+                        "value": "Item Description"
                     }
                 }
                 $scope.tabNames.tabs[tabId].items.push(newItem);
