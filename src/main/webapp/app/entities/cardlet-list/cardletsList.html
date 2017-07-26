@@ -300,7 +300,7 @@
                         </ul>
                         <div ng-repeat="tabName in tabNames.tabs " id="settings{{tabName.name}}{{tabName.position}}" class="tabcontent">
                             <div class="main">
-                                <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 3">
+                                <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 3" ng-if="tabName.tabType === 3">
                                     <div class="accordion-section" >
                                         <div id="accordion2-item.index" class="editor-item-card">
                                             <div ng-repeat="slide in tabName.items" ng-show="tabName.items.length === 1" ng-if="tabName.items.length === 1">
@@ -316,7 +316,7 @@
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
                                                             <input ng-hide="true" type="text" class="input-new" id="description4{{slide.index}}" placeholder="Name" ng-model="slide.name.value">
-                                                            <textarea class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
+                                                            <textarea msd-elastic class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
                                                             <label for="description4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
@@ -329,7 +329,7 @@
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
                                                             <input ng-hide="true" type="text" class="input-new" id="description4{{slide.index}}" placeholder="Description" ng-model="slide.description.value">
-                                                            <textarea class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Description" ng-model="slide.description.value" maxlength="270"></textarea>
+                                                            <textarea msd-elastic class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Description" ng-model="slide.description.value" maxlength="270"></textarea>
                                                             <label for="description4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
@@ -382,7 +382,7 @@
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
                                                                 <input ng-hide="true" type="text" class="input-new" id="description4{{slide.index}}" placeholder="Name" ng-model="slide.name.value">
-                                                                <textarea class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
+                                                                <textarea msd-elastic class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
                                                                 <label for="description4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div class="text-decoration-div-editor" >
@@ -395,7 +395,7 @@
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
                                                                 <input ng-hide="true" type="text" class="input-new" id="description4{{slide.index}}" placeholder="Description" ng-model="slide.description.value">
-                                                                <textarea class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Description" ng-model="slide.description.value" maxlength="270"></textarea>
+                                                                <textarea msd-elastic class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Description" ng-model="slide.description.value" maxlength="270"></textarea>
                                                                 <label for="description4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div class="text-decoration-div-editor" >
@@ -467,7 +467,7 @@
                                     </div>
                                 </div>
 
-                                <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 2">
+                                <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 2"  ng-if="tabName.tabType === 2">
                                     <div class="accordion-section" >
                                         <div id="accordion2-item.index" class="editor-item-card">
                                             <div ng-repeat="slide in tabName.items" ng-show="tabName.items.length === 1" ng-if="tabName.items.length === 1">
