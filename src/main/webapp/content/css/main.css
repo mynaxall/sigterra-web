@@ -3035,6 +3035,16 @@ input[disabled] {
     left: 2px;
 }
 
+.textarea-new-editor:hover + label.editable-inputs{
+    display: inline;
+
+}
+
+.textarea-new-editor:focus + label.editable-inputs{
+    display: none;
+
+}
+
 .input-new-editor:hover + label.editable-inputs{
     display: inline;
 }
