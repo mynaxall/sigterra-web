@@ -346,7 +346,7 @@
 
         $scope.openCity = function(cityName, tabId, cardName, cardId) {
 
-            vm.currentSlide = 1;
+            vm.currentSlide = 0;
 
             var i, tabcontent, tablinks, tabs;
             tabcontent = document.getElementsByClassName("tabcontent");
