@@ -126,7 +126,6 @@ public class AccountResource {
     public ResponseEntity<User> getAccountActivate(@RequestParam(value = "key") String key) {
         Optional<User> optionalUser = userRepository.findOneByActivationKey(key);
         User user2 = null;
-        log.info("====== "+optionalUser);
         if (optionalUser.isPresent()) {
             user2 = optionalUser.get();
         }
