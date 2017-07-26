@@ -3834,7 +3834,7 @@ button[disabled]:hover{
 
 .mainColor-input{
     width: 82px;
-    height: 30px;
+    height: 27px;
     border: 1px solid #C0C0C0;
     margin-right: 25px;
     margin-left: 10px;
@@ -3844,7 +3844,7 @@ button[disabled]:hover{
 
 .secondaryColor-input{
     width: 82px;
-    height: 30px;
+    height: 27px;
     border: 1px solid #C0C0C0;
     margin-left: 10px;
     padding-left: 5px;
