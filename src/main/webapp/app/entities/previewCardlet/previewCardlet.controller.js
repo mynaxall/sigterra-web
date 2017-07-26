@@ -34,11 +34,6 @@
                     else{
                         vm.tabType = $scope.tabNames.tabs[0].tabType
 
-                        var buttons = document.getElementsByClassName("carousel-control");
-                        for(var j = 0; j < buttons.length; j++){
-                            document.getElementsByClassName("carousel-control")[j].className += " hidenLink"
-                        }
-
                         angular.forEach($scope.tabNames.tabs[0].items, function (item) {
 
                             if(item.position  === 0){
@@ -220,12 +215,6 @@
 
         $scope.openCity = function(cardName, cardId, id) {
             $scope.currentUrl = undefined;
-            var buttons = document.getElementsByClassName("carousel-control");
-
-            for(var j = 0; j < buttons.length; j++){
-                document.getElementsByClassName("carousel-control")[j].className += " hidenLink"
-            }
-
             vm.currentSlide = 0;
 
             if ($scope.tabNames.tabs[id].tabType === 1) {
