@@ -21,7 +21,6 @@
         $scope.homeLogo = false;
 
         $scope.$watch('$location.path()', function(value){
-            console.log($location.path());
             if(($location.path()) === "/"){
                 $scope.homeLogo = true;
             }else{
@@ -30,7 +29,6 @@
         })
 
         $scope.$on('$locationChangeStart', function(event) {
-            console.log($location.path());
             if(($location.path()) === "/"){
                 $scope.homeLogo = true;
 

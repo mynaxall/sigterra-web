@@ -12,7 +12,7 @@
 <div class="modeal-custom-window ng-hide" ng-show="isCopyTiEmail"></div>
 <div class="modeal-custom-window ng-hide" ng-show="isCopyTiEmail" style="position: absolute; background-color: rgba(0, 0, 0, 0);">
     <div class="modal-dialog " style="margin-top: -100px; width: 1130px!important;">
-        <div class="modal-content" uib-modal-transclude="">
+        <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                         ng-click="closeDialog()">&times;</button>
@@ -75,8 +75,8 @@
                         </div>
 
                     </div>
-                    <div ng-show="banner" style="text-align: center; margin: 20px;">
-                        <img style="width: 300px;" src="{{banner}}">
+                    <div ng-show="banner"  ng-if="banner" style="text-align: center; margin: 20px;">
+                        <img style="width: 300px;" ng-src="{{banner}}">
                     </div>
                 </div>
 
