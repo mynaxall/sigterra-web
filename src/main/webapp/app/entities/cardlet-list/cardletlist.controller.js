@@ -347,7 +347,7 @@
         $scope.openCity = function(cityName, tabId, cardName, cardId) {
 
             vm.currentSlide = 1;
-            $timeout(function() {vm.currentSlide = 0;},100)
+            $timeout(function() {vm.currentSlide = 0;},10)
 
 
             var i, tabcontent, tablinks, tabs;
@@ -770,7 +770,7 @@
             $scope.tabNames.tabs[id].layout.url = url;
             $scope.tabNames.tabs[id].layout.tabId = tabId;
             vm.currentSlide = 1;
-            $timeout(function() {vm.currentSlide = 0;},100)
+            $timeout(function() {vm.currentSlide = 0;},10)
 
         }
 
