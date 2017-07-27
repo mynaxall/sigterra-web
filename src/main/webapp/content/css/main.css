@@ -1331,7 +1331,7 @@ Social Buttons
     height: 242px;
     width: 100%;
     z-index: 10;
-    border: 2px solid #BFBFBF;
+    border: 3px solid #BFBFBF;
 }
 
 .choose-tab:focus{
