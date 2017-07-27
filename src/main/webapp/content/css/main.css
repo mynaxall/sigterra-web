@@ -1832,6 +1832,9 @@ Social Buttons
 .copy-btn-part{
     padding: 11px;
     background-color: #089993;
+    width: 38px;
+    height: 38px;
+    display: inline;
 }
 
 .landing-first-panel{
@@ -4356,4 +4359,10 @@ ul.tab li.active {
     overflow: hidden;
     padding: 0px;
     border: none;
+}
+
+
+.btn-ing{
+    width: 14px;
+    height: 14px;
 }
