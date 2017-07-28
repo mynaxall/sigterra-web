@@ -12,7 +12,7 @@
     function UserCardletListController ($scope, $state, CardletList, ParseLinks, AlertService,  paginationcardletConstants ,$http, $timeout, $uibModal, $location, $window, $rootScope) {
         var vm = this;
 
-        vm.currentSlide = null;
+        vm.currentSlide = 0;
 
         $scope.isCopyTiEmail = false;
         $scope.fieldTable = [{
@@ -755,7 +755,7 @@
             }
         }
 
-        $scope.myInterval = 3000;
+        $scope.myInterval = 30000000;
 
 
         function b64toBlob(b64Data, contentType, sliceSize) {
