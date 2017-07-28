@@ -314,9 +314,9 @@
                                                 <div class="editor-info-inputs-panel">
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
-                                                            <input ng-hide="true" type="text" class="input-new" id="description4{{slide.index}}" placeholder="Name" ng-model="slide.name.value">
+                                                            <input ng-hide="true" type="text" class="input-new" id="description4{{slide.index}}-{{$index}}" placeholder="Name" ng-model="slide.name.value">
                                                             <textarea msd-elastic class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
-                                                            <label for="description4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                            <label for="description4{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
                                                             <input type='checkbox' ng-model="slide.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{slide.position}}"/><label for="boldName{{tabName.position}}{{slide.position}}"></label>
@@ -327,9 +327,9 @@
                                                     </div>
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
-                                                            <input ng-hide="true" type="text" class="input-new" id="description4{{slide.index}}" placeholder="Description" ng-model="slide.description.value">
+                                                            <input ng-hide="true" type="text" class="input-new" id="description4{{slide.index}}-{{$index}}" placeholder="Description" ng-model="slide.description.value">
                                                             <textarea msd-elastic class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Description" ng-model="slide.description.value" maxlength="270"></textarea>
-                                                            <label for="description4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                            <label for="description4{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
                                                             <input type='checkbox' ng-model="slide.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{slide.position}}"/><label for="boldDescription{{tabName.position}}{{slide.position}}"></label>
@@ -341,8 +341,8 @@
                                                     <form name="myItemForm">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                <input type="url" class="input-new-editor" name="itemLink" id="description7{{slide.index}}" placeholder="Link" ng-model="slide.link">
-                                                                <label for="description7{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                <input type="url" class="input-new-editor" name="itemLink" id="description7{{slide.index}}-{{$index}}" placeholder="Link" ng-model="slide.link">
+                                                                <label for="description7{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                 <p class="help-block has-error-new"
@@ -380,9 +380,9 @@
                                                     <div class="editor-info-inputs-panel">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
-                                                                <input ng-hide="true" type="text" class="input-new" id="description4{{slide.index}}" placeholder="Name" ng-model="slide.name.value">
+                                                                <input ng-hide="true" type="text" class="input-new" id="description4{{slide.index}}-{{$index}}" placeholder="Name" ng-model="slide.name.value">
                                                                 <textarea msd-elastic class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
-                                                                <label for="description4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                <label for="description4{{slide.index}-{{$index}}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div class="text-decoration-div-editor" >
                                                                 <input type='checkbox' ng-model="slide.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{slide.position}}"/><label for="boldName{{tabName.position}}{{slide.position}}"></label>
@@ -393,9 +393,9 @@
                                                         </div>
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
-                                                                <input ng-hide="true" type="text" class="input-new" id="description4{{slide.index}}" placeholder="Description" ng-model="slide.description.value">
+                                                                <input ng-hide="true" type="text" class="input-new" id="description4{{slide.index}}-{{$index}}" placeholder="Description" ng-model="slide.description.value">
                                                                 <textarea msd-elastic class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description4{{slide.index}}" placeholder="Description" ng-model="slide.description.value" maxlength="270"></textarea>
-                                                                <label for="description4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                <label for="description4{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div class="text-decoration-div-editor" >
                                                                 <input type='checkbox' ng-model="slide.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{slide.position}}"/><label for="boldDescription{{tabName.position}}{{slide.position}}"></label>
@@ -483,8 +483,8 @@
                                                 <div class="editor-item-inputs-panel">
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
-                                                            <input type="text" class="input-new-editor" id="itemName4{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="16">
-                                                            <label for="itemName4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                            <input type="text" class="input-new-editor" id="itemName4{{slide.index}}-{{$index}}" placeholder="Name" ng-model="slide.name.value" maxlength="16">
+                                                            <label for="itemName4{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
                                                             <input type='checkbox' ng-model="slide.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{slide.position}}"/><label for="boldName{{tabName.position}}{{slide.position}}"></label>
@@ -495,8 +495,8 @@
                                                     </div>
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
-                                                            <input type="text" class="input-new-editor" maxlength="33" id="description2{{slide.index}}" placeholder="Description" ng-model="slide.description.value">
-                                                            <label for="description2{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                            <input type="text" class="input-new-editor" maxlength="33" id="description2{{slide.index}}-{{$index}}" placeholder="Description" ng-model="slide.description.value">
+                                                            <label for="description2{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
                                                             <input type='checkbox' ng-model="slide.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{slide.position}}"/><label for="boldDescription{{tabName.position}}{{slide.position}}"></label>
@@ -508,8 +508,8 @@
                                                     <form name="myItemForm">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                <input type="url" class="input-new-editor" name="itemLink" id="description5{{slide.index}}" placeholder="Link" ng-model="slide.link">
-                                                                <label for="description5{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                <input type="url" class="input-new-editor" name="itemLink" id="description5{{slide.index}}-{{$index}}" placeholder="Link" ng-model="slide.link">
+                                                                <label for="description5{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                 <p class="help-block has-error-new"
@@ -548,8 +548,8 @@
                                                     <div class="editor-item-inputs-panel">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
-                                                                <input type="text" class="input-new-editor" id="itemName3{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="16">
-                                                                <label for="itemName3{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                <input type="text" class="input-new-editor" id="itemName3{{slide.index}}-{{$index}}" placeholder="Name" ng-model="slide.name.value" maxlength="16">
+                                                                <label for="itemName3{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div class="text-decoration-div-editor" >
                                                                 <input type='checkbox' ng-model="slide.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{slide.position}}"/><label for="boldName{{tabName.position}}{{slide.position}}"></label>
@@ -560,8 +560,8 @@
                                                         </div>
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
-                                                                <input type="text" class="input-new-editor" id="description2{{slide.index}}" maxlength="33" placeholder="Description" ng-model="slide.description.value">
-                                                                <label for="description2{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                <input type="text" class="input-new-editor" id="description2{{slide.index}}-{{$index}}" maxlength="33" placeholder="Description" ng-model="slide.description.value">
+                                                                <label for="description2{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div class="text-decoration-div-editor" >
                                                                 <input type='checkbox' ng-model="slide.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{slide.position}}"/><label for="boldDescription{{tabName.position}}{{slide.position}}"></label>
@@ -573,8 +573,8 @@
                                                         <form name="myItemForm">
                                                             <div class="form-group form-group-editor clearfix">
                                                                 <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                    <input type="url" class="input-new-editor" name="itemLink" id="description6{{slide.index}}" placeholder="Link" ng-model="slide.link">
-                                                                    <label for="description6{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                    <input type="url" class="input-new-editor" name="itemLink" id="description6{{slide.index}}-{{$index}}" placeholder="Link" ng-model="slide.link">
+                                                                    <label for="description6{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                                 </div>
                                                                 <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                     <p class="help-block has-error-new"
@@ -674,8 +674,8 @@
                                             <div class="editor-inputs-panel">
                                                 <div class="form-group form-group-editor clearfix">
                                                     <div class="input-text-div input-text-div-editor">
-                                                        <input type="text" class="input-new-editor" id="userName3" placeholder="Your Name" ng-model="tabName.userName.value" maxlength="20">
-                                                        <label for="userName3" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                        <input type="text" class="input-new-editor" id="userName3-{{$index}}" placeholder="Your Name" ng-model="tabName.userName.value" maxlength="20">
+                                                        <label for="userName3-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                     </div>
                                                     <div class="text-decoration-div-editor" >
                                                         <input type='checkbox' ng-model="tabName.userName.bold" name='bold' class="checkboxBold" value='valuable' id="bold{{tabName.position}}"/><label for="bold{{tabName.position}}"></label>
@@ -688,8 +688,8 @@
                                                 <div class="form-group form-group-editor clearfix">
 
                                                     <div class="input-text-div input-text-div-editor">
-                                                        <input type="text" class="input-new-editor" id="userName4" placeholder="Job Title" ng-model="tabName.job.value" maxlength="25">
-                                                        <label for="userName4" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                        <input type="text" class="input-new-editor" id="userName4-{{$index}}" placeholder="Job Title" ng-model="tabName.job.value" maxlength="25">
+                                                        <label for="userName4-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                     </div>
                                                     <div class="text-decoration-div-editor" >
                                                         <input type='checkbox' ng-model="tabName.job.bold" name='bold' value='valuable' class="checkboxBold" id="boldJob{{tabName.position}}"/><label for="boldJob{{tabName.position}}"></label>
@@ -702,8 +702,8 @@
                                                 <div class="form-group form-group-editor clearfix">
 
                                                     <div class="input-text-div input-text-div-editor">
-                                                        <input type="text" class="input-new-editor" id="userName5" placeholder="Mobile Number" ng-model="tabName.phone.value" maxlength="25">
-                                                        <label for="userName5" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                        <input type="text" class="input-new-editor" id="userName5-{{$index}}" placeholder="Mobile Number" ng-model="tabName.phone.value" maxlength="25">
+                                                        <label for="userName5-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                     </div>
                                                     <div class="text-decoration-div-editor" >
                                                         <input type='checkbox' ng-model="tabName.phone.bold" name='bold' value='valuable' class="checkboxBold" id="boldPhone{{tabName.position}}"/><label for="boldPhone{{tabName.position}}"></label>
@@ -716,8 +716,8 @@
                                                 <div class="form-group form-group-editor clearfix">
 
                                                     <div class="input-text-div input-text-div-editor">
-                                                        <input type="text" class="input-new-editor" id="userName6" placeholder="Email" ng-model="tabName.userEmail.value" maxlength="25">
-                                                        <label for="userName6" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                        <input type="text" class="input-new-editor" id="userName6-{{$index}}" placeholder="Email" ng-model="tabName.userEmail.value" maxlength="25">
+                                                        <label for="userName6-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                     </div>
                                                     <div class="text-decoration-div-editor" >
                                                         <input type='checkbox' ng-model="tabName.userEmail.bold" name='boldEmail' value='valuableEmail' class="checkboxBold" id="boldEmail{{tabName.position}}"/><label for="boldEmail{{tabName.position}}"></label>
@@ -730,8 +730,8 @@
                                                 <div class="form-group form-group-editor clearfix">
 
                                                     <div class="input-text-div input-text-div-editor">
-                                                        <input type="text" class="input-new-editor" id="userName7" placeholder="Website" ng-model="tabName.site.value" maxlength="25">
-                                                        <label for="userName7" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                        <input type="text" class="input-new-editor" id="userName7-{{$index}}" placeholder="Website" ng-model="tabName.site.value" maxlength="25">
+                                                        <label for="userName7-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                     </div>
                                                     <div class="text-decoration-div-editor" >
                                                         <input type='checkbox' ng-model="tabName.site.bold" name='bold' value='valuable' class="checkboxBold" id="boldSite{{tabName.position}}"/><label for="boldSite{{tabName.position}}"></label>
@@ -746,8 +746,8 @@
                                                 <div class="form-group form-group-editor clearfix">
 
                                                     <div class="input-text-div input-text-div-editor">
-                                                        <input type="text" class="input-new-editor" id="userName8" placeholder="Company Name" ng-model="tabName.company.value" maxlength="25">
-                                                        <label for="userName8" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                        <input type="text" class="input-new-editor" id="userName8-{{$index}}" placeholder="Company Name" ng-model="tabName.company.value" maxlength="25">
+                                                        <label for="userName8-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                     </div>
                                                     <div class="text-decoration-div-editor" >
                                                         <input type='checkbox' ng-model="tabName.company.bold" name='bold' value='valuable' class="checkboxBold" id="boldCompany{{tabName.position}}"/><label for="boldCompany{{tabName.position}}"></label>
@@ -762,8 +762,8 @@
                                                     <div class="input-text-div input-text-div-editor">
 
                                                         <input ng-hide="true" type="text" class="input-new"  placeholder="Name" ng-model="slide.name.value">
-                                                        <textarea style="max-height: 50px" msd-elastic class="textarea-new-editor" id="userName9" placeholder="Address"  ng-model="tabName.address.value"  maxlength="55"></textarea>
-                                                        <label for="userName9" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                        <textarea style="max-height: 50px" msd-elastic class="textarea-new-editor" id="userName9-{{$index}}" placeholder="Address"  ng-model="tabName.address.value"  maxlength="55"></textarea>
+                                                        <label for="userName9-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
 
                                                     </div>
                                                     <div class="text-decoration-div-editor" >

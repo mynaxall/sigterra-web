@@ -61,7 +61,6 @@
         $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
 
         $scope.openSocialDialog = function(index, links){
-            console.log(index)
             $scope.tabIndex = index;
             $scope.showSocialDialog = true;
             $scope.socialLinks = links;
