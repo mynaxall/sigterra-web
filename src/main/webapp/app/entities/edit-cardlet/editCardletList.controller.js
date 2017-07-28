@@ -272,7 +272,9 @@
                     tabs2[i].className = tabs2[i].className.replace(" active", "");
 
                 }
-                vm.currentSlide = 0;
+
+                vm.currentSlide = 1;
+                $timeout(function() {vm.currentSlide = 0;},10)
                 document.getElementById(cardName).style.display = "block";
                 document.getElementById(cardId).className += " active";
             }
@@ -723,9 +725,10 @@
         }
 
         $scope.chooseType = function(id, url, tabId) {
-            vm.currentSlide = 0;
             $scope.tabNames.tabs[id].layout.url = url;
             $scope.tabNames.tabs[id].layout.tabId = tabId;
+            vm.currentSlide = 1;
+            $timeout(function() {vm.currentSlide = 0;},10)
 
         }
 
