@@ -62,7 +62,7 @@
 
                 <div class="form-group-new">
                     <input type="text" class="profile-input" id="username" name="username" placeholder="Your Name *"
-                           ng-model="vm.registerAccount.username" ng-maxlength=20 required>
+                           ng-model="vm.registerAccount.username" ng-maxlength=25 required>
                     <div ng-show="form.username.$dirty && form.username.$invalid">
                         <p class="help-block"
                            ng-show="form.username.$error.required">
@@ -74,7 +74,7 @@
                         </p>
                         <p class="help-block"
                            ng-show="form.username.$error.maxlength">
-                            Your username cannot be longer than 20 characters.
+                            Your username cannot be longer than 25 characters.
                         </p>
                         <p class="help-block"
                            ng-show="form.username.$error.pattern">
