@@ -234,7 +234,7 @@
                 <div class="left-column-content">
                     <form editable-form name="editableForm">
                         <div style="width: 300px; position: relative;">
-                            <input type="text" id="cardletName" class="cadletName" ng-model="tabNames.cardletName">
+                            <input type="text" id="cardletName" class="cadletName" ng-model="tabNames.cardletName" maxlength="32">
                             <label for="cardletName" class="editable-input-name"><img src="/content/images/new/pencil_inputfields.png"></label>
                         </div>
                     </form>
@@ -762,7 +762,7 @@
                                                     <div class="input-text-div input-text-div-editor">
 
                                                         <input ng-hide="true" type="text" class="input-new"  placeholder="Name" ng-model="slide.name.value">
-                                                        <textarea style="max-height: 50px" msd-elastic class="textarea-new-editor" id="userName9-{{$index}}" placeholder="Address"  ng-model="tabName.address.value"  maxlength="55"></textarea>
+                                                        <textarea style="max-height: 50px; resize: vertical;" msd-elastic class="textarea-new-editor" id="userName9-{{$index}}" placeholder="Address"  ng-model="tabName.address.value"  maxlength="55"></textarea>
                                                         <label for="userName9-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
 
                                                     </div>
