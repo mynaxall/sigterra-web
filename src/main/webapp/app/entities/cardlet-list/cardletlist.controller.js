@@ -595,6 +595,77 @@
                     "photo": "/content/images/avatar_img.png"
 
                 }
+                if ($scope.userAccount.username){
+                    newTab.userName = {
+                        "value": $scope.userAccount.username
+                    }
+                }else{
+                    newTab.userName = {
+                        "value": "Jon Dou"
+                    }
+                }
+
+                if ($scope.userAccount.email) {
+                    newTab.userEmail = {
+                        "value": $scope.userAccount.email
+                    }
+                }else{
+                    newTab.userEmail = {
+                        "value": "fabian.abshireabsh@wilford.biz"
+                    }
+                }
+
+                if ($scope.userAccount.phoneNumber) {
+                    newTab.phone = {
+                        "value": $scope.userAccount.phoneNumber
+                    }
+                }else {
+                    newTab.phone = {
+                        "value": "1-888-555-5555"
+                    }
+                }
+
+
+                if ($scope.userAccount.address) {
+                    newTab.address = {
+                        "value": $scope.userAccount.address
+                    }
+                }else{
+                    newTab.address = {
+                        "value": "0000 Lynch Pine Apt. 605, South Keagan, Croatia"
+                    }
+                }
+
+                if ($scope.userAccount.companyName) {
+                    newTab.company = {
+                        "value": $scope.userAccount.companyName
+                    }
+                }else{
+                    newTab.company = {
+                        "value": "Company Name"
+                    }
+                }
+
+
+                if ($scope.userAccount.companySite) {
+                    newTab.site = {
+                        "value": $scope.userAccount.companySite
+                    }
+                }else{
+                    newTab.site = {
+                        "value": "www.websitewebsite.com"
+                    }
+                }
+
+                if ($scope.userAccount.jobTitle) {
+                    newTab.job = {
+                        "value": $scope.userAccount.jobTitle
+                    }
+                }else{
+                    newTab.job = {
+                        "value": "General Manager"
+                    }
+                }
                 if($scope.userAccount.imageUrl){
                     newTab.photo = $scope.userAccount.imageUrl
                 }
