@@ -1,16 +1,16 @@
 <div>
-    <div class="cardlet3"  ng-style="{'background-color': '#'+tabName.layout.mainColor}" style="position:relative;">
+    <div class="cardletImage"  ng-style="{'background-color': '#'+tabName.layout.mainColor}" style="position:relative;">
 
         <div>
             <div ng-show="tabName.items.length == 1" style="position: relative;">
                 <div class="main-carousel-image-div-new-3" >
 
                     <div ng-repeat="slide in tabName.items"  class="main-carousel-item-div-new-3">
-                            <div style="max-height: 240px;overflow: hidden">
+                            <div style="max-height: 240px;overflow:hidden; border: 1px solid #D0D8D9;border-top-width: 0px;">
                                 <img crossorigin="anonymous"  style="width: 100%" id="ing-1" ng-src="{{slide.image}}">
                             </div>
                             <div class="item-3-content" ng-hide="!slide.name.value && !slide.description.value" ng-style="{'background-color': '#'+tabName.layout.mainColor, 'border-color': '#'+tabName.layout.secondaryColor, 'text-align':'center'}">
-                                <a style="max-height: 240px;" href="{{slide.link}}" target="_blank" ng-class="{disabledLink: !slide.link}">
+                                <a style="max-height: 239px;" href="{{slide.link}}" target="_blank" ng-class="{disabledLink: !slide.link}">
                                     <div class="carousel-item-name-div-new-3" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': slide.name.italic ? 'italic' : 'normal',
                                 'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
@@ -31,7 +31,7 @@
                 <div ng-show="showEditorNavigation"  class="custom-slide-next-editor"  style="top: 100px;z-index: 2"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
 
                 <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position">
-                    <div style="max-height: 240px;overflow: hidden">
+                    <div style="max-height: 240px;overflow: hidden; border: 1px solid #D0D8D9; border-top-width: 0px;">
                         <img crossorigin="anonymous" style="width: 100%" id="ing-1" ng-src="{{slide.image}}">
 
                     </div>

@@ -2679,6 +2679,12 @@ div.navbar-collapse.in.collapse{
     width: 540px;
 }
 
+.cardletImage{
+    border: 0px ;
+    height: 240px;
+    width: 540px;
+}
+
 
 /* Style the tab content */
 .tabcontent2 {
