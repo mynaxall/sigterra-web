@@ -1634,6 +1634,7 @@ Social Buttons
     color: #4A4A4A;
     padding-left: 5px;
     padding-top: 7px;
+    resize: vertical!important;
 }
 
 .textarea-new-editor:focus{
