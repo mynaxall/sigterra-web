@@ -1339,7 +1339,7 @@ Social Buttons
 }
 
 .choose-tab:hover{
-    border-width: 2px;
+    border-width: 3px;
     border-style: solid;
     border-color: #268d83 ;
 }

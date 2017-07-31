@@ -678,8 +678,8 @@
             }
 
             $scope.positionChecking = false;
-
-            setTimeout(function() {
+            vm.currentSlide = 1;
+            $timeout(function() {
                 document.getElementsByClassName("tabcontent2")[0].style.display = "block";
                 document.getElementsByClassName("tabs2")[0].className += " active";
                 document.getElementsByClassName("tabcontent")[0].style.display = "block";
@@ -687,6 +687,7 @@
                 for (var i = 0; i < tabs.length; i++) {
                     document.getElementsByClassName("tablinks")[i].className = document.getElementsByClassName("tablinks")[i].className.replace(" disabledLink", "");
                 }
+                vm.currentSlide = 0
             },100);
 
         };
