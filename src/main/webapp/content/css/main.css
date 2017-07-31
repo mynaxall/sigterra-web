@@ -19,6 +19,12 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: Roboto-Black;
+    src: url('/content/fonts/Roboto-Black.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 
 @font-face {
     font-family: OpenSans-Light;
@@ -202,6 +208,10 @@ Logo styles
 .logo .logo-img {
     height: 45px;
     display: inline-block;
+}
+
+.log{
+    padding: 15px 0px!important;
 }
 
 /* ==========================================================================
@@ -2274,9 +2284,9 @@ Social Buttons
 }
 
 .landing_create-1{
-    font-size: 50pt;
+    font-size: 72pt;
+    font-family: Roboto-Black;
     color: #f8f8f8;
-    font-weight: bold;
     animation-name: landing_create_animation-1;
     animation-duration: 16s;
     animation-iteration-count: infinite;
@@ -2306,9 +2316,9 @@ Social Buttons
 
 
 .landing_add-2{
-    font-size: 50pt;
+    font-size: 72pt;
+    font-family: Roboto-Black;
     color: #f8f8f8;
-    font-weight: bold;
     animation-name: landing_add_animation-2;
     animation-duration: 16s;
     animation-iteration-count: infinite;
@@ -2336,9 +2346,9 @@ Social Buttons
 }
 
 .landing_add_to_web-3{
-    font-size: 50pt;
+    font-size: 72pt;
+    font-family: Roboto-Black;
     color: #f8f8f8;
-    font-weight: bold;
     animation-name: landing_add_to_web_animation-3;
     animation-duration: 16s;
     animation-iteration-count: infinite;
@@ -2367,8 +2377,8 @@ Social Buttons
 }
 
 .landing_see-4{
-    font-size: 50pt;
-    font-weight: bold;
+    font-size: 72pt;
+    font-family: Roboto-Black;
     color: #f8f8f8;
     animation-name: landing_see_animation-4;
     animation-duration: 16s;
@@ -2648,6 +2658,7 @@ div.navbar-collapse.in.collapse{
 .navbar-brand{
     position: relative;
     z-index: 1001;
+    padding: 15px 0px !important;
 }
 
 .modal-dialog{
@@ -4207,24 +4218,26 @@ ul.tab li.active {
 
 .landing-animation-div{
     position: absolute;
-    z-index: 10;
-    top: 175px;
+    z-index: 2;
+    top: 205px;
     left: 0;
 }
 
 .landing-first-title{
-    font-size: 35px;
+    font-family: Roboto-Regular;
+    font-size: 35pt;
     color: #35353b;
 }
 
 .landing-learn-brn{
     background-color: #3aa5e2;
     color: #FFF;
-    width: 200px;
+    width: 300px;
     border:none;
-    font-size: 15px;
+    font-size: 14pt;
+    font-family: Roboto-Bold;
     padding: 12px;
-    border-radius: 10px;
+    border-radius: 5px;
 
 }
 
