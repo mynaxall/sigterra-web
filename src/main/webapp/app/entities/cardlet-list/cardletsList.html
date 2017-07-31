@@ -2,6 +2,8 @@
 <div ng-show="showSpinner"  class="spinner-shadow"><div style="position:absolute;top:40%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -100px;"></div></div>
 
 
+<ng-include src="'app/cardlets/deleteTabDialog.html'"></ng-include>
+
 
 
 
@@ -702,7 +704,7 @@
                                                 <div class="form-group form-group-editor clearfix">
 
                                                     <div class="input-text-div input-text-div-editor">
-                                                        <input type="text" class="input-new-editor" id="userName5-{{$index}}" placeholder="Mobile Number" ng-model="tabName.phone.value | tel" ng-bind="tabName.phone.value | tel" minlength="8" maxlength="12">
+                                                        <input type="text" class="input-new-editor" id="userName5-{{$index}}" placeholder="Mobile Number" ng-model="tabName.phone.value" ng-bind="tabName.phone.value | tel" minlength="8" maxlength="12">
                                                         <label for="userName5-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                     </div>
                                                     <div class="text-decoration-div-editor" >
