@@ -61,7 +61,7 @@
                     <div class="pre-description" ng-style="{'font-family': tabName.phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.phone.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.phone.underline ? 'underline' : 'normal'}" style="max-height: 25px; margin-left: 30px; font-size: 13px">
-                        {{tabName.phone.value}}
+                        {{tabName.phone.value | tel}}
                     </div>
                 </div>
             </div>

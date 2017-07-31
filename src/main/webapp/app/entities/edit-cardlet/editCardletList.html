@@ -535,7 +535,7 @@
                                                 <div class="form-group form-group-editor clearfix">
 
                                                     <div class="input-text-div input-text-div-editor">
-                                                        <input type="text" class="input-new-editor" id="userName13{{tabName.items[tabName.items.length-1].index}}-{{$index}}" placeholder="Mobile Number" ng-model="tabName.phone.value" maxlength="25">
+                                                        <input type="text" class="input-new-editor" id="userName13{{tabName.items[tabName.items.length-1].index}}-{{$index}}" placeholder="Mobile Number" ng-model="tabName.phone.value" ng-bind="tabName.phone.value" minlength="8" maxlength="12">
                                                         <label for="userName13{{tabName.items[tabName.items.length-1].index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                     </div>
                                                     <div class="text-decoration-div-editor" >
