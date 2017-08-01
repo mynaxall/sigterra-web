@@ -4232,7 +4232,7 @@ ul.tab li.active {
 .landing-learn-brn{
     background-color: #3aa5e2;
     color: #FFF;
-    width: 300px;
+    width: 00px;
     border:none;
     font-size: 14pt;
     font-family: Roboto-Bold;
@@ -4379,6 +4379,7 @@ ul.tab li.active {
     overflow: hidden;
     padding: 0px;
     border: none;
+    margin-left: 30px;
 }
 
 .btn-ing{
