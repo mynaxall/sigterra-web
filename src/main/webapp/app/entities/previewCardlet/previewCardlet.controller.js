@@ -47,6 +47,15 @@
 
                         });
                     }
+                    for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
+                        if ($scope.tabNames.tabs[i].tabType == '1'){
+                            $scope.firstBusinessCardId = i;
+                            break
+                        }else{
+                            $scope.firstBusinessCardId = '';
+                        }
+                    }
+
                     $timeout(function() {vm.showSpinner = false; },4000)
                 });
         };
@@ -88,14 +97,19 @@
         }
 
 
+        vm.nextIndex = 1;
+
         $scope.prevSlide = function(index){
             $scope.currentUrl = undefined;
             if( vm.currentSlide == 0){
-                vm.currentSlide = $scope.tabNames.tabs[index].items.length -1
+                vm.currentSlide = $scope.tabNames.tabs[index].items.length -1;
+                vm.nextIndex = 0
             }else{
                 vm.currentSlide = vm.currentSlide - 1;
+                vm.nextIndex = vm.currentSlide+ 1
             }
-            $timeout(function() {
+
+                $timeout(function() {
 
                 angular.forEach($scope.tabNames.tabs[index].items, function (item) {
                     if(item.position  === vm.currentSlide) {
@@ -152,10 +166,18 @@
         $scope.nextSlide = function(index){
             $scope.currentUrl = undefined
             if( vm.currentSlide == $scope.tabNames.tabs[index].items.length -1){
-                vm.currentSlide = 0
+                vm.currentSlide = 0;
             }else{
                 vm.currentSlide = vm.currentSlide + 1;
+
             }
+
+            vm.nextIndex = vm.currentSlide + 1;
+            if(vm.nextIndex == $scope.tabNames.tabs[index].items.length ){
+                vm.nextIndex = 0;
+            }
+
+
             $timeout(function() {
                 angular.forEach($scope.tabNames.tabs[index].items, function (item) {
 

@@ -5,8 +5,12 @@
         console.log()
     });
 </script>
-<div class="entiti-content" ng-init="getCardlet()" style="padding-bottom: 30px">
+<div class="entiti-content" ng-init="getCardlet()" style="padding-bottom: 30px; ">
     <style>
+
+        body {
+            min-width: 1100px
+        }
 
         .tab-panel{
             padding-top: 50px;
@@ -186,8 +190,11 @@
         }
 
     </style>
-
-    <div style="margin: auto;width: 570px;padding-top: 30px; padding-left: 30px; position: relative">
+    <div class="preview-border">
+        <div ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor, 'font-size': '22px', 'margin-top':'30px'}">{{tabNames.tabs[firstBusinessCardId].userName.value}}</div>
+        <div ng-show="tabNames.tabs[firstBusinessCardId].userEmail.value"><span ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor}">e:</span> {{tabNames.tabs[firstBusinessCardId].userEmail.value}}</div>
+    </div>
+    <div style="margin: auto;width: 570px;padding-top: 100px; padding-left: 30px; position: relative">
         <div class="alert alert-success-added" check-position-scroll ng-show="successfulyAdded">
             <strong>{{successfulyAdded}}</strong>
         </div>
@@ -195,6 +202,7 @@
         <div class="alert alert-danger" check-position-scroll ng-show="errorAddeding">
             <strong>{{errorAddeding}}</strong>
         </div>
+
         <div style="position:relative;">
             <div>
                 <ul class="tab2">
@@ -208,15 +216,20 @@
             </div>
 
             <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-                <div class="custom-slide-prev"><img src="/content/images/new/arrow_left.png" ng-hide="vm.tabType === 1  || tabName.items.length < 2" ng-click="prevSlide($index)"></div>
+                <div class="custom-slide-prev"><img src="/content/images/arrow_left.png" ng-hide="vm.tabType === 1  || tabName.items.length < 2" ng-click="prevSlide($index)"></div>
                 <ng-include style="display: block!important" src="tabName.layout.url"></ng-include>
-                <div class="custom-slide-next"><img src="/content/images/new/arrow_right.png" ng-hide="vm.tabType === 1 || tabName.items.length < 2"  ng-click="nextSlide($index)"></div>
-                <div style="text-align: center;padding-top: 10px; background: #FFF;">
-                    <div class="preview-selection" ng-repeat="slide in tabName.items  | orderBy:'position'" ng-click="setCurrentSlide($index, $parent.$index)"  ng-class="$index == vm.currentSlide ? 'preview-selected': '' ">
-                        <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="slide.image" ng-src="{{slide.image}}">
-                        {{slide.position}}
-                    </div>
+                <div class="custom-slide-next"><img src="/content/images/arrow_right.png" ng-hide="vm.tabType === 1 || tabName.items.length < 2"  ng-click="nextSlide($index)"></div>
+                <div class="next-image-preview">
+                    <img style="width: 100px" ng-src="{{tabName.items[vm.nextIndex].image}}">
                 </div>
+                <!--<div style="text-align: center;padding-top: 10px; background: #FFF;">-->
+                    <!--<div class="preview-selection" ng-repeat="slide in tabName.items  | orderBy:'position'" ng-click="setCurrentSlide($index, $parent.$index)"  ng-class="$index == vm.currentSlide ? 'preview-selected': '' ">-->
+                        <!--<img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="slide.image" ng-src="{{slide.image}}">-->
+                        <!--{{slide.position}}-->
+                    <!--</div>-->
+
+                <!--</div>-->
+
             </div>
             <div style="margin-top: 30px; margin-bottom: 60px; position: relative; z-index: 10">
                 <button class="preview-create-button" ui-sref="cardletlist">Create your business card</button>
@@ -224,21 +237,9 @@
             </div>
         </div>
     </div>
-
-
-
-    <div ng-show="currentLink" class="preview-border">
-        <div class="preview-iframe-name"> {{currentName}}</div>
-    </div>
     <div class="preview-iframe" ng-show="currentLink">
-        <div class="preview-header-iframe">
-            <div class="preview-header-navigation">
-                <input class="preview-header-url" ng-disabled="true" type="text" ng-model="currentLink">
-                <div class="preview-header-reload" ng-click="reloadFrame()"><img src="/content/images/new/refresh_icon.png"></div>
-            </div>
-        </div>
         <div ng-show="vm.showSpinner" class="spinner-shadow" style="position:absolute;"><div style="position:absolute;top:40%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -88px;"></div></div>
-        <iframe id="myFrame" type="text/html" ng-if="currentUrl"  ng-onload="test123()" style="height: 0px; border:none"  ng-src="{{trustSrc(currentUrl)}}" width="100%"></iframe>
+        <iframe id="myFrame" type="text/html" ng-if="currentUrl"  ng-onload="test123()" style="height: 0px; border:none; margin-top: 30px"  ng-src="{{trustSrc(currentUrl)}}" width="100%"></iframe>
     </div>
 
     <style>

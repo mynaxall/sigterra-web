@@ -1174,14 +1174,14 @@ Social Buttons
 
 .custom-slide-prev{
     position: absolute;
-    top: 150px;
-    left: -30px;
+    top: 180px;
+    left: -150px;
 }
 
 .custom-slide-next{
     position: absolute;
-    top: 150px;
-    right: -30px;
+    top: 180px;
+    right: -150px;
 }
 
 
@@ -4035,17 +4035,20 @@ ul.tab li.active {
     min-width: 600px;
     margin: 0 auto;
     margin-top: -61px;
-    border: 1px solid #CBD4DF;
     position: relative;
     min-height: 300px;
 }
 
 .preview-border{
+    position: absolute;
+    top: 0;
+    left:0;
     background-color: #E3E8EE;
     width: 100%;
-    height: 125px;
+    height: 260px;
     text-align: center;
     padding: 15px;
+    border: 1px solid #000000;
 }
 
 .preview-header-iframe{
@@ -4414,4 +4417,11 @@ ul.tab li.active {
     max-width: 480px;
     overflow: hidden;
     word-break: break-all;
+}
+
+.next-image-preview{
+    position: absolute;
+    top: 180px;
+    left: 700px;
+    width: 50px;
 }
