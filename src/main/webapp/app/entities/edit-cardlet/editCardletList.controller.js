@@ -513,7 +513,7 @@
                     }
                 }else{
                     newTab.userName = {
-                        "value": "Jon Dou"
+                        "value": "Your Name"
                     }
                 }
 
@@ -523,7 +523,7 @@
                     }
                 }else{
                     newTab.userEmail = {
-                        "value": "fabian.abshireabsh@wilford.biz"
+                        "value": "Email"
                     }
                 }
 
@@ -544,7 +544,7 @@
                     }
                 }else{
                     newTab.address = {
-                        "value": "0000 Lynch Pine Apt. 605, South Keagan, Croatia"
+                        "value": "Address"
                     }
                 }
 
@@ -565,7 +565,7 @@
                     }
                 }else{
                     newTab.site = {
-                        "value": "www.websitewebsite.com"
+                        "value": "Website"
                     }
                 }
 
@@ -575,7 +575,7 @@
                     }
                 }else{
                     newTab.job = {
-                        "value": "General Manager"
+                        "value": "Job Title"
                     }
                 }
                 if($scope.userAccount.imageUrl){

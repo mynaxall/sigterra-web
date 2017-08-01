@@ -4391,3 +4391,19 @@ ul.tab li.active {
     margin-top: 15px;
     text-transform: uppercase;
 }
+
+.cardlet-name-title{
+    width: 100%;
+    font-size: 26px;
+    background: #FFF;
+    text-align: left;
+    font-weight: bold;
+    color: #595959;
+    border-width: 0px;
+    padding: 20px;
+    padding-bottom: 0px;
+    height: 60px;
+    max-width: 480px;
+    overflow: hidden;
+    word-break: break-all;
+}

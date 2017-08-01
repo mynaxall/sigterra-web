@@ -199,7 +199,7 @@
                             }
                     }else{
                         $scope.tabNames.tabs[0].userName = {
-                            "value": "Jon Dou"
+                            "value": "Your Name"
                         }
                     }
 
@@ -209,7 +209,7 @@
                         }
                     }else{
                         $scope.tabNames.tabs[0].userEmail = {
-                            "value": "fabian.abshireabsh@wilford.biz"
+                            "value": "Email"
                         }
                     }
 
@@ -230,7 +230,7 @@
                         }
                     }else{
                         $scope.tabNames.tabs[0].address = {
-                            "value": "0000 Lynch Pine Apt. 605, South Keagan, Croatia"
+                            "value": "Address"
                         }
                     }
 
@@ -251,7 +251,7 @@
                         }
                     }else{
                         $scope.tabNames.tabs[0].site = {
-                            "value": "www.websitewebsite.com"
+                            "value": "Website"
                         }
                     }
 
@@ -261,7 +261,7 @@
                         }
                     }else{
                         $scope.tabNames.tabs[0].job = {
-                            "value": "General Manager"
+                            "value": "Job Titler"
                         }
                     }
                     if($scope.userAccount.imageUrl){
@@ -632,7 +632,7 @@
                     }
                 }else{
                     newTab.userName = {
-                        "value": "Jon Dou"
+                        "value": "Your Name"
                     }
                 }
 
@@ -642,7 +642,7 @@
                     }
                 }else{
                     newTab.userEmail = {
-                        "value": "fabian.abshireabsh@wilford.biz"
+                        "value": "Email"
                     }
                 }
 
@@ -663,7 +663,7 @@
                     }
                 }else{
                     newTab.address = {
-                        "value": "0000 Lynch Pine Apt. 605, South Keagan, Croatia"
+                        "value": "Address"
                     }
                 }
 
@@ -684,7 +684,7 @@
                     }
                 }else{
                     newTab.site = {
-                        "value": "www.websitewebsite.com"
+                        "value": "Website"
                     }
                 }
 
@@ -694,7 +694,7 @@
                     }
                 }else{
                     newTab.job = {
-                        "value": "General Manager"
+                        "value": "Job Title"
                     }
                 }
                 if($scope.userAccount.imageUrl){
