@@ -236,7 +236,7 @@
                     <div style="min-height: 700px; position:relative;">
                         <ul style="position: relative; z-index:5;" class="tab" dnd-list="tabNames.tabs" dnd-horizontal-list="false" dnd-external-sources="false">
 
-                            <li ng-disable="true" class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-disable-if="!isEmptyName() || isDisabledTabs" dnd-draggable="tabName" dnd-moved="tabNames.tabs.splice($index, 1)" id="{{tabName.position}}" ng-style="tabWidth(tabName.position)" dnd-dragend="positionCheck()">
+                            <li ng-disable="true" class="tabs" ng-repeat="tabName in tabNames.tabs" dnd-disable-if="!isEmptyName() || isDisabledTabs" dnd-draggable="tabName" dnd-moved="tabNames.tabs.splice($index, 1)" dnd-effect-allowed="move"  dnd-horizontal-list="true" id="{{tabName.position}}" ng-style="tabWidth(tabName.position)" dnd-dragend="positionCheck()">
                                 <div class="tabs-div">
                                     <span class="tablinks"  id="tabLink{{tabName.position}}" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">
                                         <form editable-form name="editableForm"  style="position: relative; z-index: 1;">
