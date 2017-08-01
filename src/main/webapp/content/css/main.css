@@ -53,10 +53,16 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'sigterra_fonts';
+    src:  url('/content/fonts/sigterra_fonts.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 
 [class^="icon-"], [class*=" icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'icomoon' !important;
+    font-family: 'sigterra_fonts' !important;
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -69,42 +75,44 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-e-mail_white_icon:before {
-    content: "\e900";
-}
-.icon-facebook_icon_02:before {
+
+.icon-facebook_2:before {
     content: "\e901";
 }
-.icon-facebook:before {
-    content: "\e902";
-}
-.icon-globe_white_icon:before {
-    content: "\e903";
-}
-.icon-google_icon_02:before {
-    content: "\e904";
-}
-.icon-googleplus:before {
-    content: "\e905";
-}
-.icon-lacation_white_icon:before {
-    content: "\e906";
-}
-.icon-linkedin_icon_02:before {
-    content: "\e907";
-}
-.icon-linkedin:before {
-    content: "\e908";
-}
-.icon-mobile_white_icon:before {
+.icon-google_plus_2:before {
     content: "\e909";
 }
-.icon-tweeter_icon_02:before {
+.icon-linked_in_2:before {
     content: "\e90a";
 }
-.icon-twitter:before {
+.icon-twitter_2:before {
     content: "\e90b";
 }
+.icon-location:before {
+    content: "\e902";
+}
+.icon-mail:before {
+    content: "\e906";
+}
+.icon-mobile:before {
+    content: "\e907";
+}
+.icon-website:before {
+    content: "\e908";
+}
+.icon-facebook:before {
+    content: "\e903";
+}
+.icon-google_plus:before {
+    content: "\e904";
+}
+.icon-linked_in:before {
+    content: "\e905";
+}
+.icon-twitter:before {
+    content: "\e900";
+}
+
 
 html{
     background: #FFFFFF;
