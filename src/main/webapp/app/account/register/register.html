@@ -217,12 +217,15 @@
             <form ng-show="!vm.success" name="form2" role="form" novalidate show-validation>
 
                 <div class="form-group-new">
-                    <input type="text" class="profile-input" id="phoneNumber" name="phoneNumber" placeholder="Phone number" ng-maxlength=9
-                           ng-model="vm.registerAccount.phoneNumber">
+                    <input type="text" class="profile-input" id="phoneNumber" name="phoneNumber" placeholder="Phone number" maxlength="9" ng-model="vm.registerAccount.phoneNumber" ng-pattern="/^[0-9]*$/">
                     <div ng-show="form2.phoneNumber.$dirty && form2.phoneNumber.$invalid">
                         <p class="help-block"
+                           ng-show="form2.phoneNumber.$error.pattern">
+                            Numbers only.
+                        </p>
+                        <p class="help-block"
                            ng-show="form2.phoneNumber.$error.maxlength">
-                            Your phone number cannot be longer than 20 characters.
+                            Your phone number cannot be longer than 9 characters
                         </p>
 
                     </div>
@@ -275,8 +278,8 @@
                 </div>
 
                 <div style="text-align: center;">
-                    <button  type="submit" ng-disabled="for2m.$invalid" ng-click="vm.register()" class="loginButton" style="width: 130px; float: left">Save</button>
-                    <button  type="submit" ng-disabled="form2.$invalid" ng-click="vm.skip()" class="loginButton skip-btn"  style="width: 130px; float: right">skip</button>
+                    <button  type="submit" ng-disabled="form2.$invalid" ng-click="vm.register()" class="loginButton" style="width: 130px; float: left">Save</button>
+                    <button  type="submit" ng-click="vm.skip()" class="loginButton skip-btn"  style="width: 130px; float: right">skip</button>
                 </div>
             </form>
             <div style="color: #7F8C8C; font-size: 13px; text-align: center; padding-top: 60px; padding-bottom: 45px">
