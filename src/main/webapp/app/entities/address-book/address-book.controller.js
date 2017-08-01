@@ -14,6 +14,8 @@
 
         $scope.showSpinner = true;
 
+
+        vm.currentSlide = 0;
         $scope.showConent = true;
 
         $scope.hasChanged = function(id) {
@@ -204,7 +206,7 @@
             }
         }
 
-        $scope.myInterval = 3000;
+        $scope.myInterval = 30000000;
 
     }
 })();
