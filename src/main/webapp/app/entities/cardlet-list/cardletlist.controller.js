@@ -952,7 +952,7 @@
                     cyrrentEl.style.borderTop = "2px solid #" + colorSecond;
                     link.style.color = "#"+colorSecond
                 }
-                $timeout(function()  {
+                setTimeout(function() {
                     cyrrentEl.style.background = "#F9F9F9";
                     cyrrentEl.style.borderTop = "1px solid #D0D8D9"
                     cyrrentEl.style.borderBottom = "1px solid #D0D8D9";
@@ -963,7 +963,7 @@
                         link.style.color = "#"+colorSecond;
                         cyrrentEl.style.borderBottom = "0px";
                     }
-                }, 10)
+                }, 700)
 
             }
         }
