@@ -109,7 +109,6 @@
                 vm.nextIndex = vm.currentSlide+ 1
             }
 
-            console.log(vm.nextIndex)
 
                 $timeout(function() {
 
@@ -178,7 +177,6 @@
             if(vm.nextIndex == $scope.tabNames.tabs[index].items.length ){
                 vm.nextIndex = 0;
             }
-            console.log(vm.nextIndex)
 
 
             $timeout(function() {
