@@ -867,11 +867,14 @@
         }
 
         $scope.chooseType = function(id, url, tabId) {
-
-            $scope.tabNames.tabs[id].layout.url = url;
-            $scope.tabNames.tabs[id].layout.tabId = tabId;
-            vm.currentSlide = 1;
-            $timeout(function() {vm.currentSlide = 0;},10)
+            if($scope.tabNames.tabs[id].layout.url != url) {
+                $scope.tabNames.tabs[id].layout.url = url;
+                $scope.tabNames.tabs[id].layout.tabId = tabId;
+                vm.currentSlide = 1;
+                $timeout(function () {
+                    vm.currentSlide = 0;
+                }, 10)
+            }
 
         }
 
