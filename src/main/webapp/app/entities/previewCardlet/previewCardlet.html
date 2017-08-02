@@ -192,7 +192,7 @@
     </style>
     <div class="preview-border">
         <div ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor, 'font-size': '22px', 'margin-top':'30px'}">{{tabNames.tabs[firstBusinessCardId].userName.value}}</div>
-        <div ng-show="tabNames.tabs[firstBusinessCardId].userEmail.value"><span ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor}">e:</span> {{tabNames.tabs[firstBusinessCardId].userEmail.value}}</div>
+        <div style="position: relative;z-index: 5" ng-show="tabNames.tabs[firstBusinessCardId].userEmail.value"><span ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor}">e: </span><a  target="_blank" href="mailto:{{tabNames.tabs[firstBusinessCardId].userEmail.value}}">{{tabNames.tabs[firstBusinessCardId].userEmail.value}}</a></div>
     </div>
     <div style="margin: auto;width: 570px;padding-top: 100px; padding-left: 30px; position: relative">
         <div class="alert alert-success-added" check-position-scroll ng-show="successfulyAdded">
