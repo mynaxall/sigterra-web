@@ -261,7 +261,7 @@
                         }
                     }else{
                         $scope.tabNames.tabs[0].job = {
-                            "value": "Job Titler"
+                            "value": "Job Title"
                         }
                     }
                     if($scope.userAccount.imageUrl){
