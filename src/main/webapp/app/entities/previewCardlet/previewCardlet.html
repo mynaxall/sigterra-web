@@ -219,7 +219,7 @@
                 <ng-include style="display: block!important" src="tabName.layout.url"></ng-include>
                 <div class="custom-slide-next"><img src="/content/images/arrow_right.png" ng-hide="vm.tabType === 1 || tabName.items.length < 2"  ng-click="nextSlide($index)"></div>
                 <div class="next-image-preview" ng-repeat="slide in tabName.items | orderBy:'position'">
-                    <img ng-show="$index === vm.nextIndex" style="width: 100px" ng-src="{{slide.image}}">
+                    <img ng-show="$index === vm.nextIndex && tabName.layout.url != 'app/cardlets/info3.html'" style="width: 100px" ng-src="{{slide.image}}">
                 </div>
                 <!--<div style="text-align: center;padding-top: 10px; background: #FFF;">-->
                     <!--<div class="preview-selection" ng-repeat="slide in tabName.items | orderBy:'position'" ng-click="setCurrentSlide($index, $parent.$index)"  ng-class="$index == vm.currentSlide ? 'preview-selected': '' ">-->
