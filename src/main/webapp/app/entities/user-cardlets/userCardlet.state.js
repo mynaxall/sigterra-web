@@ -12,6 +12,7 @@
         .state('userCardletlist', {
             parent: 'entity',
             url: '/user-cardlets?page&sort&search',
+            cache: false,
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'Sigterra'
