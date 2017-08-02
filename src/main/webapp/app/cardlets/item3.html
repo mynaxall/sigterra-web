@@ -30,12 +30,12 @@
                 <div ng-show="showEditorNavigation" class="custom-slide-prev-editor" style="top: 100px;z-index: 2"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
                 <div ng-show="showEditorNavigation"  class="custom-slide-next-editor"  style="top: 100px;z-index: 2"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
 
-                <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position">
+                <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" style="position:relative;">
                     <div style="max-height: 240px;overflow: hidden; border: 1px solid #D0D8D9; border-top-width: 0px;">
                         <img crossorigin="anonymous" style="width: 100%" id="ing-1" ng-src="{{slide.image}}">
 
                     </div>
-                    <div class="main-carousel-image-div-new-3" style="height: 240px">
+                    <div class="main-carousel-image-div-new-3" style="position: absolute;top:0;left:0; height: 240px">
                         <a href="{{slide.link}}" target="_blank" ng-class="{disabledLink: !slide.link}">
                             <div  class="main-carousel-item-div-new-3" ng-style="{'text-align': 'center'}">
                                 <div class="item-3-content" ng-style="{'background-color': '#'+tabName.layout.mainColor, 'border-color': '#'+tabName.layout.secondaryColor, 'text-align':'center'}" ng-hide="!slide.name.value && !slide.description.value">
