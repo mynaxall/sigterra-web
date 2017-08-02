@@ -29,6 +29,8 @@
         vm.settingsAccount = null;
         vm.success = null;
 
+        $scope.disableSave = true;
+
 
         /**
          * Store the "settings account" in a separate variable, and not in the shared "account" variable.
@@ -59,7 +61,6 @@
                 vm.success = null;
                 vm.error = 'ERROR';
             });
-
         }
 
 
@@ -90,6 +91,7 @@
                     vm.error = 'ERROR';
                 });
             }
+            $scope.disableSave = true;
         }
 
         vm.clear = clear;

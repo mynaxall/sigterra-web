@@ -170,7 +170,7 @@
                     </div>
                     <div class=" form-group-new">
                         <input type="password" class="profile-input" id="confirmPassword2" name="confirmPassword" placeholder="Confirm password"
-                               ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50  pw-check='password2' required>
+                               ng-model="vm.confirmPassword" ng-change="disableSave = false" ng-minlength=4 ng-maxlength=50  pw-check='password2' required>
                         <div ng-show="form2.confirmPassword.$dirty && form2.confirmPassword.$invalid">
                             <p class="help-block"
                                ng-show="form2.confirmPassword.$error.required">
@@ -190,8 +190,7 @@
                             </p>
                         </div>
                     </div>
-
-                    <button type="submit" ng-disabled="form2.$invalid" class="saveButton">Change password</button>
+                    <button type="submit" ng-disabled="form2.$invalid || disableSave" class="saveButton">Change password</button>
                 </form>
             </div>
         </div>
