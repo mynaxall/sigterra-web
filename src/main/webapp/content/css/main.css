@@ -4048,7 +4048,7 @@ ul.tab li.active {
     height: 260px;
     text-align: center;
     padding: 15px;
-    border: 1px solid #000000;
+    border-bottom: 1px solid #000000;
 }
 
 .preview-header-iframe{
