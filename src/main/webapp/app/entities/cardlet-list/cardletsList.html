@@ -824,18 +824,20 @@
                     <div class="cadlet-top-title">Interactive Profile Preview
                         <div class="cadlet-top-title-border"></div>
                     </div>
-                    <div>
-                        <ul class="tab2">
-                            <li style="background-color: #fff" class="tabs2" ng-style="addColors('li'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink'+tabName.name)" ng-repeat="tabName in tabNames.tabs" id="li{{tabName.position}}{{tabName.name}}">
-                                <div style="position: relative;display: table; width: 100%;">
-                                    <a href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}"  id="tabLink{{tabName.name}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, 'tab'+tabName.position, tabName.name+tabName.position, 'li'+tabName.position+tabName.name)">{{tabName.name}}</a>
-                                </div>
-                            </li>
+                    <div style="min-height: 320px;">
+                        <div>
+                            <ul class="tab2">
+                                <li style="background-color: #fff" class="tabs2" ng-style="addColors('li'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink'+tabName.name)" ng-repeat="tabName in tabNames.tabs" id="li{{tabName.position}}{{tabName.name}}">
+                                    <div style="position: relative;display: table; width: 100%;">
+                                        <a href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}"  id="tabLink{{tabName.name}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, 'tab'+tabName.position, tabName.name+tabName.position, 'li'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                                    </div>
+                                </li>
 
-                        </ul>
-                    </div>
-                    <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="business.pisition === 1 ? 'display' : 'none-display'">
-                        <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+                            </ul>
+                        </div>
+                        <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="business.pisition === 1 ? 'display' : 'none-display'">
+                            <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+                        </div>
                     </div>
                     <div style="margin-top: 30px; position: relative;">
 
@@ -845,6 +847,7 @@
                         <ng-include src="'app/cardlets/cardNew.html'"></ng-include>
                         <div ng-show="positionChecking" class="text-catdlet-spinner"><div style="position:absolute;top:25%; left:30%"><img src="/content/images/spinner.svg" style="width: 50px;position:relative;left: -50%"></div></div>
                     </div>
+
                 </div>
             </div>
         </div>
