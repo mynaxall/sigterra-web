@@ -41,7 +41,7 @@
     function EditCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter) {
         var vm = this;
 
-
+        $scope.time = Date.now()
         $scope.showEditorNavigation = true;
         $scope.showCropDialog = false;
         $scope.firstBusinessCardId ="";

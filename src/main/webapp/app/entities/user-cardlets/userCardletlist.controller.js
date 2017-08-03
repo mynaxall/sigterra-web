@@ -12,6 +12,9 @@
     function UserCardletListController ($scope, $state, CardletList, ParseLinks, AlertService,  paginationcardletConstants ,$http, $timeout, $uibModal, $location, $window, $rootScope) {
         var vm = this;
 
+
+        $scope.time = Date.now()
+
         vm.currentSlide = 0;
 
         $scope.isCopyTiEmail = false;

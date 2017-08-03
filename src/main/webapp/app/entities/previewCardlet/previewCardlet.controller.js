@@ -12,6 +12,7 @@
     function PreviewCardletController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, LoginService, $sce) {
 
         var vm = this;
+        $scope.time = Date.now()
 
         vm.currentSlide = 0;
 

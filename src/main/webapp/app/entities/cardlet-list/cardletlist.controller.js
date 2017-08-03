@@ -41,7 +41,7 @@
     function CardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location) {
         var vm = this;
 
-
+        $scope.time = Date.now()
         $scope.showEditorNavigation = true;
 
         $scope.noSocialChanges = false;

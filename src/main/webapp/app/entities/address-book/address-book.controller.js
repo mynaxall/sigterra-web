@@ -14,7 +14,7 @@
 
         $scope.showSpinner = true;
 
-
+        $scope.time = Date.now()
         vm.currentSlide = 0;
         $scope.showConent = true;
 
