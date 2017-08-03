@@ -304,7 +304,7 @@
                                 <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 3" ng-if="tabName.tabType === 3">
                                     <div class="accordion-section" >
                                         <div id="accordion2-item.index" class="editor-item-card">
-                                            <div ng-repeat="slide in tabName.items" ng-show="tabName.items.length === 1" ng-if="tabName.items.length === 1">
+                                            <div ng-repeat="slide in tabName.items track by slide.position" ng-show="tabName.items.length === 1" ng-if="tabName.items.length === 1">
                                                 <div class="editor-info-image-panel">
                                                     <div style="padding-top: 25px">
                                                         <div class="info-image-div">
@@ -427,7 +427,7 @@
                                                         <br>
                                                     </div>
                                                     <div class="item-selection-panel">
-                                                        <div class="item-selection" ng-repeat="slide in tabName.items" ng-click="vm.currentSlide = $index"  ng-class="$index == vm.currentSlide ? 'item-selected': '' ">{{itemPosition($index)}}</div>
+                                                        <div class="item-selection" ng-repeat="slide in tabName.items track by slide.position" ng-click="vm.currentSlide = $index"  ng-class="$index == vm.currentSlide ? 'item-selected': '' ">{{itemPosition($index)}}</div>
                                                         <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn-editor"><span class="glyphicon glyphicon-plus add-item-icon" ></span></button>
                                                         <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  slide.index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
                                                     </div>
@@ -471,7 +471,7 @@
                                 <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 2"  ng-if="tabName.tabType === 2">
                                     <div class="accordion-section" >
                                         <div id="accordion2-item.index" class="editor-item-card">
-                                            <div ng-repeat="slide in tabName.items" ng-show="tabName.items.length === 1" ng-if="tabName.items.length === 1">
+                                            <div ng-repeat="slide in tabName.items track by slide.position" ng-show="tabName.items.length === 1" ng-if="tabName.items.length === 1">
                                                 <div class="editor-item-top"></div>
                                                 <div class="editor-item-bottom"></div>
                                                 <div class="editor-item-image-panel">
@@ -527,7 +527,7 @@
                                                     </form>
                                                     <br>
                                                     <div class="item-selection-panel">
-                                                        <div class="item-selection item-selected" ng-repeat="slide in tabName.items" ng-click="vm.currentSlide = $index">{{itemPosition($index)}}</div>
+                                                        <div class="item-selection item-selected" ng-repeat="slide in tabName.items track by slide.position" ng-click="vm.currentSlide = $index">{{itemPosition($index)}}</div>
                                                         <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn-editor"><span class="glyphicon glyphicon-plus add-item-icon"></span></button>
                                                         <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  slide.index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
                                                     </div>
@@ -593,7 +593,7 @@
                                                         <br>
                                                     </div>
                                                     <div class="item-selection-panel">
-                                                        <div class="item-selection" ng-repeat="slide in tabName.items" ng-click="vm.currentSlide = $index"  ng-class="$index == vm.currentSlide ? 'item-selected': '' ">{{itemPosition($index)}}</div>
+                                                        <div class="item-selection" ng-repeat="slide in tabName.items track by slide.position" ng-click="vm.currentSlide = $index"  ng-class="$index == vm.currentSlide ? 'item-selected': '' ">{{itemPosition($index)}}</div>
                                                         <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn-editor"><span class="glyphicon glyphicon-plus add-item-icon"></span></button>
                                                         <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  slide.index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
                                                     </div>
