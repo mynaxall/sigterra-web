@@ -41,6 +41,13 @@
 }
 
 @font-face {
+    font-family: OpenSans-Bold;
+    src: url('/content/fonts/OpenSans-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: OpenSans-Regular;
     src: url('/content/fonts/OpenSans-Regular.ttf');
     font-weight: normal;
@@ -2398,8 +2405,8 @@ Social Buttons
 }
 
 .landing-head-text{
+    font-family: OpenSans-Bold;
     font-size: 24pt;
-    font-weight: bold;
     color: #35353b;
 }
 
