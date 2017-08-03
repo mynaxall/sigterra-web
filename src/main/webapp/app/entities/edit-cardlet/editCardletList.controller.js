@@ -36,9 +36,9 @@
             };
         });
 
-    EditCardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location'];
+    EditCardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'orderByFilter'];
 
-    function EditCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location) {
+    function EditCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter) {
         var vm = this;
 
 
@@ -591,18 +591,17 @@
         }
 
         $scope.deleteItems = function(tabId, index){
-
-            console.log("asdasd")
+            console.log(index)
             if($scope.tabNames.tabs[tabId].items.length > 1){
 
                 if($scope.tabNames.removeItems == null){
                     $scope.tabNames.removeItems = [];
                 }
-                if($scope.tabNames.tabs[tabId].items[index-2].id) {
-                    $scope.tabNames.removeItems.push($scope.tabNames.tabs[tabId].items[index - 2].id);
+                if($scope.tabNames.tabs[tabId].items[index].id) {
+                    $scope.tabNames.removeItems.push($scope.tabNames.tabs[tabId].items[index].id);
                 }
 
-                $scope.tabNames.tabs[tabId].items.splice((index-2), 1);
+                $scope.tabNames.tabs[tabId].items.splice((index), 1);
                 for (var i = 0; i < $scope.tabNames.tabs[tabId].items.length; i++) {
                     $scope.tabNames.tabs[tabId].items[i].index = i + 2;
                     $scope.tabNames.tabs[tabId].items[i].position = i;
