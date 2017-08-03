@@ -100,6 +100,7 @@
                     document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText
 
                     $scope.showSpinner = false;
+                    $scope.addBanner();
                 })
                 .error(function (data, status, headers, config) {
                     $scope.showSpinner = false;
@@ -111,7 +112,6 @@
         var fileSelected=function(evt) {
             var file=evt.currentTarget.files[0];
             $scope.saveBanner("banner", file, true);
-            $scope.isAddBanner = false;
         };
         angular.element(document.querySelector('#fileInput3')).on('change',fileSelected);
 
