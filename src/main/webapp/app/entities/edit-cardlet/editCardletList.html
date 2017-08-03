@@ -335,12 +335,12 @@
                                                     <form name="myItemForm">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                <input type="url" class="input-new-editor" name="itemLink" id="itemDescription2{{slide.index}}-{{$index}}" placeholder="Link" ng-model="slide.link">
+                                                                <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" name="itemLink" id="itemDescription2{{slide.index}}-{{$index}}" placeholder="Link" ng-model="slide.link">
                                                                 <label for="itemDescription2{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                 <p class="help-block has-error-new"
-                                                                   ng-show="myItemForm.itemLink.$error.url">
+                                                                   ng-show="myItemForm.itemLink.$error.pattern">
                                                                     Invalid URL string. It should starts from "http://" or "https://"
                                                                 </p>
 
@@ -401,12 +401,12 @@
                                                         <form name="myItemForm">
                                                             <div class="form-group form-group-editor clearfix">
                                                                 <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                    <input type="url" class="input-new-editor" maxlength="33" name="itemLink" id="itemDescription4{{slide.index}}" placeholder="Link" ng-model="slide.link">
+                                                                    <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="33" name="itemLink" id="itemDescription4{{slide.index}}" placeholder="Link" ng-model="slide.link">
                                                                     <label for="itemDescription4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                                 </div>
                                                                 <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                     <p class="help-block has-error-new"
-                                                                       ng-show="myItemForm.itemLink.$error.url">
+                                                                       ng-show="myItemForm.itemLink.$error.pattern">
                                                                         Invalid URL string. It should starts from "http://" or "https://"
                                                                     </p>
 
@@ -679,12 +679,12 @@
                                                     <form name="myItemForm">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                <input type="url" class="input-new-editor" name="itemLink" id="itemDescription3{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
+                                                                <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" name="itemLink" id="itemDescription3{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                 <label for="itemDescription3{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                 <p class="help-block has-error-new"
-                                                                   ng-show="myItemForm.itemLink.$error.url">
+                                                                   ng-show="myItemForm.itemLink.$error.pattern">
                                                                     Invalid URL string. It should starts from "http://" or "https://"
                                                                 </p>
 
@@ -746,12 +746,12 @@
                                                         <form name="myItemForm">
                                                             <div class="form-group form-group-editor clearfix">
                                                                 <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                    <input type="url" class="input-new-editor" name="itemLink" id="itemDescription1{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
+                                                                    <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" name="itemLink" id="itemDescription1{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                     <label for="itemDescription1{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                                 </div>
                                                                 <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                     <p class="help-block has-error-new"
-                                                                       ng-show="myItemForm.itemLink.$error.url">
+                                                                       ng-show="myItemForm.itemLink.$error.pattern">
                                                                         Invalid URL string. It should starts from "http://" or "https://"
                                                                     </p>
 
@@ -944,10 +944,10 @@
                 <form name="myForm" class="input-padding">
                     <div class="form-group clearfix">
                         <div class="input-text-div input-text-div-editor">
-                            <input ng-change="noSocialChanges = true" type="url" class="input-new-editor input-new-editor-social" placeholder="Twitter" id="twitter" name="twitter" ng-model="socialLinks.twitter">
+                            <input ng-change="noSocialChanges = true" type="text" ng-pattern="/^(http|https):///" class="input-new-editor input-new-editor-social" placeholder="Twitter" id="twitter" name="twitter" ng-model="socialLinks.twitter">
                             <div ng-show="myForm.twitter.$dirty && myForm.twitter.$invalid">
                                 <p class="help-block has-error-new"
-                                   ng-show="myForm.twitter.$error.url">
+                                   ng-show="myForm.twitter.$error.pattern">
                                     Invalid URL string. It should starts from "http://" or "https://"
                                 </p>
                             </div>
@@ -960,11 +960,11 @@
                     <div class="form-group clearfix">
 
                         <div class="input-text-div input-text-div-editor clearfix">
-                            <input ng-change="noSocialChanges = true" type="url" class="input-new-editor input-new-editor-social" id="facebook" placeholder="Facebook" name="facebook" ng-model="socialLinks.facebook">
+                            <input ng-change="noSocialChanges = true" type="text" ng-pattern="/^(http|https):///" class="input-new-editor input-new-editor-social" id="facebook" placeholder="Facebook" name="facebook" ng-model="socialLinks.facebook">
 
                             <div ng-show="myForm.facebook.$dirty && myForm.facebook.$invalid">
                                 <p class="help-block has-error-new"
-                                   ng-show="myForm.facebook.$error.url">
+                                   ng-show="myForm.facebook.$error.pattern">
                                     Invalid URL string. It should starts from "http://" or "https://"
                                 </p>
                             </div>
@@ -977,10 +977,10 @@
                     <div class="form-group clearfix">
 
                         <div class="input-text-div input-text-div-editor">
-                            <input ng-change="noSocialChanges = true" type="url" class="input-new-editor input-new-editor-social" id="google" placeholder="Google" name="google" ng-model="socialLinks.google">
+                            <input ng-change="noSocialChanges = true" type="text" ng-pattern="/^(http|https):///" class="input-new-editor input-new-editor-social" id="google" placeholder="Google" name="google" ng-model="socialLinks.google">
                             <div ng-show="myForm.google.$dirty && myForm.google.$invalid">
                                 <p class="help-block has-error-new"
-                                   ng-show="myForm.google.$error.url">
+                                   ng-show="myForm.google.$error.pattern">
                                     Invalid URL string. It should starts from "http://" or "https://"
                                 </p>
                             </div>
@@ -993,10 +993,10 @@
                     <div class="form-group clearfix">
 
                         <div class="input-text-div input-text-div-editor">
-                            <input ng-change="noSocialChanges = true" type="url" class="input-new-editor input-new-editor-social" id="linkedin" placeholder="Linkedin" name="linkedin" ng-model="socialLinks.linkedin">
+                            <input ng-change="noSocialChanges = true"  type="text" ng-pattern="/^(http|https):///" class="input-new-editor input-new-editor-social" id="linkedin" placeholder="Linkedin" name="linkedin" ng-model="socialLinks.linkedin">
                             <div ng-show="myForm.linkedin.$dirty && myForm.linkedin.$invalid">
                                 <p class="help-block has-error-new"
-                                   ng-show="myForm.linkedin.$error.url">
+                                   ng-show="myForm.linkedin.$error.pattern">
                                     Invalid URL string. It should starts from "http://" or "https://"
                                 </p>
                             </div>
