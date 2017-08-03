@@ -45,6 +45,7 @@
         vm.collapseNavbar = collapseNavbar;
         vm.gotoBottom = gotoBottom;
         vm.gotoFooter = gotoFooter;
+        vm.howItWorks = howItWorks;
         vm.$state = $state;
 
         function login() {
@@ -72,6 +73,11 @@
             var el = document.getElementById('howItWorks');
             el.scrollIntoView();
         };
+
+        function howItWorks() {
+            var el = document.getElementById('howItWorks');
+            el.scrollIntoView();
+        }
 
         function gotoFooter() {
             // set the location.hash to the id of
