@@ -227,14 +227,12 @@
 
         $scope.testSelect = function(){
             if (window.getSelection) {
-                console.log("123")
                 var selection = window.getSelection();
                 if (selection.rangeCount > 0) {
                     window.getSelection().removeAllRanges();
                 }
             } else if (document.selection) {
                 // Internet Explorer
-                console.log("qwe")
                 document.selection.empty();
             }
         }
@@ -253,7 +251,6 @@
                 if ($scope.userCardlets[id].tabs[i].tabType == '1'){
                     $scope.firstBusinessCardCopyed = $scope.userCardlets[id].tabs[i];
                     $scope.firstBusinessCardId = i;
-                    console.log($scope.firstBusinessCardId)
                 break
                 }
             }

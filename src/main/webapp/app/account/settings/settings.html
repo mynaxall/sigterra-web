@@ -1,4 +1,10 @@
-
+<script>
+    $(document).ready(function(){
+        $("#main-footer").removeClass("ng-hide");
+        $("#default-navbar").removeClass("navbar-fixed-top");
+        console.log()
+    });
+</script>
 <div ng-show="vm.isShowDialog" class="image-popup">
     <div class="row image-dialog">
         <button type="button" class="close login-close-gray" ng-click="vm.hideImageDialog(true)">×</button>
