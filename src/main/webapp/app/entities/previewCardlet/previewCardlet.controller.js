@@ -240,15 +240,16 @@
         $scope.openCity = function(cardName, cardId, id) {
             $scope.currentUrl = undefined;
             vm.currentSlide = 0;
-
+            $scope.currentUrl = "";
+            $scope.currentLink = "";
             if ($scope.tabNames.tabs[id].tabType === 1) {
                 vm.tabType = 1;
                 $scope.currentName = $scope.tabNames.tabs[id].name;
-                $scope.currentUrl = "";
-                $scope.currentLink = "";
                 if($scope.tabNames.tabs[id].site.value) {
-                    $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[id].site.value);
-                    $scope.currentLink = $scope.getLink($scope.tabNames.tabs[id].site.value);
+                    $timeout(function() {
+                        $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[id].site.value);
+                        $scope.currentLink = $scope.getLink($scope.tabNames.tabs[id].site.value);
+                    },500)
                     vm.showSpinner = true;
                 }
 
@@ -258,16 +259,16 @@
                 angular.forEach($scope.tabNames.tabs[id].items, function (item) {
 
                     if(item.position  === 0){
-                        $scope.currentUrl = "";
-                        $scope.currentLink = "";
                         if(item.name) {
                             $scope.currentName = item.name.value;
                         }else{
                             $scope.currentName  = ""
                         }
                         if(item.link) {
-                            $scope.currentUrl = $scope.createURL(item.link);
-                            $scope.currentLink = $scope.getLink(item.link);
+                            $timeout(function() {
+                                $scope.currentUrl = $scope.createURL(item.link);
+                                $scope.currentLink = $scope.getLink(item.link);
+                            },500)
                             vm.showSpinner = true;
                         }
 
