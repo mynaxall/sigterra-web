@@ -238,6 +238,7 @@
         }
 
         $scope.copyToEmail = function(id, cardId, sigId) {
+            $scope.showSpinner = true;
             $scope.selected = $scope.fieldTable[0];
             $scope.isAddBanner = false;
 
