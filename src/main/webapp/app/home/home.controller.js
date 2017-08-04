@@ -22,12 +22,6 @@
         });
 
 
-        function setFixedNavbar(){
-            document.getElementById("default-navbar").className += " navbar-fixed-top";
-        }
-
-        setFixedNavbar();
-
         getAccount();
 
         function getAccount() {
