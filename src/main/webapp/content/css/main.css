@@ -3451,6 +3451,8 @@ a.tablinks2{
     vertical-align: middle;
     display: table-cell!important;
     height: 50px;
+    white-space: pre-wrap;
+    word-break: normal;
 }
 
 ul.tab li.dropdown{
