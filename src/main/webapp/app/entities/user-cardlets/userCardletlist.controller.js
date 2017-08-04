@@ -252,6 +252,8 @@
                     $scope.firstBusinessCardCopyed = $scope.userCardlets[id].tabs[i];
                     $scope.firstBusinessCardId = i;
                 break
+                }else{
+                    $scope.firstBusinessCardCopyed = "";
                 }
             }
             $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ sigId.toString();
