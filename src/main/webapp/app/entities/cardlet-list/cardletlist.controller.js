@@ -83,6 +83,7 @@
             $scope.showCropDialog = false;
             $scope.showSocialDialog = false;
             $scope.myImage = "";
+            $scope.noSocialChanges = false;
             angular.element(document.querySelector('#fileInput')).val(null);
         };
 
@@ -92,6 +93,7 @@
         $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
 
         $scope.openSocialDialog = function(index, links){
+            $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
             $scope.tabIndex = index;
             $scope.showSocialDialog = true;
             $scope.socialLinks = links;
@@ -100,6 +102,7 @@
         $scope.saveSocialLinks = function(){
             $scope.tabNames.tabs[$scope.tabIndex].socialLinks = $scope.socialLinks;
             $scope.showSocialDialog = false;
+            $scope.noSocialChanges = false;
         }
 
 
