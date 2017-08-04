@@ -49,6 +49,7 @@
         $scope.myCroppedImage = '';
         $scope.showConent = true;
         $scope.noSocialChanges = false;
+        $scope.urlError = 'Invalid URL string. It should start from "http://" or "https://"';
 
         var handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];

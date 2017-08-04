@@ -349,7 +349,7 @@
                                                             <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                 <p class="help-block has-error-new"
                                                                    ng-show="myItemForm.itemLink.$error.pattern">
-                                                                    Invalid URL string. It should starts from "http://" or "https://"
+                                                                    {{urlError}}
                                                                 </p>
 
                                                             </div>
@@ -415,7 +415,7 @@
                                                                 <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                     <p class="help-block has-error-new"
                                                                        ng-show="myItemForm.itemLink.$error.pattern">
-                                                                        Invalid URL string. It should starts from "http://" or "https://"
+                                                                        {{urlError}}
                                                                     </p>
 
                                                                 </div>
@@ -581,7 +581,7 @@
                                                                 <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                     <p class="help-block has-error-new"
                                                                        ng-show="myItemForm.itemLink.$error.pattern">
-                                                                        Invalid URL string. It should starts from "http://" or "https://"
+                                                                        {{urlError}}
                                                                     </p>
 
                                                                 </div>
@@ -949,7 +949,7 @@
                             <div ng-show="myForm.twitter.$dirty && myForm.twitter.$invalid">
                                 <p class="help-block has-error-new"
                                    ng-show="myForm.twitter.$error.pattern">
-                                    Invalid URL string. It should starts from "http://" or "https://"
+                                    {{urlError}}
                                 </p>
                             </div>
                         </div>
@@ -966,7 +966,7 @@
                             <div ng-show="myForm.facebook.$dirty && myForm.facebook.$invalid">
                                 <p class="help-block has-error-new"
                                    ng-show="myForm.facebook.$error.pattern">
-                                    Invalid URL string. It should starts from "http://" or "https://"
+                                    {{urlError}}
                                 </p>
                             </div>
                         </div>
@@ -982,7 +982,7 @@
                             <div ng-show="myForm.google.$dirty && myForm.google.$invalid">
                                 <p class="help-block has-error-new"
                                    ng-show="myForm.google.$error.pattern">
-                                    Invalid URL string. It should starts from "http://" or "https://"
+                                    {{urlError}}
                                 </p>
                             </div>
                         </div>
@@ -998,7 +998,7 @@
                             <div ng-show="myForm.linkedin.$dirty && myForm.linkedin.$invalid">
                                 <p class="help-block has-error-new"
                                    ng-show="myForm.linkedin.$error.pattern">
-                                    Invalid URL string. It should starts from "http://" or "https://"
+                                    {{urlError}}
                                 </p>
                             </div>
                         </div>

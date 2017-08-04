@@ -46,7 +46,7 @@
 
         $scope.noSocialChanges = false;
 
-
+        $scope.urlError = 'Invalid URL string. It should start from "http://" or "https://"';
         $scope.showCropDialog = false;
         $scope.myImage='';
         $scope.myCroppedImage = '';
