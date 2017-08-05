@@ -34,6 +34,13 @@
             $state.go('register');
         }
 
+
+        function setFixedNavbar(){
+            document.getElementById("default-navbar").className += " navbar-fixed-top";
+        }
+
+        setFixedNavbar();
+
         $scope.gotoBottom = function() {
             // set the location.hash to the id of
             // the element you wish to scroll to.
