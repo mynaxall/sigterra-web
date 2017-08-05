@@ -4487,3 +4487,11 @@ ul.tab li.active {
     left: 700px;
     width: 50px;
 }
+
+.statistics-graph{
+    margin: 20px auto;
+    width: 50%;
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px;
+}
