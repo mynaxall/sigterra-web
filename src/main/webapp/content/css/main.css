@@ -2325,11 +2325,15 @@ Social Buttons
 
 
 .landing_create{
+    position: absolute;
+    top: 95px;
+    left: 0px;
     background-color: #ffffff;
     border-width: 0px;
-    height: 375px;
+    height: 385px;
+    width: 275px;
     margin: 0 auto;
-    padding: 35px 15px;
+    padding: 0px 15px;
     vertical-align: middle;
     display: -webkit-box;
     display: -moz-box;
@@ -2354,13 +2358,20 @@ Social Buttons
     animation-duration: 16s;
     animation-iteration-count: infinite;
     height: 470px;
+    width: 275px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .landing_add{
+    position: absolute;
+    top: 95px;
+    left: 0px;
     background-color: #ffffff;
     border-width: 0px;
-    height: 375px;
-    padding: 35px 15px;
+    height: 385px;
+    width: 275px;
+    padding: 0px 15px;
     margin: 0 auto;
     vertical-align: middle;
     display: -webkit-box;
@@ -2387,13 +2398,20 @@ Social Buttons
     animation-duration: 16s;
     animation-iteration-count: infinite;
     height: 470px;
+    width: 275px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .landing_add_to_web{
+    position: absolute;
+    top: 95px;
+    left: 0px;
     background-color: #ffffff;
     border-width: 0px;
-    height: 375px;
-    padding: 35px 15px;
+    height: 385px;
+    width: 275px;
+    padding: 0px 15px;
     vertical-align: middle;
     display: -webkit-box;
     display: -moz-box;
@@ -2418,14 +2436,21 @@ Social Buttons
     animation-duration: 16s;
     animation-iteration-count: infinite;
     height: 470px;
+    width: 275px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .landing_see{
+    position: absolute;
+    top: 95px;
+    left: 0px;
     background-color: #ffffff;
     border-width: 0px;
-    height: 375px;
+    height: 385px;
+    width: 275px;
     margin: 0 auto;
-    padding: 35px 15px;
+    padding: 0px 15px;
     vertical-align: middle;
     display: -webkit-box;
     display: -moz-box;
@@ -2450,6 +2475,9 @@ Social Buttons
     animation-duration: 16s;
     animation-iteration-count: infinite;
     height: 470px;
+    width: 275px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .landing-use{
@@ -4489,7 +4517,15 @@ ul.tab li.active {
 }
 
 .statistics-graph{
-    margin: 20px auto;
+    margin: 40px auto;
+    width: 50%;
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.howItWorksDiv{
+    margin: 40px auto;
     width: 50%;
     float: left;
     padding-right: 15px;
