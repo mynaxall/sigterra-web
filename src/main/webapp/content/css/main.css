@@ -2732,12 +2732,12 @@ div.navbar-collapse.in.collapse{
 }
 
 .sub-footer{
-    height: 625px;
+    height: 663px;
 }
 
 @media (min-width: 992px){
     .sub-footer{
-        height: 346px;
+        height: 384px;
     }
 }
 .navbar-default .navbar-nav .open .dropdown-menu > .sigterra-naigation > a{
