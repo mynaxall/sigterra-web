@@ -508,7 +508,7 @@
                             </div>
 
                             <div ng-repeat="tabName in tabNames.tabs track by tabName.position" id="{{tabName.name}}{{tabName.position}}{{tabNames.id}}" class="tabcontent2 tabcontent2{{tabNames.id}}" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-                                <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+                                <ng-include style="display: block!important" src="getUrl(tabName.layout.url)" ></ng-include>
                             </div>
                         </div>
                     </div>

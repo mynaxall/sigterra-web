@@ -74,6 +74,25 @@
 
         };
 
+        $scope.getUrl = function(url){
+            if(url === "app/cardlets/item.html"){
+                return "app/cardlets/item-editor.html"
+            }else  if(url === "app/cardlets/item2.html"){
+                return "app/cardlets/item2-editor.html"
+            }else if(url === "app/cardlets/item3.html"){
+                return "app/cardlets/item3-editor.html"
+            }else if(url === "app/cardlets/item3.html"){
+                return "app/cardlets/info-editor.html"
+            }else if(url === "app/cardlets/item3.html"){
+                return "app/cardlets/info2-editor.html"
+            }else if(url === "app/cardlets/item3.html"){
+                return "app/cardlets/info3-editor.html"
+            }else{
+
+                return url;
+            }
+        }
+
         $scope.saveBanner = function(name, image64, isFile){
             $scope.showSpinner = true;
             if (isFile) {
@@ -759,7 +778,7 @@
             }
         }
 
-        $scope.myInterval = 30000000;
+        $scope.myInterval = 3000;
 
 
         function b64toBlob(b64Data, contentType, sliceSize) {
