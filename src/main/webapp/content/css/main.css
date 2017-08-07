@@ -4289,6 +4289,15 @@ ul.tab li.active {
     font-size: 16pt;
     margin-top: 25px;
 }
+.how-it-works-description.header-block {
+    width: 70%;
+}
+
+@media (max-width: 990px) {
+    .how-it-works-description.header-block {
+        width: 40%;
+    }
+}
 
 .how-it-works-description-2{
     font-family: OpenSans-Semibold;
@@ -4296,6 +4305,7 @@ ul.tab li.active {
     font-size: 16pt;
     margin-top: 25px;
 }
+
 .how-it-works-description-3{
     font-family: OpenSans-Light;
     color: #5c5c66;

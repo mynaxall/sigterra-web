@@ -136,3 +136,7 @@ Desktop.ini
 ######################
 .eslintcache
 
+# Bower
+src/main/webapp/bower_components
+
+package-lock.json
