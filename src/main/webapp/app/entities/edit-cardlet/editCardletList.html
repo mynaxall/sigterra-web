@@ -204,6 +204,11 @@
 
         a.dropdown-toggle{
             width: 100%;
+            color: #FFFFFF!important;
+        }
+
+        a:hover.dropdown-toggle{
+            color: #FFFFFF!important;
         }
 
         .status-icon{
@@ -266,7 +271,7 @@
                             </li>
                             <li  uib-dropdown class="dropdown pointer"  ng-show="tabNames.tabs.length < 4">
                                 <a class="dropdown-toggle" uib-dropdown-toggle href="" ng-class="{disabledLink: !isEmptyName()}">
-                                <span class="glyphicon glyphicon-plus" style="color: #ffffff"></span>
+                                <span class="glyphicon glyphicon-plus"></span>
                                 </a>
                                 <ul class="dropdown-menu cardlet-dropdown" >
                                     <li class="dropdown-tab" ui-sref-active="active">
