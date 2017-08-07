@@ -1977,6 +1977,12 @@ Social Buttons
         box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
         opacity: 0.1;
     }
+    100% {
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
+    }
 
 }
 
@@ -2001,6 +2007,12 @@ Social Buttons
         opacity: 1;
     }
     75%{
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
+    }
+    100% {
         -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
         -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
         box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
