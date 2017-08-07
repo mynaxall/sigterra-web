@@ -2359,12 +2359,6 @@ Social Buttons
     display: flex;
     align-items: top;
     justify-content: center;
-    /*-webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);*/
-    /*-moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);*/
-    /*box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);*/
-    /*animation-name: landing_create_animation;*/
-    /*animation-duration: 16s;*/
-    /*animation-iteration-count: infinite;*/
 }
 
 .landing_create::before {
@@ -2372,6 +2366,7 @@ Social Buttons
     position: absolute;
     height: 385px;
     width: 275px;
+    left: 0;
     animation-name: landing_create_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
@@ -2415,6 +2410,7 @@ Social Buttons
     position: absolute;
     height: 385px;
     width: 275px;
+    left: 0;
     animation-name: landing_add_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
@@ -2457,6 +2453,7 @@ Social Buttons
     position: absolute;
     height: 385px;
     width: 275px;
+    left: 0;
     animation-name: landing_add_to_web_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
@@ -2500,6 +2497,7 @@ Social Buttons
     position: absolute;
     height: 385px;
     width: 275px;
+    left: 0;
     animation-name: landing_see_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
