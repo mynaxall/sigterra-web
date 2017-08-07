@@ -1921,102 +1921,119 @@ Social Buttons
     color: #FFFFFF;
 }
 
+/* pulse box-shadow */
 @keyframes landing_create_animation {
     0%   {
-        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-    }
-    12%{
-        -webkit-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
         -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
         box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
+    }
+    12%{
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 1;
     }
     25%{
-        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
     }
 
     100% {
-        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
     }
 
 }
 
 @keyframes landing_add_animation {
     0%   {
-        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
     }
     25%   {
-        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
     }
 
     37%{
-        -webkit-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
         -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
         box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 1;
     }
     50%{
-        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
     }
 
 }
 
 @keyframes landing_add_to_web_animation {
     0%   {
-        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
     }
     50%   {
-        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
     }
 
     62%{
-        -webkit-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
         -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
         box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 1;
     }
     75%{
-        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
     }
 
 }
 
 @keyframes landing_see_animation {
     0%   {
-        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
     }
     75%   {
-        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
     }
 
     89%{
-        -webkit-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
         -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
         box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 1;
     }
     100%{
-        -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-        box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
     }
 
 }
@@ -2342,9 +2359,19 @@ Social Buttons
     display: flex;
     align-items: top;
     justify-content: center;
-    -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-    -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-    box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+    /*-webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);*/
+    /*-moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);*/
+    /*box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);*/
+    /*animation-name: landing_create_animation;*/
+    /*animation-duration: 16s;*/
+    /*animation-iteration-count: infinite;*/
+}
+
+.landing_create::before {
+    content: '';
+    position: absolute;
+    height: 385px;
+    width: 275px;
     animation-name: landing_create_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
@@ -2381,14 +2408,17 @@ Social Buttons
     display: flex;
     align-items: top;
     justify-content: center;
-    -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-    -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-    box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+}
+
+.landing_add::before {
+    content: '';
+    position: absolute;
+    height: 385px;
+    width: 275px;
     animation-name: landing_add_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
 }
-
 
 .landing_add-2{
     font-size: 72pt;
@@ -2420,9 +2450,13 @@ Social Buttons
     display: flex;
     align-items: top;
     justify-content: center;
-    -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-    -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-    box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+}
+
+.landing_add_to_web::before {
+    content: '';
+    position: absolute;
+    height: 385px;
+    width: 275px;
     animation-name: landing_add_to_web_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
@@ -2459,9 +2493,13 @@ Social Buttons
     display: flex;
     align-items: top;
     justify-content: center;
-    -webkit-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-    -moz-box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
-    box-shadow: 0px 0px 5px 5px rgba(248,248,248,1);
+}
+
+.landing_see::before {
+    content: '';
+    position: absolute;
+    height: 385px;
+    width: 275px;
     animation-name: landing_see_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
