@@ -4288,11 +4288,13 @@ ul.tab li.active {
     color: #5c5c66;
     font-size: 16pt;
     margin-top: 25px;
+}
+.how-it-works-description.header-block {
     width: 70%;
 }
 
 @media (max-width: 990px) {
-    .how-it-works-description {
+    .how-it-works-description.header-block {
         width: 40%;
     }
 }
