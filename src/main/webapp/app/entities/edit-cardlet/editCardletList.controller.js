@@ -596,6 +596,9 @@
         $scope.deleteItems = function(tabId, index){
             console.log(index)
             if($scope.tabNames.tabs[tabId].items.length > 1){
+                $scope.tabNames.tabs[tabId].items.sort(function(a, b) {
+                    return a.position-b.position;
+                })
 
                 if($scope.tabNames.removeItems == null){
                     $scope.tabNames.removeItems = [];
@@ -603,10 +606,6 @@
                 if($scope.tabNames.tabs[tabId].items[index].id) {
                     $scope.tabNames.removeItems.push($scope.tabNames.tabs[tabId].items[index].id);
                 }
-                $scope.tabNames.tabs[tabId].items.sort(function(a, b) {
-                    return a.position-b.position;
-                })
-
                 $scope.tabNames.tabs[tabId].items.splice((index), 1);
                 for (var i = 0; i < $scope.tabNames.tabs[tabId].items.length; i++) {
                     $scope.tabNames.tabs[tabId].items[i].index = i + 2;
