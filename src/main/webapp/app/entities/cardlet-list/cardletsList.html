@@ -520,7 +520,7 @@
                                                             <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                 <p class="help-block has-error-new"
                                                                    ng-show="myItemForm.itemLink.$error.pattern">
-                                                                    Invalid URL string. It should starts from "http://" or "https://"
+                                                                    {{urlError}}
                                                                 </p>
 
                                                             </div>
