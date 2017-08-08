@@ -4368,6 +4368,7 @@ ul.tab li.active {
 .home-use-col{
     border-radius: 10px;
     max-width: 350px;
+    min-width: 310px;
     margin: 0 auto;
     background-color: #FFFFFF;
     margin-bottom: 20px;
@@ -4583,6 +4584,14 @@ ul.tab li.active {
     max-width: 480px;
     overflow: hidden;
     word-break: break-all;
+}
+
+.first-card-description{
+    white-space: nowrap;
+    width: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 220px;
 }
 
 .next-image-preview{
