@@ -4513,6 +4513,7 @@ ul.tab li.active {
 .overlay {
     position: absolute;
     bottom: 0;
+    left: 0;
     right: 0;
     background-color: #ffffff;
     overflow: hidden;
@@ -4523,6 +4524,7 @@ ul.tab li.active {
 
 .staff-col:hover .overlay {
     width: 100%;
+    right: 0;
 }
 
 .staff-col:hover .overlay2 {
