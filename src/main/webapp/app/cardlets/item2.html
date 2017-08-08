@@ -4,8 +4,8 @@
             <div class="firstItemTop" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}"></div>
             <div ng-show="tabName.items.length <= 3">
                 <div class="main-carousel-image-div">
-                    <div ng-repeat="slide in tabName.items"  class="main-carousel-item-div">
-                        <div id="cf4a" style="margin-bottom: 5px">
+                    <div ng-repeat="slide in tabName.items" style="width: 162px" class="main-carousel-item-div">
+                        <div id="cf4a" style="margin-bottom: 5px" >
 
                             <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="!slide.link" ng-src="{{slide.image}}">
                             <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
