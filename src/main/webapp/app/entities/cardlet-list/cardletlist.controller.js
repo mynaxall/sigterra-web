@@ -720,8 +720,13 @@
         $scope.isDeleteItem = false;
 
         $scope.deleteItems = function(tabId, index){
+
             if($scope.tabNames.tabs[tabId].items.length > 1){
-                $scope.tabNames.tabs[tabId].items.splice((index-2), 1);
+                $scope.tabNames.tabs[tabId].items.sort(function(a, b) {
+                    return a.position-b.position;
+                })
+
+                $scope.tabNames.tabs[tabId].items.splice((index), 1);
                 for (var i = 0; i < $scope.tabNames.tabs[tabId].items.length; i++) {
                     $scope.tabNames.tabs[tabId].items[i].index = i + 2;
                     $scope.tabNames.tabs[tabId].items[i].position = i;
