@@ -33,7 +33,7 @@
 
                     <div class="carousel-image-div-item">
                         <div>
-                            <div  class="carousel-item-div">
+                            <div  class="carousel-item-div"  style="width: 162px">
                                 <div id="cf4a" style="margin-bottom: 7px; height: 150px">
                                     <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="!slide.link" ng-src="{{slide.image}}">
                                     <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
@@ -47,7 +47,7 @@
                         'text-decoration': slide.description.underline ? 'underline' : 'normal' ,}">{{slide.description.value}}</div>
                             </div>
 
-                            <div  class="carousel-item-div" ng-show="tabName.items.length >$index+1">
+                            <div  class="carousel-item-div" ng-show="tabName.items.length >$index+1"  style="width: 162px">
                                 <div id="cf4a" style="margin-bottom: 5px; height: 150px">
                                     <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="!tabName.items[$index+1].link" ng-src="{{tabName.items[$index+1].image}}">
                                     <a href="{{tabName.items[$index+1].link}}" target="_blank" ng-show="tabName.items[$index+1].link">
@@ -63,7 +63,7 @@
                                 'text-decoration': tabName.items[$index+1].description.underline ? 'underline' : 'normal'}">{{tabName.items[$index+1].description.value}}</div>
                             </div>
 
-                            <div class="carousel-item-div"  ng-show="tabName.items.length >$index+2">
+                            <div class="carousel-item-div"  ng-show="tabName.items.length >$index+2"  style="width: 162px">
                                 <div id="cf4a" style="margin-bottom: 5px; height: 150px">
                                     <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="!tabName.items[$index+2].link" ng-src="{{tabName.items[$index+2].image}}">
                                     <a href="{{tabName.items[$index+2].link}}" target="_blank" ng-show="tabName.items[$index+2].link">
@@ -79,7 +79,7 @@
                             'text-decoration': tabName.items[$index+2].description.underline ? 'underline' : 'normal'}"
                                 >{{tabName.items[$index+2].description.value}}</div>
                             </div>
-                            <div class="carousel-item-div" ng-show="tabName.items.length-3 < $index && tabName.items.length > 3">
+                            <div class="carousel-item-div" ng-show="tabName.items.length-3 < $index && tabName.items.length > 3"  style="width: 162px">
                                 <div id="cf4a" style="margin-bottom: 5px; height: 150px">
                                     <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="!tabName.items[0].link" ng-src="{{tabName.items[0].image}}">
                                     <a href="{{tabName.items[0].link}}" target="_blank" ng-show="tabName.items[0].link">
@@ -96,7 +96,7 @@
                         'text-decoration': tabName.items[0].description.underline ? 'underline' : 'normal'}">{{tabName.items[0].description.value}}</div>
                             </div>
 
-                            <div  class="carousel-item-div" ng-show="tabName.items.length-2 < $index && tabName.items.length > 3">
+                            <div  class="carousel-item-div" ng-show="tabName.items.length-2 < $index && tabName.items.length > 3" style="width: 162px">
                                 <div id="cf4a" style="margin-bottom: 5px; height: 150px">
                                     <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="!tabName.items[1].link" ng-src="{{tabName.items[1].image}}">
                                     <a href="{{tabName.items[1].link}}" target="_blank" ng-show="tabName.items[1].link">
@@ -171,7 +171,6 @@
 
     .carousel-item-div{
         float: left;
-        width: 33#;
 
     }
 
