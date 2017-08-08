@@ -1890,6 +1890,10 @@ Social Buttons
     text-align: left;
 }
 
+.copy-btn:hover{
+    background-color: rgba(19,188,181,.84) !important;
+}
+
 .portfolio-header{
     text-align: center;
     width: 100%;
