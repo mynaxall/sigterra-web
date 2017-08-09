@@ -4615,6 +4615,73 @@ ul.tab li.active {
     margin: 20px auto;
     width: 50%;
     float: left;
-    padding-right: 15px;
-    padding-left: 15px;
+    position: relative;
+}
+
+.landing-border-1{
+    width: 50%;
+    border-top: 2px dashed #e0e0e0;
+    position: absolute;
+    top: 280px;
+    right: 0;
+
+}
+
+.landing-border-2 {
+    width: 50%;
+    border-top: 2px dashed #e0e0e0;
+    position: absolute;
+    top: 280px;
+    left: 0;
+}
+
+.landing-border-3 {
+    width: 50%;
+    border-top: 1px dashed #e0e0e0;
+    position: absolute;
+    top: 280px;
+    right: 0;
+}
+
+.landing-border-2 {
+    width: 100%;
+    border-top: 2px dashed #e0e0e0;
+    position: absolute;
+    top: 280px;
+    left: 0;
+}
+
+.landing-border-3 {
+    width: 100%;
+    border-top: 1px dashed #e0e0e0;
+    position: absolute;
+    top: 280px;
+    left: 0;
+}
+
+@media (max-width: 1200px) {
+
+    .landing-border-2 {
+        width: 50%;
+        border-top: 2px dashed #e0e0e0;
+        position: absolute;
+        top: 280px;
+        left: 0;
+    }
+
+    .landing-border-3 {
+        width: 50%;
+        border-top: 1px dashed #e0e0e0;
+        position: absolute;
+        top: 280px;
+        right: 0;
+    }
+}
+
+.landing-border-4{
+    width: 50%;
+    border-top: 2px dashed #e0e0e0;
+    position: absolute;
+    top: 280px;
+    left: 0;
 }
