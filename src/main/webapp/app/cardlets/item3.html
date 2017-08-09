@@ -4,33 +4,34 @@
         <div>
             <div ng-show="tabName.items.length == 1" style="position: relative;">
                 <div class="main-carousel-image-div-new-3" >
-
-                    <div ng-repeat="slide in tabName.items"  class="main-carousel-item-div-new-3">
-                            <div style="max-height: 239px;overflow:hidden; border: 1px solid #D0D8D9;border-top-width: 0px;">
+                    <div style="border: 1px solid #D0D8D9;border-top-width: 0px;height: 240px">
+                        <div ng-repeat="slide in tabName.items"  class="main-carousel-item-div-new-3">
+                            <div style="max-height: 239px;overflow:hidden;">
                                 <img crossorigin="anonymous"  style="width: 100%" id="ing-1" ng-src="{{slide.image}}">
                             </div>
                             <div class="item-3-content" ng-hide="!slide.name.value && !slide.description.value" ng-style="{'background-color': '#'+tabName.layout.mainColor, 'border-color': '#'+tabName.layout.secondaryColor, 'text-align':'center'}">
                                 <a style="max-height: 239px;" href="{{slide.link}}" target="_blank" ng-class="{disabledLink: !slide.link}">
                                     <div class="carousel-item-name-div-new-3" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                                'font-style': slide.name.italic ? 'italic' : 'normal',
-                                'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
+                                    'font-style': slide.name.italic ? 'italic' : 'normal',
+                                    'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                                     <div class="carousel-item-name-div-new-3 carousel-item-deskript-div" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                                'font-style': slide.description.italic ? 'italic' : 'normal',
-                                'text-decoration': slide.description.underline ? 'underline' : 'normal' }" ng-show="slide.description.value">{{slide.description.value}}</div>
+                                    'font-style': slide.description.italic ? 'italic' : 'normal',
+                                    'text-decoration': slide.description.underline ? 'underline' : 'normal' }" ng-show="slide.description.value">{{slide.description.value}}</div>
                                 </a>
-                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
 
             </div>
-            <div uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1"  ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)">
-                <div ng-show="showEditorNavigation" class="custom-slide-prev-editor" style="top: 100px;z-index: 2"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
-                <div ng-show="showEditorNavigation"  class="custom-slide-next-editor"  style="top: 100px;z-index: 2"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
 
-                <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" style="position:relative;">
-                    <div style="max-height: 239px;overflow: hidden; border: 1px solid #D0D8D9; border-top-width: 0px;">
+        </div>
+        <div uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1"  ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)">
+            <div ng-show="showEditorNavigation" class="custom-slide-prev-editor" style="top: 100px;z-index: 2"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
+            <div ng-show="showEditorNavigation"  class="custom-slide-next-editor"  style="top: 100px;z-index: 2"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
+            <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" style="position:relative;">
+                <div style="border: 1px solid #D0D8D9;border-top-width: 0px;height: 240px">
+                    <div style="max-height: 239px;overflow: hidden">
                         <img crossorigin="anonymous" style="width: 100%" id="ing-1" ng-src="{{slide.image}}">
 
                     </div>
@@ -39,21 +40,23 @@
                             <div  class="main-carousel-item-div-new-3" ng-style="{'text-align': 'center'}">
                                 <div class="item-3-content" ng-style="{'background-color': '#'+tabName.layout.mainColor, 'border-color': '#'+tabName.layout.secondaryColor, 'text-align':'center'}" ng-hide="!slide.name.value && !slide.description.value">
                                     <div class="carousel-item-name-div-new-3" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                            'font-style': slide.name.italic ? 'italic' : 'normal',
-                            'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
+                                    'font-style': slide.name.italic ? 'italic' : 'normal',
+                                    'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                                     <div class="carousel-item-name-div-new-3 carousel-item-deskript-div" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                        'font-style': slide.description.italic ? 'italic' : 'normal',
-                        'text-decoration': slide.description.underline ? 'underline' : 'normal' }" ng-show="slide.description.value">{{slide.description.value}}</div>
+                                'font-style': slide.description.italic ? 'italic' : 'normal',
+                                'text-decoration': slide.description.underline ? 'underline' : 'normal' }" ng-show="slide.description.value">{{slide.description.value}}</div>
 
                                 </div>
                             </div>
-                            </a>
-                        </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
+</div>
+
+</div>
 
 </div>
 
