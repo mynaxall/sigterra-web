@@ -935,18 +935,26 @@
             if(cyrrentEl) {
                 if($scope.tabNames) {
 
-                    if($scope.tabNames.tabs.length == 1){
-                        cyrrentEl.style.width = "540px"
+                    if ($scope.tabNames.tabs.length == 1) {
+                        cyrrentEl.style.width = "540px";
+                        link.style.width = "535px";
+                        link.style.maxWidth = "535px"
                     }
 
                     if ($scope.tabNames.tabs.length === 2) {
-                        cyrrentEl.style.width = "270px"
+                        cyrrentEl.style.width = "270px";
+                        link.style.maxWidth = "265px";
+                        link.style.maxWidth = "265px";
                     }
                     if ($scope.tabNames.tabs.length === 3) {
-                        cyrrentEl.style.width = "180px"
+                        cyrrentEl.style.width = "180px";
+                        link.style.width = "175x";
+                        link.style.maxWidth = "175x";
                     }
                     if ($scope.tabNames.tabs.length === 4) {
-                        cyrrentEl.style.width = "135px"
+                        cyrrentEl.style.width = "135px";
+                        link.style.width = "130px";
+                        link.style.maxWidth = "130px";
                     }
                 }
                 cyrrentEl.style.background = "#F9F9F9";

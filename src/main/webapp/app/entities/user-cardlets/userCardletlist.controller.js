@@ -763,16 +763,24 @@
                 if ($scope.tabNames) {
                     if ($scope.userCardlets[index].tabs.length == 1) {
                         cyrrentEl.style.width = "540px"
+                        link.style.width = "535px";
+                        link.style.maxWidth = "535px";
                     }
 
                     if ($scope.userCardlets[index].tabs.length == 2) {
                         cyrrentEl.style.width = "270px"
+                        link.style.width = "265px";
+                        link.style.maxWidth = "265px";
                     }
                     if ($scope.userCardlets[index].tabs.length == 3) {
-                        cyrrentEl.style.width = "180px"
+                        cyrrentEl.style.width = "180px";
+                        link.style.width = "175px";
+                        link.style.maxWidth = "175px";
                     }
                     if ($scope.userCardlets[index].tabs.length == 4) {
-                        cyrrentEl.style.width = "135px"
+                        cyrrentEl.style.width = "135px";
+                        link.style.width = "130px";
+                        link.style.maxWidth = "130px";
                     }
                 }
             }
