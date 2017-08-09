@@ -81,11 +81,11 @@
                 return "app/cardlets/item2-editor.html"
             }else if(url === "app/cardlets/item3.html"){
                 return "app/cardlets/item3-editor.html"
-            }else if(url === "app/cardlets/item3.html"){
+            }else if(url === "app/cardlets/info.html"){
                 return "app/cardlets/info-editor.html"
-            }else if(url === "app/cardlets/item3.html"){
+            }else if(url === "app/cardlets/info3.html"){
                 return "app/cardlets/info2-editor.html"
-            }else if(url === "app/cardlets/item3.html"){
+            }else if(url === "app/cardlets/info3.html"){
                 return "app/cardlets/info3-editor.html"
             }else{
 
