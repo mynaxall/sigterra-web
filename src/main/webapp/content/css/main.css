@@ -4700,3 +4700,9 @@ ul.tab li.active {
 .subscribe-input{
     height: 40px;
 }
+
+.footer-border-landing{
+    width: 100%;
+    margin: 0px 15px;
+    border-top: 1px solid #f8f8f9;
+}
