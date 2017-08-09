@@ -5,9 +5,9 @@
         .module('sigterraWebApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService'];
+    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', '$scope', '$location'];
 
-    function NavbarController ($state, Auth, Principal, ProfileService, LoginService) {
+    function NavbarController ($state, Auth, Principal, ProfileService, LoginService, $scope, $location) {
         var vm = this;
 
         vm.isNavbarCollapsed = true;
@@ -18,12 +18,34 @@
             vm.swaggerEnabled = response.swaggerEnabled;
         });
 
+        $scope.homeLogo = false;
+
+        $scope.$watch('$location.path()', function(value){
+            if(($location.path()) === "/"){
+                $scope.homeLogo = true;
+            }else{
+                $scope.homeLogo = false;
+            }
+        })
+
+        $scope.$on('$locationChangeStart', function(event) {
+            if(($location.path()) === "/"){
+                $scope.homeLogo = true;
+
+            }else{
+                $scope.homeLogo = false;
+            }
+        });
+
+
+
         vm.login = login;
         vm.logout = logout;
         vm.toggleNavbar = toggleNavbar;
         vm.collapseNavbar = collapseNavbar;
         vm.gotoBottom = gotoBottom;
         vm.gotoFooter = gotoFooter;
+        vm.howItWorks = howItWorks;
         vm.$state = $state;
 
         function login() {
@@ -51,6 +73,11 @@
             var el = document.getElementById('howItWorks');
             el.scrollIntoView();
         };
+
+        function howItWorks() {
+            var el = document.getElementById('howItWorks');
+            el.scrollIntoView();
+        }
 
         function gotoFooter() {
             // set the location.hash to the id of

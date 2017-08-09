@@ -12,23 +12,22 @@
                             </a>
                         </div>
                         <div style="float: left; margin-left: 30px;">
-                            <div class="carousel-info-name-div-new" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                            <pre class="carousel-info-name-div-new carousel-item-name-div" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': slide.name.italic ? 'italic' : 'normal',
-                            'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
-                            <div class="carousel-info-name-div-new" ng-show="!slide.name.value" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                            'font-style': slide.name.italic ? 'italic' : 'normal',
-                            'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">Maui Hotel</div>
+                            'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
                             <pre class="carousel-info-name-div-new carousel-info-deskript-div" ng-show="slide.description.value"
-                                 ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular'',
+                                 ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': slide.description.italic ? 'italic' : 'normal',
                         'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.value}}</pre>
-                            <div class="carousel-info-name-div-new carousel-info-deskript-div" ng-show="!slide.description.value">How To Fly A Private Jet On Your Next Trip</div>
                         </div>
                     </div>
                 </div>
 
             </div>
             <div class="main-carousel-image-div-info"  uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)">
+                <div ng-show="showEditorNavigation" class="custom-slide-prev-editor" style="top: 100px"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
+                <div ng-show="showEditorNavigation"  class="custom-slide-next-editor"  style="top: 100px"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
+
                 <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" style="margin-top: 25px" >
 
                     <div class="carousel-image-div">
@@ -41,17 +40,13 @@
                                 </a>
                             </div>
                             <div style="float: left; margin-left: 30px;">
-                                <div class="carousel-info-name-div-new" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                                <pre class="carousel-info-name-div-new carousel-item-name-div" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': slide.name.italic ? 'italic' : 'normal',
-                            'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
-                                <div class="carousel-info-name-div-new" ng-show="!slide.name.value" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                            'font-style': slide.name.italic ? 'italic' : 'normal',
-                            'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">Maui Hotel</div>
+                            'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
                                 <pre class="carousel-info-name-div-new carousel-info-deskript-div" ng-show="slide.description.value"
                                      ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': slide.description.italic ? 'italic' : 'normal',
                         'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.value}}</pre>
-                                <div class="carousel-info-name-div-new carousel-info-deskript-div" ng-show="!slide.description.value">How To Fly A Private Jet On Your Next Trip</div>
                             </div>
                         </div>
 
@@ -78,14 +73,20 @@
             margin-left: 15px;
             color:#242424;
             background:transparent;
+            word-break: normal;
             border: none;
+            padding-left: 0px;
+            padding-top: 0px;
+            margin-bottom: 0px;
         }
 
         .carousel-info-deskript-div{
             font-size: 15px;
-            margin-top: 15px;
+            margin-top: 5px;
             padding: 0px;
-            word-break: break-word;
+            word-break: normal!important;
+            max-height: 150px;
+            overflow: hidden;
         }
 
         .left-catusel-panel{

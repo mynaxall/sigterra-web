@@ -1,10 +1,15 @@
-<script src="/app/entities/cardlet-list/jscolor.js"></script>
 
-<div ng-show="showSpinner" class="spinner-shadow"><div style="position:absolute;top:40%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -100px;"></div></div>
+<script>
+    $(document).ready(function(){
+        $("#main-footer").removeClass("ng-hide");
+    });
+</script>
+
+<div ng-show="showSpinner" class="spinner-shadow"><div style="position:absolute;top:40%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -88px;"></div></div>
 <div class="modeal-custom-window ng-hide" ng-show="isCopyTiEmail"></div>
 <div class="modeal-custom-window ng-hide" ng-show="isCopyTiEmail" style="position: absolute; background-color: rgba(0, 0, 0, 0);">
     <div class="modal-dialog " style="margin-top: -100px; width: 1130px!important;">
-        <div class="modal-content" uib-modal-transclude="">
+        <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                         ng-click="closeDialog()">&times;</button>
@@ -67,8 +72,8 @@
                         </div>
 
                     </div>
-                    <div ng-show="banner" style="text-align: center; margin: 20px;">
-                        <img style="width: 300px;" src="{{banner}}">
+                    <div ng-show="banner"  ng-if="banner" style="text-align: center; margin: 20px;">
+                        <img style="width: 300px;" ng-src="{{banner}}">
                     </div>
                 </div>
 
@@ -381,6 +386,7 @@
             padding: 20px;
             padding-bottom: 0px;
             height: 60px;
+
         }
 
 
@@ -465,7 +471,6 @@
     </style>
     <div class="user-cardlet-panel ng-hide" ng-show="showConent">
         <div class="portfolio-header">
-            Portfolio
         </div>
         <div class="row" >
             <div style="margin-bottom: 70px;" class="col-lg-6" ng-repeat="tabNames in userCardlets">
@@ -477,8 +482,8 @@
                             </div>
                         </div>
                         <div class=" catdlet-btn-col-top">
-                            <div ui-sref="editcardletlist({ cardletId: tabNames.id })" class="catdlet-btn-top">
-                                <img src="/content/images/edit_icon.png" style="margin-top: 5px;">
+                            <div class="catdlet-btn-top">
+                                <a ui-sref="editcardletlist({ cardletId: tabNames.id })"> <img src="/content/images/edit_icon.png" style="margin-top: 5px;"></a>
                             </div>
                         </div>
                         <div class="catdlet-btn-col-top">
@@ -487,29 +492,29 @@
                             </div>
                         </div>
                     </div>
-                    <div class="cardlet-name">{{tabNames.cardletName}}</div>
+                    <div class="cardlet-name-title">{{tabNames.cardletName}}</div>
                     <div class="cardlet-central-panel" >
                         <div id="copy-to-clip{{tabNames.id}}" >
                             <div>
                                 <ul class="tab2">
-                                    <li style="background-color: #fff" class="tabs2 tabs2{{tabNames.id}}" ng-style="addColors('tab'+tabName.position+tabName.name+tabNames.id, tabName.layout.mainColor, tabName.layout.secondaryColor, $parent.$index)" ng-repeat="tabName in tabNames.tabs" ng-class="tabName.position == 0 ? 'active' : ''"
+                                    <li style="background-color: #fff" class="tabs2 tabs2{{tabNames.id}}" ng-style="addColors('tab'+tabName.position+tabName.name+tabNames.id, tabName.layout.mainColor, tabName.layout.secondaryColor, $parent.$index, 'tabLink'+tabName.position+tabName.name+tabNames.id)" ng-repeat="tabName in tabNames.tabs" ng-class="tabName.position == 0 ? 'active' : ''"
                                         id="tab{{tabName.position}}{{tabName.name}}{{tabNames.id}}">
                                         <div style="position: relative;display: table; width: 100%">
-                                            <a href="javascript:void(0)" id="tabLink{{tabName.position}}{{tabName.name}}{{tabNames.id}}" class="tablinks2 tablinks2{{tabNames.id}}" ng-style="{'color': '#'+tabName.layout.secondaryColor}"  ng-click="openCard(tabName.name+tabName.position+tabNames.id, 'tab'+tabName.position+tabName.name+tabNames.id, tabNames.id)">{{tabName.name}}</a>
+                                            <a style="overflow: hidden; text-overflow: ellipsis;" href="javascript:void(0)" id="tabLink{{tabName.position}}{{tabName.name}}{{tabNames.id}}" class="tablinks2 tablinks2{{tabNames.id}}" ng-style="{'color': '#'+tabName.layout.secondaryColor}"  ng-click="openCard(tabName.name+tabName.position+tabNames.id, 'tab'+tabName.position+tabName.name+tabNames.id, tabNames.id)">{{tabName.name}}</a>
                                         </div>
                                     </li>
 
                                 </ul>
                             </div>
 
-                            <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}{{tabNames.id}}" class="tabcontent2 tabcontent2{{tabNames.id}}" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-                                <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+                            <div ng-repeat="tabName in tabNames.tabs track by tabName.position" id="{{tabName.name}}{{tabName.position}}{{tabNames.id}}" class="tabcontent2 tabcontent2{{tabNames.id}}" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
+                                <ng-include style="display: block!important" src="getUrl(tabName.layout.url)" ></ng-include>
                             </div>
                         </div>
                     </div>
                     <div class="cardlet-button-panel row">
-                        <button type="submit" ng-disabled="for2m.$invalid" ng-click="copyToEmail($index, 'copy-to-clip'+tabNames.id, tabNames.id)" class="btn btn-primary main-btn copy-btn"><span class="copy-btn-part"><img src="/content/images/new/atsign.png"></span><span style="padding-left: 15px; padding-right: 15px">Copy to e-mail</span></button>
-                        <button style="margin-left: 20px" type="submit" ng-click="openModal(tabNames.id)" class="btn btn-primary main-btn copy-btn"><span class="copy-btn-part"><img src="/content/images/new/copy_to_web.png"></span><span style="padding-left: 22px;padding-right: 22px">Copy to web</span></button>
+                        <button type="submit" ng-disabled="isCopyTiEmail" ng-click="copyToEmail($index, 'copy-to-clip'+tabNames.id, tabNames.id)" class="btn btn-primary main-btn copy-btn"><div class="copy-btn-part"><img class="btn-ing" src="/content/images/new/atsign.png"></div><div style="padding: 12px 15px; display: inline; font-size: 13px">Copy to e-mail</div></button>
+                        <button style="margin-left: 20px" type="submit" ng-click="openModal(tabNames.id)" class="btn btn-primary main-btn copy-btn"><div class="copy-btn-part"><img src="/content/images/new/copy_to_web.png"></div><span style="padding: 12px 22px; display: inline; font-size: 13px">Copy to web</span></button>
 
                     </div>
                 </div>
@@ -518,7 +523,7 @@
             <div style="margin-bottom: 30px;" class="col-lg-6">
                 <div class="create-new-cardlet" ui-sref="cardletlist">
                     <div class="add-new-panel">
-                        <button type="submit" ng-disabled="for2m.$invalid" class="btn btn-primary main-btn copy-btn" style="background-color: #E8645A!important; border-color: #E8645A!important"><span style="background-color: #DA4941!important" class="copy-btn-part"><img src="/content/images/new/plus_icon.png"></span><span style="padding-left: 25px; padding-right: 25px">Create New</span></button>
+                        <button type="submit" ng-disabled="for2m.$invalid" class="btn btn-primary main-btn copy-btn" style="background-color: #E8645A!important; border-color: #E8645A!important"><div style="background-color: #DA4941!important" class="copy-btn-part"><img class="btn-ing" src="/content/images/new/plus_icon.png"></div><div style="padding: 12px 25px; display: inline;font-size: 13px">Create New</div></button>
                     </div>
                 </div>
             </div>

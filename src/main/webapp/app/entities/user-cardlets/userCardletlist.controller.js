@@ -12,7 +12,10 @@
     function UserCardletListController ($scope, $state, CardletList, ParseLinks, AlertService,  paginationcardletConstants ,$http, $timeout, $uibModal, $location, $window, $rootScope) {
         var vm = this;
 
-        vm.currentSlide = null;
+
+        $scope.time = Date.now()
+
+        vm.currentSlide = 0;
 
         $scope.isCopyTiEmail = false;
         $scope.fieldTable = [{
@@ -71,6 +74,25 @@
 
         };
 
+        $scope.getUrl = function(url){
+            if(url === "app/cardlets/item.html"){
+                return "app/cardlets/item-editor.html"
+            }else  if(url === "app/cardlets/item2.html"){
+                return "app/cardlets/item2-editor.html"
+            }else if(url === "app/cardlets/item3.html"){
+                return "app/cardlets/item3-editor.html"
+            }else if(url === "app/cardlets/info.html"){
+                return "app/cardlets/info-editor.html"
+            }else if(url === "app/cardlets/info3.html"){
+                return "app/cardlets/info2-editor.html"
+            }else if(url === "app/cardlets/info3.html"){
+                return "app/cardlets/info3-editor.html"
+            }else{
+
+                return url;
+            }
+        }
+
         $scope.saveBanner = function(name, image64, isFile){
             $scope.showSpinner = true;
             if (isFile) {
@@ -97,8 +119,12 @@
                     document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText
 
                     $scope.showSpinner = false;
-
+                    $scope.addBanner();
+                })
+                .error(function (data, status, headers, config) {
+                    $scope.showSpinner = false;
                 });
+
 
         }
 
@@ -220,19 +246,18 @@
 
         $scope.testSelect = function(){
             if (window.getSelection) {
-                console.log("123")
                 var selection = window.getSelection();
                 if (selection.rangeCount > 0) {
                     window.getSelection().removeAllRanges();
                 }
             } else if (document.selection) {
                 // Internet Explorer
-                console.log("qwe")
                 document.selection.empty();
             }
         }
 
         $scope.copyToEmail = function(id, cardId, sigId) {
+            $scope.showSpinner = true;
             $scope.selected = $scope.fieldTable[0];
             $scope.isAddBanner = false;
 
@@ -246,8 +271,9 @@
                 if ($scope.userCardlets[id].tabs[i].tabType == '1'){
                     $scope.firstBusinessCardCopyed = $scope.userCardlets[id].tabs[i];
                     $scope.firstBusinessCardId = i;
-                    console.log($scope.firstBusinessCardId)
                 break
+                }else{
+                    $scope.firstBusinessCardCopyed = "";
                 }
             }
             $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ sigId.toString();
@@ -332,7 +358,7 @@
         };
 
         $scope.tabNames ={
-            "cardletName": "Business cards",
+            "cardletName": "Contact Info",
             "tabs":
                 [{
                     "name": "My info",
@@ -719,13 +745,16 @@
 
         }
 
-        $scope.addColors = function(id, colorMain, colorSecond, index){
+        $scope.addColors = function(id, colorMain, colorSecond, index, linkId){
             var cyrrentEl = document.getElementById(id);
+            var link = document.getElementById(linkId);
             if(cyrrentEl) {
                 cyrrentEl.style.background = "#F9F9F9";
                 cyrrentEl.style.borderTop = "1px solid #D0D8D9"
                 cyrrentEl.style.borderBottom = "1px solid #D0D8D9";
+                link.style.color = "#7F8C8C"
                 if (angular.element(document.getElementById(id)).hasClass('active')) {
+                    link.style.color = "#"+colorSecond;
                     cyrrentEl.style.background = "#FFFFFF";
                     cyrrentEl.style.borderTop = "2px solid #" + colorSecond;
                     cyrrentEl.style.borderBottom = "0px";
@@ -734,16 +763,24 @@
                 if ($scope.tabNames) {
                     if ($scope.userCardlets[index].tabs.length == 1) {
                         cyrrentEl.style.width = "540px"
+                        link.style.width = "535px";
+                        link.style.maxWidth = "535px";
                     }
 
                     if ($scope.userCardlets[index].tabs.length == 2) {
                         cyrrentEl.style.width = "270px"
+                        link.style.width = "265px";
+                        link.style.maxWidth = "265px";
                     }
                     if ($scope.userCardlets[index].tabs.length == 3) {
-                        cyrrentEl.style.width = "180px"
+                        cyrrentEl.style.width = "180px";
+                        link.style.width = "175px";
+                        link.style.maxWidth = "175px";
                     }
                     if ($scope.userCardlets[index].tabs.length == 4) {
-                        cyrrentEl.style.width = "135px"
+                        cyrrentEl.style.width = "135px";
+                        link.style.width = "130px";
+                        link.style.maxWidth = "130px";
                     }
                 }
             }

@@ -3,14 +3,20 @@ package itomy.sigterra.service;
 import itomy.sigterra.domain.*;
 import itomy.sigterra.repository.*;
 import itomy.sigterra.service.dto.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.inject.Inject;
 import java.awt.*;
+import java.net.URI;
 import java.util.*;
 import java.util.List;
 
@@ -22,34 +28,26 @@ import java.util.List;
 @Transactional
 public class CardletService {
 
+    public static final int MAX_ALLOWED_PROFILE_ICON_SIZE = 20 * 1024 * 1024;
     private final Logger log = LoggerFactory.getLogger(CardletService.class);
-
-
-    @Inject
-    private CardletRepository cardletRepository;
-
     @Inject
     BusinessRepository businessRepository;
-
+    @Inject
+    private CardletRepository cardletRepository;
+    @Inject
+    private AWSS3BucketService awss3BucketService;
     @Inject
     private UserService userService;
-
     @Inject
     private UserRepository userRepository;
-
-
     @Inject
     private InputPropertiesRepository inputPropertiesRepository;
-
     @Inject
     private ItemDataRepository itemDataRepository;
-
     @Inject
     private ItemRepository itemRepository;
-
     @Inject
     private TabTypeRepository tabTypeRepository;
-
 
     public List<UserCardletDTO> userCardlets(){
         List<Cardlet> caedletList = cardletRepository.findByUserIsCurrentUser();
@@ -68,7 +66,6 @@ public class CardletService {
         UserCardletDTO userCardletDTO = new UserCardletDTO();
         userCardletDTO.setCardletName(cardlet.getName());
         userCardletDTO.setId(cardlet.getId());
-        log.info("asdasd ======"+ cardlet);
         Set<Business> businesses = cardlet.getBusinesses();
         Set<Item> items = cardlet.getItems();
         List<CardletTab> tabs = new ArrayList<>();
@@ -157,6 +154,45 @@ public class CardletService {
         UserCardletDTO userCardletDTO = createUserCatdletDTO(cardlet);
 
        return userCardletDTO;
+    }
+
+    public JSONObject fileUploading(MultipartFile file, String id, String name, Boolean upladType) throws JSONException {
+        JSONObject successObject = new JSONObject();
+        if(file != null && !file.isEmpty()) {
+            if(file.getSize() > MAX_ALLOWED_PROFILE_ICON_SIZE) {
+                successObject.put("success", false);
+                successObject.put("message", "File is too big. Max allowed file size is 50Mb");
+                // TODO: 1/9/17 Maybe need to change it to not OK status
+            }
+            String fileName = file.getName();
+            String mimeType = file.getContentType();
+            if (mimeType.startsWith("image/")) {
+                URI url;
+                if(upladType) {
+                    url = awss3BucketService.uploadSignatureImage(file, id, name);
+                }else{
+                    url = awss3BucketService.uploadBusinessImage(file, id);
+                }
+                if(url == null) {
+                    successObject.put("success", false);
+                    successObject.put("message", "Unable to fetch the file from S3 bucket.");
+                } else {
+                    successObject.put("success", true);
+                    successObject.put("url", url);
+                }
+            }else{
+                successObject.put("success", false);
+                successObject.put("message", "Invalid file type");
+            }
+
+
+        } else {
+            successObject.put("success", false);
+            successObject.put("message", "File is empty or NULL");
+            // TODO: 1/9/17 Maybe need to change it to not OK status
+        }
+        return successObject;
+
     }
 
 

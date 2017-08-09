@@ -19,7 +19,8 @@
             'ngclipboard',
             'base64',
             'xeditable',
-            'ngOnload'
+            'ngOnload',
+            'monospaced.elastic'
         ])
         .run(run);
 

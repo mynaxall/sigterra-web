@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "userId",
+            "ownerSide": true
+        },
+        {
+            "relationshipName": "cardlet",
+            "otherEntityName": "cardlet",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "cardletId"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "createdDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "modifiedDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20170626130155",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "address_book",
+    "pagination": "pager"
+}

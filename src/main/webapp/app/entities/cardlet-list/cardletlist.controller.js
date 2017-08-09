@@ -3,18 +3,56 @@
 
     angular
         .module('sigterraWebApp')
-        .controller('CardletListController', CardletListController);
+        .controller('CardletListController', CardletListController)
+        .filter('tel', function () {
+            return function (tel) {
+                if (!tel) { return ''; }
+
+                var value = tel.toString().trim().replace(/^\+/, '');
+
+                if (value.match(/[^0-9]/)) {
+                    return tel;
+                }
+
+                var country, city, number;
+
+                switch (value.length) {
+                    case 9: // +1PPP####### -> C (PPP) ###-####
+                        country = 1;
+                        city = value.slice(0, 3);
+                        number = value.slice(3);
+                        break;
+                    default:
+                        return tel;
+                }
+
+                if (country == 1) {
+                    country = "";
+                }
+
+                number = number.slice(0, 3) + '-' + number.slice(3);
+
+                return (country + " (" + city + ") " + number).trim();
+            };
+        });
 
     CardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location'];
 
     function CardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location) {
         var vm = this;
 
+        $scope.time = Date.now()
+        $scope.showEditorNavigation = true;
 
+        $scope.noSocialChanges = false;
+
+        $scope.urlError = 'Invalid URL string. It should start from "http://" or "https://"';
         $scope.showCropDialog = false;
         $scope.myImage='';
         $scope.myCroppedImage = '';
         $scope.showConent = true;
+
+
 
         var handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];
@@ -41,12 +79,20 @@
         };
 
         $scope.closeCropDialog = function(){
-            $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
             $scope.showCropDialog = false;
-            $scope.showSocialDialog = false;
             $scope.myImage = "";
+            $scope.noSocialChanges = false;
             angular.element(document.querySelector('#fileInput')).val(null);
-        };
+        }
+
+        $scope.closeSocialDialog = function(){
+            $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
+            $scope.showSocialDialog = false;
+            $scope.noSocialChanges = false;
+            $scope.tabNames.tabs[$scope.tabIndex].socialLinks = $scope.currentLinks;
+
+        }
+
 
         $scope.showSpinner = false;
         $scope.showSocialDialog = false;
@@ -54,15 +100,17 @@
         $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
 
         $scope.openSocialDialog = function(index, links){
-            console.log(index)
+            $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
             $scope.tabIndex = index;
             $scope.showSocialDialog = true;
             $scope.socialLinks = links;
+            $scope.currentLinks = {twitter: links.twitter, facebook: links.facebook, google: links.google, linkedin: links.linkedin};
         }
 
         $scope.saveSocialLinks = function(){
             $scope.tabNames.tabs[$scope.tabIndex].socialLinks = $scope.socialLinks;
             $scope.showSocialDialog = false;
+            $scope.noSocialChanges = false;
         }
 
 
@@ -156,31 +204,76 @@
             $http.get("/api/account")
                 .success(function(response, status, headers) {
                     $scope.userAccount = response;
-                    $scope.tabNames.tabs[0].userName = {
-                        "value": $scope.userAccount.username
-                    }
-                    $scope.tabNames.tabs[0].userEmail = {
-                        "value": $scope.userAccount.email
-                    }
-
-                    $scope.tabNames.tabs[0].phone = {
-                        "value": $scope.userAccount.phoneNumber
-                    }
-
-                    $scope.tabNames.tabs[0].address = {
-                        "value": $scope.userAccount.address
+                    if ($scope.userAccount.username){
+                            $scope.tabNames.tabs[0].userName = {
+                                "value": $scope.userAccount.username
+                            }
+                    }else{
+                        $scope.tabNames.tabs[0].userName = {
+                            "value": "Your Name"
+                        }
                     }
 
-                    $scope.tabNames.tabs[0].company = {
-                        "value": $scope.userAccount.companyName
+                    if ($scope.userAccount.email) {
+                        $scope.tabNames.tabs[0].userEmail = {
+                            "value": $scope.userAccount.email
+                        }
+                    }else{
+                        $scope.tabNames.tabs[0].userEmail = {
+                            "value": "Email"
+                        }
                     }
 
-                    $scope.tabNames.tabs[0].site = {
-                        "value": $scope.userAccount.companySite
+                    if ($scope.userAccount.phoneNumber) {
+                        $scope.tabNames.tabs[0].phone = {
+                            "value": $scope.userAccount.phoneNumber
+                        }
+                    }else {
+                        $scope.tabNames.tabs[0].phone = {
+                            "value": "000000000"
+                        }
                     }
 
-                    $scope.tabNames.tabs[0].job = {
-                        "value": $scope.userAccount.jobTitle
+
+                    if ($scope.userAccount.address) {
+                        $scope.tabNames.tabs[0].address = {
+                            "value": $scope.userAccount.address
+                        }
+                    }else{
+                        $scope.tabNames.tabs[0].address = {
+                            "value": "Address"
+                        }
+                    }
+
+                    if ($scope.userAccount.companyName) {
+                        $scope.tabNames.tabs[0].company = {
+                            "value": $scope.userAccount.companyName
+                        }
+                    }else{
+                        $scope.tabNames.tabs[0].company = {
+                            "value": "Company Name"
+                        }
+                    }
+
+
+                    if ($scope.userAccount.companySite) {
+                        $scope.tabNames.tabs[0].site = {
+                            "value": $scope.userAccount.companySite
+                        }
+                    }else{
+                        $scope.tabNames.tabs[0].site = {
+                            "value": "Website"
+                        }
+                    }
+
+                    if ($scope.userAccount.jobTitle) {
+                        $scope.tabNames.tabs[0].job = {
+                            "value": $scope.userAccount.jobTitle
+                        }
+                    }else{
+                        $scope.tabNames.tabs[0].job = {
+                            "value": "Job Title"
+                        }
                     }
                     if($scope.userAccount.imageUrl){
                         $scope.tabNames.tabs[0].photo = $scope.userAccount.imageUrl
@@ -198,7 +291,7 @@
             "cardletName": "Your Sigterra Profile Name",
             "tabs":
                 [{
-                    "name": "Business Card",
+                    "name": "Contact Info",
                     'position': 0,
                     "display": "block",
                     "tabType": 1,
@@ -227,7 +320,13 @@
                                 "position": "0",
                                 "image": "/content/images/portfolio_img_01.png",
                                 "image2": "/content/images/portfolio_img_02.png",
-                                "image3": "/content/images/img/portfolio_img_03.png"
+                                "image3": "/content/images/img/portfolio_img_03.png",
+                                "name":{
+                                    "value": "Item Header"
+                                },
+                                "description": {
+                                    "value": "Item Description"
+                                }
 
                             }
                         ]
@@ -289,6 +388,8 @@
         $scope.openCity = function(cityName, tabId, cardName, cardId) {
 
             vm.currentSlide = 1;
+            $timeout(function() {vm.currentSlide = 0;},10)
+
 
             var i, tabcontent, tablinks, tabs;
             tabcontent = document.getElementsByClassName("tabcontent");
@@ -414,7 +515,13 @@
                             "position": "0",
                             "image": "/content/images/portfolio_img_01.png",
                             "image2": "/content/images/portfolio_img_02.png",
-                            "image3": "/content/images/portfolio_img_03.png"
+                            "image3": "/content/images/portfolio_img_03.png",
+                            "name":{
+                                "value": "Item Header"
+                            },
+                            "description": {
+                                "value": "Item Description"
+                            }
                         }
                     ]
 
@@ -447,7 +554,13 @@
                             "position": "0",
                             "image": "/content/images/portfolio_img_01.png",
                             "image2": "/content/images/portfolio_img_02.png",
-                            "image3": "/content/images/portfolio_img_03.png"
+                            "image3": "/content/images/portfolio_img_03.png",
+                            "name":{
+                                "value": "Item Header"
+                            },
+                            "description": {
+                                "value": "Item Description"
+                            }
                         }
                     ]
 
@@ -472,6 +585,12 @@
                     "image": "/content/images/portfolio_img_01.png",
                     "image2": "/content/images/portfolio_img_02.png",
                     "image3": "/content/images/portfolio_img_03.png",
+                    "name":{
+                        "value": "Item Header"
+                    },
+                    "description": {
+                        "value": "Item Description"
+                    }
                 }
                 $scope.tabNames.tabs[tabId].items.push(newItem);
                 $scope.changeAccordionActivity(index+2)
@@ -484,7 +603,7 @@
         $scope.addTab = function() {
             if ($scope.tabNames.tabs.length <= 3) {
 
-                var newTab = {"name":"Business Card "+$scope.tabNames.tabs.length,
+                var newTab = {"name":"Contact Info "+$scope.tabNames.tabs.length,
                     "position": $scope.tabNames.tabs.length,
                     "tabType": 1,
                     "layout":{
@@ -518,6 +637,77 @@
                     "photo": "/content/images/avatar_img.png"
 
                 }
+                if ($scope.userAccount.username){
+                    newTab.userName = {
+                        "value": $scope.userAccount.username
+                    }
+                }else{
+                    newTab.userName = {
+                        "value": "Your Name"
+                    }
+                }
+
+                if ($scope.userAccount.email) {
+                    newTab.userEmail = {
+                        "value": $scope.userAccount.email
+                    }
+                }else{
+                    newTab.userEmail = {
+                        "value": "Email"
+                    }
+                }
+
+                if ($scope.userAccount.phoneNumber) {
+                    newTab.phone = {
+                        "value": $scope.userAccount.phoneNumber
+                    }
+                }else {
+                    newTab.phone = {
+                        "value": "000000000"
+                    }
+                }
+
+
+                if ($scope.userAccount.address) {
+                    newTab.address = {
+                        "value": $scope.userAccount.address
+                    }
+                }else{
+                    newTab.address = {
+                        "value": "Address"
+                    }
+                }
+
+                if ($scope.userAccount.companyName) {
+                    newTab.company = {
+                        "value": $scope.userAccount.companyName
+                    }
+                }else{
+                    newTab.company = {
+                        "value": "Company Name"
+                    }
+                }
+
+
+                if ($scope.userAccount.companySite) {
+                    newTab.site = {
+                        "value": $scope.userAccount.companySite
+                    }
+                }else{
+                    newTab.site = {
+                        "value": "Website"
+                    }
+                }
+
+                if ($scope.userAccount.jobTitle) {
+                    newTab.job = {
+                        "value": $scope.userAccount.jobTitle
+                    }
+                }else{
+                    newTab.job = {
+                        "value": "Job Title"
+                    }
+                }
                 if($scope.userAccount.imageUrl){
                     newTab.photo = $scope.userAccount.imageUrl
                 }
@@ -538,8 +728,13 @@
         $scope.isDeleteItem = false;
 
         $scope.deleteItems = function(tabId, index){
+
             if($scope.tabNames.tabs[tabId].items.length > 1){
-                $scope.tabNames.tabs[tabId].items.splice((index-2), 1);
+                $scope.tabNames.tabs[tabId].items.sort(function(a, b) {
+                    return a.position-b.position;
+                })
+
+                $scope.tabNames.tabs[tabId].items.splice((index), 1);
                 for (var i = 0; i < $scope.tabNames.tabs[tabId].items.length; i++) {
                     $scope.tabNames.tabs[tabId].items[i].index = i + 2;
                     $scope.tabNames.tabs[tabId].items[i].position = i;
@@ -589,12 +784,7 @@
                     document.getElementsByClassName("tabcontent2")[i].style.display = "none";
                     tabs2[i].className = tabs2[i].className.replace(" active", "");
                 }
-                if(i == tabs.length -1){
-                    document.getElementsByClassName("tabcontent2")[0].style.display = "block";
-                    document.getElementsByClassName("tabs2")[0].className += " active";
-                    document.getElementsByClassName("tabcontent")[0].style.display = "block";
-                    document.getElementsByClassName("tabs")[0].className += " active";
-                }
+
 
             }
 
@@ -693,9 +883,14 @@
         }
 
         $scope.chooseType = function(id, url, tabId) {
-            vm.currentSlide = 1;
-            $scope.tabNames.tabs[id].layout.url = url;
-            $scope.tabNames.tabs[id].layout.tabId = tabId;
+            if($scope.tabNames.tabs[id].layout.url != url) {
+                $scope.tabNames.tabs[id].layout.url = url;
+                $scope.tabNames.tabs[id].layout.tabId = tabId;
+                vm.currentSlide = 1;
+                $timeout(function () {
+                    vm.currentSlide = 0;
+                }, 10)
+            }
 
         }
 
@@ -731,37 +926,56 @@
 
 
 
-        $scope.addColors = function(id, colorMain, colorSecond){
+        $scope.addColors = function(id, colorMain, colorSecond, linkId){
 
             var cyrrentEl = document.getElementById(id);
+
+            var link = document.getElementById(linkId);
 
             if(cyrrentEl) {
                 if($scope.tabNames) {
 
-                    if($scope.tabNames.tabs.length == 1){
-                        cyrrentEl.style.width = "540px"
+                    if ($scope.tabNames.tabs.length == 1) {
+                        cyrrentEl.style.width = "540px";
+                        link.style.width = "535px";
+                        link.style.maxWidth = "535px"
                     }
 
                     if ($scope.tabNames.tabs.length === 2) {
-                        cyrrentEl.style.width = "270px"
+                        cyrrentEl.style.width = "270px";
+                        link.style.maxWidth = "265px";
+                        link.style.maxWidth = "265px";
                     }
                     if ($scope.tabNames.tabs.length === 3) {
-                        cyrrentEl.style.width = "180px"
+                        cyrrentEl.style.width = "180px";
+                        link.style.width = "175x";
+                        link.style.maxWidth = "175x";
                     }
                     if ($scope.tabNames.tabs.length === 4) {
-                        cyrrentEl.style.width = "135px"
+                        cyrrentEl.style.width = "135px";
+                        link.style.width = "130px";
+                        link.style.maxWidth = "130px";
                     }
                 }
+                cyrrentEl.style.background = "#F9F9F9";
+                cyrrentEl.style.borderTop = "1px solid #D0D8D9"
+                cyrrentEl.style.borderBottom = "1px solid #D0D8D9";
+                link.style.color = "#7F8C8C";
+                if (angular.element(document.getElementById(id)).hasClass('active')) {
+                    cyrrentEl.style.background = "#FFFFFF";
+                    cyrrentEl.style.borderTop = "2px solid #" + colorSecond;
+                    link.style.color = "#"+colorSecond;
+                    cyrrentEl.style.borderBottom = "0px";
+                }
                 setTimeout(function() {
-                    cyrrentEl.style.background = "#F9F9F9";
-                    cyrrentEl.style.borderTop = "1px solid #D0D8D9"
-                    cyrrentEl.style.borderBottom = "1px solid #D0D8D9";
                     if (angular.element(document.getElementById(id)).hasClass('active')) {
                         cyrrentEl.style.background = "#FFFFFF";
                         cyrrentEl.style.borderTop = "2px solid #" + colorSecond;
+                        link.style.color = "#"+colorSecond;
                         cyrrentEl.style.borderBottom = "0px";
                     }
-                },700)
+                }, 700)
+
             }
         }
 
@@ -811,8 +1025,31 @@
             }
         }
 
+        $scope.prevSlide = function(index){
+            $scope.currentUrl = undefined;
+            if( vm.currentSlide == 0){
+                vm.currentSlide = $scope.tabNames.tabs[index].items.length -1
+            }else{
+                vm.currentSlide = parseInt(vm.currentSlide) - 1;
+            }
+
+        };
+
+        $scope.nextSlide = function(index){
+            $scope.currentUrl = undefined
+            if( vm.currentSlide == $scope.tabNames.tabs[index].items.length -1){
+                vm.currentSlide = 0
+            }else{
+                vm.currentSlide = parseInt(vm.currentSlide) + 1;
+            }
+
+
+            $timeout(function() {vm.showSpinner = false; },4000)
+        };
+
 
     }
+
 
 
 })();

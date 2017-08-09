@@ -1,7 +1,13 @@
-
+<script>
+    $(document).ready(function(){
+        $("#default-navbar").removeClass("navbar-fixed-top");
+        $("#main-footer").removeClass("ng-hide");
+        console.log()
+    });
+</script>
 <div ng-show="vm.isShowDialog" class="image-popup">
     <div class="row image-dialog">
-        <button type="button" class="close login-close-gray" ng-click="vm.hideImageDialog()">×</button>
+        <button type="button" class="close login-close-gray" ng-click="vm.hideImageDialog(true)">×</button>
         <div class="crop-dialog-header">Upload an avatar</div>
         <div class="image-dialog-crop-panel">
 
@@ -22,7 +28,7 @@
     </div>
 </div>
 
-<div ng-show="showSpinner" class="spinner-shadow"><div style="position:absolute;top:40%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -100px;"></div></div>
+<div ng-show="showSpinner" class="spinner-shadow"><div style="position:absolute;top:40%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -88px;"></div></div>
 <div>
 
     <div class="alert alert-success" check-position-scroll ng-show="vm.successPassword">
@@ -33,7 +39,7 @@
         <strong>Settings saved!</strong>
     </div>
 
-    <div class="profile-title">Profile</div>
+    <div ng-init="getAccount()" class="profile-title">Profile</div>
     <div class="row" style="margin: 0;margin-top: 40px;">
         <div class="col-md-3 col-md-offset-3">
             <div class="profile-photo-div">
@@ -62,10 +68,9 @@
 
                 <form name="form" role="form" novalidate ng-submit="vm.save()" show-validation>
 
-                    <div class="form-group form-group-new">
+                    <div class=" form-group-new">
                         <input type="text" class="profile-input" id="username" name="username" placeholder="First and Last Name"
-                               ng-model="vm.settingsAccount.username" required>
-                        <label for="username" class="custom-placeholder" ng-hide="vm.settingsAccount.username || form.username.$error.minlength || form.username.$error.maxlength">First and Last Name</label>
+                               ng-model="vm.settingsAccount.username" maxlength="25" required>
                         <div ng-show="form.username.$dirty && form.username.$invalid">
                             <p class="help-block"
                                ng-show="form.username.$error.required">
@@ -81,29 +86,25 @@
                             </p>
                         </div>
                     </div>
-                    <div class="form-group form-group-new">
-                        <input type="text" class="profile-input" id="jobTitle" name="jobTitle" placeholder="Job Title"
+                    <div class=" form-group-new">
+                        <input type="text" class="profile-input" id="jobTitle" name="jobTitle" placeholder="Job Title" maxlength="25"
                                ng-model="vm.settingsAccount.jobTitle">
-                        <label for="jobTitle" class="custom-placeholder" ng-hide="vm.settingsAccount.jobTitle">Job Title</label>
                     </div>
 
-                    <div class="form-group form-group-new">
+                    <div class="form-group-new">
                         <input type="text" class="profile-input" id="companyName" name="companyName" placeholder="Company Name"
-                               ng-model="vm.settingsAccount.companyName">
-                        <label for="companyName" class="custom-placeholder" ng-hide="vm.settingsAccount.companyName">Company Name</label>
+                               ng-model="vm.settingsAccount.companyName" maxlength="25">
                     </div>
 
 
-                    <div class="form-group form-group-new">
+                    <div class="form-group-new">
                         <input type="text" class="profile-input" id="companySite" name="companySite" placeholder="Company Website"
-                               ng-model="vm.settingsAccount.companySite">
-                        <label for="companySite" class="custom-placeholder" ng-hide="vm.settingsAccount.companySite">Company Website</label>
+                               ng-model="vm.settingsAccount.companySite" maxlength="300">
                     </div>
 
-                    <div class="form-group form-group-new">
-                        <input type="email" class="profile-input" id="email" name="email" placeholder="Email"
-                               ng-model="vm.settingsAccount.email"  ng-disabled="true"  ng-minlength=5 ng-maxlength=100 required maxlength="100">
-                        <label for="email" class="custom-placeholder" ng-hide="vm.settingsAccount.email || form.email.$error.email || form.email.$error.minlength || form.email.$error.maxlength">E-mail</label>
+                    <div class="form-group-new">
+                        <input type="email" class="profile-input" id="email" name="email" placeholder="E-mail"
+                               ng-model="vm.settingsAccount.email"  ng-disabled="true"  ng-minlength=5 ng-maxlength=25 required maxlength="25">
                         <div ng-show="form.email.$dirty && form.email.$invalid">
                             <p class="help-block"
                                ng-show="form.email.$error.required">
@@ -119,23 +120,32 @@
                             </p>
                             <p class="help-block"
                                ng-show="form.email.$error.maxlength">
-                                Your e-mail cannot be longer than 100 characters.
+                                Your e-mail cannot be longer than 25 characters.
                             </p>
                         </div>
                     </div>
 
 
-                    <div class="form-group form-group-new">
-                        <input type="text" class="profile-input" id="phoneNumber2" name="phoneNumber" placeholder="Phone Number"
-                               ng-model="vm.settingsAccount.phoneNumber">
-                        <label for="phoneNumber2" class="custom-placeholder" ng-hide="vm.settingsAccount.phoneNumber">Mobile Number</label>
+                    <div class="form-group-new">
+                        <input type="text" class="profile-input" id="phoneNumber2" name="phoneNumber" placeholder="Mobile Number"
+                               ng-model="vm.settingsAccount.phoneNumber" maxlength="9" ng-pattern="/^[0-9]*$/">
+                        <div ng-show="form.phoneNumber.$dirty && form.phoneNumber.$invalid">
+
+                            <p class="help-block"
+                               ng-show="form.phoneNumber.$error.pattern">
+                                Numbers only.
+                            </p>
+                            <p class="help-block"
+                               ng-show="form.phoneNumber.$error.maxlength">
+                                Your phone number cannot be longer than 9 characters
+                            </p>
+                        </div>
                     </div>
 
 
-                    <div class="form-group form-group-new">
+                    <div class="form-group-new">
                         <input type="text" class="profile-input" id="address2" name="address" placeholder="Address"
-                               ng-model="vm.settingsAccount.address">
-                        <label for="address2" class="custom-placeholder" ng-hide="vm.settingsAccount.address">Address</label>
+                               ng-model="vm.settingsAccount.address" maxlength="55">
                     </div>
 
                     <button type="submit" ng-disabled="form.$invalid" class="saveButton">Update profile</button>
@@ -145,15 +155,10 @@
                 <jhi-alert-error></jhi-alert-error>
 
                 <form name="form2" role="form" novalidate ng-submit="vm.changePassword()" show-validation>
-                    <div class="form-group form-group-new">
+                    <div class=" form-group-new">
                         <input type="password" class="profile-input" id="password2" name="password" placeholder="New password"
                                ng-model="vm.password" ng-minlength=4 ng-maxlength=50 required>
-                        <label for="password2" class="custom-placeholder" ng-hide="vm.password || form2.password.$error.minlength || form2.password.$error.maxlength">New password</label>
                         <div ng-show="form2.password.$dirty && form2.password.$invalid">
-                            <p class="help-block"
-                               ng-show="form2.password.$error.required">
-                                Your password is required.
-                            </p>
                             <p class="help-block"
                                ng-show="form2.password.$error.minlength">
                                 Your password is required to be at least 4 characters.
@@ -165,15 +170,10 @@
                         </div>
                         <password-strength-bar password-to-check="vm.password"></password-strength-bar>
                     </div>
-                    <div class="form-group form-group-new">
+                    <div class=" form-group-new">
                         <input type="password" class="profile-input" id="confirmPassword2" name="confirmPassword" placeholder="Confirm password"
-                               ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50  pw-check='password2' required>
-                        <label for="confirmPassword2" class="custom-placeholder" ng-hide="vm.confirmPassword || form2.confirmPassword.$error.minlength || form2.confirmPassword.$error.maxlength">Confirm password</label>
+                               ng-model="vm.confirmPassword" ng-change="disableSave = false" ng-minlength=4 ng-maxlength=50  pw-check='password2' required>
                         <div ng-show="form2.confirmPassword.$dirty && form2.confirmPassword.$invalid">
-                            <p class="help-block"
-                               ng-show="form2.confirmPassword.$error.required">
-                                Your confirmation password is required.
-                            </p>
                             <p class="help-block"
                                ng-show="form2.confirmPassword.$error.minlength">
                                 Your confirmation password is required to be at least 4 characters.
@@ -188,8 +188,7 @@
                             </p>
                         </div>
                     </div>
-
-                    <button type="submit" ng-disabled="form2.$invalid" class="saveButton">Change password</button>
+                    <button type="submit" ng-disabled="form2.$invalid || disableSave" class="saveButton">Change password</button>
                 </form>
             </div>
         </div>

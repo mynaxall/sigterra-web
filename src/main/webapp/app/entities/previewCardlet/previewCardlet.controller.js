@@ -12,6 +12,7 @@
     function PreviewCardletController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, LoginService, $sce) {
 
         var vm = this;
+        $scope.time = Date.now()
 
         vm.currentSlide = 0;
 
@@ -23,20 +24,16 @@
 
 
                     if($scope.tabNames.tabs[0].tabType == 1){
-                        $scope.tabType = 1;
+                        vm.tabType = 1;
                         $scope.currentName = $scope.tabNames.tabs[0].name;
                         if($scope.tabNames.tabs[0].site.value) {
                             $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[0].site.value);
                             $scope.currentLink = $scope.getLink($scope.tabNames.tabs[0].site.value);
+                            vm.showSpinner = true;
                         }
                     }
                     else{
-                        $scope.tabType = $scope.tabNames.tabs[0].tabType
-
-                        var buttons = document.getElementsByClassName("carousel-control");
-                        for(var j = 0; j < buttons.length; j++){
-                            document.getElementsByClassName("carousel-control")[j].className += " hidenLink"
-                        }
+                        vm.tabType = $scope.tabNames.tabs[0].tabType
 
                         angular.forEach($scope.tabNames.tabs[0].items, function (item) {
 
@@ -44,14 +41,47 @@
                                 if(item.link) {
                                     $scope.currentUrl = $scope.createURL(item.link);
                                     $scope.currentLink = $scope.getLink(item.link);
+                                    vm.showSpinner = true;
                                 }
                                 $scope.currentName = item.name.value;
                             }
 
                         });
                     }
+                    for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
+                        if ($scope.tabNames.tabs[i].tabType == '1'){
+                            $scope.firstBusinessCardId = i;
+                            break
+                        }else{
+                            $scope.firstBusinessCardId = '';
+                        }
+                    }
+
+                    $timeout(function() {vm.showSpinner = false; },4000)
                 });
         };
+
+        $scope.successfulyAdded = "";
+        $scope.errorAddeding = "";
+
+        $scope.addToAddressBook = function(){
+            var param1 = $location.search().cardletId;
+            $http.post("/api/address-book/"+param1)
+                .success(function(response, status, headers) {
+
+                    $scope.successfulyAdded = response.message;
+                    $timeout(function() {
+                        $scope.successfulyAdded = "";
+                    }, 3000);
+                })
+                .error(function(response, status, headers) {
+                    $scope.errorAddeding = response.message;
+                    $timeout(function() {
+                        $scope.errorAddeding = "";
+                    }, 3000);
+
+                });
+        }
 
         $scope.trustSrc = function(src) {
             return $sce.trustAsResourceUrl(src);
@@ -68,47 +98,108 @@
         }
 
 
+        vm.nextIndex = 1;
+
         $scope.prevSlide = function(index){
             $scope.currentUrl = undefined;
             if( vm.currentSlide == 0){
-                vm.currentSlide = $scope.tabNames.tabs[index].items.length -1
+                vm.currentSlide = $scope.tabNames.tabs[index].items.length -1;
+                vm.nextIndex = 0
             }else{
                 vm.currentSlide = vm.currentSlide - 1;
+                vm.nextIndex = vm.currentSlide+ 1
             }
-            console.log(vm.currentSlide)
-            setTimeout(function() {
+
+
+                $timeout(function() {
 
                 angular.forEach($scope.tabNames.tabs[index].items, function (item) {
+                    if(item.position  === vm.currentSlide) {
+                        $scope.currentUrl = "";
+                        $scope.currentLink = "";
+                        $scope.currentName = "";
+                        if (item.link) {
+                            $scope.currentUrl = $scope.createURL(item.link);
+                            $scope.currentLink = $scope.getLink(item.link);
+                        }
+                        if (item.link) {
+                            $scope.currentName = item.name.value;
+                            vm.showSpinner = true;
+                        }
 
-                    if(item.position  === vm.currentSlide){
-                        $scope.currentUrl = $scope.createURL(item.link);
-                        $scope.currentLink = $scope.getLink(item.link);
-                        $scope.currentName = item.name.value;
                     }
 
                 });
 
             },10);
+            $timeout(function() {vm.showSpinner = false; },4000)
         };
+
+        $scope.setCurrentSlide = function(index, parent){
+            vm.currentSlide = index;
+            $timeout(function() {
+
+                angular.forEach($scope.tabNames.tabs[parent].items, function (item) {
+                    if(item.position  === vm.currentSlide) {
+                        $scope.currentUrl = "";
+                        $scope.currentLink = "";
+                        $scope.currentName = "";
+                        if (item.link) {
+                            $scope.currentUrl = $scope.createURL(item.link);
+                            $scope.currentLink = $scope.getLink(item.link);
+                        }
+                        if (item.link) {
+                            $scope.currentName = item.name.value;
+                            vm.showSpinner = true;
+                        }
+
+                    }
+
+                });
+
+            },10);
+            $timeout(function() {vm.showSpinner = false; },4000)
+        }
+
+        $scope.itemPosition = function(index){
+            return index + 1;
+        }
 
         $scope.nextSlide = function(index){
             $scope.currentUrl = undefined
             if( vm.currentSlide == $scope.tabNames.tabs[index].items.length -1){
-                vm.currentSlide = 0
+                vm.currentSlide = 0;
             }else{
                 vm.currentSlide = vm.currentSlide + 1;
+
             }
-            setTimeout(function() {
+
+            vm.nextIndex = vm.currentSlide + 1;
+            if(vm.nextIndex == $scope.tabNames.tabs[index].items.length ){
+                vm.nextIndex = 0;
+            }
+
+
+            $timeout(function() {
                 angular.forEach($scope.tabNames.tabs[index].items, function (item) {
 
                     if(item.position  === vm.currentSlide){
+                        $scope.currentUrl = "";
+                        $scope.currentLink = "";
+                        $scope.currentName = "";
+                        if(item.link){
                         $scope.currentUrl = $scope.createURL(item.link);
                         $scope.currentLink = $scope.getLink(item.link);
-                        $scope.currentName = item.name.value;
+                        }
+                        if(item.link){
+                            $scope.currentName = item.name.value;
+                            vm.showSpinner = true;
+                        }
                     }
 
                 });
             },10)
+            $timeout(function() {vm.showSpinner = false; },4000)
         };
 
         $scope.getLink = function(link){
@@ -122,18 +213,16 @@
 
         }
 
+        vm.showSpinner = false;
+
         vm.hideFrame = false;
 
-        $scope.test123 = function(){
-            console.log("123123");
-            vm.hideFrame= true;
+        $scope.closeFrame = function(){
             document.getElementById("myFrame").style.height = "800px"
         }
 
         $scope.sethide = function(){
-            console.log("asdasd");
             vm.hideFrame = false;
-            console.log(vm.hideFrame )
         }
 
 
@@ -147,42 +236,50 @@
         }
 
         $scope.openCity = function(cardName, cardId, id) {
+            $scope.currentUrl = "";
+            $scope.currentLink = "";
+            vm.showSpinner = false;
             $scope.currentUrl = undefined;
-            var buttons = document.getElementsByClassName("carousel-control");
-
-            for(var j = 0; j < buttons.length; j++){
-                document.getElementsByClassName("carousel-control")[j].className += " hidenLink"
-            }
-
             vm.currentSlide = 0;
-            setTimeout(function() {
-
-                console.log($scope.tabNames.tabs[id].tabType === 1);
+            $timeout(function() {
                 if ($scope.tabNames.tabs[id].tabType === 1) {
-                    $scope.tabType = 1;
+                    vm.tabType = 1;
                     $scope.currentName = $scope.tabNames.tabs[id].name;
                     if($scope.tabNames.tabs[id].site.value) {
                         $scope.currentUrl = $scope.createURL($scope.tabNames.tabs[id].site.value);
                         $scope.currentLink = $scope.getLink($scope.tabNames.tabs[id].site.value);
+
+                        vm.showSpinner = true;
                     }
 
                 }
                 else {
-                    $scope.tabType = $scope.tabNames.tabs[id].tabType
+                    vm.tabType = $scope.tabNames.tabs[id].tabType
                     angular.forEach($scope.tabNames.tabs[id].items, function (item) {
 
                         if(item.position  === 0){
-                            $scope.currentName = item.name.value;
+                            if(item.name) {
+                                $scope.currentName = item.name.value;
+                            }else{
+                                $scope.currentName  = ""
+                            }
                             if(item.link) {
                                 $scope.currentUrl = $scope.createURL(item.link);
                                 $scope.currentLink = $scope.getLink(item.link);
+                                vm.showSpinner = true;
                             }
+
                         }
 
                     });
                 }
 
-            },10)
+                $timeout(function() {vm.showSpinner = false; },4000)
+            },500)
+
+
+
+
 
             var i, tabcontent2, tablinks2, tabs2;
             tabcontent2 = document.getElementsByClassName("tabcontent2");
@@ -226,10 +323,12 @@
 
         $scope.reloadFrame = function(){
             var url = $scope.currentUrl;
-            $scope.currentUrl = null
-            setTimeout(function() {
+            $scope.currentUrl = null;
+            vm.showSpinner = true;
+            $timeout(function() {
                 $scope.currentUrl = url
             },10)
+            $timeout(function() {vm.showSpinner = false; },4000)
 
         }
 

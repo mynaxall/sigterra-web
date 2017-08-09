@@ -2,38 +2,26 @@
 <div style="background: #FFFFFF">
 
    <div class="cardletNew">
-       <div class="user-name" ng-show="!tabNames.tabs[firstBusinessCardId].userName.value"  style="color: #{{tabNames.tabs[firstBusinessCardId].layout.secondaryColor}}">Jon Dou</div>
        <div class="user-name" ng-style="{'font-family': tabNames.tabs[firstBusinessCardId].userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabNames.tabs[firstBusinessCardId].userName.italic ? 'italic' : 'normal',
                     'text-decoration': tabNames.tabs[firstBusinessCardId].userName.underline ? 'underline' : 'normal', 'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor}"  ng-show="tabNames.tabs[firstBusinessCardId].userName.value">{{tabNames.tabs[firstBusinessCardId].userName.value}}</div>
-       <div class="user-main-text" ng-show="!tabNames.tabs[firstBusinessCardId].job.value">General Manager</div>
        <div class="user-main-text" ng-style="{'font-family': tabNames.tabs[firstBusinessCardId].job.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabNames.tabs[firstBusinessCardId].job.italic ? 'italic' : 'normal',
                     'text-decoration': tabNames.tabs[firstBusinessCardId].job.underline ? 'underline' : 'normal'}" ng-show="tabNames.tabs[firstBusinessCardId].job.value">{{tabNames.tabs[firstBusinessCardId].job.value}}</div>
-       <div class="user-main-text company " ng-show="!tabNames.tabs[firstBusinessCardId].company.value">
-           Company Name
-       </div>
        <div class="user-main-text company" ng-show="tabNames.tabs[firstBusinessCardId].company.value" ng-style="{'font-family': tabNames.tabs[firstBusinessCardId].company.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabNames.tabs[firstBusinessCardId].company.italic ? 'italic' : 'normal',
                     'text-decoration': tabNames.tabs[firstBusinessCardId].company.underline ? 'underline' : 'normal'}">
            {{tabNames.tabs[firstBusinessCardId].company.value}}
        </div>
-       <div class="user-main-text" ng-show="!tabNames.tabs[firstBusinessCardId].phone.value">
-           <div class="new-cardlet-marks" ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor, 'display': 'inline', 'width':'20px'}">m: </div><div style="display: inline;">1-888-555-5555</div>
-       </div>
        <div class="user-main-text" ng-show="tabNames.tabs[firstBusinessCardId].phone.value" >
            <div class="new-cardlet-marks" ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor, 'display': 'inline', 'width':'20px'}">m: </div>
            <div style="display: inline;" ng-style="{'font-family': tabNames.tabs[firstBusinessCardId].phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabNames.tabs[firstBusinessCardId].phone.italic ? 'italic' : 'normal',
-                    'text-decoration': tabNames.tabs[firstBusinessCardId].phone.underline ? 'underline' : 'normal'}">{{tabNames.tabs[firstBusinessCardId].phone.value}}</div>
+                    'text-decoration': tabNames.tabs[firstBusinessCardId].phone.underline ? 'underline' : 'normal'}">{{tabNames.tabs[firstBusinessCardId].phone.value | tel}}</div>
        </div>
 
-       <div style="display: inline-block; margin-right: 15px">
-           <div class="user-main-text" ng-show="!tabNames.tabs[firstBusinessCardId].userEmail.value">
-               <div class="new-cardlet-marks" ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor, 'display': 'inline', 'width':'20px'}">e: </div>
-               <div style="display: inline;">fabian.abshireabsh@wilford.biz</div>
-           </div>
-           <div class="user-main-text" ng-show="tabNames.tabs[firstBusinessCardId].userEmail.value">
+       <div style="display: inline-block; margin-right: 15px" ng-show="tabNames.tabs[firstBusinessCardId].userEmail.value">
+           <div class="user-main-text">
                <div class="new-cardlet-marks"  ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor, 'display': 'inline', 'width':'20px'}">e: </div>
                <div style="display: inline;"><a href="mailto:{{tabNames.tabs[firstBusinessCardId].userEmail.value}}" ng-style="{'font-family': tabNames.tabs[firstBusinessCardId].userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': tabNames.tabs[firstBusinessCardId].userEmail.italic ? 'italic' : 'normal',
@@ -42,23 +30,14 @@
            </div>
        </div>
        <div style="display: inline-block;">
-           <div class="user-main-text" ng-show="!tabNames.tabs[firstBusinessCardId].site.value">
-               <div class="new-cardlet-marks"  ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor, 'display': 'inline', 'width':'20px'}">w: </div>
-               <div style="display: inline;">www.websitewebsite.com</div>
-           </div>
-
            <div class="user-main-text" ng-show="tabNames.tabs[firstBusinessCardId].site.value" >
                <div class="new-cardlet-marks" ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor, 'display': 'inline', 'width':'20px'}">w: </div>
-               <div style="display: inline;"><a target="_blank" href="{{tabNames.tabs[firstBusinessCardId].site.value}}" ng-style="{'font-family': tabNames.tabs[firstBusinessCardId].site.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+               <div style="display: inline;"><a target="_blank" href="http://{{tabNames.tabs[firstBusinessCardId].site.value}}" ng-style="{'font-family': tabNames.tabs[firstBusinessCardId].site.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabNames.tabs[firstBusinessCardId].site.italic ? 'italic' : 'normal',
-                        'text-decoration': tabNames.tabs[firstBusinessCardId].site.underline ? 'underline' : 'normal'}">{{tabNames.tabs[firstBusinessCardId].site.value}}</a></div>
+                        'text-decoration': tabNames.tabs[firstBusinessCardId].site.underline ? 'underline' : 'normal'}" >{{tabNames.tabs[firstBusinessCardId].site.value | limitTo: 25}}</a></div>
            </div>
         </div>
 
-       <div class="user-main-text" ng-show="!tabNames.tabs[firstBusinessCardId].address.value">
-           <div class="new-cardlet-marks" ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor, 'display': 'inline', 'width':'20px'}">a: </div>
-           <div style="display: inline;">0000 Lynch Pine Apt. 605, South Keagan, Croatia</div>
-       </div>
        <div class="user-main-text" ng-show="tabNames.tabs[firstBusinessCardId].address.value"  style="max-width: 320px;">
            <div class="new-cardlet-marks" ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor, 'display': 'inline', 'width':'20px'}">a: </div>
            <div style="display: inline;" ng-style="{'font-family': tabNames.tabs[firstBusinessCardId].address.bold ? 'Roboto-Bold' : 'Roboto-Regular',

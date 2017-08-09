@@ -20,10 +20,10 @@
         }
 
         $scope.tabNames ={
-            "cardletName": "Business cards",
+            "cardletName": "Your Sigterra Profile Name",
             "tabs":
                 [{
-                    "name": "Business Card",
+                    "name": "Contact Info",
                     'position': 0,
                     "display": "block",
                     "tabType": 1,
@@ -33,7 +33,7 @@
                         "tabId": 1
 
                     },
-                    "photo": "/content/images/avatar_img.png",
+                    "photo": $location.protocol() + '://' + $location.host() + ':' + $location.port()+"/content/images/avatar_img.png",
 
 
                 },
@@ -53,7 +53,13 @@
                                 "position": "0",
                                 "image": "/content/images/portfolio_img_01.png",
                                 "image2": "/content/images/portfolio_img_02.png",
-                                "image3": "/content/images/img/portfolio_img_03.png"
+                                "image3": "/content/images/img/portfolio_img_03.png",
+                                "name": {
+                                    "value": "Item Header"
+                                },
+                                "description": {
+                                    "value": "Item Description"
+                                }
 
                             }
                         ]
