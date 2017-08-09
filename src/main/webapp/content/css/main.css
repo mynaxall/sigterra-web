@@ -4500,36 +4500,36 @@ ul.tab li.active {
 
 .overlay2 {
     position: absolute;
+    top: 0;
     bottom: 0;
-    left: 100%;
+    left: 0;
     right: 0;
-    background-color: #FFFFFF;
-    overflow: hidden;
-    width: 0;
     height: 100%;
+    width: 100%;
+    opacity: 0;
     transition: .5s ease;
+    background-color: #ffffff;
 }
 
 .overlay {
     position: absolute;
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #ffffff;
-    overflow: hidden;
-    width: 0;
     height: 100%;
+    width: 100%;
+    opacity: 0;
     transition: .5s ease;
+    background-color: #ffffff;
 }
 
 .staff-col:hover .overlay {
-    width: 100%;
-    right: 0;
+    opacity: 1;
 }
 
 .staff-col:hover .overlay2 {
-    width: 100%;
-    left: 0;
+    opacity: 1;
 }
 
 .text {
@@ -4705,4 +4705,8 @@ ul.tab li.active {
     width: 100%;
     margin: 0px 15px;
     border-top: 1px solid #f8f8f9;
+}
+
+.marin-top-5{
+    margin-top: 5px;
 }
