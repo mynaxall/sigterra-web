@@ -798,7 +798,7 @@
             }
 
             $scope.positionChecking = false;
-            setTimeout(function() {
+            $timeout(function() {
                 document.getElementsByClassName("tabcontent2")[0].style.display = "block";
                 document.getElementsByClassName("tabs2")[0].className += " active";
                 document.getElementsByClassName("tabcontent")[0].style.display = "block";

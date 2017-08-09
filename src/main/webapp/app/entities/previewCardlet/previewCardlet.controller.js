@@ -241,6 +241,13 @@
             vm.showSpinner = false;
             $scope.currentUrl = undefined;
             vm.currentSlide = 0;
+
+            if ($scope.tabNames.tabs[id].tabType === 1) {
+                vm.tabType = 1;
+            }else{
+                vm.tabType = 2;
+            }
+
             $timeout(function() {
                 if ($scope.tabNames.tabs[id].tabType === 1) {
                     vm.tabType = 1;
@@ -254,6 +261,7 @@
 
                 }
                 else {
+                    vm.tabType = 2;
                     vm.tabType = $scope.tabNames.tabs[id].tabType
                     angular.forEach($scope.tabNames.tabs[id].items, function (item) {
 
