@@ -75,12 +75,18 @@
         };
 
         $scope.closeCropDialog = function(){
-            $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
             $scope.showCropDialog = false;
-            $scope.showSocialDialog = false;
             $scope.myImage = "";
             $scope.noSocialChanges = false;
             angular.element(document.querySelector('#fileInput')).val(null);
+        }
+
+        $scope.closeSocialDialog = function(){
+            $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
+            $scope.showSocialDialog = false;
+            $scope.noSocialChanges = false;
+            $scope.tabNames.tabs[$scope.tabIndex].socialLinks = $scope.currentLinks;
+
         }
 
 
@@ -93,6 +99,7 @@
             $scope.tabIndex = index;
             $scope.showSocialDialog = true;
             $scope.socialLinks = links;
+            $scope.currentLinks = {twitter: links.twitter, facebook: links.facebook, google: links.google, linkedin: links.linkedin};
         }
 
         $scope.saveSocialLinks = function(){
