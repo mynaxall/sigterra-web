@@ -17,7 +17,10 @@
             'ngImgCrop',
             'dndLists',
             'ngclipboard',
-            'base64'
+            'base64',
+            'xeditable',
+            'ngOnload',
+            'monospaced.elastic'
         ])
         .run(run);
 

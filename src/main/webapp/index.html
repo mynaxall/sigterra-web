@@ -11,6 +11,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
+    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css">
     <!-- endinject -->
     <!-- endbuild -->
     <!-- build:css content/css/main.css -->
@@ -32,7 +33,7 @@
 
     </div>
     <div class="sub-footer"></div>
-    <div class="footer" id="sigFooter" ng-cloak>
+    <div id="main-footer" class="footer" id="sigFooter" ng-cloak>
         <div class="footer-panel">
             <div class="user-cardlet-panel" style="background-color: #242424">
                 <div class="row footer-border" >
@@ -66,6 +67,7 @@
                     </div>
                 </div>
                 <div class="footer-main-text" style="text-align: center; margin-top: 20px">All rights reserved 2017</div>
+                <div class="footer-main-text" style="text-align: center; margin-top: 20px">v 2.1.5</div>
             </div>
         </div>
     </div>
@@ -98,6 +100,8 @@
     <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+    <script src="bower_components/angular-elastic/elastic.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
 
@@ -147,6 +151,7 @@
     <script src="app/entities/previewCardlet/previewCardlet.state.js"></script>
     <script src="app/entities/previewCardlet/previewCardlet.service.js"></script>
     <script src="app/entities/previewCardlet/previewCardlet.controller.js"></script>
+    <script src="app/entities/previewCardlet/ng-onload.js"></script>
     <script src="app/entities/item-data/item-data-dialog.controller.js"></script>
     <script src="app/entities/item-data/item-data-detail.controller.js"></script>
     <script src="app/entities/item-data/item-data-delete-dialog.controller.js"></script>
@@ -191,6 +196,12 @@
     <script src="app/entities/business/business.state.js"></script>
     <script src="app/entities/business/business.service.js"></script>
     <script src="app/entities/business/business.controller.js"></script>
+    <script src="app/entities/address-book/address-book-dialog.controller.js"></script>
+    <script src="app/entities/address-book/address-book-detail.controller.js"></script>
+    <script src="app/entities/address-book/address-book-delete-dialog.controller.js"></script>
+    <script src="app/entities/address-book/address-book.state.js"></script>
+    <script src="app/entities/address-book/address-book.service.js"></script>
+    <script src="app/entities/address-book/address-book.controller.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
     <script src="app/components/util/sort-by.directive.js"></script>

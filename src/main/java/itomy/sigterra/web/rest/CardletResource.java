@@ -42,13 +42,10 @@ public class CardletResource {
     public static final int MAX_ALLOWED_PROFILE_ICON_SIZE = 20 * 1024 * 1024;
 
     private final Logger log = LoggerFactory.getLogger(CardletResource.class);
-
-    @Inject
-    private CardletRepository cardletRepository;
-
     @Inject
     BusinessRepository businessRepository;
-
+    @Inject
+    private CardletRepository cardletRepository;
     @Inject
     private UserService userService;
 
@@ -209,28 +206,7 @@ public class CardletResource {
     @PostMapping(value = "cardlet/upload/icon/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<?> uploadProfileIcon(@RequestBody MultipartFile file, @PathVariable String id) throws JSONException {
-        JSONObject successObject = new JSONObject();
-        if(file != null && !file.isEmpty()) {
-            if(file.getSize() > MAX_ALLOWED_PROFILE_ICON_SIZE) {
-                successObject.put("success", false);
-                successObject.put("message", "File is too big. Max allowed file size is 50Mb");
-                // TODO: 1/9/17 Maybe need to change it to not OK status
-                return ResponseEntity.ok(successObject);
-            }
-
-            URI url = awss3BucketService.uploadBusinessImage(file, id);
-            if(url == null) {
-                successObject.put("success", false);
-                successObject.put("message", "Unable to fetch the file from S3 bucket.");
-            } else {
-                successObject.put("success", true);
-                successObject.put("url", url);
-            }
-        } else {
-            successObject.put("success", false);
-            successObject.put("message", "File is empty or NULL");
-            // TODO: 1/9/17 Maybe need to change it to not OK status
-        }
+        JSONObject successObject = cardletService.fileUploading(file, id, null, false);
         return new ResponseEntity<>(successObject.toString(), HttpStatus.OK);
     }
 
@@ -238,28 +214,7 @@ public class CardletResource {
     @PostMapping(value = "signature/upload/icon/{id}/{name}", produces=MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<?> uploadSignatureIcon(@RequestBody MultipartFile file, @PathVariable String id, @PathVariable String name) throws JSONException {
-        JSONObject successObject = new JSONObject();
-        if(file != null && !file.isEmpty()) {
-            if(file.getSize() > MAX_ALLOWED_PROFILE_ICON_SIZE) {
-                successObject.put("success", false);
-                successObject.put("message", "File is too big. Max allowed file size is 50Mb");
-                // TODO: 1/9/17 Maybe need to change it to not OK status
-                return ResponseEntity.ok(successObject);
-            }
-
-            URI url = awss3BucketService.uploadSignatureImage(file, id, name);
-            if(url == null) {
-                successObject.put("success", false);
-                successObject.put("message", "Unable to fetch the file from S3 bucket.");
-            } else {
-                successObject.put("success", true);
-                successObject.put("url", url);
-            }
-        } else {
-            successObject.put("success", false);
-            successObject.put("message", "File is empty or NULL");
-            // TODO: 1/9/17 Maybe need to change it to not OK status
-        }
+        JSONObject successObject = cardletService.fileUploading(file, id, name, true);
         return new ResponseEntity<>(successObject.toString(), HttpStatus.OK);
     }
 

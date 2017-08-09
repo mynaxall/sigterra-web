@@ -29,18 +29,23 @@
         vm.settingsAccount = null;
         vm.success = null;
 
+        $scope.disableSave = true;
+
 
         /**
          * Store the "settings account" in a separate variable, and not in the shared "account" variable.
          */
 
+        $scope.getAccount = function(){
+            $http.get("/api/account")
+                .success(function (data, status, headers, config) {
+                    vm.settingsAccount = data;
+                    vm.settingsAccount.imageUrl = vm.settingsAccount.imageUrl;
+                });
+        }
 
-        Principal.identity().then(function(account) {
-            vm.settingsAccount = account;
-            vm.settingsAccount.imageUrl = vm.settingsAccount.imageUrl;
 
 
-        });
 
         function save () {
             Auth.updateAccount(vm.settingsAccount).then(function() {
@@ -56,7 +61,6 @@
                 vm.success = null;
                 vm.error = 'ERROR';
             });
-
         }
 
 
@@ -87,6 +91,9 @@
                     vm.error = 'ERROR';
                 });
             }
+            vm.password = "";
+            vm.confirmPassword = "";
+            $scope.disableSave = true;
         }
 
         vm.clear = clear;
@@ -124,11 +131,11 @@
         }
 
         vm.hideImageDialog = hideImageDialog;
-        function hideImageDialog(){
-            angular.element('#fileInput').val(null);
-            $scope.myImage='';
-            $scope.myCroppedImage = '';
-
+        function hideImageDialog(clean){
+            if(clean){
+                $scope.myImage='';
+                $scope.myCroppedImage = '';
+            }
             vm.isShowDialog = false;
         }
 

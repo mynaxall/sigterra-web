@@ -9,7 +9,7 @@
 
     function ItemController ($scope, $state, Item, ParseLinks, AlertService, pagingParams, paginationConstants) {
         var vm = this;
-
+        $scope.time = Date.now()
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
         vm.reverse = pagingParams.ascending;

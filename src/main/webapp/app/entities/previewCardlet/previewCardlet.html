@@ -1,6 +1,16 @@
-
-<div class="entiti-content" ng-init="getCardlet()" style="padding-bottom: 30px">
+<script>
+    $(document).ready(function(){
+        $("#default-navbar").removeClass("navbar-fixed-top");
+        $("#main-footer").removeClass("ng-hide");
+        console.log()
+    });
+</script>
+<div class="entiti-content" ng-init="getCardlet()" style="padding-bottom: 30px; ">
     <style>
+
+        body {
+            min-width: 1100px
+        }
 
         .tab-panel{
             padding-top: 50px;
@@ -175,36 +185,59 @@
         ul[dnd-list] .dndDraggingSource {
             display: none;
         }
+        .right.carousel-control,  .left.carousel-control {
+            display: none;
+        }
 
     </style>
-
-    <div style="margin: auto;width: 540px;padding-top: 30px;">
-
-        <div>
-            <ul class="tab2">
-                <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
-                    <div style="position: relative; display: table; width: 100%;">
-                        <a href="javascript:void(0)" id="tabLink{{tabName.name}}" class="tablinks2" style="color:#{{tabName.layout.secondaryColor}}" ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
-                    </div>
-                </li>
-
-            </ul>
-        </div>
-
-        <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-            <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
-        </div>
+    <div class="preview-border">
+        <div ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor, 'font-size': '22px', 'margin-top':'30px'}">{{tabNames.tabs[firstBusinessCardId].userName.value}}</div>
+        <div style="position: relative;z-index: 5" ng-show="tabNames.tabs[firstBusinessCardId].userEmail.value"><span ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor}">e: </span><a  target="_blank" href="mailto:{{tabNames.tabs[firstBusinessCardId].userEmail.value}}">{{tabNames.tabs[firstBusinessCardId].userEmail.value}}</a></div>
     </div>
-    <div class="preview-header">
-        <div class="preview-header-text">
-            Have you been prospecting for months on end, only to end up with no one? Or have you been trying to sell a product or service that has not been selling? Or you just kind of depressed about your current employment?
+    <div style="margin: auto;width: 570px;padding-top: 100px; padding-left: 30px; position: relative">
+        <div class="alert alert-success-added" check-position-scroll ng-show="successfulyAdded">
+            <strong>{{successfulyAdded}}</strong>
         </div>
-        <div style="position: relative">
-            <div class="border-line-new-header"></div>
-            <div class="add-new-btn">
-                <button class="saveButton" ui-sref="cardletlist">Create new</button>
+
+        <div class="alert alert-danger" check-position-scroll ng-show="errorAddeding">
+            <strong>{{errorAddeding}}</strong>
+        </div>
+
+        <div style="position:relative;">
+            <div>
+                <ul class="tab2">
+                    <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
+                        <div style="position: relative; display: table; width: 100%;">
+                            <a href="javascript:void(0)" id="tabLink{{tabName.name}}" class="tablinks2" style="color:#{{tabName.layout.secondaryColor}}" ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name, tabName.position)">{{tabName.name}}</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
+                <div class="custom-slide-prev"><img src="/content/images/arrow_left.png" ng-hide="vm.tabType === 1  || tabName.items.length < 2" ng-click="prevSlide($index)"></div>
+                <ng-include style="display: block!important" src="tabName.layout.url"></ng-include>
+                <div class="custom-slide-next"><img src="/content/images/arrow_right.png" ng-hide="vm.tabType === 1 || tabName.items.length < 2"  ng-click="nextSlide($index)"></div>
+                <div class="next-image-preview" ng-repeat="slide in tabName.items | orderBy:'position'">
+                    <img ng-show="$index === vm.nextIndex && tabName.layout.url != 'app/cardlets/info3.html'" style="width: 100px" ng-src="{{slide.image}}">
+                </div>
+                <!--<div style="text-align: center;padding-top: 10px; background: #FFF;">-->
+                    <!--<div class="preview-selection" ng-repeat="slide in tabName.items | orderBy:'position'" ng-click="setCurrentSlide($index, $parent.$index)"  ng-class="$index == vm.currentSlide ? 'preview-selected': '' ">-->
+                        <!--<img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-show="slide.image" ng-src="{{slide.image}}">-->
+                    <!--</div>-->
+
+                <!--</div>-->
+
+            </div>
+            <div style="margin-top: 30px; margin-bottom: 60px; position: relative; z-index: 10">
+                <button class="preview-create-button" ui-sref="cardletlist">Create your business card</button>
+                <button class="preview-add-button" ng-click="addToAddressBook()"> Add to address book</button>
             </div>
         </div>
+    </div>
+    <div class="preview-iframe" ng-show="currentLink">
+        <div ng-show="vm.showSpinner" class="spinner-shadow" style="position:absolute;"><div style="position:absolute;top:40%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -88px;"></div></div>
+        <iframe id="myFrame" type="text/html" ng-if="currentUrl"  ng-onload="closeFrame()" style="height: 0px; border:none; margin-top: 30px"  ng-src="{{trustSrc(currentUrl)}}" width="100%"></iframe>
     </div>
 
     <style>

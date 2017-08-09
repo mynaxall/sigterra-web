@@ -1,6 +1,13 @@
 
 </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $("#default-navbar").removeClass("navbar-fixed-top");
+        $("#main-footer").removeClass("ng-hide");
+        console.log()
+    });
+</script>
 <div ng-show="vm.isFirstStep && !vm.isDone" class="registration-div">
     <div class="register-head"></div>
     <div class="register-container">
@@ -13,13 +20,19 @@
                 <div class="registration-steps-line"></div>
                 <div class="row registration-steps-bar">
                     <div style="text-align: left; float: left; width: 33.33333%">
-                        <div class="registration-steps registration-steps-active" style="margin-left: 0px;">1</div>
+                        <div class="registration-steps registration-steps-active" style="margin-left: 0px;">
+                            <div class="registration-steps-number" >1</div>
+                        </div>
                     </div>
                     <div style="text-align: center; float: left;width: 33.33333%">
-                        <div class="registration-steps">2</div>
+                        <div class="registration-steps">
+                            <div class="registration-steps-number">2</div>
+                        </div>
                     </div>
                     <div style="text-align: right; float: left;width: 33.33333%">
-                        <div class="registration-steps" style="margin-right: -1px">3</div>
+                        <div class="registration-steps" style="margin-right: -1px">
+                            <div class="registration-steps-number">3</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,10 +60,9 @@
         <div>
             <form ng-show="!vm.success" name="form" role="form" novalidate show-validation>
 
-                <div class="form-group form-group-new">
+                <div class="form-group-new">
                     <input type="text" class="profile-input" id="username" name="username" placeholder="Your Name *"
-                           ng-model="vm.registerAccount.username" ng-minlength=1 ng-maxlength=50 required>
-                    <label ng-hide="vm.registerAccount.username" for="username" class="custom-placeholder">Your Name *</label>
+                           ng-model="vm.registerAccount.username" ng-maxlength=25 required>
                     <div ng-show="form.username.$dirty && form.username.$invalid">
                         <p class="help-block"
                            ng-show="form.username.$error.required">
@@ -62,7 +74,7 @@
                         </p>
                         <p class="help-block"
                            ng-show="form.username.$error.maxlength">
-                            Your username cannot be longer than 50 characters.
+                            Your username cannot be longer than 25 characters.
                         </p>
                         <p class="help-block"
                            ng-show="form.username.$error.pattern">
@@ -70,10 +82,9 @@
                         </p>
                     </div>
                 </div>
-                <div class="form-group form-group-new">
+                <div class="form-group-new">
                     <input type="text" ng-change="vm.errorEmailExists = null;" class="profile-input" id="email" name="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" placeholder="E-mail *"
-                           ng-model="vm.registerAccount.email" ng-minlength=5 ng-maxlength=100 ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
-                    <label ng-hide="form.email.$error.email || form.email.$error.minlength || form.email.$error.maxlength || vm.registerAccount.email || form.email.$error.pattern" for="email" class="custom-placeholder">E-mail *</label>
+                           ng-model="vm.registerAccount.email" ng-minlength=5 ng-maxlength=25 ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
                     <div ng-show="form.email.$dirty && form.email.$invalid">
                         <p class="help-block"
                            ng-show="form.email.$error.required">
@@ -89,14 +100,13 @@
                         </p>
                         <p class="help-block"
                            ng-show="form.email.$error.maxlength">
-                            Your e-mail cannot be longer than 100 characters.
+                            Your e-mail cannot be longer than 25 characters.
                         </p>
                     </div>
                 </div>
-                <div class="form-group form-group-new">
+                <div class="form-group-new">
                     <input type="password" class="profile-input" id="password" name="password" placeholder="Password *"
                            ng-model="vm.registerAccount.password" ng-minlength=4 ng-maxlength=50 required>
-                    <label ng-hide="vm.registerAccount.password || form.password.$error.minlength || form.password.$error.maxlength" for="password" class="custom-placeholder">Password *</label>
                     <div ng-show="form.password.$dirty && form.password.$invalid">
                         <p class="help-block"
                            ng-show="form.password.$error.required">
@@ -113,10 +123,9 @@
                     </div>
                     <password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>
                 </div>
-                <div class="form-group form-group-new">
+                <div class="form-group-new">
                     <input type="password" class="profile-input" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password *"
                            ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50  pw-check='password' required>
-                    <label ng-hide="vm.confirmPassword || form.confirmPassword.$error.minlength || form.confirmPassword.$error.maxlength" for="confirmPassword" class="custom-placeholder">Confirm Password *</label>
                     <div ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
                         <p class="help-block"
                            ng-show="form.confirmPassword.$error.required">
@@ -172,10 +181,14 @@
                         <div style="margin-left: 0px;"><img src="/content/images/new/registerStepDone.png" class="registration-steps-image"></div>
                     </div>
                     <div style="text-align: center; float: left; width: 33.33333%">
-                        <div class="registration-steps registration-steps-active">2</div>
+                        <div class="registration-steps registration-steps-active">
+                            <div class="registration-steps-number">2</div>
+                        </div>
                     </div>
                     <div style="text-align: right ; float: left; width: 33.33333%">
-                        <div class="registration-steps" style="margin-right: -1px">3</div>
+                        <div class="registration-steps" style="margin-right: -1px">
+                            <div class="registration-steps-number">3</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -203,37 +216,70 @@
         <div>
             <form ng-show="!vm.success" name="form2" role="form" novalidate show-validation>
 
-                <div class="form-group form-group-new">
-                    <input type="text" class="profile-input" id="phoneNumber" name="phoneNumber" placeholder="Phone number"
-                           ng-model="vm.registerAccount.phoneNumber">
-                    <label ng-hide="vm.registerAccount.phoneNumber" for="phoneNumber" class="custom-placeholder">Phone number</label>
+                <div class="form-group-new">
+                    <input type="text" class="profile-input" id="phoneNumber" name="phoneNumber" placeholder="Phone number" maxlength="9" ng-model="vm.registerAccount.phoneNumber" ng-pattern="/^[0-9]*$/">
+                    <div ng-show="form2.phoneNumber.$dirty && form2.phoneNumber.$invalid">
+                        <p class="help-block"
+                           ng-show="form2.phoneNumber.$error.pattern">
+                            Numbers only.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form2.phoneNumber.$error.maxlength">
+                            Your phone number cannot be longer than 9 characters
+                        </p>
+
+                    </div>
                 </div>
-                <div class="form-group form-group-new">
+                <div class="form-group-new">
                     <input type="text" class="profile-input" id="address" name="address" placeholder="Address"
-                           ng-model="vm.registerAccount.address">
-                    <label ng-hide="vm.registerAccount.address" for="address" class="custom-placeholder">Address</label>
+                           ng-model="vm.registerAccount.address" ng-maxlength=55>
+                    <div ng-show="form2.address.$dirty && form2.address.$invalid">
+                        <p class="help-block"
+                           ng-show="form2.address.$error.maxlength">
+                            Your address cannot be longer than 55 characters.
+                        </p>
+
+                    </div>
                 </div>
 
-                <div class="form-group form-group-new">
+                <div class="form-group-new">
                     <input type="text" class="profile-input" id="companyName" name="companyName" placeholder="Company name"
-                           ng-model="vm.registerAccount.companyName">
-                    <label ng-hide="vm.registerAccount.companyName" for="companyName" class="custom-placeholder">Company name</label>
+                           ng-model="vm.registerAccount.companyName" ng-maxlength=25>
+                    <div ng-show="form2.companyName.$dirty && form2.companyName.$invalid">
+                        <p class="help-block"
+                           ng-show="form2.companyName.$error.maxlength">
+                            Your company name cannot be longer than 25 characters.
+                        </p>
+
+                    </div>
                 </div>
-                <div class="form-group form-group-new">
+                <div class="form-group-new">
                     <input type="text" class="profile-input" id="companySite" name="companySite" placeholder="Company website"
-                           ng-model="vm.registerAccount.companySite">
-                    <label ng-hide="vm.registerAccount.companySite" for="companySite" class="custom-placeholder">Company website</label>
+                           ng-model="vm.registerAccount.companySite" ng-maxlength=300>
+                    <div ng-show="form2.companySite.$dirty && form2.companySite.$invalid">
+                        <p class="help-block"
+                           ng-show="form2.companySite.$error.maxlength">
+                            Your company website cannot be longer than 300 characters.
+                        </p>
+
+                    </div>
                 </div>
 
-                <div class="form-group form-group-new">
+                <div class="form-group-new">
                     <input type="text" class="profile-input" id="jobTitle" name="jobTitle" placeholder="Job title"
-                           ng-model="vm.registerAccount.jobTitle">
-                    <label ng-hide="vm.registerAccount.jobTitle" for="jobTitle" class="custom-placeholder">Job title</label>
+                           ng-model="vm.registerAccount.jobTitle" ng-maxlength=25>
+                    <div ng-show="form2.jobTitle.$dirty && form2.jobTitle.$invalid">
+                        <p class="help-block"
+                           ng-show="form2.jobTitle.$error.maxlength">
+                            Your job title cannot be longer than 25 characters.
+                        </p>
+
+                    </div>
                 </div>
 
                 <div style="text-align: center;">
-                    <button  type="submit" ng-disabled="for2m.$invalid" ng-click="vm.register()" class="loginButton" style="width: 130px; float: left">Save</button>
-                    <button  type="submit" ng-disabled="form2.$invalid" ng-click="vm.skip()" class="loginButton skip-btn"  style="width: 130px; float: right">skip</button>
+                    <button  type="submit" ng-disabled="form2.$invalid" ng-click="vm.register()" class="loginButton" style="width: 130px; float: left">Save</button>
+                    <button  type="submit" ng-click="vm.skip()" class="loginButton skip-btn"  style="width: 130px; float: right">skip</button>
                 </div>
             </form>
             <div style="color: #7F8C8C; font-size: 13px; text-align: center; padding-top: 60px; padding-bottom: 45px">
@@ -263,7 +309,9 @@
                         <div style="margin-left: 0px;"><img src="/content/images/new/registerStepDone.png" class="registration-steps-image"></div>
                     </div>
                     <div style="text-align: right; float: left; width: 33.33333%">
-                        <div class="registration-steps registration-steps-active" style="margin-right: -1px">3</div>
+                        <div class="registration-steps registration-steps-active" style="margin-right: -1px">
+                            <div class="registration-steps-number">3</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -276,7 +324,7 @@
                 Please check your <b>{{vm.registerAccount.email}}</b> for confirmation.
             </div>
             <div class="check-span-block">
-                No email? Check your spam folder! Contact us at <a href="mailto:costumer@sigterra.com">costumer@sigterra.com.</a>
+                No email? Check your spam folder! Contact us at <a href="mailto:customer@sigterra.com">customer@sigterra.com.</a>
             </div>
             <div style="color: #7F8C8C; font-size: 13px; text-align: center; padding-top: 20px; padding-bottom: 45px">
                 Already have an account? <a class="alert-link register-link" style="color:#13BCB5;font-size: 13px;  font-weight: bold" href="" ng-click="vm.login()"> Sign in</a>

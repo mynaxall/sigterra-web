@@ -10,6 +10,9 @@
     function HomeController ($scope, Principal, LoginService, $state, $location, $anchorScroll) {
         var vm = this;
 
+
+        vm.showHaeder = false;
+
         vm.account = null;
         vm.isAuthenticated = null;
         vm.login = LoginService.open;
@@ -17,6 +20,7 @@
         $scope.$on('authenticationSuccess', function() {
             getAccount();
         });
+
 
         getAccount();
 
@@ -30,11 +34,12 @@
             $state.go('register');
         }
 
-        $scope.gotoBottom = function() {
-            // set the location.hash to the id of
-            // the element you wish to scroll to.
-            var el = document.getElementById('howItWorks');
-            el.scrollIntoView();
-        };
+
+        function setFixedNavbar(){
+            document.getElementById("default-navbar").className += " navbar-fixed-top";
+        }
+
+        setFixedNavbar();
+
     }
 })();

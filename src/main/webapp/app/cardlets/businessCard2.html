@@ -2,33 +2,30 @@
     <div class="cardlet" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
         <div style="padding: 20px; padding-bottom: 0px">
             <div class="top-div-busitess-2" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}">
-            <div class="avatar-div" style="width: 90px;height: 90px;" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
-                <img crossorigin="anonymous" class="avatar-img" ng-src="{{tabName.photo}}">
+            <div class="avatar-div" style="width: 90px;height: 90px;">
+                <img crossorigin="anonymous" class="avatar-img" ng-src="{{tabName.photo}}?{{time}}">
             </div>
             <div class="user-info-div">
-                <div ng-show="!tabName.userName.value" class="user-name"  ng-style="{'color': '#'+tabName.layout.mainColor}"
-                >Jon Dou</div>
-                <div class="user-name" ng-style="{'font-weight': tabName.userName.bold ? 'bold' : 'normal',
+                <div class="user-name" ng-style="{'font-family': tabName.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.userName.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}" ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
 
 
-                <div  ng-show="!tabName.job.value" class="job-titile-3"  style="color: #{{tabName.layout.mainColor}}">General Manager</div>
-                <div class="job-titile-3" ng-style="{'font-weight': tabName.job.bold ? 'bold' : 'normal',
+                <div class="job-titile-3" ng-style="{'font-family': tabName.job.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.job.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.job.underline ? 'underline' : 'normal'}" ng-show="tabName.job.value"  style="color: #{{tabName.layout.mainColor}}">{{tabName.job.value}}</div>
                 <div class="social-links">
                     <a href="{{tabName.socialLinks.twitter}}" target="_blank" ng-show="tabName.socialLinks.twitter" class="social-links-2">
-                        <span class="icon-tweeter_icon_02" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
+                        <span class="icon icon-artboard" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                     </a>
-                    <a class="social-link social-links-2" href="{{tabName.socialLinks.facebook}}" target="_blank" ng-show="tabName.socialLinks.facebook">
-                        <span class="icon-facebook_icon_02" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
+                    <a class="social-links-2" href="{{tabName.socialLinks.facebook}}" target="_blank" ng-show="tabName.socialLinks.facebook">
+                        <span class="icon icon-artboard-copy" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                     </a>
-                    <a class="social-link social-links-2" href="{{tabName.socialLinks.google}}" target="_blank" ng-show="tabName.socialLinks.google">
-                        <span class="icon-google_icon_02" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
+                    <a class="social-links-2" href="{{tabName.socialLinks.google}}" target="_blank" ng-show="tabName.socialLinks.google">
+                        <span class="icon icon-artboard-copy-2" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                     </a>
-                    <a class="social-link social-links-2" href="{{tabName.socialLinks.linkedin}}" target="_blank" ng-show="tabName.socialLinks.linkedin">
-                        <span class="icon-linkedin_icon_02" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
+                    <a class="social-links-2" href="{{tabName.socialLinks.linkedin}}" target="_blank" ng-show="tabName.socialLinks.linkedin">
+                        <span class="icon icon-artboard-copy-3" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                     </a>
                 </div>
             </div>
@@ -36,68 +33,55 @@
         </div>
         <div>
             <div class="user-contacts">
-                <div class="">
+                <div ng-show="tabName.userEmail.value">
                     <div class="svg-div" style="margin-top: -1px">
-                        <span class="icon-e-mail_white_icon" style="font-size: 19px;"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
-                    </div>
-                    <div ng-show="!tabName.userEmail.value" class="svg-description-new">
-                        fabian.abshireabsh@wilford.biz
+                        <span class="icon icon-artboard-copy-6" style="font-size: 19px;"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
 
-                    <div class="svg-description-new" ng-show="tabName.userEmail.value" ng-style="{'font-weight': tabName.userEmail.bold ? 'bold' : 'normal',
+                    <div class="svg-description-new" ng-style="{'font-family': tabName.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': tabName.userEmail.italic ? 'italic' : 'normal',
-                            'text-decoration': tabName.userEmail.underline ? 'underline' : 'normal'}">
+                            'text-decoration': tabName.userEmail.underline ? 'underline' : 'normal'}" style=" font-size: 13px">
                         {{tabName.userEmail.value}}
                     </div>
                 </div>
-                <div class="user-contacts-div-3">
+                <div class="user-contacts-div-3" ng-show="tabName.site.value">
                     <div class="svg-div" style="margin-top: -1px">
-                        <span class="icon-globe_white_icon" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
+                        <span class="icon icon-artboard-copy-5" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
-                    <div ng-show="!tabName.site.value" class="svg-description-new">
-                        www.websitewebsite.com
-                    </div>
-                    <div class="svg-description-new" ng-show="tabName.site.value" ng-style="{'font-weight': tabName.site.bold ? 'bold' : 'normal',
+                    <div class="svg-description-new first-card-description" ng-style="{'font-family': tabName.site.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.site.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.site.underline ? 'underline' : 'normal'}">
+                    'text-decoration': tabName.site.underline ? 'underline' : 'normal', 'width': '200px'}" style=" font-size: 13px">
                         {{tabName.site.value}}
                     </div>
                 </div>
-                <div class="user-contacts-div-3">
+                <div class="user-contacts-div-3" ng-show="tabName.phone.value">
                     <div class="svg-div" style="margin-top: -1px">
-                        <span class="icon-mobile_white_icon" style="font-size: 19px;"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
+                        <span class="icon icon-artboard-copy-4" style="font-size: 19px;"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
-                    <div ng-show="!tabName.phone.value" class="svg-description-new">
-                        1-888-555-5555
-                    </div>
-                    <div class="svg-description-new" ng-show="tabName.phone.value" ng-style="{'font-weight': tabName.phone.bold ? 'bold' : 'normal',
+                    <div class="pre-description" ng-style="{'font-family': tabName.phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.phone.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.phone.underline ? 'underline' : 'normal'}">
-                        {{tabName.phone.value}}
+                    'text-decoration': tabName.phone.underline ? 'underline' : 'normal'}" style="max-height: 25px; margin-left: 30px; font-size: 13px">
+                        {{tabName.phone.value | tel}}
                     </div>
                 </div>
             </div>
             <div class="social-link-div">
                 <div>
-                    <div ng-show="!tabName.company.value" class="svg-description-new"  ng-style="{'color': '#'+tabName.layout.secondaryColor}">Company Name</div>
-                    <div class="svg-description-new" ng-show="tabName.company.value" ng-style="{'font-weight': tabName.company.bold ? 'bold' : 'normal',
+                    <div class="svg-description-new" ng-show="tabName.company.value" style="margin-left: 0px; font-size: 13px" ng-style="{'font-family': tabName.company.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.company.italic ? 'italic' : 'normal',
-                        'text-decoration': tabName.company.underline ? 'underline' : 'normal'}"  ng-style="{'color': '#'+tabName.layout.secondaryColor}">
+                        'text-decoration': tabName.company.underline ? 'underline' : 'normal' }"  ng-style="{'color': '#'+tabName.layout.secondaryColor}">
                         {{tabName.company.value}}
                     </div>
                 </div>
-                <div class="user-contacts-div-3">
-                    <div ng-show="!tabName.address.value">
-                        <span class="" style="margin-top: 3px">
-                            <span class="icon-lacation_white_icon" style="font-size: 19px;text-decoration:none"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
-                        </span>0000 Lynch Pine Apt. 605, Croatia</div>
-                    <div class="svg-description-new" ng-show="tabName.address.value" >
-                        <span class="" style="margin-top: 3px">
-                            <span class="icon-lacation_white_icon" style="font-size: 19px; "  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
+                <div style="margin-top: 10px">
+                    <div ng-show="tabName.address.value" >
+                         <div class="pre-description" ng-style="{'font-family': tabName.address.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                        'font-style': tabName.address.italic ? 'italic' : 'normal',
+                        'text-decoration': tabName.address.underline ? 'underline' : 'normal'}" style="max-width: 180px;max-height: 58px; height: 58px; white-space: pre; word-break: break-all;float: right;font-size: 13px; margin-left: 10px"> {{tabName.address.value}}</div>
+                        <span class="" style="float: right">
+                            <span class="icon icon-artboard-copy-7" style="font-size: 19px; "  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </span>
-                        <span ng-style="{'font-weight': tabName.address.bold ? 'bold' : 'normal',
-                    'font-style': tabName.address.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.address.underline ? 'underline' : 'normal'}">{{tabName.address.value}}</span>
+
                     </div>
                 </div>
             </div>
@@ -109,8 +93,8 @@
 
 <style type="text/css">
 
-    .social-link{
-        margin-left: 15px;
+    .social-links-2{
+        margin-right: 15px;
     }
 
     .social-links{
@@ -153,16 +137,10 @@
 
     .job-titile-3{
         color: #fff;
-        font-weight: bold;
         text-transform: uppercase;
         font-size: 15px;
     }
 
-    .user-name{
-        font-size: 22px;
-        color: #FFF;
-        font-weight: bold;
-    }
 
     .user-info-div{
         padding: 20px 10px 10px 146px;

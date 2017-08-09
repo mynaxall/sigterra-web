@@ -24,7 +24,7 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/sigterra_web?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://localhost:3306/sigterra_web_new?useUnicode=true&characterEncoding=utf8&useSSL=false
         name:
         username: primadesk
         password: primadesk
@@ -102,6 +102,6 @@ jhipster:
             port: 5000
             queueSize: 512
     awss3Bucket:
-            credentials: config/aws/s3production.properties
+            credentials: config/aws/s3staging.properties
             name: sigterra-s3-storage-dev
             region: us-west-1

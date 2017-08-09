@@ -3,18 +3,53 @@
 
     angular
         .module('sigterraWebApp')
-        .controller('EditCardletListController', EditCardletListController);
+        .controller('EditCardletListController', EditCardletListController)
+        .filter('tel', function () {
+            return function (tel) {
+                if (!tel) { return ''; }
 
-    EditCardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location'];
+                var value = tel.toString().trim().replace(/^\+/, '');
 
-    function EditCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location) {
+                if (value.match(/[^0-9]/)) {
+                    return tel;
+                }
+
+                var country, city, number;
+
+                switch (value.length) {
+                    case 9: // +1PPP####### -> C (PPP) ###-####
+                        country = 1;
+                        city = value.slice(0, 3);
+                        number = value.slice(3);
+                        break;
+                    default:
+                        return tel;
+                }
+
+                if (country == 1) {
+                    country = "";
+                }
+
+                number = number.slice(0, 3) + '-' + number.slice(3);
+
+                return (country + " (" + city + ") " + number).trim();
+            };
+        });
+
+    EditCardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'orderByFilter'];
+
+    function EditCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter) {
         var vm = this;
 
+        $scope.time = Date.now()
+        $scope.showEditorNavigation = true;
         $scope.showCropDialog = false;
         $scope.firstBusinessCardId ="";
         $scope.myImage='';
         $scope.myCroppedImage = '';
         $scope.showConent = true;
+        $scope.noSocialChanges = false;
+        $scope.urlError = 'Invalid URL string. It should start from "http://" or "https://"';
 
         var handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];
@@ -42,7 +77,35 @@
         $scope.closeCropDialog = function(){
             $scope.showCropDialog = false;
             $scope.myImage = "";
+            $scope.noSocialChanges = false;
             angular.element(document.querySelector('#fileInput')).val(null);
+        }
+
+        $scope.closeSocialDialog = function(){
+            $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
+            $scope.showSocialDialog = false;
+            $scope.noSocialChanges = false;
+            $scope.tabNames.tabs[$scope.tabIndex].socialLinks = $scope.currentLinks;
+
+        }
+
+
+        $scope.showSocialDialog = false;
+
+        $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
+
+        $scope.openSocialDialog = function(index, links){
+            $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
+            $scope.tabIndex = index;
+            $scope.showSocialDialog = true;
+            $scope.socialLinks = links;
+            $scope.currentLinks = {twitter: links.twitter, facebook: links.facebook, google: links.google, linkedin: links.linkedin};
+        }
+
+        $scope.saveSocialLinks = function(){
+            $scope.tabNames.tabs[$scope.tabIndex].socialLinks = $scope.socialLinks;
+            $scope.showSocialDialog = false;
+            $scope.noSocialChanges = false;
         }
 
 
@@ -50,7 +113,7 @@
             $scope.showCropDialog = true;
             $scope.tabImageId = tabId;
             $scope.itemImageId = itemId;
-            $scope.imageItemMame =itemImgPosition;
+            $scope.imageItemMame = itemImgPosition;
             $scope.myCroppedImage = '';
         }
 
@@ -95,40 +158,33 @@
             $scope.showSpinner = true;
             $scope.myImage = ""
 
+            console.log($scope.tabImageId)
+            console.log($scope.itemImageId)
+            console.log($scope.imageItemMame)
+
             var img_b64 = $scope.myCroppedImage;
             var png = img_b64.split(',')[1];
             var file = b64toBlob(png, 'image/png')
             var fd = new FormData();
             fd.append('file', file);
-            var url = "";
-
-
-            if($scope.itemImageId != null){
-                 url =  $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame];
-
-            }else{
-                 url = $scope.tabNames.tabs[$scope.tabImageId].photo;
-
-            }
-            var filename = url.substring(url.lastIndexOf('/')+1);
-            if(filename.indexOf(".")!= -1){
-                filename = "name"
-            }
-
-            $http.post("/api/cardlet/upload/icon/"+filename,  fd, {
+            $http.post("/api/cardlet/upload/icon/test",  fd, {
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
                 })
                 .success(function (data, status, headers, config) {
                     $scope.imageUrl = data.url;
+
                     if($scope.itemImageId != null){
+
+                        console.log( $scope.tabNames)
                         $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame] = $scope.imageUrl;
                     }else {
                         setTabImage();
                     }
-                    $scope.showCropDialog = false;
                     $scope.showSpinner = false;
+                    $scope.showCropDialog = false;
                 });
+
             angular.element(document.querySelector('#fileInput')).val(null);
         };
 
@@ -140,6 +196,12 @@
             var element = typeof e === 'object' ? e.target : document.getElementById(e);
             var scrollHeight = element.scrollHeight ; // replace 60 by the sum of padding-top and padding-bottom
             element.style.height =  scrollHeight + "px";
+        };
+
+        $scope.autoExpand2 = function(id) {
+            var cyrrentEl = document.getElementById(id);
+            cyrrentEl.style.height = 'auto';
+            cyrrentEl.style.height = cyrrentEl.scrollHeight +"px"
         };
 
 
@@ -169,6 +231,7 @@
                         document.getElementsByClassName("tabs")[0].className += " active";
                     }, 500)
                 });
+            $scope.showSpinner = false;
             $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ param1;
         };
 
@@ -212,46 +275,50 @@
 
         $scope.openCity = function(cityName, tabId, cardName, cardId) {
 
-            $scope.currentSlide = undefined;
-            var i, tabcontent, tablinks, tabs;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
+
+            if(!$scope.isDisabledTabs && $scope.isEmptyName()) {
+
+                var i, tabcontent, tablinks, tabs;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+
+                }
+                tabs = document.getElementsByClassName("tabs");
+
+                for (i = 0; i < tabs.length; i++) {
+                    tabs[i].className = tabs[i].className.replace(" active", "");
+
+                }
+                document.getElementById(cityName).style.display = "block";
+                document.getElementById(tabId).className += " active";
+
+                var i, tabcontent2, tablinks2, tabs2;
+                tabcontent2 = document.getElementsByClassName("tabcontent2");
+                for (i = 0; i < tabcontent2.length; i++) {
+                    tabcontent2[i].style.display = "none";
+                }
+                tablinks2 = document.getElementsByClassName("tablinks2");
+                for (i = 0; i < tablinks2.length; i++) {
+                    tablinks2[i].className = tablinks2[i].className.replace(" active", "");
+
+                }
+                tabs2 = document.getElementsByClassName("tabs2");
+
+                for (i = 0; i < tabs2.length; i++) {
+                    tabs2[i].className = tabs2[i].className.replace(" active", "");
+
+                }
+
+                vm.currentSlide = 1;
+                $timeout(function() {vm.currentSlide = 0;},10)
+                document.getElementById(cardName).style.display = "block";
+                document.getElementById(cardId).className += " active";
             }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-
-            }
-            tabs = document.getElementsByClassName("tabs");
-
-            for (i = 0; i < tabs.length; i++) {
-                tabs[i].className = tabs[i].className.replace(" active", "");
-
-            }
-            console.log(tabId)
-            document.getElementById(cityName).style.display = "block";
-            document.getElementById(tabId).className += " active";
-
-            var i, tabcontent2, tablinks2, tabs2;
-            tabcontent2 = document.getElementsByClassName("tabcontent2");
-            for (i = 0; i < tabcontent2.length; i++) {
-                tabcontent2[i].style.display = "none";
-            }
-            tablinks2 = document.getElementsByClassName("tablinks2");
-            for (i = 0; i < tablinks2.length; i++) {
-                tablinks2[i].className = tablinks2[i].className.replace(" active", "");
-
-            }
-            tabs2 = document.getElementsByClassName("tabs2");
-
-            for (i = 0; i < tabs2.length; i++) {
-                tabs2[i].className = tabs2[i].className.replace(" active", "");
-
-            }
-
-            document.getElementById(cardName).style.display = "block";
-            document.getElementById(cardId).className += " active";
         }
 
 
@@ -324,7 +391,13 @@
                             "position": "0",
                             "image": "/content/images/portfolio_img_01.png",
                             "image2": "/content/images/portfolio_img_02.png",
-                            "image3": "/content/images/portfolio_img_03.png"
+                            "image3": "/content/images/portfolio_img_03.png",
+                            "name":{
+                                "value": "Item Header"
+                            },
+                            "description": {
+                                "value": "Item Description"
+                            }
                         }
                     ]
 
@@ -356,7 +429,13 @@
                             "position": "0",
                             "image": "/content/images/portfolio_img_01.png",
                             "image2": "/content/images/portfolio_img_02.png",
-                            "image3": "/content/images/portfolio_img_03.png"
+                            "image3": "/content/images/portfolio_img_03.png",
+                            "name":{
+                                "value": "Item Header"
+                            },
+                            "description": {
+                                "value": "Item Description"
+                            }
                         }
                     ]
 
@@ -376,6 +455,12 @@
                     "image": "/content/images/portfolio_img_01.png",
                     "image2": "/content/images/portfolio_img_02.png",
                     "image3": "/content/images/portfolio_img_03.png",
+                    "name":{
+                        "value": "Item Header"
+                    },
+                    "description": {
+                        "value": "Item Description"
+                    }
                 }
                 $scope.tabNames.tabs[tabId].items.push(newItem);
                 $scope.changeAccordionActivity(index+2)
@@ -390,33 +475,6 @@
             $http.get("/api/account")
                 .success(function(response, status, headers) {
                     $scope.userAccount = response;
-                    $scope.tabNames.tabs[0].userName = {
-                        "value": $scope.userAccount.username
-                    }
-                    $scope.tabNames.tabs[0].userEmail = {
-                        "value": $scope.userAccount.email
-                    }
-
-                    $scope.tabNames.tabs[0].phone = {
-                        "value": $scope.userAccount.phoneNumber
-                    }
-
-                    $scope.tabNames.tabs[0].address = {
-                        "value": $scope.userAccount.address
-                    }
-
-                    $scope.tabNames.tabs[0].company = {
-                        "value": $scope.userAccount.companyName
-                    }
-
-                    $scope.tabNames.tabs[0].site = {
-                        "value": $scope.userAccount.companySite
-                    }
-
-                    $scope.tabNames.tabs[0].job = {
-                        "value": $scope.userAccount.jobTitle
-                    }
-
 
                 });
         }
@@ -425,7 +483,7 @@
 
         $scope.addTab = function() {
             if ($scope.tabNames.tabs.length <= 3) {
-                var newTab = {"name":"Business Card "+$scope.tabNames.tabs.length,
+                var newTab = {"name":"Contact Info "+$scope.tabNames.tabs.length,
                     "position": $scope.tabNames.tabs.length,
                     "tabType": 1,
                     "layout":{
@@ -459,6 +517,77 @@
                     "photo":  "/content/images/avatar_img.png"
 
                     }
+                if ($scope.userAccount.username){
+                    newTab.userName = {
+                        "value": $scope.userAccount.username
+                    }
+                }else{
+                    newTab.userName = {
+                        "value": "Your Name"
+                    }
+                }
+
+                if ($scope.userAccount.email) {
+                    newTab.userEmail = {
+                        "value": $scope.userAccount.email
+                    }
+                }else{
+                    newTab.userEmail = {
+                        "value": "Email"
+                    }
+                }
+
+                if ($scope.userAccount.phoneNumber) {
+                    newTab.phone = {
+                        "value": $scope.userAccount.phoneNumber
+                    }
+                }else {
+                    newTab.phone = {
+                        "value": "000000000"
+                    }
+                }
+
+
+                if ($scope.userAccount.address) {
+                    newTab.address = {
+                        "value": $scope.userAccount.address
+                    }
+                }else{
+                    newTab.address = {
+                        "value": "Address"
+                    }
+                }
+
+                if ($scope.userAccount.companyName) {
+                    newTab.company = {
+                        "value": $scope.userAccount.companyName
+                    }
+                }else{
+                    newTab.company = {
+                        "value": "Company Name"
+                    }
+                }
+
+
+                if ($scope.userAccount.companySite) {
+                    newTab.site = {
+                        "value": $scope.userAccount.companySite
+                    }
+                }else{
+                    newTab.site = {
+                        "value": "Website"
+                    }
+                }
+
+                if ($scope.userAccount.jobTitle) {
+                    newTab.job = {
+                        "value": $scope.userAccount.jobTitle
+                    }
+                }else{
+                    newTab.job = {
+                        "value": "Job Title"
+                    }
+                }
                 if($scope.userAccount.imageUrl){
                     newTab.photo = $scope.userAccount.imageUrl
                 }
@@ -472,18 +601,19 @@
         }
 
         $scope.deleteItems = function(tabId, index){
-
-            console.log("asdasd")
+            console.log(index)
             if($scope.tabNames.tabs[tabId].items.length > 1){
+                $scope.tabNames.tabs[tabId].items.sort(function(a, b) {
+                    return a.position-b.position;
+                })
 
                 if($scope.tabNames.removeItems == null){
                     $scope.tabNames.removeItems = [];
                 }
-                if($scope.tabNames.tabs[tabId].items[index-2].id) {
-                    $scope.tabNames.removeItems.push($scope.tabNames.tabs[tabId].items[index - 2].id);
+                if($scope.tabNames.tabs[tabId].items[index].id) {
+                    $scope.tabNames.removeItems.push($scope.tabNames.tabs[tabId].items[index].id);
                 }
-
-                $scope.tabNames.tabs[tabId].items.splice((index-2), 1);
+                $scope.tabNames.tabs[tabId].items.splice((index), 1);
                 for (var i = 0; i < $scope.tabNames.tabs[tabId].items.length; i++) {
                     $scope.tabNames.tabs[tabId].items[i].index = i + 2;
                     $scope.tabNames.tabs[tabId].items[i].position = i;
@@ -491,17 +621,19 @@
             }
         }
 
-        $scope.showSpinner = false;
+        $scope.showSpinner = true;
 
         $scope.accordionActive = 2;
 
-        $scope.currentSlide = -1;
+        vm.currentSlide = 0;
 
         $scope.changeAccordionActivity = function(id){
             if($scope.accordionActive != id){
                 $scope.accordionActive = id;
-
-                $scope.currentSlide = id -2;
+                vm.currentSlide = id -2;
+                if(vm.currentSlide < 0){
+                    vm.currentSlide = 1;
+                }
 
             }else{
                 $scope.accordionActive = 0
@@ -518,12 +650,12 @@
                 $scope.tabNames.tabs[i].position = i;
             }
 
-
-
             var tabs2 = document.getElementsByClassName("tabs2");
             var tabs = document.getElementsByClassName("tabs");
 
             for (var i = 0; i < tabs.length; i++) {
+                document.getElementsByClassName("tablinks")[i].className += " disabledLink";
+
                 if(angular.element(tabs[i]).hasClass('active')){
                     document.getElementsByClassName("tabcontent")[i].style.display = "none";;
                     tabs[i].className = tabs[i].className.replace(" active", "");
@@ -533,7 +665,6 @@
                     tabs2[i].className = tabs2[i].className.replace(" active", "");
                 }
 
-                document.getElementsByClassName("tablinks")[i].className += " disabledLink";
             }
             for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                 if ($scope.tabNames.tabs[i].tabType == '1') {
@@ -545,8 +676,8 @@
             }
 
             $scope.positionChecking = false;
-
-            setTimeout(function() {
+            vm.currentSlide = 1;
+            $timeout(function() {
                 document.getElementsByClassName("tabcontent2")[0].style.display = "block";
                 document.getElementsByClassName("tabs2")[0].className += " active";
                 document.getElementsByClassName("tabcontent")[0].style.display = "block";
@@ -554,6 +685,7 @@
                 for (var i = 0; i < tabs.length; i++) {
                     document.getElementsByClassName("tablinks")[i].className = document.getElementsByClassName("tablinks")[i].className.replace(" disabledLink", "");
                 }
+                vm.currentSlide = 0
             },100);
 
         };
@@ -636,81 +768,129 @@
         }
 
         $scope.chooseType = function(id, url, tabId) {
-            $scope.currentSlide = 1;
-            $scope.tabNames.tabs[id].layout.url = url;
-            $scope.tabNames.tabs[id].layout.tabId = tabId;
+            if($scope.tabNames.tabs[id].layout.url != url) {
+                $scope.tabNames.tabs[id].layout.url = url;
+                $scope.tabNames.tabs[id].layout.tabId = tabId;
+                vm.currentSlide = 1;
+                $timeout(function () {
+                    vm.currentSlide = 0;
+                }, 10)
+            }
 
         }
 
+
+        $scope.isDisabledTabs = false;
+
+        $scope.disableTabs = function(){
+            $scope.isDisabledTabs = true;
+        }
+
+        $scope.enableTabs = function(){
+            console.log("enableTabs")
+            $scope.isDisabledTabs = false;
+        }
+
         $scope.tabWidth = function( id , colorId){
+
             var cyrrentEl = document.getElementById(id);
             if($scope.tabNames) {
 
                 if($scope.tabNames.tabs.length == 1){
-                    cyrrentEl.style.width = "486px"
+                    cyrrentEl.style.width = "646px"
                 }
+
                 if ($scope.tabNames.tabs.length === 2) {
-                    cyrrentEl.style.width = "243px"
+                    cyrrentEl.style.width = "323px"
                 }
                 if ($scope.tabNames.tabs.length === 3) {
-                    cyrrentEl.style.width = "162px"
+                    cyrrentEl.style.width = "215px"
                 }
                 if ($scope.tabNames.tabs.length === 4) {
-                    cyrrentEl.style.width = "135px"
+                    cyrrentEl.style.width = "175px"
                 }
                 if(colorId){
                     cyrrentEl.style.color = "#"+colorId;
                 }
             }
+        };
+
+
+        $scope.itemPosition = function(index){
+            return index + 1;
         }
 
 
-        $scope.addColors = function(id, colorMain, colorSecond){
+        $scope.addColors = function(id, colorMain, colorSecond, linkId){
 
             var cyrrentEl = document.getElementById(id);
+            var link = document.getElementById(linkId);
 
             if(cyrrentEl) {
 
                 if ($scope.tabNames) {
 
                     if ($scope.tabNames.tabs.length == 1) {
-                        cyrrentEl.style.width = "540px"
+                        cyrrentEl.style.width = "540px";
+                        link.style.width = "535px";
+                        link.style.maxWidth = "535px"
                     }
 
                     if ($scope.tabNames.tabs.length === 2) {
-                        cyrrentEl.style.width = "270px"
+                        cyrrentEl.style.width = "270px";
+                        link.style.maxWidth = "265px";
+                        link.style.maxWidth = "265px";
                     }
                     if ($scope.tabNames.tabs.length === 3) {
-                        cyrrentEl.style.width = "180px"
+                        cyrrentEl.style.width = "180px";
+                        link.style.width = "175x";
+                        link.style.maxWidth = "175x";
                     }
                     if ($scope.tabNames.tabs.length === 4) {
-                        cyrrentEl.style.width = "135px"
+                        cyrrentEl.style.width = "135px";
+                        link.style.width = "130px";
+                        link.style.maxWidth = "130px";
                     }
                 }
-                setTimeout(function() {
-                    cyrrentEl.style.background = "#F9F9F9";
-                    cyrrentEl.style.borderTop = "1px solid #D0D8D9"
-                    cyrrentEl.style.borderBottom = "1px solid #D0D8D9";
+                cyrrentEl.style.background = "#F9F9F9";
+                cyrrentEl.style.borderTop = "1px solid #D0D8D9"
+                cyrrentEl.style.borderBottom = "1px solid #D0D8D9";
+                link.style.color = "#7F8C8C";
+                if (angular.element(document.getElementById(id)).hasClass('active')){
+                    cyrrentEl.style.background = "#FFFFFF";
+                    cyrrentEl.style.borderTop = "2px solid #" + colorSecond;
+                    link.style.color = "#"+colorSecond;
+                    cyrrentEl.style.borderBottom = "0px";
+                }
+                setTimeout(function()  {
                     if (angular.element(document.getElementById(id)).hasClass('active')) {
                         cyrrentEl.style.background = "#FFFFFF";
-                        cyrrentEl.style.borderTop = "2px solid #" + colorSecond
+                        cyrrentEl.style.borderTop = "2px solid #" + colorSecond;
+                        link.style.color = "#"+colorSecond;
                         cyrrentEl.style.borderBottom = "0px";
                     }
-                }, 700)
+                }, 500)
             }
         }
 
 
 
         $scope.isEmptyName =function(){
-
-            for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
-                console.log($scope.tabNames.tabs[i].name)
-                if(!$scope.tabNames.tabs[i].name || $scope.tabNames.tabs[i].name == ''){
-                    return false;
+            if($scope.tabNames) {
+                for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
+                    if (!$scope.tabNames.tabs[i].name || $scope.tabNames.tabs[i].name == '') {
+                        return false;
+                    }
                 }
             }
             return true;
+        }
+
+        $scope.checkName = function(data){
+            console.log(data)
+            if(!data || data === ""){
+                return "Your tab name is required."
+            }
         }
 
         $scope.disableSaveBtn = false;
@@ -735,6 +915,30 @@
                 $scope.accordion = 0
             }
         }
+
+
+        $scope.prevSlide = function(index){
+            $scope.currentUrl = undefined;
+            if( vm.currentSlide == 0){
+                vm.currentSlide = $scope.tabNames.tabs[index].items.length -1
+            }else{
+                vm.currentSlide = parseInt(vm.currentSlide) - 1;
+            }
+
+        };
+
+        $scope.nextSlide = function(index){
+            $scope.currentUrl = undefined
+            if( vm.currentSlide == $scope.tabNames.tabs[index].items.length -1){
+                vm.currentSlide = 0
+            }else{
+                vm.currentSlide = parseInt(vm.currentSlide) + 1;
+            }
+
+
+            $timeout(function() {vm.showSpinner = false; },4000)
+        };
+
     }
 
 

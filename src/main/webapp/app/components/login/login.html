@@ -4,7 +4,7 @@
 </div>
 <div class="modal-body login-body">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12 login-form">
             <div class="alert alert-danger" ng-show="vm.authenticationError">
                 <strong>Failed to sign in!</strong> Please check your credentials and try again.
             </div>
@@ -12,14 +12,12 @@
         <div class="col-md-12">
             <div class="login-head-text">Sign in</div>
             <form class="form login-form" role="form" ng-submit="vm.login($event)">
-                <div class="form-group form-group-new">
+                <div class="form-group-new">
                     <input type="text" ng-change="vm.authenticationError = null" class="profile-input" id="username" placeholder="E-mail" ng-model="vm.username">
-                    <label class="custom-placeholder" ng-hide="vm.username" for="username">E-mail</label>
                 </div>
-                <div class="form-group form-group-new">
+                <div class="form-group-new">
                     <input type="password" ng-change="vm.authenticationError = null" class="profile-input" id="password" placeholder="Password"
                            ng-model="vm.password">
-                    <label class="custom-placeholder" ng-hide="vm.password" for="password">Password</label>
                 </div>
                 <div class="form-group form-group-new" style="margin-bottom: 30px">
                     <div style="display: inline-block; width: 50%;">
