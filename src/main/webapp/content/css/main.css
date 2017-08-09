@@ -4685,3 +4685,18 @@ ul.tab li.active {
     top: 280px;
     left: 0;
 }
+
+.subscribe-btn{
+    background-color: #1798e3;
+    color: #fff;
+    border: 1px solid #1798e3;
+    height: 40px;
+}
+
+.subscribe-btn:hover{
+    background-color: rgb(118, 190, 230);
+}
+
+.subscribe-input{
+    height: 40px;
+}
