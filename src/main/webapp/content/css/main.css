@@ -2641,6 +2641,13 @@ Social Buttons
     font-weight: normal;
 }
 
+.footer-main-text-landing{
+    font-size: 13px;
+    color: #cfd1d2;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
 .footer-border{
     border: 0 solid #ffffff;
     border-bottom-width: 1px!important;
