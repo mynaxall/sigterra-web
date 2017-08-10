@@ -911,7 +911,10 @@
             if($scope.tabNames.tabs[id].layout.url != url) {
                 $scope.tabNames.tabs[id].layout.url = url;
                 $scope.tabNames.tabs[id].layout.tabId = tabId;
-                vm.currentSlide = 0;
+                vm.currentSlide = 1;
+                $timeout(function () {
+                    vm.currentSlide = 0;
+                }, 1)
             }
 
         }
