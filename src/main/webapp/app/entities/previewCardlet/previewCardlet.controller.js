@@ -235,6 +235,30 @@
             });
         }
 
+        $scope.getFonts = function(bold, italic, underline){
+            var textDecoration = "normal";
+
+            var fontFamily = "Roboto-Regular";
+
+            if(bold && italic){
+                fontFamily = "Roboto-Bold-Italic";
+            }
+            else if(italic){
+                fontFamily = "Roboto-Italic";
+            }
+
+            if(underline){
+                textDecoration = "underline";
+            }
+
+            return  {
+                "font-family" : fontFamily,
+                "text-decoration" : textDecoration,
+
+            }
+        }
+
+
         $scope.openCity = function(cardName, cardId, id) {
             $scope.currentUrl = "";
             $scope.currentLink = "";
@@ -342,10 +366,10 @@
 
 
 
-        $scope.addColors = function(id, colorMain, colorSecond){
+        $scope.addColors = function(id, colorMain, colorSecond, linkId){
 
             var currentEl = document.getElementById(id);
-
+            var link = document.getElementById(linkId);
             if(currentEl) {
                 currentEl.style.background = "#F9F9F9";
                 currentEl.style.borderTop = "1px solid #D0D8D9"
@@ -359,16 +383,24 @@
                 if ($scope.tabNames) {
 
                     if ($scope.tabNames.tabs.length == 1) {
-                        currentEl.style.width = "540px"
+                        currentEl.style.width = "540px";
+                        link.style.width = "535px";
+                        link.style.maxWidth = "535px";
                     }
                     if ($scope.tabNames.tabs.length === 2) {
-                        currentEl.style.width = "270px"
+                        currentEl.style.width = "270px";
+                        link.style.width = "265px";
+                        link.style.maxWidth = "265px";
                     }
                     if ($scope.tabNames.tabs.length === 3) {
-                        currentEl.style.width = "180px"
+                        currentEl.style.width = "180px";
+                        link.style.width = "175px";
+                        link.style.maxWidth = "175px";
                     }
                     if ($scope.tabNames.tabs.length === 4) {
-                        currentEl.style.width = "135px"
+                        currentEl.style.width = "135px";
+                        link.style.width = "130px";
+                        link.style.maxWidth = "130px";
                     }
                 }
             }

@@ -12,6 +12,20 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: Roboto-Italic;
+    src: url('/content/fonts/roboto.italic.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Roboto-Bold-Italic;
+    src: url('/content/fonts/roboto.bold-italic.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 @font-face {
     font-family: Roboto-Regular;
@@ -1509,7 +1523,7 @@ Social Buttons
     border-style: dashed;
     -webkit-user-select: auto;
     -moz-user-select: text;
-    -ms-user-select: auto;
+    -ms-user-select: element;
     user-select: auto;
     line-height: 0%;
 }
@@ -2634,9 +2648,24 @@ Social Buttons
     margin-bottom: 15px;
 }
 
+.footer-top-text-landing{
+    color: #35353b!important;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
 .footer-main-text{
     font-size: 13px;
     color: #FFFFFF;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+.footer-main-text-landing{
+    font-size: 13px;
+    color: #cfd1d2;
     margin-bottom: 5px;
     font-weight: normal;
 }
@@ -4628,7 +4657,7 @@ ul.tab li.active {
 }
 
 .landing-border-2 {
-    width: 50%;
+    width: 100%;
     border-top: 2px dashed #e0e0e0;
     position: absolute;
     top: 280px;
@@ -4636,24 +4665,16 @@ ul.tab li.active {
 }
 
 .landing-border-3 {
-    width: 50%;
-    border-top: 1px dashed #e0e0e0;
+    width: 100%;
+    border-top: 2px dashed #e0e0e0;
     position: absolute;
     top: 280px;
     right: 0;
 }
 
-.landing-border-2 {
-    width: 100%;
+.landing-border-4{
+    width: 50%;
     border-top: 2px dashed #e0e0e0;
-    position: absolute;
-    top: 280px;
-    left: 0;
-}
-
-.landing-border-3 {
-    width: 100%;
-    border-top: 1px dashed #e0e0e0;
     position: absolute;
     top: 280px;
     left: 0;
@@ -4671,20 +4692,13 @@ ul.tab li.active {
 
     .landing-border-3 {
         width: 50%;
-        border-top: 1px dashed #e0e0e0;
+        border-top: 2px dashed #e0e0e0;
         position: absolute;
         top: 280px;
         right: 0;
     }
 }
 
-.landing-border-4{
-    width: 50%;
-    border-top: 2px dashed #e0e0e0;
-    position: absolute;
-    top: 280px;
-    left: 0;
-}
 
 .subscribe-btn{
     background-color: #1798e3;
@@ -4703,7 +4717,7 @@ ul.tab li.active {
 
 .footer-border-landing{
     width: 100%;
-    margin: 0px 15px;
+    padding: 0px 15px;
     border-top: 1px solid #f8f8f9;
 }
 

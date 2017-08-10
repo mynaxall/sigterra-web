@@ -113,6 +113,29 @@
             $scope.noSocialChanges = false;
         }
 
+        $scope.getFonts = function(bold, italic, underline){
+            var textDecoration = "normal";
+
+            var fontFamily = "Roboto-Regular";
+
+            if(bold && italic){
+                fontFamily = "Roboto-Bold-Italic";
+            }
+            else if(italic){
+                fontFamily = "Roboto-Italic";
+            }
+
+            if(underline){
+                textDecoration = "underline";
+            }
+
+            return  {
+                "font-family" : fontFamily,
+                "text-decoration" : textDecoration,
+
+            }
+        }
+
 
 
         $scope.openCropDialog = function(tabId, itemId, itemImgPosition){
@@ -776,6 +799,7 @@
 
             for (var i = 0; i < tabs.length; i++) {
                 document.getElementsByClassName("tablinks")[i].className += " disabledLink";
+
                 if(angular.element(tabs[i]).hasClass('active')){
                     document.getElementsByClassName("tabcontent")[i].style.display = "none";
                     tabs[i].className = tabs[i].className.replace(" active", "");
@@ -787,7 +811,7 @@
 
 
             }
-
+            vm.currentSlide = 1;
             for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                 if ($scope.tabNames.tabs[i].tabType == '1'){
                     $scope.firstBusinessCardId = i;
@@ -807,6 +831,7 @@
                 for (var i = 0; i < tabs.length; i++) {
                     document.getElementsByClassName("tablinks")[i].className = document.getElementsByClassName("tablinks")[i].className.replace(" disabledLink", "");
                 }
+                vm.currentSlide = 0;
             },100);
 
         }
@@ -889,7 +914,7 @@
                 vm.currentSlide = 1;
                 $timeout(function () {
                     vm.currentSlide = 0;
-                }, 10)
+                }, 1)
             }
 
         }

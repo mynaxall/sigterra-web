@@ -83,7 +83,7 @@
                 return "app/cardlets/item3-editor.html"
             }else if(url === "app/cardlets/info.html"){
                 return "app/cardlets/info-editor.html"
-            }else if(url === "app/cardlets/info3.html"){
+            }else if(url === "app/cardlets/info2.html"){
                 return "app/cardlets/info2-editor.html"
             }else if(url === "app/cardlets/info3.html"){
                 return "app/cardlets/info3-editor.html"
@@ -458,6 +458,30 @@
         $scope.selectSignatureId;
 
         $scope.selectedSignature = true;
+
+        $scope.getFonts = function(bold, italic, underline){
+            var textDecoration = "normal";
+
+            var fontFamily = "Roboto-Regular";
+
+            if(bold && italic){
+                fontFamily = "Roboto-Bold-Italic";
+            }
+            else if(italic){
+                fontFamily = "Roboto-Italic";
+            }
+
+            if(underline){
+                textDecoration = "underline";
+            }
+
+            return  {
+                "font-family" : fontFamily,
+                "text-decoration" : textDecoration,
+
+            }
+        }
+
 
         $scope.selectSignature = function(id){
             $scope.selectSignatureId = id;

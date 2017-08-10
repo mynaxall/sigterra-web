@@ -167,11 +167,53 @@
 
         }
 
-        $scope.addColors = function(id, colorMain, colorSecond, index){
+        $scope.getUrl = function(url){
+            if(url === "app/cardlets/item.html"){
+                return "app/cardlets/item-editor.html"
+            }else  if(url === "app/cardlets/item2.html"){
+                return "app/cardlets/item2-editor.html"
+            }else if(url === "app/cardlets/item3.html"){
+                return "app/cardlets/item3-editor.html"
+            }else if(url === "app/cardlets/info.html"){
+                return "app/cardlets/info-editor.html"
+            }else if(url === "app/cardlets/info2.html"){
+                return "app/cardlets/info2-editor.html"
+            }else if(url === "app/cardlets/info3.html"){
+                return "app/cardlets/info3-editor.html"
+            }else{
+
+                return url;
+            }
+        }
+
+        $scope.getFonts = function(bold, italic, underline){
+            var textDecoration = "normal";
+
+            var fontFamily = "Roboto-Regular";
+
+            if(bold && italic){
+                fontFamily = "Roboto-Bold-Italic";
+            }
+            else if(italic){
+                fontFamily = "Roboto-Italic";
+            }
+
+            if(underline){
+                textDecoration = "underline";
+            }
+
+            return  {
+                "font-family" : fontFamily,
+                "text-decoration" : textDecoration,
+
+            }
+        }
 
 
+        $scope.addColors = function(id, colorMain, colorSecond, index, linkId){
 
             var cyrrentEl = document.getElementById(id);
+            var link = document.getElementById(linkId);
             if(cyrrentEl) {
                 cyrrentEl.style.background = "#F9F9F9";
                 cyrrentEl.style.borderTop = "1px solid #D0D8D9"
@@ -186,17 +228,25 @@
                     if($scope.userCardlets[i].id === index){
                         if ($scope.tabNames) {
                             if ($scope.userCardlets[i].tabs.length == 1) {
-                                cyrrentEl.style.width = "540px"
+                                cyrrentEl.style.width = "540px";
+                                link.style.width = "535px";
+                                link.style.maxWidth = "535px";
                             }
 
                             if ($scope.userCardlets[i].tabs.length == 2) {
-                                cyrrentEl.style.width = "270px"
+                                cyrrentEl.style.width = "270px";
+                                link.style.width = "265px";
+                                link.style.maxWidth = "265px";
                             }
                             if ($scope.userCardlets[i].tabs.length == 3) {
-                                cyrrentEl.style.width = "180px"
+                                cyrrentEl.style.width = "180px";
+                                link.style.width = "175px";
+                                link.style.maxWidth = "175px";
                             }
                             if ($scope.userCardlets[i].tabs.length == 4) {
-                                cyrrentEl.style.width = "135px"
+                                cyrrentEl.style.width = "135px";
+                                link.style.width = "130px";
+                                link.style.maxWidth = "130px";
                             }
                         }
                     }
@@ -206,7 +256,7 @@
             }
         }
 
-        $scope.myInterval = 30000000;
+        $scope.myInterval = 3000;
 
     }
 })();
