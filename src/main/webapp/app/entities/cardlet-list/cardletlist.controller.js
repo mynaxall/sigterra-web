@@ -799,6 +799,7 @@
 
             for (var i = 0; i < tabs.length; i++) {
                 document.getElementsByClassName("tablinks")[i].className += " disabledLink";
+
                 if(angular.element(tabs[i]).hasClass('active')){
                     document.getElementsByClassName("tabcontent")[i].style.display = "none";
                     tabs[i].className = tabs[i].className.replace(" active", "");
@@ -810,7 +811,7 @@
 
 
             }
-
+            vm.currentSlide = 1;
             for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                 if ($scope.tabNames.tabs[i].tabType == '1'){
                     $scope.firstBusinessCardId = i;
@@ -830,6 +831,7 @@
                 for (var i = 0; i < tabs.length; i++) {
                     document.getElementsByClassName("tablinks")[i].className = document.getElementsByClassName("tablinks")[i].className.replace(" disabledLink", "");
                 }
+                vm.currentSlide = 0;
             },100);
 
         }
