@@ -23,7 +23,7 @@
                 </div>
 
             </div>
-            <uib-carousel class="main-carousel-image-div-info" active interval="myInterval" no-wrap="noWrapSlides" ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)">
+            <uib-carousel class="main-carousel-image-div-info" active="0" interval="myInterval" no-wrap="noWrapSlides" ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)">
                 <div ng-show="showEditorNavigation" class="custom-slide-prev-editor" style="top: 100px"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
                 <div ng-show="showEditorNavigation"  class="custom-slide-next-editor"  style="top: 100px"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
 
