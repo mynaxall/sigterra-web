@@ -249,7 +249,7 @@
             }
         }
 
-        $scope.myInterval = 30000000;
+        $scope.myInterval = 3000;
 
     }
 })();
