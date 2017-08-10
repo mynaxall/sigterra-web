@@ -4628,7 +4628,7 @@ ul.tab li.active {
 }
 
 .landing-border-2 {
-    width: 50%;
+    width: 100%;
     border-top: 2px dashed #e0e0e0;
     position: absolute;
     top: 280px;
@@ -4636,24 +4636,16 @@ ul.tab li.active {
 }
 
 .landing-border-3 {
-    width: 50%;
-    border-top: 1px dashed #e0e0e0;
+    width: 100%;
+    border-top: 2px dashed #e0e0e0;
     position: absolute;
     top: 280px;
     right: 0;
 }
 
-.landing-border-2 {
-    width: 100%;
+.landing-border-4{
+    width: 50%;
     border-top: 2px dashed #e0e0e0;
-    position: absolute;
-    top: 280px;
-    left: 0;
-}
-
-.landing-border-3 {
-    width: 100%;
-    border-top: 1px dashed #e0e0e0;
     position: absolute;
     top: 280px;
     left: 0;
@@ -4671,20 +4663,13 @@ ul.tab li.active {
 
     .landing-border-3 {
         width: 50%;
-        border-top: 1px dashed #e0e0e0;
+        border-top: 2px dashed #e0e0e0;
         position: absolute;
         top: 280px;
         right: 0;
     }
 }
 
-.landing-border-4{
-    width: 50%;
-    border-top: 2px dashed #e0e0e0;
-    position: absolute;
-    top: 280px;
-    left: 0;
-}
 
 .subscribe-btn{
     background-color: #1798e3;
