@@ -1509,7 +1509,7 @@ Social Buttons
     border-style: dashed;
     -webkit-user-select: auto;
     -moz-user-select: text;
-    -ms-user-select: auto;
+    -ms-user-select: element;
     user-select: auto;
     line-height: 0%;
 }
