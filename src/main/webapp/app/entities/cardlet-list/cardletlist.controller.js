@@ -79,13 +79,20 @@
         };
 
         $scope.closeCropDialog = function(){
-            $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
             $scope.showCropDialog = false;
-            $scope.showSocialDialog = false;
             $scope.myImage = "";
             $scope.noSocialChanges = false;
             angular.element(document.querySelector('#fileInput')).val(null);
-        };
+        }
+
+        $scope.closeSocialDialog = function(){
+            $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
+            $scope.showSocialDialog = false;
+            $scope.noSocialChanges = false;
+            $scope.tabNames.tabs[$scope.tabIndex].socialLinks = $scope.currentLinks;
+
+        }
+
 
         $scope.showSpinner = false;
         $scope.showSocialDialog = false;
@@ -97,6 +104,7 @@
             $scope.tabIndex = index;
             $scope.showSocialDialog = true;
             $scope.socialLinks = links;
+            $scope.currentLinks = {twitter: links.twitter, facebook: links.facebook, google: links.google, linkedin: links.linkedin};
         }
 
         $scope.saveSocialLinks = function(){
@@ -720,8 +728,13 @@
         $scope.isDeleteItem = false;
 
         $scope.deleteItems = function(tabId, index){
+
             if($scope.tabNames.tabs[tabId].items.length > 1){
-                $scope.tabNames.tabs[tabId].items.splice((index-2), 1);
+                $scope.tabNames.tabs[tabId].items.sort(function(a, b) {
+                    return a.position-b.position;
+                })
+
+                $scope.tabNames.tabs[tabId].items.splice((index), 1);
                 for (var i = 0; i < $scope.tabNames.tabs[tabId].items.length; i++) {
                     $scope.tabNames.tabs[tabId].items[i].index = i + 2;
                     $scope.tabNames.tabs[tabId].items[i].position = i;
@@ -785,7 +798,7 @@
             }
 
             $scope.positionChecking = false;
-            setTimeout(function() {
+            $timeout(function() {
                 document.getElementsByClassName("tabcontent2")[0].style.display = "block";
                 document.getElementsByClassName("tabs2")[0].className += " active";
                 document.getElementsByClassName("tabcontent")[0].style.display = "block";
@@ -922,18 +935,26 @@
             if(cyrrentEl) {
                 if($scope.tabNames) {
 
-                    if($scope.tabNames.tabs.length == 1){
-                        cyrrentEl.style.width = "540px"
+                    if ($scope.tabNames.tabs.length == 1) {
+                        cyrrentEl.style.width = "540px";
+                        link.style.width = "535px";
+                        link.style.maxWidth = "535px"
                     }
 
                     if ($scope.tabNames.tabs.length === 2) {
-                        cyrrentEl.style.width = "270px"
+                        cyrrentEl.style.width = "270px";
+                        link.style.maxWidth = "265px";
+                        link.style.maxWidth = "265px";
                     }
                     if ($scope.tabNames.tabs.length === 3) {
-                        cyrrentEl.style.width = "180px"
+                        cyrrentEl.style.width = "180px";
+                        link.style.width = "175x";
+                        link.style.maxWidth = "175x";
                     }
                     if ($scope.tabNames.tabs.length === 4) {
-                        cyrrentEl.style.width = "135px"
+                        cyrrentEl.style.width = "135px";
+                        link.style.width = "130px";
+                        link.style.maxWidth = "130px";
                     }
                 }
                 cyrrentEl.style.background = "#F9F9F9";

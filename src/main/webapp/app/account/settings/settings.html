@@ -99,7 +99,7 @@
 
                     <div class="form-group-new">
                         <input type="text" class="profile-input" id="companySite" name="companySite" placeholder="Company Website"
-                               ng-model="vm.settingsAccount.companySite" maxlength="25">
+                               ng-model="vm.settingsAccount.companySite" maxlength="300">
                     </div>
 
                     <div class="form-group-new">
@@ -160,10 +160,6 @@
                                ng-model="vm.password" ng-minlength=4 ng-maxlength=50 required>
                         <div ng-show="form2.password.$dirty && form2.password.$invalid">
                             <p class="help-block"
-                               ng-show="form2.password.$error.required">
-                                Your password is required.
-                            </p>
-                            <p class="help-block"
                                ng-show="form2.password.$error.minlength">
                                 Your password is required to be at least 4 characters.
                             </p>
@@ -178,10 +174,6 @@
                         <input type="password" class="profile-input" id="confirmPassword2" name="confirmPassword" placeholder="Confirm password"
                                ng-model="vm.confirmPassword" ng-change="disableSave = false" ng-minlength=4 ng-maxlength=50  pw-check='password2' required>
                         <div ng-show="form2.confirmPassword.$dirty && form2.confirmPassword.$invalid">
-                            <p class="help-block"
-                               ng-show="form2.confirmPassword.$error.required">
-                                Your confirmation password is required.
-                            </p>
                             <p class="help-block"
                                ng-show="form2.confirmPassword.$error.minlength">
                                 Your confirmation password is required to be at least 4 characters.

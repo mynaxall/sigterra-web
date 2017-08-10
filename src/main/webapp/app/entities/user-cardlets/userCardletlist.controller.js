@@ -74,6 +74,25 @@
 
         };
 
+        $scope.getUrl = function(url){
+            if(url === "app/cardlets/item.html"){
+                return "app/cardlets/item-editor.html"
+            }else  if(url === "app/cardlets/item2.html"){
+                return "app/cardlets/item2-editor.html"
+            }else if(url === "app/cardlets/item3.html"){
+                return "app/cardlets/item3-editor.html"
+            }else if(url === "app/cardlets/info.html"){
+                return "app/cardlets/info-editor.html"
+            }else if(url === "app/cardlets/info2.html"){
+                return "app/cardlets/info2-editor.html"
+            }else if(url === "app/cardlets/info3.html"){
+                return "app/cardlets/info3-editor.html"
+            }else{
+
+                return url;
+            }
+        }
+
         $scope.saveBanner = function(name, image64, isFile){
             $scope.showSpinner = true;
             if (isFile) {
@@ -744,22 +763,30 @@
                 if ($scope.tabNames) {
                     if ($scope.userCardlets[index].tabs.length == 1) {
                         cyrrentEl.style.width = "540px"
+                        link.style.width = "535px";
+                        link.style.maxWidth = "535px";
                     }
 
                     if ($scope.userCardlets[index].tabs.length == 2) {
                         cyrrentEl.style.width = "270px"
+                        link.style.width = "265px";
+                        link.style.maxWidth = "265px";
                     }
                     if ($scope.userCardlets[index].tabs.length == 3) {
-                        cyrrentEl.style.width = "180px"
+                        cyrrentEl.style.width = "180px";
+                        link.style.width = "175px";
+                        link.style.maxWidth = "175px";
                     }
                     if ($scope.userCardlets[index].tabs.length == 4) {
-                        cyrrentEl.style.width = "135px"
+                        cyrrentEl.style.width = "135px";
+                        link.style.width = "130px";
+                        link.style.maxWidth = "130px";
                     }
                 }
             }
         }
 
-        $scope.myInterval = 30000000;
+        $scope.myInterval = 3000;
 
 
         function b64toBlob(b64Data, contentType, sliceSize) {

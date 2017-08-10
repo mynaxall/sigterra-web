@@ -1633,7 +1633,7 @@ Social Buttons
 
 .firstItemTop{
     position: absolute;
-    bottom: 55px;
+    bottom: 54px;
     left: 0px;
     height: 35px;
     width: 100%;
@@ -1890,6 +1890,10 @@ Social Buttons
     text-align: left;
 }
 
+.copy-btn:hover{
+    background-color: rgba(19,188,181,.84) !important;
+}
+
 .portfolio-header{
     text-align: center;
     width: 100%;
@@ -1977,6 +1981,12 @@ Social Buttons
         box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
         opacity: 0.1;
     }
+    100% {
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
+    }
 
 }
 
@@ -2001,6 +2011,12 @@ Social Buttons
         opacity: 1;
     }
     75%{
+        -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
+        opacity: 0.1;
+    }
+    100% {
         -webkit-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
         -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
         box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.57);
@@ -4352,6 +4368,7 @@ ul.tab li.active {
 .home-use-col{
     border-radius: 10px;
     max-width: 350px;
+    min-width: 310px;
     margin: 0 auto;
     background-color: #FFFFFF;
     margin-bottom: 20px;
@@ -4483,34 +4500,36 @@ ul.tab li.active {
 
 .overlay2 {
     position: absolute;
+    top: 0;
     bottom: 0;
-    left: 100%;
+    left: 0;
     right: 0;
-    background-color: #FFFFFF;
-    overflow: hidden;
-    width: 0;
     height: 100%;
+    width: 100%;
+    opacity: 0;
     transition: .5s ease;
+    background-color: #ffffff;
 }
 
 .overlay {
     position: absolute;
+    top: 0;
     bottom: 0;
+    left: 0;
     right: 0;
-    background-color: #ffffff;
-    overflow: hidden;
-    width: 0;
     height: 100%;
+    width: 100%;
+    opacity: 0;
     transition: .5s ease;
+    background-color: #ffffff;
 }
 
 .staff-col:hover .overlay {
-    width: 100%;
+    opacity: 1;
 }
 
 .staff-col:hover .overlay2 {
-    width: 100%;
-    left: 0;
+    opacity: 1;
 }
 
 .text {
@@ -4569,6 +4588,14 @@ ul.tab li.active {
     word-break: break-all;
 }
 
+.first-card-description{
+    white-space: nowrap;
+    width: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 220px;
+}
+
 .next-image-preview{
     position: absolute;
     top: 180px;
@@ -4588,6 +4615,98 @@ ul.tab li.active {
     margin: 20px auto;
     width: 50%;
     float: left;
-    padding-right: 15px;
-    padding-left: 15px;
+    position: relative;
+}
+
+.landing-border-1{
+    width: 50%;
+    border-top: 2px dashed #e0e0e0;
+    position: absolute;
+    top: 280px;
+    right: 0;
+
+}
+
+.landing-border-2 {
+    width: 50%;
+    border-top: 2px dashed #e0e0e0;
+    position: absolute;
+    top: 280px;
+    left: 0;
+}
+
+.landing-border-3 {
+    width: 50%;
+    border-top: 1px dashed #e0e0e0;
+    position: absolute;
+    top: 280px;
+    right: 0;
+}
+
+.landing-border-2 {
+    width: 100%;
+    border-top: 2px dashed #e0e0e0;
+    position: absolute;
+    top: 280px;
+    left: 0;
+}
+
+.landing-border-3 {
+    width: 100%;
+    border-top: 1px dashed #e0e0e0;
+    position: absolute;
+    top: 280px;
+    left: 0;
+}
+
+@media (max-width: 1200px) {
+
+    .landing-border-2 {
+        width: 50%;
+        border-top: 2px dashed #e0e0e0;
+        position: absolute;
+        top: 280px;
+        left: 0;
+    }
+
+    .landing-border-3 {
+        width: 50%;
+        border-top: 1px dashed #e0e0e0;
+        position: absolute;
+        top: 280px;
+        right: 0;
+    }
+}
+
+.landing-border-4{
+    width: 50%;
+    border-top: 2px dashed #e0e0e0;
+    position: absolute;
+    top: 280px;
+    left: 0;
+}
+
+.subscribe-btn{
+    background-color: #1798e3;
+    color: #fff;
+    border: 1px solid #1798e3;
+    height: 40px;
+}
+
+.subscribe-btn:hover{
+    background-color: rgb(118, 190, 230);
+}
+
+.subscribe-input{
+    height: 40px;
+}
+
+.footer-border-landing{
+    width: 100%;
+    margin: 0px 15px;
+    border-top: 1px solid #f8f8f9;
+}
+
+.marin-top-5{
+    margin-top: 5px;
 }

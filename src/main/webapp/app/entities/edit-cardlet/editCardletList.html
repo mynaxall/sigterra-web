@@ -204,6 +204,11 @@
 
         a.dropdown-toggle{
             width: 100%;
+            color: #FFFFFF!important;
+        }
+
+        a:hover.dropdown-toggle{
+            color: #FFFFFF!important;
         }
 
         .status-icon{
@@ -266,7 +271,7 @@
                             </li>
                             <li  uib-dropdown class="dropdown pointer"  ng-show="tabNames.tabs.length < 4">
                                 <a class="dropdown-toggle" uib-dropdown-toggle href="" ng-class="{disabledLink: !isEmptyName()}">
-                                <span class="glyphicon glyphicon-plus" style="color: #ffffff"></span>
+                                <span class="glyphicon glyphicon-plus"></span>
                                 </a>
                                 <ul class="dropdown-menu cardlet-dropdown" >
                                     <li class="dropdown-tab" ui-sref-active="active">
@@ -335,7 +340,7 @@
                                                     <form name="myItemForm">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" name="itemLink" id="itemDescription2{{slide.index}}-{{$index}}" placeholder="Link" ng-model="slide.link">
+                                                                <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription2{{slide.index}}-{{$index}}" placeholder="Link" ng-model="slide.link">
                                                                 <label for="itemDescription2{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
@@ -354,7 +359,7 @@
                                                     <div class="item-selection-panel">
                                                         <div class="item-selection item-selected" ng-repeat="slide in tabName.items track by slide.position" ng-click="vm.currentSlide = $index">{{itemPosition($index)}}</div>
                                                         <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn-editor"><span class="glyphicon glyphicon-plus add-item-icon"></span></button>
-                                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  $index)"  class="btn btn-primary main-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
+                                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  slide.position)"  class="btn btn-primary main-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -401,7 +406,7 @@
                                                         <form name="myItemForm">
                                                             <div class="form-group form-group-editor clearfix">
                                                                 <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                    <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="33" name="itemLink" id="itemDescription4{{slide.index}}" placeholder="Link" ng-model="slide.link">
+                                                                    <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription4{{slide.index}}" placeholder="Link" ng-model="slide.link">
                                                                     <label for="itemDescription4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                                 </div>
                                                                 <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
@@ -421,7 +426,7 @@
                                                     <div class="item-selection-panel">
                                                         <div class="item-selection" ng-repeat="slide in tabName.items track by slide.position" ng-click="vm.currentSlide = $index"  ng-class="$index == vm.currentSlide ? 'item-selected': '' ">{{itemPosition($index)}}</div>
                                                         <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn-editor"><span class="glyphicon glyphicon-plus add-item-icon"></span></button>
-                                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  $index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
+                                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  slide.position)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
                                                     </div>
 
                                                 </div>
@@ -562,7 +567,7 @@
                                                 <div class="form-group form-group-editor clearfix">
 
                                                     <div class="input-text-div input-text-div-editor">
-                                                        <input type="text" class="input-new-editor" id="userName15{{tabName.items[tabName.items.length-1].index}}-{{$index}}" placeholder="Website" ng-model="tabName.site.value" maxlength="25">
+                                                        <input type="text" class="input-new-editor" id="userName15{{tabName.items[tabName.items.length-1].index}}-{{$index}}" placeholder="Website" ng-model="tabName.site.value" maxlength="300">
                                                         <label for="userName15{{tabName.items[tabName.items.length-1].index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                     </div>
                                                     <div class="text-decoration-div-editor" >
@@ -679,7 +684,7 @@
                                                     <form name="myItemForm">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" name="itemLink" id="itemDescription3{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
+                                                                <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription3{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                 <label for="itemDescription3{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
@@ -699,7 +704,7 @@
                                                         <div class="item-selection item-selected" ng-repeat="slide in tabName.items track by slide.position" ng-click="vm.currentSlide = $index">{{itemPosition($index)}}</div>
                                                         <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn-editor"><span class="glyphicon glyphicon-plus add-item-icon"></span></button>
                                                         <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  $index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
-                                                    </div>.
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1" ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)" >
@@ -746,7 +751,7 @@
                                                         <form name="myItemForm">
                                                             <div class="form-group form-group-editor clearfix">
                                                                 <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                    <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" name="itemLink" id="itemDescription1{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
+                                                                    <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" name="itemLink" maxlength="300" id="itemDescription1{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                     <label for="itemDescription1{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                                 </div>
                                                                 <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
@@ -822,7 +827,7 @@
                             <ul class="tab2">
                                 <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink'+tabName.name)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}">
                                     <div style="position: relative;display: table; width: 100%;">
-                                        <a  href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}" id="tabLink{{tabName.name}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                                        <a style="overflow: hidden; text-overflow: ellipsis;" href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}" id="tabLink{{tabName.name}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
                                     </div>
                                 </li>
 
@@ -937,7 +942,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                        ng-click="closeCropDialog()">&times;</button>
+                        ng-click="closeSocialDialog()">&times;</button>
                 <div class="crop-dialog-header">Your social profiles link</div>
             </div>
             <div  style="padding: 20px!important; text-align: center" class="modal-body">

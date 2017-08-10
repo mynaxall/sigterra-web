@@ -214,6 +214,10 @@
 
     a.dropdown-toggle{
         width: 100%;
+        color: #FFFFFF!important;
+    }
+    a:hover.dropdown-toggle{
+        color: #FFFFFF!important;
     }
 
     .status-icon{
@@ -276,7 +280,7 @@
                             </li>
                             <li dropdown auto-close="outsideClick"  uib-dropdown class="dropdown pointer"  ng-show="isNewTab">
                                 <a class="dropdown-toggle" uib-dropdown-toggle href="" ng-class="{disabledLink: !isEmptyName()}">
-                                <span class="glyphicon glyphicon-plus" style="color: #ffffff">
+                                <span class="glyphicon glyphicon-plus">
                                 </span>
                                 </a>
                                 <ul class="dropdown-menu cardlet-dropdown" >
@@ -343,8 +347,8 @@
                                                     <form name="myItemForm">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                <input type="text" ng-pattern="/^(http|https):///"  class="input-new-editor" name="itemLink" id="description7{{slide.index}}-{{$index}}" placeholder="Link" ng-model="slide.link">
-                                                                <label for="description7{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                <input type="text" ng-pattern="/^(http|https):///"  class="input-new-editor" maxlength="300" name="itemLink" id="description7{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
+                                                                <label for="description7{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                 <p class="help-block has-error-new"
@@ -362,7 +366,7 @@
                                                     <div class="item-selection-panel">
                                                         <div class="item-selection item-selected" ng-repeat="slide in tabName.items track by slide.position" ng-click="vm.currentSlide = $index">{{itemPosition($index)}}</div>
                                                         <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn-editor"><span class="glyphicon glyphicon-plus add-item-icon"></span></button>
-                                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  $index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
+                                                        <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  slide.position)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -409,7 +413,7 @@
                                                         <form name="myItemForm">
                                                             <div class="form-group form-group-editor clearfix">
                                                                 <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                    <input  type="text" ng-pattern="/^(http|https):///" class="input-new-editor" name="itemLink" id="descriptionInfo{{slide.index}}" placeholder="Link" ng-model="slide.link">
+                                                                    <input  type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="descriptionInfo{{slide.index}}" placeholder="Link" ng-model="slide.link">
                                                                     <label for="descriptionInfo{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                                 </div>
                                                                 <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
@@ -510,13 +514,13 @@
                                                     <form name="myItemForm">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" name="itemLink" id="description5{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
+                                                                <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" name="itemLink" maxlength="300" id="description5{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                 <label for="description5{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                 <p class="help-block has-error-new"
                                                                    ng-show="myItemForm.itemLink.$error.pattern">
-                                                                    Invalid URL string. It should starts from "http://" or "https://"
+                                                                    {{urlError}}
                                                                 </p>
 
                                                             </div>
@@ -575,7 +579,7 @@
                                                         <form name="myItemForm">
                                                             <div class="form-group form-group-editor clearfix">
                                                                 <div class="cover-input input-text-div-editor" style="width: 340px">
-                                                                    <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" name="itemLink" id="description6{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
+                                                                    <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" name="itemLink" maxlength="300" id="description6{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                     <label for="description6{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                                 </div>
                                                                 <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
@@ -732,7 +736,7 @@
                                                 <div class="form-group form-group-editor clearfix">
 
                                                     <div class="input-text-div input-text-div-editor">
-                                                        <input type="text" class="input-new-editor" id="userName7-{{$index}}" placeholder="Website" ng-model="tabName.site.value" maxlength="25">
+                                                        <input type="text" class="input-new-editor" id="userName7-{{$index}}" placeholder="Website" ng-model="tabName.site.value" maxlength="300">
                                                         <label for="userName7-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                     </div>
                                                     <div class="text-decoration-div-editor" >
@@ -829,7 +833,7 @@
                             <ul class="tab2">
                                 <li style="background-color: #fff" class="tabs2" ng-style="addColors('li'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink'+tabName.name)" ng-repeat="tabName in tabNames.tabs" id="li{{tabName.position}}{{tabName.name}}">
                                     <div style="position: relative;display: table; width: 100%;">
-                                        <a href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}"  id="tabLink{{tabName.name}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, 'tab'+tabName.position, tabName.name+tabName.position, 'li'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                                        <a style="overflow: hidden; text-overflow: ellipsis;" href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}"  id="tabLink{{tabName.name}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, 'tab'+tabName.position, tabName.name+tabName.position, 'li'+tabName.position+tabName.name)">{{tabName.name}}</a>
                                     </div>
                                 </li>
 
@@ -931,14 +935,14 @@
             </div>
         </div>
     </div>
-</div>
+</div>index
 
 <div class="modeal-custom-window ng-hide" ng-show="showSocialDialog">
     <div class="modal-dialog " style="margin-top: 0px; width:450px!important;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                        ng-click="closeCropDialog()">&times;</button>
+                        ng-click="closeSocialDialog()">&times;</button>
                 <div class="crop-dialog-header">Your social profiles link</div>
             </div>
             <div  style="padding: 20px!important; text-align: center" class="modal-body">

@@ -91,6 +91,8 @@
                     vm.error = 'ERROR';
                 });
             }
+            vm.password = "";
+            vm.confirmPassword = "";
             $scope.disableSave = true;
         }
 

@@ -167,6 +167,25 @@
 
         }
 
+        $scope.getUrl = function(url){
+            if(url === "app/cardlets/item.html"){
+                return "app/cardlets/item-editor.html"
+            }else  if(url === "app/cardlets/item2.html"){
+                return "app/cardlets/item2-editor.html"
+            }else if(url === "app/cardlets/item3.html"){
+                return "app/cardlets/item3-editor.html"
+            }else if(url === "app/cardlets/info.html"){
+                return "app/cardlets/info-editor.html"
+            }else if(url === "app/cardlets/info2.html"){
+                return "app/cardlets/info2-editor.html"
+            }else if(url === "app/cardlets/info3.html"){
+                return "app/cardlets/info3-editor.html"
+            }else{
+
+                return url;
+            }
+        }
+
         $scope.addColors = function(id, colorMain, colorSecond, index){
 
 
