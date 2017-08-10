@@ -12,6 +12,20 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: Roboto-Italic;
+    src: url('/content/fonts/roboto.italic.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Roboto-Bold-Italic;
+    src: url('/content/fonts/roboto.bold-italic.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 @font-face {
     font-family: Roboto-Regular;

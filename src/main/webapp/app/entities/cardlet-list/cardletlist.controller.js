@@ -113,6 +113,29 @@
             $scope.noSocialChanges = false;
         }
 
+        $scope.getFonts = function(bold, italic, underline){
+            var textDecoration = "normal";
+
+            var fontFamily = "Roboto-Regular";
+
+            if(bold && italic){
+                fontFamily = "Roboto-Bold-Italic";
+            }
+            else if(italic){
+                fontFamily = "Roboto-Italic";
+            }
+
+            if(underline){
+                textDecoration = "underline";
+            }
+
+            return  {
+                "font-family" : fontFamily,
+                "text-decoration" : textDecoration,
+
+            }
+        }
+
 
 
         $scope.openCropDialog = function(tabId, itemId, itemImgPosition){
