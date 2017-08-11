@@ -873,13 +873,13 @@
 
                     if ($scope.tabNames.tabs.length === 2) {
                         cyrrentEl.style.width = "270px";
-                        link.style.maxWidth = "265px";
+                        link.style.width = "265px";
                         link.style.maxWidth = "265px";
                     }
                     if ($scope.tabNames.tabs.length === 3) {
                         cyrrentEl.style.width = "180px";
-                        link.style.width = "175x";
-                        link.style.maxWidth = "175x";
+                        link.style.width = "170px";
+                        link.style.maxWidth = "170px";
                     }
                     if ($scope.tabNames.tabs.length === 4) {
                         cyrrentEl.style.width = "135px";
