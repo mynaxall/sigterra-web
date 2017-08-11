@@ -463,9 +463,17 @@
                     }
                 }
                 $scope.tabNames.tabs[tabId].items.push(newItem);
-                $scope.changeAccordionActivity(index+2)
-
                 $scope.slides2 = $scope.tabNames.tabs[tabId].items;
+
+                if ($scope.tabNames.tabs[tabId].items.length == 2){
+                    console.log("asd")
+                    setTimeout(function () {
+                        $scope.changeAccordionActivity(index + 2)
+                        vm.currentSlide = 1;
+                    }, 100);
+                }else{
+                    $scope.changeAccordionActivity(index + 2)
+                }
 
             }
         }
@@ -701,6 +709,9 @@
             else if(italic){
                 fontFamily = "Roboto-Italic";
             }
+            else if(bold){
+                fontFamily = "Roboto-Bold";
+            }
 
             if(underline){
                 textDecoration = "underline";
@@ -821,17 +832,17 @@
             if($scope.tabNames) {
 
                 if($scope.tabNames.tabs.length == 1){
-                    cyrrentEl.style.width = "646px"
+                    cyrrentEl.style.width = "698px"
                 }
 
                 if ($scope.tabNames.tabs.length === 2) {
-                    cyrrentEl.style.width = "323px"
+                    cyrrentEl.style.width = "349px"
                 }
                 if ($scope.tabNames.tabs.length === 3) {
-                    cyrrentEl.style.width = "215px"
+                    cyrrentEl.style.width = "232px"
                 }
                 if ($scope.tabNames.tabs.length === 4) {
-                    cyrrentEl.style.width = "175px"
+                    cyrrentEl.style.width = "188px"
                 }
                 if(colorId){
                     cyrrentEl.style.color = "#"+colorId;
@@ -862,13 +873,13 @@
 
                     if ($scope.tabNames.tabs.length === 2) {
                         cyrrentEl.style.width = "270px";
-                        link.style.maxWidth = "265px";
+                        link.style.width = "265px";
                         link.style.maxWidth = "265px";
                     }
                     if ($scope.tabNames.tabs.length === 3) {
                         cyrrentEl.style.width = "180px";
-                        link.style.width = "175x";
-                        link.style.maxWidth = "175x";
+                        link.style.width = "170px";
+                        link.style.maxWidth = "170px";
                     }
                     if ($scope.tabNames.tabs.length === 4) {
                         cyrrentEl.style.width = "135px";

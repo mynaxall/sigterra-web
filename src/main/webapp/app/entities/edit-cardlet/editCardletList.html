@@ -339,7 +339,7 @@
                                                     </div>
                                                     <form name="myItemForm">
                                                         <div class="form-group form-group-editor clearfix">
-                                                            <div class="cover-input input-text-div-editor" style="width: 340px">
+                                                            <div class="cover-input input-text-div-editor" style="width: 370px">
                                                                 <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription2{{slide.index}}-{{$index}}" placeholder="Link" ng-model="slide.link">
                                                                 <label for="itemDescription2{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
@@ -405,7 +405,7 @@
                                                         </div>
                                                         <form name="myItemForm">
                                                             <div class="form-group form-group-editor clearfix">
-                                                                <div class="cover-input input-text-div-editor" style="width: 340px">
+                                                                <div class="cover-input input-text-div-editor" style="width: 370px">
                                                                     <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription4{{slide.index}}" placeholder="Link" ng-model="slide.link">
                                                                     <label for="itemDescription4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                                 </div>
@@ -453,8 +453,8 @@
 
                                         <table style="width: 100%; height: 110px; margin-bottom: 30px;">
                                             <th>
-                                            <td ng-repeat="itemType in itemTypes" style="max-width: 240px!important; max-height: 50px!important; position: relative; width: 233px">
-                                                <div  style=" transform: scale(0.40); display: inline-block; position: absolute; top:-70px;  max-height: 242px" ng-class="$index === 1 ? 'second-cardler-example' : $index === 2 ? 'third-cardler-example': 'first-cardler-example'">
+                                            <td ng-repeat="itemType in itemTypes" style="max-width: 250px!important; max-height: 110px!important; position: relative;width: 250px">
+                                                <div  style=" transform: scale(0.45); display: inline-block; position: absolute; top:-70px;  max-height: 242px" ng-class="$index === 1 ? 'second-cardler-example' : $index === 2 ? 'third-cardler-example': 'first-cardler-example'">
                                                     <div ng-click="chooseType(tabName.position, itemType.path, itemType.id)" class="choose-tab" ng-class="tabNames.tabs[tabName.position].layout.tabId == itemType.id ? 'choose-tab-active' : ''"></div>
                                                     <div class="cardlet-top-border" style="border-bottom-width: 1px"></div>
                                                     <ng-include style="display: block!important" src="itemType.path" ></ng-include>
@@ -629,8 +629,8 @@
 
                                             <table  style="width: 100%; height: 110px; margin-bottom: 30px;">
                                                 <th>
-                                                <td ng-repeat="tabType in tabTypes" style="max-width: 240px!important; max-height: 50px!important; position: relative;width: 233px">
-                                                    <div style=" transform: scale(0.40); display: inline-block;position: absolute; top:-70px;  max-height: 242px" ng-class="$index === 1 ? 'second-cardler-example' : $index === 2 ? 'third-cardler-example': 'first-cardler-example'">
+                                                <td ng-repeat="tabType in tabTypes" style="max-width: 250px!important; max-height: 110px!important; position: relative;width: 250px">
+                                                    <div style=" transform: scale(0.45); display: inline-block;position: absolute; top:-70px;  max-height: 242px" ng-class="$index === 1 ? 'second-cardler-example' : $index === 2 ? 'third-cardler-example': 'first-cardler-example'">
                                                         <div ng-click="chooseType(tabName.position, tabType.path, tabType.id)" class="choose-tab" ng-class="tabNames.tabs[tabName.position].layout.tabId == tabType.id ? 'choose-tab-active' : ''"></div>
                                                         <div class="cardlet-top-border" style="border-bottom-width: 1px"></div>
                                                         <ng-include style="display: block!important" src="tabType.path" ></ng-include>
@@ -683,7 +683,7 @@
                                                     </div>
                                                     <form name="myItemForm">
                                                         <div class="form-group form-group-editor clearfix">
-                                                            <div class="cover-input input-text-div-editor" style="width: 340px">
+                                                            <div class="cover-input input-text-div-editor" style="width: 370px">
                                                                 <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription3{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                 <label for="itemDescription3{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
@@ -750,7 +750,7 @@
                                                         </div>
                                                         <form name="myItemForm">
                                                             <div class="form-group form-group-editor clearfix">
-                                                                <div class="cover-input input-text-div-editor" style="width: 340px">
+                                                                <div class="cover-input input-text-div-editor" style="width: 370px">
                                                                     <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" name="itemLink" maxlength="300" id="itemDescription1{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                     <label for="itemDescription1{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                                 </div>
@@ -797,8 +797,8 @@
 
                                         <table style="width: 100%; height: 110px; margin-bottom: 30px;">
                                             <th>
-                                            <td ng-repeat="itemType in infoTypes"  style="max-width: 240px!important; max-height: 50px!important; position: relative; width: 233px">
-                                                <div style="transform: scale(0.40); display: inline-block; position: absolute; top:-70px; max-height: 242px" ng-class="$index === 1 ? 'second-cardler-example' : $index === 2 ? 'third-cardler-example': 'first-cardler-example'">
+                                            <td ng-repeat="itemType in infoTypes"  style="max-width: 250px!important; max-height: 110px!important; position: relative;width: 250px">
+                                                <div style="transform: scale(0.45); display: inline-block; position: absolute; top:-70px; max-height: 242px" ng-class="$index === 1 ? 'second-cardler-example' : $index === 2 ? 'third-cardler-example': 'first-cardler-example'">
                                                     <div ng-click="chooseType(tabName.position, itemType.path, itemType.id)" class="choose-tab" ng-class="tabNames.tabs[tabName.position].layout.tabId == itemType.id ? 'choose-tab-active' : ''"></div>
                                                     <div class="cardlet-top-border" style="border-bottom-width: 1px"></div>
                                                     <ng-include style="display: block!important" src="itemType.path" ></ng-include>
@@ -825,9 +825,9 @@
                     <div style="min-height: 320px;">
                         <div>
                             <ul class="tab2">
-                                <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink'+tabName.name)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}">
+                                <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink2'+tabName.position)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}">
                                     <div style="position: relative;display: table; width: 100%;">
-                                        <a style="overflow: hidden; text-overflow: ellipsis;" href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}" id="tabLink{{tabName.name}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                                        <a style="overflow: hidden; text-overflow: ellipsis;" href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}" id="tabLink2{{tabName.position}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
                                     </div>
                                 </li>
 
@@ -938,7 +938,7 @@
 </div>
 
 <div class="modeal-custom-window ng-hide" ng-show="showSocialDialog">
-    <div class="modal-dialog " style="margin-top: 0px; width:450px!important;">
+    <div class="modal-dialog " style="margin-top: 0px; width:480px!important;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"

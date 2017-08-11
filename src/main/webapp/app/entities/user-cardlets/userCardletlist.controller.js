@@ -470,6 +470,9 @@
             else if(italic){
                 fontFamily = "Roboto-Italic";
             }
+            else if(bold){
+                fontFamily = "Roboto-Bold";
+            }
 
             if(underline){
                 textDecoration = "underline";
@@ -810,7 +813,7 @@
             }
         }
 
-        $scope.myInterval = 3000;
+        $scope.myInterval = 0;
 
 
         function b64toBlob(b64Data, contentType, sliceSize) {
