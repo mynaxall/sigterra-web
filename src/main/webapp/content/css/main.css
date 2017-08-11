@@ -4631,56 +4631,37 @@ ul.tab li.active {
     position: relative;
 }
 
+.landing-border{
+    width: 80%;
+    border-top: 2px dashed #e0e0e0;
+    position: absolute;
+    top: 420px;
+    right: 10%;
+    visibility: visible;
+}
+
 .landing-border-1{
-    width: 50%;
-    border-top: 2px dashed #e0e0e0;
-    position: absolute;
-    top: 280px;
-    right: 0;
+    visibility: hidden;
+
 
 }
 
-.landing-border-2 {
-    width: 100%;
-    border-top: 2px dashed #e0e0e0;
-    position: absolute;
-    top: 280px;
-    left: 0;
-}
-
-.landing-border-3 {
-    width: 100%;
-    border-top: 2px dashed #e0e0e0;
-    position: absolute;
-    top: 280px;
-    right: 0;
-}
-
-.landing-border-4{
-    width: 50%;
-    border-top: 2px dashed #e0e0e0;
-    position: absolute;
-    top: 280px;
-    left: 0;
-}
 
 @media (max-width: 1200px) {
 
-    .landing-border-2 {
-        width: 50%;
+    .landing-border{
+      visibility: hidden;
+    }
+    .landing-border-1{
+        width: 100%;
         border-top: 2px dashed #e0e0e0;
         position: absolute;
         top: 280px;
-        left: 0;
+        left: 50%;
+        visibility: visible;
+
     }
 
-    .landing-border-3 {
-        width: 50%;
-        border-top: 2px dashed #e0e0e0;
-        position: absolute;
-        top: 280px;
-        right: 0;
-    }
 }
 
 
