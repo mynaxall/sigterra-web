@@ -825,9 +825,9 @@
                     <div style="min-height: 320px;">
                         <div>
                             <ul class="tab2">
-                                <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink'+tabName.name)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}">
+                                <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink'+tabName.position+tabName.name)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}">
                                     <div style="position: relative;display: table; width: 100%;">
-                                        <a style="overflow: hidden; text-overflow: ellipsis;" href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}" id="tabLink{{tabName.name}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                                        <a style="overflow: hidden; text-overflow: ellipsis;" href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}" id="tabLink{{tabName.position}}{{tabName.name}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
                                     </div>
                                 </li>
 
