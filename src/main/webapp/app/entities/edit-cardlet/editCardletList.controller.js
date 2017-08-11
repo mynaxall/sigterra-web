@@ -821,17 +821,17 @@
             if($scope.tabNames) {
 
                 if($scope.tabNames.tabs.length == 1){
-                    cyrrentEl.style.width = "646px"
+                    cyrrentEl.style.width = "698px"
                 }
 
                 if ($scope.tabNames.tabs.length === 2) {
-                    cyrrentEl.style.width = "323px"
+                    cyrrentEl.style.width = "349px"
                 }
                 if ($scope.tabNames.tabs.length === 3) {
-                    cyrrentEl.style.width = "215px"
+                    cyrrentEl.style.width = "232px"
                 }
                 if ($scope.tabNames.tabs.length === 4) {
-                    cyrrentEl.style.width = "175px"
+                    cyrrentEl.style.width = "188px"
                 }
                 if(colorId){
                     cyrrentEl.style.color = "#"+colorId;
