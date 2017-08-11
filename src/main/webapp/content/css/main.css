@@ -6,28 +6,6 @@
 }
 
 @font-face {
-    font-family: Roboto-Bold;
-    src: url('/content/fonts/Roboto-Bold.ttf');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: Roboto-Italic;
-    src: url('/content/fonts/roboto.italic.ttf');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: Roboto-Bold-Italic;
-    src: url('/content/fonts/roboto.bold-italic.ttf');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
-@font-face {
     font-family: Roboto-Regular;
     src: url('/content/fonts/Roboto-Regular.ttf');
     font-weight: normal;
@@ -36,6 +14,27 @@
 @font-face {
     font-family: Roboto-Black;
     src: url('/content/fonts/Roboto-Black.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Roboto-Bold;
+    src: url('/content/fonts/Roboto-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Roboto-Italic;
+    src: url('/content/fonts/Roboto-Italic.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Roboto-Bold-Italic;
+    src: url('/content/fonts/Roboto-BoldItalic.ttf');
     font-weight: normal;
     font-style: normal;
 }
@@ -144,6 +143,13 @@
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.roboto-bold-italic{
+    font-family: Roboto-Bold-Italic;
+}
+.roboto-italic{
+    font-family: Roboto-Italic;
 }
 
 .icon-facebook:before {
