@@ -810,7 +810,7 @@
             }
         }
 
-        $scope.myInterval = 3000;
+        $scope.myInterval = 0;
 
 
         function b64toBlob(b64Data, contentType, sliceSize) {
