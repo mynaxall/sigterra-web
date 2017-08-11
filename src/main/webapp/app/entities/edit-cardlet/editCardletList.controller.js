@@ -463,9 +463,17 @@
                     }
                 }
                 $scope.tabNames.tabs[tabId].items.push(newItem);
-                $scope.changeAccordionActivity(index+2)
-
                 $scope.slides2 = $scope.tabNames.tabs[tabId].items;
+
+                if ($scope.tabNames.tabs[tabId].items.length == 2){
+                    console.log("asd")
+                    setTimeout(function () {
+                        $scope.changeAccordionActivity(index + 2)
+                        vm.currentSlide = 1;
+                    }, 100);
+                }else{
+                    $scope.changeAccordionActivity(index + 2)
+                }
 
             }
         }

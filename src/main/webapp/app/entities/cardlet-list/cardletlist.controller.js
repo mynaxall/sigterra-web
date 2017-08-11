@@ -602,16 +602,16 @@
 
 
         $scope.addItems = function(tabId, index) {
-            if($scope.tabNames.tabs[tabId].items.length <= 9){
+            if($scope.tabNames.tabs[tabId].items.length <= 9) {
                 $scope.isDeleteItem = true;
-                var newItem =  {
+                var newItem = {
                     //"name":  ($scope.tabNames.tabs[tabId].items.length+1)+" item",
-                    "index": index+2,
+                    "index": index + 2,
                     "position": $scope.tabNames.tabs[tabId].items.length,
                     "image": "/content/images/portfolio_img_01.png",
                     "image2": "/content/images/portfolio_img_02.png",
                     "image3": "/content/images/portfolio_img_03.png",
-                    "name":{
+                    "name": {
                         "value": "Item Header"
                     },
                     "description": {
@@ -620,10 +620,20 @@
                 }
 
                 $scope.tabNames.tabs[tabId].items.push(newItem);
-                $scope.changeAccordionActivity(index+2)
                 $scope.slides2 = $scope.tabNames.tabs[tabId].items;
+                if ($scope.tabNames.tabs[tabId].items.length == 2){
+                    console.log("asd")
+                    setTimeout(function () {
+                        $scope.changeAccordionActivity(index + 2)
+                        vm.currentSlide = 1;
+                    }, 100);
+                }else{
+                $scope.changeAccordionActivity(index + 2)
+                }
 
             }
+
+
         }
 
 
