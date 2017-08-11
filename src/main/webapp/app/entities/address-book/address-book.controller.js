@@ -197,6 +197,9 @@
             else if(italic){
                 fontFamily = "Roboto-Italic";
             }
+            else if(bold){
+                fontFamily = "Roboto-Bold";
+            }
 
             if(underline){
                 textDecoration = "underline";
@@ -208,7 +211,6 @@
 
             }
         }
-
 
         $scope.addColors = function(id, colorMain, colorSecond, index, linkId){
 
