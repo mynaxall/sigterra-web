@@ -2655,9 +2655,10 @@ Social Buttons
 }
 
 .footer-top-text-landing{
+    font-family: OpenSans-Semibold;
     color: #35353b!important;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 16pt;
     margin-bottom: 20px;
     margin-top: 15px;
 }
@@ -2670,7 +2671,8 @@ Social Buttons
 }
 
 .footer-main-text-landing{
-    font-size: 13px;
+    font-family: OpenSans-Light;
+    font-size: 12pt;
     color: #cfd1d2;
     margin-bottom: 5px;
     font-weight: normal;
