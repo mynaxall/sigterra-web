@@ -193,6 +193,7 @@ html{
     background: #FFFFFF;
     height: 100%;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
