@@ -2826,7 +2826,7 @@ div.navbar-collapse.in.collapse{
 
 @media (min-width: 992px){
     .sub-footer{
-        height: 384px;
+        height: 360px;
     }
 }
 .navbar-default .navbar-nav .open .dropdown-menu > .sigterra-naigation > a{
@@ -3741,7 +3741,7 @@ button[disabled]:hover{
     background-color: rgba(115, 140, 158, 0.37);
     padding-right: 50px!important;
     padding-left: 50px!important;
-    padding-bottom: 180px;
+    padding-bottom: 270px;
     float: none;
 }
 
