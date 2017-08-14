@@ -193,6 +193,7 @@ html{
     background: #FFFFFF;
     height: 100%;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -2655,9 +2656,10 @@ Social Buttons
 }
 
 .footer-top-text-landing{
+    font-family: OpenSans-Semibold;
     color: #35353b!important;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 16pt;
     margin-bottom: 20px;
     margin-top: 15px;
 }
@@ -2670,7 +2672,8 @@ Social Buttons
 }
 
 .footer-main-text-landing{
-    font-size: 13px;
+    font-family: OpenSans-Light;
+    font-size: 12pt;
     color: #cfd1d2;
     margin-bottom: 5px;
     font-weight: normal;
@@ -2824,7 +2827,7 @@ div.navbar-collapse.in.collapse{
 
 @media (min-width: 992px){
     .sub-footer{
-        height: 384px;
+        height: 360px;
     }
 }
 .navbar-default .navbar-nav .open .dropdown-menu > .sigterra-naigation > a{
@@ -2959,7 +2962,7 @@ ul.tab li a:hover {
 }
 
 ul.tab li {
-    width: 175px;
+    width: 188px;
     min-height: 62px;
     height: 60px;
     float: left;
@@ -3739,7 +3742,7 @@ button[disabled]:hover{
     background-color: rgba(115, 140, 158, 0.37);
     padding-right: 50px!important;
     padding-left: 50px!important;
-    padding-bottom: 180px;
+    padding-bottom: 270px;
     float: none;
 }
 
@@ -3765,7 +3768,7 @@ button[disabled]:hover{
     margin: 0px auto;
 }
 
-@media (min-width: 1270px) {
+@media (min-width: 1400px) {
 
     .second-column {
         padding-top: 100px;
@@ -3966,6 +3969,8 @@ button[disabled]:hover{
     right: -20px;
     width: 33px;
     height: 33px;
+    padding: 6px 8px;
+    padding-bottom: 9px;
     background-color: #E8645A;
     border: none!important;
     border-radius: 33px;
@@ -4672,6 +4677,7 @@ ul.tab li.active {
 
 
 .subscribe-btn{
+    font-size: 13pt;
     background-color: #1798e3;
     color: #fff;
     border: 1px solid #1798e3;
@@ -4684,6 +4690,10 @@ ul.tab li.active {
 
 .subscribe-input{
     height: 40px;
+    font-family: OpenSans-Light;
+    font-size: 12pt;
+    box-shadow:none;
+    color: #cfd1d2;
 }
 
 .footer-border-landing{

@@ -67,13 +67,16 @@
             </div>
             <div class="social-link-div">
                 <div>
-                    <div class="svg-description-new" ng-show="tabName.company.value" style="margin-left: 0px; font-size: 13px" ng-style="getFonts(tabName.company.bold, tabName.company.italic, tabName.company.underline)"  ng-style="{'color': '#'+tabName.layout.secondaryColor}">
+                    <div class="svg-description-new" ng-show="tabName.company.value" style="margin-left: 0px; font-size: 13px"  ng-style="{'font-family': tabName.company.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                    'font-style': tabName.company.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.company.underline ? 'underline' : 'normal','padding-right': tabName.company.italic ? '3px' : '0px'}">
                         {{tabName.company.value}}
                     </div>
                 </div>
                 <div style="margin-top: 10px">
                     <div ng-show="tabName.address.value" >
-                         <div class="pre-description" ng-style="getFonts(tabName.address.bold, tabName.address.italic, tabName.address.underline)" style="max-width: 180px;max-height: 58px; height: 58px; white-space: pre; word-break: break-all;float: right;font-size: 13px; margin-left: 10px"> {{tabName.address.value}}</div>
+                         <div class=" pre-description" ng-style="{'font-family': tabName.address.bold ? 'Roboto-Bold' : 'Roboto-Regular', 'font-style': tabName.address.italic ? 'italic' : 'normal',
+                    'text-decoration': tabName.address.underline ? 'underline' : 'normal', 'padding-right': tabName.address.italic ? '3px' : '0px'}" style="max-width: 180px;max-height: 58px; height: 58px; white-space: pre; word-break: break-all;float: right;font-size: 13px; margin-left: 10px"> {{tabName.address.value}}</div>
                         <span class="" style="float: right">
                             <span class="icon icon-artboard-copy-7" style="font-size: 19px; "  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                         </span>

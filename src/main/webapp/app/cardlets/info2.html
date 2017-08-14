@@ -3,8 +3,8 @@
         <div>
             <div ng-show="tabName.items.length == 1">
                 <div class="main-carousel-image-div-info">
-                    <div style="margin-top: 25px"  ng-repeat="slide in tabName.items"  class="main-carousel-info-div-new">
-                        <div style="float: left;">
+                    <div style="margin-top: 25px;"  ng-repeat="slide in tabName.items"  class="main-carousel-info-div-new">
+                        <div style="float: left;width: 315px; min-height: 30px ">
                             <pre class="carousel-info-name-div-new-2 carousel-item-name-div" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': slide.name.italic ? 'italic' : 'normal',
                             'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
@@ -27,12 +27,12 @@
                 <div ng-show="showEditorNavigation" class="custom-slide-prev-editor" style="top: 100px"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
                 <div ng-show="showEditorNavigation"  class="custom-slide-next-editor"  style="top: 100px"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
 
-                <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" style="margin-top: 25px" >
+                <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" style="margin-top: 25px;" >
 
                     <div class="carousel-image-div">
 
                         <div  class="carousel-info-div-new">
-                            <div style="float: left;">
+                            <div style="float: left; width: 315px; min-height: 30px">
                                 <pre  class="carousel-info-name-div-new-2 carousel-item-name-div" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': slide.name.italic ? 'italic' : 'normal',
                             'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>

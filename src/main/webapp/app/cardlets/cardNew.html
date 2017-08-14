@@ -31,10 +31,10 @@
        </div>
        <div style="display: inline-block;">
            <div class="user-main-text" ng-show="tabNames.tabs[firstBusinessCardId].site.value" >
-               <div class="new-cardlet-marks" ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor, 'display': 'inline', 'width':'20px'}">w: </div>
+               <span class="new-cardlet-marks" ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor, 'display': 'inline-block', 'width':'17px', 'margin-right': '0px'}">w: </span>
                <div style="display: inline;"><a target="_blank" href="http://{{tabNames.tabs[firstBusinessCardId].site.value}}" ng-style="{'font-family': tabNames.tabs[firstBusinessCardId].site.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabNames.tabs[firstBusinessCardId].site.italic ? 'italic' : 'normal',
-                        'text-decoration': tabNames.tabs[firstBusinessCardId].site.underline ? 'underline' : 'normal'}" >{{tabNames.tabs[firstBusinessCardId].site.value | limitTo: 25}}</a></div>
+                        'text-decoration': tabNames.tabs[firstBusinessCardId].site.underline ? 'underline' : 'normal'}" style="display: inline-block;overflow: hidden;text-overflow: ellipsis;width: 470px;max-width: 470px;white-space: nowrap;">{{tabNames.tabs[firstBusinessCardId].site.value}}</a></div>
            </div>
         </div>
 
