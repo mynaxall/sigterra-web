@@ -2,25 +2,25 @@
 <div style="line-height: 150%">
 
     <div class="cardletNew"style="min-width: 300px;background: #fff; text-align: left;max-width: 350px;">
-        <div class="user-name" ng-style="{'font-weight': firstBusinessCardCopyed.userName.bold ? 'bold' : 'normal',
+        <div class="user-name" ng-style="{'font-family': firstBusinessCardCopyed.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': firstBusinessCardCopyed.userName.italic ? 'italic' : 'normal',
                     'text-decoration': firstBusinessCardCopyed.userName.underline ? 'underline' : 'normal', 'color': '#'+firstBusinessCardCopyed.layout.secondaryColor}"  ng-show="firstBusinessCardCopyed.userName.value">{{firstBusinessCardCopyed.userName.value}}</div>
-        <div class="user-main-text "  ng-style="{'font-weight': firstBusinessCardCopyed.job.bold ? 'bold' : 'normal',
+        <div class="user-main-text "  ng-style="{'font-family': firstBusinessCardCopyed.job.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': firstBusinessCardCopyed.job.italic ? 'italic' : 'normal',
                     'text-decoration': firstBusinessCardCopyed.job.underline ? 'underline' : 'normal'}" ng-show="firstBusinessCardCopyed.job.value">{{firstBusinessCardCopyed.job.value}}</div>
-        <div class="user-main-text company" ng-show="firstBusinessCardCopyed.company.value" ng-style="{'font-weight': firstBusinessCardCopyed.company.bold ? 'bold' : 'normal',
+        <div class="user-main-text company" ng-show="firstBusinessCardCopyed.company.value" ng-style="{'font-family': firstBusinessCardCopyed.company.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': firstBusinessCardCopyed.company.italic ? 'italic' : 'normal',
                     'text-decoration': firstBusinessCardCopyed.company.underline ? 'underline' : 'normal'}">
             {{firstBusinessCardCopyed.company.value}}
         </div>
-        <div class="user-main-text" ng-show="firstBusinessCardCopyed.phone.value" ng-style="{'font-weight': firstBusinessCardCopyed.phone.bold ? 'bold' : 'normal',
+        <div class="user-main-text" ng-show="firstBusinessCardCopyed.phone.value" ng-style="{'font-family': firstBusinessCardCopyed.phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': firstBusinessCardCopyed.phone.italic ? 'italic' : 'normal',
                     'text-decoration': firstBusinessCardCopyed.phone.underline ? 'underline' : 'normal'}">
             <div class="new-cardlet-marks" style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}; display: inline;width: 20px">m: </div>
             <div style="display: inline;">{{firstBusinessCardCopyed.phone.value | tel}}</div>
         </div>
         <div style="display: inline-block; margin-right: 15px" ng-show="firstBusinessCardCopyed.userEmail.value">
-            <div class="user-main-text" ng-show="firstBusinessCardCopyed.userEmail.value" ng-style="{'font-weight': firstBusinessCardCopyed.userEmail.bold ? 'bold' : 'normal',
+            <div class="user-main-text" ng-show="firstBusinessCardCopyed.userEmail.value" ng-style="{'font-family': firstBusinessCardCopyed.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': firstBusinessCardCopyed.userEmail.italic ? 'italic' : 'normal',
                                 'text-decoration': firstBusinessCardCopyed.userEmail.underline ? 'underline' : 'normal'}">
                 <div class="new-cardlet-marks" style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}; display: inline;width: 20px">e: </div>
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div style="display: inline-block;">
-            <div class="user-main-text" ng-show="firstBusinessCardCopyed.site.value" ng-style="{'font-weight': firstBusinessCardCopyed.site.bold ? 'bold' : 'normal',
+            <div class="user-main-text" ng-show="firstBusinessCardCopyed.site.value" ng-style="{'font-family': firstBusinessCardCopyed.site.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': firstBusinessCardCopyed.site.italic ? 'italic' : 'normal',
                         'text-decoration': firstBusinessCardCopyed.site.underline ? 'underline' : 'normal'}">
                 <div class="new-cardlet-marks" style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}; display: inline-block;width: 17px; margin-right: 0px">w: </div>
@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <div class="user-main-text" ng-show="firstBusinessCardCopyed.address.value" ng-style="{'font-weight': firstBusinessCardCopyed.address.bold ? 'bold' : 'normal',
+        <div class="user-main-text" ng-show="firstBusinessCardCopyed.address.value" ng-style="{'font-family': firstBusinessCardCopyed.address.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': firstBusinessCardCopyed.address.italic ? 'italic' : 'normal',
                     'text-decoration': firstBusinessCardCopyed.address.underline ? 'underline' : 'normal'}" style="max-width: 320px; max-height: 40px">
             <div class="new-cardlet-marks" style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}};display: inline;width: 20px">a: </div>
