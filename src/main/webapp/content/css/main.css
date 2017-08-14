@@ -4674,6 +4674,7 @@ ul.tab li.active {
 
 
 .subscribe-btn{
+    font-size: 13pt;
     background-color: #1798e3;
     color: #fff;
     border: 1px solid #1798e3;
@@ -4686,6 +4687,8 @@ ul.tab li.active {
 
 .subscribe-input{
     height: 40px;
+    font-family: OpenSans-Light;
+    font-size: 12pt;
 }
 
 .footer-border-landing{
