@@ -4689,6 +4689,7 @@ ul.tab li.active {
     height: 40px;
     font-family: OpenSans-Light;
     font-size: 12pt;
+    box-shadow:none;
 }
 
 .footer-border-landing{
