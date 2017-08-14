@@ -3767,7 +3767,7 @@ button[disabled]:hover{
     margin: 0px auto;
 }
 
-@media (min-width: 1270px) {
+@media (min-width: 1400px) {
 
     .second-column {
         padding-top: 100px;
