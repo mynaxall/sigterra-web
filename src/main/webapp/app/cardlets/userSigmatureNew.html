@@ -33,7 +33,7 @@
                         'font-style': firstBusinessCardCopyed.site.italic ? 'italic' : 'normal',
                         'text-decoration': firstBusinessCardCopyed.site.underline ? 'underline' : 'normal'}">
                 <div class="new-cardlet-marks" style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}; display: inline;width: 20px">w: </div>
-                <div style="display: inline;"><a target="_blank" href="http://{{firstBusinessCardCopyed.site.value}}">{{firstBusinessCardCopyed.site.value  | limitTo: 25}}</a></div>
+                <div style="display: inline;"><a target="_blank" href="{{getLink(firstBusinessCardCopyed.site.value)}}">{{firstBusinessCardCopyed.site.value  | limitTo: 25}}</a></div>
             </div>
         </div>
 

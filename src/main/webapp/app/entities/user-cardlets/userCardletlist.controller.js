@@ -813,6 +813,15 @@
             }
         }
 
+
+        $scope.getLink = function(link){
+            if( link.startsWith('http')){
+                return link;
+            }else{
+                return 'http://'+link;
+            }
+        }
+
         $scope.myInterval = 0;
 
 
