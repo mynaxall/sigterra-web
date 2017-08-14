@@ -258,7 +258,7 @@
             }
         }
 
-        $scope.myInterval = 3000;
+        $scope.myInterval = 0;
 
     }
 })();
