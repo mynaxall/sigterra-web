@@ -224,11 +224,13 @@
                             $scope.firstBusinessCardId = '';
                         }
                     }
+                    $scope.showSpinner = true;
                     setTimeout(function () {
                         document.getElementsByClassName("tabcontent2")[0].style.display = "block";
                         document.getElementsByClassName("tabs2")[0].className += " active";
                         document.getElementsByClassName("tabcontent")[0].style.display = "block";
                         document.getElementsByClassName("tabs")[0].className += " active";
+                        $scope.showSpinner = false;
                     }, 500)
                 });
             $scope.showSpinner = false;

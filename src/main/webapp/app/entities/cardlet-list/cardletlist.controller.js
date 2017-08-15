@@ -94,7 +94,6 @@
         }
 
 
-        $scope.showSpinner = false;
         $scope.showSocialDialog = false;
 
         $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
@@ -204,7 +203,6 @@
 
                     if($scope.itemImageId != null){
 
-                        console.log( $scope.tabNames)
                         $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame] = $scope.imageUrl;
                     }else {
                         setTabImage();
@@ -405,7 +403,6 @@
         }
 
         $scope.enableTabs = function(){
-            console.log("enableTabs")
             $scope.isDisabledTabs = false;
         }
 
@@ -511,10 +508,15 @@
 
 
         angular.element(document).ready(function () {
+            $scope.showSpinner = true;
             document.getElementsByClassName("tabcontent2")[0].style.display = "block";
             document.getElementsByClassName("tabs2")[0].className += " active";
-            document.getElementsByClassName("tabcontent")[0].style.display = "block";;
+            document.getElementsByClassName("tabcontent")[0].style.display = "block";
             document.getElementsByClassName("tabs")[0].className += " active";
+            $timeout(function(){
+                console.log("123123" )
+                $scope.showSpinner = false;
+            }, 1000)
         });
 
 
@@ -863,7 +865,6 @@
         $scope.removeTab = function() {
 
             var index = $scope.tabToDeleteID;
-            console.log($scope.tabNames.tabs.length);
             if($scope.tabNames.tabs.length == 2){
                 $scope.firstBusinessCardId = 0;
             }
@@ -877,7 +878,6 @@
                     for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                         if ($scope.tabNames.tabs[i].tabType == '1') {
                             $scope.firstBusinessCardId = i;
-                            console.log($scope.firstBusinessCardId)
                             break
                         }
                     }
@@ -965,7 +965,6 @@
             var cyrrentEl = document.getElementById(id);
 
             var link = document.getElementById(linkId);
-            console.log(link)
 
             if(cyrrentEl) {
                 if($scope.tabNames) {
@@ -1030,7 +1029,6 @@
         }
 
         $scope.checkName = function(data){
-            console.log(data)
             if(!data || data === ""){
                 return "Your tab name is required."
             }
