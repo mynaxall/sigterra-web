@@ -974,6 +974,16 @@
             $timeout(function() {vm.showSpinner = false; },4000)
         };
 
+
+        $scope.getLink = function(link){
+            if( link.startsWith('http')){
+                return link;
+            }else{
+                return 'http://'+link;
+            }
+        }
+
+
     }
 
 

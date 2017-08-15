@@ -825,6 +825,9 @@
 
 
             }
+
+
+
             vm.currentSlide = 1;
             for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                 if ($scope.tabNames.tabs[i].tabType == '1'){
@@ -1081,6 +1084,16 @@
 
             $timeout(function() {vm.showSpinner = false; },4000)
         };
+
+
+        $scope.getLink = function(link){
+            if( link.startsWith('http')){
+                return link;
+            }else{
+                return 'http://'+link;
+            }
+        }
+
 
 
     }
