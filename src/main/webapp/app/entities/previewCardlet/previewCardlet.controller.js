@@ -274,6 +274,7 @@
                 vm.tabType = 2;
             }
             vm.showSpinner = true;
+            vm.nextIndex = 1;
 
             setTimeout(function() {
                 if ($scope.tabNames.tabs[id].tabType === 1) {
