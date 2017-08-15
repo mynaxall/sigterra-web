@@ -5,6 +5,7 @@ var fs = require('fs');
 module.exports = {
     endsWith : endsWith,
     parseVersion : parseVersion,
+    parseAppVersion : parseAppVersion,
     isLintFixed : isLintFixed
 };
 
@@ -16,6 +17,12 @@ function endsWith(str, suffix) {
 function parseVersion() {
     var versionRegex = /^version\s*=\s*[',"]([^',"]*)[',"]/gm; // Match and group the version number
     var buildGradle = fs.readFileSync('build.gradle', 'utf8');
+    return versionRegex.exec(buildGradle)[1];
+}
+
+function parseAppVersion() {
+    var versionRegex = /^Version:\s*[',"]([^',"]*)[',"]/gm; // Match and group the app version number
+    var buildGradle = fs.readFileSync('version.txt', 'utf8');
     return versionRegex.exec(buildGradle)[1];
 }
 

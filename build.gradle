@@ -209,6 +209,15 @@ task wrapper(type: Wrapper) {
 task stage(dependsOn: 'bootRepackage') {
 }
 
+task versionTxt() << {
+    def file = new File("$projectDir/version.txt")
+    file.createNewFile()
+    file.text = """
+Version: '$buildVersion'
+Application-name: Sigterra
+"""
+}
+
 compileJava.dependsOn processResources
 processResources.dependsOn cleanResources,bootBuildInfo
 bootBuildInfo.mustRunAfter cleanResources
