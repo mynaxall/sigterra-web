@@ -4706,4 +4706,10 @@ ul.tab li.active {
     margin-top: 5px;
 }
 
+.trim-text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 30px
+}
+
 

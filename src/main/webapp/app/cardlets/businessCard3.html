@@ -25,9 +25,9 @@
             <div class="layouts main-layouts">
                 <div class="user-info">
                     <div style="height: 31px">
-                        <div class="user-name" ng-style="{'font-family': tabName.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                        <div class="user-name trim-text" ng-style="{'font-family': tabName.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': tabName.userName.italic ? 'italic' : 'normal',
-                            'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}"  ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
+                            'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor, 'word-break':'break-all'}"  ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
                     </div>
                     <div style="height: 55px; margin-top: 5px">
                         <div>
