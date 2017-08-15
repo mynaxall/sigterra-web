@@ -4711,5 +4711,9 @@ ul.tab li.active {
     text-overflow: ellipsis;
     height: 30px
 }
+.carousel-image-div{
+    margin-left: 29px;
+    margin-top: 10px;
+}
 
 
