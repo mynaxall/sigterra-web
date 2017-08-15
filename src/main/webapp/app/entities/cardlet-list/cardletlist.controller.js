@@ -801,6 +801,7 @@
         $scope.positionChecking = false;
 
         $scope.positionCheck = function(){
+            $scope.isDisabledTabs = true;
             $scope.positionChecking = true;
 
             for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
@@ -845,6 +846,7 @@
                     document.getElementsByClassName("tablinks")[i].className = document.getElementsByClassName("tablinks")[i].className.replace(" disabledLink", "");
                 }
                 vm.currentSlide = 0;
+                $scope.isDisabledTabs = false;
             },100);
 
         }
