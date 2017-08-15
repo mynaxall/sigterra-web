@@ -209,7 +209,7 @@
         vm.predicate = pagingParams.predicate;
         vm.reverse = pagingParams.ascending;
         vm.transition = transition;
-
+        $scope.showSpinner = true;
 
         $scope.getCardlet = function(){
             var param1 = $location.search().cardletId;
@@ -224,16 +224,16 @@
                             $scope.firstBusinessCardId = '';
                         }
                     }
-                    $scope.showSpinner = true;
-                    setTimeout(function () {
+
+                    $timeout(function () {
                         document.getElementsByClassName("tabcontent2")[0].style.display = "block";
                         document.getElementsByClassName("tabs2")[0].className += " active";
                         document.getElementsByClassName("tabcontent")[0].style.display = "block";
                         document.getElementsByClassName("tabs")[0].className += " active";
+                        console.log($scope.showSpinner)
                         $scope.showSpinner = false;
                     }, 500)
                 });
-            $scope.showSpinner = false;
             $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ param1;
         };
 
@@ -628,7 +628,6 @@
             }
         }
 
-        $scope.showSpinner = true;
 
         $scope.accordionActive = 2;
 
