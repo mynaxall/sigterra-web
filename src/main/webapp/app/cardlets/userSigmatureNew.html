@@ -2,7 +2,7 @@
 <div style="line-height: 150%">
 
     <div class="cardletNew"style="min-width: 300px;background: #fff; text-align: left;max-width: 350px;">
-        <div class="user-name" ng-style="{'font-family': firstBusinessCardCopyed.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+        <div class="user-name trim-text" ng-style="{'font-family': firstBusinessCardCopyed.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': firstBusinessCardCopyed.userName.italic ? 'italic' : 'normal',
                     'text-decoration': firstBusinessCardCopyed.userName.underline ? 'underline' : 'normal', 'color': '#'+firstBusinessCardCopyed.layout.secondaryColor}"  ng-show="firstBusinessCardCopyed.userName.value">{{firstBusinessCardCopyed.userName.value}}</div>
         <div class="user-main-text "  ng-style="{'font-family': firstBusinessCardCopyed.job.bold ? 'Roboto-Bold' : 'Roboto-Regular',
@@ -15,7 +15,7 @@
         </div>
         <div class="user-main-text" ng-show="firstBusinessCardCopyed.phone.value">
             <div class="new-cardlet-marks" style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}; display: inline;width: 20px; ">m: </div>
-            <div g-style="{'font-family': firstBusinessCardCopyed.phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+            <div ng-style="{'font-family': firstBusinessCardCopyed.phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': firstBusinessCardCopyed.phone.italic ? 'italic' : 'normal',
                     'text-decoration': firstBusinessCardCopyed.phone.underline ? 'underline' : 'normal'}" style="display: inline;">{{firstBusinessCardCopyed.phone.value | tel}}</div>
         </div>
