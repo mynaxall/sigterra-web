@@ -263,9 +263,8 @@
 
 
         $scope.openCity = function(cardName, cardId, id) {
-            $scope.currentUrl = "";
-            $scope.currentLink = "";
-            vm.showSpinner = false;
+            $scope.currentUrl = "1";
+            $scope.currentLink = "1";
             $scope.currentUrl = undefined;
             vm.currentSlide = 0;
 
@@ -274,8 +273,9 @@
             }else{
                 vm.tabType = 2;
             }
+            vm.showSpinner = true;
 
-            $timeout(function() {
+            setTimeout(function() {
                 if ($scope.tabNames.tabs[id].tabType === 1) {
                     vm.tabType = 1;
                     $scope.currentName = $scope.tabNames.tabs[id].name;
@@ -284,6 +284,11 @@
                         $scope.currentLink = $scope.getLink($scope.tabNames.tabs[id].site.value);
 
                         vm.showSpinner = true;
+                    }else{
+                        vm.showSpinner = false;
+                        $scope.currentUrl = "";
+                        $scope.currentLink = "";
+
                     }
 
                 }
@@ -302,6 +307,11 @@
                                 $scope.currentUrl = $scope.createURL(item.link);
                                 $scope.currentLink = $scope.getLink(item.link);
                                 vm.showSpinner = true;
+                            }else{
+                                vm.showSpinner = false;
+                                $scope.currentUrl = "";
+                                $scope.currentLink = "";
+
                             }
 
                         }
@@ -309,10 +319,9 @@
                     });
                 }
 
-                $timeout(function() {vm.showSpinner = false; },4000)
             },500)
 
-
+            $timeout(function() {vm.showSpinner = false; },4000)
 
 
 
