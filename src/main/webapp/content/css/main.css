@@ -3853,6 +3853,15 @@ button[disabled]:hover{
     }
 }
 
+@media (min-width: 3000px) {
+
+    .right-column {
+        min-height: 90vh;
+
+    }
+}
+
+
 .input-text-div-editor{
     width: 370px;
     text-align: left;
