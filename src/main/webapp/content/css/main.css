@@ -2972,6 +2972,14 @@ ul.tab li {
     text-align: center;
 }
 
+ul.tab li:hover {
+    background-color: #ddd!important;
+}
+
+ul.tab li.active:hover{
+    background-color: #ddd;
+}
+
 ul.tab2 li span {
     display: inline-block;
     text-align: center;
