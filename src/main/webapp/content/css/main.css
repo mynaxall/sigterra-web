@@ -2674,7 +2674,7 @@ Social Buttons
 .footer-main-text-landing{
     font-family: OpenSans-Light;
     font-size: 12pt;
-    color: #cfd1d2;
+    color: #656b6f;
     margin-bottom: 5px;
     font-weight: normal;
 }
@@ -2972,6 +2972,14 @@ ul.tab li {
     text-align: center;
 }
 
+ul.tab li:hover {
+    background-color: #ddd!important;
+}
+
+ul.tab li.active:hover{
+    background-color: #ddd;
+}
+
 ul.tab2 li span {
     display: inline-block;
     text-align: center;
@@ -2993,7 +3001,7 @@ ul.tab2 li span:hover {
 
 ul.tab2 li {
     width: 131px;
-    min-height: 44px;
+    min-height: 55px;
     float: left;
     background: #FFFFFF;
     border: 1px #D0D8D9 solid;
@@ -3853,7 +3861,7 @@ button[disabled]:hover{
     }
 }
 
-@media (min-width: 3000px) {
+@media (min-width: 2000px) {
 
     .right-column {
         min-height: 90vh;
@@ -4700,7 +4708,7 @@ ul.tab li.active {
     font-family: OpenSans-Light;
     font-size: 12pt;
     box-shadow:none;
-    color: #cfd1d2;
+    color: #656b6f;
 }
 
 .footer-border-landing{

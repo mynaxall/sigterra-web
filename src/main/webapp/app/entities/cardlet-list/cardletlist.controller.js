@@ -341,8 +341,8 @@
                         "items": [
                             {
                                 //"name": "1 item",
-                                "index": "2",
-                                "position": "0",
+                                "index": 2,
+                                "position": 0,
                                 "image": "/content/images/portfolio_img_01.png",
                                 "image2": "/content/images/portfolio_img_02.png",
                                 "image3": "/content/images/img/portfolio_img_03.png",
@@ -540,8 +540,8 @@
                     "items": [
                         {
                             //"name": "1 item",
-                            "index": "2",
-                            "position": "0",
+                            "index": 2,
+                            "position": 0,
                             "image": "/content/images/portfolio_img_01.png",
                             "image2": "/content/images/portfolio_img_02.png",
                             "image3": "/content/images/portfolio_img_03.png",
@@ -579,8 +579,8 @@
                     "items": [
                         {
                             //"name": "1 item",
-                            "index": "2",
-                            "position": "0",
+                            "index": 2,
+                            "position": 0,
                             "image": "/content/images/portfolio_img_01.png",
                             "image2": "/content/images/portfolio_img_02.png",
                             "image3": "/content/images/portfolio_img_03.png",
@@ -926,12 +926,8 @@
             if($scope.tabNames.tabs[id].layout.url != url) {
                 $scope.tabNames.tabs[id].layout.url = url;
                 $scope.tabNames.tabs[id].layout.tabId = tabId;
-                vm.showCarousel = false;
-                vm.currentSlide = 1;
-                $timeout(function () {
-                    vm.currentSlide = 0;
-                    vm.showCarousel = true;
-                }, 10)
+                vm.currentSlide = 0;
+
             }
 
         }
