@@ -209,7 +209,7 @@
         vm.predicate = pagingParams.predicate;
         vm.reverse = pagingParams.ascending;
         vm.transition = transition;
-
+        $scope.showSpinner = true;
 
         $scope.getCardlet = function(){
             var param1 = $location.search().cardletId;
@@ -224,14 +224,16 @@
                             $scope.firstBusinessCardId = '';
                         }
                     }
-                    setTimeout(function () {
+
+                    $timeout(function () {
                         document.getElementsByClassName("tabcontent2")[0].style.display = "block";
                         document.getElementsByClassName("tabs2")[0].className += " active";
                         document.getElementsByClassName("tabcontent")[0].style.display = "block";
                         document.getElementsByClassName("tabs")[0].className += " active";
+                        console.log($scope.showSpinner)
+                        $scope.showSpinner = false;
                     }, 500)
                 });
-            $scope.showSpinner = false;
             $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ param1;
         };
 
@@ -626,7 +628,6 @@
             }
         }
 
-        $scope.showSpinner = true;
 
         $scope.accordionActive = 2;
 
@@ -649,6 +650,7 @@
         $scope.positionChecking = false;
 
         $scope.positionCheck = function(){
+            $scope.isDisabledTabs = true;
             $scope.positionChecking = true;
 
             for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
@@ -691,6 +693,8 @@
                     document.getElementsByClassName("tablinks")[i].className = document.getElementsByClassName("tablinks")[i].className.replace(" disabledLink", "");
                 }
                 vm.currentSlide = 0
+
+                $scope.isDisabledTabs = false;
             },100);
 
         };
@@ -769,31 +773,30 @@
                         }
                     }
                 }
+
+                var tabs2 = document.getElementsByClassName("tabs2");
+                var tabs = document.getElementsByClassName("tabs");
+
+                for (var i = 0; i < tabs.length; i++) {
+                    if(angular.element(tabs[i]).hasClass('active')){
+                        document.getElementsByClassName("tabcontent")[i].style.display = "none";;
+                        tabs[i].className = tabs[i].className.replace(" active", "");
+                    }
+                    if(angular.element(tabs2[i]).hasClass('active')){
+                        document.getElementsByClassName("tabcontent2")[i].style.display = "none";;
+                        tabs2[i].className = tabs2[i].className.replace(" active", "");
+                    }
+
+                }
+                vm.currentSlide = 1;
                 setTimeout(function(){
 
-                    var tabs2 = document.getElementsByClassName("tabs2");
-                    var tabs = document.getElementsByClassName("tabs");
 
-                    for (var i = 0; i < tabs.length; i++) {
-                        if(angular.element(tabs[i]).hasClass('active')){
-                            document.getElementsByClassName("tabcontent")[i].style.display = "none";;
-                            tabs[i].className = tabs[i].className.replace(" active", "");
-                        }
-
-                    }
-
-                    for (var i = 0; i < tabs2.length; i++) {
-                        if(angular.element(tabs2[i]).hasClass('active')){
-                            document.getElementsByClassName("tabcontent2")[i].style.display = "none";;
-                            tabs2[i].className = tabs2[i].className.replace(" active", "");
-                        }
-
-                    }
                     document.getElementsByClassName("tabcontent2")[0].style.display = "block";
                     document.getElementsByClassName("tabs2")[0].className += " active";
                     document.getElementsByClassName("tabcontent")[0].style.display = "block";;
                     document.getElementsByClassName("tabs")[0].className += " active";
-
+                    vm.currentSlide = 0;
                 }, 500);
             }
             $scope.showDelteTabDialog = false;
@@ -970,6 +973,16 @@
 
             $timeout(function() {vm.showSpinner = false; },4000)
         };
+
+
+        $scope.getLink = function(link){
+            if( link.startsWith('http')){
+                return link;
+            }else{
+                return 'http://'+link;
+            }
+        }
+
 
     }
 

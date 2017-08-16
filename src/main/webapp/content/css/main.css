@@ -3853,6 +3853,15 @@ button[disabled]:hover{
     }
 }
 
+@media (min-width: 3000px) {
+
+    .right-column {
+        min-height: 90vh;
+
+    }
+}
+
+
 .input-text-div-editor{
     width: 370px;
     text-align: left;
@@ -4705,3 +4714,15 @@ ul.tab li.active {
 .marin-top-5{
     margin-top: 5px;
 }
+
+.trim-text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 30px
+}
+.carousel-image-div{
+    margin-left: 29px;
+    margin-top: 10px;
+}
+
+

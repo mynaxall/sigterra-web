@@ -94,6 +94,7 @@ gulp.task('ngconstant:dev', function () {
         name: 'sigterraWebApp',
         constants: {
             VERSION: util.parseVersion(),
+            BUILD_VERSION: util.parseAppVersion(),
             DEBUG_INFO_ENABLED: true
         },
         template: config.constantTemplate,
@@ -108,6 +109,7 @@ gulp.task('ngconstant:prod', function () {
         name: 'sigterraWebApp',
         constants: {
             VERSION: util.parseVersion(),
+            BUILD_VERSION: util.parseAppVersion(),
             DEBUG_INFO_ENABLED: false
         },
         template: config.constantTemplate,
@@ -122,6 +124,7 @@ gulp.task('ngconstant:staging', function () {
         name: 'sigterraWebApp',
         constants: {
             VERSION: util.parseVersion(),
+            BUILD_VERSION: util.parseAppVersion(),
             DEBUG_INFO_ENABLED: false
         },
         template: config.constantTemplate,

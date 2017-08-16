@@ -94,7 +94,6 @@
         }
 
 
-        $scope.showSpinner = false;
         $scope.showSocialDialog = false;
 
         $scope.socialLinks = {twitter: "", facebook: "", google: "", linkedin: ""};
@@ -204,7 +203,6 @@
 
                     if($scope.itemImageId != null){
 
-                        console.log( $scope.tabNames)
                         $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame] = $scope.imageUrl;
                     }else {
                         setTabImage();
@@ -405,7 +403,6 @@
         }
 
         $scope.enableTabs = function(){
-            console.log("enableTabs")
             $scope.isDisabledTabs = false;
         }
 
@@ -511,10 +508,15 @@
 
 
         angular.element(document).ready(function () {
+            $scope.showSpinner = true;
             document.getElementsByClassName("tabcontent2")[0].style.display = "block";
             document.getElementsByClassName("tabs2")[0].className += " active";
-            document.getElementsByClassName("tabcontent")[0].style.display = "block";;
+            document.getElementsByClassName("tabcontent")[0].style.display = "block";
             document.getElementsByClassName("tabs")[0].className += " active";
+            $timeout(function(){
+                console.log("123123" )
+                $scope.showSpinner = false;
+            }, 1000)
         });
 
 
@@ -799,6 +801,7 @@
         $scope.positionChecking = false;
 
         $scope.positionCheck = function(){
+            $scope.isDisabledTabs = true;
             $scope.positionChecking = true;
 
             for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
@@ -822,6 +825,9 @@
 
 
             }
+
+
+
             vm.currentSlide = 1;
             for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                 if ($scope.tabNames.tabs[i].tabType == '1'){
@@ -843,6 +849,7 @@
                     document.getElementsByClassName("tablinks")[i].className = document.getElementsByClassName("tablinks")[i].className.replace(" disabledLink", "");
                 }
                 vm.currentSlide = 0;
+                $scope.isDisabledTabs = false;
             },100);
 
         }
@@ -863,7 +870,6 @@
         $scope.removeTab = function() {
 
             var index = $scope.tabToDeleteID;
-            console.log($scope.tabNames.tabs.length);
             if($scope.tabNames.tabs.length == 2){
                 $scope.firstBusinessCardId = 0;
             }
@@ -877,38 +883,35 @@
                     for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                         if ($scope.tabNames.tabs[i].tabType == '1') {
                             $scope.firstBusinessCardId = i;
-                            console.log($scope.firstBusinessCardId)
                             break
                         }
                     }
                 }
 
+                var tabs2 = document.getElementsByClassName("tabs2");
+                var tabs = document.getElementsByClassName("tabs");
+
+                for (var i = 0; i < tabs.length; i++) {
+                    if(angular.element(tabs[i]).hasClass('active')){
+                        document.getElementsByClassName("tabcontent")[i].style.display = "none";;
+                        tabs[i].className = tabs[i].className.replace(" active", "");
+                    }
+                    if(angular.element(tabs2[i]).hasClass('active')){
+                        document.getElementsByClassName("tabcontent2")[i].style.display = "none";;
+                        tabs2[i].className = tabs2[i].className.replace(" active", "");
+                    }
+
+
+                }
+                vm.currentSlide = 1;
                 setTimeout(function(){
 
-                    var tabs2 = document.getElementsByClassName("tabs2");
-                    var tabs = document.getElementsByClassName("tabs");
-
-                    for (var i = 0; i < tabs.length; i++) {
-                        if(angular.element(tabs[i]).hasClass('active')){
-                            document.getElementsByClassName("tabcontent")[i].style.display = "none";;
-                            tabs[i].className = tabs[i].className.replace(" active", "");
-                        }
-
-                    }
-
-                    for (var i = 0; i < tabs2.length; i++) {
-                        if(angular.element(tabs2[i]).hasClass('active')){
-                            document.getElementsByClassName("tabcontent2")[i].style.display = "none";;
-                            tabs2[i].className = tabs2[i].className.replace(" active", "");
-                        }
-
-                    }
                     document.getElementsByClassName("tabcontent2")[0].style.display = "block";
                     document.getElementsByClassName("tabs2")[0].className += " active";
                     document.getElementsByClassName("tabcontent")[0].style.display = "block";;
                     document.getElementsByClassName("tabs")[0].className += " active";
 
-
+                    vm.currentSlide = 0;
                 }, 500);
 
             }
@@ -1031,7 +1034,6 @@
         }
 
         $scope.checkName = function(data){
-            console.log(data)
             if(!data || data === ""){
                 return "Your tab name is required."
             }
@@ -1082,6 +1084,16 @@
 
             $timeout(function() {vm.showSpinner = false; },4000)
         };
+
+
+        $scope.getLink = function(link){
+            if( link.startsWith('http')){
+                return link;
+            }else{
+                return 'http://'+link;
+            }
+        }
+
 
 
     }
