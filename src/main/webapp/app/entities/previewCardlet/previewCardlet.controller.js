@@ -15,6 +15,7 @@
         $scope.time = Date.now()
 
         vm.currentSlide = 0;
+        vm.showCarousel = true;
 
         $scope.getCardlet = function(){
             var param1 = $location.search().cardletId;

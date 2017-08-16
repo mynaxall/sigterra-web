@@ -51,6 +51,7 @@
         $scope.myImage='';
         $scope.myCroppedImage = '';
         $scope.showConent = true;
+        vm.showCarousel = true;
 
 
 
@@ -925,10 +926,12 @@
             if($scope.tabNames.tabs[id].layout.url != url) {
                 $scope.tabNames.tabs[id].layout.url = url;
                 $scope.tabNames.tabs[id].layout.tabId = tabId;
+                vm.showCarousel = false;
                 vm.currentSlide = 1;
                 $timeout(function () {
                     vm.currentSlide = 0;
-                }, 1)
+                    vm.showCarousel = true;
+                }, 10)
             }
 
         }

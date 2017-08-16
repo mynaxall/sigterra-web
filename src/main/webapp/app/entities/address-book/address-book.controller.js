@@ -11,6 +11,7 @@
         var vm = this;
 
         vm.currentSlide = null;
+        vm.showCarousel = true;
 
         $scope.showSpinner = true;
 
