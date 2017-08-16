@@ -50,6 +50,8 @@
         $scope.showConent = true;
         $scope.noSocialChanges = false;
         $scope.urlError = 'Invalid URL string. It should start from "http://" or "https://"';
+        $scope.myInterval = 0;
+        vm.showCarousel = true;
 
         var handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];
@@ -806,9 +808,11 @@
             if($scope.tabNames.tabs[id].layout.url != url) {
                 $scope.tabNames.tabs[id].layout.url = url;
                 $scope.tabNames.tabs[id].layout.tabId = tabId;
+                vm.showCarousel = false;
                 vm.currentSlide = 1;
                 $timeout(function () {
                     vm.currentSlide = 0;
+                    vm.showCarousel = true;
                 }, 10)
             }
 

@@ -370,7 +370,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1" ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)" >
+                                            <div uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="vm.showCarousel" ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)" >
                                                 <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" class="item-catousel-editor">
                                                     <div class="custom-slide-prev-editor"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
                                                     <div class="custom-slide-next-editor"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
@@ -431,7 +431,7 @@
                                                         <br>
                                                     </div>
                                                     <div class="item-selection-panel">
-                                                        <div class="item-selection" ng-repeat="slide in tabName.items track by slide.position" ng-click="vm.currentSlide = $index"  ng-class="$index == vm.currentSlide ? 'item-selected': '' ">{{itemPosition($index)}}</div>
+                                                        <div class="item-selection" ng-repeat="slide in tabName.items track by slide.position" ng-show="vm.showCarousel" ng-click="vm.currentSlide = $index"  ng-class="$index == vm.currentSlide ? 'item-selected': '' ">{{itemPosition($index)}}</div>
                                                         <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn-editor"><span class="glyphicon glyphicon-plus add-item-icon" ></span></button>
                                                         <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position, $index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
                                                     </div>
@@ -537,7 +537,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="tabName.items.length > 1" ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)" >
+                                            <div uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="vm.showCarousel" ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)" >
                                                 <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" class="item-catousel-editor">
                                                     <div class="custom-slide-prev-editor"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
                                                     <div class="custom-slide-next-editor"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
@@ -597,7 +597,7 @@
                                                         <br>
                                                     </div>
                                                     <div class="item-selection-panel">
-                                                        <div class="item-selection" ng-repeat="slide in tabName.items track by slide.position" ng-click="vm.currentSlide = $index"  ng-class="$index == vm.currentSlide ? 'item-selected': '' ">{{itemPosition($index)}}</div>
+                                                        <div class="item-selection" ng-repeat="slide in tabName.items track by slide.position"  ng-show="vm.showCarousel" ng-click="vm.currentSlide = $index"  ng-class="$index == vm.currentSlide ? 'item-selected': '' ">{{itemPosition($index)}}</div>
                                                         <button ng-show="tabName.items.length < 10"  type="submit" ng-disabled="for2m.$invalid" ng-click="addItems(tabName.position,  tabName.items.length)" class="btn btn-primary main-btn item-btn-editor"><span class="glyphicon glyphicon-plus add-item-icon"></span></button>
                                                         <button ng-show="tabName.items.length > 1"  type="submit" ng-disabled="for2m.$invalid" ng-click="deleteItems(tabName.position,  $index)"  class="btn btn-primary main-btn item-btn item-btn-editor-delete" style="width: 108px"> Delete item</button>
                                                     </div>

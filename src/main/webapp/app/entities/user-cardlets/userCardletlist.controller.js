@@ -16,6 +16,7 @@
         $scope.time = Date.now()
 
         vm.currentSlide = 0;
+        vm.showCarousel = true;
 
         $scope.isCopyTiEmail = false;
         $scope.fieldTable = [{

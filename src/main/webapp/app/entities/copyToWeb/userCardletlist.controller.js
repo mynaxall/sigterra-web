@@ -12,6 +12,8 @@
     function UserCardletController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location) {
 
 
+        vm.showCarousel = true;
+
         $scope.getCardlet = function(){
             var param1 = $location.search().cardletId;
             $http.get("/api/cardlet/"+param1)
