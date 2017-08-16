@@ -3001,7 +3001,7 @@ ul.tab2 li span:hover {
 
 ul.tab2 li {
     width: 131px;
-    min-height: 44px;
+    min-height: 55px;
     float: left;
     background: #FFFFFF;
     border: 1px #D0D8D9 solid;
@@ -3861,7 +3861,7 @@ button[disabled]:hover{
     }
 }
 
-@media (min-width: 3000px) {
+@media (min-width: 2000px) {
 
     .right-column {
         min-height: 90vh;
