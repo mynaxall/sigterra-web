@@ -17,6 +17,7 @@
 
         vm.currentSlide = 0;
         vm.showCarousel = true;
+        $scope.showLink = true;
 
         $scope.isCopyTiEmail = false;
         $scope.fieldTable = [{

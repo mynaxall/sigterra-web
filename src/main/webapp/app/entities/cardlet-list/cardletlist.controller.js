@@ -52,6 +52,7 @@
         $scope.myCroppedImage = '';
         $scope.showConent = true;
         vm.showCarousel = true;
+        $scope.showLink = false;
 
 
 

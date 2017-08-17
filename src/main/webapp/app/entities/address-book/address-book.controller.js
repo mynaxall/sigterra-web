@@ -18,7 +18,7 @@
         $scope.time = Date.now()
         vm.currentSlide = 0;
         $scope.showConent = true;
-
+        $scope.showLink = true;
         $scope.hasChanged = function(id) {
             $scope.instructions = id.field;
         }

@@ -14,8 +14,8 @@
                         'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.value}}</pre>
                         </div>
                         <div id="cf4a" style="float: left; width: 105px; height: 105px; margin-left: 40px">
-                            <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="!slide.link" ng-src="{{slide.image}}">
-                            <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
+                            <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-hide="slide.link && showLink" ng-src="{{slide.image}}">
+                            <a href="{{slide.link}}" target="_blank" ng-show="slide.link && showLink">
                                 <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="slide.image" ng-src="{{slide.image}}">
                             </a>
                         </div>
@@ -42,8 +42,8 @@
                         'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.value}}</pre>
                             </div>
                             <div id="cf4a" style="float: left; width: 105px; margin-left: 40px">
-                                <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="!slide.link" ng-src="{{slide.image}}">
-                                <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
+                                <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-hide="slide.link && showLink" ng-src="{{slide.image}}">
+                                <a href="{{slide.link}}" target="_blank" ng-show="slide.link && showLink">
                                     <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="slide.image" ng-src="{{slide.image}}">
                                 </a>
                             </div>

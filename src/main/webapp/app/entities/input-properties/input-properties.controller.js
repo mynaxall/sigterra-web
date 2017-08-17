@@ -16,6 +16,7 @@
         vm.transition = transition;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.showCarousel = true;
+        $scope.showLink = true;
 
         loadAll();
 
