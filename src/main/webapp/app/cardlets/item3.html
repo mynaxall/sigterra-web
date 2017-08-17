@@ -7,7 +7,7 @@
                     <div style="border: 1px solid #D0D8D9;border-top-width: 0px;height: 240px">
                         <div ng-repeat="slide in tabName.items"  class="main-carousel-item-div-new-3">
                             <div style="max-height: 239px;overflow:hidden;">
-                                <img crossorigin="anonymous"  style="width: 100%" id="ing-1" ng-src="{{slide.image}}">
+                                <img crossorigin="anonymous"  style="width: 100%" id="ing-1" ng-src="{{slide.image}}?{{time}}">
                             </div>
                             <div class="item-3-content" ng-hide="!slide.name.value && !slide.description.value" ng-style="{'background-color': '#'+tabName.layout.mainColor, 'border-color': '#'+tabName.layout.secondaryColor, 'text-align':'center'}">
                                 <a style="max-height: 239px;" href="{{slide.link}}" target="_blank" ng-show="slide.link  && showLink">
@@ -40,7 +40,7 @@
             <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" style="position:relative;">
                 <div style="border: 1px solid #D0D8D9;border-top-width: 0px;height: 240px">
                     <div style="max-height: 239px;overflow: hidden">
-                        <img crossorigin="anonymous" style="width: 100%" id="ing-1" ng-src="{{slide.image}}">
+                        <img crossorigin="anonymous" style="width: 100%" id="ing-1" ng-src="{{slide.image}}?{{time}}">
 
                     </div>
                     <div class="main-carousel-image-div-new-3" style="position: absolute;top:0;left:0; height: 240px">
