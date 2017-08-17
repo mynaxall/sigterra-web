@@ -52,6 +52,7 @@
         $scope.urlError = 'Invalid URL string. It should start from "http://" or "https://"';
         $scope.myInterval = 0;
         vm.showCarousel = true;
+        $scope.showLink = false;
 
         var handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];

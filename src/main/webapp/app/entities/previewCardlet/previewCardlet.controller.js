@@ -16,6 +16,7 @@
 
         vm.currentSlide = 0;
         vm.showCarousel = true;
+        $scope.showLink = true;
 
         $scope.getCardlet = function(){
             var param1 = $location.search().cardletId;
