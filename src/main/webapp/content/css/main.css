@@ -953,9 +953,9 @@ Social Buttons
 .cropArea {
     background: #E4E4E4;
     overflow: hidden;
-    width:350px;
     height:350px;
     margin: auto;
+    min-width: 350px;
 }
 
 .image-popup{
@@ -3594,6 +3594,11 @@ ul.tab li.dropdown{
     border-style: solid;
 }
 
+ul.tab li.dropdown:hover{
+    background: #13BCB5 !important;
+
+}
+
 ul.tab li.dropdown-tab:hover{
     background: #13BCB5 !important;
 }
@@ -4734,5 +4739,7 @@ ul.tab li.active {
     margin-left: 29px;
     margin-top: 10px;
 }
-
+img-crop canvas{
+    position: relative!important;
+}
 
