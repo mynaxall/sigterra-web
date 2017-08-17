@@ -2950,7 +2950,7 @@ ul.tab li a {
     font-weight: normal;
     transition: 0.3s;
     font-size: 15px;
-    height: 58px;
+    height: 60px;
     word-break: break-all;
 
 
@@ -3592,6 +3592,10 @@ ul.tab li.dropdown{
     border-width: 1px;
     border-color: #13BCB5;
     border-style: solid;
+}
+
+ul.tab li.dropdown-tab:hover{
+    background: #13BCB5 !important;
 }
 
 
