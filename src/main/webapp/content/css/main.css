@@ -955,7 +955,7 @@ Social Buttons
     overflow: hidden;
     height:350px;
     margin: auto;
-    min-width: 350px;
+    width: 350px;
 }
 
 .image-popup{
@@ -2938,7 +2938,7 @@ ul.tab li span.tablinks {
 
 /* Change background color of links on hover */
 ul.tab li span.tablinks:hover {
-    background-color: #ddd;
+    background-color: transparent;
 }
 
 ul.tab li a {
@@ -2976,9 +2976,6 @@ ul.tab li:hover {
     background-color: #ddd!important;
 }
 
-ul.tab li.active:hover{
-    background-color: #ddd;
-}
 
 ul.tab2 li span {
     display: inline-block;
@@ -3594,6 +3591,7 @@ ul.tab li.dropdown{
     border-style: solid;
 }
 
+
 ul.tab li.dropdown:hover{
     background: #13BCB5 !important;
 
@@ -4079,7 +4077,7 @@ ul.tab {
 }
 
 ul.tab li.active {
-    background: #FFFFFF!important;
+    background-color: #FFFFFF!important;
     color: #13BCB5!important;
     border-width: 0px;
     border-top-width: 2px;
@@ -4088,6 +4086,10 @@ ul.tab li.active {
     border-left-color: #BFBFBF;
     border-top-color: #BFBFBF;
     border-style: solid;
+}
+
+ul.tab li.active:hover{
+    background-color: #ddd!important;
 }
 
 .input-new-editor-social{
@@ -4739,7 +4741,5 @@ ul.tab li.active {
     margin-left: 29px;
     margin-top: 10px;
 }
-img-crop canvas{
-    position: relative!important;
-}
+
 
