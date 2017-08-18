@@ -8,23 +8,23 @@
             <div class="user-info-div">
                 <div class="user-name trim-text" ng-style="{'font-family': tabName.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.userName.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor, 'height': '62px'}" ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
+                    'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor, 'height': '32px'}" ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
 
 
                 <div class="job-titile-3" ng-style="{'font-family': tabName.job.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.job.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.job.underline ? 'underline' : 'normal'}" ng-show="tabName.job.value"  style="color: #{{tabName.layout.mainColor}}">{{tabName.job.value}}</div>
                 <div class="social-links">
-                    <a href="{{tabName.socialLinks.twitter}}" target="_blank" ng-show="tabName.socialLinks.twitter" class="social-links-2">
+                    <a href="{{tabName.socialLinks.twitter}}" target="_blank" ng-show="tabName.socialLinks.twitter" class="social-links-2" ng-class="!showLink ? 'disabledLink': ''">
                         <span class="icon icon-artboard" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                     </a>
-                    <a class="social-links-2" href="{{tabName.socialLinks.facebook}}" target="_blank" ng-show="tabName.socialLinks.facebook">
+                    <a class="social-links-2" href="{{tabName.socialLinks.facebook}}" target="_blank" ng-show="tabName.socialLinks.facebook" ng-class="!showLink ? 'disabledLink': ''">
                         <span class="icon icon-artboard-copy" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                     </a>
-                    <a class="social-links-2" href="{{tabName.socialLinks.google}}" target="_blank" ng-show="tabName.socialLinks.google">
+                    <a class="social-links-2" href="{{tabName.socialLinks.google}}" target="_blank" ng-show="tabName.socialLinks.google" ng-class="!showLink ? 'disabledLink': ''">
                         <span class="icon icon-artboard-copy-2" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                     </a>
-                    <a class="social-links-2" href="{{tabName.socialLinks.linkedin}}" target="_blank" ng-show="tabName.socialLinks.linkedin">
+                    <a class="social-links-2" href="{{tabName.socialLinks.linkedin}}" target="_blank" ng-show="tabName.socialLinks.linkedin" ng-class="!showLink ? 'disabledLink': ''">
                         <span class="icon icon-artboard-copy-3" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                     </a>
                 </div>

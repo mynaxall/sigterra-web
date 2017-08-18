@@ -516,7 +516,6 @@
             document.getElementsByClassName("tabcontent")[0].style.display = "block";
             document.getElementsByClassName("tabs")[0].className += " active";
             $timeout(function(){
-                console.log("123123" )
                 $scope.showSpinner = false;
             }, 1000)
         });

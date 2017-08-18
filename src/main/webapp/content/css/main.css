@@ -194,6 +194,7 @@ html{
     height: 100%;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -2843,7 +2844,7 @@ div.navbar-collapse.in.collapse{
 .navbar-brand{
     position: relative;
     z-index: 1001;
-    padding: 15px 0px !important;
+    padding: 15px 15px !important;
 }
 
 .modal-dialog{
@@ -3554,7 +3555,7 @@ button span{
 }
 
 .disabledLink{
-    cursor: not-allowed;
+    cursor: default;
     pointer-events: none;
 }
 
@@ -3593,7 +3594,7 @@ ul.tab li.dropdown{
 
 
 ul.tab li.dropdown:hover{
-    background: #13BCB5 !important;
+    background: rgba(19,188,181,.84) !important;
 
 }
 
@@ -3607,7 +3608,7 @@ ul.tab li.dropdown a{
 }
 
 ul.tab li.dropdown a:hover{
-    background: #13BCB5 ;
+    background: transparent ;
     color: #FFFFFF;
 }
 
@@ -3982,6 +3983,8 @@ button[disabled]:hover{
     right: -20px;
     width: 33px;
     height: 33px;
+    padding: 6px 8px;
+    padding-bottom: 9px;
     background-color: #E8645A;
     border: none!important;
     border-radius: 33px;
@@ -4078,7 +4081,6 @@ ul.tab {
 
 ul.tab li.active {
     background-color: #FFFFFF!important;
-    color: #13BCB5!important;
     border-width: 0px;
     border-top-width: 2px;
     border-left-width: 1px;

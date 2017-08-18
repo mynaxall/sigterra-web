@@ -306,7 +306,7 @@
                                                 <div class="editor-item-image-panel">
                                                     <div style="padding-top: 25px">
                                                         <div class="item-image-div">
-                                                            <img crossorigin="anonymous" ng-src="{{slide.image}}" class="item-image-editor">
+                                                            <img crossorigin="anonymous" ng-src="{{slide.image}}?{{time}}" class="item-image-editor">
                                                             <button class="item-image-upload-editor" ng-click="openCropDialog(tabName.position, $index, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
                                                         </div>
                                                     </div>
@@ -314,8 +314,8 @@
                                                 <div class="editor-item-inputs-panel">
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
-                                                            <input type="text" class="input-new-editor" id="itemName3{{slide.index}}-{{$index}}" placeholder="Name" ng-model="slide.name.value" maxlength="16">
-                                                            <label for="itemName3{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                            <input type="text" class="input-new-editor" id="itemName3{{slide.index}}-{{tabName.position}}" placeholder="Name" ng-model="slide.name.value" maxlength="16">
+                                                            <label for="itemName3{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
                                                             <input type='checkbox' ng-model="slide.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{slide.position}}"/><label for="boldName{{tabName.position}}{{slide.position}}"></label>
@@ -326,8 +326,8 @@
                                                     </div>
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
-                                                            <input type="text" class="input-new-editor" maxlength="33" id="description2{{slide.index}}-{{$index}}" placeholder="Description"  ng-model="slide.description.value">
-                                                            <label for="description2{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                            <input type="text" class="input-new-editor" maxlength="33" id="description2{{slide.index}}-{{tabName.position}}" placeholder="Description"  ng-model="slide.description.value">
+                                                            <label for="description2{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
                                                             <input type='checkbox' ng-model="slide.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{slide.position}}"/><label for="boldDescription{{tabName.position}}{{slide.position}}"></label>
@@ -339,8 +339,8 @@
                                                     <form name="myItemForm">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="cover-input input-text-div-editor" style="width: 370px">
-                                                                <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription2{{slide.index}}-{{$index}}" placeholder="Link" ng-model="slide.link">
-                                                                <label for="itemDescription2{{slide.index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription2{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
+                                                                <label for="itemDescription2{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                 <p class="help-block has-error-new"
@@ -372,7 +372,7 @@
                                                     <div class="editor-item-image-panel">
                                                         <div style="padding-top: 25px">
                                                             <div class="item-image-div">
-                                                                <img crossorigin="anonymous" ng-src="{{slide.image}}" class="item-image-editor">
+                                                                <img crossorigin="anonymous" ng-src="{{slide.image}}?{{time}}" class="item-image-editor">
                                                                 <button class="item-image-upload-editor" ng-click="openCropDialog(tabName.position, $index, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
                                                             </div>
                                                         </div>
@@ -380,8 +380,8 @@
                                                     <div class="editor-item-inputs-panel">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
-                                                                <input type="text" class="input-new-editor" id="itemName1{{slide.index}}" placeholder="Name" ng-model="slide.name.value" maxlength="16">
-                                                                <label for="itemName1{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                <input type="text" class="input-new-editor" id="itemName1{{slide.index}}-{{tabName.position}}" placeholder="Name" ng-model="slide.name.value" maxlength="16">
+                                                                <label for="itemName1{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div class="text-decoration-div-editor" >
                                                                 <input type='checkbox' ng-model="slide.name.bold" name='bold'  class="checkboxBold" value='valuable' id="boldName{{tabName.position}}{{slide.position}}"/><label for="boldName{{tabName.position}}{{slide.position}}"></label>
@@ -392,8 +392,8 @@
                                                         </div>
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
-                                                                <input type="text" class="input-new-editor" id="description2{{slide.index}}"  maxlength="33" placeholder="Description" ng-model="slide.description.value">
-                                                                <label for="description2{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                <input type="text" class="input-new-editor" id="description2{{slide.index}}-{{tabName.position}}"  maxlength="33" placeholder="Description" ng-model="slide.description.value">
+                                                                <label for="description2{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div class="text-decoration-div-editor" >
                                                                 <input type='checkbox' ng-model="slide.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{slide.position}}"/><label for="boldDescription{{tabName.position}}{{slide.position}}"></label>
@@ -405,8 +405,8 @@
                                                         <form name="myItemForm">
                                                             <div class="form-group form-group-editor clearfix">
                                                                 <div class="cover-input input-text-div-editor" style="width: 370px">
-                                                                    <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription4{{slide.index}}" placeholder="Link" ng-model="slide.link">
-                                                                    <label for="itemDescription4{{slide.index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                    <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription4{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
+                                                                    <label for="itemDescription4{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                                 </div>
                                                                 <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                     <p class="help-block has-error-new"
@@ -473,7 +473,7 @@
                                             <div class="editor-avatar-panel">
                                                 <div style="padding-left: 25px; padding-top: 13px">
                                                     <div class="avatar-editor-div">
-                                                        <img crossorigin="anonymous" ng-src="{{tabName.photo}}" class="avatar-editor">
+                                                        <img crossorigin="anonymous" ng-src="{{tabName.photo}}?{{time}}" class="avatar-editor">
                                                         <button class="avatar-upload-editor" ng-click="openCropDialog($index)"><img src="/content/images/new/pencil_edit_avatar.png"></button>
                                                     </div>
                                                 </div>
@@ -648,7 +648,7 @@
                                                 <div class="editor-info-image-panel">
                                                     <div style="padding-top: 25px">
                                                         <div class="info-image-div">
-                                                            <img crossorigin="anonymous" ng-src="{{slide.image}}" class="info-image-editor">
+                                                            <img crossorigin="anonymous" ng-src="{{slide.image}}?{{time}}" class="info-image-editor">
                                                             <button class="info-image-upload-editor" ng-click="openCropDialog(tabName.position, $index, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
                                                         </div>
                                                     </div>
@@ -714,7 +714,7 @@
                                                     <div class="editor-info-image-panel">
                                                         <div style="padding-top: 25px">
                                                             <div class="info-image-div">
-                                                                <img crossorigin="anonymous" ng-src="{{slide.image}}" class="info-image-editor">
+                                                                <img crossorigin="anonymous" ng-src="{{slide.image}}?{{time}}" class="info-image-editor">
                                                                 <button class="info-image-upload-editor" ng-click="openCropDialog(tabName.position, $index, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
                                                             </div>
                                                         </div>

@@ -84,7 +84,7 @@ jhipster:
     security:
         rememberMe:
             # security key (this key should be unique for your application, and kept secret)
-            key: fe9c3a39acc685b0023127795ca5af2c9398ba14
+            key: dX77eGyurhyLBNutGfZf6TS7vUXJRtrQrzLhVpa7
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: sigterra_web@localhost
         label: Sigterra Support Team
