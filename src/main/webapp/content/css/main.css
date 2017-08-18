@@ -3594,7 +3594,7 @@ ul.tab li.dropdown{
 
 
 ul.tab li.dropdown:hover{
-    background: #13BCB5 !important;
+    background: rgba(19,188,181,.84) !important;
 
 }
 
@@ -3608,7 +3608,7 @@ ul.tab li.dropdown a{
 }
 
 ul.tab li.dropdown a:hover{
-    background: #13BCB5 ;
+    background: transparent ;
     color: #FFFFFF;
 }
 
