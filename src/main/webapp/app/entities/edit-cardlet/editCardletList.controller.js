@@ -161,9 +161,6 @@
             $scope.showSpinner = true;
             $scope.myImage = ""
 
-            console.log($scope.tabImageId)
-            console.log($scope.itemImageId)
-            console.log($scope.imageItemMame)
 
             var img_b64 = $scope.myCroppedImage;
             var png = img_b64.split(',')[1];
@@ -179,7 +176,6 @@
 
                     if($scope.itemImageId != null){
 
-                        console.log( $scope.tabNames)
                         $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame] = $scope.imageUrl;
                     }else {
                         setTabImage();
@@ -233,7 +229,6 @@
                         document.getElementsByClassName("tabs2")[0].className += " active";
                         document.getElementsByClassName("tabcontent")[0].style.display = "block";
                         document.getElementsByClassName("tabs")[0].className += " active";
-                        console.log($scope.showSpinner)
                         $scope.showSpinner = false;
                     }, 500)
                 });
@@ -611,7 +606,6 @@
         }
 
         $scope.deleteItems = function(tabId, index){
-            console.log(index)
             if($scope.tabNames.tabs[tabId].items.length > 1){
                 $scope.tabNames.tabs[tabId].items.sort(function(a, b) {
                     return a.position-b.position;
@@ -822,7 +816,6 @@
         }
 
         $scope.enableTabs = function(){
-            console.log("enableTabs")
             $scope.isDisabledTabs = false;
         }
 
@@ -922,7 +915,6 @@
         }
 
         $scope.checkName = function(data){
-            console.log(data)
             if(!data || data === ""){
                 return "Your tab name is required."
             }
