@@ -18,7 +18,7 @@
                                     'font-style': slide.description.italic ? 'italic' : 'normal',
                                     'text-decoration': slide.description.underline ? 'underline' : 'normal' }" ng-show="slide.description.value">{{slide.description.value}}</div>
                                 </a>
-                                <div ng-hide="!slide.link && showLink">
+                                <div ng-hide="slide.link && showLink">
                                     <div class="carousel-item-name-div-new-3" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                         'font-style': slide.name.italic ? 'italic' : 'normal',
                                         'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
