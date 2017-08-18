@@ -6,16 +6,16 @@
                     <img crossorigin="anonymous" ng-src="{{tabName.photo}}?{{time}}" class="avatar">
                 </div>
                 <div class="social-link-group">
-                    <a class="social-link-1"  href="{{tabName.socialLinks.twitter}}" target="_blank" ng-show="tabName.socialLinks.twitter">
+                    <a class="social-link-1"  href="{{tabName.socialLinks.twitter}}" ng-class="!showLink ? 'disabledLink': ''" target="_blank" ng-show="tabName.socialLinks.twitter">
                         <span class="icon icon-twitter" ng-style="{'color': '#'+tabName.layout.secondaryColor}" style="font-size: 27px;"></span>
                     </a>
-                    <a class="social-link-1"  href="{{tabName.socialLinks.facebook}}" target="_blank" ng-show="tabName.socialLinks.facebook">
+                    <a class="social-link-1"  href="{{tabName.socialLinks.facebook}}" ng-class="!showLink ? 'disabledLink': ''" target="_blank" ng-show="tabName.socialLinks.facebook">
                         <span class="icon icon-facebook" style="font-size: 27px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </a>
-                    <a class="social-link-1" href="{{tabName.socialLinks.google}}" target="_blank" ng-show="tabName.socialLinks.google">
+                    <a class="social-link-1" href="{{tabName.socialLinks.google}}" ng-class="!showLink ? 'disabledLink': ''" target="_blank" ng-show="tabName.socialLinks.google">
                         <span class="icon icon-googleplus" style="font-size: 27px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </a>
-                    <a class="last-social-link" href="{{tabName.socialLinks.linkedin}}" target="_blank" ng-show="tabName.socialLinks.linkedin">
+                    <a class="last-social-link" href="{{tabName.socialLinks.linkedin}}" ng-class="!showLink ? 'disabledLink': ''" target="_blank" ng-show="tabName.socialLinks.linkedin">
                         <span class="icon icon-linkedin" style="font-size: 27px;" ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </a>
                 </div>

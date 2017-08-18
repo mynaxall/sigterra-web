@@ -3555,7 +3555,7 @@ button span{
 }
 
 .disabledLink{
-    cursor: not-allowed;
+    cursor: default;
     pointer-events: none;
 }
 
