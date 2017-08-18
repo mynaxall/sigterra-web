@@ -31,18 +31,14 @@ import java.net.URL;
 @Service
 @Transactional
 public class AWSS3BucketService {
+    protected static AmazonS3 s3Client = null;
     private final Logger log = LoggerFactory.getLogger(AWSS3BucketService.class);
-
     @Inject
     private UserService userService;
-
     @Inject
     private UserRepository userRepository;
-
     @Inject
     private JHipsterProperties hipsterProperties;
-
-    protected static AmazonS3 s3Client = null;
 
     @PostConstruct
     private void init() {
@@ -77,6 +73,7 @@ public class AWSS3BucketService {
 
                 ObjectMetadata metadata = new ObjectMetadata();
                 metadata.setContentType(file.getContentType());
+                metadata.setContentLength(file.getSize());
                 PutObjectRequest putObject = new PutObjectRequest(bucketName+"/accounts/"+user.getId(), name, file.getInputStream(), metadata);
                 putObject.withCannedAcl(CannedAccessControlList.PublicRead);
                 s3Client.putObject(putObject);
@@ -119,6 +116,7 @@ public class AWSS3BucketService {
 
                 ObjectMetadata metadata = new ObjectMetadata();
                 metadata.setContentType(file.getContentType());
+                metadata.setContentLength(file.getSize());
                 PutObjectRequest putObject = new PutObjectRequest(bucketName+"/bussinessCardTab/"+user.getId(), name, file.getInputStream(), metadata);
                 putObject.withCannedAcl(CannedAccessControlList.PublicRead);
                 s3Client.putObject(putObject);
@@ -156,6 +154,7 @@ public class AWSS3BucketService {
 
                 ObjectMetadata metadata = new ObjectMetadata();
                 metadata.setContentType(file.getContentType());
+                metadata.setContentLength(file.getSize());
                 PutObjectRequest putObject = new PutObjectRequest(bucketName+"/signature/"+user.getId()+"/"+cardletId, name, file.getInputStream(), metadata);
                 putObject.withCannedAcl(CannedAccessControlList.PublicRead);
                 s3Client.putObject(putObject);
