@@ -2843,7 +2843,7 @@ div.navbar-collapse.in.collapse{
 .navbar-brand{
     position: relative;
     z-index: 1001;
-    padding: 15px 0px !important;
+    padding: 15px 15px !important;
 }
 
 .modal-dialog{
