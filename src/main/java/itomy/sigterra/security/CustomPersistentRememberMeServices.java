@@ -166,13 +166,13 @@ public class CustomPersistentRememberMeServices extends
         }
 
         // We have a match for this user/series combination
-        log.info("presentedToken={} / tokenValue={}", presentedToken, token.getTokenValue());
-        if (!presentedToken.equals(token.getTokenValue())) {
-            // Token doesn't match series value. Delete this session and throw an exception.
-            persistentTokenRepository.delete(token);
-            throw new RememberMeAuthenticationException("Invalid remember-me token (Series/token) mismatch. Implies previous " +
-                "cookie theft attack.");
-        }
+//        log.info("presentedToken={} / tokenValue={}", presentedToken, token.getTokenValue());
+//        if (!presentedToken.equals(token.getTokenValue())) {
+//            // Token doesn't match series value. Delete this session and throw an exception.
+//            persistentTokenRepository.delete(token);
+//            throw new RememberMeAuthenticationException("Invalid remember-me token (Series/token) mismatch. Implies previous " +
+//                "cookie theft attack.");
+//        }
 
         if (token.getTokenDate().plusDays(TOKEN_VALIDITY_DAYS).isBefore(LocalDate.now())) {
             persistentTokenRepository.delete(token);
