@@ -5,7 +5,7 @@
                 <div class="main-carousel-image-div-info">
                     <div style="margin-top: 25px;"  ng-repeat="slide in tabName.items"  class="main-carousel-info-div-new">
                         <div style="float: left;width: 315px; min-height: 30px ">
-                            <pre class="carousel-info-name-div-new-2 carousel-item-name-div" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                            <pre class="carousel-info-name-div-new-2 carousel-item-name-div" style="max-height: 40px;" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': slide.name.italic ? 'italic' : 'normal',
                             'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
                             <pre class="carousel-info-name-div-new-2 carousel-info-deskript-div" ng-show="slide.description.value"
@@ -33,7 +33,7 @@
 
                         <div  class="carousel-info-div-new">
                             <div style="float: left; width: 315px; min-height: 30px">
-                                <pre  class="carousel-info-name-div-new-2 carousel-item-name-div" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                                <pre  class="carousel-info-name-div-new-2 carousel-item-name-div" style="max-height: 40px;" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': slide.name.italic ? 'italic' : 'normal',
                             'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
                                 <pre class="carousel-info-name-div-new-2 carousel-info-deskript-div" ng-show="slide.description.value"
@@ -76,6 +76,7 @@
             padding-left: 0px;
             padding-top: 0px;
             margin-bottom: 0px;
+            ine-height: 1;
         }
 
         .carousel-info-deskript-div{
