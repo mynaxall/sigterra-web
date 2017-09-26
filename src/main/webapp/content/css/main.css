@@ -4743,5 +4743,9 @@ ul.tab li.active:hover{
     margin-left: 29px;
     margin-top: 10px;
 }
+a:focus{
+    outline: none!important;
+    text-decoration: none;
+}
 
 
