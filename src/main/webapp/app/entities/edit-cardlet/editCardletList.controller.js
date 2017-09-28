@@ -55,14 +55,21 @@
         $scope.showLink = false;
 
         var handleFileSelect=function(evt) {
+            $scope.myCroppedImage = "";
             var file=evt.currentTarget.files[0];
-            var reader = new FileReader();
-            reader.onload = function (evt) {
-                $scope.$apply(function($scope){
-                    $scope.myImage=evt.target.result;
-                });
-            };
-            reader.readAsDataURL(file);
+            console.log(file)
+            if(file.type === "image/png" || file.type === "image/jpeg" || file.type ==="image/jpeg"){
+                var reader = new FileReader();
+                reader.onload = function (evt) {
+                    $scope.$apply(function($scope){
+                        $scope.myImage=evt.target.result;
+                    });
+                };
+                reader.readAsDataURL(file);
+            }else{
+                $scope.myCroppedImage = "";
+                $scope.myImage = "";
+            }
         };
         angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
 
@@ -80,6 +87,7 @@
         $scope.closeCropDialog = function(){
             $scope.showCropDialog = false;
             $scope.myImage = "";
+            $scope.myCroppedImage = "";
             $scope.noSocialChanges = false;
             angular.element(document.querySelector('#fileInput')).val(null);
         }
@@ -160,7 +168,6 @@
         $scope.saveImage = function(){
             $scope.showSpinner = true;
             $scope.myImage = ""
-
 
             var img_b64 = $scope.myCroppedImage;
             var png = img_b64.split(',')[1];
