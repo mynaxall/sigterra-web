@@ -153,7 +153,7 @@
                     Choosing Next means that you agree to the <a target="_blank" class="terms-and-conditions" href="/termsAndConditions.html">Terms and Conditions</a> of using.
                 </div>
                 <div style="text-align: center;margin-top: 35px">
-                    <button ng-click="vm.nextStep()" type="submit" ng-disabled="form.$invalid" class="loginButton">Next</button>
+                    <button ng-click="vm.nextStep()" type="submit" ng-disabled="form.$invalid || trimValue(vm.registerAccount.password)" class="loginButton">Next</button>
                 </div>
             </form>
 

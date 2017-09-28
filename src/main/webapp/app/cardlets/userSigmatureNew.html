@@ -31,7 +31,7 @@
         <div style="display: inline-block;">
             <div class="user-main-text" ng-show="firstBusinessCardCopyed.site.value" >
                 <div class="new-cardlet-marks" style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}; display: inline-block;width: 17px; margin-right: 0px">w: </div>
-                <div style="display: inline-flex;"><a ng-style="{'font-family': firstBusinessCardCopyed.site.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                <div ng-if="firstBusinessCardCopyed.site.value" style="display: inline-flex;"><a ng-style="{'font-family': firstBusinessCardCopyed.site.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': firstBusinessCardCopyed.site.italic ? 'italic' : 'normal',
                         'text-decoration': firstBusinessCardCopyed.site.underline ? 'underline' : 'normal'}" style="display: inline-block;overflow: hidden;text-overflow: ellipsis;width: 300px;max-width: 300px;white-space: nowrap;" target="_blank" href="{{getLink(firstBusinessCardCopyed.site.value)}}">{{firstBusinessCardCopyed.site.value}}</a></div>
             </div>
