@@ -66,6 +66,9 @@
                     });
                 };
                 reader.readAsDataURL(file);
+            }else{
+                $scope.myCroppedImage = "";
+                $scope.myImage = "";
             }
         };
         angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
