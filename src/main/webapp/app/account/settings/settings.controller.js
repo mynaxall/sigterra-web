@@ -205,6 +205,8 @@
                 .success(function (data, status, headers, config) {
                     $scope.showSpinner = false;
                     vm.settingsAccount.imageUrl = data.url;
+                    $scope.myImage='';
+                    $scope.myCroppedImage = '';
                 });
 
 

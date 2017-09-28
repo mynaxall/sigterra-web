@@ -11,7 +11,7 @@
 
     function UserCardletController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location) {
 
-
+        var vm = this;
         vm.showCarousel = true;
         $scope.showLink = true;
 
@@ -85,13 +85,13 @@
                 }
 
                 if ($scope.tabNames.tabs.length === 2) {
-                    cyrrentEl.style.width = "268px"
+                    cyrrentEl.style.width = "270px"
                 }
                 if ($scope.tabNames.tabs.length === 3) {
-                    cyrrentEl.style.width = "177px"
+                    cyrrentEl.style.width = "180px"
                 }
                 if ($scope.tabNames.tabs.length === 4) {
-                    cyrrentEl.style.width = "131px"
+                    cyrrentEl.style.width = "135px"
                 }
             }
         }

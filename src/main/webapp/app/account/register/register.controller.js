@@ -20,9 +20,9 @@
         .controller('RegisterController', RegisterController);
 
 
-    RegisterController.$inject = [ '$timeout', 'Auth', 'LoginService', '$state'];
+    RegisterController.$inject = [ '$timeout', 'Auth', 'LoginService', '$state', '$scope'];
 
-    function RegisterController ($timeout, Auth, LoginService, $state) {
+    function RegisterController ($timeout, Auth, LoginService, $state, $scope) {
         var vm = this;
 
 
@@ -42,6 +42,17 @@
         function nextStep (){
             vm.isFirstStep = false;
         }
+
+        $scope.trimValue = function(val){
+
+            if(val && !val.trim()){
+                return true
+            }
+            return false
+        }
+
+
+
         $timeout(function (){angular.element('#login').focus();});
 
         function register () {
