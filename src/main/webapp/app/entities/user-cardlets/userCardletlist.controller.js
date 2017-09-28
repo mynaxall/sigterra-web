@@ -132,7 +132,9 @@
 
         var fileSelected=function(evt) {
             var file=evt.currentTarget.files[0];
-            $scope.saveBanner("banner", file, true);
+            if(file) {
+                $scope.saveBanner("banner", file, true);
+            }
         };
         angular.element(document.querySelector('#fileInput3')).on('change',fileSelected);
 
