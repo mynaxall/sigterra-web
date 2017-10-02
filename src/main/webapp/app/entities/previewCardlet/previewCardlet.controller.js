@@ -7,11 +7,24 @@
 
 
 
-    PreviewCardletController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'LoginService', '$sce'];
+    PreviewCardletController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'LoginService', '$sce', '$rootScope', '$window'];
 
-    function PreviewCardletController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, LoginService, $sce) {
+    function PreviewCardletController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, LoginService, $sce, $rootScope, $window) {
 
         var vm = this;
+
+        $rootScope.title= "asdasdasdasd"
+
+        $scope.getUser = function(){
+            $http.get("/api/account")
+                .success(function(response, status, headers) {
+                    $scope.currentUser = response;
+                    console.log($scope.currentUser)
+                    $window.document.title = $scope.currentUser.firstName + " "+$scope.currentUser.lastName+" - Sigterra profile"
+                });
+        };
+        $scope.getUser();
+
         $scope.time = Date.now()
 
         vm.currentSlide = 0;
