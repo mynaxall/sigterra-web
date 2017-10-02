@@ -1655,9 +1655,9 @@ Social Buttons
 
 .firstItemTop{
     position: absolute;
-    bottom: 54px;
+    bottom: 59px;
     left: 0px;
-    height: 35px;
+    height: 30px;
     width: 100%;
 }
 
@@ -4746,6 +4746,90 @@ ul.tab li.active:hover{
 a:focus{
     outline: none!important;
     text-decoration: none;
+}
+
+.carousel-item-name-first-type{
+    width: 220px;
+    height: 30px;
+    font-size: 24px;
+    margin-left: 15px;
+    max-height:30px;
+    min-height: 30px;
+    margin-bottom: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.carousel-item-deskript-first-type{
+    font-weight: normal;
+    font-size: 14px;
+    max-height:80px;
+    min-height: 80px;
+    word-break: normal;
+    padding: 0px;
+    background: transparent;
+    border: none;
+}
+
+.carousel-item-name-third-type{
+    max-width: 235px;
+    height: 20px;
+    font-size: 16px;
+    margin-left: 15px;
+    max-height:20px;
+    min-height: 20px;
+    margin-top: 5px;
+    color: #242424;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.carousel-item-deskript-third-type{
+    font-weight: normal;
+    font-size: 14px;
+    max-height:100px;
+    min-height: 100px;
+    overflow: hidden;
+    word-break: normal;
+    padding: 0px;
+    background: transparent;
+    border: none;
+}
+
+.carousel-item-name-div-first{
+    width: 140px;
+    height: 25px;
+    max-height:25px;
+    min-height: 25px;
+    font-size: 16px;
+    margin-left: 10px;
+    max-width: 140px;
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+
+.carousel-item-deskript-div{
+    font-weight: normal;
+    font-size: 14px;
+    height: 60px;
+    max-height:60px;
+    min-height: 60px;
+    word-break: normal;
+}
+
+.item-3-content{
+    width: 270px;
+    height: 140px;
+    margin: 0 auto;
+    top: 45px;
+    left: 134px;
+    border-width: 3px;
+    border-style: solid;
+    position: absolute;
 }
 
 

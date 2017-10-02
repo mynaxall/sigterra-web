@@ -501,7 +501,8 @@
                                                     </div>
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
-                                                            <input type="text" class="input-new-editor" maxlength="33" id="description2{{slide.index}}-{{tabName.position}}" placeholder="Description" ng-model="slide.description.value">
+                                                            <input ng-hide="true" type="text" class="input-new-editor" placeholder="Description" ng-model="slide.description.value">
+                                                            <textarea msd-elastic class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description2{{slide.index}}-{{tabName.position}}" placeholder="Description" ng-model="slide.description.value" maxlength="150"></textarea>
                                                             <label for="description2{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
@@ -566,7 +567,8 @@
                                                         </div>
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
-                                                                <input type="text" class="input-new-editor" id="description2{{slide.index}}-{{tabName.position}}" maxlength="33" placeholder="Description" ng-model="slide.description.value">
+                                                                <input ng-hide="true" type="text" class="input-new-editor" placeholder="Description" ng-model="slide.description.value">
+                                                                <textarea msd-elastic class="textarea-new-editor" ng-keyup="autoExpand($event)" id="description2{{slide.index}}-{{tabName.position}}" placeholder="Description" ng-model="slide.description.value" maxlength="150"></textarea>
                                                                 <label for="description2{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div class="text-decoration-div-editor" >
