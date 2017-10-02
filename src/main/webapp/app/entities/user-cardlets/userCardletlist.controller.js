@@ -244,7 +244,7 @@
         $scope.tabsImage = '';
 
         $scope.gerPreviewLink = function(id){
-            return ($location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ id)
+            return ($location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ window.btoa(id))
         }
 
 
