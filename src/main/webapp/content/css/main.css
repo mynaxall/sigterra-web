@@ -1874,13 +1874,13 @@ Social Buttons
     position: absolute;
     top:20px;
     right:20px;
-    width: 96px;
+    width: 130px;
     height: 30px;
 }
 
 .catdlet-btn-col-top{
     padding: 0px!important;
-    width: 33.33333%;
+    width: 25%;
     height: 30px;
     float: left;
 }
@@ -4637,7 +4637,7 @@ ul.tab li.active:hover{
     padding: 20px;
     padding-bottom: 0px;
     height: 60px;
-    max-width: 480px;
+    max-width: 440px;
     overflow: hidden;
     word-break: break-all;
 }
