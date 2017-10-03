@@ -914,6 +914,16 @@
 
         };
 
+        $scope.cloneCardlet = function(cardlet) {
+            console.log(cardlet)
+            $scope.showSpinner = true;
+                cardlet.id = "";
+            $http.post("/api/clone", cardlet)
+                .success(function (data, status, headers, config) {
+                    $scope.userCard();
+                });
+        }
+
 
     }
 
