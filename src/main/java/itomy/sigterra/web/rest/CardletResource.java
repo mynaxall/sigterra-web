@@ -173,7 +173,7 @@ public class CardletResource {
     public ResponseEntity<UserCardletDTO> editCardlet(@RequestBody UserCardletDTO cardletDTO)
         throws URISyntaxException {
 
-        cardletService.createCardlet(cardletDTO, true, null, false);
+        cardletService.createCardlet(cardletDTO, true, null, false, false);
 
         return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
     }
@@ -184,7 +184,7 @@ public class CardletResource {
     public ResponseEntity<UserCardletDTO> createFirstCardlet(@RequestBody UserCardletDTO cardletDTO, @RequestParam(value = "id") Long id)
         throws URISyntaxException {
 
-        cardletService.createCardlet(cardletDTO, false, id, true);
+        cardletService.createCardlet(cardletDTO, false, id, true, false);
 
         return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
     }
@@ -198,7 +198,17 @@ public class CardletResource {
         throws URISyntaxException {
 
 
-        cardletService.createCardlet(cardletDTO, false, null, false);
+        cardletService.createCardlet(cardletDTO, false, null, false, false);
+
+        return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/clone", produces=MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<UserCardletDTO> cloneCardlet(@RequestBody UserCardletDTO cardletDTO)
+        throws URISyntaxException {
+
+        cardletService.createCardlet(cardletDTO, false, null, false, true);
 
         return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
     }
