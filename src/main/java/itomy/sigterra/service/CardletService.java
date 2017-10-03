@@ -361,7 +361,6 @@ public class CardletService {
                         itemData.setName(inputModel.getName());
                     }
 
-                    log.info("inputModel.getId() ======= "+inputModel.getId());
                     if(isClone){
                         itemData.setId(null);
                     }else {
