@@ -45,8 +45,7 @@
                     'text-decoration': tabNames.tabs[firstBusinessCardId].address.underline ? 'underline' : 'normal'}">{{tabNames.tabs[firstBusinessCardId].address.value}}</div>
        </div>
        <div style="font-size: 15px">
-           <a ng-if="signatureLink" target="_blank" href="{{signatureLink}}">My Sigterra Profile</a>
-            <span style="color: #337ab7;" ng-if="!signatureLink">My Sigterra Profile</span>
+           <a ng-show="signatureLink" target="_blank" href="{{signatureLink}}">{{signatureLink}}</a>
        </div>
 
    </div>

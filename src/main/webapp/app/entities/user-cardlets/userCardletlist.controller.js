@@ -132,7 +132,9 @@
 
         var fileSelected=function(evt) {
             var file=evt.currentTarget.files[0];
-            $scope.saveBanner("banner", file, true);
+            if(file) {
+                $scope.saveBanner("banner", file, true);
+            }
         };
         angular.element(document.querySelector('#fileInput3')).on('change',fileSelected);
 
@@ -242,7 +244,7 @@
         $scope.tabsImage = '';
 
         $scope.gerPreviewLink = function(id){
-            return ($location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ id)
+            return ($location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ window.btoa(id))
         }
 
 
@@ -911,6 +913,16 @@
             }
 
         };
+
+        $scope.cloneCardlet = function(cardlet) {
+            console.log(cardlet)
+            $scope.showSpinner = true;
+                cardlet.id = "";
+            $http.post("/api/clone", cardlet)
+                .success(function (data, status, headers, config) {
+                    $scope.userCard();
+                });
+        }
 
 
     }

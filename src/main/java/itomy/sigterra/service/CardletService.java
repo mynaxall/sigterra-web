@@ -238,7 +238,7 @@ public class CardletService {
 
 
 
-    public UserCardletDTO createCardlet(UserCardletDTO cardletDTO, boolean update, Long id, boolean isFirstLogin) {
+    public UserCardletDTO createCardlet(UserCardletDTO cardletDTO, boolean update, Long id, boolean isFirstLogin, boolean isClone) {
 
         log.debug("REST request to get a page of Cardlets22");
         Cardlet cardlet = new Cardlet();
@@ -267,6 +267,9 @@ public class CardletService {
                 }
                 business.setName(tab.getName());
                 if (tab.getUserEmail() != null) {
+                    if(isClone){
+                        tab.getUserEmail().setId(null);
+                    }
                     inputPropertiesRepository.save(tab.getUserEmail());
                     business.setUserEmail(tab.getUserEmail());
                 }
@@ -276,26 +279,44 @@ public class CardletService {
                 business.setCardlet(cardlet);
                 business.setPhoto(tab.getPhoto());
                 if (tab.getUserName() != null) {
+                    if(isClone){
+                        tab.getUserName().setId(null);
+                    }
                     inputPropertiesRepository.save(tab.getUserName());
                     business.setUserName(tab.getUserName());
                 }
                 if (tab.getPhone() != null) {
+                    if(isClone){
+                        tab.getPhone().setId(null);
+                    }
                     inputPropertiesRepository.save(tab.getPhone());
                     business.setPhone(tab.getPhone());
                 }
                 if (tab.getAddress() != null) {
+                    if(isClone){
+                        tab.getAddress().setId(null);
+                    }
                     inputPropertiesRepository.save(tab.getAddress());
                     business.setAddress(tab.getAddress());
                 }
                 if (tab.getCompany() != null) {
+                    if(isClone){
+                        tab.getCompany().setId(null);
+                    }
                     inputPropertiesRepository.save(tab.getCompany());
                     business.setCompany(tab.getCompany());
                 }
                 if (tab.getSite() != null){
+                    if(isClone){
+                        tab.getSite().setId(null);
+                    }
                     inputPropertiesRepository.save(tab.getSite());
                     business.setSite(tab.getSite());
                 }
                 if (tab.getJob() != null) {
+                    if(isClone){
+                        tab.getJob().setId(null);
+                    }
                     inputPropertiesRepository.save(tab.getJob());
                     business.setJob(tab.getJob());
                 }
@@ -326,14 +347,26 @@ public class CardletService {
                 for (ItemModel inputModel : inputModels) {
                     ItemData itemData = new ItemData();
                     if(inputModel.getDescription() != null) {
+                        if(isClone){
+                            inputModel.getDescription().setId(null);
+                        }
                         inputPropertiesRepository.save(inputModel.getDescription());
                         itemData.setDescription(inputModel.getDescription());
                     }
                     if(inputModel.getName() != null) {
+                        if(isClone){
+                            inputModel.getName().setId(null);
+                        }
                         inputPropertiesRepository.save(inputModel.getName());
                         itemData.setName(inputModel.getName());
                     }
-                    itemData.setId(inputModel.getId());
+
+                    log.info("inputModel.getId() ======= "+inputModel.getId());
+                    if(isClone){
+                        itemData.setId(null);
+                    }else {
+                        itemData.setId(inputModel.getId());
+                    }
 
                     itemData.setFirstImage(inputModel.getImage());
                     itemData.setSecondImage(inputModel.getImage2());

@@ -13,8 +13,7 @@
             parent: 'entity',
             url: '/previewCardlet?page&sort&search&cardletId',
             data: {
-                authorities: [],
-                pageTitle: 'Cardlets'
+                authorities: []
             },
             views: {
                 'content@': {

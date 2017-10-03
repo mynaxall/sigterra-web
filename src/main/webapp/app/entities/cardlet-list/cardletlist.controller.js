@@ -58,13 +58,18 @@
 
         var handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];
-            var reader = new FileReader();
-            reader.onload = function (evt) {
-                $scope.$apply(function($scope){
-                    $scope.myImage=evt.target.result;
-                });
-            };
-            reader.readAsDataURL(file);
+            if(file.type === "image/png" || file.type === "image/jpeg" || file.type ==="image/jpeg") {
+                var reader = new FileReader();
+                reader.onload = function (evt) {
+                    $scope.$apply(function ($scope) {
+                        $scope.myImage = evt.target.result;
+                    });
+                };
+                reader.readAsDataURL(file);
+            }else{
+                $scope.myCroppedImage = "";
+                $scope.myImage = "";
+            }
         };
         angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
 
