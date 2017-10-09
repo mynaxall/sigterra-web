@@ -44,6 +44,14 @@
                 });
         }
 
+        $scope.trimValue = function(val){
+
+            if(val && !val.trim()){
+                return true
+            }
+            return false
+        }
+
 
 
 
