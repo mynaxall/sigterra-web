@@ -13,14 +13,14 @@
 
         var vm = this;
 
-        $rootScope.title= "asdasdasdasd"
+        $rootScope.title= ""
 
         $scope.getUser = function(){
             $http.get("/api/account")
                 .success(function(response, status, headers) {
                     $scope.currentUser = response;
                     console.log($scope.currentUser)
-                    $window.document.title = $scope.currentUser.firstName + " "+$scope.currentUser.lastName+" - Sigterra profile"
+                    $window.document.title = $scope.currentUser.username + " - Sigterra profile"
                 });
         };
         $scope.getUser();
@@ -82,7 +82,7 @@
 
         $scope.addToAddressBook = function(){
             var param1 = $location.search().cardletId;
-            $http.post("/api/address-book/"+param1)
+            $http.post("/api/address-book/"+window.atob(param1))
                 .success(function(response, status, headers) {
 
                     $scope.successfulyAdded = response.message;
