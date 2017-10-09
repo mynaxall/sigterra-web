@@ -13,7 +13,7 @@
 
         var vm = this;
 
-        $rootScope.title= "asdasdasdasd"
+        $rootScope.title= ""
 
         $scope.getUser = function(){
             $http.get("/api/account")
