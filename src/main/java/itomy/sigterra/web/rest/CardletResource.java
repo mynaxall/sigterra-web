@@ -1,16 +1,15 @@
 package itomy.sigterra.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import itomy.sigterra.domain.*;
-
+import itomy.sigterra.annotation.Analytic;
+import itomy.sigterra.domain.Cardlet;
+import itomy.sigterra.domain.enumeration.EventType;
 import itomy.sigterra.repository.BusinessRepository;
 import itomy.sigterra.repository.CardletRepository;
 import itomy.sigterra.service.AWSS3BucketService;
 import itomy.sigterra.service.CardletService;
+import itomy.sigterra.service.EventService;
 import itomy.sigterra.service.UserService;
-import itomy.sigterra.service.dto.CardletItemTab;
-import itomy.sigterra.service.dto.CardletTab;
-import itomy.sigterra.service.dto.ItemModel;
 import itomy.sigterra.service.dto.UserCardletDTO;
 import itomy.sigterra.web.rest.util.HeaderUtil;
 import itomy.sigterra.web.rest.util.PaginationUtil;
@@ -30,7 +29,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * REST controller for managing Cardlet.
@@ -51,6 +51,8 @@ public class CardletResource {
 
     @Inject
     private CardletService cardletService;
+    @Inject
+    private EventService eventService;
 
     @Inject
     private AWSS3BucketService awss3BucketService;
@@ -162,9 +164,12 @@ public class CardletResource {
 
     @GetMapping("/cardlet/{id}")
     @Timed
+    @Analytic(type = EventType.VIEW)
     public ResponseEntity<?> getCardletById(@PathVariable Long id) {
         log.debug("REST request to get Cardlet : {}", id);
         UserCardletDTO usetCardletDTOs = cardletService.getCardlet(id);
+
+        eventService.viewEvent(id);
         return new ResponseEntity<>(usetCardletDTOs, HttpStatus.OK);
     }
 
