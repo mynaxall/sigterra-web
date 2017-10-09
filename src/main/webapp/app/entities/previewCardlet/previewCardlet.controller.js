@@ -20,7 +20,7 @@
                 .success(function(response, status, headers) {
                     $scope.currentUser = response;
                     console.log($scope.currentUser)
-                    $window.document.title = $scope.currentUser.firstName + " "+$scope.currentUser.lastName+" - Sigterra profile"
+                    $window.document.title = $scope.currentUser.username + " - Sigterra profile"
                 });
         };
         $scope.getUser();
