@@ -82,7 +82,7 @@
 
         $scope.addToAddressBook = function(){
             var param1 = $location.search().cardletId;
-            $http.post("/api/address-book/"+param1)
+            $http.post("/api/address-book/"+window.atob(param1))
                 .success(function(response, status, headers) {
 
                     $scope.successfulyAdded = response.message;
