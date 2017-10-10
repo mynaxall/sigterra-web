@@ -123,4 +123,9 @@ public class EventService {
         User user = visitor.getUser();
         return user != null && user.equals(cardlet.getUser());
     }
+
+    boolean isCardletOwner(Cardlet cardlet) {
+        Visitor visitor = getVisitor();
+        return isCardletOwner(cardlet, visitor);
+    }
 }

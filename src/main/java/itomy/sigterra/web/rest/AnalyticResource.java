@@ -3,11 +3,10 @@ package itomy.sigterra.web.rest;
 import io.swagger.annotations.ApiParam;
 import itomy.sigterra.domain.Event;
 import itomy.sigterra.domain.TopDomain;
-import itomy.sigterra.repository.CardletRepository;
-import itomy.sigterra.repository.ItemRepository;
 import itomy.sigterra.service.AnalyticService;
 import itomy.sigterra.service.dto.RecentDTO;
 import itomy.sigterra.service.dto.TopDTO;
+import itomy.sigterra.service.exception.ResponseErrorException;
 import itomy.sigterra.web.rest.util.PaginationUtil;
 import itomy.sigterra.web.rest.vm.AnalyticStatVM;
 import itomy.sigterra.web.rest.vm.AnalyticVM;
@@ -27,7 +26,6 @@ import java.util.stream.Collectors;
 
 import static itomy.sigterra.web.rest.util.ResponseUtil.errorResponse;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 /**
  * REST controller for managing Event.
@@ -41,14 +39,9 @@ public class AnalyticResource {
 
     private static final String PERIOD_IS_REQUIRED_MESSAGE = "Period is required";
     private static final String TYPE_IS_REQUIRED_MESSAGE = "Type is required";
-    private static final String CARDLET_NOT_FOUND_MESSAGE = "Cardlet not found";
 
     @Inject
     private AnalyticService analyticService;
-    @Inject
-    private CardletRepository cardletRepository;
-    @Inject
-    private ItemRepository itemRepository;
 
     @GetMapping("/stat/{cardletId:\\d+}")
     public ResponseEntity getStatsForCardlet(@PathVariable("cardletId") Long cardletId,
@@ -57,11 +50,12 @@ public class AnalyticResource {
         if (period == null || period.isEmpty()) {
             return errorResponse(BAD_REQUEST, PERIOD_IS_REQUIRED_MESSAGE);
         }
-        if (not(cardletRepository.exists(cardletId))) {
-            return errorResponse(NOT_FOUND, CARDLET_NOT_FOUND_MESSAGE);
+        try {
+            AnalyticStatVM vm = new AnalyticStatVM(analyticService.getStats(cardletId, period));
+            return ResponseEntity.ok(vm);
+        } catch (ResponseErrorException rex) {
+            return errorResponse(rex.getHttpStatus(), rex.getMessage());
         }
-        AnalyticStatVM vm = new AnalyticStatVM(analyticService.getStats(cardletId, period));
-        return ResponseEntity.ok(vm);
     }
 
     @GetMapping("/stat")
@@ -83,14 +77,15 @@ public class AnalyticResource {
         if (period == null || period.isEmpty()) {
             return errorResponse(BAD_REQUEST, PERIOD_IS_REQUIRED_MESSAGE);
         }
-        if (not(cardletRepository.exists(cardletId))) {
-            return errorResponse(NOT_FOUND, CARDLET_NOT_FOUND_MESSAGE);
-        }
-        Page<TopDomain> domains = analyticService.getTop(cardletId, period, pageable);
-        List<TopDTO> dtos = domains.getContent().stream().map(TopDTO::new).collect(Collectors.toList());
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(domains, "/api/analytic/top");
+        try {
+            Page<TopDomain> domains = analyticService.getTop(cardletId, period, pageable);
+            List<TopDTO> dtos = domains.getContent().stream().map(TopDTO::new).collect(Collectors.toList());
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(domains, "/api/analytic/top");
 
-        return new ResponseEntity<>(dtos, headers, HttpStatus.OK);
+            return new ResponseEntity<>(dtos, headers, HttpStatus.OK);
+        } catch (ResponseErrorException rex) {
+            return errorResponse(rex.getHttpStatus(), rex.getMessage());
+        }
     }
 
     @GetMapping("/top")
@@ -118,14 +113,15 @@ public class AnalyticResource {
         if (type == null || type.isEmpty()) {
             return errorResponse(BAD_REQUEST, TYPE_IS_REQUIRED_MESSAGE);
         }
-        if (not(cardletRepository.exists(cardletId))) {
-            return errorResponse(NOT_FOUND, CARDLET_NOT_FOUND_MESSAGE);
-        }
-        Page<Event> domains = analyticService.getRecent(cardletId, type, pageable);
-        List<RecentDTO> dtos = domains.getContent().stream().map(e -> new RecentDTO(e, timeZine)).collect(Collectors.toList());
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(domains, "/api/analytic/recent");
+        try {
+            Page<Event> domains = analyticService.getRecent(cardletId, type, pageable);
+            List<RecentDTO> dtos = domains.getContent().stream().map(e -> new RecentDTO(e, timeZine)).collect(Collectors.toList());
+            HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(domains, "/api/analytic/recent");
 
-        return new ResponseEntity<>(dtos, headers, HttpStatus.OK);
+            return new ResponseEntity<>(dtos, headers, HttpStatus.OK);
+        } catch (ResponseErrorException rex) {
+            return errorResponse(rex.getHttpStatus(), rex.getMessage());
+        }
     }
 
     @GetMapping("/recent")
@@ -152,7 +148,15 @@ public class AnalyticResource {
         return ResponseEntity.ok(analyticVM);
     }
 
-    private static boolean not(boolean statement) {
-        return !statement;
+    @GetMapping("/{cardletId:\\d+}")
+    public ResponseEntity<AnalyticVM> getRecentForAllCardlets(@PathVariable("cardletId") Long cardletId,
+                                                              @RequestHeader(value = "X-TimeZone", required = false) String timeZine) {
+        log.debug("REST request to get analytic");
+        try {
+            AnalyticVM analyticVM = analyticService.getAnalytic(cardletId, timeZine);
+            return ResponseEntity.ok(analyticVM);
+        } catch (ResponseErrorException rex) {
+            return errorResponse(rex.getHttpStatus(), rex.getMessage());
+        }
     }
 }

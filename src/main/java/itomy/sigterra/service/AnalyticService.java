@@ -7,6 +7,7 @@ import itomy.sigterra.domain.enumeration.EventType;
 import itomy.sigterra.repository.CardletRepository;
 import itomy.sigterra.service.dto.RecentDTO;
 import itomy.sigterra.service.dto.TopDTO;
+import itomy.sigterra.service.exception.ResponseErrorException;
 import itomy.sigterra.web.rest.vm.AnalyticStatVM;
 import itomy.sigterra.web.rest.vm.AnalyticVM;
 import org.joda.time.DateTime;
@@ -22,6 +23,8 @@ import java.util.*;
 import java.util.function.Supplier;
 
 import static java.util.stream.Collectors.toList;
+import static org.springframework.http.HttpStatus.FORBIDDEN;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Service
 @Transactional
@@ -46,12 +49,15 @@ public class AnalyticService {
     private static final String DEFAULT_PERIOD = "day";
     private static final String DEFAULT_TYPE = "all";
     private static final Pageable DEFAULT_PAGEABLE = new PageRequest(0, 10);
+    private static final String CARDLET_NOT_FOUND_MESSAGE = "Cardlet not found";
+    private static final String FORBIDDEN_MESSAGE = "User not an cardlet owner.";
 
     public List<Event> getStats(Long cardletId, String period) {
         if (cardletId == null) {
             return getStats(period);
         }
         Cardlet cardlet = cardletRepository.findOne(cardletId);
+        checkCardlet(cardlet);
         Timestamp dateFrom = getDateFrom(period);
 
         return eventService.getAllEvents(cardlet, dateFrom);
@@ -68,6 +74,7 @@ public class AnalyticService {
             return getTop(period, pageable);
         }
         Cardlet cardlet = cardletRepository.findOne(cardletId);
+        checkCardlet(cardlet);
         Timestamp dateFrom = getDateFrom(period);
 
         return eventService.getAllClicksByCardlet(cardlet, dateFrom, pageable);
@@ -84,6 +91,7 @@ public class AnalyticService {
             return getRecent(type, pageable);
         }
         Cardlet cardlet = cardletRepository.findOne(cardletId);
+        checkCardlet(cardlet);
         List<EventType> eventTypes = getTypes(type);
 
         return eventService.getAllRecentsByCardlet(cardlet, eventTypes, pageable);
@@ -95,15 +103,45 @@ public class AnalyticService {
         return eventService.getAllRecentForUser(eventTypes, pageable);
     }
 
+    public AnalyticVM getAnalytic(Long cardletId, String timezone) {
+        AnalyticVM response = new AnalyticVM();
+
+        response.setStatistics(new AnalyticStatVM(getStats(cardletId, DEFAULT_PERIOD)));
+
+        List<TopDomain> domains = getTop(cardletId, DEFAULT_PERIOD, DEFAULT_PAGEABLE).getContent();
+        response.setTop(domains.stream().map(TopDTO::new).collect(toList()));
+
+        List<Event> recentEvents = getRecent(cardletId, DEFAULT_TYPE, DEFAULT_PAGEABLE).getContent();
+        response.setRecent(recentEvents.stream().map(event -> new RecentDTO(event, timezone)).collect(toList()));
+
+        return response;
+    }
+
     public AnalyticVM getAnalytic(String timezone) {
         AnalyticVM response = new AnalyticVM();
+
         response.setStatistics(new AnalyticStatVM(getStats(DEFAULT_PERIOD)));
+
         List<TopDomain> domains = getTop(DEFAULT_PERIOD, DEFAULT_PAGEABLE).getContent();
         response.setTop(domains.stream().map(TopDTO::new).collect(toList()));
+
         List<Event> recentEvents = getRecent(DEFAULT_TYPE, DEFAULT_PAGEABLE).getContent();
         response.setRecent(recentEvents.stream().map(event -> new RecentDTO(event, timezone)).collect(toList()));
 
         return response;
+    }
+
+    private void checkCardlet(Cardlet cardlet) {
+        if (cardlet == null) {
+            throw new ResponseErrorException(NOT_FOUND, CARDLET_NOT_FOUND_MESSAGE);
+        }
+        if (not(eventService.isCardletOwner(cardlet))) {
+            throw new ResponseErrorException(FORBIDDEN, FORBIDDEN_MESSAGE);
+        }
+    }
+
+    private static boolean not(boolean statement) {
+        return !statement;
     }
 
     private Timestamp getDateFrom(String period) {
