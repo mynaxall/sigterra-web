@@ -5,11 +5,8 @@ import itomy.sigterra.domain.enumeration.EventType;
 import itomy.sigterra.repository.CardletRepository;
 import itomy.sigterra.repository.EventRepository;
 import itomy.sigterra.repository.ItemRepository;
-import itomy.sigterra.domain.TopDomain;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,9 +14,6 @@ import javax.inject.Inject;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
-
-import static itomy.sigterra.web.rest.util.ResponseUtil.errorResponse;
-import static itomy.sigterra.web.rest.util.ResponseUtil.okResponse;
 
 /**
  * Service Implementation for managing Event.
@@ -37,33 +31,26 @@ public class EventService {
     @Inject
     private VisitorService visitorService;
 
-    public ResponseEntity clickCardlet(Long cardletId) {
+    public void clickCardlet(Long cardletId) {
         Cardlet cardlet = cardletRepository.findOne(cardletId);
-        if (cardlet == null) {
-            return errorResponse(HttpStatus.BAD_REQUEST, "Cardlet not found.");
-        }
         Visitor visitor = getVisitor();
 
         // Check if click on own Cardlet
         if (isCardletOwner(cardlet, visitor)) {
-            return errorResponse(HttpStatus.BAD_REQUEST, "Self clicks are not counting.");
+            throw new IllegalArgumentException("Self clicks are not counting.");
         }
 
         Event event = fromTemplate(visitor, cardlet, EventType.CLICK, null);
         eventRepository.save(event);
-        return okResponse();
     }
 
-    public ResponseEntity clickItem(Long itemId) {
+    public void clickItem(Long itemId) {
         Item item = itemRepository.findOne(itemId);
-        if (item == null) {
-            return errorResponse(HttpStatus.BAD_REQUEST, "Item not found");
-        }
         Visitor visitor = getVisitor();
 
         // Check if click on own Cardlet
         if (isCardletOwner(item.getCardlet(), visitor)) {
-            return errorResponse(HttpStatus.BAD_REQUEST, "Self clicks are not counting.");
+            throw new IllegalArgumentException("Self clicks are not counting.");
         }
 
         Event eventClickItem = fromTemplate(visitor, item.getCardlet(), EventType.CLICK, item);
@@ -71,7 +58,6 @@ public class EventService {
 
         eventRepository.save(eventClickItem);
         eventRepository.save(eventReadItem);
-        return okResponse();
     }
 
     public void addContactEvent(Cardlet cardlet) {

@@ -47,19 +47,14 @@ public class AnalyticService {
     private static final String DEFAULT_TYPE = "all";
     private static final Pageable DEFAULT_PAGEABLE = new PageRequest(0, 10);
 
-    private static final String CARDLET_NOT_FOUND_MESSAGE = "Cardlet not found";
-
     public List<Event> getStats(Long cardletId, String period) {
         if (cardletId == null) {
             return getStats(period);
         }
         Cardlet cardlet = cardletRepository.findOne(cardletId);
-        if (cardlet == null) {
-            throw new IllegalArgumentException(CARDLET_NOT_FOUND_MESSAGE);
-        } else {
-            Timestamp dateFrom = getDateFrom(period);
-            return eventService.getAllEvents(cardlet, dateFrom);
-        }
+        Timestamp dateFrom = getDateFrom(period);
+
+        return eventService.getAllEvents(cardlet, dateFrom);
     }
 
     public List<Event> getStats(String period) {
@@ -73,9 +68,6 @@ public class AnalyticService {
             return getTop(period, pageable);
         }
         Cardlet cardlet = cardletRepository.findOne(cardletId);
-        if (cardlet == null) {
-            throw new IllegalArgumentException(CARDLET_NOT_FOUND_MESSAGE);
-        }
         Timestamp dateFrom = getDateFrom(period);
 
         return eventService.getAllClicksByCardlet(cardlet, dateFrom, pageable);
@@ -92,9 +84,6 @@ public class AnalyticService {
             return getRecent(type, pageable);
         }
         Cardlet cardlet = cardletRepository.findOne(cardletId);
-        if (cardlet == null) {
-            throw new IllegalArgumentException(CARDLET_NOT_FOUND_MESSAGE);
-        }
         List<EventType> eventTypes = getTypes(type);
 
         return eventService.getAllRecentsByCardlet(cardlet, eventTypes, pageable);
@@ -124,11 +113,6 @@ public class AnalyticService {
         } catch (IllegalArgumentException ex) {
             enumPeriod = Period.DAY;
         }
-        System.out.println(periods.get(enumPeriod).get());
-
-        System.out.println(periods.get(enumPeriod).get());
-
-
         return periods.get(enumPeriod).get();
     }
 

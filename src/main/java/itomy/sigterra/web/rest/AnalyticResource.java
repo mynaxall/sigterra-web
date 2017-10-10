@@ -3,6 +3,8 @@ package itomy.sigterra.web.rest;
 import io.swagger.annotations.ApiParam;
 import itomy.sigterra.domain.Event;
 import itomy.sigterra.domain.TopDomain;
+import itomy.sigterra.repository.CardletRepository;
+import itomy.sigterra.repository.ItemRepository;
 import itomy.sigterra.service.AnalyticService;
 import itomy.sigterra.service.dto.RecentDTO;
 import itomy.sigterra.service.dto.TopDTO;
@@ -25,6 +27,7 @@ import java.util.stream.Collectors;
 
 import static itomy.sigterra.web.rest.util.ResponseUtil.errorResponse;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 /**
  * REST controller for managing Event.
@@ -38,9 +41,14 @@ public class AnalyticResource {
 
     private static final String PERIOD_IS_REQUIRED_MESSAGE = "Period is required";
     private static final String TYPE_IS_REQUIRED_MESSAGE = "Type is required";
+    private static final String CARDLET_NOT_FOUND_MESSAGE = "Cardlet not found";
 
     @Inject
     private AnalyticService analyticService;
+    @Inject
+    private CardletRepository cardletRepository;
+    @Inject
+    private ItemRepository itemRepository;
 
     @GetMapping("/stat/{cardletId:\\d+}")
     public ResponseEntity getStatsForCardlet(@PathVariable("cardletId") Long cardletId,
@@ -49,12 +57,11 @@ public class AnalyticResource {
         if (period == null || period.isEmpty()) {
             return errorResponse(BAD_REQUEST, PERIOD_IS_REQUIRED_MESSAGE);
         }
-        try {
-            AnalyticStatVM vm = new AnalyticStatVM(analyticService.getStats(cardletId, period));
-            return ResponseEntity.ok(vm);
-        } catch (IllegalArgumentException ex) {
-            return errorResponse(BAD_REQUEST, ex.getMessage());
+        if (not(cardletRepository.exists(cardletId))) {
+            return errorResponse(NOT_FOUND, CARDLET_NOT_FOUND_MESSAGE);
         }
+        AnalyticStatVM vm = new AnalyticStatVM(analyticService.getStats(cardletId, period));
+        return ResponseEntity.ok(vm);
     }
 
     @GetMapping("/stat")
@@ -63,29 +70,23 @@ public class AnalyticResource {
         if (period == null || period.isEmpty()) {
             return errorResponse(BAD_REQUEST, PERIOD_IS_REQUIRED_MESSAGE);
         }
-        try {
-            AnalyticStatVM vm = new AnalyticStatVM(analyticService.getStats(period));
-            return ResponseEntity.ok(vm);
-        } catch (IllegalArgumentException ex) {
-            return errorResponse(BAD_REQUEST, ex.getMessage());
-        }
+        AnalyticStatVM vm = new AnalyticStatVM(analyticService.getStats(period));
+        return ResponseEntity.ok(vm);
     }
 
-    @GetMapping("/top/{cardletId}")
+    @GetMapping("/top/{cardletId:\\d+}")
     public ResponseEntity<List<TopDTO>> getTopForCardlet(@PathVariable("cardletId") Long cardletId,
                                                          @RequestParam String period,
-                                                         Pageable pageable) throws URISyntaxException {
+                                                         @ApiParam Pageable pageable) throws URISyntaxException {
         log.debug("REST request to get top for cardlet with id = {}, peroid = {}", cardletId, period);
 
         if (period == null || period.isEmpty()) {
             return errorResponse(BAD_REQUEST, PERIOD_IS_REQUIRED_MESSAGE);
         }
-        Page<TopDomain> domains;
-        try {
-            domains = analyticService.getTop(cardletId, period, pageable);
-        } catch (IllegalArgumentException ex) {
-            return errorResponse(BAD_REQUEST, ex.getMessage());
+        if (not(cardletRepository.exists(cardletId))) {
+            return errorResponse(NOT_FOUND, CARDLET_NOT_FOUND_MESSAGE);
         }
+        Page<TopDomain> domains = analyticService.getTop(cardletId, period, pageable);
         List<TopDTO> dtos = domains.getContent().stream().map(TopDTO::new).collect(Collectors.toList());
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(domains, "/api/analytic/top");
 
@@ -94,7 +95,7 @@ public class AnalyticResource {
 
     @GetMapping("/top")
     public ResponseEntity<List<TopDTO>> getTopForAllCardlets(@RequestParam String period,
-                                                             Pageable pageable) throws URISyntaxException {
+                                                             @ApiParam Pageable pageable) throws URISyntaxException {
         log.debug("REST request to get top for cardlets, peroid = {}", period);
 
         if (period == null || period.isEmpty()) {
@@ -107,7 +108,7 @@ public class AnalyticResource {
         return new ResponseEntity<>(dtos, headers, HttpStatus.OK);
     }
 
-    @GetMapping("/recent/{cardletId}")
+    @GetMapping("/recent/{cardletId:\\d+}")
     public ResponseEntity<List<RecentDTO>> getRecentForCardlet(@PathVariable("cardletId") Long cardletId,
                                                                @RequestParam String type,
                                                                @RequestHeader(value = "X-TimeZone", required = false) String timeZine,
@@ -117,12 +118,10 @@ public class AnalyticResource {
         if (type == null || type.isEmpty()) {
             return errorResponse(BAD_REQUEST, TYPE_IS_REQUIRED_MESSAGE);
         }
-        Page<Event> domains;
-        try {
-            domains = analyticService.getRecent(cardletId, type, pageable);
-        } catch (IllegalArgumentException ex) {
-            return errorResponse(BAD_REQUEST, ex.getMessage());
+        if (not(cardletRepository.exists(cardletId))) {
+            return errorResponse(NOT_FOUND, CARDLET_NOT_FOUND_MESSAGE);
         }
+        Page<Event> domains = analyticService.getRecent(cardletId, type, pageable);
         List<RecentDTO> dtos = domains.getContent().stream().map(e -> new RecentDTO(e, timeZine)).collect(Collectors.toList());
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(domains, "/api/analytic/recent");
 
@@ -146,14 +145,14 @@ public class AnalyticResource {
     }
 
     @GetMapping()
-    public ResponseEntity<AnalyticVM> getRecentForAllCardlets(@RequestHeader(value = "X-TimeZone", required = false) String timeZine) throws URISyntaxException {
+    public ResponseEntity<AnalyticVM> getRecentForAllCardlets(@RequestHeader(value = "X-TimeZone", required = false) String timeZine) {
         log.debug("REST request to get analytic");
 
-        try {
-            AnalyticVM analyticVM = analyticService.getAnalytic(timeZine);
-            return ResponseEntity.ok(analyticVM);
-        } catch (IllegalArgumentException ex) {
-            return errorResponse(BAD_REQUEST, ex.getMessage());
-        }
+        AnalyticVM analyticVM = analyticService.getAnalytic(timeZine);
+        return ResponseEntity.ok(analyticVM);
+    }
+
+    private static boolean not(boolean statement) {
+        return !statement;
     }
 }

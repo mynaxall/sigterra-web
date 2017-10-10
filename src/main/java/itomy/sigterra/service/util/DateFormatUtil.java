@@ -25,7 +25,7 @@ public class DateFormatUtil {
         } catch (NullPointerException | NumberFormatException ex) {
             offset = 0;
         }
-        if (-12 < offset && offset < 14) {
+        if (-12 <= offset && offset <= 14) {
             dateTime = dateTime.plusHours(offset);
         }
 
