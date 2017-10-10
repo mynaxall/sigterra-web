@@ -2,6 +2,8 @@
 
 This application was generated using JHipster 3.11.0, you can find documentation and help at [https://jhipster.github.io/documentation-archive/v3.11.0](https://jhipster.github.io/documentation-archive/v3.11.0).
 
+At this moment actual working branch is development.
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
@@ -26,6 +28,12 @@ auto-refreshes when files change on your hard drive.
 Bower is used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
 specifying a newer version in `bower.json`. You can also run `bower update` and `bower install` to manage dependencies.
 Add the `-h` flag on any command to see how you can use it. For example, `bower update -h`.
+
+To optimize the sigterra_web application for development, run:
+
+    ./gradlew -Pdev clean bootRepackage
+
+Also please take in mind that you should use Java JDK 8. If you already installed Java 9 you should downgrade it.
 
 For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
 
