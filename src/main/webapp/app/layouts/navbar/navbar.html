@@ -33,6 +33,12 @@
                     <!--</a>-->
                 <!--</li>-->
                 <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
+
+                <li class="navigation-link" ng-switch-when="true" uib-dropdown class="navigation-link">
+                    <a ui-sref="activity">
+                        <span>ACTIVITY</span>
+                    </a>
+                </li>
                 <li ng-hide="vm.isAuthenticated()"  ng-switch-when="false" uib-dropdown class="navigation-link">
                     <a href="#/" ng-click="vm.howItWorks()" >
                         <span>HOW IT WORKS?</span>

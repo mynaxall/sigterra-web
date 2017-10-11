@@ -1,0 +1,23 @@
+<div class="container">
+
+    <div class="btn-group profile-filter" uib-dropdown is-open="status.isopen">
+        <button id="filter-button" type="button" class="btn" uib-dropdown-toggle ng-disabled="disabled">
+            All Profiles <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="filter-button">
+            <li role="menuitem"><a href="#">All Profiles</a></li>
+            <li role="menuitem"><a href="#">Guru Biz Card</a></li>
+            <li role="menuitem"><a href="#">Andrea the Artist</a></li>
+        </ul>
+    </div>
+
+
+    <div class="account-activity">
+        <div class="account-activity-content">
+            <account-activity-statistics></account-activity-statistics>
+            <activity-top-engagements></activity-top-engagements>
+        </div>
+        <recent-activity-sidebar></recent-activity-sidebar>
+    </div>
+
+</div>
