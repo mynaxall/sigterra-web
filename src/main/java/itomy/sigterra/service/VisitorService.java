@@ -3,14 +3,13 @@ package itomy.sigterra.service;
 import itomy.sigterra.domain.User;
 import itomy.sigterra.domain.Visitor;
 import itomy.sigterra.repository.VisitorRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.time.LocalDate;
 
+import static itomy.sigterra.domain.enumeration.LocationStatus.NOT_PROCESSES;
 import static itomy.sigterra.service.util.RequestUtil.getRequestIp;
 import static itomy.sigterra.service.util.RequestUtil.getRequestUserAgent;
 
@@ -21,12 +20,12 @@ import static itomy.sigterra.service.util.RequestUtil.getRequestUserAgent;
 @Transactional
 public class VisitorService {
 
-    private final Logger log = LoggerFactory.getLogger(VisitorService.class);
-
     @Inject
     private VisitorRepository visitorRepository;
     @Inject
     private UserService userService;
+    @Inject
+    private GeoIpService geoIpService;
 
     public Visitor getOrCreate() {
         User user = userService.getUserWithAuthorities();
@@ -49,8 +48,12 @@ public class VisitorService {
         } else {
             visitor.setIp(ip);
             visitor.setUserAgent(agent);
+            visitor.setLocationStatus(NOT_PROCESSES);
         }
-        return visitorRepository.save(visitor);
+        visitor = visitorRepository.save(visitor);
+        geoIpService.processVisitorLocation(visitor);
+
+        return visitor;
     }
 
     private Visitor getOrCreateForAnonymous() {
@@ -60,8 +63,9 @@ public class VisitorService {
         Visitor visitor = visitorRepository.findByIpAndUserAgentAndUserIsNull(ip, agent);
         if (visitor == null) {
             visitor = fromTemplate(ip, agent);
-
             visitor = visitorRepository.save(visitor);
+
+            geoIpService.processVisitorLocation(visitor);
         }
         return visitor;
     }
@@ -71,6 +75,7 @@ public class VisitorService {
         visitor.setIp(ip);
         visitor.setUserAgent(agent);
         visitor.setCreatedDate(LocalDate.now());
+        visitor.setLocationStatus(NOT_PROCESSES);
 
         return visitor;
     }

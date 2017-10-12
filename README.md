@@ -29,6 +29,11 @@ Add the `-h` flag on any command to see how you can use it. For example, `bower 
 
 For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
 
+## Geoip
+
+To use geoip functionality, build and run project (db tables will be auto generated), 
+then import data from file 'src/main/resources/config/liquibase/geoip_location.csv' to 'geoip_location' table.
+
 ## Building for production
 
 To optimize the sigterra_web application for production, run:

@@ -1,6 +1,8 @@
 package itomy.sigterra.domain;
 
 
+import itomy.sigterra.domain.enumeration.LocationStatus;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -37,6 +39,11 @@ public class Visitor implements Serializable {
     @NotNull
     @Column(name = "created_date", nullable = false)
     private LocalDate createdDate;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "location_status", nullable = false)
+    private LocationStatus locationStatus;
 
     @OneToOne
     @JoinColumn(unique = true)
@@ -123,6 +130,14 @@ public class Visitor implements Serializable {
         this.createdDate = createdDate;
     }
 
+    public LocationStatus getLocationStatus() {
+        return locationStatus;
+    }
+
+    public void setLocationStatus(LocationStatus locationStatus) {
+        this.locationStatus = locationStatus;
+    }
+
     public User getUser() {
         return user;
     }
@@ -165,6 +180,7 @@ public class Visitor implements Serializable {
             ", country='" + country + "'" +
             ", city='" + city + "'" +
             ", createdDate='" + createdDate + "'" +
+            ", location_status='" + locationStatus + "'" +
             '}';
     }
 }
