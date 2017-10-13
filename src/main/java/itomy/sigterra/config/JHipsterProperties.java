@@ -4,6 +4,8 @@ import javax.validation.constraints.NotNull;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.cors.CorsConfiguration;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Properties specific to JHipster.
  *
@@ -33,6 +35,8 @@ public class JHipsterProperties {
     private final Ribbon ribbon = new Ribbon();
 
     private final AWSS3Bucket awss3Bucket = new AWSS3Bucket();
+
+    private final GeoData geoData = new GeoData();
 
     public Async getAsync() {
         return async;
@@ -72,6 +76,10 @@ public class JHipsterProperties {
 
     public AWSS3Bucket getAwss3Bucket() {
         return awss3Bucket;
+    }
+
+    public GeoData getGeoData() {
+        return geoData;
     }
 
     public static class Async {
@@ -459,6 +467,63 @@ public class JHipsterProperties {
 
         public void setRegion(String region) {
             this.region = region;
+        }
+    }
+
+    public static class GeoData {
+        private Integer cacheExpirationTimeout;
+        private TimeUnit cacheExpirationTimeUnit;
+        private Integer cleanCacheDelay;
+        private TimeUnit cleanCacheTimeUnit;
+        private Integer resolveLocationTimeout;
+        private TimeUnit resolveLocationTimeUnit;
+
+        public Integer getCacheExpirationTimeout() {
+            return cacheExpirationTimeout;
+        }
+
+        public void setCacheExpirationTimeout(Integer cacheExpirationTimeout) {
+            this.cacheExpirationTimeout = cacheExpirationTimeout;
+        }
+
+        public TimeUnit getCacheExpirationTimeUnit() {
+            return cacheExpirationTimeUnit;
+        }
+
+        public void setCacheExpirationTimeUnit(TimeUnit cacheExpirationTimeUnit) {
+            this.cacheExpirationTimeUnit = cacheExpirationTimeUnit;
+        }
+
+        public Integer getCleanCacheDelay() {
+            return cleanCacheDelay;
+        }
+
+        public void setCleanCacheDelay(Integer cleanCacheDelay) {
+            this.cleanCacheDelay = cleanCacheDelay;
+        }
+
+        public TimeUnit getCleanCacheTimeUnit() {
+            return cleanCacheTimeUnit;
+        }
+
+        public void setCleanCacheTimeUnit(TimeUnit cleanCacheTimeUnit) {
+            this.cleanCacheTimeUnit = cleanCacheTimeUnit;
+        }
+
+        public Integer getResolveLocationTimeout() {
+            return resolveLocationTimeout;
+        }
+
+        public void setResolveLocationTimeout(Integer resolveLocationTimeout) {
+            this.resolveLocationTimeout = resolveLocationTimeout;
+        }
+
+        public TimeUnit getResolveLocationTimeUnit() {
+            return resolveLocationTimeUnit;
+        }
+
+        public void setResolveLocationTimeUnit(TimeUnit resolveLocationTimeUnit) {
+            this.resolveLocationTimeUnit = resolveLocationTimeUnit;
         }
     }
 }
