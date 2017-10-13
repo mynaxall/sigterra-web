@@ -27,7 +27,21 @@
 
     function ActivityController ( $scope, $http, $timeout) {
         var vm = this;
+        vm.error = null;
+        vm.save = save;
+        vm.success = null;
+        vm.activityCounters = null;
 
+        $scope.showSpinner = false;
+
+        $scope.getActivityCounters = function(){
+            $scope.showSpinner = true;
+            $http.get("/api/analytic/stat?period=day")
+                .success(function (data, status, headers, config) {
+                    vm.activityCounters = data;
+                    $scope.showSpinner = false;
+                });
+        }
     }
 
 })();
