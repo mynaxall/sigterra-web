@@ -5,10 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
-import java.util.EnumSet;
-import java.util.Iterator;
-import java.util.NavigableMap;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadFactory;
@@ -33,7 +30,7 @@ public class IpRangeCache {
     private IpRangeCache(TimeUnit timeToLiveUnit, long timeToLive) {
         this.cachedRanges = new TreeMap<>();
         this.timeToLiveUnit = timeToLiveUnit;
-        this.timeToLive = timeToLiveUnit.toMillis(timeToLive);
+        this.timeToLive = timeToLive;
     }
 
     public static IpRangeCache newInstance(TimeUnit timeToLiveUnit, long timeToLive,
@@ -59,23 +56,35 @@ public class IpRangeCache {
     }
 
     public Location get(Long key) {
-        Long fromKey = cachedRanges.floorKey(key);
-        Long toKey = cachedRanges.higherKey(key);
-        if (fromKey == null) {
+        Map.Entry<Long, ExpirableEntry> fromEntry = cachedRanges.floorEntry(key);
+
+        // entry not present
+        if (fromEntry == null) {
             return null;
         }
 
-        ExpirableEntry fromEntry = cachedRanges.get(fromKey);
-        ExpirableEntry toEntry = cachedRanges.get(toKey);
+        ExpirableEntry expirableEntry = fromEntry.getValue();
 
-        if (fromEntry != null) {
-            LocalDateTime updatedTime = LocalDateTime.now().plusSeconds(timeToLiveUnit.toSeconds(timeToLive));
-            fromEntry.expirationTime = updatedTime;
-            toEntry.expirationTime = updatedTime;
-
-            return fromEntry.getValue();
-        } else {
+        // out of ranges, entry is closest [to] border
+        if (expirableEntry.getValue() == null) {
             return null;
+        }
+        // in range
+        refreshEntries(fromEntry);
+        return expirableEntry.getValue();
+    }
+
+    private void refreshEntries(Map.Entry<Long, ExpirableEntry> fromEntry) {
+        refreshEntry(fromEntry);
+        // get current range [to] border
+        Map.Entry<Long, ExpirableEntry> toEntry = cachedRanges.higherEntry(fromEntry.getKey());
+        refreshEntry(toEntry);
+    }
+
+    private void refreshEntry(Map.Entry<Long, ExpirableEntry> entry) {
+        if (entry != null) {
+            LocalDateTime now = LocalDateTime.now();
+            entry.getValue().expirationTime = now.plusSeconds(timeToLiveUnit.toSeconds(timeToLive));
         }
     }
 
