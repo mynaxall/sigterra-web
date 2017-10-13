@@ -28,19 +28,32 @@
     function ActivityController ( $scope, $http, $timeout) {
         var vm = this;
         vm.error = null;
-        vm.save = save;
         vm.success = null;
         vm.activityCounters = null;
+        vm.activityPeriod = 'day';
+
+        vm.setPeriod = function(period) {
+            if (vm.runProcess) return;
+            vm.activityPeriod = period;
+            $scope.getActivityCounters();
+        };
+
+        vm.runProcess = false;
 
         $scope.showSpinner = false;
 
         $scope.getActivityCounters = function(){
             $scope.showSpinner = true;
-            $http.get("/api/analytic/stat?period=day")
+            vm.runProcess = true;
+            $http.get('/api/analytic/stat?period=' + vm.activityPeriod)
                 .success(function (data, status, headers, config) {
                     vm.activityCounters = data;
                     $scope.showSpinner = false;
-                });
+                    vm.runProcess = false;
+                }).error(function (err) {
+                    $scope.showSpinner = false;
+                    vm.runProcess = false;
+            });
         }
     }
 
