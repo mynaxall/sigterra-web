@@ -5103,7 +5103,7 @@ recent-activity-sidebar {
 recent-activity-sidebar:before {
     content: '';
     background: rgba(246,248,250,0.45);
-    width: calc(100% + 30px);
+    width: calc(100% + 15px);
     position: absolute;
     left: 0;
     top: -100px;
