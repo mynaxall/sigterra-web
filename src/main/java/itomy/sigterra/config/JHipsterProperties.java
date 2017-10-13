@@ -475,6 +475,8 @@ public class JHipsterProperties {
         private TimeUnit cacheExpirationTimeUnit;
         private Integer cleanCacheDelay;
         private TimeUnit cleanCacheTimeUnit;
+        private Integer resolveLocationTimeout;
+        private TimeUnit resolveLocationTimeUnit;
 
         public Integer getCacheExpirationTimeout() {
             return cacheExpirationTimeout;
@@ -506,6 +508,22 @@ public class JHipsterProperties {
 
         public void setCleanCacheTimeUnit(TimeUnit cleanCacheTimeUnit) {
             this.cleanCacheTimeUnit = cleanCacheTimeUnit;
+        }
+
+        public Integer getResolveLocationTimeout() {
+            return resolveLocationTimeout;
+        }
+
+        public void setResolveLocationTimeout(Integer resolveLocationTimeout) {
+            this.resolveLocationTimeout = resolveLocationTimeout;
+        }
+
+        public TimeUnit getResolveLocationTimeUnit() {
+            return resolveLocationTimeUnit;
+        }
+
+        public void setResolveLocationTimeUnit(TimeUnit resolveLocationTimeUnit) {
+            this.resolveLocationTimeUnit = resolveLocationTimeUnit;
         }
     }
 }

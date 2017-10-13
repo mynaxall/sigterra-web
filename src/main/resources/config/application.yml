@@ -86,4 +86,6 @@ jhipster:
         cacheExpirationTimeUnit: MINUTES # Possible TimeUnit values [SECONDS, MINUTES, HOURS, DAYS]
         cleanCacheDelay: 1
         cleanCacheTimeUnit: HOURS # Possible TimeUnit values [SECONDS, MINUTES, HOURS, DAYS]
+        resolveLocationTimeout: 1
+        resolveLocationTimeUnit: DAYS # Possible TimeUnit values [SECONDS, MINUTES, HOURS, DAYS]
 

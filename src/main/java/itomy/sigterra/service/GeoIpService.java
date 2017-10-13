@@ -13,8 +13,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import static itomy.sigterra.domain.enumeration.LocationStatus.LOCATED;
-import static itomy.sigterra.domain.enumeration.LocationStatus.NOT_LOCATED;
+import javax.annotation.PostConstruct;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import static itomy.sigterra.domain.enumeration.LocationStatus.*;
 
 @Service
 public class GeoIpService {
@@ -22,6 +27,8 @@ public class GeoIpService {
 
     private GeoIpLocationRepository geoIpLocationRepository;
     private VisitorRepository visitorRepository;
+    private Integer resolveLocationTimeout;
+    private TimeUnit resolveLocationTimeUnit;
 
     private final IpRangeCache cache;
 
@@ -31,10 +38,35 @@ public class GeoIpService {
 
         JHipsterProperties.GeoData geoData = jHipsterProperties.getGeoData();
         this.cache = IpRangeCache.newInstance(geoData.getCacheExpirationTimeUnit(), geoData.getCacheExpirationTimeout(), geoData.getCleanCacheTimeUnit(), geoData.getCleanCacheDelay());
+
+        resolveLocationTimeout = geoData.getResolveLocationTimeout();
+        resolveLocationTimeUnit = geoData.getResolveLocationTimeUnit();
+    }
+
+    @PostConstruct
+    public void onInit() {
+        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+        executor.scheduleWithFixedDelay(this::resolveLocation, resolveLocationTimeout, resolveLocationTimeout, resolveLocationTimeUnit);
+    }
+
+
+    private void resolveLocation() {
+        List<Visitor> visitors = visitorRepository.findAllByLocationStatus(NOT_PROCESSES);
+        if (visitors.isEmpty()) {
+            return;
+        }
+
+        for (Visitor visitor : visitors) {
+            processVisitor(visitor);
+        }
     }
 
     @Async
     public void processVisitorLocation(Visitor visitor) {
+        processVisitor(visitor);
+    }
+
+    private void processVisitor(Visitor visitor) {
         if (log.isDebugEnabled()) {
             log.debug("Async processing of ip = {}, visitor = {}", visitor.getIp(), visitor);
         }
