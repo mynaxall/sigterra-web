@@ -1043,7 +1043,7 @@ Social Buttons
     }
 }
 
-    .image-dialog-crop-panel{
+.image-dialog-crop-panel{
     padding: 10px 35px;
     text-align: center;
 }
@@ -1790,7 +1790,7 @@ Social Buttons
 }
 
 .item-btn-editor{
-  background-color: transparent;
+    background-color: transparent;
     width: 24px!important;
     height: 24px;
     border: none;
@@ -3547,7 +3547,7 @@ input:invalid {
 }
 
 /*.navbar-collapse {*/
-    /*height: auto!important;*/
+/*height: auto!important;*/
 /*}*/
 
 button span{
@@ -4690,7 +4690,7 @@ ul.tab li.active:hover{
 @media (max-width: 1200px) {
 
     .landing-border{
-      visibility: hidden;
+        visibility: hidden;
     }
     .landing-border-1{
         width: 100%;
@@ -4885,6 +4885,7 @@ a:focus{
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+    padding-bottom: 48px;
 }
 .account-activity-content {
     -webkit-box-flex: 0;
@@ -4931,6 +4932,7 @@ recent-activity-sidebar {
     }
     .account-activity-content,
     recent-activity-sidebar {
+        display: block;
         width: 100%;
         padding: 0;
     }
@@ -5019,6 +5021,10 @@ recent-activity-sidebar {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    position: relative;
+}
+.activity-statisctics-list .spinner-shadow {
+    position: absolute;
 }
 .activity-statisctics-item {
     -webkit-box-flex: 0;
@@ -5088,6 +5094,31 @@ recent-activity-sidebar {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+    position: relative;
+    z-index: 1;
+}
+recent-activity-sidebar {
+    position: relative;
+}
+recent-activity-sidebar:before {
+    content: '';
+    background: rgba(246,248,250,0.45);
+    width: calc(100% + 30px);
+    position: absolute;
+    left: 0;
+    top: -100px;
+    height: 100%;
+    min-height: 100vh;
+    z-index: 0;
+}
+@media (max-width: 992px) {
+    recent-activity-sidebar {
+        margin: 40px 0;
+    }
+    recent-activity-sidebar:before {
+        left: -15px;
+        top: -20px;
+    }
 }
 recent-activity-sidebar h2 {
     font-size: 24px;
@@ -5132,6 +5163,13 @@ recent-activity-sidebar .glyphicon:hover {
 .recent-activity-list {
     height: 756px;
     overflow-y: scroll;
+    position: relative;
+    z-index: 1;
+}
+@media (max-width: 992px) {
+    .recent-activity-list {
+        height: 556px;
+    }
 }
 .recent-activity-item {
     display: -webkit-box;
@@ -5141,6 +5179,7 @@ recent-activity-sidebar .glyphicon:hover {
     border: 1px solid #F2F5F7;
     font-size: 16px;
     line-height: 21px;
+    margin: 0 0 10px;
     padding: 10px 20px 10px 0;
 }
 .recent-activity-item .glyphicon {
