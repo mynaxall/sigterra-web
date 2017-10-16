@@ -128,7 +128,7 @@
 
                     <div class="form-group-new">
                         <input type="text" class="profile-input" id="phoneNumber2" name="phoneNumber" placeholder="Mobile Number"
-                               ng-model="vm.settingsAccount.phoneNumber" maxlength="9" ng-pattern="/^[0-9]*$/">
+                               ng-model="vm.settingsAccount.phoneNumber"  mask="(999) 999-9999">
                         <div ng-show="form.phoneNumber.$dirty && form.phoneNumber.$invalid">
 
                             <p class="help-block"
@@ -137,7 +137,7 @@
                             </p>
                             <p class="help-block"
                                ng-show="form.phoneNumber.$error.maxlength">
-                                Your phone number cannot be longer than 9 characters
+                                Your phone number cannot be longer than 10 numbers
                             </p>
                         </div>
                     </div>
