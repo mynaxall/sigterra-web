@@ -280,7 +280,7 @@
                     $scope.firstBusinessCardCopyed = "";
                 }
             }
-            $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ sigId.toString();
+            $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+  window.btoa(sigId);
             $scope.element = $("#"+cardId); // global variable
             $scope.getCanvas;
             html2canvas($scope.element, {
