@@ -4937,6 +4937,9 @@ recent-activity-sidebar {
         padding: 0;
     }
 }
+.account-activity .spinner-shadow {
+    position: absolute;
+}
 .account-activity-block {
     border: 1px solid #E7E7E7;
     margin-bottom: 40px;
@@ -5023,9 +5026,6 @@ recent-activity-sidebar {
     align-items: center;
     position: relative;
 }
-.activity-statisctics-list .spinner-shadow {
-    position: absolute;
-}
 .activity-statisctics-item {
     -webkit-box-flex: 0;
     -ms-flex: 0 1 25%;
@@ -5060,6 +5060,7 @@ recent-activity-sidebar {
 .activity-engagements {
     height: 469px;
     overflow-y: scroll;
+    position: relative;
 }
 .activity-engagements-table th {
     font-size: 18px;
@@ -5103,7 +5104,7 @@ recent-activity-sidebar {
 recent-activity-sidebar:before {
     content: '';
     background: rgba(246,248,250,0.45);
-    width: calc(100% + 15px);
+    width: calc(100% + 15gulppx);
     position: absolute;
     left: 0;
     top: -100px;
