@@ -17,7 +17,7 @@
 
         $scope.getCardlet = function(){
             var param1 = $location.search().cardletId;
-            $http.get("/api/cardlet/"+param1)
+            $http.get("/api/cardlet/"+window.atob(param1))
                 .success(function(response, status, headers) {
                     $scope.tabNames = response;
                 });
