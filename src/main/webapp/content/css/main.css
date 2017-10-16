@@ -2408,6 +2408,7 @@ Social Buttons
     animation-name: landing_create_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
+    border-radius: 5px;
 }
 
 .landing_create-1{
@@ -2452,6 +2453,7 @@ Social Buttons
     animation-name: landing_add_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
+    border-radius: 5px;
 }
 
 .landing_add-2{
@@ -2495,6 +2497,7 @@ Social Buttons
     animation-name: landing_add_to_web_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
+    border-radius: 5px;
 }
 
 .landing_add_to_web-3{
@@ -2539,6 +2542,7 @@ Social Buttons
     animation-name: landing_see_animation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
+    border-radius: 5px;
 }
 
 .landing_see-4{
