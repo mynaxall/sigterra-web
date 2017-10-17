@@ -9,28 +9,26 @@
     </div>
 
     <div class="activity-statisctics-list">
-
         <div ng-show="showSpinner" class="spinner-shadow"><div style="position:absolute;top:10%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -88px;"></div></div>
-
         <div class="activity-statisctics-item">
-            <span class="statisctics-num">{{vm.activityCounters.uniqueViews}}</span>
-            <span class="statisctics-num-title">Unique Views</span>
-            <a href>Profile</a>
+            <div class="statisctics-num">{{vm.activityCounters.uniqueViews}}</div>
+            <div class="statisctics-num-title">Unique Views</div>
+            <div class="statisctics-subject">Profile</div>
         </div>
         <div class="activity-statisctics-item">
-            <span class="statisctics-num">{{vm.activityCounters.adds}}</span>
-            <span class="statisctics-num-title">Adds</span>
-            <a href>Address Book</a>
+            <div class="statisctics-num">{{vm.activityCounters.adds}}</div>
+            <div class="statisctics-num-title">Adds</div>
+            <div class="statisctics-subject">Address Book</div>
         </div>
         <div class="activity-statisctics-item">
-            <span class="statisctics-num">{{vm.activityCounters.clicks}}</span>
-            <span class="statisctics-num-title">Clicks</span>
-            <a href>Profile</a>
+            <div class="statisctics-num">{{vm.activityCounters.clicks}}</div>
+            <div class="statisctics-num-title">Clicks</div>
+            <div class="statisctics-subject">Profile</div>
         </div>
         <div class="activity-statisctics-item">
-            <span class="statisctics-num">{{vm.activityCounters.reads}}</span>
-            <span class="statisctics-num-title">Reads</span>
-            <a href>Content</a>
+            <div class="statisctics-num">{{vm.activityCounters.reads}}</div>
+            <div class="statisctics-num-title">Reads</div>
+            <div class="statisctics-subject">Content</div>
         </div>
     </div>
 </div>

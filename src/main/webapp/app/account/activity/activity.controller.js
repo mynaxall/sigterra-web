@@ -97,11 +97,17 @@
         vm.error = null;
         vm.success = null;
         vm.activityCounters = null;
+        vm.cardlets = null;
+        vm.toggleText = 'All Profiles';
+        vm.cardletID = 0;
         vm.activityPeriod = 'day';
         vm.engagementsPeriod = 'day';
+        vm.pageNumber = 0;
+        vm.pageRecent = 0;
         vm.recentType = 'all';
         vm.engagements = [];
         vm.recents = [];
+        vm.viewByCardletId = viewByCardletId;
         vm.setPeriod = setPeriod;
         vm.setEngagementsPeriod = setEngagementsPeriod;
         vm.getTopEngagements = getTopEngagements;
@@ -112,8 +118,6 @@
         vm.getRecentActivity = getRecentActivity;
         vm.appendRecentActivity = appendRecentActivity;
         vm.nextRecentActivity = nextRecentActivity;
-        vm.pageNumber = 0;
-        vm.pageRecent = 0;
 
         vm.onLoad = onLoad;
         vm.onLoad();
@@ -128,15 +132,43 @@
         }
 
         function onCompleteRequest(spinner) {
-            if (spinner == $scope.showSpinner) {
-                $scope.showSpinner = false;
-            } else if (spinner == $scope.showEngagementsSpinner) {
-                $scope.showEngagementsSpinner = false;
-            } else if (spinner == $scope.showRecentSpinner) {
-                $scope.showRecentSpinner = false;
+            switch (spinner) {
+                case $scope.showSpinner:
+                    $scope.showSpinner = false;
+                    break;
+                case $scope.showEngagementsSpinner:
+                    $scope.showEngagementsSpinner = false;
+                    break;
+                case $scope.showRecentSpinner:
+                    $scope.showRecentSpinner = false;
+                    break;
+                case $scope.showProfileSpinner:
+                    $scope.showProfileSpinner = false;
+                    break;
+                default:
+                    $scope.showSpinner = false;
             }
             vm.runProcess = false;
         }
+
+        /** Cardlets Dropdown Menu */
+        function viewByCardletId(cardletId,toggleText) {
+            vm.cardletID = cardletId;
+            vm.toggleText = toggleText;
+            vm.runProcess = true;
+            $scope.showProfileSpinner = true;
+            $scope.getActivityCounters();
+            vm.onLoad();
+            onCompleteRequest($scope.showProfileSpinner);
+        }
+        $scope.getCardletsItems = function () {
+            $http.get('/api/userCardlets')
+                .success(function (data) {
+                    vm.cardlets = data;
+                }).error(function (err) {
+                    console.log(err);
+            });
+        };
 
         /** Activity Counters Block */
         function setPeriod(period) {
@@ -144,11 +176,16 @@
             vm.activityPeriod = period;
             $scope.getActivityCounters();
         }
-
         $scope.getActivityCounters = function () {
             $scope.showSpinner = true;
             vm.runProcess = true;
-            $http.get('/api/analytic/stat?period=' + vm.activityPeriod)
+            var countersPath;
+            if(vm.cardletID == '0') {
+                countersPath = '/api/analytic/stat';
+            } else {
+                countersPath = '/api/analytic/stat/' + vm.cardletID;
+            }
+            $http.get(countersPath + '?period=' + vm.activityPeriod)
                 .success(function (data, status, headers, config) {
                     vm.activityCounters = data;
                     vm.onCompleteRequest($scope.showSpinner);
@@ -167,7 +204,7 @@
         }
         function getTopEngagements() {
             $scope.showEngagementsSpinner = true;
-            TopEngagementsService.getTopEngagements(vm.engagementsPeriod, function (res) {
+            TopEngagementsService.getTopEngagements(vm.cardletID, vm.engagementsPeriod, function (res) {
                 vm.engagements = res.data;
                 vm.onCompleteRequest($scope.showEngagementsSpinner);
             }, function (err) {
@@ -177,7 +214,7 @@
         }
         function appendTopEngagements() {
             $scope.showEngagementsSpinner = true;
-            TopEngagementsService.appendTopEngagements(vm.pageNumber, vm.engagementsPeriod, function (res) {
+            TopEngagementsService.appendTopEngagements(vm.cardletID, vm.pageNumber, vm.engagementsPeriod, function (res) {
                 vm.engagements = vm.engagements.concat(res.data);
                 vm.pageNumber++;
                 vm.onCompleteRequest($scope.showEngagementsSpinner);
@@ -199,7 +236,7 @@
         }
         function getRecentActivity() {
             $scope.showRecentSpinner = true;
-            RecentActivityService.getRecentActivity(vm.recentType, function (res) {
+            RecentActivityService.getRecentActivity(vm.cardletID, vm.recentType, function (res) {
                 vm.recents = res.data;
                 vm.onCompleteRequest($scope.showRecentSpinner);
             }, function (err) {
@@ -209,7 +246,7 @@
         }
         function appendRecentActivity() {
             $scope.showRecentSpinner = true;
-            RecentActivityService.appendRecentActivity(vm.pageRecent, vm.recentType, function (res) {
+            RecentActivityService.appendRecentActivity(vm.cardletID, vm.pageRecent, vm.recentType, function (res) {
                 vm.recents = vm.recents.concat(res.data);
                 vm.pageRecent++;
                 vm.onCompleteRequest($scope.showRecentSpinner);

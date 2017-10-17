@@ -18,12 +18,23 @@
 
             return service;
 
-            function getTopEngagements(engagementsPeriod, sc, ec) {
-                $http.get('/api/analytic/top?page=' + NUMBER + '&size=' + SIZE +'&period=' + engagementsPeriod).then(sc, ec);
+            var path;
+            function getTopEngagements(cardletId, engagementsPeriod, sc, ec) {
+                if(cardletId == '0') {
+                    path = '/api/analytic/top';
+                } else {
+                    path = '/api/analytic/top/' + cardletId;
+                }
+                $http.get(path + '?page=' + NUMBER + '&size=' + SIZE +'&period=' + engagementsPeriod).then(sc, ec);
             }
 
-            function appendTopEngagements(pageNumber, engagementsPeriod, sc, ec) {
-                $http.get('/api/analytic/top?page=' + pageNumber + '&size=' + SIZE +'&period=' + engagementsPeriod).then(sc, ec);
+            function appendTopEngagements(cardletId, pageNumber, engagementsPeriod, sc, ec) {
+                if(cardletId == '0') {
+                    path = '/api/analytic/top';
+                } else {
+                    path = '/api/analytic/top/' + cardletId;
+                }
+                $http.get(path + '?page=' + pageNumber + '&size=' + SIZE +'&period=' + engagementsPeriod).then(sc, ec);
             }
 
         }

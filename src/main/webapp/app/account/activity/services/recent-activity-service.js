@@ -5,7 +5,7 @@
         .module('sigterraWebApp')
 
         .service('RecentActivityService', RecentActivityService)
-        .constant('SIZE_RECENT', 10)
+        .constant('SIZE_RECENT', 11)
         .constant('NUMBER_RECENT', 0);
 
         RecentActivityService.$inject = ['$http', 'NUMBER_RECENT', 'SIZE_RECENT'];
@@ -18,12 +18,23 @@
 
             return service;
 
-            function getRecentActivity(recentType, sc, ec) {
-                $http.get('/api/analytic/recent?page=' + NUMBER_RECENT + '&size=' + SIZE_RECENT +'&type=' + recentType).then(sc, ec);
+            var path;
+            function getRecentActivity(cardletId, recentType, sc, ec) {
+                if(cardletId == '0') {
+                    path = '/api/analytic/recent';
+                } else {
+                    path = '/api/analytic/recent/' + cardletId;
+                }
+                $http.get(path + '?page=' + NUMBER_RECENT + '&size=' + SIZE_RECENT +'&type=' + recentType).then(sc, ec);
             }
 
-            function appendRecentActivity(pageRecent, recentType, sc, ec) {
-                $http.get('/api/analytic/recent?page=' + pageRecent + '&size=' + SIZE_RECENT +'&type=' + recentType).then(sc, ec);
+            function appendRecentActivity(cardletId, pageRecent, recentType, sc, ec) {
+                if(cardletId == '0') {
+                    path = '/api/analytic/recent';
+                } else {
+                    path = '/api/analytic/recent/' + cardletId;
+                }
+                $http.get(path + '?page=' + pageRecent + '&size=' + SIZE_RECENT +'&type=' + recentType).then(sc, ec);
             }
 
         }

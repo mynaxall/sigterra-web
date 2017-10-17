@@ -4848,6 +4848,11 @@ a:focus{
     padding: 12px 15px 11px;
     width: 230px;
     text-align: left;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
 }
 .profile-filter .dropdown-menu li:not(:last-child) a {
     border-bottom: none;
@@ -4860,8 +4865,9 @@ a:focus{
     box-shadow: none;
 }
 #filter-button .caret {
-    margin: 10px 0 0;
-    float: right;
+    position: absolute;
+    right: 10px;
+    top: 22px;
     border-top: 6px dashed;
     border-right: 6px solid transparent;
     border-left: 6px solid transparent;
@@ -5041,14 +5047,12 @@ recent-activity-sidebar {
 .statisctics-num {
     font-size: 60px;
     letter-spacing: -1.45px;
-    display: block;
 }
 .statisctics-num-title {
     font-size: 24px;
     letter-spacing: -0.58px;
-    display: block;
 }
-.activity-statisctics-item a {
+.activity-statisctics-item .statisctics-subject {
     font-size: 18px;
     color: #13BCB5;
     letter-spacing: -0.43px;
