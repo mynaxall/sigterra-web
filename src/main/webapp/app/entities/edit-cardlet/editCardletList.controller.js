@@ -975,7 +975,7 @@
 
 
         $scope.getLink = function(link){
-            if( link.startsWith('http')){
+            if(link && link.startsWith('http')){
                 return link;
             }else{
                 return 'http://'+link;
