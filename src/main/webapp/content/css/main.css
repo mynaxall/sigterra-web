@@ -5054,14 +5054,20 @@ recent-activity-sidebar {
     letter-spacing: -0.43px;
 }
 /* Activity engagement table */
-.activity-engagements-table {
-    width: 100%;
-}
 .activity-engagements {
-    height: 469px;
+    height: 145px;
     overflow-y: scroll;
     position: relative;
 }
+.activity-engagements-table {
+    width: 100%;
+}
+/*.activity-engagements-table tbody {
+    display: block;
+    overflow: auto;
+    height: 105px;
+    border-collapse: collapse;
+}*/
 .activity-engagements-table th {
     font-size: 18px;
     color: #B4BFCC;
@@ -5104,7 +5110,7 @@ recent-activity-sidebar {
 recent-activity-sidebar:before {
     content: '';
     background: rgba(246,248,250,0.45);
-    width: calc(100% + 15gulppx);
+    width: calc(100% + 15px);
     position: absolute;
     left: 0;
     top: -100px;

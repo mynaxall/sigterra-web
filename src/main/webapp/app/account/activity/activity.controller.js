@@ -21,11 +21,28 @@
                 restrict: 'E',
                 templateUrl: 'app/account/activity/recent-activity-sidebar.html'
             };
-        });
+        })
+        .directive('whenScrollEnds', [function() {
+            return {
+                restrict: "A",
+                link: function (scope, elem, attrs) {
+                    var visibleHeight = elem.height();
+                    var threshold = 105;
+                    elem.on('scroll', function () {
+                        var scrollableHeight = elem.prop('scrollHeight');
+                        var hiddenContentHeight = scrollableHeight - visibleHeight;
+                        if (hiddenContentHeight - elem.scrollTop() <= threshold) {
+                            // Scroll is almost at the bottom. Loading more rows
+                            scope.vm.nextPage();
+                        }
+                    });
+                }
+            }
+        }]);
 
-    ActivityController.$inject = ['$scope', '$http', '$timeout', 'TopEngagementsService'];
+    ActivityController.$inject = ['$scope', '$http', '$timeout', 'TopEngagementsService', 'SIZE'];
 
-    function ActivityController($scope, $http, $timeout, TopEngagementsService) {
+    function ActivityController($scope, $http, $timeout, TopEngagementsService, SIZE) {
         var vm = this;
         vm.error = null;
         vm.success = null;
@@ -35,7 +52,9 @@
         vm.engagements = [];
         vm.setPeriod = setPeriod;
         vm.getTopEngagements = getTopEngagements;
-
+        vm.nextPage = nextPage;
+        vm.appendTopEngagements = appendTopEngagements;
+        vm.pageNumber = 0;
 
         vm.onLoad = onLoad;
         vm.onLoad();
@@ -45,7 +64,6 @@
             $scope.showEngagementsSpinner = false;
             vm.getTopEngagements();
         }
-
 
         /** Activity Counters Block */
         function setPeriod(period) {
@@ -72,6 +90,7 @@
         vm.setEngagementsPeriod = function (period) {
             if (vm.runProcess) return;
             vm.engagementsPeriod = period;
+            vm.pageNumber = 0;
             vm.getTopEngagements();
         };
         function getTopEngagements() {
@@ -86,6 +105,23 @@
                 vm.runProcess = false;
                 $scope.showEngagementsSpinner = false;
             });
+        }
+
+        function appendTopEngagements() {
+            TopEngagementsService.appendTopEngagements( vm.pageNumber, vm.engagementsPeriod, function (res) {
+                vm.engagements = vm.engagements.concat(res.data);
+                vm.pageNumber ++;
+                vm.runProcess = false;
+                $scope.showEngagementsSpinner = false;
+            }, function (err) {
+                console.log(err);
+                vm.runProcess = false;
+                $scope.showEngagementsSpinner = false;
+            });
+        }
+
+        function nextPage(event) {
+            vm.appendTopEngagements();
         }
     }
 
