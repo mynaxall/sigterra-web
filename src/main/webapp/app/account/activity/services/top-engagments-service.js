@@ -5,7 +5,7 @@
         .module('sigterraWebApp')
 
         .service('TopEngagementsService', TopEngagementsService)
-        .constant('SIZE', 3)
+        .constant('SIZE', 10)
         .constant('NUMBER', 0);
 
         TopEngagementsService.$inject = ['$http', 'NUMBER', 'SIZE'];

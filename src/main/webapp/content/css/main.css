@@ -5055,7 +5055,7 @@ recent-activity-sidebar {
 }
 /* Activity engagement table */
 .activity-engagements {
-    height: 145px;
+    height: 470px;
     overflow-y: scroll;
     position: relative;
 }
@@ -5164,7 +5164,8 @@ recent-activity-sidebar .glyphicon:hover {
     color: #CBD4DF;
     font-size: 16px;
 }
-.recent-sidebar-filter a.active {
+.recent-sidebar-filter a.active,
+.recent-sidebar-filter a.active .glyphicon {
     color: #13BCB5;
 }
 .recent-activity-list {
