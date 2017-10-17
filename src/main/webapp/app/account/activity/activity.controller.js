@@ -4,41 +4,46 @@
     angular
         .module('sigterraWebApp')
         .controller('ActivityController', ActivityController)
-        .directive('accountActivityStatistics', function () {
-            return {
-                restrict: 'E',
-                templateUrl: 'app/account/activity/account-activity-statistics.html'
-            };
-        })
-        .directive('activityTopEngagements', function () {
-            return {
-                restrict: 'E',
-                templateUrl: 'app/account/activity/activity-top-engagements.html'
-            };
-        })
-        .directive('recentActivitySidebar', function () {
-            return {
-                restrict: 'E',
-                templateUrl: 'app/account/activity/recent-activity-sidebar.html'
-            };
-        })
-        .directive('whenScrollEnds', [function() {
-            return {
-                restrict: "A",
-                link: function (scope, elem, attrs) {
-                    var visibleHeight = elem.height();
-                    var threshold = 105;
-                    elem.on('scroll', function () {
-                        var scrollableHeight = elem.prop('scrollHeight');
-                        var hiddenContentHeight = scrollableHeight - visibleHeight;
-                        if (hiddenContentHeight - elem.scrollTop() <= threshold) {
-                            // Scroll is almost at the bottom. Loading more rows
-                            scope.vm.nextPage();
-                        }
-                    });
-                }
+        .directive('accountActivityStatistics', accountActivityStatistics)
+        .directive('activityTopEngagements', activityTopEngagements)
+        .directive('recentActivitySidebar', recentActivitySidebar)
+        .directive('whenScrollEnds', [whenScrollEnds]);
+
+    function accountActivityStatistics() {
+        return {
+            restrict: 'E',
+            templateUrl: 'app/account/activity/account-activity-statistics.html'
+        };
+    }
+    function activityTopEngagements() {
+        return {
+            restrict: 'E',
+            templateUrl: 'app/account/activity/activity-top-engagements.html'
+        };
+    }
+    function recentActivitySidebar() {
+        return {
+            restrict: 'E',
+            templateUrl: 'app/account/activity/recent-activity-sidebar.html'
+        };
+    }
+    function whenScrollEnds() {
+        return {
+            restrict: "A",
+            link: function (scope, elem, attrs) {
+                var visibleHeight = elem.height();
+                var threshold = 105;
+                elem.on('scroll', function () {
+                    var scrollableHeight = elem.prop('scrollHeight');
+                    var hiddenContentHeight = scrollableHeight - visibleHeight;
+                    if (hiddenContentHeight - elem.scrollTop() <= threshold) {
+                        // Scroll is almost at the bottom. Loading more rows
+                        scope.vm.nextTopEngagements();
+                    }
+                });
             }
-        }]);
+        }
+    }
 
     ActivityController.$inject = ['$scope', '$http', '$timeout', 'TopEngagementsService', 'SIZE'];
 
@@ -52,17 +57,27 @@
         vm.engagements = [];
         vm.setPeriod = setPeriod;
         vm.getTopEngagements = getTopEngagements;
-        vm.nextPage = nextPage;
+        vm.nextTopEngagements = nextTopEngagements;
         vm.appendTopEngagements = appendTopEngagements;
+        vm.onCompleteRequest = onCompleteRequest;
         vm.pageNumber = 0;
 
         vm.onLoad = onLoad;
         vm.onLoad();
         function onLoad() {
+            vm.getTopEngagements();
             vm.runProcess = false;
             $scope.showSpinner = false;
             $scope.showEngagementsSpinner = false;
-            vm.getTopEngagements();
+        }
+
+        function onCompleteRequest(spinner) {
+            if(spinner == $scope.showSpinner) {
+                $scope.showSpinner = false;
+            } else if(spinner == $scope.showEngagementsSpinner){
+                $scope.showEngagementsSpinner = false;
+            }
+            vm.runProcess = false;
         }
 
         /** Activity Counters Block */
@@ -77,14 +92,12 @@
             $http.get('/api/analytic/stat?period=' + vm.activityPeriod)
                 .success(function (data, status, headers, config) {
                     vm.activityCounters = data;
-                    $scope.showSpinner = false;
-                    vm.runProcess = false;
+                    vm.onCompleteRequest($scope.showSpinner);
                 }).error(function (err) {
-                $scope.showSpinner = false;
-                vm.runProcess = false;
+                    console.log(err);
+                    vm.onCompleteRequest($scope.showSpinner);
             });
         };
-
 
         /** Top Engagements Block */
         vm.setEngagementsPeriod = function (period) {
@@ -97,30 +110,24 @@
             $scope.showEngagementsSpinner = true;
             TopEngagementsService.getTopEngagements(vm.engagementsPeriod, function (res) {
                 vm.engagements = res.data;
-                vm.runProcess = false;
-                $scope.showEngagementsSpinner = false;
+                vm.onCompleteRequest($scope.showEngagementsSpinner);
             }, function (err) {
-                $scope.showEngagementsSpinner = false;
                 console.log(err);
-                vm.runProcess = false;
-                $scope.showEngagementsSpinner = false;
+                vm.onCompleteRequest($scope.showEngagementsSpinner);
             });
         }
-
         function appendTopEngagements() {
+            $scope.showEngagementsSpinner = true;
             TopEngagementsService.appendTopEngagements( vm.pageNumber, vm.engagementsPeriod, function (res) {
                 vm.engagements = vm.engagements.concat(res.data);
                 vm.pageNumber ++;
-                vm.runProcess = false;
-                $scope.showEngagementsSpinner = false;
+                vm.onCompleteRequest($scope.showEngagementsSpinner);
             }, function (err) {
                 console.log(err);
-                vm.runProcess = false;
-                $scope.showEngagementsSpinner = false;
+                vm.onCompleteRequest($scope.showEngagementsSpinner);
             });
         }
-
-        function nextPage(event) {
+        function nextTopEngagements() {
             vm.appendTopEngagements();
         }
     }
