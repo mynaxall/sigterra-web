@@ -155,7 +155,6 @@
         function viewByCardletId(cardletId,toggleText) {
             vm.cardletID = cardletId;
             vm.toggleText = toggleText;
-            console.log(vm.toggleText);
             vm.runProcess = true;
             $scope.showProfileSpinner = true;
             $scope.getActivityCounters();
