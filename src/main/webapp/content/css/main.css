@@ -4851,11 +4851,17 @@ a:focus{
     padding: 12px 15px 11px;
     width: 230px;
     text-align: left;
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
 }
 .profile-filter .dropdown-menu li:not(:last-child) a {
     border-bottom: none;
 }
-.profile-filter .dropdown-menu a:hover {
+.profile-filter .dropdown-menu a:hover,
+.profile-filter .dropdown-menu a.active {
     background: #13BCB5;
     color: #ffffff;
 }
@@ -4863,8 +4869,9 @@ a:focus{
     box-shadow: none;
 }
 #filter-button .caret {
-    margin: 10px 0 0;
-    float: right;
+    position: absolute;
+    right: 10px;
+    top: 22px;
     border-top: 6px dashed;
     border-right: 6px solid transparent;
     border-left: 6px solid transparent;
@@ -4939,6 +4946,9 @@ recent-activity-sidebar {
         width: 100%;
         padding: 0;
     }
+}
+.account-activity .spinner-shadow {
+    position: absolute;
 }
 .account-activity-block {
     border: 1px solid #E7E7E7;
@@ -5026,9 +5036,6 @@ recent-activity-sidebar {
     align-items: center;
     position: relative;
 }
-.activity-statisctics-list .spinner-shadow {
-    position: absolute;
-}
 .activity-statisctics-item {
     -webkit-box-flex: 0;
     -ms-flex: 0 1 25%;
@@ -5044,26 +5051,31 @@ recent-activity-sidebar {
 .statisctics-num {
     font-size: 60px;
     letter-spacing: -1.45px;
-    display: block;
 }
 .statisctics-num-title {
     font-size: 24px;
     letter-spacing: -0.58px;
-    display: block;
 }
-.activity-statisctics-item a {
+.activity-statisctics-item .statisctics-subject {
     font-size: 18px;
     color: #13BCB5;
     letter-spacing: -0.43px;
 }
 /* Activity engagement table */
+.activity-engagements {
+    height: 470px;
+    overflow-y: scroll;
+    position: relative;
+}
 .activity-engagements-table {
     width: 100%;
 }
-.activity-engagements {
-    height: 469px;
-    overflow-y: scroll;
-}
+/*.activity-engagements-table tbody {
+    display: block;
+    overflow: auto;
+    height: 105px;
+    border-collapse: collapse;
+}*/
 .activity-engagements-table th {
     font-size: 18px;
     color: #B4BFCC;
@@ -5160,7 +5172,8 @@ recent-activity-sidebar .glyphicon:hover {
     color: #CBD4DF;
     font-size: 16px;
 }
-.recent-sidebar-filter a.active {
+.recent-sidebar-filter a.active,
+.recent-sidebar-filter a.active .glyphicon {
     color: #13BCB5;
 }
 .recent-activity-list {
