@@ -18,9 +18,9 @@
 
             return service;
 
-            var path;
             function getTopEngagements(cardletId, engagementsPeriod, sc, ec) {
-                if(cardletId == '0') {
+                var path;
+                if(cardletId === 0) {
                     path = '/api/analytic/top';
                 } else {
                     path = '/api/analytic/top/' + cardletId;
@@ -29,7 +29,8 @@
             }
 
             function appendTopEngagements(cardletId, pageNumber, engagementsPeriod, sc, ec) {
-                if(cardletId == '0') {
+                var path;
+                if(cardletId === 0) {
                     path = '/api/analytic/top';
                 } else {
                     path = '/api/analytic/top/' + cardletId;

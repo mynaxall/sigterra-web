@@ -166,7 +166,7 @@
                 .success(function (data) {
                     vm.cardlets = data;
                 }).error(function (err) {
-                    console.log(err);
+                    // do nothing
             });
         };
 
@@ -180,7 +180,7 @@
             $scope.showSpinner = true;
             vm.runProcess = true;
             var countersPath;
-            if(vm.cardletID == '0') {
+            if(vm.cardletID === 0) {
                 countersPath = '/api/analytic/stat';
             } else {
                 countersPath = '/api/analytic/stat/' + vm.cardletID;
@@ -190,7 +190,6 @@
                     vm.activityCounters = data;
                     vm.onCompleteRequest($scope.showSpinner);
                 }).error(function (err) {
-                console.log(err);
                 vm.onCompleteRequest($scope.showSpinner);
             });
         };
@@ -208,7 +207,6 @@
                 vm.engagements = res.data;
                 vm.onCompleteRequest($scope.showEngagementsSpinner);
             }, function (err) {
-                console.log(err);
                 vm.onCompleteRequest($scope.showEngagementsSpinner);
             });
         }
@@ -219,7 +217,6 @@
                 vm.pageNumber++;
                 vm.onCompleteRequest($scope.showEngagementsSpinner);
             }, function (err) {
-                console.log(err);
                 vm.onCompleteRequest($scope.showEngagementsSpinner);
             });
         }
@@ -240,7 +237,6 @@
                 vm.recents = res.data;
                 vm.onCompleteRequest($scope.showRecentSpinner);
             }, function (err) {
-                console.log(err);
                 vm.onCompleteRequest($scope.showRecentSpinner);
             });
         }
@@ -251,7 +247,6 @@
                 vm.pageRecent++;
                 vm.onCompleteRequest($scope.showRecentSpinner);
             }, function (err) {
-                console.log(err);
                 vm.onCompleteRequest($scope.showRecentSpinner);
             });
         }

@@ -18,9 +18,9 @@
 
             return service;
 
-            var path;
             function getRecentActivity(cardletId, recentType, sc, ec) {
-                if(cardletId == '0') {
+                var path;
+                if(cardletId === 0) {
                     path = '/api/analytic/recent';
                 } else {
                     path = '/api/analytic/recent/' + cardletId;
@@ -29,6 +29,7 @@
             }
 
             function appendRecentActivity(cardletId, pageRecent, recentType, sc, ec) {
+                var path;
                 if(cardletId == '0') {
                     path = '/api/analytic/recent';
                 } else {

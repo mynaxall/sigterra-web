@@ -4857,7 +4857,8 @@ a:focus{
 .profile-filter .dropdown-menu li:not(:last-child) a {
     border-bottom: none;
 }
-.profile-filter .dropdown-menu a:hover {
+.profile-filter .dropdown-menu a:hover,
+.profile-filter .dropdown-menu a.active {
     background: #13BCB5;
     color: #ffffff;
 }
