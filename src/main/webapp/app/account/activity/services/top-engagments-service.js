@@ -18,8 +18,8 @@
 
             return service;
 
-            var path;
             function getTopEngagements(cardletId, engagementsPeriod, sc, ec) {
+                var path;
                 if(cardletId === 0) {
                     path = '/api/analytic/top';
                 } else {
@@ -29,6 +29,7 @@
             }
 
             function appendTopEngagements(cardletId, pageNumber, engagementsPeriod, sc, ec) {
+                var path;
                 if(cardletId === 0) {
                     path = '/api/analytic/top';
                 } else {
