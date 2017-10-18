@@ -155,6 +155,7 @@
         function viewByCardletId(cardletId,toggleText) {
             vm.cardletID = cardletId;
             vm.toggleText = toggleText;
+            console.log(vm.toggleText);
             vm.runProcess = true;
             $scope.showProfileSpinner = true;
             $scope.getActivityCounters();
@@ -180,7 +181,7 @@
             $scope.showSpinner = true;
             vm.runProcess = true;
             var countersPath;
-            if(vm.cardletID == '0') {
+            if(vm.cardletID === 0) {
                 countersPath = '/api/analytic/stat';
             } else {
                 countersPath = '/api/analytic/stat/' + vm.cardletID;
