@@ -130,15 +130,10 @@
                         <input type="text" class="profile-input" id="phoneNumber2" name="phoneNumber" placeholder="Mobile Number"
                                ng-model="vm.settingsAccount.phoneNumber"  mask="(999) 999-9999">
                         <div ng-show="form.phoneNumber.$dirty && form.phoneNumber.$invalid">
-
                             <p class="help-block"
-                               ng-show="form.phoneNumber.$error.pattern">
-                                Numbers only.
-                            </p>
-                            <p class="help-block"
-                               ng-show="form.phoneNumber.$error.maxlength">
-                                Your phone number cannot be longer than 10 numbers
-                            </p>
+                               ng-show="form.phoneNumber.$error.mask">
+                                Invalid phone number format
+                            <p/>
                         </div>
                     </div>
 
