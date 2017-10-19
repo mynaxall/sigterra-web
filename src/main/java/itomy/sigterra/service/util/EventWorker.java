@@ -9,7 +9,7 @@ import itomy.sigterra.service.VisitorService;
 import itomy.sigterra.service.dto.EventProcessDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.Queue;
@@ -18,7 +18,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-@Component
+@Service
 public class EventWorker {
     private static final Logger log = LoggerFactory.getLogger(EventWorker.class);
 
