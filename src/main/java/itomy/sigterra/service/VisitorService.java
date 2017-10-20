@@ -3,6 +3,7 @@ package itomy.sigterra.service;
 import itomy.sigterra.domain.User;
 import itomy.sigterra.domain.Visitor;
 import itomy.sigterra.repository.VisitorRepository;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,7 @@ import static itomy.sigterra.domain.enumeration.LocationStatus.NOT_PROCESSES;
 @Service
 @Transactional
 public class VisitorService {
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(VisitorService.class);
 
     @Inject
     private VisitorRepository visitorRepository;
@@ -24,10 +26,10 @@ public class VisitorService {
     private GeoIpService geoIpService;
 
     public Visitor getOrCreate(User user, String ip, String agent) {
-        if (user != null) {
-            return getByUserOrCreate(user, ip, agent);
-        } else {
+        if (user == null) {
             return getOrCreateForAnonymous(ip, agent);
+        } else {
+            return getByUserOrCreate(user, ip, agent);
         }
     }
 
@@ -41,7 +43,7 @@ public class VisitorService {
             visitor.setUserAgent(agent);
             visitor.setLocationStatus(NOT_PROCESSES);
         }
-        visitor = visitorRepository.save(visitor);
+        visitor = save(visitor);
         geoIpService.processVisitorLocation(visitor);
 
         return visitor;
@@ -51,7 +53,7 @@ public class VisitorService {
         Visitor visitor = visitorRepository.findByIpAndUserAgentAndUserIsNull(ip, agent);
         if (visitor == null) {
             visitor = fromTemplate(ip, agent);
-            visitor = visitorRepository.save(visitor);
+            visitor = save(visitor);
 
             geoIpService.processVisitorLocation(visitor);
         }
@@ -66,5 +68,9 @@ public class VisitorService {
         visitor.setLocationStatus(NOT_PROCESSES);
 
         return visitor;
+    }
+
+    public Visitor save(Visitor visitor) {
+        return visitorRepository.save(visitor);
     }
 }

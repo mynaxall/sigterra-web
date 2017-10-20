@@ -48,18 +48,15 @@ public class EventWorker {
 
     public void processEvent(EventProcessDTO eventProcessDTO) {
         Event event = eventProcessDTO.getEvent();
-        log.debug("Add event = {} to process", event);
         if (event != null) {
             queue.offer(eventProcessDTO);
         }
-        log.debug("Process event queue with size = {}, with elements = {}", queue.size(), queue);
     }
 
     private void process() {
         while (!queue.isEmpty()) {
             EventProcessDTO eventProcessDTO = queue.poll();
             Event event = eventProcessDTO.getEvent();
-            log.debug("Process event = {}, user = ", event, eventProcessDTO.getUser());
             try {
                 if (event != null) {
                     Visitor visitor = getVisitor(eventProcessDTO);
