@@ -38,6 +38,8 @@ public class JHipsterProperties {
 
     private final GeoData geoData = new GeoData();
 
+    private final EventWorker eventWorker = new EventWorker();
+
     public Async getAsync() {
         return async;
     }
@@ -80,6 +82,10 @@ public class JHipsterProperties {
 
     public GeoData getGeoData() {
         return geoData;
+    }
+
+    public EventWorker getEventWorker() {
+        return eventWorker;
     }
 
     public static class Async {
@@ -524,6 +530,36 @@ public class JHipsterProperties {
 
         public void setResolveLocationTimeUnit(TimeUnit resolveLocationTimeUnit) {
             this.resolveLocationTimeUnit = resolveLocationTimeUnit;
+        }
+    }
+
+    public static class EventWorker {
+        private Integer processEventDelay;
+        private Integer processEventInitialDelay;
+        private TimeUnit processEventDelayTimeUnit;
+
+        public Integer getProcessEventDelay() {
+            return processEventDelay;
+        }
+
+        public void setProcessEventDelay(Integer processEventDelay) {
+            this.processEventDelay = processEventDelay;
+        }
+
+        public Integer getProcessEventInitialDelay() {
+            return processEventInitialDelay;
+        }
+
+        public void setProcessEventInitialDelay(Integer processEventInitialDelay) {
+            this.processEventInitialDelay = processEventInitialDelay;
+        }
+
+        public TimeUnit getProcessEventDelayTimeUnit() {
+            return processEventDelayTimeUnit;
+        }
+
+        public void setProcessEventDelayTimeUnit(TimeUnit processEventDelayTimeUnit) {
+            this.processEventDelayTimeUnit = processEventDelayTimeUnit;
         }
     }
 }
