@@ -10,7 +10,6 @@ import itomy.sigterra.service.util.IPUtils;
 import itomy.sigterra.service.util.IpRangeCache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -27,14 +26,16 @@ public class GeoIpService {
 
     private GeoIpLocationRepository geoIpLocationRepository;
     private VisitorRepository visitorRepository;
+    private VisitorService visitorService;
     private Integer resolveLocationTimeout;
     private TimeUnit resolveLocationTimeUnit;
 
     private final IpRangeCache cache;
 
-    public GeoIpService(GeoIpLocationRepository geoIpLocationRepository, VisitorRepository visitorRepository, JHipsterProperties jHipsterProperties) {
+    public GeoIpService(GeoIpLocationRepository geoIpLocationRepository, VisitorRepository visitorRepository, VisitorService visitorService, JHipsterProperties jHipsterProperties) {
         this.geoIpLocationRepository = geoIpLocationRepository;
         this.visitorRepository = visitorRepository;
+        this.visitorService = visitorService;
 
         JHipsterProperties.GeoData geoData = jHipsterProperties.getGeoData();
         this.cache = IpRangeCache.newInstance(geoData.getCacheExpirationTimeUnit(), geoData.getCacheExpirationTimeout(), geoData.getCleanCacheTimeUnit(), geoData.getCleanCacheDelay());
@@ -57,19 +58,11 @@ public class GeoIpService {
         }
 
         for (Visitor visitor : visitors) {
-            processVisitor(visitor);
+            processVisitorLocation(visitor);
         }
     }
 
-    @Async
     public void processVisitorLocation(Visitor visitor) {
-        processVisitor(visitor);
-    }
-
-    private void processVisitor(Visitor visitor) {
-        if (log.isDebugEnabled()) {
-            log.debug("Async processing of ip = {}, visitor = {}", visitor.getIp(), visitor);
-        }
         long decimalIp;
         try {
             decimalIp = IPUtils.ipToDecimal(visitor.getIp());
@@ -78,6 +71,7 @@ public class GeoIpService {
                 log.warn("Get unsupported ip address");
             }
             visitor.setLocationStatus(NOT_LOCATED);
+            visitorService.save(visitor);
             return;
         }
 
@@ -89,7 +83,7 @@ public class GeoIpService {
             visitor.setCity(location.getCity());
             visitor.setLocationStatus(LOCATED);
         }
-        visitorRepository.save(visitor);
+        visitorService.save(visitor);
     }
 
     private Location locate(long decimalIp) {

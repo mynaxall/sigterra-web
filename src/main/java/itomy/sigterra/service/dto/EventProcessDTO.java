@@ -50,4 +50,14 @@ public class EventProcessDTO {
     public void setAgent(String agent) {
         this.agent = agent;
     }
+
+    @Override
+    public String toString() {
+        return "EventProcessDTO{" +
+            "event=" + event +
+            ", user=" + user +
+            ", ip='" + ip + '\'' +
+            ", agent='" + agent + '\'' +
+            '}';
+    }
 }

@@ -178,6 +178,7 @@ public class Visitor implements Serializable {
             ", ip='" + ip + "'" +
             ", userAgent='" + userAgent + "'" +
             ", country='" + country + "'" +
+            ", user='" + user + "'" +
             ", city='" + city + "'" +
             ", createdDate='" + createdDate + "'" +
             ", location_status='" + locationStatus + "'" +
