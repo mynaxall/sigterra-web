@@ -5201,3 +5201,7 @@ recent-activity-sidebar .glyphicon:hover {
 .recent-activity-item a {
     color: #13BCB5;
 }
+.recent-activity-item time {
+    font-size: 12px;
+    color: #CBD4DF;
+}
