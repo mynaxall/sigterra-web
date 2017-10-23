@@ -1,0 +1,18 @@
+<div class="recent-activity-header">
+    <h2>Recent activity</h2>
+    <ul class="recent-sidebar-filter">
+        <li><a href ng-class="vm.recentType == 'view' ? 'active' : ''" ng-click="vm.setType('view')"><span class="glyphicon glyphicon-eye-open"></span></a></li>
+        <li><a href ng-class="vm.recentType == 'add' ? 'active' : ''" ng-click="vm.setType('add')"><span class="glyphicon glyphicon-phone-alt"></span></a></li>
+        <li><a href ng-class="vm.recentType == 'read' ? 'active' : ''" ng-click="vm.setType('read')"><span class="glyphicon glyphicon-list-alt"></span></a></li>
+        <li><a href ng-class="vm.recentType == 'all' ? 'active' : ''" ng-click="vm.setType('all')">All</a></li>
+    </ul>
+</div>
+<div class="recent-activity-list" when-scroll-ends="nextRecentActivity">
+    <div ng-show="showRecentSpinner" class="spinner-shadow"><div style="position:absolute;top:10%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -88px;"></div></div>
+    <div class="recent-activity-item" ng-repeat="recent in vm.recents">
+        <span class="glyphicon glyphicon-{{recent.type | activityIcon}}"></span>
+        <div class="recent-activity-entry">
+            <a href>{{recent.user}}</a> {{recent.type | activityString:recent.name}} <time>{{recent.time}}</time>
+        </div>
+    </div>
+</div>

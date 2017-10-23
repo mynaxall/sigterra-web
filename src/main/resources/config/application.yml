@@ -81,3 +81,15 @@ jhipster:
     ribbon:
         # comma separated list of profiles to show a ribbon on the GUI
         displayOnActiveProfiles: dev
+    geoData:
+        cacheExpirationTimeout: 30
+        cacheExpirationTimeUnit: MINUTES # Possible TimeUnit values [SECONDS, MINUTES, HOURS, DAYS]
+        cleanCacheDelay: 1
+        cleanCacheTimeUnit: HOURS # Possible TimeUnit values [SECONDS, MINUTES, HOURS, DAYS]
+        resolveLocationTimeout: 1
+        resolveLocationTimeUnit: DAYS # Possible TimeUnit values [SECONDS, MINUTES, HOURS, DAYS]
+    eventWorker:
+        processEventDelay: 5
+        processEventInitialDelay: 20
+        processEventDelayTimeUnit: SECONDS # Possible TimeUnit values [SECONDS, MINUTES, HOURS, DAYS]
+

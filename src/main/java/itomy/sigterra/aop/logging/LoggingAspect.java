@@ -1,7 +1,6 @@
 package itomy.sigterra.aop.logging;
 
 import itomy.sigterra.config.Constants;
-
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -26,19 +25,30 @@ public class LoggingAspect {
     @Inject
     private Environment env;
 
-    @Pointcut("within(itomy.sigterra.repository..*) || within(itomy.sigterra.service..*) || within(itomy.sigterra.web.rest..*)")
+    @Pointcut("(within(itomy.sigterra.repository..*) || within(itomy.sigterra.service..*) || within(itomy.sigterra.web.rest..*))")
+    public void enabledPoints() {
+        // Where logging is permitted
+    }
+
+    @Pointcut("@target(itomy.sigterra.annotation.NoDevelopLogging)")
+    public void disabledPoints() {
+        // Where logging is restricted
+    }
+
+    @Pointcut("enabledPoints() && ! disabledPoints()")
     public void loggingPointcut() {
+        // Combined pointcut
     }
 
     @AfterThrowing(pointcut = "loggingPointcut()", throwing = "e")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable e) {
         if (env.acceptsProfiles(Constants.SPRING_PROFILE_DEVELOPMENT)) {
             log.error("Exception in {}.{}() with cause = \'{}\' and exception = \'{}\'", joinPoint.getSignature().getDeclaringTypeName(),
-                joinPoint.getSignature().getName(), e.getCause() != null? e.getCause() : "NULL", e.getMessage(), e);
+                joinPoint.getSignature().getName(), e.getCause() != null ? e.getCause() : "NULL", e.getMessage(), e);
 
         } else {
             log.error("Exception in {}.{}() with cause = {}", joinPoint.getSignature().getDeclaringTypeName(),
-                joinPoint.getSignature().getName(), e.getCause() != null? e.getCause() : "NULL");
+                joinPoint.getSignature().getName(), e.getCause() != null ? e.getCause() : "NULL");
         }
     }
 
@@ -57,7 +67,7 @@ public class LoggingAspect {
             return result;
         } catch (IllegalArgumentException e) {
             log.error("Illegal argument: {} in {}.{}()", Arrays.toString(joinPoint.getArgs()),
-                    joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
+                joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
 
             throw e;
         }

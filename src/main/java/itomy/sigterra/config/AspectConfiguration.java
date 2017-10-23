@@ -5,7 +5,7 @@ import org.springframework.context.annotation.*;
 
 @Configuration
 @EnableAspectJAutoProxy
-public class LoggingAspectConfiguration {
+public class AspectConfiguration {
 
     @Bean
     @Profile(Constants.SPRING_PROFILE_DEVELOPMENT)

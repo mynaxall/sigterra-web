@@ -1,0 +1,34 @@
+<div class="account-activity-block" ng-init="getActivityCounters()">
+    <div class="account-activity-block-header">
+        <h3>Activity</h3>
+        <ul class="time-period-filter">
+            <li><a href ng-class="vm.activityPeriod == 'day' ? 'active' : ''" ng-click="vm.setPeriod('day')">24H</a></li>
+            <li><a href ng-class="vm.activityPeriod == 'week' ? 'active' : ''" ng-click="vm.setPeriod('week')">7D</a></li>
+            <li><a href ng-class="vm.activityPeriod == 'month' ? 'active' : ''" ng-click="vm.setPeriod('month')">30D</a></li>
+        </ul>
+    </div>
+
+    <div class="activity-statisctics-list">
+        <div ng-show="showSpinner" class="spinner-shadow"><div style="position:absolute;top:10%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -88px;"></div></div>
+        <div class="activity-statisctics-item">
+            <div class="statisctics-num">{{vm.activityCounters.uniqueViews}}</div>
+            <div class="statisctics-num-title">Unique Views</div>
+            <div class="statisctics-subject">Profile</div>
+        </div>
+        <div class="activity-statisctics-item">
+            <div class="statisctics-num">{{vm.activityCounters.adds}}</div>
+            <div class="statisctics-num-title">Adds</div>
+            <div class="statisctics-subject">Address Book</div>
+        </div>
+        <div class="activity-statisctics-item">
+            <div class="statisctics-num">{{vm.activityCounters.clicks}}</div>
+            <div class="statisctics-num-title">Clicks</div>
+            <div class="statisctics-subject">Profile</div>
+        </div>
+        <div class="activity-statisctics-item">
+            <div class="statisctics-num">{{vm.activityCounters.reads}}</div>
+            <div class="statisctics-num-title">Reads</div>
+            <div class="statisctics-subject">Content</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="account-activity-block">
+    <div class="account-activity-block-header">
+        <h3>Top Engagements</h3>
+        <ul class="time-period-filter">
+            <li><a href ng-class="vm.engagementsPeriod == 'day' ? 'active' : ''" ng-click="vm.setEngagementsPeriod('day')">24H</a></li>
+            <li><a href ng-class="vm.engagementsPeriod == 'week' ? 'active' : ''" ng-click="vm.setEngagementsPeriod('week')">7D</a></li>
+            <li><a href ng-class="vm.engagementsPeriod == 'month' ? 'active' : ''" ng-click="vm.setEngagementsPeriod('month')">30D</a></li>
+        </ul>
+    </div>
+
+    <div class="activity-engagements" when-scroll-ends="nextTopEngagements">
+        <div ng-show="showEngagementsSpinner" class="spinner-shadow"><div style="position:absolute;top:10%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -88px;"></div></div>
+        <table class="activity-engagements-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Clicks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="engagement in vm.engagements">
+                    <td>{{$index + 1}}</td>
+                    <td>{{engagement.name}}</td>
+                    <td>{{engagement.location}}</td>
+                    <td>{{engagement.clicks}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

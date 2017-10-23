@@ -7,18 +7,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.inject.Inject;
-import java.awt.*;
 import java.net.URI;
 import java.util.*;
-import java.util.List;
 
 /**
  * Created by alexander on 2/2/17.
@@ -48,6 +43,9 @@ public class CardletService {
     private ItemRepository itemRepository;
     @Inject
     private TabTypeRepository tabTypeRepository;
+
+    @Inject
+    private EventService eventService;
 
     public List<UserCardletDTO> userCardlets(){
         List<Cardlet> caedletList = cardletRepository.findByUserIsCurrentUser();
@@ -139,12 +137,7 @@ public class CardletService {
             tabs.add(cardletTabItem);
 
         }
-        Collections.sort(tabs, new Comparator<CardletTab>() {
-            @Override
-            public int compare(CardletTab o1, CardletTab o2) {
-                return o1.getPosition().compareTo(o2.getPosition());
-            }
-        });
+        Collections.sort(tabs, Comparator.comparing(CardletTab::getPosition));
         userCardletDTO.setTabs(tabs);
         return userCardletDTO;
     }
