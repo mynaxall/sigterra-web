@@ -46,11 +46,11 @@ public class ItemData implements Serializable {
     @ManyToOne
     private Item item;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     private InputProperties name;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     private InputProperties description;
 
