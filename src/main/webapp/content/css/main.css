@@ -5098,6 +5098,12 @@ recent-activity-sidebar {
 .activity-engagements-table td:nth-child(1) {
     padding: 10px 30px;
 }
+.activity-engagements-table td.no-data {
+    text-align: center;
+    padding: 60px 30px;
+    font-size: 20px;
+}
+
 /* Activity recent sidebar */
 .recent-activity-header {
     display: -webkit-box;
