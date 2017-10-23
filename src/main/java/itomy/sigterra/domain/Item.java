@@ -49,7 +49,7 @@ public class Item implements Serializable {
     @ManyToOne
     private TabType tabType;
 
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<ItemData> itemData = new HashSet<>();
 

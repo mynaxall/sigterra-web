@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for Event table visitor and item fields.
+    -->
+    <changeSet id="20171023173500-1" author="Mykhailo_Zenkov">
+
+        <dropForeignKeyConstraint baseTableName="event"
+                                  constraintName="fk_event_visitor_id"/>
+
+        <addForeignKeyConstraint baseTableName="event"
+                                 baseColumnNames="visitor_id"
+                                 constraintName="fk_event_visitor_id"
+                                 referencedTableName="visitor"
+                                 referencedColumnNames="id"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
+
+
+        <dropForeignKeyConstraint baseTableName="event"
+                                  constraintName="fk_event_item_id"/>
+
+        <addForeignKeyConstraint baseTableName="event"
+                                 baseColumnNames="item_id"
+                                 constraintName="fk_event_item_id"
+                                 referencedTableName="item"
+                                 referencedColumnNames="id"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
+    </changeSet>
+</databaseChangeLog>
