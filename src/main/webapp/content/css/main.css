@@ -5017,6 +5017,9 @@ recent-activity-sidebar {
     border-left: 1px solid #E7E7E7;
     color: #13BCB5;
 }
+.time-period-filter li:last-child a.active {
+    border-right: none;
+}
 .time-period-filter a:hover {
     text-decoration: none;
 }
