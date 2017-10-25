@@ -1,29 +1,31 @@
 <div class="user-cardlet-panel">
+    <div class="activity-wrapper">
 
-    <div class="btn-group profile-filter" uib-dropdown is-open="status.isopen" ng-init="getCardletsItems()">
-        <button id="filter-button" type="button" class="btn" uib-dropdown-toggle ng-disabled="disabled">
-            {{vm.toggleText}} <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="filter-button">
-            <li role="menuitem"><a href ng-click="vm.viewByCardletId(0, 'All Profiles')" ng-class="0 == vm.cardletID ? 'active' : ''">All Profiles</a></li>
-            <li role="menuitem" ng-repeat="cardlet in vm.cardlets">
-                <a href ng-click="vm.viewByCardletId(cardlet.id, cardlet.cardletName)" ng-class="cardlet.id == vm.cardletID ? 'active' : ''">
-                    {{cardlet.cardletName}}
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div ng-show="showProfileSpinner" class="spinner-shadow"><div style="position:absolute;top:10%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -88px;"></div></div>
-
-    <div class="account-activity">
-        <div class="account-activity-content">
-            <account-activity-statistics></account-activity-statistics>
-            <activity-top-engagements></activity-top-engagements>
+        <div class="btn-group profile-filter" uib-dropdown is-open="status.isopen" ng-init="getCardletsItems()">
+            <button id="filter-button" type="button" class="btn" uib-dropdown-toggle ng-disabled="disabled">
+                {{vm.toggleText}} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="filter-button">
+                <li role="menuitem"><a href ng-click="vm.viewByCardletId(0, 'All Profiles')" ng-class="0 == vm.cardletID ? 'active' : ''">All Profiles</a></li>
+                <li role="menuitem" ng-repeat="cardlet in vm.cardlets">
+                    <a href ng-click="vm.viewByCardletId(cardlet.id, cardlet.cardletName)" ng-class="cardlet.id == vm.cardletID ? 'active' : ''">
+                        {{cardlet.cardletName}}
+                    </a>
+                </li>
+            </ul>
         </div>
-        <recent-activity-sidebar></recent-activity-sidebar>
-    </div>
 
+        <div ng-show="showProfileSpinner" class="spinner-shadow"><div style="position:absolute;top:10%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -88px;"></div></div>
+
+        <div class="account-activity">
+            <div class="account-activity-content">
+                <account-activity-statistics></account-activity-statistics>
+                <activity-top-engagements></activity-top-engagements>
+            </div>
+            <recent-activity-sidebar></recent-activity-sidebar>
+        </div>
+
+    </div>
 </div>
 
 <script>
