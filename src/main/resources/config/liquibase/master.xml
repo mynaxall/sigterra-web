@@ -24,6 +24,9 @@
     <include file="classpath:config/liquibase/changelog/20170626130155_added_entity_constraints_AddressBook.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171006082907_added_entity_constraints_Visitor.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171006084606_added_entity_constraints_Event.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20171023172000_added_entity_constraints_Foreign_Key_To_Cardlet.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20171023173500_added_entity_constraints_Foreign_Key_To_Event.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20171023174000_added_entity_constraints_Foreign_Key_To_Visitor.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170106132906_modified_entity_User.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171012150500_modified_entity_Visitor.xml" relativeToChangelogFile="false"/>

@@ -5017,6 +5017,9 @@ recent-activity-sidebar {
     border-left: 1px solid #E7E7E7;
     color: #13BCB5;
 }
+.time-period-filter li:last-child a.active {
+    border-right: none;
+}
 .time-period-filter a:hover {
     text-decoration: none;
 }
@@ -5101,6 +5104,12 @@ recent-activity-sidebar {
 .activity-engagements-table td:nth-child(1) {
     padding: 10px 30px;
 }
+.activity-engagements-table td.no-data {
+    text-align: center;
+    padding: 60px 30px;
+    font-size: 20px;
+}
+
 /* Activity recent sidebar */
 .recent-activity-header {
     display: -webkit-box;
@@ -5203,4 +5212,8 @@ recent-activity-sidebar .glyphicon:hover {
 }
 .recent-activity-item a {
     color: #13BCB5;
+}
+.recent-activity-item time {
+    font-size: 12px;
+    color: #CBD4DF;
 }

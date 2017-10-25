@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for Visitor table user field.
+    -->
+    <changeSet id="20171023174000-1" author="Mykhailo_Zenkov">
+
+        <dropForeignKeyConstraint baseTableName="visitor"
+                                  constraintName="fk_visitor_user_id"/>
+
+        <addForeignKeyConstraint baseTableName="visitor"
+                                 baseColumnNames="user_id"
+                                 constraintName="fk_visitor_user_id"
+                                 referencedTableName="jhi_user"
+                                 referencedColumnNames="id"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
+    </changeSet>
+</databaseChangeLog>

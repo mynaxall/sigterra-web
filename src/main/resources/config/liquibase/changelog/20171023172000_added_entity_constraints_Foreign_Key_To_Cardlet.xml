@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for Cardlet tables children.
+    -->
+    <changeSet id="20171023172000-1" author="Mykhailo_Zenkov">
+
+        <dropForeignKeyConstraint baseTableName="event"
+                                  constraintName="fk_event_cardlet_id"/>
+
+        <addForeignKeyConstraint baseTableName="event"
+                                 baseColumnNames="cardlet_id"
+                                 constraintName="fk_event_cardlet_id"
+                                 referencedTableName="cardlet"
+                                 referencedColumnNames="id"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
+
+
+        <dropForeignKeyConstraint baseTableName="item"
+                                  constraintName="fk_item_cardlet_id"/>
+
+        <addForeignKeyConstraint baseTableName="item"
+                                 baseColumnNames="cardlet_id"
+                                 constraintName="fk_item_cardlet_id"
+                                 referencedTableName="cardlet"
+                                 referencedColumnNames="id"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
+
+
+        <dropForeignKeyConstraint baseTableName="business"
+                                  constraintName="fk_business_cardlet_id"/>
+
+        <addForeignKeyConstraint baseTableName="business"
+                                 baseColumnNames="cardlet_id"
+                                 constraintName="fk_business_cardlet_id"
+                                 referencedTableName="cardlet"
+                                 referencedColumnNames="id"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
+
+
+        <dropForeignKeyConstraint baseTableName="address_book"
+                                  constraintName="fk_address_book_cardlet_id"/>
+
+        <addForeignKeyConstraint baseTableName="address_book"
+                                 baseColumnNames="cardlet_id"
+                                 constraintName="fk_address_book_cardlet_id"
+                                 referencedTableName="cardlet"
+                                 referencedColumnNames="id"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
+    </changeSet>
+</databaseChangeLog>

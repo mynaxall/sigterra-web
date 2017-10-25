@@ -194,7 +194,8 @@
         <div ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor, 'font-size': '22px', 'margin-top':'30px'}">{{tabNames.tabs[firstBusinessCardId].userName.value}}</div>
         <div style="position: relative;z-index: 5" ng-show="tabNames.tabs[firstBusinessCardId].userEmail.value"><span ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor}">e: </span><a  target="_blank" href="mailto:{{tabNames.tabs[firstBusinessCardId].userEmail.value}}">{{tabNames.tabs[firstBusinessCardId].userEmail.value}}</a></div>
     </div>
-    <div style="margin: auto;width: 570px;padding-top: 100px; padding-left: 30px; position: relative">
+    <div class="preview-cardlet" ng-click="clicksCounter($event)"
+         style="margin: auto;width: 570px;padding-top: 100px; padding-left: 30px; position: relative">
         <div class="alert alert-success-added" check-position-scroll ng-show="successfulyAdded">
             <strong>{{successfulyAdded}}</strong>
         </div>
@@ -216,7 +217,9 @@
             </div>
             <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
                 <div class="custom-slide-prev"><img src="/content/images/arrow_left.png" ng-show="vm.tabType != 1 && tabName.items.length > 1" ng-click="prevSlide($index)"></div>
-                <ng-include style="display: block!important" src="tabName.layout.url"></ng-include>
+                <div data-item-id="{{tabNames.tabs[$index].id}}"  ng-click="clicksCounter($event, tabNames.tabs[$index].id)" class="tab-item">
+                    <ng-include style="display: block!important" src="tabName.layout.url"></ng-include>
+                </div>
                 <div class="custom-slide-next"><img src="/content/images/arrow_right.png" ng-show="vm.tabType != 1 && tabName.items.length > 1"  ng-click="nextSlide($index)"></div>
                 <div class="next-image-preview" ng-repeat="slide in tabName.items | orderBy:'position'">
                     <img ng-show="$index === vm.nextIndex && tabName.layout.url != 'app/cardlets/info3.html'" style="width: 100px" ng-src="{{slide.image}}">

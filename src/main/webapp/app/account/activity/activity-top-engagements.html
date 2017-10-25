@@ -2,9 +2,9 @@
     <div class="account-activity-block-header">
         <h3>Top Engagements</h3>
         <ul class="time-period-filter">
-            <li><a href ng-class="vm.engagementsPeriod == 'day' ? 'active' : ''" ng-click="vm.setEngagementsPeriod('day')">24H</a></li>
-            <li><a href ng-class="vm.engagementsPeriod == 'week' ? 'active' : ''" ng-click="vm.setEngagementsPeriod('week')">7D</a></li>
-            <li><a href ng-class="vm.engagementsPeriod == 'month' ? 'active' : ''" ng-click="vm.setEngagementsPeriod('month')">30D</a></li>
+            <li><a href ng-class="vm.engagementsPeriod == 'day' ? 'active' : ''" ng-click="vm.setEngagementsPeriod('day')">24 h</a></li>
+            <li><a href ng-class="vm.engagementsPeriod == 'week' ? 'active' : ''" ng-click="vm.setEngagementsPeriod('week')">7 d</a></li>
+            <li><a href ng-class="vm.engagementsPeriod == 'month' ? 'active' : ''" ng-click="vm.setEngagementsPeriod('month')">30 d</a></li>
         </ul>
     </div>
 
@@ -20,11 +20,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="engagement in vm.engagements">
+                <tr ng-show="vm.engagements!='undefined' && vm.engagements!='null' && vm.engagements.length!=0"
+                    ng-repeat="engagement in vm.engagements">
                     <td>{{$index + 1}}</td>
                     <td>{{engagement.name}}</td>
                     <td>{{engagement.location}}</td>
                     <td>{{engagement.clicks}}</td>
+                </tr>
+                <tr>
+                    <td class="no-data" colspan="4"
+                        ng-show="vm.engagements=='undefined' || vm.engagements=='null' || vm.engagements.length==0">
+                        Sorry, there's no data to display for this period.
+                    </td>
                 </tr>
             </tbody>
         </table>
