@@ -408,7 +408,7 @@
 
 
         $scope.copyToClipboard = function(id) {
-           var code =  '<iframe style="width: 555px; height: 280px;border: 0px!important" src="http://localhost:8080/#/copyToWeb?cardletId='+ id +'"></iframe>';
+           var code =  '<iframe style="width: 600px; height: 310px;border: 0px!important" src="http://localhost:8080/#/copyToWeb?cardletId='+ id +'"></iframe>';
             window.prompt("Copy to clipboard: Ctrl+C, Enter", code);
         };
 
@@ -537,7 +537,7 @@
         };
 
          $scope.openModal= function(id, syncData) {
-             $scope.cardletLink = '<iframe style="width: 555px; height: 280px;border: 0px!important" src="'+$location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/copyToWeb?cardletId='+ window.btoa(id) +'"></iframe>'
+             $scope.cardletLink = '<iframe style="width: 600px; height: 310px;border: 0px!important" src="'+$location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/copyToWeb?cardletId='+ window.btoa(id) +'"></iframe>'
              $scope.isShowModal = true;
         };
 

@@ -5217,3 +5217,6 @@ recent-activity-sidebar .glyphicon:hover {
     font-size: 12px;
     color: #CBD4DF;
 }
+.copy-to-web-container{
+    width: 540px;
+}
