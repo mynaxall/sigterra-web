@@ -105,7 +105,7 @@
         /* Clicks counter */
         $scope.clicksCounter = function (event, paramItemId) {
 
-            if (event.target.parentNode.attributes.target && !!paramItemId) {
+            if (event.target.parentNode.attributes.target && !!paramItemId || event.target.parentNode.parentNode.parentNode.attributes.target && !!paramItemId ) {
                 // reads counter request
                 $http.post("api/event/item/" + paramItemId)
                     .success(function (response, status, headers) {
