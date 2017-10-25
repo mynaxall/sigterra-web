@@ -61,31 +61,31 @@ public class Business implements Serializable {
     @ManyToOne
     private TabType tabType;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     private InputProperties userName;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     private InputProperties userEmail;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     private InputProperties phone;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     private InputProperties address;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     private InputProperties company;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     private InputProperties site;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(unique = true)
     private InputProperties job;
 
