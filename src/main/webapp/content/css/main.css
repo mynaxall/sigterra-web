@@ -4837,6 +4837,10 @@ a:focus{
 
 /* Account activity statisctics
    ------------------------------------------- */
+.activity-wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+}
 /* Filter dropdown */
 .profile-filter {
     margin: 30px 0 20px;
