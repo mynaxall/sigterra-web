@@ -1529,10 +1529,10 @@ Social Buttons
     padding: 40px 20px;
     border-width: 1px;
     border-style: dashed;
-    -webkit-user-select: auto;
-    -moz-user-select: text;
-    -ms-user-select: element;
-    user-select: auto;
+    -webkit-user-select: all!important;
+    -moz-user-select: text!important;
+    -ms-user-select: element!important;
+    user-select: text!important;
     line-height: 0%;
 }
 
