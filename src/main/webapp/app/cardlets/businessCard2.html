@@ -13,7 +13,7 @@
 
                 <div class="job-titile-3" ng-style="{'font-family': tabName.job.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.job.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.job.underline ? 'underline' : 'normal'}" ng-show="tabName.job.value"  style="color: #{{tabName.layout.mainColor}}">{{tabName.job.value}}</div>
+                    'text-decoration': tabName.job.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}" ng-show="tabName.job.value" >{{tabName.job.value}}</div>
                 <div class="social-links">
                     <a href="{{tabName.socialLinks.twitter}}" target="_blank" ng-show="tabName.socialLinks.twitter" class="social-links-2" ng-class="!showLink ? 'disabledLink': ''">
                         <span class="icon icon-artboard" style="font-size: 19px;" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
@@ -61,7 +61,7 @@
                     <div class="pre-description" ng-style="{'font-family': tabName.phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.phone.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.phone.underline ? 'underline' : 'normal'}" style="max-height: 25px; margin-left: 30px; font-size: 13px">
-                        {{tabName.phone.value | tel}}
+                        {{tabName.phone.value}}
                     </div>
                 </div>
             </div>

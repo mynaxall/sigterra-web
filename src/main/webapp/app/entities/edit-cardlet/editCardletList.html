@@ -540,7 +540,7 @@
                                                 <div class="form-group form-group-editor clearfix">
 
                                                     <div class="input-text-div input-text-div-editor">
-                                                        <input type="text" class="input-new-editor" id="userName13{{tabName.items[tabName.items.length-1].index}}-{{$index}}" placeholder="Mobile Number" ng-model="tabName.phone.value" maxlength="9" ng-pattern="/^[0-9]*$/">
+                                                        <input type="text" class="input-new-editor" id="userName13{{tabName.items[tabName.items.length-1].index}}-{{$index}}" placeholder="Mobile Number" ng-model="tabName.phone.value" restrict="reject" mask="(999) 999-9999">
                                                         <label for="userName13{{tabName.items[tabName.items.length-1].index}}-{{$index}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                     </div>
                                                     <div class="text-decoration-div-editor" >
@@ -927,7 +927,7 @@
                     </div>
                 </div>
                 <div class="cropArea">
-                    <img-crop image="myImage" ng-show="myCroppedImage" result-image="myCroppedImage" ></img-crop>
+                    <img-crop image="myImage" ng-show="myCroppedImage" result-image="myCroppedImage" area-type="square" ></img-crop>
                     <img ng-hide="myCroppedImage" src="/content/images/image_placeholder.png">
                 </div>
                 <div class="crop-btn-div">

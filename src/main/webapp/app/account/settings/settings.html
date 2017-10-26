@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="cropArea">
-                <img-crop image="myImage" ng-show="myCroppedImage" result-image="myCroppedImage"></img-crop>
+                <img-crop image="myImage" ng-show="myCroppedImage" result-image="myCroppedImage" area-type="square" ></img-crop>
                 <img ng-hide="myCroppedImage" src="/content/images/image_placeholder.png">
             </div>
             <div class="crop-btn-div">
@@ -128,17 +128,12 @@
 
                     <div class="form-group-new">
                         <input type="text" class="profile-input" id="phoneNumber2" name="phoneNumber" placeholder="Mobile Number"
-                               ng-model="vm.settingsAccount.phoneNumber" maxlength="9" ng-pattern="/^[0-9]*$/">
+                               ng-model="vm.settingsAccount.phoneNumber" restrict="reject" mask="(999) 999-9999">
                         <div ng-show="form.phoneNumber.$dirty && form.phoneNumber.$invalid">
-
                             <p class="help-block"
-                               ng-show="form.phoneNumber.$error.pattern">
-                                Numbers only.
-                            </p>
-                            <p class="help-block"
-                               ng-show="form.phoneNumber.$error.maxlength">
-                                Your phone number cannot be longer than 9 characters
-                            </p>
+                               ng-show="form.phoneNumber.$error.mask">
+                                Invalid phone number format
+                            <p/>
                         </div>
                     </div>
 

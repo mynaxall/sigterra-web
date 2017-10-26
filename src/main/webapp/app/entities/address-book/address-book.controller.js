@@ -57,7 +57,7 @@
         }
 
         $scope.gerPreviewLink = function(id){
-            var link =  "mailto:?subject=Link to the Sigterra Profile Page.&body=Hi,%0D%0A %0D%0A Take a look at this Sigterra Profile Page: "+ ($location.protocol() + '://' + $location.host() + ':' + $location.port() + '/%23/previewCardlet?cardletId=' + id)
+            var link =  "mailto:?subject=Link to the Sigterra Profile Page.&body=Hi,%0D%0A %0D%0A Take a look at this Sigterra Profile Page: "+ ($location.protocol() + '://' + $location.host() + ':' + $location.port() + '/%23/previewCardlet?cardletId=' +  window.btoa(id))
             return link.toString();
         }
 

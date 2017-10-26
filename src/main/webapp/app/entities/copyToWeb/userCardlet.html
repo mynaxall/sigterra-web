@@ -77,8 +77,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            width: 550px;
-            padding-top: 10px;
+            width: 540px;
         }
 
         /* Style the links inside the list items */
@@ -173,7 +172,9 @@
             float: right;
             margin-right: 10px;
         }
-
+        .sub-footer{
+            display: none;
+        }
 
         ul[dnd-list] .dndDraggingSource {
             display: none;
@@ -194,7 +195,7 @@
 
     </style>
 
-    <div>
+    <div class="copy-to-web-container">
             <div>
                 <ul class="tab2">
                     <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
@@ -202,7 +203,6 @@
                             <a href="javascript:void(0)" style="color:#{{tabName.layout.secondaryColor}}"  class="tablinks2"ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
                         </div>
                     </li>
-
                 </ul>
             </div>
 

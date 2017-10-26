@@ -5,9 +5,9 @@
         .module('sigterraWebApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', '$scope', '$location'];
+    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', '$scope', '$location', '$anchorScroll'];
 
-    function NavbarController ($state, Auth, Principal, ProfileService, LoginService, $scope, $location) {
+    function NavbarController ($state, Auth, Principal, ProfileService, LoginService, $scope, $location, $anchorScroll) {
         var vm = this;
 
         vm.isNavbarCollapsed = true;
@@ -43,7 +43,6 @@
         vm.logout = logout;
         vm.toggleNavbar = toggleNavbar;
         vm.collapseNavbar = collapseNavbar;
-        vm.gotoBottom = gotoBottom;
         vm.gotoFooter = gotoFooter;
         vm.howItWorks = howItWorks;
         vm.$state = $state;
@@ -67,23 +66,19 @@
             vm.isNavbarCollapsed = true;
         }
 
-        function gotoBottom() {
-            // set the location.hash to the id of
-            // the element you wish to scroll to.
-            var el = document.getElementById('howItWorks');
-            el.scrollIntoView();
-        };
-
         function howItWorks() {
-            var el = document.getElementById('howItWorks');
-            el.scrollIntoView();
+            $location.hash('howItWorks');
+
+            // call $anchorScroll()
+            $anchorScroll();
         }
 
         function gotoFooter() {
-            // set the location.hash to the id of
-            // the element you wish to scroll to.
-            var el = document.getElementById('sigFooter');
-            el.scrollIntoView();
+            $location.hash('contacts');
+
+            // call $anchorScroll()
+            $anchorScroll();
+
         };
     }
 })();

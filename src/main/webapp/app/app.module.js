@@ -20,7 +20,8 @@
             'base64',
             'xeditable',
             'ngOnload',
-            'monospaced.elastic'
+            'monospaced.elastic',
+            'ngMask'
         ])
         .run(run);
 

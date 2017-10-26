@@ -239,7 +239,7 @@
                         $scope.showSpinner = false;
                     }, 500)
                 });
-            $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ param1;
+            $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ window.btoa(param1);
         };
 
         loadAll();
@@ -975,7 +975,7 @@
 
 
         $scope.getLink = function(link){
-            if( link.startsWith('http')){
+            if(link && link.startsWith('http')){
                 return link;
             }else{
                 return 'http://'+link;
