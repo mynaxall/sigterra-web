@@ -5224,3 +5224,31 @@ recent-activity-sidebar .glyphicon:hover {
 .copy-to-web-container{
     width: 540px;
 }
+
+.card-address{
+    display: block;
+    unicode-bidi: embed;
+    white-space: pre-line;
+    word-break: break-word!important;
+}
+
+.first-card-address{
+    width: 240px;
+    height: 38px;
+    display: block;
+}
+
+.second-card-address{
+    max-width: 180px;
+    max-height: 58px;
+    height: 58px;
+    float: right;
+    font-size: 13px;
+    margin-left: 10px;
+}
+
+.third-card-address{
+    max-width: 320px;
+    max-height: 38px;
+    font-size: 13px;
+}
