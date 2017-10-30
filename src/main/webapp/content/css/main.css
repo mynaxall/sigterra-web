@@ -5069,6 +5069,11 @@ recent-activity-sidebar {
     color: #13BCB5;
     letter-spacing: -0.43px;
 }
+@media (max-width: 1024px) {
+    .statisctics-num-title {
+        font-size: 22px;
+    }
+}
 /* Activity engagement table */
 .activity-engagements {
     height: 470px;
