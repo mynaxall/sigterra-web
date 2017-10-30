@@ -4978,7 +4978,7 @@ recent-activity-sidebar {
     list-style: none;
     float: right;
     margin: 0;
-    padding: 0x;
+    padding: 0;
 }
 .time-period-filter li {
     display: inline-block;
