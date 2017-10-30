@@ -5252,3 +5252,41 @@ recent-activity-sidebar .glyphicon:hover {
     max-height: 38px;
     font-size: 13px;
 }
+
+.ta-editor {
+    max-height: 100px!important;
+    min-height: 100px!important;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+    margin: 10px 0;
+}
+
+.ta-scroll-window > .ta-bind{
+    min-height: 100px;
+}
+
+.ta-toolbar .btn-group .btn-default{
+    font-size: 10px;
+    padding: 6px 9px;
+
+}
+
+.text-editor-displaying{
+    width: 315px;
+    background-origin: padding-box;
+    background-size: auto;
+    box-sizing: border-box;
+    color: rgb(51, 51, 51);
+    display: block;
+}
+
+.text-editor-displaying-third{
+    width: 470px;
+    background-origin: padding-box;
+    background-size: auto;
+    box-sizing: border-box;
+    color: rgb(51, 51, 51);
+    display: block;
+}

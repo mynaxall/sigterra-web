@@ -47,4 +47,10 @@
             newDataType="varchar(300)"
             tableName="input_properties"/>
     </changeSet>
+    <changeSet id="20170201113514-3" author="Alexander">
+        <modifyDataType
+            columnName="value"
+            newDataType="text"
+            tableName="input_properties"/>
+    </changeSet>
 </databaseChangeLog>

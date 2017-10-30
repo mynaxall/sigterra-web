@@ -8,10 +8,7 @@
                             <pre class="carousel-info-name-div-new-2 carousel-item-name-div" style="max-height: 60px;" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': slide.name.italic ? 'italic' : 'normal',
                             'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
-                            <pre class="carousel-info-name-div-new-2 carousel-info-deskript-div" ng-show="slide.description.value"
-                                 ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                        'font-style': slide.description.italic ? 'italic' : 'normal',
-                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.value}}</pre>
+                            <div class="text-editor-displaying" ta-bind ng-model="slide.description.value"></div>
                         </div>
                         <div id="cf4a" style="float: left; width: 105px; height: 105px; margin-left: 40px">
                             <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}">
@@ -36,10 +33,7 @@
                                 <pre  class="carousel-info-name-div-new-2 carousel-item-name-div" style="max-height: 60px;" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': slide.name.italic ? 'italic' : 'normal',
                             'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
-                                <pre class="carousel-info-name-div-new-2 carousel-info-deskript-div" ng-show="slide.description.value"
-                                     ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                        'font-style': slide.description.italic ? 'italic' : 'normal',
-                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.value}}</pre>
+                                <div class="text-editor-displaying" ta-bind ng-model="slide.description.value"></div>
                             </div>
                             <div id="cf4a" style="float: left; width: 105px; margin-left: 40px">
                                 <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}">

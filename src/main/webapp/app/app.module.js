@@ -21,7 +21,8 @@
             'xeditable',
             'ngOnload',
             'monospaced.elastic',
-            'ngMask'
+            'ngMask',
+            'textAngular'
         ])
         .run(run);
 

@@ -221,6 +221,7 @@
         }
 
     </style>
+
     <div class="ng-hide" ng-show="showConent">
 
         <div class="row" style="margin: 0px">
@@ -670,16 +671,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group form-group-editor clearfix">
-                                                        <div class="input-text-div input-text-div-editor">
-                                                            <input ng-hide="true" type="text" class="input-new" placeholder="Description" ng-model="item.description.value">
-                                                            <textarea id="itemDesctiption2{{slide.index}}-{{tabName.position}}" class="textarea-new-editor" msd-elastic placeholder="Description"  ng-model="slide.description.value" maxlength="270" ></textarea>
-                                                            <label for="itemDesctiption2{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
-                                                        </div>
-                                                        <div class="text-decoration-div-editor" >
-                                                            <input type='checkbox' ng-model="slide.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{slide.position}}"/><label for="boldDescription{{tabName.position}}{{slide.position}}"></label>
-                                                            <input type='checkbox' ng-model="slide.description.italic" name='italic' value='valuable' class="checkboxItalic" id="italicDescription{{tabName.position}}{{slide.position}}"/><label for="italicDescription{{tabName.position}}{{slide.position}}"></label>
-                                                            <input type='checkbox' ng-model="slide.description.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineDescription{{tabName.position}}{{slide.position}}"/><label for="underlineDescription{{tabName.position}}{{slide.position}}"></label>
-
+                                                        <div style="width: 450px; margin-top: 10px">
+                                                            <text-angular ng-model="slide.description.value" ta-toolbar="[['bold','italics', 'underline', 'strikeThrough'],['undo', 'redo', 'clear'], ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull']]"></text-angular>
                                                         </div>
                                                     </div>
                                                     <form name="myItemForm">
@@ -737,16 +730,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group form-group-editor clearfix">
-                                                            <div class="input-text-div input-text-div-editor">
-                                                                <input ng-hide="true" type="text" class="input-new" placeholder="Description" ng-model="item.description.value">
-                                                                <textarea class="textarea-new-editor" msd-elastic id="itemDesctiption{{slide.index}}-{{tabName.position}}" placeholder="Description"  ng-model="slide.description.value" maxlength="270"></textarea>
-                                                                <label for="itemDesctiption{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
-                                                            </div>
-                                                            <div class="text-decoration-div-editor" >
-                                                                <input type='checkbox' ng-model="slide.description.bold" name='bold' value='valuable' class="checkboxBold" id="boldDescription{{tabName.position}}{{slide.position}}"/><label for="boldDescription{{tabName.position}}{{slide.position}}"></label>
-                                                                <input type='checkbox' ng-model="slide.description.italic" name='italic' value='valuable' class="checkboxItalic" id="italicDescription{{tabName.position}}{{slide.position}}"/><label for="italicDescription{{tabName.position}}{{slide.position}}"></label>
-                                                                <input type='checkbox' ng-model="slide.description.underline" name='underline' value='valuable' class="checkboxUunderline" id="underlineDescription{{tabName.position}}{{slide.position}}"/><label for="underlineDescription{{tabName.position}}{{slide.position}}"></label>
-
+                                                            <div style="width: 450px; margin-top: 10px">
+                                                                <text-angular ng-model="slide.description.value" ta-toolbar="[['bold','italics', 'underline', 'strikeThrough'],['undo', 'redo', 'clear'], ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull']]"></text-angular>
                                                             </div>
                                                         </div>
                                                         <form name="myItemForm">
