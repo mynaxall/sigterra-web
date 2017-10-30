@@ -4960,6 +4960,7 @@ recent-activity-sidebar {
 }
 .account-activity-content h3 {
     color: #4A4A4A;
+    font-family: Roboto-Bold;
     font-size: 20px;
     letter-spacing: -0.48px;
     margin: 0;
@@ -4977,7 +4978,7 @@ recent-activity-sidebar {
     list-style: none;
     float: right;
     margin: 0;
-    padding: 0x;
+    padding: 0;
 }
 .time-period-filter li {
     display: inline-block;
@@ -5149,6 +5150,7 @@ recent-activity-sidebar:before {
     }
 }
 recent-activity-sidebar h2 {
+    font-family: Roboto-Bold;
     font-size: 24px;
     color: #4A4A4A;
     letter-spacing: -0.58px;
