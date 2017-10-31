@@ -5135,6 +5135,11 @@ recent-activity-sidebar {
     position: relative;
     z-index: 1;
 }
+@media (min-width: 992px) and (max-width: 1200px) {
+    .recent-activity-header {
+        display: block;
+    }
+}
 recent-activity-sidebar {
     position: relative;
 }
@@ -5186,6 +5191,11 @@ recent-activity-sidebar .glyphicon:hover {
 }
 .recent-sidebar-filter {
     list-style: none;
+}
+@media (min-width: 992px) and (max-width: 1200px) {
+    .recent-sidebar-filter {
+        text-align: right;
+    }
 }
 .recent-sidebar-filter li {
     display: inline-block;
