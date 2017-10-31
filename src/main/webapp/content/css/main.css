@@ -5307,6 +5307,13 @@ recent-activity-sidebar .glyphicon:hover {
     display: block;
 }
 
+.reset-header{
+    color: #7F8C8C;
+    font-size: 13px;
+    text-align: center;
+    padding-bottom: 25px
+}
+
 .text-editor-displaying-third{
     width: 470px;
     background-origin: padding-box;

@@ -19,7 +19,7 @@
                 <p>Check your e-mail for details on how to reset your password.</p>
             </div>
 
-            <div ng-show="!vm.success" style="color: #7F8C8C; font-size: 13px; text-align: center;padding-bottom: 45px">Enter the e-mail address you used to register.</div>
+            <div ng-show="!vm.success" class="reset-header">Enter the e-mail address you used to register.</div>
 
             <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.requestReset()" show-validation>
                 <div class="form-group form-group-new">
