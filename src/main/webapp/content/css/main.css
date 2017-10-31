@@ -5099,6 +5099,10 @@ recent-activity-sidebar {
     color: #4A4A4A;
     letter-spacing: -0.39px;
 }
+.activity-engagements-table th:nth-child(3),
+.activity-engagements-table td:nth-child(3) {
+    width: 262px;
+}
 .activity-engagements-table td:last-child,
 .activity-engagements-table th:last-child {
     width: 190px;
