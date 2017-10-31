@@ -5107,8 +5107,8 @@ recent-activity-sidebar {
 .activity-engagements-table th:last-child {
     width: 190px;
 }
-.activity-engagements-table tr:nth-child(2n-1) {
-    background: rgba(246,248,250,0.35);
+.activity-engagements-table tbody tr:nth-child(2n-1) {
+    background: #F6F8FA;
 }
 .activity-engagements-table th {
     padding: 15px 60px;
