@@ -4749,10 +4749,9 @@ a:focus{
 }
 
 .carousel-item-name-first-type{
-    width: 220px;
+    width: 240px;
     height: 30px;
     font-size: 24px;
-    margin-left: 15px;
     max-height:30px;
     min-height: 30px;
     margin-bottom: 10px;
