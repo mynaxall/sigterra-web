@@ -5301,6 +5301,8 @@ recent-activity-sidebar .glyphicon:hover {
     box-sizing: border-box;
     color: rgb(51, 51, 51);
     display: block;
+    max-height: 170px;
+    overflow: hidden;
 }
 
 .reset-header{
@@ -5317,6 +5319,8 @@ recent-activity-sidebar .glyphicon:hover {
     box-sizing: border-box;
     color: rgb(51, 51, 51);
     display: block;
+    max-height: 170px;
+    overflow: hidden;
 }
 
 .preview-cardlet-dialog{
