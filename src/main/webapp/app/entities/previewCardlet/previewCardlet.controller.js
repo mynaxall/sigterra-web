@@ -12,7 +12,11 @@
 
         var vm = this;
 
-        $rootScope.title = ""
+
+        vm.showPreviewDialog = false;
+        vm.tabId = "";
+        $rootScope.title = "";
+
 
         $scope.getUser = function () {
             $http.get("/api/account")
@@ -151,12 +155,18 @@
 
         $scope.prevSlide = function (index) {
             $scope.currentUrl = undefined;
-            if (vm.currentSlide == 0) {
+            if (vm.currentSlide === 0) {
                 vm.currentSlide = $scope.tabNames.tabs[index].items.length - 1;
-                vm.nextIndex = 0
-            } else {
+                vm.nextIndex = 0;
+                vm.prevIndex = vm.currentSlide - 1;
+            }else {
                 vm.currentSlide = vm.currentSlide - 1;
-                vm.nextIndex = vm.currentSlide + 1
+                vm.nextIndex = vm.currentSlide + 1;
+                vm.prevIndex = vm.currentSlide - 1;
+            }
+
+            if(vm.currentSlide === 0){
+                vm.prevIndex = $scope.tabNames.tabs[index].items.length - 1
             }
 
 
@@ -228,8 +238,12 @@
             }
 
             vm.nextIndex = vm.currentSlide + 1;
+            vm.prevIndex = vm.currentSlide - 1;
             if (vm.nextIndex == $scope.tabNames.tabs[index].items.length) {
                 vm.nextIndex = 0;
+            }
+            if(vm.currentSlide === 0){
+                vm.prevIndex = vm.prevIndex = $scope.tabNames.tabs[index].items.length - 1;
             }
 
 
@@ -315,6 +329,19 @@
             }
         }
 
+        $scope.closeDialog = function () {
+            vm.showPreviewDialog = false;
+        }
+
+        $scope.openPreviewDialog = function(type){
+            if (type !== 1) {
+                vm.showPreviewDialog = true;
+                if(vm.currentSlide === 0) {
+                    vm.prevIndex = vm.tabId.items.length - 1
+                }
+            }
+        }
+
 
         $scope.openCity = function (cardName, cardId, id) {
             $scope.currentUrl = "1";
@@ -326,6 +353,7 @@
                 vm.tabType = 1;
             } else {
                 vm.tabType = 2;
+                vm.tabId = $scope.tabNames.tabs[id];
             }
             vm.showSpinner = true;
             vm.nextIndex = 1;
