@@ -4297,28 +4297,25 @@ ul.tab li.active:hover{
 
 
 .preview-create-button{
-    background-color: #E8645A;
-    color: #FFF;
-    text-transform: uppercase;
-    width: 260px;
-    border: 1px solid #E8645A;
-    border-radius: 0px;
-    font-size: 15px;
-    padding: 12px;
+    background-color: transparent;
+    color: #4372C4;
+    border: none;
+    font-size: 18px;
+    text-decoration: underline;
 
 }
 
 
 .preview-add-button{
-    margin-left: 16px;
-    background-color: #FFF;
-    color: #E8645A;
-    border: 1px solid #E8645A;
+    background-color: #4372C4;
+    color: #ffffff;
+    border: 1px solid #4372C4;
     text-transform: uppercase;
     width: 260px;
     border-radius: 0px;
     font-size: 15px;
     padding: 12px;
+    margin-bottom: 30px;
 
 }
 
@@ -5322,3 +5319,99 @@ recent-activity-sidebar .glyphicon:hover {
     color: rgb(51, 51, 51);
     display: block;
 }
+
+.preview-cardlet-dialog{
+    margin-top: 100px;
+    width: 90%!important;
+    min-width: 800px!important;
+
+}
+
+.preview-modeal-custom-window{
+    top:0;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height:100%;
+    background-color: rgba(0,0,0, 0.6);
+    z-index: 1000;
+}
+
+.preview-slide-prev-editor{
+    height: 100%;
+    width: 50px;
+    background-color: #FFFFFF;
+    position: absolute;
+    left: 0px;
+    z-index: 10001;
+}
+
+.preview-slide-next-editor{
+    height: 100%;
+    width: 50px;
+    background-color: #FFFFFF;
+    position: absolute;
+    right: 0px;
+    z-index: 10001;
+}
+
+.preview-modal-header{
+    background-color: #F2F2F2;
+    text-align: center;
+    font-size: 22px;
+    color: #727272;
+    height: 60px;
+}
+
+.preview-close{
+    font-size: 22px;
+    color: #727272;
+}
+
+.preview-modal-body{
+    background-color: #D9D9D9;
+}
+
+.preview-modal-content{
+    background-color: #ffffff;
+    height: 700px;
+}
+
+.preview-carousel-image-div-info{
+    text-align: center;
+    width: 100%;
+    height: 700px;
+}
+
+.preview-slide-image{
+    margin-top: 300px;
+}
+
+.preview-slide-next-image{
+    position: absolute;
+    top:270px;
+    right: 65px;
+}
+
+.preview-slide-prev-image{
+    position: absolute;
+    top:270px;
+    left: 65px;
+}
+
+.preview-col{
+    position: relative;
+}
+
+.preview-modal-iframe{
+    height: 600px!important;
+}
+
+.preview-title{
+    margin-top: 50px;
+    font-size: 20px;
+    color: #000000;
+    font-family: Roboto-Bold-Italic;
+}
+
+

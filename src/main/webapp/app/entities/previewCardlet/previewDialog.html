@@ -1,0 +1,41 @@
+<div class="preview-modeal-custom-window" >
+    <div class="modal-dialog preview-cardlet-dialog">
+        <div class="modal-content">
+            <div class="modal-header preview-modal-header">
+                <span>{{vm.currentSlide +1}}/{{vm.tabId.items.length}}</span>
+                <button type="button" class="close preview-close" data-dismiss="modal" aria-hidden="true"
+                        ng-click="closeDialog()">&times;</button>
+              <div class="signature-title"></div>
+            </div>
+            <div  style=" padding: 0px!important;" class="modal-body preview-modal-body">
+                <div>
+                    <div class="preview-carousel-image-div-info" uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="vm.showCarousel" ng-init="initSlide(vm.tabId)">
+                        <div ng-show="true" class="preview-slide-prev-editor"><img class="preview-slide-image" src="/content/images/new/arrow_left.png" ng-click="prevSlide(vm.tabId.position)" ng-if="vm.tabId.items.length > 1"></div>
+                        <div ng-show="true"  class="preview-slide-next-editor"><img class="preview-slide-image" src="/content/images/new/arrow_right.png" ng-click="nextSlide(vm.tabId.position)" ng-if="vm.tabId.items.length > 1"></div>
+
+                        <div uib-slide ng-repeat="slide in vm.tabId.items track by slide.position" index="slide.position" style="height: 400px">
+                            <div class="row">
+                                <div class="col-sm-2  preview-col">
+                                    <div class="preview-slide-prev-image" ng-repeat="slide in vm.tabId.items | orderBy:'position'">
+                                        <img ng-show="$index === vm.prevIndex && vm.tabId.layout.url != 'app/cardlets/info3.html'" style="width: 100px" ng-src="{{slide.image}}">
+                                    </div>
+                                </div>
+                                <div class="col-sm-8 preview-modal-content">
+                                    <iframe class="preview-modal-iframe" id="myFrame" type="text/html"  ng-if="currentUrl"  ng-onload="closeFrame()" style="height: 0px; border:none; margin-top: 30px"  ng-src="{{trustSrc(slide.link)}}" width="100%"></iframe>
+                                </div>
+                                <div class="col-sm-2 preview-col">
+                                    <div class="preview-slide-next-image" ng-repeat="slide in vm.tabId.items | orderBy:'position'">
+                                        <img ng-show="$index === vm.nextIndex && vm.tabId.layout.url != 'app/cardlets/info3.html'" style="width: 100px" ng-src="{{slide.image}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
