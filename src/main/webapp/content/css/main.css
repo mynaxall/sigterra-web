@@ -5414,4 +5414,17 @@ recent-activity-sidebar .glyphicon:hover {
     font-family: Roboto-Bold-Italic;
 }
 
+.carousel-info-name-div-new{
+    width: 315px;
+    font-size: 20px;
+    color:#242424;
+    background:transparent;
+    word-break: normal;
+    border: none;
+    padding-left: 0px;
+    padding-top: 0px;
+    margin-bottom: 0px;
+    line-height: 1;
+}
+
 
