@@ -198,9 +198,9 @@
     <div class="copy-to-web-container">
             <div>
                 <ul class="tab2">
-                    <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
+                    <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink'+tabName.position+tabName.name)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
                         <div style="position: relative; display: table; width: 100%;">
-                            <a href="javascript:void(0)" style="color:#{{tabName.layout.secondaryColor}}"  class="tablinks2"ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                            <a href="javascript:void(0)" id="tabLink{{tabName.position}}{{tabName.name}}" class="tablinks2"ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
                         </div>
                     </li>
                 </ul>
