@@ -554,7 +554,7 @@
                                 "value": "Item Header"
                             },
                             "description": {
-                                "value": "Item Description"
+                                "value": "<p style=\"text-align: left;\">Item Description</p>"
                             }
                         }
                     ]
@@ -609,9 +609,13 @@
         }
 
 
-        $scope.addItems = function(tabId, index) {
+        $scope.addItems = function(tabId, index, isInfo) {
             if($scope.tabNames.tabs[tabId].items.length <= 9) {
                 $scope.isDeleteItem = true;
+                var description = "Item Description";
+                if(isInfo){
+                    description = "<p style=\"text-align: left;\">Item Description</p>"
+                }
                 var newItem = {
                     //"name":  ($scope.tabNames.tabs[tabId].items.length+1)+" item",
                     "index": index + 2,
@@ -623,7 +627,7 @@
                         "value": "Item Header"
                     },
                     "description": {
-                        "value": "Item Description"
+                        "value": description
                     }
                 }
 
