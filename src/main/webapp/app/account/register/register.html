@@ -274,8 +274,9 @@
                 </div>
 
                 <div style="text-align: center;">
-                    <button  type="submit" ng-disabled="form2.$invalid" ng-click="vm.register()" class="loginButton" style="width: 130px; float: left">Save</button>
-                    <button  type="submit" ng-click="vm.skip()" class="loginButton skip-btn"  style="width: 130px; float: right">skip</button>
+                    <button  type="submit" ng-click="vm.back()" class="loginButton skip-btn">back</button>
+                    <button  type="submit" ng-disabled="form2.$invalid" ng-click="vm.register()" class="loginButton save-btn">Save</button>
+                    <button  type="submit" ng-click="vm.skip()" class="loginButton skip-btn">skip</button>
                 </div>
             </form>
             <div style="color: #7F8C8C; font-size: 13px; text-align: center; padding-top: 60px; padding-bottom: 45px">
