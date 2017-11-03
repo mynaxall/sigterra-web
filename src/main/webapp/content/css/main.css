@@ -4365,6 +4365,7 @@ ul.tab li.active:hover{
     left:0;
     height: 140px;
     width: 100%;
+    background: #4BABE2;
 }
 
 .error-link{
