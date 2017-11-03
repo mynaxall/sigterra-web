@@ -36,11 +36,16 @@
         vm.success = null;
         vm.isDone = false;
         vm.skip = skip;
+        vm.back = back;
 
         vm.nextStep = nextStep;
 
         function nextStep (){
             vm.isFirstStep = false;
+        }
+
+        function back() {
+            vm.isFirstStep = true;
         }
 
         $scope.trimValue = function(val){
