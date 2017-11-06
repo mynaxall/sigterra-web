@@ -40,7 +40,7 @@ public class UserDTO {
 
     private String jobTitle;
 
-    @Email
+    @Email(regexp = Constants.LOGIN_REGEX)
     @Size(min = 5, max = 100)
     private String email;
 

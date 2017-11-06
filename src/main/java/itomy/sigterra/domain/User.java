@@ -51,7 +51,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "username", length = 50)
     private String username;
 
-    @Email
+    @Email(regexp = Constants.LOGIN_REGEX)
     @Size(max = 100)
     @Column(length = 100, unique = true)
     private String email;
@@ -284,11 +284,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
         User user = (User) o;
 
-        if (!login.equals(user.login)) {
-            return false;
-        }
-
-        return true;
+        return login.equals(user.login);
     }
 
     @Override
