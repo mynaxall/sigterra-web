@@ -1732,6 +1732,10 @@ Social Buttons
     resize: vertical!important;
 }
 
+.textarea-text-item{
+    max-height: 50px;
+}
+
 .textarea-new-editor:focus{
     border: 1px solid  #BFBFBF;
     background-color: #FFFFFF;
@@ -1914,6 +1918,10 @@ Social Buttons
 
 .copy-btn:hover{
     background-color: rgba(19,188,181,.84) !important;
+}
+
+.copy-btn[disabled]{
+    background-color: #13BCB5!important;
 }
 
 .portfolio-header{
@@ -5433,6 +5441,11 @@ recent-activity-sidebar .glyphicon:hover {
     padding-top: 0px;
     margin-bottom: 0px;
     line-height: 1;
+}
+
+.ta-toolbar .btn-group button[disabled]{
+    color: #fff;
+    border-color: #ccc;
 }
 
 
