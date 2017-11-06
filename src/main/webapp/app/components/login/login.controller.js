@@ -42,11 +42,6 @@
                 vm.authenticationError = false;
                 localStorage.setItem("impersonate", false);
                 $uibModalInstance.close();
-                if ($state.current.name === 'register' || $state.current.name === 'activate' ||
-                    $state.current.name === 'finishReset' || $state.current.name === 'requestReset') {
-
-                }
-
                 $rootScope.$broadcast('authenticationSuccess');
 
                 // previousState was set in the authExpiredInterceptor before being redirected to login modal.
@@ -54,9 +49,12 @@
                 if (Auth.getPreviousState()) {
                     var previousState = Auth.getPreviousState();
                     Auth.resetPreviousState();
+                    console.log(previousState.name)
                     $state.go(previousState.name, previousState.params);
                 }
-                $location.path('/user-cardlets')
+                if($state.current.name !== 'previewCardlet') {
+                    $location.path('/user-cardlets')
+                }
             }).catch(function () {
                 vm.authenticationError = true;
             });
