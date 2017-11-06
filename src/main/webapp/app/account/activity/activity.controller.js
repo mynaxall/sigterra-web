@@ -76,7 +76,7 @@
                 elem.on('scroll', function () {
                     var scrollableHeight = elem.prop('scrollHeight');
                     var hiddenContentHeight = scrollableHeight - visibleHeight;
-                    if (hiddenContentHeight - elem.scrollTop() <= threshold && didScroll) {
+                    if (hiddenContentHeight - elem.scrollTop() <= threshold) {
                         // Scroll is almost at the bottom. Loading more rows
                         if(attrs.whenScrollEnds == 'nextTopEngagements'){
                             scope.vm.nextTopEngagements();
