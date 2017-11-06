@@ -5443,4 +5443,9 @@ recent-activity-sidebar .glyphicon:hover {
     line-height: 1;
 }
 
+.ta-toolbar .btn-group button[disabled]{
+    color: #fff;
+    border-color: #ccc;
+}
+
 
