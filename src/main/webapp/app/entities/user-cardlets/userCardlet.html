@@ -469,10 +469,9 @@
         }
 
     </style>
-    <div class="user-cardlet-panel ng-hide" ng-show="showConent">
-        <div class="portfolio-header">
-        </div>
-        <div class="row" >
+    <div class="user-cardlet-panel ng-hide" ng-show="showConent" ng-style="{'min-height': isCopyTiEmail ? '1400px' : 'none'}">
+        <div class="portfolio-header"></div>
+        <div class="row">
             <div style="margin-bottom: 70px;" class="col-lg-6" ng-repeat="tabNames in userCardlets">
                 <div class="cardlet-panel">
 
