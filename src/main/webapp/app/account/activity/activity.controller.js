@@ -5,7 +5,7 @@
         .module('sigterraWebApp')
         .controller('ActivityController', ActivityController)
         .filter('activityString', activityString)
-        .filter('activityIcon', activityIcon)
+        .filter('svgIconCardHref', svgIconCardHref)
         .directive('accountActivityStatistics', accountActivityStatistics)
         .directive('activityTopEngagements', activityTopEngagements)
         .directive('recentActivitySidebar', recentActivitySidebar)
@@ -28,22 +28,11 @@
             }
         }
     }
-    function activityIcon() {
-        return function (type) {
-            switch (type) {
-                case 'view':
-                    return 'eye-open';
-                    break;
-                case 'add':
-                    return 'phone-alt';
-                    break;
-                case 'read':
-                    return 'list-alt';
-                    break;
-                default:
-                    return 'eye-open';
-            }
-        }
+
+    function svgIconCardHref() {
+        return function(iconCardId) {
+            return $sce.trustAsResourceUrl('#icon-' + iconCardId);
+        };
     }
 
     function accountActivityStatistics() {

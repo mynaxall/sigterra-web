@@ -5185,14 +5185,27 @@ recent-activity-sidebar h2:before {
     height: 4px;
     width: 48px;
 }
-recent-activity-sidebar .glyphicon {
-    font-size: 20px;
+recent-activity-sidebar .icon {
+    cursor: pointer;
     color: #CBD4DF;
-    -webkit-transition: color .2s ease;
-    transition: color .2s ease;
+    fill: #CBD4DF;
+    height: 20px;
+    width: 20px;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
 }
-recent-activity-sidebar .glyphicon:hover {
+recent-activity-sidebar .icon:hover {
+    fill: #13BCB5;
     color: #13BCB5;
+}
+recent-activity-sidebar .icon-view {
+    width: 25px;
+}
+recent-activity-sidebar .icon-add {
+    height: 22px;
+}
+recent-activity-sidebar .icon-read {
+    height: 22px;
 }
 .recent-sidebar-filter {
     list-style: none;
@@ -5212,8 +5225,9 @@ recent-activity-sidebar .glyphicon:hover {
     font-size: 16px;
 }
 .recent-sidebar-filter a.active,
-.recent-sidebar-filter a.active .glyphicon {
+.recent-sidebar-filter a.active .icon {
     color: #13BCB5;
+    fill: #13BCB5;
 }
 .recent-activity-list {
     height: 756px;
