@@ -1920,6 +1920,10 @@ Social Buttons
     background-color: rgba(19,188,181,.84) !important;
 }
 
+.copy-btn[disabled]{
+    background-color: #13BCB5!important;
+}
+
 .portfolio-header{
     text-align: center;
     width: 100%;
