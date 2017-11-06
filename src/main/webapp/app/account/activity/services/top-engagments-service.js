@@ -35,7 +35,7 @@
             } else {
                 path = '/api/analytic/top/' + cardletId;
             }
-            $http.get(path + '?page=' + (pageNumber +1) + '&size=' + SIZE +'&period=' + engagementsPeriod).then(sc, ec);
+            $http.get(path + '?page=' + pageNumber + '&size=' + SIZE +'&period=' + engagementsPeriod).then(sc, ec);
         }
 
     }

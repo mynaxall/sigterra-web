@@ -72,11 +72,13 @@
             restrict: "A",
             link: function (scope, elem, attrs) {
                 var visibleHeight = elem.height();
-                var threshold = 100;
+                var threshold = 50;
                 elem.on('scroll', function () {
+                    var didScroll = true;
                     var scrollableHeight = elem.prop('scrollHeight');
                     var hiddenContentHeight = scrollableHeight - visibleHeight;
-                    if (hiddenContentHeight - elem.scrollTop() <= threshold) {
+                    if (hiddenContentHeight - elem.scrollTop() <= threshold && didScroll) {
+                        didScroll = false;
                         // Scroll is almost at the bottom. Loading more rows
                         if(attrs.whenScrollEnds == 'nextTopEngagements'){
                             scope.vm.nextTopEngagements();
@@ -96,6 +98,8 @@
         var vm = this;
         vm.error = null;
         vm.success = null;
+        vm.lockedResAct = true;
+        vm.lockedTopEng = true;
         vm.activityCounters = null;
         vm.cardlets = null;
         vm.toggleText = 'All Profiles';
@@ -212,11 +216,15 @@
         }
         function appendTopEngagements() {
             $scope.showEngagementsSpinner = true;
+            if (!vm.lockedTopEng) return;
+            vm.lockedTopEng = false;
+            vm.pageNumber++;
             TopEngagementsService.appendTopEngagements(vm.cardletID, vm.pageNumber, vm.engagementsPeriod, function (res) {
                 vm.engagements = vm.engagements.concat(res.data);
-                vm.pageNumber++;
                 vm.onCompleteRequest($scope.showEngagementsSpinner);
+                vm.lockedTopEng = true;
             }, function (err) {
+                vm.pageNumber--;
                 vm.onCompleteRequest($scope.showEngagementsSpinner);
             });
         }
@@ -242,11 +250,15 @@
         }
         function appendRecentActivity() {
             $scope.showRecentSpinner = true;
+            if (!vm.lockedResAct) return;
+            vm.lockedResAct = false;
+            vm.pageRecent++;
             RecentActivityService.appendRecentActivity(vm.cardletID, vm.pageRecent, vm.recentType, function (res) {
                 vm.recents = vm.recents.concat(res.data);
-                vm.pageRecent++;
                 vm.onCompleteRequest($scope.showRecentSpinner);
+                vm.lockedResAct = true;
             }, function (err) {
+                vm.pageRecent--;
                 vm.onCompleteRequest($scope.showRecentSpinner);
             });
         }
