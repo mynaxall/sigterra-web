@@ -5316,6 +5316,7 @@ recent-activity-sidebar .icon-read {
 
 .ta-scroll-window > .ta-bind{
     min-height: 100px;
+    padding: 0px;
 }
 
 .ta-toolbar .btn-group .btn-default{
@@ -5463,6 +5464,10 @@ recent-activity-sidebar .icon-read {
 .ta-toolbar .btn-group button[disabled]{
     color: #fff;
     border-color: #ccc;
+}
+
+.ta-scroll-window.form-control{
+    padding: 6px 10px;
 }
 
 
