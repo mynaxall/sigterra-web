@@ -1732,6 +1732,10 @@ Social Buttons
     resize: vertical!important;
 }
 
+.textarea-text-item{
+    max-height: 50px;
+}
+
 .textarea-new-editor:focus{
     border: 1px solid  #BFBFBF;
     background-color: #FFFFFF;
