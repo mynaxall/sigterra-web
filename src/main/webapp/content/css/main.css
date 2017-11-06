@@ -4846,13 +4846,16 @@ a:focus{
 
 /* Account activity statisctics
    ------------------------------------------- */
+.user-cardlet-panel--activity {
+    padding-top: 30px;
+}
 .activity-wrapper {
     padding-left: 15px;
     padding-right: 15px;
 }
 /* Filter dropdown */
 .profile-filter {
-    margin: 30px 0 20px;
+    margin: 0 0 20px;
 }
 #filter-button,
 .profile-filter .dropdown-menu a {
