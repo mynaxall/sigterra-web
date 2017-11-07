@@ -93,13 +93,14 @@ public class IpRangeCache {
             return;
         }
 
-        Iterator<Long> it = cachedRanges.keySet().iterator();
-        while (it.hasNext()) {
-            if (cachedRanges.get(it.next()).isExpired()) {
-                synchronized (lock) {
-                    it.remove();
+        synchronized (lock) {
+            cachedRanges.entrySet().removeIf(entry -> {
+                if (entry == null) {
+                    return true;
                 }
-            }
+                ExpirableEntry expirableEntry = entry.getValue();
+                return expirableEntry.isExpired();
+            });
         }
     }
 
@@ -121,7 +122,7 @@ public class IpRangeCache {
         }
 
         boolean isExpired() {
-            return expirationTime.isAfter(LocalDateTime.now());
+            return LocalDateTime.now().isAfter(expirationTime);
         }
 
         public String toString() {
