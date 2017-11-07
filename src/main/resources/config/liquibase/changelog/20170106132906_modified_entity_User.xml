@@ -62,4 +62,11 @@
         </addColumn>
     </changeSet>
 
+    <changeSet id="20170106132906-3" author="Alexander">
+        <modifyDataType
+            columnName="login"
+            newDataType="varchar(100)"
+            tableName="jhi_user"/>
+    </changeSet>
+
 </databaseChangeLog>

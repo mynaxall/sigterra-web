@@ -24,7 +24,7 @@
                 <div class="new-cardlet-marks" style="color: #{{firstBusinessCardCopyed.layout.secondaryColor}}; display: inline;width: 20px">e: </div>
                 <div style="display: inline;"><a ng-show="firstBusinessCardCopyed.userEmail.value" ng-style="{'font-family': firstBusinessCardCopyed.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': firstBusinessCardCopyed.userEmail.italic ? 'italic' : 'normal',
-                                'text-decoration': firstBusinessCardCopyed.userEmail.underline ? 'underline' : 'normal'}" href="mailto:{{firstBusinessCardCopyed.userEmail.value}}">{{firstBusinessCardCopyed.userEmail.value}}</a></div>
+                                'text-decoration': firstBusinessCardCopyed.userEmail.underline ? 'underline' : 'normal'}" href="mailto:{{firstBusinessCardCopyed.userEmail.value}}">{{firstBusinessCardCopyed.userEmail.value | limitTo:25}}</a></div>
 
             </div>
         </div>

@@ -60,10 +60,10 @@
                             <div class="svg-div" style="margin-top: -1px">
                                 <span class="icon icon-artboard-copy-6" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                             </div>
-                            <div class="svg-description" ng-style="{'font-family': tabName.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                            <div class="svg-description email-b-c" ng-style="{'font-family': tabName.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': tabName.userEmail.italic ? 'italic' : 'normal',
                                 'text-decoration': tabName.userEmail.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}">
-                                {{tabName.userEmail.value}}
+                                {{tabName.userEmail.value | limitTo:25}}
                             </div>
 
                         </div>
