@@ -1,13 +1,11 @@
 package itomy.sigterra.service.dto;
 
-import java.time.LocalDate;
-import javax.validation.constraints.*;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Objects;
-
 import itomy.sigterra.domain.enumeration.EventType;
+
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * A DTO for the Event entity.
@@ -22,13 +20,15 @@ public class EventDTO implements Serializable {
     @NotNull
     private EventType type;
 
+    private String description;
+
 
     private Long visitorId;
-    
+
     private Long cardletId;
-    
+
     private Long itemId;
-    
+
     public Long getId() {
         return id;
     }
@@ -36,6 +36,7 @@ public class EventDTO implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
     public LocalDate getCreatedDate() {
         return createdDate;
     }
@@ -43,12 +44,21 @@ public class EventDTO implements Serializable {
     public void setCreatedDate(LocalDate createdDate) {
         this.createdDate = createdDate;
     }
+
     public EventType getType() {
         return type;
     }
 
     public void setType(EventType type) {
         this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Long getVisitorId() {
@@ -86,9 +96,7 @@ public class EventDTO implements Serializable {
 
         EventDTO eventDTO = (EventDTO) o;
 
-        if ( ! Objects.equals(id, eventDTO.id)) return false;
-
-        return true;
+        return Objects.equals(id, eventDTO.id);
     }
 
     @Override
@@ -102,6 +110,7 @@ public class EventDTO implements Serializable {
             "id=" + id +
             ", createdDate='" + createdDate + "'" +
             ", type='" + type + "'" +
+            ", description='" + description + "'" +
             '}';
     }
 }

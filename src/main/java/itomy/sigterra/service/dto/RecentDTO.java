@@ -10,6 +10,7 @@ public class RecentDTO {
     private String user;
     private String time;
     private String name;
+    private String description;
 
     public RecentDTO() {
     }
@@ -24,6 +25,7 @@ public class RecentDTO {
         this.name = event.getItem() == null
             ? cardlet.getName()
             : event.getItem().getName();
+        this.description = event.getDescription();
     }
 
     public RecentDTO(Event event, String timeZone) {
@@ -36,6 +38,7 @@ public class RecentDTO {
         this.name = event.getItem() == null
             ? cardlet.getName()
             : event.getItem().getName();
+        this.description = event.getDescription();
     }
 
     public String getType() {
@@ -68,5 +71,13 @@ public class RecentDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

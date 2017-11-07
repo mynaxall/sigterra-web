@@ -3,6 +3,7 @@ package itomy.sigterra.web.rest;
 import itomy.sigterra.annotation.Analytic;
 import itomy.sigterra.domain.enumeration.EventType;
 import itomy.sigterra.repository.CardletRepository;
+import itomy.sigterra.repository.ItemDataRepository;
 import itomy.sigterra.repository.ItemRepository;
 import itomy.sigterra.service.EventService;
 import org.slf4j.Logger;
@@ -13,8 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.inject.Inject;
 
 import static itomy.sigterra.service.util.RequestUtil.getRequestIp;
 import static itomy.sigterra.service.util.RequestUtil.getRequestUserAgent;
@@ -30,12 +29,21 @@ public class EventResource {
 
     private final Logger log = LoggerFactory.getLogger(EventResource.class);
 
-    @Inject
-    private EventService eventService;
-    @Inject
-    private CardletRepository cardletRepository;
-    @Inject
-    private ItemRepository itemRepository;
+    private final EventService eventService;
+    private final CardletRepository cardletRepository;
+    private final ItemRepository itemRepository;
+    private final ItemDataRepository itemDataRepository;
+
+    public EventResource(EventService eventService,
+                         CardletRepository cardletRepository,
+                         ItemRepository itemRepository,
+                         ItemDataRepository itemDataRepository) {
+
+        this.eventService = eventService;
+        this.cardletRepository = cardletRepository;
+        this.itemRepository = itemRepository;
+        this.itemDataRepository = itemDataRepository;
+    }
 
     @PostMapping("/cardlet/{id:\\d+}")
     @Analytic(type = EventType.CLICK)
@@ -53,16 +61,18 @@ public class EventResource {
         }
     }
 
-    @PostMapping("/item/{id:\\d+}")
+    @PostMapping("/item/{itemId:\\d+}/{itemDataId:\\d+}")
     @Analytic(type = {EventType.CLICK, EventType.READ})
-    public ResponseEntity clickItem(@PathVariable Long id) {
-        log.debug("REST request to click item with id = {}, from user with ip = {} and agent = {}", id, getRequestIp(), getRequestUserAgent());
+    public ResponseEntity clickItem(@PathVariable Long itemId,
+                                    @PathVariable Long itemDataId) {
+        log.debug("REST request to click item with id = {}, item data with id = {}, from user with ip = {} and agent = {}",
+            itemId, itemDataId, getRequestIp(), getRequestUserAgent());
 
-        if (not(itemRepository.exists(id))) {
+        if (not(itemRepository.exists(itemId)) || not(itemDataRepository.exists(itemDataId))) {
             return errorResponse(HttpStatus.NOT_FOUND, "Item not found");
         }
         try {
-            eventService.clickItem(id);
+            eventService.clickItem(itemId, itemDataId);
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException ex) {
             return errorResponse(BAD_REQUEST, ex.getMessage());

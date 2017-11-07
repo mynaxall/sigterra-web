@@ -31,6 +31,9 @@ public class Event implements Serializable {
     @Column(name = "type", nullable = false)
     private EventType type;
 
+    @Column(name = "description")
+    private String description;
+
     @ManyToOne
     @NotNull
     private Visitor visitor;
@@ -74,6 +77,14 @@ public class Event implements Serializable {
 
     public void setType(EventType type) {
         this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Visitor getVisitor() {
@@ -142,6 +153,7 @@ public class Event implements Serializable {
             ", createdDate='" + createdDate + "'" +
             ", type='" + type + "'" +
             ", visitor = '" + visitor + "'" +
+            ", description='" + description + "'" +
             '}';
     }
 }

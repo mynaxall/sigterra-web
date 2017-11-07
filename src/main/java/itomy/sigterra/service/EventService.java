@@ -13,10 +13,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Service Implementation for managing Event.
@@ -25,16 +26,24 @@ import java.util.List;
 @Transactional
 public class EventService {
 
-    @Inject
     private ItemRepository itemRepository;
-    @Inject
     private EventRepository eventRepository;
-    @Inject
     private CardletRepository cardletRepository;
-    @Inject
     private UserService userService;
-    @Inject
     private EventWorker eventWorker;
+
+    public EventService(ItemRepository itemRepository,
+                        EventRepository eventRepository,
+                        CardletRepository cardletRepository,
+                        UserService userService,
+                        EventWorker eventWorker) {
+
+        this.itemRepository = itemRepository;
+        this.eventRepository = eventRepository;
+        this.cardletRepository = cardletRepository;
+        this.userService = userService;
+        this.eventWorker = eventWorker;
+    }
 
     public void clickCardlet(Long cardletId) {
         Cardlet cardlet = cardletRepository.findOne(cardletId);
@@ -44,20 +53,22 @@ public class EventService {
             throw new IllegalArgumentException("Self clicks are not counting.");
         }
 
-        Event event = fromTemplate(cardlet, EventType.CLICK, null);
+        Event event = fromTemplate(cardlet, EventType.CLICK);
         eventWorker.processEvent(convertToDTO(event));
     }
 
-    public void clickItem(Long itemId) {
+    public void clickItem(Long itemId, Long itemDataId) {
         Item item = itemRepository.findOne(itemId);
+
+        String link = getLink(item, itemDataId);
 
         // Check if click on own Item
         if (isCardletOwner(item.getCardlet())) {
             throw new IllegalArgumentException("Self clicks are not counting.");
         }
 
-        Event eventClickItem = fromTemplate(item.getCardlet(), EventType.CLICK, item);
-        Event eventReadItem = fromTemplate(item.getCardlet(), EventType.READ, item);
+        Event eventClickItem = fromTemplate(item.getCardlet(), EventType.CLICK, item, null);
+        Event eventReadItem = fromTemplate(item.getCardlet(), EventType.READ, item, link);
 
         eventWorker.processEvent(convertToDTO(eventClickItem));
         eventWorker.processEvent(convertToDTO(eventReadItem));
@@ -66,7 +77,7 @@ public class EventService {
     public void addContactEvent(Cardlet cardlet) {
         if (isCardletOwner(cardlet)) return; // Check if add own Cardlet
 
-        Event event = fromTemplate(cardlet, EventType.ADD, null);
+        Event event = fromTemplate(cardlet, EventType.ADD);
         eventWorker.processEvent(convertToDTO(event));
     }
 
@@ -75,7 +86,7 @@ public class EventService {
 
         if (isCardletOwner(cardlet)) return; // Check if open own Cardlet
 
-        Event event = fromTemplate(cardlet, EventType.VIEW, null);
+        Event event = fromTemplate(cardlet, EventType.VIEW);
         eventWorker.processEvent(convertToDTO(event));
     }
 
@@ -103,6 +114,16 @@ public class EventService {
         return eventRepository.findAllRecentForUser(getUser(), types, pageable);
     }
 
+    private String getLink(Item item, Long itemDataId) {
+        Optional<ItemData> itemData = item.getItemData().stream()
+            .filter(Objects::nonNull)
+            .filter(data -> data.getId().equals(itemDataId))
+            .findFirst();
+
+        return itemData.map(ItemData::getLink)
+            .orElse(null);
+    }
+
     private User getUser() {
         return userService.getUserWithAuthorities();
     }
@@ -115,7 +136,15 @@ public class EventService {
         return new EventProcessDTO(event, user, ip, agent);
     }
 
-    private Event fromTemplate(Cardlet cardlet, EventType type, Item item) {
+    private Event fromTemplate(Cardlet cardlet, EventType type) {
+        Event event = new Event();
+        event.setType(type);
+        event.setCardlet(cardlet);
+        event.setCreatedDate(new Timestamp(Instant.now().toEpochMilli()));
+        return event;
+    }
+
+    private Event fromTemplate(Cardlet cardlet, EventType type, Item item, String description) {
         Event event = new Event();
         event.setType(type);
         event.setCardlet(cardlet);
@@ -123,6 +152,7 @@ public class EventService {
             event.setItem(item);
         }
         event.setCreatedDate(new Timestamp(Instant.now().toEpochMilli()));
+        event.setDescription(description);
         return event;
     }
 
