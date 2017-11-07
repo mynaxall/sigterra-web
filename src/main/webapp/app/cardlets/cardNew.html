@@ -25,7 +25,7 @@
                <div class="new-cardlet-marks"  ng-style="{'color': '#'+tabNames.tabs[firstBusinessCardId].layout.secondaryColor, 'display': 'inline', 'width':'20px'}">e: </div>
                <div style="display: inline;"><a href="mailto:{{tabNames.tabs[firstBusinessCardId].userEmail.value}}" ng-style="{'font-family': tabNames.tabs[firstBusinessCardId].userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': tabNames.tabs[firstBusinessCardId].userEmail.italic ? 'italic' : 'normal',
-                                'text-decoration': tabNames.tabs[firstBusinessCardId].userEmail.underline ? 'underline' : 'normal'}">{{tabNames.tabs[firstBusinessCardId].userEmail.value}}</a></div>
+                                'text-decoration': tabNames.tabs[firstBusinessCardId].userEmail.underline ? 'underline' : 'normal'}">{{tabNames.tabs[firstBusinessCardId].userEmail.value | limitTo:25}}</a></div>
 
            </div>
        </div>

@@ -38,10 +38,10 @@
                         <span class="icon icon-artboard-copy-6" style="font-size: 19px;"  ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
 
-                    <div class="svg-description-new" ng-style="{'font-family': tabName.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                    <div class="svg-description-new email-b-c" ng-style="{'font-family': tabName.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': tabName.userEmail.italic ? 'italic' : 'normal',
                             'text-decoration': tabName.userEmail.underline ? 'underline' : 'normal'}" style=" font-size: 13px">
-                        {{tabName.userEmail.value}}
+                        {{tabName.userEmail.value | limitTo:25}}
                     </div>
                 </div>
                 <div class="user-contacts-div-3" ng-show="tabName.site.value">

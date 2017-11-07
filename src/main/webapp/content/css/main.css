@@ -5470,4 +5470,10 @@ recent-activity-sidebar .icon-read {
     padding: 6px 10px;
 }
 
+.email-b-c{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: keep-all;
+}
+
 
