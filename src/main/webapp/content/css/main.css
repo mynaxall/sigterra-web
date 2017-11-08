@@ -5477,4 +5477,10 @@ recent-activity-sidebar .icon-read {
     word-break: keep-all;
 }
 
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover{
+    background: transparent;
+    color: #13BCB5!important;
+}
+
 
