@@ -2872,6 +2872,7 @@ div.navbar-collapse.in.collapse{
     height: 240px;
     border: 1px solid #D0D8D9;
     border-top-width: 0px;
+    background-color: #FFFFFF;
 }
 
 .cardlet2{
@@ -3767,6 +3768,10 @@ button[disabled]:hover{
 .user-name{
     font-size: 22px;
     color: #4BABE2;
+}
+
+.user-name-second-card{
+    color: #FFFFFF;
 }
 
 .right-column{
@@ -5485,6 +5490,13 @@ recent-activity-sidebar .icon-read {
 .navbar-default .navbar-nav > .active > a:focus{
     background: transparent;
     color: #13BCB5!important;
+}
+
+.first-card-border-div{
+    height: 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #4BABE2;
 }
 
 

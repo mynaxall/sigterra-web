@@ -254,7 +254,7 @@
                     }
 
                 });
-            }, 10)
+            }, 10);
             $timeout(function () {
                 vm.showSpinner = false;
             }, 4000)
@@ -323,8 +323,13 @@
         }
 
         $scope.openPreviewDialog = function(type){
+
             if (type !== 1) {
-                vm.showPreviewDialog = true;
+                if(vm.tabId.items.length < 1){
+                    vm.showPreviewDialog = true;
+                }else if( vm.tabId.items[0].link ){
+                    vm.showPreviewDialog = true;
+                }
             }
         }
 
