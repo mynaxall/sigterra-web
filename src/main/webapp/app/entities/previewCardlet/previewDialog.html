@@ -7,7 +7,7 @@
                         ng-click="closeDialog()">&times;</button>
               <div class="signature-title"></div>
             </div>
-            <div  style=" padding: 0px!important;" class="modal-body preview-modal-body">
+            <div style="padding: 0px!important;" class="modal-body preview-modal-body">
                 <div>
                     <div class="preview-carousel-image-div-info" uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="vm.showCarousel" ng-init="initSlide(vm.tabId)">
                         <div ng-show="true" class="preview-slide-prev-editor"><img class="preview-slide-image" src="/content/images/new/arrow_left.png" ng-click="prevSlide(vm.tabId.position)" ng-if="vm.tabId.items.length > 1"></div>
