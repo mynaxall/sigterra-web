@@ -4831,6 +4831,9 @@ a:focus{
     max-height:60px;
     min-height: 60px;
     word-break: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 .item-3-content{
