@@ -4831,6 +4831,9 @@ a:focus{
     max-height:60px;
     min-height: 60px;
     word-break: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 .item-3-content{
@@ -5478,7 +5481,8 @@ recent-activity-sidebar .icon-read {
 }
 
 .navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover{
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus{
     background: transparent;
     color: #13BCB5!important;
 }
