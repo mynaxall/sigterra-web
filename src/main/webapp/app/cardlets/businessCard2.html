@@ -6,7 +6,7 @@
                 <img crossorigin="anonymous" class="avatar-img" ng-src="{{tabName.photo}}?{{time}}">
             </div>
             <div class="user-info-div">
-                <div class="user-name trim-text" ng-style="{'font-family': tabName.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                <div class="user-name trim-text user-name-second-card" ng-style="{'font-family': tabName.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.userName.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor, 'height': '32px'}" ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
 
