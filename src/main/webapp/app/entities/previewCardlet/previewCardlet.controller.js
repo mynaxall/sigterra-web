@@ -12,7 +12,6 @@
 
         var vm = this;
 
-
         vm.showPreviewDialog = false;
         vm.tabId = "";
         $rootScope.title = "";
@@ -32,7 +31,7 @@
 
         vm.currentSlide = 0;
         vm.showCarousel = true;
-        $scope.showLink = true;
+        $scope.showLink = false;
 
         $scope.getCardlet = function () {
             var param1 = $location.search().cardletId;
@@ -158,15 +157,9 @@
             if (vm.currentSlide === 0) {
                 vm.currentSlide = $scope.tabNames.tabs[index].items.length - 1;
                 vm.nextIndex = 0;
-                vm.prevIndex = vm.currentSlide - 1;
             }else {
                 vm.currentSlide = vm.currentSlide - 1;
                 vm.nextIndex = vm.currentSlide + 1;
-                vm.prevIndex = vm.currentSlide - 1;
-            }
-
-            if(vm.currentSlide === 0){
-                vm.prevIndex = $scope.tabNames.tabs[index].items.length - 1
             }
 
 
@@ -238,12 +231,8 @@
             }
 
             vm.nextIndex = vm.currentSlide + 1;
-            vm.prevIndex = vm.currentSlide - 1;
             if (vm.nextIndex == $scope.tabNames.tabs[index].items.length) {
                 vm.nextIndex = 0;
-            }
-            if(vm.currentSlide === 0){
-                vm.prevIndex = vm.prevIndex = $scope.tabNames.tabs[index].items.length - 1;
             }
 
 
@@ -336,9 +325,6 @@
         $scope.openPreviewDialog = function(type){
             if (type !== 1) {
                 vm.showPreviewDialog = true;
-                if(vm.currentSlide === 0) {
-                    vm.prevIndex = vm.tabId.items.length - 1
-                }
             }
         }
 
