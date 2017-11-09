@@ -321,8 +321,7 @@
 
                 }
 
-                vm.currentSlide = 1;
-                $timeout(function() {vm.currentSlide = 0;},10)
+                vm.currentSlide = 0;
                 document.getElementById(cardName).style.display = "block";
                 document.getElementById(cardId).className += " active";
             }
