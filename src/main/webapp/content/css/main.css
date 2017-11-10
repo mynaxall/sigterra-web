@@ -4661,11 +4661,11 @@ ul.tab li.active:hover{
 }
 
 .first-card-description{
-    white-space: nowrap;
-    width: 15px;
+    max-height: 20px;
+    min-height: 20px;
     overflow: hidden;
-    text-overflow: ellipsis;
-    width: 220px;
+    word-break: break-word;
+    width: 250px;
 }
 
 .next-image-preview{
