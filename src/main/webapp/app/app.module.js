@@ -22,7 +22,8 @@
             'ngOnload',
             'monospaced.elastic',
             'ngMask',
-            'textAngular'
+            'textAngular',
+            'dibari.angular-ellipsis'
         ])
         .run(run);
 
