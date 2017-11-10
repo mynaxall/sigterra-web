@@ -24,7 +24,8 @@
                                         'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                                     <pre class="carousel-item-name-third-type carousel-item-deskript-third-type" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                         'font-style': slide.description.italic ? 'italic' : 'normal',
-                                        'text-decoration': slide.description.underline ? 'underline' : 'normal' }" ng-show="slide.description.value">{{slide.description.value}}</pre>
+                                        'text-decoration': slide.description.underline ? 'underline' : 'normal' }" ng-show="slide.description.value"
+                                         data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</pre>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +65,8 @@
                                     'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                                 <pre class="carousel-item-name-third-type carousel-item-deskript-third-type" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': slide.description.italic ? 'italic' : 'normal',
-                                'text-decoration': slide.description.underline ? 'underline' : 'normal' }" ng-show="slide.description.value">{{slide.description.value}}</pre>
+                                'text-decoration': slide.description.underline ? 'underline' : 'normal'}" ng-show="slide.description.value"
+                                     data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</pre>
 
                             </div>
                         </div>

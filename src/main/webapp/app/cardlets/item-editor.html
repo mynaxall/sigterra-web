@@ -20,7 +20,8 @@
                             <pre class="carousel-item-name-first-type carousel-item-deskript-first-type" ng-show="slide.description.value"
                                  ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': slide.description.italic ? 'italic' : 'normal',
-                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}">{{slide.description.value}}</pre>
+                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}"
+                                 data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</pre>
                         </div>
                     </div>
                 </div>
@@ -46,7 +47,8 @@
                         'text-decoration': slide.name.underline ? 'underline' : 'normal'}" ng-show="slide.name.value">{{slide.name.value}}</div>
                                 <pre class="carousel-item-name-first-type carousel-item-deskript-first-type" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': slide.description.italic ? 'italic' : 'normal',
-                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}"  ng-show="slide.description.value">{{slide.description.value}}</pre>
+                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}"  ng-show="slide.description.value"
+                                     data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</pre>
                             </div>
                         </div>
 
