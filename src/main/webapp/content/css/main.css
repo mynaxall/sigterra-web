@@ -4661,11 +4661,11 @@ ul.tab li.active:hover{
 }
 
 .first-card-description{
-    white-space: nowrap;
-    width: 15px;
+    max-height: 20px;
+    min-height: 20px;
     overflow: hidden;
-    text-overflow: ellipsis;
-    width: 220px;
+    word-break: break-word;
+    width: 250px;
 }
 
 .next-image-preview{
@@ -5494,6 +5494,14 @@ recent-activity-sidebar .icon-read {
     border-width: 1px;
     border-style: solid;
     border-color: #4BABE2;
+}
+
+.icon-artboard-default{
+    color:#4BABE2
+}
+
+.icon-artboard-white{
+    color:#FFFFFF
 }
 
 
