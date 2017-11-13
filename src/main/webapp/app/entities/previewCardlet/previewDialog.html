@@ -18,7 +18,7 @@
                                 <div class="col-sm-2  preview-col">
                                 </div>
                                 <div class="col-sm-8 preview-modal-content">
-                                    <iframe class="preview-modal-iframe" id="myFrame" type="text/html"  ng-if="currentUrl"  ng-onload="closeFrame()" style="height: 0px; border:none; margin-top: 30px"  ng-src="{{trustSrc(slide.link)}}" width="100%"></iframe>
+                                    <iframe ng-if="slide.position === vm.currentSlide" class="preview-modal-iframe" id="myFrame" type="text/html"  ng-if="currentUrl"  ng-onload="closeFrame()" style="height: 0px; border:none; margin-top: 30px"  ng-src="{{trustSrc(slide.link)}}" width="100%"></iframe>
                                 </div>
                                 <div class="col-sm-2 preview-col">
                                     <div class="preview-slide-next-image" ng-repeat="slide in vm.tabId.items | orderBy:'position'">
