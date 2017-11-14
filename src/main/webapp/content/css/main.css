@@ -4869,7 +4869,7 @@ a:focus{
     border-radius: 0;
     color: #4A4A4A;
     font-size: 18px;
-    padding: 12px 15px 11px;
+    padding: 14px 15px 13px;
     width: 230px;
     text-align: left;
     display: block;
@@ -4907,6 +4907,10 @@ a:focus{
     border-radius: 0;
     padding: 0;
     top: 80%;
+    height: 159px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .account-activity {
