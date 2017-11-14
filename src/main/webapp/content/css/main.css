@@ -5216,6 +5216,7 @@ recent-activity-sidebar .icon:hover {
 }
 recent-activity-sidebar .icon-view {
     width: 25px;
+    flex: 1 0 25px;
 }
 recent-activity-sidebar .icon-add {
     height: 22px;
@@ -5265,10 +5266,10 @@ recent-activity-sidebar .icon-read {
     font-size: 16px;
     line-height: 21px;
     margin: 0 0 10px;
-    padding: 10px 20px 10px 0;
+    padding: 10px 20px 10px 12px;
 }
-.recent-activity-item .glyphicon {
-    margin: 0 12px;
+.recent-activity-item .icon {
+    margin: 0 12px 0 0;
 }
 .recent-activity-item a {
     color: #13BCB5;
