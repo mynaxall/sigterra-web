@@ -6,6 +6,7 @@
         .controller('ActivityController', ActivityController)
         .filter('activityString', activityString)
         .filter('svgIconCardHref', svgIconCardHref)
+        .filter('svgIconCardClass', svgIconCardClass)
         .directive('accountActivityStatistics', accountActivityStatistics)
         .directive('activityTopEngagements', activityTopEngagements)
         .directive('recentActivitySidebar', recentActivitySidebar)
@@ -31,7 +32,13 @@
 
     function svgIconCardHref() {
         return function(iconCardId) {
-            return $sce.trustAsResourceUrl('#icon-' + iconCardId);
+            return '#icon-' + iconCardId;
+        };
+    }
+
+    function svgIconCardClass() {
+        return function(iconCardId) {
+            return 'icon-' + iconCardId;
         };
     }
 
