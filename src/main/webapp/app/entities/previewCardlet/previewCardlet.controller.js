@@ -105,6 +105,17 @@
                 });
         };
 
+        /* Reads counter */
+        $scope.readsCounter = function (event, paramItemId, paramItemDataId) {
+            $http.post("api/event/item/" + paramItemId + "/" + paramItemDataId)
+                .success(function (response, status, headers) {
+                    // Do nothing
+                })
+                .error(function (response, status, headers) {
+                    // Do nothing
+                });
+        };
+
         /* Clicks counter */
         $scope.clicksCounter = function (event, paramItemId) {
 

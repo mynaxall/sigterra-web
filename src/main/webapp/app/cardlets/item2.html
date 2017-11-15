@@ -4,7 +4,8 @@
             <div class="firstItemTop" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}"></div>
             <div ng-show="tabName.items.length <= 3">
                 <div class="main-carousel-image-div">
-                    <div ng-repeat="slide in tabName.items" style="width: 162px" class="main-carousel-item-div">
+                    <div ng-repeat="slide in tabName.items" style="width: 162px" class="main-carousel-item-div"
+                        ng-click="readsCounter($event, tabName.id, slide.id)"   >
                         <div id="cf4a" style="margin-bottom: 5px" >
 
                             <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}">
@@ -34,7 +35,8 @@
 
                     <div class="carousel-image-div-item">
                         <div>
-                            <div  class="carousel-item-div"  style="width: 162px">
+                            <div class="carousel-item-div" style="width: 162px"
+                                ng-click="readsCounter($event, tabName.id, slide.id)">
                                 <div id="cf4a" style="margin-bottom: 5px; height: 150px">
                                     <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}">
                                     <a href="{{slide.link}}" target="_blank" ng-show="slide.link && showLink">
@@ -48,7 +50,8 @@
                         'text-decoration': slide.description.underline ? 'underline' : 'normal' ,}" data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</div>
                             </div>
 
-                            <div  class="carousel-item-div" ng-show="tabName.items.length >$index+1"  style="width: 162px">
+                            <div class="carousel-item-div" ng-show="tabName.items.length >$index+1" style="width: 162px"
+                                ng-click="readsCounter($event, tabName.id, tabName.items[$index+1].id)" >
                                 <div id="cf4a" style="margin-bottom: 5px; height: 150px">
                                     <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-hide="tabName.items[$index+1].link && showLink" ng-src="{{tabName.items[$index+1].image}}?{{time}}">
                                     <a href="{{tabName.items[$index+1].link}}" target="_blank" ng-show="tabName.items[$index+1].link && showLink">
@@ -64,7 +67,8 @@
                                 'text-decoration': tabName.items[$index+1].description.underline ? 'underline' : 'normal'}" data-ng-bind="tabName.items[$index+1].description.value" data-ellipsis>{{tabName.items[$index+1].description.value}}</div>
                             </div>
 
-                            <div class="carousel-item-div"  ng-show="tabName.items.length >$index+2"  style="width: 162px">
+                            <div class="carousel-item-div"  ng-show="tabName.items.length >$index+2" style="width: 162px"
+                                ng-click="readsCounter($event, tabName.id, tabName.items[$index+2].id)">
                                 <div id="cf4a" style="margin-bottom: 5px; height: 150px">
                                     <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-hide="tabName.items[$index+2].link && showLink" ng-src="{{tabName.items[$index+2].image}}?{{time}}">
                                     <a href="{{tabName.items[$index+2].link}}" target="_blank" ng-show="tabName.items[$index+2].link && showLink">
@@ -80,7 +84,8 @@
                             'text-decoration': tabName.items[$index+2].description.underline ? 'underline' : 'normal'}"
                                      data-ng-bind="tabName.items[$index+2].description.value" data-ellipsis>{{tabName.items[$index+2].description.value}}</div>
                             </div>
-                            <div class="carousel-item-div" ng-show="tabName.items.length-3 < $index && tabName.items.length > 3"  style="width: 162px">
+                            <div class="carousel-item-div" ng-show="tabName.items.length-3 < $index && tabName.items.length > 3" style="width: 162px"
+                                ng-click="readsCounter($event, tabName.id, tabName.items[0].id)">
                                 <div id="cf4a" style="margin-bottom: 5px; height: 150px">
                                     <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-hide="tabName.items[0].link && showLink" ng-src="{{tabName.items[0].image}}?{{time}}">
                                     <a href="{{tabName.items[0].link}}" target="_blank" ng-show="tabName.items[0].link && showLink">
@@ -97,7 +102,11 @@
                         'text-decoration': tabName.items[0].description.underline ? 'underline' : 'normal'}"  data-ng-bind="tabName.items[0].description.value" data-ellipsis>{{tabName.items[0].description.value}}</div>
                             </div>
 
-                            <div  class="carousel-item-div" ng-show="tabName.items.length-2 < $index && tabName.items.length > 3" style="width: 162px">
+                            <div class="carousel-item-div" ng-show="tabName.items.length-2 < $index && tabName.items.length > 3" style="width: 162px"
+                                ng-click="readsCounter($event, tabName.id, tabName.items[1].id)">
+                                <!--<pre>itemId: {{tabName.id}}"</pre>
+                                <pre>itemDataId {{tabName.items[1].id | json}}"</pre>-->
+                                <!--<pre>{{tabName | json}}"</pre>-->
                                 <div id="cf4a" style="margin-bottom: 5px; height: 150px">
                                     <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-hide="tabName.items[1].link && showLink" ng-src="{{tabName.items[1].image}}?{{time}}">
                                     <a href="{{tabName.items[1].link}}" target="_blank" ng-show="tabName.items[1].link && showLink">
