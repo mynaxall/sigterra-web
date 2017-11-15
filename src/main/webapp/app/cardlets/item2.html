@@ -104,9 +104,6 @@
 
                             <div class="carousel-item-div" ng-show="tabName.items.length-2 < $index && tabName.items.length > 3" style="width: 162px"
                                 ng-click="readsCounter($event, tabName.id, tabName.items[1].id)">
-                                <!--<pre>itemId: {{tabName.id}}"</pre>
-                                <pre>itemDataId {{tabName.items[1].id | json}}"</pre>-->
-                                <!--<pre>{{tabName | json}}"</pre>-->
                                 <div id="cf4a" style="margin-bottom: 5px; height: 150px">
                                     <img crossorigin="anonymous" id="ing-1" class="item-images imgFirst fixed-image" ng-hide="tabName.items[1].link && showLink" ng-src="{{tabName.items[1].image}}?{{time}}">
                                     <a href="{{tabName.items[1].link}}" target="_blank" ng-show="tabName.items[1].link && showLink">

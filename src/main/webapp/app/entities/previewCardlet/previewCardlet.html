@@ -218,7 +218,6 @@
             <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
                 <div class="custom-slide-prev"><img src="/content/images/arrow_left.png" ng-show="vm.tabType != 1 && tabName.items.length > 1" ng-click="prevSlide($index)"></div>
                 <div data-item-id="{{tabNames.tabs[$index].id}}"  ng-click="openPreviewDialog(tabName.tabType)" class="tab-item">
-                    <pre>{{tabNames.tabs[$index].id}}</pre>
                     <ng-include style="display: block!important" src="tabName.layout.url"></ng-include>
                 </div>
                 <div class="custom-slide-next"><img src="/content/images/arrow_right.png" ng-show="vm.tabType != 1 && tabName.items.length > 1"  ng-click="nextSlide($index)"></div>
