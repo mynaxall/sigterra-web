@@ -105,30 +105,29 @@
                 });
         };
 
+        /* Reads counter */
+        $scope.readsCounter = function (event, paramItemId, paramItemDataId) {
+            $http.post("api/event/item/" + paramItemId + "/" + paramItemDataId)
+                .success(function (response, status, headers) {
+                    // Do nothing
+                })
+                .error(function (response, status, headers) {
+                    // Do nothing
+                });
+        };
+
         /* Clicks counter */
-        $scope.clicksCounter = function (event, paramItemId) {
+        $scope.clicksCounter = function (event) {
 
-            if (event.target.parentNode.attributes.target && !!paramItemId || event.target.parentNode.parentNode.parentNode.attributes.target && !!paramItemId ) {
-                // reads counter request
-                $http.post("api/event/item/" + paramItemId)
-                    .success(function (response, status, headers) {
-                        // Do nothing
-                    })
-                    .error(function (response, status, headers) {
-                        // Do nothing
-                    });
-
-            } else {
-                // clicks counter request
-                var paramId = $location.search().cardletId;
-                $http.post("api/event/cardlet/" + window.atob(paramId))
-                    .success(function (response, status, headers) {
-                        // Do nothing
-                    })
-                    .error(function (response, status, headers) {
-                        // Do nothing
-                    });
-            }
+            // clicks counter request
+            var paramId = $location.search().cardletId;
+            $http.post("api/event/cardlet/" + window.atob(paramId))
+                .success(function (response, status, headers) {
+                    // Do nothing
+                })
+                .error(function (response, status, headers) {
+                    // Do nothing
+                });
 
             event.stopPropagation();
 

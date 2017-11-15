@@ -5,7 +5,8 @@
             <div ng-show="tabName.items.length == 1" style="position: relative;">
                 <div class="main-carousel-image-div-new-3" >
                     <div style="border: 1px solid #D0D8D9;border-top-width: 0px;height: 240px">
-                        <div ng-repeat="slide in tabName.items"  class="main-carousel-item-div-new-3">
+                        <div ng-repeat="slide in tabName.items"  class="main-carousel-item-div-new-3"
+                            ng-click="readsCounter($event, tabName.id, slide.id)">
                             <div style="max-height: 239px;overflow:hidden;">
                                 <img crossorigin="anonymous"  style="width: 100%" id="ing-1" ng-src="{{slide.image}}?{{time}}">
                             </div>
@@ -39,7 +40,8 @@
             <div ng-show="showEditorNavigation" class="custom-slide-prev-editor" style="top: 100px;z-index: 2"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
             <div ng-show="showEditorNavigation"  class="custom-slide-next-editor"  style="top: 100px;z-index: 2"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
             <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" style="position:relative;">
-                <div style="border: 1px solid #D0D8D9;border-top-width: 0px;height: 240px">
+                <div style="border: 1px solid #D0D8D9;border-top-width: 0px;height: 240px"
+                    ng-click="readsCounter($event, tabName.id, slide.id)">
                     <div style="max-height: 239px;overflow: hidden">
                         <img crossorigin="anonymous" style="width: 100%" id="ing-1" ng-src="{{slide.image}}?{{time}}">
 
