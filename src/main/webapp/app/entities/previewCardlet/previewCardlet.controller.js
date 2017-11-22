@@ -12,7 +12,6 @@
 
         var vm = this;
 
-        vm.showPreviewDialog = false;
         vm.tabId = "";
         $rootScope.title = "";
 
@@ -31,7 +30,7 @@
 
         vm.currentSlide = 0;
         vm.showCarousel = true;
-        $scope.showLink = false;
+        $scope.showLink = true;
 
         $scope.getCardlet = function () {
             var param1 = $location.search().cardletId;
@@ -316,22 +315,6 @@
 
             }
         }
-
-        $scope.closeDialog = function () {
-            vm.showPreviewDialog = false;
-        }
-
-        $scope.openPreviewDialog = function(type){
-
-            if (type !== 1) {
-                if(vm.tabId.items.length < 1){
-                    vm.showPreviewDialog = true;
-                }else if( vm.tabId.items[0].link ){
-                    vm.showPreviewDialog = true;
-                }
-            }
-        }
-
 
         $scope.openCity = function (cardName, cardId, id) {
             $scope.currentUrl = "1";
