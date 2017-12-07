@@ -1655,9 +1655,9 @@ Social Buttons
 
 .firstItemTop{
     position: absolute;
-    bottom: 59px;
+    top: 32px;
     left: 0px;
-    height: 30px;
+    height: 90px;
     width: 100%;
 }
 
@@ -4816,16 +4816,14 @@ a:focus{
 }
 
 .carousel-item-name-div-first{
-    width: 140px;
     height: 25px;
     max-height:25px;
     min-height: 25px;
-    font-size: 16px;
-    margin-left: 10px;
-    max-width: 140px;
+    font-size: 18px;
+    margin: 0px 5px;
     position: relative;
     z-index: 2;
-    text-align: left;
+    text-align: center;
     text-overflow: ellipsis;
     overflow: hidden;
 }
@@ -5534,6 +5532,23 @@ recent-activity-sidebar .icon-read {
     float: left;
     margin-left: 30px;
     margin-top: 40px;
+}
+
+.second-item-img{
+    position: relative;
+    height: 120px;
+    width: 120px;
+    margin: 15px auto 0px;
+}
+
+.item-images-second{
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+}
+
+.item-carousel-name{
+    margin: 7px 5px;
 }
 
 
