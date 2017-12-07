@@ -1,27 +1,27 @@
 <div>
     <div class="cardlet3" style="position: relative;">
-        <div ng-style="{'background-color': '#'+tabName.layout.mainColor}" class="item-central-div"></div>
-        <div ng-style="{'background-color': '#'+tabName.layout.secondaryColor}" class="item-bottom-div"></div>
-        <div ng-style="{'background-color': '#'+tabName.layout.secondaryColor}" class="item-top-div"></div>
+        <div ng-style="{'background-color': '#'+tabName.layout.secondaryColor}" class="item-central-div"></div>
+        <div ng-style="{'background-color': '#'+tabName.layout.mainColor}" class="item-bottom-div"></div>
+        <div ng-style="{'background-color': '#'+tabName.layout.mainColor}" class="item-top-div"></div>
         <div>
             <div ng-show="tabName.items.length == 1">
                 <div class="main-carousel-image-div-2">
                     <div  ng-repeat="slide in tabName.items"  class="main-carousel-item-div-new" style="margin-top: 10px; "
                         ng-click="readsCounter($event, tabName.id, slide.id)">
-                        <div id="cf4a" style="float: left; width: 190px; height: 190px;  margin-top: 18px">
-                            <img crossorigin="anonymous" id="ing-1" class="item-images-3" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}"  ng-style="{'border-color': '#'+tabName.layout.mainColor, 'margin-left': '15px'}">
+                        <div id="cf4a" class="first-item-img">
+                            <img crossorigin="anonymous" id="ing-1" class="item-images-3" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}"  ng-style="{'border-color': '#'+tabName.layout.mainColor}">
                             <a href="{{slide.link}}" target="_blank" ng-show="slide.link && showLink">
                                 <img crossorigin="anonymous" id="ing-1" class="item-images-3" ng-style="{'border-color': '#'+tabName.layout.mainColor, 'margin-left': '15px'}" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}" >
                             </a>
                         </div>
-                        <div style="float: left; margin-left: 40px; margin-top: 50px;">
+                        <div class="first-item-content">
                             <div class="carousel-item-name-first-type" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': slide.name.italic ? 'italic' : 'normal',
-                            'text-decoration': slide.name.underline ? 'underline' : 'normal'}" ng-show="slide.name.value">{{slide.name.value}}</div>
+                            'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                             <pre class="carousel-item-name-first-type carousel-item-deskript-first-type" ng-show="slide.description.value"
                                  ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': slide.description.italic ? 'italic' : 'normal',
-                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}"
+                        'text-decoration': slide.description.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}"
                                  data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</pre>
                         </div>
                     </div>
@@ -36,19 +36,19 @@
                     <div class="carousel-image-div-carousel" ng-click="readsCounter($event, tabName.id, slide.id)">
 
                         <div  class="carousel-item-div-new">
-                            <div id="cf4a" style="float: left; width: 190px; height: 190px; margin-top: 18px">
-                                <img crossorigin="anonymous" id="ing-1" class="item-images-3" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}"  ng-style="{'border-color': '#'+tabName.layout.mainColor, 'margin-left': '15px'}">
+                            <div id="cf4a" class="first-item-img">
+                                <img crossorigin="anonymous" id="ing-1" class="item-images-3" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}"  ng-style="{'border-color': '#'+tabName.layout.mainColor}">
                                 <a href="{{slide.link}}" target="_blank" ng-class="{'disabled': !slide.link}" ng-show="slide.link && showLink">
                                     <img crossorigin="anonymous" id="ing-1" class="item-images-3 imgFirst" ng-style="{'border-color': '#'+tabName.layout.mainColor, 'margin-left': '15px'}" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
                                 </a>
                             </div>
-                            <div style="float: left; margin-left: 40px; margin-top: 50px;">
+                            <div class="first-item-content">
                                 <div class="carousel-item-name-first-type"  ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': slide.name.italic ? 'italic' : 'normal',
-                        'text-decoration': slide.name.underline ? 'underline' : 'normal'}" ng-show="slide.name.value">{{slide.name.value}}</div>
+                        'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                                 <pre class="carousel-item-name-first-type carousel-item-deskript-first-type" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': slide.description.italic ? 'italic' : 'normal',
-                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}"  ng-show="slide.description.value"
+                        'text-decoration': slide.description.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}"  ng-show="slide.description.value"
                                      data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</pre>
                             </div>
                         </div>
@@ -92,19 +92,5 @@
             float: left;
             width: 480px;
         }
-
-
-        .item-images-3 {
-            width: 183px;
-            height: 183px;
-            border-width: 5px;
-            border-style: solid;
-            margin-left: 20px;
-            font-weight: 3px;
-            border-color: #ffffff;
-
-        }
-
-
 
     </style>

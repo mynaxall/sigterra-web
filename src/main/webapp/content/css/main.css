@@ -3068,7 +3068,7 @@ ul.tab2 li {
 
 
 .item-bottom-div{
-    height: 55px;
+    height: 60px;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -3076,7 +3076,7 @@ ul.tab2 li {
 }
 
 .item-top-div{
-    height: 55px;
+    height: 40px;
     width: 100%;
     position: absolute;
     top: 0;
@@ -4769,7 +4769,7 @@ a:focus{
 }
 
 .carousel-item-name-first-type{
-    width: 240px;
+    width: 290px;
     height: 30px;
     font-size: 24px;
     max-height:30px;
@@ -5515,6 +5515,25 @@ recent-activity-sidebar .icon-read {
     height: 105px;
     margin-top: 7px;
     border-radius: 50%;
+}
+
+.first-item-img{
+    float: left;
+    width: 160px;
+    height: 160px;
+    margin-top: 23px
+}
+
+.item-images-3 {
+    width: 153px;
+    height: 153px;
+    border-radius: 80%;
+}
+
+.first-item-content{
+    float: left;
+    margin-left: 30px;
+    margin-top: 40px;
 }
 
 
