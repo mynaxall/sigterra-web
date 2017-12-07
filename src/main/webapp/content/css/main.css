@@ -5346,7 +5346,7 @@ recent-activity-sidebar .icon-read {
     box-sizing: border-box;
     color: rgb(51, 51, 51);
     display: block;
-    max-height: 170px;
+    max-height: 160px;
     overflow: hidden;
 }
 
@@ -5364,7 +5364,7 @@ recent-activity-sidebar .icon-read {
     box-sizing: border-box;
     color: rgb(51, 51, 51);
     display: block;
-    max-height: 170px;
+    max-height: 160px;
     overflow: hidden;
 }
 
@@ -5499,9 +5499,7 @@ recent-activity-sidebar .icon-read {
 
 .first-card-border-div{
     height: 0px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #4BABE2;
+    border: 1px solid #4BABE2;
 }
 
 .icon-artboard-default{
@@ -5511,5 +5509,13 @@ recent-activity-sidebar .icon-read {
 .icon-artboard-white{
     color:#FFFFFF
 }
+
+.info-tab-image {
+    width: 105px;
+    height: 105px;
+    margin-top: 7px;
+    border-radius: 50%;
+}
+
 
 
