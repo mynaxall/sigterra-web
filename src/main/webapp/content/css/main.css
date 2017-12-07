@@ -1655,9 +1655,9 @@ Social Buttons
 
 .firstItemTop{
     position: absolute;
-    bottom: 59px;
+    top: 32px;
     left: 0px;
-    height: 30px;
+    height: 90px;
     width: 100%;
 }
 
@@ -3068,7 +3068,7 @@ ul.tab2 li {
 
 
 .item-bottom-div{
-    height: 55px;
+    height: 60px;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -3076,7 +3076,7 @@ ul.tab2 li {
 }
 
 .item-top-div{
-    height: 55px;
+    height: 40px;
     width: 100%;
     position: absolute;
     top: 0;
@@ -4769,7 +4769,7 @@ a:focus{
 }
 
 .carousel-item-name-first-type{
-    width: 240px;
+    width: 290px;
     height: 30px;
     font-size: 24px;
     max-height:30px;
@@ -4791,13 +4791,12 @@ a:focus{
 }
 
 .carousel-item-name-third-type{
-    max-width: 235px;
-    height: 20px;
-    font-size: 16px;
-    margin-left: 15px;
-    max-height:20px;
-    min-height: 20px;
-    margin-top: 5px;
+    max-width: 395px;
+    height: 25px;
+    font-size: 20px;
+    margin: 15px 30px;
+    max-height:25px;
+    min-height: 25px;
     color: #242424;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -4805,7 +4804,7 @@ a:focus{
 
 .carousel-item-deskript-third-type{
     font-weight: normal;
-    font-size: 14px;
+    font-size: 16px;
     max-height:100px;
     min-height: 100px;
     overflow: hidden;
@@ -4816,16 +4815,14 @@ a:focus{
 }
 
 .carousel-item-name-div-first{
-    width: 140px;
     height: 25px;
     max-height:25px;
     min-height: 25px;
-    font-size: 16px;
-    margin-left: 10px;
-    max-width: 140px;
+    font-size: 18px;
+    margin: 0px 5px;
     position: relative;
     z-index: 2;
-    text-align: left;
+    text-align: center;
     text-overflow: ellipsis;
     overflow: hidden;
 }
@@ -4841,14 +4838,13 @@ a:focus{
 }
 
 .item-3-content{
-    width: 270px;
-    height: 140px;
+    width: 400px;
+    height: 170px;
     margin: 0 auto;
-    top: 45px;
-    left: 134px;
-    border-width: 3px;
-    border-style: solid;
+    top: 35px;
+    left: 69px;
     position: absolute;
+    opacity: .7;
 }
 
 /* Account activity statisctics
@@ -5515,6 +5511,42 @@ recent-activity-sidebar .icon-read {
     height: 105px;
     margin-top: 7px;
     border-radius: 50%;
+}
+
+.first-item-img{
+    float: left;
+    width: 160px;
+    height: 160px;
+    margin-top: 23px
+}
+
+.item-images-3 {
+    width: 153px;
+    height: 153px;
+    border-radius: 80%;
+}
+
+.first-item-content{
+    float: left;
+    margin-left: 30px;
+    margin-top: 40px;
+}
+
+.second-item-img{
+    position: relative;
+    height: 120px;
+    width: 120px;
+    margin: 15px auto 0px;
+}
+
+.item-images-second{
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+}
+
+.item-carousel-name{
+    margin: 7px 5px;
 }
 
 
