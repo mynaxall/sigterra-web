@@ -10,22 +10,22 @@
                             <div style="max-height: 239px;overflow:hidden;">
                                 <img crossorigin="anonymous"  style="width: 100%" id="ing-1" ng-src="{{slide.image}}?{{time}}">
                             </div>
-                            <div class="item-3-content" ng-hide="!slide.name.value && !slide.description.value" ng-style="{'background-color': '#'+tabName.layout.mainColor, 'border-color': '#'+tabName.layout.secondaryColor, 'text-align':'center'}">
+                            <div class="item-3-content" ng-hide="!slide.name.value && !slide.description.value" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}">
                                 <a style="max-height: 239px;" href="{{slide.link}}" target="_blank" ng-show="slide.link  && showLink">
                                     <div class="carousel-item-name-third-type" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                     'font-style': slide.name.italic ? 'italic' : 'normal',
-                                    'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
+                                    'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.mainColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                                     <pre class="carousel-item-name-third-type carousel-item-deskript-third-type" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                     'font-style': slide.description.italic ? 'italic' : 'normal',
-                                    'text-decoration': slide.description.underline ? 'underline' : 'normal' }" ng-show="slide.description.value">{{slide.description.value}}</pre>
+                                    'text-decoration': slide.description.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor }" ng-show="slide.description.value">{{slide.description.value}}</pre>
                                 </a>
                                 <div ng-hide="slide.link && showLink">
                                     <div class="carousel-item-name-third-type" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                         'font-style': slide.name.italic ? 'italic' : 'normal',
-                                        'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
+                                        'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.mainColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                                     <pre class="carousel-item-name-third-type carousel-item-deskript-third-type" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                         'font-style': slide.description.italic ? 'italic' : 'normal',
-                                        'text-decoration': slide.description.underline ? 'underline' : 'normal' }" ng-show="slide.description.value"
+                                        'text-decoration': slide.description.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor }" ng-show="slide.description.value"
                                          data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</pre>
                                 </div>
                             </div>
@@ -48,26 +48,26 @@
                     </div>
                     <div class="main-carousel-image-div-new-3" style="position: absolute;top:0;left:0; height: 240px">
                         <a href="{{slide.link}}" target="_blank" ng-show="slide.link && showLink">
-                            <div  class="main-carousel-item-div-new-3" ng-style="{'text-align': 'center'}">
-                                <div class="item-3-content" ng-style="{'background-color': '#'+tabName.layout.mainColor, 'border-color': '#'+tabName.layout.secondaryColor, 'text-align':'center'}" ng-hide="!slide.name.value && !slide.description.value">
+                            <div  class="main-carousel-item-div-new-3">
+                                <div class="item-3-content" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}" ng-hide="!slide.name.value && !slide.description.value">
                                     <div class="carousel-item-name-third-type" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                     'font-style': slide.name.italic ? 'italic' : 'normal',
-                                    'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
+                                    'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.mainColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                                     <pre class="carousel-item-name-third-type carousel-item-deskript-third-type" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': slide.description.italic ? 'italic' : 'normal',
-                                'text-decoration': slide.description.underline ? 'underline' : 'normal' }" ng-show="slide.description.value">{{slide.description.value}}</pre>
+                                'text-decoration': slide.description.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor }" ng-show="slide.description.value">{{slide.description.value}}</pre>
 
                                 </div>
                             </div>
                         </a>
-                        <div ng-hide="slide.link && showLink" class="main-carousel-item-div-new-3" ng-style="{'text-align': 'center'}">
-                            <div class="item-3-content" ng-style="{'background-color': '#'+tabName.layout.mainColor, 'border-color': '#'+tabName.layout.secondaryColor, 'text-align':'center'}" ng-hide="!slide.name.value && !slide.description.value">
+                        <div ng-hide="slide.link && showLink" class="main-carousel-item-div-new-3">
+                            <div class="item-3-content" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}" ng-hide="!slide.name.value && !slide.description.value">
                                 <div class="carousel-item-name-third-type" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                     'font-style': slide.name.italic ? 'italic' : 'normal',
-                                    'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
+                                    'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                                 <pre class="carousel-item-name-third-type carousel-item-deskript-third-type" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': slide.description.italic ? 'italic' : 'normal',
-                                'text-decoration': slide.description.underline ? 'underline' : 'normal'}" ng-show="slide.description.value"
+                                'text-decoration': slide.description.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.mainColor}" ng-show="slide.description.value"
                                      data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</pre>
 
                             </div>

@@ -4791,13 +4791,12 @@ a:focus{
 }
 
 .carousel-item-name-third-type{
-    max-width: 235px;
-    height: 20px;
-    font-size: 16px;
-    margin-left: 15px;
-    max-height:20px;
-    min-height: 20px;
-    margin-top: 5px;
+    max-width: 395px;
+    height: 25px;
+    font-size: 20px;
+    margin: 15px 30px;
+    max-height:25px;
+    min-height: 25px;
     color: #242424;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -4805,7 +4804,7 @@ a:focus{
 
 .carousel-item-deskript-third-type{
     font-weight: normal;
-    font-size: 14px;
+    font-size: 16px;
     max-height:100px;
     min-height: 100px;
     overflow: hidden;
@@ -4839,14 +4838,13 @@ a:focus{
 }
 
 .item-3-content{
-    width: 270px;
-    height: 140px;
+    width: 400px;
+    height: 170px;
     margin: 0 auto;
-    top: 45px;
-    left: 134px;
-    border-width: 3px;
-    border-style: solid;
+    top: 35px;
+    left: 69px;
     position: absolute;
+    opacity: .7;
 }
 
 /* Account activity statisctics
