@@ -4515,7 +4515,12 @@ ul.tab li.active:hover{
 }
 
 .preview-bg{
-    background: url(/content/images/background.png) no-repeat center center;
+    height: calc(100vh - 80px);
+    background: url(/content/images/background.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .director-bg{
