@@ -3075,7 +3075,7 @@ ul.tab2 li {
 }
 
 .social-link-1{
-    margin-right: 7px;
+    margin-right: 9px;
     opacity: .7;
 }
 
@@ -5504,6 +5504,10 @@ recent-activity-sidebar .icon-read {
 
 .item-carousel-name{
     margin: 7px 5px;
+}
+
+.social-icon{
+    font-size: 24px;
 }
 
 
