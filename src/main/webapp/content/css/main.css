@@ -3724,6 +3724,10 @@ button[disabled]:hover{
 
 .user-name-second-card{
     color: #FFFFFF;
+    width: 240px;
+    white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
 }
 
 .right-column{
@@ -4591,6 +4595,16 @@ ul.tab li.active:hover{
     padding: 0px;
     border: none;
     margin-left: 30px;
+}
+
+.pre-description-second{
+    background-color: transparent;
+    max-height: 50px;
+    overflow: hidden;
+    padding: 0px;
+    border: none;
+    margin-left: 5px;
+    font-size: 13px;
 }
 
 .btn-ing{
@@ -5510,5 +5524,69 @@ recent-activity-sidebar .icon-read {
     font-size: 24px;
 }
 
+.second-card-container{
+    padding-top: 30px;
+}
+
+.avatar-div-second{
+    float: left;
+    width: 146px;
+    height: 126px;
+    margin-top: -5px;
+    margin-left: 20px;
+}
+
+.avatar-img-second{
+    width: 126px;
+    height: 126px;
+    border-radius: 60%;
+}
+
+.user-info-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+    align-content: stretch;
+}
+
+.user-contacts-container{
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+    align-content: center;
+}
+
+.user-info-div {
+    padding: 20px 20px 10px 146px;
+}
+
+.user-contacts-div-3 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.user-contacts-container-flex{
+ width: 50%;
+}
+
+.margin-top-10{
+    margin-top: 10px;
+}
+.margin-top-5{
+    margin-top: 5px;
+}
+
+.svg-icon-size{
+    font-size: 19px;
+}
 
 
