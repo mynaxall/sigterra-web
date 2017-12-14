@@ -44,11 +44,11 @@
                         </div>
                     </div>
                     <div style="height: 140px; padding-top: 10px" class="icon-artboard-white">
-                        <div class="user-contacts-div" ng-show="tabName.phone.value">
-                            <div class="svg-div" style="margin-top: -3px">
-                                <span class="icon-smartphone" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
+                        <div class="user-contacts-div-3" ng-show="tabName.phone.value">
+                            <div>
+                                <span class="icon-smartphone svg-icon-size" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                             </div>
-                            <div class="svg-description" ng-style="{'font-family': tabName.phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                            <div class="pre-description-second" ng-style="{'font-family': tabName.phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.phone.italic ? 'italic' : 'normal',
                         'text-decoration': tabName.phone.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}">
                                 {{tabName.phone.value}}
@@ -56,22 +56,22 @@
 
 
                         </div>
-                        <div class="user-contacts-div" ng-show="tabName.userEmail.value">
-                            <div class="svg-div" style="margin-top: -1px">
-                                <span class="icon-latter" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
+                        <div class="user-contacts-div-3 margin-top-10" ng-show="tabName.userEmail.value">
+                            <div >
+                                <span class="icon-latter svg-icon-size" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                             </div>
-                            <div class="svg-description email-b-c" ng-style="{'font-family': tabName.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                            <div class="pre-description-second email-b-c" ng-style="{'font-family': tabName.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': tabName.userEmail.italic ? 'italic' : 'normal',
                                 'text-decoration': tabName.userEmail.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}">
                                 {{tabName.userEmail.value | limitTo:25}}
                             </div>
 
                         </div>
-                        <div class="user-contacts-div" ng-show="tabName.site.value" >
-                            <div class="svg-div" style="margin-top: -3px">
-                                <span class="icon-website" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
+                        <div class="user-contacts-div-3 margin-top-10" ng-show="tabName.site.value" >
+                            <div >
+                                <span class="icon-website svg-icon-size" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                             </div>
-                            <div class="svg-description first-card-description" ng-style="{'font-family': tabName.site.bold ?  'Roboto-Bold' : 'Roboto-Regular',
+                            <div class="pre-description-second first-card-description" ng-style="{'font-family': tabName.site.bold ?  'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.site.italic ? 'italic' : 'normal',
                         'text-decoration': tabName.site.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor, 'width': '250px'}"  data-ng-bind="tabName.site.value" data-ellipsis>
                                 {{tabName.site.value}}
@@ -79,11 +79,11 @@
 
                         </div>
 
-                        <div class="user-contacts-div" ng-show="tabName.address.value" >
-                            <div class="svg-div" style="margin-top: -3px">
-                                <span class="icon-location" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
+                        <div class="user-contacts-div-3 margin-top-10" ng-show="tabName.address.value" >
+                            <div>
+                                <span class="icon-location svg-icon-size" ng-style="{'color': '#'+tabName.layout.mainColor}"></span>
                             </div>
-                             <div class="pre-description third-card-address card-address" ng-style="{'font-family': tabName.address.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                             <div class="pre-description-second third-card-address card-address" ng-style="{'font-family': tabName.address.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': tabName.address.italic ? 'italic' : 'normal',
                             'text-decoration': tabName.address.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}"> {{tabName.address.value}}</div>
 
