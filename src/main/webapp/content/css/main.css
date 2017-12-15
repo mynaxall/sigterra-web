@@ -5570,12 +5570,17 @@ recent-activity-sidebar .icon-read {
 }
 
 .user-contacts-div-3 {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    align-content: flex-start;
+     display: flex;
+     flex-direction: row;
+     flex-wrap: nowrap;
+     justify-content: flex-start;
+     align-items: flex-start;
+     align-content: flex-start;
+ }
+
+.user-contacts-div-center {
+    align-items: center;
+
 }
 
 .user-contacts-container-flex{
