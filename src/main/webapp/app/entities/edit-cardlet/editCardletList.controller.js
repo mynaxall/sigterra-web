@@ -46,7 +46,6 @@
         $scope.showCropDialog = false;
         $scope.firstBusinessCardId ="";
         $scope.myImage='';
-        $scope.myCroppedImage = '';
         $scope.showConent = true;
         $scope.noSocialChanges = false;
         $scope.urlError = 'Invalid URL string. It should start from "http://" or "https://"';
@@ -55,7 +54,6 @@
         $scope.showLink = false;
 
         var handleFileSelect=function(evt) {
-            $scope.myCroppedImage = "";
             var file=evt.currentTarget.files[0];
             console.log(file)
             if(file.type === "image/png" || file.type === "image/jpeg" || file.type ==="image/jpeg"){
@@ -67,7 +65,6 @@
                 };
                 reader.readAsDataURL(file);
             }else{
-                $scope.myCroppedImage = "";
                 $scope.myImage = "";
             }
         };
@@ -87,7 +84,6 @@
         $scope.closeCropDialog = function(){
             $scope.showCropDialog = false;
             $scope.myImage = "";
-            $scope.myCroppedImage = "";
             $scope.noSocialChanges = false;
             angular.element(document.querySelector('#fileInput')).val(null);
         }
@@ -125,7 +121,6 @@
             $scope.tabImageId = tabId;
             $scope.itemImageId = itemId;
             $scope.imageItemMame = itemImgPosition;
-            $scope.myCroppedImage = '';
         }
 
         function dataURLtoFile(dataurl, filename) {
@@ -167,9 +162,8 @@
 
         $scope.saveImage = function(){
             $scope.showSpinner = true;
-            $scope.myImage = ""
 
-            var img_b64 = $scope.myCroppedImage;
+            var img_b64 = $scope.myImage;
             var png = img_b64.split(',')[1];
             var file = b64toBlob(png, 'image/png')
             var fd = new FormData();
@@ -191,6 +185,7 @@
                     $scope.showCropDialog = false;
                 });
 
+            $scope.myImage = "";
             angular.element(document.querySelector('#fileInput')).val(null);
         };
 

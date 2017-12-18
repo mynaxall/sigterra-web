@@ -310,10 +310,10 @@
                                         <div id="accordion2-item.index" class="editor-item-card">
                                             <div ng-repeat="slide in tabName.items track by slide.position" ng-show="tabName.items.length === 1" ng-if="tabName.items.length === 1">
                                                 <div class="editor-info-image-panel">
-                                                    <div style="padding-top: 25px">
+                                                    <div class="info-image-div-main">
+                                                        <button class="info-image-upload-editor" ng-click="openCropDialog(tabName.position, $index, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
                                                         <div class="info-image-div">
                                                             <img crossorigin="anonymous" ng-src="{{slide.image}}?{{time}}" class="info-image-editor">
-                                                            <button class="info-image-upload-editor" ng-click="openCropDialog(tabName.position, $index, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -368,10 +368,10 @@
                                                     <div class="custom-slide-next-editor"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
 
                                                     <div class="editor-info-image-panel">
-                                                        <div style="padding-top: 25px">
+                                                        <div class="info-image-div-main">
+                                                            <button class="info-image-upload-editor" ng-click="openCropDialog(tabName.position, $index, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
                                                             <div class="info-image-div">
                                                                 <img crossorigin="anonymous" ng-src="{{slide.image}}?{{time}}" class="info-image-editor">
-                                                                <button class="info-image-upload-editor" ng-click="openCropDialog(tabName.position, $index, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -463,10 +463,10 @@
                                                 <div class="editor-item-top"></div>
                                                 <div class="editor-item-bottom"></div>
                                                 <div class="editor-item-image-panel">
-                                                    <div style="padding-top: 25px">
+                                                    <div class="item-image-div-main">
+                                                        <button class="item-image-upload-editor" ng-click="openCropDialog(tabName.position, $index, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
                                                         <div class="item-image-div">
                                                             <img crossorigin="anonymous" ng-src="{{slide.image}}?{{time}}" class="item-image-editor">
-                                                            <button class="item-image-upload-editor" ng-click="openCropDialog(tabName.position, $index, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -529,10 +529,10 @@
                                                     <div class="editor-item-top"></div>
                                                     <div class="editor-item-bottom"></div>
                                                     <div class="editor-item-image-panel">
-                                                        <div style="padding-top: 25px">
+                                                        <div  class="item-image-div-main">
+                                                            <button class="item-image-upload-editor" ng-click="openCropDialog(tabName.position, $index, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
                                                             <div class="item-image-div">
                                                                 <img crossorigin="anonymous" ng-src="{{slide.image}}?{{time}}" class="item-image-editor">
-                                                                <button class="item-image-upload-editor" ng-click="openCropDialog(tabName.position, $index, 'image')"><img src="/content/images/new/pencil_edit_avatar.png"></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -630,9 +630,13 @@
                                         <div id="accordion-1" class="accordion-section-content editor-business-card">
                                             <div class="editor-avatar-panel">
                                                 <div style="padding-left: 25px; padding-top: 13px">
-                                                    <div class="avatar-editor-div">
-                                                        <img crossorigin="anonymous" ng-src="{{tabName.photo}}?{{time}}" class="avatar-editor">
-                                                        <button class="avatar-upload-editor" ng-click="openCropDialog($index)"><img src="/content/images/new/pencil_edit_avatar.png"></button>
+                                                    <div>
+                                                        <div class="avatar-editor-div-main">
+                                                            <button class="avatar-upload-editor" ng-click="openCropDialog($index)"><img src="/content/images/new/pencil_edit_avatar.png"></button>
+                                                            <div class="avatar-editor-div">
+                                                                <img crossorigin="anonymous" ng-src="{{tabName.photo}}?{{time}}" class="avatar-editor">
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="social-link-descript">Your social profiles:</div>
@@ -912,11 +916,11 @@
                     </div>
                 </div>
                 <div class="cropArea">
-                    <img-crop image="myImage" ng-show="myCroppedImage" result-image="myCroppedImage" area-type="square" result-image-size="1000"></img-crop>
-                    <img ng-hide="myCroppedImage" src="/content/images/image_placeholder.png">
+                    <img class="upload-dialog-image" ng-show="myImage" ng-src="{{myImage}}"/>
+                    <img ng-hide="myImage" src="/content/images/image_placeholder.png">
                 </div>
                 <div class="crop-btn-div">
-                    <button ng-disabled="!myCroppedImage" class="saveButton" ng-click="saveImage()">save</button>
+                    <button ng-disabled="!myImage" class="saveButton" ng-click="saveImage()">save</button>
                 </div>
             </div>
         </div>

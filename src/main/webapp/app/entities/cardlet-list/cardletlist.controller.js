@@ -49,7 +49,6 @@
         $scope.urlError = 'Invalid URL string. It should start from "http://" or "https://"';
         $scope.showCropDialog = false;
         $scope.myImage='';
-        $scope.myCroppedImage = '';
         $scope.showConent = true;
         vm.showCarousel = true;
         $scope.showLink = false;
@@ -67,7 +66,6 @@
                 };
                 reader.readAsDataURL(file);
             }else{
-                $scope.myCroppedImage = "";
                 $scope.myImage = "";
             }
         };
@@ -152,7 +150,7 @@
             $scope.tabImageId = tabId;
             $scope.itemImageId = itemId;
             $scope.imageItemMame = itemImgPosition;
-            $scope.myCroppedImage = '';
+
         }
 
         function dataURLtoFile(dataurl, filename) {
@@ -194,10 +192,8 @@
 
          $scope.saveImage = function(){
              $scope.showSpinner = true;
-             $scope.myImage = ""
-
-            var img_b64 = $scope.myCroppedImage;
-            var png = img_b64.split(',')[1];
+            var img_b64 = $scope.myImage;
+             var png = img_b64.split(',')[1];
             var file = b64toBlob(png, 'image/png')
             var fd = new FormData();
             fd.append('file', file);
@@ -217,7 +213,7 @@
                     $scope.showSpinner = false;
                     $scope.showCropDialog = false;
                 });
-
+             $scope.myImage = "";
              angular.element(document.querySelector('#fileInput')).val(null);
         };
 

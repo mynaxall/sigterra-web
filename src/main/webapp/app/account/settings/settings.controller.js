@@ -110,7 +110,6 @@
         }
 
         $scope.myImage='';
-        $scope.myCroppedImage = '';
 
         $scope.showCroppedImage = false;
         $scope.showSpinner = false;
@@ -134,7 +133,6 @@
         function showImageDialog(){
             angular.element('#fileInput').val(null);
             $scope.myImage='';
-            $scope.myCroppedImage = '';
             vm.isShowDialog = true;
         }
 
@@ -142,7 +140,6 @@
         function hideImageDialog(clean){
             if(clean){
                 $scope.myImage='';
-                $scope.myCroppedImage = '';
             }
             vm.isShowDialog = false;
         }
@@ -200,7 +197,7 @@
         function saveImage(){
             vm.hideImageDialog();
             $scope.showSpinner = true;
-            var img_b64 = $scope.myCroppedImage;
+            var img_b64 = $scope.myImage;
             var png = img_b64.split(',')[1];
             var file = b64toBlob(png, 'image/png')
             var fd = new FormData();
@@ -214,7 +211,6 @@
                     $scope.showSpinner = false;
                     vm.settingsAccount.imageUrl = data.url;
                     $scope.myImage='';
-                    $scope.myCroppedImage = '';
                 });
 
 

@@ -944,8 +944,8 @@ Social Buttons
 }
 
 .image-cropped-profile{
-    width: 200px;
-    height:200px;
+    max-width: 200px;
+    max-height:200px;
     border-width: 2px;
     border-style: solid;
     border-color: #ECECEC;
@@ -2997,12 +2997,6 @@ ul.tab2 li {
     background:-o-radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0));
     background:radial-gradient(30%, rgba(255,255,255,0.15), rgba(0,0,0,0))
 }
-.avatar{
-    width: 138px;
-    height: 138px;
-    margin: 25px 33px;
-    border-radius: 70%;
-}
 
 .item-central-div{
     width: 100%;
@@ -3904,29 +3898,36 @@ button[disabled]:hover{
 }
 
 .avatar-editor{
-    width: 175px;
-    height: 175px;
-    border-radius: 175px;
-}
-
-.info-image-editor{
-    width: 125px;
-    height: 125px;
-    margin-left: 60px;
-    border: none;
+    max-width: 175px;
+    max-height: 175px;
 }
 
 .item-image-editor{
-    width: 215px;
-    height: 215px;
+    max-width: 215px;
+    max-height: 215px;
     margin-top: 18px;
     border: 8px solid #FFFFFF;
+}
+
+.avatar-editor-div-main{
+    width: 175px;
+    height: 175px;
+    position: relative;
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
 }
 
 .avatar-editor-div{
     width: 175px;
     height: 175px;
     position: relative;
+    border-radius: 175px;
+    background-color: #F6F8FA;
+    overflow: hidden;
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
 }
 
 .item-image-div{
@@ -3934,13 +3935,11 @@ button[disabled]:hover{
     height: 200px;
     margin-left: 20px;
     position: relative;
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
 }
 
-.info-image-div{
-    width: 185px;
-    height: 125px;
-    position: relative;
-}
 
 .avatar-upload-editor{
     position: absolute;
@@ -3951,13 +3950,14 @@ button[disabled]:hover{
     background-color: #E8645A;
     border: none!important;
     border-radius: 33px;
+    z-index: 1;
 
 }
 
 .info-image-upload-editor{
     position: absolute;
     top: -15px;
-    right: -20px;
+    right: 40px;
     width: 33px;
     height: 33px;
     padding: 6px 8px;
@@ -3965,12 +3965,13 @@ button[disabled]:hover{
     background-color: #E8645A;
     border: none!important;
     border-radius: 33px;
+    z-index: 1;
 }
 
 .item-image-upload-editor{
     position: absolute;
-    top:10px;
-    right: -20px;
+    top:35px;
+    right: -5px;
     width: 33px;
     height: 33px;
     padding: 6px 8px;
@@ -3978,6 +3979,7 @@ button[disabled]:hover{
     background-color: #E8645A;
     border: none!important;
     border-radius: 33px;
+    z-index: 1;
 }
 
 .social-link-descript{
@@ -5481,45 +5483,11 @@ recent-activity-sidebar .icon-read {
     color:#FFFFFF
 }
 
-.info-tab-image {
-    width: 105px;
-    height: 105px;
-    margin-top: 7px;
-    border-radius: 50%;
-}
-
-.first-item-img{
-    float: left;
-    width: 160px;
-    height: 160px;
-    margin-top: 23px
-}
-
-.item-images-3 {
-    width: 153px;
-    height: 153px;
-    border-radius: 80%;
-}
-
 .first-item-content{
     float: left;
     margin-left: 30px;
     margin-top: 40px;
 }
-
-.second-item-img{
-    position: relative;
-    height: 120px;
-    width: 120px;
-    margin: 15px auto 0px;
-}
-
-.item-images-second{
-    height: 120px;
-    width: 120px;
-    border-radius: 50%;
-}
-
 .item-carousel-name{
     margin: 7px 5px;
 }
@@ -5530,20 +5498,6 @@ recent-activity-sidebar .icon-read {
 
 .second-card-container{
     padding-top: 30px;
-}
-
-.avatar-div-second{
-    float: left;
-    width: 146px;
-    height: 126px;
-    margin-top: -5px;
-    margin-left: 20px;
-}
-
-.avatar-img-second{
-    width: 126px;
-    height: 126px;
-    border-radius: 60%;
 }
 
 .user-info-container{
@@ -5566,7 +5520,7 @@ recent-activity-sidebar .icon-read {
 }
 
 .user-info-div {
-    padding: 20px 20px 10px 146px;
+    padding: 20px 20px 10px 166px;
 }
 
 .user-contacts-div-3 {
@@ -5601,5 +5555,140 @@ recent-activity-sidebar .icon-read {
 .pre-address{
     max-width: 225px;
 }
+
+.upload-dialog-image{
+    max-width: 350px;
+    max-height: 350px;
+}
+
+.avatar{
+    max-width: 138px;
+    max-height: 138px;
+}
+
+.avatar-image-div{
+    width: 138px;
+    height: 138px;
+    border-radius: 70%;
+    position: relative;
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
+    overflow: hidden;
+}
+
+.avatar-image-div-main{
+    margin: 25px 33px;
+}
+
+.avatar-img-second{
+    max-width: 126px;
+    max-height: 126px;
+}
+
+.avatar-div-second{
+    float: left;
+    width: 126px;
+    height: 126px;
+    margin-top: -5px;
+    margin-left: 20px;
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
+    overflow: hidden;
+    border-radius: 70%;
+}
+
+.item-image-div-main{
+    padding-top: 25px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.item-images-3 {
+    max-width: 153px;
+    max-height: 153px;
+}
+
+.first-item-img-main{
+    float: left;
+    padding-top: 23px;
+}
+
+.first-item-img{
+    width: 153px;
+    height: 153px;
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
+    overflow: hidden;
+    border-radius: 80%;
+}
+
+.second-item-img-main{
+    position: relative;
+    height: 120px;
+    width: 120px;
+    margin: 15px auto 0;
+}
+
+.second-item-img{
+    position: relative;
+    height: 120px;
+    width: 120px;
+    margin: 15px auto 0px;
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
+    overflow: hidden;
+    border-radius: 60%;
+}
+
+.item-images-second{
+    max-height: 120px;
+    max-width: 120px;
+}
+
+.info-image-div{
+    width: 125px;
+    height: 125px;
+    position: relative;
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
+    overflow: hidden;
+    background-color: #F6F8FA;
+}
+
+.info-image-editor{
+    max-width: 125px;
+    max-height: 125px;
+    border: none;
+}
+
+.info-image-div-main{
+    margin-top: 25px;
+    padding-left: 60px;
+    position: relative;
+}
+
+.info-tab-div{
+    width: 105px;
+    height: 105px;
+    position: relative;
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.info-tab-image {
+    max-width: 105px;
+    max-height: 105px;
+}
+
+
+
 
 

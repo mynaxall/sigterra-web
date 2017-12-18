@@ -2,8 +2,10 @@
     <div class="cardlet" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
         <div>
             <div class="layouts">
-                <div>
-                    <img crossorigin="anonymous" ng-src="{{tabName.photo}}?{{time}}" class="avatar">
+                <div class="avatar-image-div-main">
+                    <div class="avatar-image-div" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}">
+                        <img crossorigin="anonymous" ng-src="{{tabName.photo}}?{{time}}" class="avatar">
+                    </div>
                 </div>
                 <div class="social-link-group">
                     <a class="social-link-1" href="{{tabName.socialLinks.twitter}}"

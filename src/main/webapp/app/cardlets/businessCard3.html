@@ -3,8 +3,10 @@
         <div class="third-cardlet-bg" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}"></div>
         <div style="position: relative;">
             <div class="layouts">
-                <div>
-                    <img crossorigin="anonymous" ng-src="{{tabName.photo}}?{{time}}" class="avatar">
+                <div class="avatar-image-div-main">
+                    <div class="avatar-image-div" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}">
+                        <img crossorigin="anonymous" ng-src="{{tabName.photo}}?{{time}}" class="avatar">
+                    </div>
                 </div>
                 <div class="social-link-group">
                     <a class="social-link-1"  href="{{tabName.socialLinks.twitter}}" ng-class="!showLink ? 'disabledLink': ''" target="_blank" ng-show="tabName.socialLinks.twitter">
