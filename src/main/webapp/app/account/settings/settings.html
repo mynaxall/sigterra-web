@@ -18,11 +18,11 @@
                 </div>
             </div>
             <div class="cropArea">
-                <img-crop image="myImage" ng-show="myCroppedImage" result-image="myCroppedImage" area-type="square" result-image-size="1000"></img-crop>
-                <img ng-hide="myCroppedImage" src="/content/images/image_placeholder.png">
+                <img class="upload-dialog-image" ng-show="myImage" ng-src="{{myImage}}"/>
+                <img ng-hide="myImage" src="/content/images/image_placeholder.png">
             </div>
             <div class="crop-btn-div">
-                <button ng-disabled="!myCroppedImage" class="saveButton" ng-click="vm.saveImage()">save</button>
+                <button ng-disabled="!myImage" class="saveButton" ng-click="vm.saveImage()">save</button>
             </div>
         </div>
     </div>
@@ -47,7 +47,6 @@
                     <div>
                         <div style="text-align: center">
                             <div style="margin-top: 10px">
-                                <img class="image-cropped-profile" ng-show="showCroppedImage && !vm.settingsAccount.imageUrl"  ng-src="{{myCroppedImage}}" />
                                 <img class="image-cropped-profile" ng-show="vm.settingsAccount.imageUrl && !showCroppedImage"  ng-src="{{vm.settingsAccount.imageUrl}}" />
                                 <img ng-show="!showCroppedImage && !vm.settingsAccount.imageUrl" class="image-cropped" src="/content/images/image_placeholder.png" /></div>
                         </div>

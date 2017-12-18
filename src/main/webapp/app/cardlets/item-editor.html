@@ -7,11 +7,13 @@
             <div ng-show="tabName.items.length == 1">
                 <div class="main-carousel-image-div-2">
                     <div  ng-repeat="slide in tabName.items"  class="main-carousel-item-div-new" style="margin-top: 10px; ">
-                        <div id="cf4a" class="first-item-img">
-                            <img crossorigin="anonymous" id="ing-1" class="item-images-3" ng-show="!slide.link" ng-src="{{slide.image}}?{{time}}"  ng-style="{'border-color': '#'+tabName.layout.mainColor}">
-                            <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
-                                <img crossorigin="anonymous" id="ing-1" class="item-images-3" ng-style="{'border-color': '#'+tabName.layout.mainColor, 'margin-left': '15px'}" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}" >
-                            </a>
+                        <div id="cf4a" class="first-item-img-main">
+                            <div  class="first-item-img" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
+                                <img crossorigin="anonymous" id="ing-1" class="item-images-3" ng-show="!slide.link" ng-src="{{slide.image}}?{{time}}"  ng-style="{'border-color': '#'+tabName.layout.mainColor}">
+                                <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
+                                    <img crossorigin="anonymous" id="ing-1" class="item-images-3" ng-style="{'border-color': '#'+tabName.layout.mainColor}" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}" >
+                                </a>
+                            </div>
                         </div>
                         <div class="first-item-content">
                             <div class="carousel-item-name-first-type" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
@@ -35,11 +37,13 @@
                     <div class="carousel-image-div-carousel">
 
                         <div  class="carousel-item-div-new">
-                            <div id="cf4a" class="first-item-img">
-                                <img crossorigin="anonymous" id="ing-1" class="item-images-3" ng-show="!slide.link" ng-src="{{slide.image}}?{{time}}"  ng-style="{'border-color': '#'+tabName.layout.mainColor}">
-                                <a href="{{slide.link}}" target="_blank" ng-class="{'disabled': !slide.link}" ng-show="slide.link">
-                                    <img crossorigin="anonymous" id="ing-1" class="item-images-3 imgFirst" ng-style="{'border-color': '#'+tabName.layout.mainColor, 'margin-left': '15px'}" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
-                                </a>
+                            <div id="cf4a" class="first-item-img-main">
+                                <div  class="first-item-img" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
+                                    <img crossorigin="anonymous" id="ing-1" class="item-images-3" ng-show="!slide.link" ng-src="{{slide.image}}?{{time}}"  ng-style="{'border-color': '#'+tabName.layout.mainColor}">
+                                    <a href="{{slide.link}}" target="_blank" ng-class="{'disabled': !slide.link}" ng-show="slide.link">
+                                        <img crossorigin="anonymous" id="ing-1" class="item-images-3 imgFirst" ng-style="{'border-color': '#'+tabName.layout.mainColor}" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
+                                    </a>
+                                </div>
                             </div>
                             <div class="first-item-content">
                                 <div class="carousel-item-name-first-type"  ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',

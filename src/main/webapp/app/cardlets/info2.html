@@ -10,11 +10,13 @@
                             'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
                             <div class="text-editor-displaying" ta-bind ng-model="slide.description.value"></div>
                         </div>
-                        <div id="cf4a" style="float: left; width: 105px; height: 105px; margin-left: 40px">
-                            <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}">
-                            <a href="{{slide.link}}" target="_blank" ng-show="slide.link && showLink">
-                                <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
-                            </a>
+                        <div id="cf4a" style="float: left; margin-left: 40px">
+                            <div class="info-tab-div">
+                                <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}">
+                                <a href="{{slide.link}}" target="_blank" ng-show="slide.link && showLink">
+                                    <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -35,11 +37,13 @@
                             'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
                                 <div class="text-editor-displaying" ta-bind ng-model="slide.description.value"></div>
                             </div>
-                            <div id="cf4a" style="float: left; width: 105px; margin-left: 40px">
-                                <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}">
-                                <a href="{{slide.link}}" target="_blank" ng-show="slide.link && showLink">
-                                    <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
-                                </a>
+                            <div id="cf4a" style="float: left; margin-left: 40px">
+                                <div class="info-tab-div">
+                                    <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}">
+                                    <a href="{{slide.link}}" target="_blank" ng-show="slide.link && showLink">
+                                        <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
@@ -53,12 +57,6 @@
 
 
     <style type="text/css">
-        .info-tab-image{
-            width: 105px;
-            height: 105px;
-            margin-top: 7px;
-        }
-
 
         .carousel-info-name-div-new-2{
             width: 315px;
