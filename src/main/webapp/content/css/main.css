@@ -1896,6 +1896,7 @@ Social Buttons
     background-size: cover;
     text-align: center;
     color: #FFFFFF;
+    position: relative;
 }
 
 /* pulse box-shadow */
@@ -2029,68 +2030,68 @@ Social Buttons
 
 @keyframes landing_create_animation-1 {
     0%   {
-        color: #f8f8f8;
+        color: #ecf0f2;
     }
     12%{
         color: #1798e3;
     }
     25%{
-        color: #f8f8f8;
+        color: #ecf0f2;
     }
 
     100% {
-        color: #f8f8f8;
+        color: #ecf0f2;
     }
 
 }
 
 @keyframes landing_add_animation-2 {
     0%   {
-        color: #f8f8f8;
+        color: #ecf0f2;
     }
     25%   {
-        color: #f8f8f8;
+        color: #ecf0f2;
     }
 
     37%{
         color: #1798e3;
     }
     50%{
-        color: #f8f8f8;
+        color: #ecf0f2;
     }
 
 }
 
 @keyframes landing_add_to_web_animation-3 {
     0%   {
-        color: #f8f8f8;
+        color: #ecf0f2;
     }
     50%   {
-        color: #f8f8f8;
+        color: #ecf0f2;
     }
 
     62%{
         color: #1798e3;
     }
     75%{
-        color: #f8f8f8;
+        color: #ecf0f2;
     }
 
 }
 
 @keyframes landing_see_animation-4 {
     0%   {
-        color: #f8f8f8;
+        color: #ecf0f2;
     }
     75%   {
-        color: #f8f8f8;
+        color: #ecf0f2;
     }
 
     89%{
         color: #1798e3;
     }
     100%{
-        color: #f8f8f8;
+        color: #ecf0f2;
     }
 
 }
@@ -2336,7 +2337,7 @@ Social Buttons
     left: 0px;
     background-color: #ffffff;
     border-width: 0px;
-    height: 385px;
+    height: 285px;
     width: 275px;
     margin: 0 auto;
     padding: 0px 15px;
@@ -2353,7 +2354,7 @@ Social Buttons
 .landing_create::before {
     content: '';
     position: absolute;
-    height: 385px;
+    height: 285px;
     width: 275px;
     left: 0;
     animation-name: landing_create_animation;
@@ -2365,7 +2366,7 @@ Social Buttons
 .landing_create-1{
     font-size: 72pt;
     font-family: Roboto-Black;
-    color: #f8f8f8;
+    color: #ecf0f2;
     animation-name: landing_create_animation-1;
     animation-duration: 16s;
     animation-iteration-count: infinite;
@@ -2381,7 +2382,7 @@ Social Buttons
     left: 0px;
     background-color: #ffffff;
     border-width: 0px;
-    height: 385px;
+    height: 285px;
     width: 275px;
     padding: 0px 15px;
     margin: 0 auto;
@@ -2398,7 +2399,7 @@ Social Buttons
 .landing_add::before {
     content: '';
     position: absolute;
-    height: 385px;
+    height: 285px;
     width: 275px;
     left: 0;
     animation-name: landing_add_animation;
@@ -2410,7 +2411,7 @@ Social Buttons
 .landing_add-2{
     font-size: 72pt;
     font-family: Roboto-Black;
-    color: #f8f8f8;
+    color: #ecf0f2;
     animation-name: landing_add_animation-2;
     animation-duration: 16s;
     animation-iteration-count: infinite;
@@ -2426,7 +2427,7 @@ Social Buttons
     left: 0px;
     background-color: #ffffff;
     border-width: 0px;
-    height: 385px;
+    height: 285px;
     width: 275px;
     padding: 0px 15px;
     vertical-align: middle;
@@ -2442,7 +2443,7 @@ Social Buttons
 .landing_add_to_web::before {
     content: '';
     position: absolute;
-    height: 385px;
+    height: 285px;
     width: 275px;
     left: 0;
     animation-name: landing_add_to_web_animation;
@@ -2454,7 +2455,7 @@ Social Buttons
 .landing_add_to_web-3{
     font-size: 72pt;
     font-family: Roboto-Black;
-    color: #f8f8f8;
+    color: #ecf0f2;
     animation-name: landing_add_to_web_animation-3;
     animation-duration: 16s;
     animation-iteration-count: infinite;
@@ -2470,7 +2471,7 @@ Social Buttons
     left: 0px;
     background-color: #ffffff;
     border-width: 0px;
-    height: 385px;
+    height: 285px;
     width: 275px;
     margin: 0 auto;
     padding: 0px 15px;
@@ -2487,7 +2488,7 @@ Social Buttons
 .landing_see::before {
     content: '';
     position: absolute;
-    height: 385px;
+    height: 285px;
     width: 275px;
     left: 0;
     animation-name: landing_see_animation;
@@ -2499,7 +2500,7 @@ Social Buttons
 .landing_see-4{
     font-size: 72pt;
     font-family: Roboto-Black;
-    color: #f8f8f8;
+    color: #ecf0f2;
     animation-name: landing_see_animation-4;
     animation-duration: 16s;
     animation-iteration-count: infinite;
@@ -2527,9 +2528,9 @@ Social Buttons
 }
 
 .landing-text{
-    font-family: OpenSans-Light;
+    font-family: OpenSans-Regular;
     color: #5c5c66;
-    font-size: 16pt;
+    font-size: 16px;
     font-weight: normal;
 }
 .landing-statistics{
@@ -4366,18 +4367,13 @@ ul.tab li.active:hover{
 .how-it-works-description{
     font-family: OpenSans-Regular;
     color: #5c5c66;
-    font-size: 16pt;
+    font-size: 16px;
     margin-top: 25px;
 }
 .how-it-works-description.header-block {
     width: 70%;
 }
 
-@media (max-width: 990px) {
-    .how-it-works-description.header-block {
-        width: 40%;
-    }
-}
 
 .how-it-works-description-2{
     font-family: OpenSans-Semibold;
@@ -4390,7 +4386,7 @@ ul.tab li.active:hover{
     font-family: OpenSans-Light;
     color: #5c5c66;
     font-size: 14pt;
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 .home-use-col{
@@ -4418,7 +4414,7 @@ ul.tab li.active:hover{
 
 .landing-first-title{
     font-family: Roboto-Regular;
-    font-size: 35pt;
+    font-size: 40px;
     color: #35353b;
 }
 
@@ -4448,28 +4444,33 @@ ul.tab li.active:hover{
 
 .director-panel{
     position: absolute;
-    right: 0;
+    left: 300px;
     top:80px;
     text-align: left;
-    background-color: #FFFFFF;
-    padding: 30px 80px;
-    -webkit-box-shadow: 0px 0px 8px 0px rgba(166,164,166,0.35);
-    -moz-box-shadow: 0px 0px 8px 0px rgba(166,164,166,0.35);
-    box-shadow: 0px 0px 8px 0px rgba(166,164,166,0.35);
+}
 
-
+.director-panel-new{
+    text-align: left;
 }
 
 .director-name{
     color: #1798e3;
-    font-size: 20pt;
+    font-size: 25px;
+    font-family: OpenSans-Bold;
 }
 
 .director-job{
     font-family: OpenSans-Semibold;
     color: #5c5c66;
-    font-size: 16pt;
+    font-size: 20px;
     text-transform: uppercase;
+}
+
+.director-title{
+    font-family: OpenSans-Regular;
+    color: #5c5c66;
+    font-size: 20px;
+    margin-top: 15px;
 }
 
 .preview-bg{
@@ -5691,6 +5692,65 @@ recent-activity-sidebar .icon-read {
 .carousel-info-div-main{
     margin-top: 42px;
 }
+
+.how-it-works-title{
+    font-family: OpenSans-Bold;
+    color: #5c5c66;
+    font-size: 16px;
+}
+
+.director-flex-panel{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: center;
+}
+
+.main-director-panel{
+    display: block;
+}
+
+.second-director-panel{
+    display: none;
+    padding-bottom: 50px;
+}
+
+.landing-first-img{
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    height: 80%;
+}
+
+@media (max-width: 990px){
+    .main-director-panel{
+        display: none;
+    }
+
+    .second-director-panel{
+        display: block;
+    }
+}
+
+@media (max-width: 1050px) {
+
+    .landing-first-img {
+        display: none;
+    }
+}
+
+
+.landing-first-panel-container{
+    padding-top: 150px;
+    padding-bottom: 150px;
+    text-align: left
+}
+
+
 
 
 
