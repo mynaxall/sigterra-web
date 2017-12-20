@@ -5761,6 +5761,120 @@ recent-activity-sidebar .icon-read {
 }
 
 
+.landing-tab-1{
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    height: 45px;
+    width: 110px;
+    cursor: pointer;
+}
+
+.landing-tab-2{
+    position: absolute;
+    top: 5px;
+    left: 125px;
+    height: 45px;
+    width: 110px;
+    cursor: pointer;
+}
+
+.landing-tab-3{
+    position: absolute;
+    top: 5px;
+    left: 235px;
+    height: 45px;
+    width: 110px;
+    cursor: pointer;
+}
+
+
+.landing-tab-4{
+    position: absolute;
+    top: 5px;
+    left: 345px;
+    height: 45px;
+    width: 110px;
+    cursor: pointer;
+}
+
+
+.landing-img-1{
+    display: block;
+}
+
+.landing-img-2{
+    display: none;
+
+}
+
+.landing-img-3{
+    display: none;
+
+}
+
+.landing-img-4{
+    display: none;
+
+}
+
+.landing-tab-2:hover ~ .landing-img-1{
+    display: none;
+}
+
+.landing-tab-2:hover ~ .landing-img-2{
+    display: block;
+}
+
+.landing-tab-2:hover ~ .landing-img-3{
+    display: none;
+}
+
+.landing-tab-2:hover ~ .landing-img-3{
+    display: none;
+}
+
+.landing-tab-3:hover ~ .landing-img-1{
+    display: none;
+}
+
+.landing-tab-3:hover ~ .landing-img-2{
+    display: none;
+}
+
+.landing-tab-3:hover ~ .landing-img-3{
+    display: block;
+}
+
+.landing-tab-3:hover ~ .landing-img-4{
+    display: none;
+}
+
+.landing-tab-4:hover ~ .landing-img-1{
+    display: none;
+}
+
+.landing-tab-4:hover ~ .landing-img-2{
+    display: none;
+}
+
+.landing-tab-4:hover ~ .landing-img-3{
+    display: none;
+}
+
+.landing-tab-4:hover ~ .landing-img-4{
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
