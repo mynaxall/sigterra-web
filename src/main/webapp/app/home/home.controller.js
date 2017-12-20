@@ -15,11 +15,15 @@
 
         vm.account = null;
         vm.isAuthenticated = null;
-        vm.login = LoginService.open;
+        vm.login = login;
         vm.register = register;
         $scope.$on('authenticationSuccess', function() {
             getAccount();
         });
+
+        function login() {
+            LoginService.open();
+        }
 
 
         getAccount();
