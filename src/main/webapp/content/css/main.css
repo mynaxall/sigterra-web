@@ -2787,12 +2787,12 @@ div.navbar-collapse.in.collapse{
 }
 
 .sub-footer{
-    height: 663px;
+    height: 485px;
 }
 
 @media (min-width: 992px){
     .sub-footer{
-        height: 360px;
+        height: 320px;
     }
 }
 .navbar-default .navbar-nav .open .dropdown-menu > .sigterra-naigation > a{
@@ -4845,6 +4845,7 @@ a:focus{
    ------------------------------------------- */
 .user-cardlet-panel--activity {
     padding-top: 30px;
+    padding-bottom: 0px;
 }
 .activity-wrapper {
     padding-left: 15px;
@@ -4912,7 +4913,6 @@ a:focus{
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    padding-bottom: 48px;
 }
 .account-activity-content {
     -webkit-box-flex: 0;
