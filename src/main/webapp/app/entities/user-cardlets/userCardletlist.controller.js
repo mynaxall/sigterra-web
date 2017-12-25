@@ -883,7 +883,7 @@
                         if (name == "signature") {
                             $scope.coptToEmailText = '<a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a>';
                             if ($scope.isAddBanner == true) {
-                                $scope.coptToEmailText = '<div style="width: 430px;"><a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a><div><div style=\"text-transform: scale(0.59);\"><img style="text-transform: scale(0.59); width:427px" src="' + $scope.banner + '"></div></div>'
+                                $scope.coptToEmailText = '<div style="width: 430px;"><a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a><div><div style=\"text-transform: scale(0.59);\"><img style="text-transform: scale(0.59); width:430px" src="' + $scope.banner + '"></div></div>'
                                 $scope.isAddBanner = false;
                             }
                         } else if (name == "banner") {
@@ -900,7 +900,7 @@
                 if (name == "signature") {
                     $scope.coptToEmailText = '<a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a>';
                     if ($scope.isAddBanner == true) {
-                        $scope.coptToEmailText = '<div style="width: 430px;"><a href="' + $scope.signatureLink + '"><img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a><div><div style=\"text-transform: scale(0.59);\"><img style="text-transform: scale(0.59); width:427px" src="' + $scope.banner + '"></div></div>'
+                        $scope.coptToEmailText = '<div style="width: 430px;"><a href="' + $scope.signatureLink + '"><img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a><div><div style=\"text-transform: scale(0.59);\"><img style="text-transform: scale(0.59); width:430px" src="' + $scope.banner + '"></div></div>'
                     }
                 } else if (name == "banner") {
                     $scope.banner = $scope.croppedImageUrl;

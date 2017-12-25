@@ -4441,6 +4441,10 @@ ul.tab li.active:hover{
     box-shadow: 0px 3px 8px 0px rgba(23, 152, 227, 0.3);
 }
 
+.landing-learn-brn:focus{
+    color: #FFFFFF!important;
+}
+
 .landing-first-title-b{
     font-family: Roboto-Bold;
 }
