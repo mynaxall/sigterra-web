@@ -4662,6 +4662,8 @@ ul.tab li.active:hover{
     justify-content: flex-start;
     align-items: center;
     align-content: flex-start;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .next-image-preview{
