@@ -88,7 +88,7 @@
                     <div class="pre-description-second email-b-c" ng-style="{'font-family': tabName.userEmail.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': tabName.userEmail.italic ? 'italic' : 'normal',
                             'text-decoration': tabName.userEmail.underline ? 'underline' : 'normal'}">
-                        {{tabName.userEmail.value | limitTo:25}}
+                        {{tabName.userEmail.value | cut:false:30:'...'}}
                     </div>
                 </div>
                 <div class="user-contacts-div-3 margin-top-10" ng-show="tabName.site.value">
