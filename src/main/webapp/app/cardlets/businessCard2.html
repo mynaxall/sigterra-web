@@ -98,9 +98,8 @@
                     </div>
                     <div class="pre-description-second " ng-style="{'font-family': tabName.site.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.site.italic ? 'italic' : 'normal',
-                    'text-decoration': tabName.site.underline ? 'underline' : 'normal', 'width': '200px'}"
-                         data-ng-bind="tabName.site.value" data-ellipsis>
-                        {{tabName.site.value}}
+                    'text-decoration': tabName.site.underline ? 'underline' : 'normal', 'width': '200px'}"s>
+                        {{tabName.site.value | cut:false:30:'...'}}
                     </div>
                 </div>
             </div>

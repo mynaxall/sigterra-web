@@ -88,9 +88,8 @@
                             </div>
                             <div class="pre-description-second first-card-description" ng-style="{'font-family': tabName.site.bold ?  'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.site.italic ? 'italic' : 'normal',
-                        'text-decoration': tabName.site.underline ? 'underline' : 'normal'}"
-                                 data-ng-bind="tabName.site.value" data-ellipsis>
-                                {{tabName.site.value}}
+                        'text-decoration': tabName.site.underline ? 'underline' : 'normal'}">
+                                {{tabName.site.value | cut:false:30:'...'}}
                             </div>
                         </div>
                         <div class="user-contacts-div-3 margin-top-5" ng-show="tabName.address.value">
