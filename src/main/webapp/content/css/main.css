@@ -4341,7 +4341,7 @@ ul.tab li.active:hover{
     position: absolute;
     bottom:0;
     left:0;
-    height: 140px;
+    height: 135px;
     width: 100%;
     background: #4BABE2;
 }
@@ -4499,7 +4499,7 @@ ul.tab li.active:hover{
 }
 
 .director-bg{
-    background: url(/content/images/landing/photo_02.png) no-repeat left center;
+    background: url(/content/images/landing/img_man.jpg) no-repeat left bottom;
     height: 580px;
 }
 
@@ -5736,6 +5736,10 @@ recent-activity-sidebar .icon-read {
     padding-bottom: 50px;
 }
 
+.landing-first-img-div{
+    position: static;
+}
+
 .landing-first-img{
     display: block;
     position: absolute;
@@ -5757,8 +5761,13 @@ recent-activity-sidebar .icon-read {
 @media (max-width: 1050px) {
 
     .landing-first-img {
-        display: none;
+        height: 550px;
     }
+    .landing-first-img-div{
+        position: relative;
+        height: 600px;
+    }
+
 }
 
 .landing-first-panel-container{

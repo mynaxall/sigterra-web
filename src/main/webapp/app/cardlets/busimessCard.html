@@ -40,7 +40,7 @@
                              ng-show="tabName.userName.value">{{tabName.userName.value}}
                         </div>
                     </div>
-                    <div style="height: 45px; margin-top: 5px">
+                    <div style="max-height: 61px; margin-top: 5px">
                         <div>
                             <div class="user-main-text" ng-style="{'font-family': tabName.job.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.job.italic ? 'italic' : 'normal',
@@ -130,6 +130,9 @@
 
     .company {
         font-size: 15px;
+        word-break: break-all;
+        max-height: 40px;
+        overflow: hidden;
     }
 
     .job-titile {

@@ -240,11 +240,11 @@
 
                 <div class="form-group-new">
                     <input type="text" class="profile-input" id="companyName" name="companyName" placeholder="Company name"
-                           ng-model="vm.registerAccount.companyName" ng-maxlength=25>
+                           ng-model="vm.registerAccount.companyName" ng-maxlength=50>
                     <div ng-show="form2.companyName.$dirty && form2.companyName.$invalid">
                         <p class="help-block"
                            ng-show="form2.companyName.$error.maxlength">
-                            Your company name cannot be longer than 25 characters.
+                            Your company name cannot be longer than 50 characters.
                         </p>
 
                     </div>
