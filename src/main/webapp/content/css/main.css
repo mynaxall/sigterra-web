@@ -5736,6 +5736,10 @@ recent-activity-sidebar .icon-read {
     padding-bottom: 50px;
 }
 
+.landing-first-img-div{
+    position: static;
+}
+
 .landing-first-img{
     display: block;
     position: absolute;
@@ -5757,8 +5761,13 @@ recent-activity-sidebar .icon-read {
 @media (max-width: 1050px) {
 
     .landing-first-img {
-        display: none;
+        height: 550px;
     }
+    .landing-first-img-div{
+        position: relative;
+        height: 600px;
+    }
+
 }
 
 .landing-first-panel-container{
