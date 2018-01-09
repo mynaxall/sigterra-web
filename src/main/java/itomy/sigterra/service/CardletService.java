@@ -142,9 +142,17 @@ public class CardletService {
         return userCardletDTO;
     }
 
-    public UserCardletDTO getCardlet(Long id){
-        Cardlet cardlet = cardletRepository.findOne(id);
-        UserCardletDTO userCardletDTO = createUserCatdletDTO(cardlet);
+    public UserCardletDTO getCardlet(Long id, Boolean auth){
+        Cardlet cardlet = null;
+        if(auth) {
+            cardlet = cardletRepository.findOneByIdAndUserIsCurrentUser(id);
+        }else {
+            cardlet = cardletRepository.findOne(id);
+        }
+        UserCardletDTO userCardletDTO = null;
+
+        if(cardlet != null)
+            userCardletDTO =  createUserCatdletDTO(cardlet);
 
        return userCardletDTO;
     }

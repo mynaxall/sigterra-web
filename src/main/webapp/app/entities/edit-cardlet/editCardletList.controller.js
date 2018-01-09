@@ -41,7 +41,8 @@
     function EditCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter) {
         var vm = this;
 
-        $scope.time = Date.now()
+        $scope.showError = false;
+        $scope.time = Date.now();
         $scope.showEditorNavigation = true;
         $scope.showCropDialog = false;
         $scope.firstBusinessCardId ="";
@@ -214,8 +215,9 @@
 
         $scope.getCardlet = function(){
             var param1 = $location.search().cardletId;
-            $http.get("/api/cardlet/"+param1)
+            $http.get("/api/userCardlet/"+param1)
                 .success(function(response, status, headers) {
+                    $scope.showError = false;
                     $scope.tabNames = response;
                     for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
                         if ($scope.tabNames.tabs[i].tabType == '1'){
@@ -233,6 +235,9 @@
                         document.getElementsByClassName("tabs")[0].className += " active";
                         $scope.showSpinner = false;
                     }, 500)
+                }).error(function (response) {
+                    $scope.showError = true;
+                    $scope.showSpinner = false;
                 });
             $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ window.btoa(param1);
         };

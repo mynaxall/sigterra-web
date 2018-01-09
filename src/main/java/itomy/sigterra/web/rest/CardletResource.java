@@ -161,13 +161,26 @@ public class CardletResource {
         return new ResponseEntity<>(usetCardletDTOs, HttpStatus.OK);
     }
 
+    @GetMapping("/userCardlet/{id}")
+    @Timed
+    @Analytic(type = EventType.VIEW)
+    public ResponseEntity<?> getUserCardletById(@PathVariable Long id) {
+        log.debug("REST request to get Cardlet : {}", id);
+        UserCardletDTO usetCardletDTOs = cardletService.getCardlet(id, true);
+        if (usetCardletDTOs == null) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("cardlet", "idexists", "Access denied")).body(null);
+        }
+        eventService.viewEvent(id);
+        return new ResponseEntity<>(usetCardletDTOs, HttpStatus.OK);
+    }
+
 
     @GetMapping("/cardlet/{id}")
     @Timed
     @Analytic(type = EventType.VIEW)
     public ResponseEntity<?> getCardletById(@PathVariable Long id) {
         log.debug("REST request to get Cardlet : {}", id);
-        UserCardletDTO usetCardletDTOs = cardletService.getCardlet(id);
+        UserCardletDTO usetCardletDTOs = cardletService.getCardlet(id, false);
 
         eventService.viewEvent(id);
         return new ResponseEntity<>(usetCardletDTOs, HttpStatus.OK);

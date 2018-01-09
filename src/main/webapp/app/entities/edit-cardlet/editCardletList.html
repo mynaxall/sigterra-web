@@ -225,8 +225,10 @@
     });
 </script>
 <div class="entiti-content" ng-init="getCardlet()">
-
-    <div class="ng-hide" ng-show="showConent">
+    <div class="alert alert-danger cardlet-alert" ng-show="showError">
+        <strong>Access denied</strong>
+    </div>
+    <div class="ng-hide" ng-show="showConent && !showError">
 
         <div class="row" style="margin: 0px">
             <div class="left-column">
