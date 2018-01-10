@@ -4,13 +4,15 @@
             <div class="firstItemTop" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}"></div>
             <div ng-show="tabName.items.length <= 2">
                 <div class="main-carousel-image-div">
-                    <div ng-repeat="slide in tabName.items" style="width: 234px" class="main-carousel-item-div">
-                        <div id="cf4a" class="second-item-img-main" >
+                    <div ng-repeat="slide in tabName.items" style="width: 234px" class="main-carousel-item-div"
+                         ng-click="readsCounter($event, tabName.id, slide.id)"   >
+                        <div id="cf4a" class="second-item-img-main">
                             <div class="second-item-img" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
-                            <img crossorigin="anonymous" id="ing-1" class="item-images-second" ng-show="!slide.link" ng-src="{{slide.image}}?{{time}}">
-                            <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
-                                <img crossorigin="anonymous" id="ing-1" class="item-images" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
-                            </a>
+                                <img crossorigin="anonymous" id="ing-1" class="item-images-second " ng-hide="slide.link" ng-src="{{slide.image}}?{{time}}">
+                                <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
+                                    <img crossorigin="anonymous" id="ing-1" class="item-images-second " ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
+                                </a>
+                            </div>
                         </div>
                         <div class="carousel-item-name-div-first item-carousel-name" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': slide.name.italic ? 'italic' : 'normal',
@@ -26,7 +28,7 @@
             </div>
 
 
-            <div uib-carousel active="0" interval="myInterval" no-wrap="noWrapSlides" ng-show="vm.showCarousel" ng-if="tabName.items.length > 2" ng-init="initSlide(tabName)" >
+            <div uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="vm.showCarousel" ng-if="tabName.items.length > 2" ng-init="initSlide(tabName)" >
                 <div ng-show="showEditorNavigation" class="custom-slide-prev-editor" style="top: 100px"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
                 <div ng-show="showEditorNavigation"  class="custom-slide-next-editor"  style="top: 100px"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
 
@@ -34,13 +36,15 @@
 
                     <div class="carousel-image-div-item">
                         <div>
-                            <div class="carousel-item-div" style="width: 234px">
+                            <div class="carousel-item-div" style="width: 234px"
+                                 ng-click="readsCounter($event, tabName.id, slide.id)">
                                 <div id="cf4a" class="second-item-img-main">
                                     <div class="second-item-img" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
-                                    <img crossorigin="anonymous" id="ing-1" class="item-images-second" ng-hide="slide.link" ng-src="{{slide.image}}?{{time}}">
-                                    <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
-                                        <img crossorigin="anonymous" id="ing-1" class="item-images-second" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
-                                    </a>
+                                        <img crossorigin="anonymous" id="ing-1" class="item-images-second " ng-hide="slide.link" ng-src="{{slide.image}}?{{time}}">
+                                        <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
+                                            <img crossorigin="anonymous" id="ing-1" class="item-images-second" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="carousel-item-name-div-first item-carousel-name" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular','font-style': slide.name.italic ? 'italic' : 'normal','text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">{{slide.name.value}}</div>
                                 <div ng-show="slide.description.value" class="carousel-item-name-div-first carousel-item-deskript-div"
@@ -49,7 +53,8 @@
                         'text-decoration': slide.description.underline ? 'underline' : 'normal' ,}" data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</div>
                             </div>
 
-                            <div class="carousel-item-div" ng-show="tabName.items.length >$index+1" style="width: 234px">
+                            <div class="carousel-item-div" ng-show="tabName.items.length >$index+1" style="width: 234px"
+                                 ng-click="readsCounter($event, tabName.id, tabName.items[$index+1].id)" >
                                 <div id="cf4a" class="second-item-img-main">
                                     <div class="second-item-img" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
                                         <img crossorigin="anonymous" id="ing-1" class="item-images-second" ng-hide="tabName.items[$index+1].link" ng-src="{{tabName.items[$index+1].image}}?{{time}}">
@@ -66,7 +71,8 @@
                                 'font-style': tabName.items[$index+1].description.italic ? 'italic' : 'normal',
                                 'text-decoration': tabName.items[$index+1].description.underline ? 'underline' : 'normal'}" data-ng-bind="tabName.items[$index+1].description.value" data-ellipsis>{{tabName.items[$index+1].description.value}}</div>
                             </div>
-                            <div class="carousel-item-div" ng-show="tabName.items.length-1 === $index && tabName.items.length > 2" style="width: 234px">
+                            <div class="carousel-item-div" ng-show="tabName.items.length-1 === $index && tabName.items.length > 2" style="width: 234px"
+                                 ng-click="readsCounter($event, tabName.id, tabName.items[0].id)">
                                 <div id="cf4a" class="second-item-img-main">
                                     <div class="second-item-img" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
                                         <img crossorigin="anonymous" id="ing-1" class="item-images-second" ng-hide="tabName.items[0].link" ng-src="{{tabName.items[0].image}}?{{time}}">

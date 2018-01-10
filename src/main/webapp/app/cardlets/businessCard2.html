@@ -64,12 +64,12 @@
                         {{tabName.phone.value}}
                     </div>
                 </div>
-                <div class="user-contacts-div-3 margin-top-10">
+                <div class="user-contacts-div-3 margin-top-10" ng-show="tabName.address.value">
                     <div>
                         <span class="icon-location" style="font-size: 19px; "
                               ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                     </div>
-                    <div ng-show="tabName.address.value">
+                    <div>
                         <div class="pre-description-second pre-address" ng-style="{'font-family': tabName.address.bold ? 'Roboto-Bold' : 'Roboto-Regular', 'font-style': tabName.address.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.address.underline ? 'underline' : 'normal', 'padding-right': tabName.address.italic ? '3px' : '0px'}">
                             {{tabName.address.value}}
