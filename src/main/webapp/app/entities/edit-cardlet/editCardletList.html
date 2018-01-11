@@ -303,8 +303,12 @@
                         <div ng-repeat="tabName in tabNames.tabs " id="settings{{tabName.name}}{{tabName.position}}" class="tabcontent"  ng-class="tabName.position == 0 ? 'display' : 'none-display'">
 
                             <div class="main">
-
                                 <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 2" ng-if="tabName.tabType === 2">
+                                    <div ng-show="dataFetching" class="data-fetching-spinner-shadow">
+                                        <div class="data-fetching-spinner">
+                                            <img class="data-fetching-spinner-image" src="/content/images/spinner.svg">
+                                        </div>
+                                    </div>
                                     <div class="accordion-section" >
                                         <div id="accordion2-item.index" class="editor-item-card">
                                             <div ng-repeat="slide in tabName.items track by slide.position" ng-show="tabName.items.length === 1" ng-if="tabName.items.length === 1">
@@ -346,9 +350,12 @@
                                                     </div>
                                                     <form name="myItemForm">
                                                         <div class="form-group form-group-editor clearfix">
-                                                            <div class="cover-input input-text-div-editor" style="width: 370px">
+                                                            <div class="input-text-div input-text-div-editor">
                                                                 <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription2{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                 <label for="itemDescription2{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                            </div>
+                                                            <div class="text-decoration-div-editor">
+                                                                <button ng-click="fetchData(tabName.position, $index)" class="fetch-btn">get info</button>
                                                             </div>
                                                             <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                 <p class="help-block has-error-new"
@@ -413,9 +420,12 @@
                                                         </div>
                                                         <form name="myItemForm">
                                                             <div class="form-group form-group-editor clearfix">
-                                                                <div class="cover-input input-text-div-editor" style="width: 370px">
+                                                                <div class="input-text-div input-text-div-editor">
                                                                     <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription4{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                     <label for="itemDescription4{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                </div>
+                                                                <div class="text-decoration-div-editor">
+                                                                    <button ng-click="fetchData(tabName.position, $index)" class="fetch-btn">get info</button>
                                                                 </div>
                                                                 <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                     <p class="help-block has-error-new"
@@ -654,7 +664,12 @@
                                     </div><!--end .accordion-section-->
 
                                 </div><!--end .accordion-->
-                                <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 3" ng-if="tabName.tabType === 3" >
+                                <div class="accordion" ng-init="accordion2=1" ng-show="tabName.tabType === 3" ng-if="tabName.tabType === 3">
+                                    <div ng-show="dataFetching" class="data-fetching-spinner-shadow">
+                                        <div class="data-fetching-spinner">
+                                            <img class="data-fetching-spinner-image" src="/content/images/spinner.svg">
+                                        </div>
+                                    </div>
                                     <div class="accordion-section" >
                                         <div id="accordion2-item.index" class="editor-item-card">
                                             <div ng-repeat="slide in tabName.items track by slide.position" ng-show="tabName.items.length === 1" ng-if="tabName.items.length === 1">
@@ -687,9 +702,12 @@
                                                     </div>
                                                     <form name="myItemForm">
                                                         <div class="form-group form-group-editor clearfix">
-                                                            <div class="cover-input input-text-div-editor" style="width: 370px">
+                                                            <div class="input-text-div input-text-div-editor" style="width: 370px">
                                                                 <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription3{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                 <label for="itemDescription3{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                            </div>
+                                                            <div class="text-decoration-div-editor">
+                                                                <button ng-click="fetchData(tabName.position, $index)" class="fetch-btn">get info</button>
                                                             </div>
                                                             <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                 <p class="help-block has-error-new"
@@ -746,9 +764,12 @@
                                                         </div>
                                                         <form name="myItemForm">
                                                             <div class="form-group form-group-editor clearfix">
-                                                                <div class="cover-input input-text-div-editor" style="width: 370px">
+                                                                <div class="input-text-div input-text-div-editor" style="width: 370px">
                                                                     <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" name="itemLink" maxlength="300" id="itemDescription1{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                     <label for="itemDescription1{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
+                                                                </div>
+                                                                <div class="text-decoration-div-editor">
+                                                                    <button ng-click="fetchData(tabName.position, $index)" class="fetch-btn">get info</button>
                                                                 </div>
                                                                 <div ng-show="myItemForm.itemLink.$dirty && myItemForm.itemLink.$invalid" class="error-link">
                                                                     <p class="help-block has-error-new"

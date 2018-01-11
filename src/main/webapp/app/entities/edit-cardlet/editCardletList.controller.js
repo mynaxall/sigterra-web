@@ -53,6 +53,7 @@
         $scope.myInterval = 0;
         vm.showCarousel = true;
         $scope.showLink = false;
+        $scope.dataFetching = false;
 
         var handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];
@@ -980,6 +981,37 @@
             }else{
                 return 'http://'+link;
             }
+        };
+
+        $scope.fetchData = function (tabId, itemId) {
+            $scope.dataFetching = true;
+            $http.post("/api/resolve?url="+  $scope.tabNames.tabs[tabId].items[itemId].link)
+                .success(function (data, status, headers, config) {
+                    if(data.description) {
+                        $scope.tabNames.tabs[tabId].items[itemId].description.value = data.description;
+                    }else{
+                        $scope.tabNames.tabs[tabId].items[itemId].description.value = "";
+                    }
+                    if(data.title) {
+                        $scope.tabNames.tabs[tabId].items[itemId].name.value = data.title;
+                    }else {
+                        $scope.tabNames.tabs[tabId].items[itemId].name.value = ""
+                    }
+                    var image = data.imageUrl;
+                    if(data.imageUrl) {
+                        $http.get(image)
+                            .success(function (data, status, headers, config) {
+                                $scope.tabNames.tabs[tabId].items[itemId].image = image;
+                            }).error(function (response) {
+                                $scope.tabNames.tabs[tabId].items[itemId].image = "/content/images/portfolio_img_01.png";
+                            });
+                    }else{
+                        $scope.tabNames.tabs[tabId].items[itemId].image = "/content/images/portfolio_img_01.png";
+                    }
+                    $scope.dataFetching = false;
+                }).error(function (response) {
+
+            });
         }
 
 

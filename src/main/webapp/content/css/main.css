@@ -4347,6 +4347,7 @@ ul.tab li.active:hover{
 }
 
 .error-link{
+    float: left;
     text-align: left;
     padding-left: 5px;
 }
@@ -5896,6 +5897,41 @@ recent-activity-sidebar .icon-read {
 
 .cardlet-alert{
     margin: 10%;
+}
+
+.data-fetching-spinner-shadow{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 330px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 99;
+}
+
+.data-fetching-spinner{
+    position: absolute;
+    top: 100px;
+    left: 376px;
+    z-index: 100;
+}
+
+.data-fetching-spinner-image{
+    width: 100px;
+    position: relative;
+    left: -50%;
+    z-index: 2;
+}
+
+.fetch-btn{
+    height: 23px;
+    width: 70px;
+    background-color: #ffffff;
+    border: 1px solid #dfdfdf;
+    text-transform: uppercase;
+    color: #6d6e71;
+    font-size: 12px;
+    padding: 3px;
 }
 
 
