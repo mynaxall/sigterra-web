@@ -19,15 +19,16 @@
         }])
         .controller('SettingsController', SettingsController);
 
-    SettingsController.$inject = ['Principal', 'Auth', '$scope', '$http', '$timeout'];
+    SettingsController.$inject = ['Principal', 'Auth', '$scope', '$http', '$timeout', 'PHONE_PATTERN'];
 
-    function SettingsController (Principal, Auth, $scope, $http, $timeout) {
+    function SettingsController (Principal, Auth, $scope, $http, $timeout, PHONE_PATTERN) {
         var vm = this;
 
         vm.error = null;
         vm.save = save;
         vm.settingsAccount = null;
         vm.success = null;
+        vm.PHONE_PATTERN = new RegExp(PHONE_PATTERN);
 
         $scope.disableSave = true;
 

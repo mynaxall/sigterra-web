@@ -20,9 +20,9 @@
         .controller('RegisterController', RegisterController);
 
 
-    RegisterController.$inject = [ '$timeout', 'Auth', 'LoginService', '$state', '$scope', '$location', '$http', 'CreateFirstCardlet'];
+    RegisterController.$inject = [ '$timeout', 'Auth', 'LoginService', '$state', '$scope', '$location', '$http', 'CreateFirstCardlet', 'PHONE_PATTERN'];
 
-    function RegisterController ($timeout, Auth, LoginService, $state, $scope, $location, $http, CreateFirstCardlet) {
+    function RegisterController ($timeout, Auth, LoginService, $state, $scope, $location, $http, CreateFirstCardlet, PHONE_PATTERN) {
         var vm = this;
 
 
@@ -37,6 +37,7 @@
         vm.isDone = false;
         vm.skip = skip;
         vm.back = back;
+        vm.PHONE_PATTERN = new RegExp(PHONE_PATTERN);
 
         vm.nextStep = nextStep;
 

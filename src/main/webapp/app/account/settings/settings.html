@@ -127,10 +127,10 @@
 
                     <div class="form-group-new">
                         <input type="text" class="profile-input" id="phoneNumber2" name="phoneNumber" placeholder="Mobile Number"
-                               ng-model="vm.settingsAccount.phoneNumber" restrict="reject" mask="+99(999) 999-9999">
+                               ng-model="vm.settingsAccount.phoneNumber" ng-pattern="vm.PHONE_PATTERN">
                         <div ng-show="form.phoneNumber.$dirty && form.phoneNumber.$invalid">
                             <p class="help-block"
-                               ng-show="form.phoneNumber.$error.mask">
+                               ng-show="form.phoneNumber.$error.pattern">
                                 Invalid phone number format
                             <p/>
                         </div>
