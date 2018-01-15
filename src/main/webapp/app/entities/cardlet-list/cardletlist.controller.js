@@ -36,9 +36,9 @@
             };
         });
 
-    CardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location'];
+    CardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'PHONE_PATTERN'];
 
-    function CardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location) {
+    function CardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, PHONE_PATTERN) {
         var vm = this;
 
         $scope.time = Date.now()
@@ -53,6 +53,7 @@
         vm.showCarousel = true;
         $scope.showLink = false;
         $scope.dataFetching = false;
+        vm.PHONE_PATTERN = new RegExp(PHONE_PATTERN);
 
 
 

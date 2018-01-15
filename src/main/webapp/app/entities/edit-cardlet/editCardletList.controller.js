@@ -36,9 +36,9 @@
             };
         });
 
-    EditCardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'orderByFilter'];
+    EditCardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'orderByFilter', 'PHONE_PATTERN'];
 
-    function EditCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter) {
+    function EditCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter, PHONE_PATTERN) {
         var vm = this;
 
         $scope.showError = false;
@@ -54,6 +54,7 @@
         vm.showCarousel = true;
         $scope.showLink = false;
         $scope.dataFetching = false;
+        vm.PHONE_PATTERN = new RegExp(PHONE_PATTERN);
 
         var handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];
