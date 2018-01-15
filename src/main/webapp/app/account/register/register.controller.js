@@ -140,7 +140,7 @@
                         "tabId": 1
 
                     },
-                    "photo": $location.protocol() + '://' + $location.host() + ':' + $location.port()+"/content/images/avatar_img.png",
+                    "photo": $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/content/images/avatar_img.png',
 
 
                 },
@@ -176,7 +176,6 @@
 
         $scope.getUserProfile = function(){
 
-                    console.log($scope.userAccount)
                     $scope.tabNames.tabs[0].userName = {
                         "value": $scope.userAccount.username
                     };
@@ -212,9 +211,7 @@
         };
 
         $scope.saveCardlet = function(){
-            console.log($scope.userAccount.id)
             CreateFirstCardlet.saveCardlet($scope.userAccount.id, $scope.tabNames).then(function (response) {
-                console.log(response)
             }).catch(function (response) {
             })
         }
