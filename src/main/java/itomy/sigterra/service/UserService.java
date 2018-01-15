@@ -101,10 +101,14 @@ public class UserService {
         newUser.setLastName(lastName);
         newUser.setEmail(email);
         newUser.setLangKey("en-US");
+
+        // create activated user
+        newUser.setActivated(true);
+
         // new user is not active
-        newUser.setActivated(false);
+        // newUser.setActivated(false);
         // new user gets registration key
-        newUser.setActivationKey(RandomUtil.generateActivationKey());
+        // newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
         newUser.setAuthorities(authorities);
         newUser.setUsername(StringUtils.trimToNull(username));
