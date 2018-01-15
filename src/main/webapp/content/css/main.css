@@ -5759,6 +5759,12 @@ recent-activity-sidebar .icon-read {
     }
 }
 
+.landing-first-panel-container{
+    padding-top: 150px;
+    padding-bottom: 150px;
+    text-align: left
+}
+
 @media (max-width: 1050px) {
 
     .landing-first-img {
@@ -5769,13 +5775,19 @@ recent-activity-sidebar .icon-read {
         height: 600px;
     }
 
+
 }
 
-.landing-first-panel-container{
-    padding-top: 150px;
-    padding-bottom: 150px;
-    text-align: left
+@media (max-width: 1000px) {
+    .landing-first-panel-container{
+        text-align: center;
+    }
+
+    .how-it-works-description.header-block{
+        width: 100%;
+    }
 }
+
 
 
 .landing-tab-1{
