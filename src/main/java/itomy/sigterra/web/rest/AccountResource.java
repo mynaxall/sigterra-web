@@ -82,7 +82,7 @@ public class AccountResource {
         textPlainHeaders.setContentType(MediaType.TEXT_PLAIN);
 
         return userRepository.findOneByEmail(managedUserVM.getEmail())
-                .map(user -> new ResponseEntity<>("e-mail address already in use", textPlainHeaders, HttpStatus.BAD_REQUEST))
+                .map(user -> new ResponseEntity<>(HttpStatus.BAD_REQUEST))
                 .orElseGet(() -> {
                     User user = userService
                         .createUser(managedUserVM.getPassword(),
@@ -101,9 +101,9 @@ public class AccountResource {
                         request.getServerPort() +       // "80"
                         request.getContextPath();       // "/myContextPath" or "" if deployed in root context
                     }
-
-                    mailService.sendActivationEmail(user, baseUrl);
-                    return new ResponseEntity<>(HttpStatus.CREATED);
+                    // remove activation email while crate activated user
+                    // mailService.sendActivationEmail(user, baseUrl);
+                    return new ResponseEntity<>(user,HttpStatus.CREATED);
                 });
     }
 
