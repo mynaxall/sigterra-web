@@ -29,19 +29,20 @@
                     <div style="height: 31px">
                         <div class="user-name trim-text" ng-style="{'font-family': tabName.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': tabName.userName.italic ? 'italic' : 'normal',
-                            'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor, 'word-break':'break-all'}"  ng-show="tabName.userName.value">{{tabName.userName.value}}</div>
+                            'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor, 'word-break':'break-all'}"  ng-show="tabName.userName.value">
+                            {{tabName.userName.value | cut:false:22:'...'}}</div>
                     </div>
                     <div style="height: 55px; margin-top: 5px">
                         <div>
                             <div class="user-main-text" ng-style="{'font-family': tabName.job.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.job.italic ? 'italic' : 'normal',
-                        'text-decoration': tabName.job.underline ? 'underline' : 'normal'}" ng-show="tabName.job.value">{{tabName.job.value}}</div>
+                        'text-decoration': tabName.job.underline ? 'underline' : 'normal'}" ng-show="tabName.job.value">{{tabName.job.value | cut:false:30:'...'}}</div>
                         </div>
                         <div>
                             <div class="company" ng-show="tabName.company.value" ng-style="{'font-family': tabName.company.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.company.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.company.underline ? 'underline' : 'normal'}">
-                                {{tabName.company.value}}
+                                {{tabName.company.value | cut:false:50:'...'}}
                             </div>
                         </div>
                     </div>
@@ -87,7 +88,7 @@
                             </div>
                              <div class="pre-description-second third-card-address card-address" ng-style="{'font-family': tabName.address.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                             'font-style': tabName.address.italic ? 'italic' : 'normal',
-                            'text-decoration': tabName.address.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}"> {{tabName.address.value}}</div>
+                            'text-decoration': tabName.address.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}"> {{tabName.address.value | cut:false:60:'...'}}</div>
 
                             </div>
                     </div>

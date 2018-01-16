@@ -62,7 +62,7 @@
 
                 <div class="form-group-new">
                     <input type="text" class="profile-input" id="username" name="username" placeholder="Your Name *"
-                           ng-model="vm.registerAccount.username" ng-maxlength=25 required>
+                           ng-model="vm.registerAccount.username" ng-maxlength="50" required>
                     <div ng-show="form.username.$dirty && form.username.$invalid">
                         <p class="help-block"
                            ng-show="form.username.$error.required">
@@ -74,7 +74,7 @@
                         </p>
                         <p class="help-block"
                            ng-show="form.username.$error.maxlength">
-                            Your username cannot be longer than 25 characters.
+                            Your username cannot be longer than 50 characters.
                         </p>
                         <p class="help-block"
                            ng-show="form.username.$error.pattern">
@@ -217,7 +217,7 @@
             <form ng-show="!vm.success" name="form2" role="form" novalidate show-validation>
 
                 <div class="form-group-new">
-                    <input type="text" class="profile-input" id="phoneNumber" name="phoneNumber" placeholder="Phone number" ng-model="vm.registerAccount.phoneNumber" ng-pattern="vm.PHONE_PATTERN">
+                    <input type="text" class="profile-input" id="phoneNumber" name="phoneNumber" placeholder="Phone number" ng-model="vm.registerAccount.phoneNumber" ng-pattern="vm.PHONE_PATTERN" ng-maxlength="25">
                     <div ng-show="form2.phoneNumber.$dirty && form2.phoneNumber.$invalid">
                         <p class="help-block"
                            ng-show="form2.phoneNumber.$error.pattern">
@@ -228,7 +228,7 @@
                 </div>
                 <div class="form-group-new">
                     <input type="text" class="profile-input" id="address" name="address" placeholder="Address"
-                           ng-model="vm.registerAccount.address" ng-maxlength=55>
+                           ng-model="vm.registerAccount.address" ng-maxlength="100">
                     <div ng-show="form2.address.$dirty && form2.address.$invalid">
                         <p class="help-block"
                            ng-show="form2.address.$error.maxlength">
@@ -240,11 +240,11 @@
 
                 <div class="form-group-new">
                     <input type="text" class="profile-input" id="companyName" name="companyName" placeholder="Company name"
-                           ng-model="vm.registerAccount.companyName" ng-maxlength=50>
+                           ng-model="vm.registerAccount.companyName" ng-maxlength="100">
                     <div ng-show="form2.companyName.$dirty && form2.companyName.$invalid">
                         <p class="help-block"
                            ng-show="form2.companyName.$error.maxlength">
-                            Your company name cannot be longer than 50 characters.
+                            Your company name cannot be longer than 100 characters.
                         </p>
 
                     </div>
@@ -263,11 +263,11 @@
 
                 <div class="form-group-new">
                     <input type="text" class="profile-input" id="jobTitle" name="jobTitle" placeholder="Job title"
-                           ng-model="vm.registerAccount.jobTitle" ng-maxlength=25>
+                           ng-model="vm.registerAccount.jobTitle" ng-maxlength="50">
                     <div ng-show="form2.jobTitle.$dirty && form2.jobTitle.$invalid">
                         <p class="help-block"
                            ng-show="form2.jobTitle.$error.maxlength">
-                            Your job title cannot be longer than 25 characters.
+                            Your job title cannot be longer than 50 characters.
                         </p>
 
                     </div>
