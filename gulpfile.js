@@ -95,7 +95,8 @@ gulp.task('ngconstant:dev', function () {
         constants: {
             VERSION: util.parseVersion(),
             BUILD_VERSION: util.parseAppVersion(),
-            DEBUG_INFO_ENABLED: true
+            DEBUG_INFO_ENABLED: true,
+            PHONE_PATTERN: "^([\\+\\s]?\\d{0,}[\\+\\s]?\\d{1,}[\\s.-]?)?\\(?\\d{1,}\\)?[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}$"
         },
         template: config.constantTemplate,
         stream: true
