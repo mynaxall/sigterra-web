@@ -10,7 +10,7 @@
                         <div class="user-name trim-text user-name-second-card" ng-style="{'font-family': tabName.userName.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.userName.italic ? 'italic' : 'normal',
                         'text-decoration': tabName.userName.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor, 'height': '32px'}"
-                             ng-show="tabName.userName.value">{{tabName.userName.value}}
+                             ng-show="tabName.userName.value">{{tabName.userName.value | cut:false:27:'...'}}
                         </div>
                         <div class="social-links">
                             <a href="{{tabName.socialLinks.twitter}}" target="_blank"
@@ -39,13 +39,13 @@
                     <div class="job-titile-3" ng-style="{'font-family': tabName.job.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.job.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.job.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}"
-                         ng-show="tabName.job.value">{{tabName.job.value}}
+                         ng-show="tabName.job.value">{{tabName.job.value | cut:false:30:'...'}}
                     </div>
                     <div class="svg-description-new" ng-show="tabName.company.value"
                          style="margin-left: 0px; font-size: 13px" ng-style="{'font-family': tabName.company.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.company.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.company.underline ? 'underline' : 'normal','padding-right': tabName.company.italic ? '3px' : '0px', 'color': '#'+tabName.layout.mainColor}">
-                        {{tabName.company.value}}
+                        {{tabName.company.value | cut:false:80:'...'}}
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                     <div>
                         <div class="pre-description-second pre-address" ng-style="{'font-family': tabName.address.bold ? 'Roboto-Bold' : 'Roboto-Regular', 'font-style': tabName.address.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.address.underline ? 'underline' : 'normal', 'padding-right': tabName.address.italic ? '3px' : '0px'}">
-                            {{tabName.address.value}}
+                            {{tabName.address.value | cut:false:50:'...'}}
                         </div>
 
 
@@ -99,7 +99,7 @@
                     <div class="pre-description-second " ng-style="{'font-family': tabName.site.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                     'font-style': tabName.site.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.site.underline ? 'underline' : 'normal', 'width': '200px'}"s>
-                        {{tabName.site.value | cut:false:30:'...'}}
+                        {{tabName.site.value | cut:false:50:'...'}}
                     </div>
                 </div>
             </div>

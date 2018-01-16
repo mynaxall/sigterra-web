@@ -27,7 +27,7 @@ public class UserDTO {
     private String lastName;
 
     @NotEmpty
-    @Size(min = 1, max = 30)
+    @Size(min = 1, max = 50)
     private String username;
 
     private String phoneNumber;
