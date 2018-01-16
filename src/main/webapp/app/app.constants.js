@@ -6,6 +6,5 @@
         .constant('VERSION', "0.0.1-SNAPSHOT")
         .constant('BUILD_VERSION', "0.0.1-DEFAULT")
         .constant('DEBUG_INFO_ENABLED', true)
-        .constant('PHONE_PATTERN', "^([\\+\\s]?\\d{0,}[\\+\\s]?\\d{1,}[\\s.-]?)?\\(?\\d{1,}\\)?[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}$")
-;
+
 })();
