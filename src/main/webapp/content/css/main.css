@@ -1475,16 +1475,56 @@ Social Buttons
     animation-delay:8s;
 }
 
-#gmailDiv{
-    padding: 40px 20px;
-    border-width: 1px;
-    border-style: dashed;
+.gmailDiv{
+    padding: 10px 0px;
     -webkit-user-select: all!important;
     -moz-user-select: text!important;
     -ms-user-select: text!important;
     user-select: text!important;
     line-height: 0%;
 }
+
+.copy-zone-outer{
+    padding: 10px 20px;
+    border-width: 1px;
+    border-style: dashed;
+}
+
+.copy-zone-top-text{
+    color: #a94442;
+    font-size: 20px;
+    text-align: left;
+}
+
+.copy-zone-bottom-text{
+    color: #a94442;
+    font-size: 20px;
+    text-align: right;
+}
+
+.mail-copy-sig-types{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: center;
+}
+
+.mail-copy-sig-div{
+    min-width: 300px;
+    max-width: 470px;
+    text-align: left;
+}
+
+.copy-zone{
+    -webkit-user-select: all!important;
+    -moz-user-select: text!important;
+    -ms-user-select: text!important;
+    user-select: text!important;
+}
+
+
 
 
 .disabled {
@@ -2568,6 +2608,21 @@ Social Buttons
     font-weight: bold;
     display: inline-block;
     margin-left: 40px;
+}
+
+.copy-zone-title{
+    text-align: center;
+    color: #595959;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 40px;
+}
+
+.copy-zone-outer-text{
+    color: #595959;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .copy-to-email-step-number{
