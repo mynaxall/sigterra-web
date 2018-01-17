@@ -6001,6 +6001,12 @@ recent-activity-sidebar .icon-read {
     padding: 3px;
 }
 
+.copy-to-email-textarea{
+    width: 100%;
+    height: 150px;
+    max-width: 500px
+}
+
 
 
 
