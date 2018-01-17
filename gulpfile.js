@@ -96,7 +96,8 @@ gulp.task('ngconstant:dev', function () {
             VERSION: util.parseVersion(),
             BUILD_VERSION: util.parseAppVersion(),
             DEBUG_INFO_ENABLED: true,
-            PHONE_PATTERN: '^([\\+\\s]?\\d{0,}[\\+\\s]?\\d{1,}[\\s.-]?)?\\(?\\d{1,}\\)?[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}$'
+            PHONE_PATTERN: '^([\\+\\s]?\\d{0,}[\\+\\s]?\\d{1,}[\\s.-]?)?\\(?\\d{1,}\\)?[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}$',
+            TOOLBAR_OPTIONS: '[["bold","italics", "underline", "strikeThrough"], ["ul", "ol","undo", "redo", "clear"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"]]'
         },
         template: config.constantTemplate,
         stream: true
@@ -112,7 +113,8 @@ gulp.task('ngconstant:prod', function () {
             VERSION: util.parseVersion(),
             BUILD_VERSION: util.parseAppVersion(),
             DEBUG_INFO_ENABLED: false,
-            PHONE_PATTERN: '^([\\+\\s]?\\d{0,}[\\+\\s]?\\d{1,}[\\s.-]?)?\\(?\\d{1,}\\)?[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}$'
+            PHONE_PATTERN: '^([\\+\\s]?\\d{0,}[\\+\\s]?\\d{1,}[\\s.-]?)?\\(?\\d{1,}\\)?[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}$',
+            TOOLBAR_OPTIONS: '[["bold","italics", "underline", "strikeThrough"], ["ul", "ol","undo", "redo", "clear"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"]]'
         },
         template: config.constantTemplate,
         stream: true
@@ -128,7 +130,8 @@ gulp.task('ngconstant:staging', function () {
             VERSION: util.parseVersion(),
             BUILD_VERSION: util.parseAppVersion(),
             DEBUG_INFO_ENABLED: false,
-            PHONE_PATTERN: '^([\\+\\s]?\\d{0,}[\\+\\s]?\\d{1,}[\\s.-]?)?\\(?\\d{1,}\\)?[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}$'
+            PHONE_PATTERN: '^([\\+\\s]?\\d{0,}[\\+\\s]?\\d{1,}[\\s.-]?)?\\(?\\d{1,}\\)?[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}[\\s.-]?\\d{0,}$',
+            TOOLBAR_OPTIONS: '[["bold","italics", "underline", "strikeThrough"], ["ul", "ol","undo", "redo", "clear"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"]]'
         },
         template: config.constantTemplate,
         stream: true
