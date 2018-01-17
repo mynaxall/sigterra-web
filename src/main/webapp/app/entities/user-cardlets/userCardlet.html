@@ -9,7 +9,7 @@
 <div ng-show="showSpinner" class="spinner-shadow"><div style="position:absolute;top:40%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -88px;"></div></div>
 <div class="modeal-custom-window ng-hide" ng-show="isCopyTiEmail"></div>
 <div class="modeal-custom-window ng-hide" ng-show="isCopyTiEmail" style="position: absolute; background-color: rgba(0, 0, 0, 0);">
-    <div class="modal-dialog " style="margin-top: -100px; width: 1130px!important;">
+    <div class="modal-dialog " style="margin-top: -100px; width: 1400px!important;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -22,67 +22,26 @@
                     <div class="copy-to-email-step-number">
                         <div class="registration-steps-number">1</div>
                     </div>
-                    <div class="copy-to-email-steps">Choose your signature design:</div>
+                    <div class="copy-to-email-steps">Place cursor inside the dotted box, select your signature and hit Ctrl + C.<br>Then paste it in your Email signature template or Email compose window:</div>
                 </div>
-                <div style="min-height: 400px">
-                    <div class="row" style="margin-left: 15px;margin-right: 15px; margin-top: 30px;">
-                        <div  class="selectSignature" style="width: 550px">
-                            <input style="margin-left: 20px;" ng-click="selectSignature(1)" id="radio01"  type="radio" name="signatureType" value="1" ng-checked="selectedSignature"/>
-                            <label for="radio01"><span></span></label>
-                        </div>
-                        <div class="selectSignature select-signature-radio-div" >
-                            <input style="margin-left: 20px;" ng-click="selectSignature(3)" type="radio" id="radio02" name="signatureType" value="0" ng-checked="!selectedSignature"/>
-                            <label for="radio02"><span></span></label>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-left: 15px;margin-right: 15px; margin-top: 30px;">
-                        <div class="selectSignature" style="height: 300px">
-                            <div ng-click="selectSignature(1)" id="signature-selector">
-                                <div class="modal-signature-panel-shadow"></div>
-                                <div ng-class="signatureSelected === 1 ? 'activeSignature' : ''">
-                                    <a href="signatureLink"><div id="previewImage"></div></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="selectSignature" style="float: right;top: 30px; right: 0px">
-                            <div ng-click="selectSignature(3)" style="margin-top: -30px;"  id="signature-selector" ng-class="signatureSelected === 3 ? 'activeSignature' : ''">
-                                <div class="modal-signature-panel-shadow"></div>
-                                <div  id="thirdSignature" >
-                                    <div ng-if="isCopyTiEmail">
-                                        <ng-include src="'app/cardlets/userSigmatureNew.html'"></ng-include>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="add-banner-panel" style="padding-bottom: 35px; padding-top: 35px; margin-top: 25px; position:relative;">
+                <div class="mail-copy-div">
 
-                    <div class="copy-to-email-step-number" style="top: 35px">
-                        <div class="registration-steps-number">2</div>
-                    </div>
-                    <div class="copy-to-email-steps" style="display: inline-block">Add banner to your signature:</div>
-                    <div style="display: inline-block; color: #595959; font-size: 14px; margin-left: 20px;">
-                        <input ng-disabled="!banner" class="add-banner-checkbox" type="checkbox" ng-model="isAddBanner" ng-click="addBanner()" width="20px" height="20px" style="margin-right: 10px">
-                    </div>
-                    <div class="social-image-form-div-copy"  style="padding: 0px; padding-left: 30px; display: inline-block">
-                        <div class="fileUpload btn btn-primary upload-banner-img choose-photo-btn" style="margin: 0px; border-radius: 0px!important;">
-                            <span>Upload</span>
-                            <input type="file" accept="image/png, image/jpeg, image/jpg" id="fileInput3" class="upload"/>
+                    <div class="copy-to-web-div">
+                        <div class="copy-zone-outer">
+                            <div class="copy-zone-top-text">Click here and drag...</div>
+                            <div class="gmailDiv" id="gmailDiv" style="line-height: 0%"></div>
+                            <div class="copy-zone-bottom-text">...until here and hit Ctrl+C</div>
                         </div>
-
-                    </div>
-                    <div ng-show="banner"  ng-if="banner" style="text-align: center; margin: 20px;">
-                        <img style="width: 300px;" ng-src="{{banner}}">
+                        <textarea ng-show="false" id="copyedText" class="copy-to-email-textarea" ng-model="coptToEmailText"></textarea>
                     </div>
                 </div>
 
                 <div style="padding-top: 40px">
                     <div style="position:relative; display: inline-block;">
                         <div class="copy-to-email-step-number">
-                            <div class="registration-steps-number">3</div>
+                            <div class="registration-steps-number">2</div>
                         </div>
-                        <div class="copy-to-email-steps" style="display: inline-block;">Choose e-mail client:</div>
+                        <div class="copy-to-email-steps" style="display: inline-block;">Choose an e-mail client</div>
                     </div>
                     <div style="display: inline-block">
                         <select class="form-control" ng-options="item.title for item in fieldTable"  ng-model="selected" ng-change="hasChanged(selected)" style="margin-left: 20px; width: 150px; background-color: #FFF">
@@ -138,27 +97,29 @@
                     </div>
                     <div style="text-align: center; padding: 10px; border-width: 0px; border-color: #F1F1F1; border-style: solid;border-bottom-width: 1px">
                     </div>
-                    <div>
-                        <div style="position: relative">
-                            <div class="copy-to-email-step-number" style="top: 35px">
-                                <div class="registration-steps-number">4</div>
+                    <div class="copy-zone-title"> OR user the following</div>
+                    <div class="mail-copy-sig-types">
+
+                        <div class="mail-copy-sig-div">
+                            <div class="copy-zone-outer-text">Copy Image</div>
+                            <div class="copy-zone-outer copy-zone">
+                                <div class="gmailDiv" id="gmailDiv2" style="line-height: 0%"></div>
                             </div>
-                            <div class="copy-to-email-steps" style="padding-top: 35px">Copy this zone:</div>
+                            <textarea ng-show="false" id="copyedText" class="copy-to-email-textarea" ng-model="coptToEmailText"></textarea>
                         </div>
-                        <div class="mail-copy-div">
-
-                            <div class="copy-to-web-div">
-                                <div>
-                                    <div style="color: #a94442; font-size: 20px; text-align: center">Select your signature</div>
-                                    <div id="gmailDiv" style="line-height: 0%"></div>
-                                </div>
-                                <textarea ng-show="false" id="copyedText" style="width: 100%; height: 150px; max-width: 500px" ng-model="coptToEmailText"></textarea>
+                        <div>
+                            <div class="copy-zone-outer-text">Copy Link</div>
+                            <div class="copy-zone-outer copy-zone">
+                                <a href="{{signatureLink}}">{{signatureLink}}</a>
                             </div>
-                            <div style="margin-top: 40px; padding-bottom: 20px;">
+                        </div>
 
-                                <button ng-show="false" type="submit" data-clipboard-text="{{coptToEmailText}}" ngclipboard data-clipboard-text="{{coptToEmailText}}"class="saveButton">
-                                    Copy to Clipboard
-                                </button>
+                        <div>
+                            <div class="copy-zone-outer-text">Copy Text</div>
+                            <div class="copy-zone-outer copy-zone">
+                                <div ng-if="isCopyTiEmail">
+                                    <ng-include src="'app/cardlets/userSigmatureNew.html'"></ng-include>
+                                </div>
                             </div>
                         </div>
                     </div>
