@@ -5882,72 +5882,17 @@ recent-activity-sidebar .icon-read {
     cursor: pointer;
 }
 
+.landing-img{
+    display: none;
+}
 
-.landing-img-1{
+
+.activeLandingTab{
     display: block;
 }
 
-.landing-img-2{
+.disabledLandingTab{
     display: none;
-
-}
-
-.landing-img-3{
-    display: none;
-
-}
-
-.landing-img-4{
-    display: none;
-
-}
-
-.landing-tab-2:hover ~ .landing-img-1{
-    display: none;
-}
-
-.landing-tab-2:hover ~ .landing-img-2{
-    display: block;
-}
-
-.landing-tab-2:hover ~ .landing-img-3{
-    display: none;
-}
-
-.landing-tab-2:hover ~ .landing-img-3{
-    display: none;
-}
-
-.landing-tab-3:hover ~ .landing-img-1{
-    display: none;
-}
-
-.landing-tab-3:hover ~ .landing-img-2{
-    display: none;
-}
-
-.landing-tab-3:hover ~ .landing-img-3{
-    display: block;
-}
-
-.landing-tab-3:hover ~ .landing-img-4{
-    display: none;
-}
-
-.landing-tab-4:hover ~ .landing-img-1{
-    display: none;
-}
-
-.landing-tab-4:hover ~ .landing-img-2{
-    display: none;
-}
-
-.landing-tab-4:hover ~ .landing-img-3{
-    display: none;
-}
-
-.landing-tab-4:hover ~ .landing-img-4{
-    display: block;
 }
 
 .landing-avatar{
