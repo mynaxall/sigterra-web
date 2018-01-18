@@ -45,7 +45,7 @@ function fonts() {
 }
 
 function common() {
-    return gulp.src([config.app + 'robots.txt', config.app + 'favicon.ico', config.app + '.htaccess'], { dot: true })
+    return gulp.src([config.app + 'robots.txt', config.app + 'favicon.ico', config.app + 'email-logo.png', config.app + 'footer-logo.png', config.app + 'logo_header.png', config.app + '.htaccess'], { dot: true })
         .pipe(plumber({errorHandler: handleErrors}))
         .pipe(changed(config.dist))
         .pipe(gulp.dest(config.dist));
