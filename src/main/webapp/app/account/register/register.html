@@ -217,7 +217,7 @@
             <form ng-show="!vm.success" name="form2" role="form" novalidate show-validation>
 
                 <div class="form-group-new">
-                    <input type="text" class="profile-input" id="phoneNumber" name="phoneNumber" placeholder="Phone number" ng-model="vm.registerAccount.phoneNumber" ng-pattern="vm.PHONE_PATTERN" ng-maxlength="25">
+                    <input type="text" class="profile-input" id="phoneNumber" name="phoneNumber" placeholder="Phone number" ng-model="vm.registerAccount.phoneNumber" ng-pattern="vm.PHONE_PATTERN" ng-maxlength="50">
                     <div ng-show="form2.phoneNumber.$dirty && form2.phoneNumber.$invalid">
                         <p class="help-block"
                            ng-show="form2.phoneNumber.$error.pattern">

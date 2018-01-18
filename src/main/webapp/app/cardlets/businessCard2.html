@@ -61,7 +61,7 @@
                     'font-style': tabName.phone.italic ? 'italic' : 'normal',
                     'text-decoration': tabName.phone.underline ? 'underline' : 'normal'}"
                          style="max-height: 25px;">
-                        {{tabName.phone.value}}
+                        {{tabName.phone.value | cut:false:25:'...'}}
                     </div>
                 </div>
                 <div class="user-contacts-div-3 margin-top-10" ng-show="tabName.address.value">
