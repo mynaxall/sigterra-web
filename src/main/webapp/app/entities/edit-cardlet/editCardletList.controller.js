@@ -939,6 +939,8 @@
                 $http.post("/api/editCardlet", $scope.tabNames)
                     .success(function (data, status, headers, config) {
                         $location.path('/user-cardlets')
+                    }).error(function (response) {
+                        $scope.disableSaveBtn = false;
                     });
             }
         }
