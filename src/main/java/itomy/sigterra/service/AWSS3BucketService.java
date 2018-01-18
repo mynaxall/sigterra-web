@@ -5,6 +5,7 @@ import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.S3ClientOptions;
 import com.amazonaws.services.s3.model.*;
 import itomy.sigterra.config.JHipsterProperties;
 import itomy.sigterra.domain.User;
@@ -31,12 +32,13 @@ import java.net.URL;
 @Service
 @Transactional
 public class AWSS3BucketService {
-    protected static AmazonS3 s3Client = null;
-    private final Logger log = LoggerFactory.getLogger(AWSS3BucketService.class);
+    public static final String   USER_PROFILE_ICON = "user_profile_icon_";
+    protected static    AmazonS3 s3Client          = null;
+    private final       Logger   log               = LoggerFactory.getLogger(AWSS3BucketService.class);
     @Inject
-    private UserService userService;
+    private UserService        userService;
     @Inject
-    private UserRepository userRepository;
+    private UserRepository     userRepository;
     @Inject
     private JHipsterProperties hipsterProperties;
 
@@ -47,6 +49,7 @@ public class AWSS3BucketService {
             s3Client = new AmazonS3Client(new PropertiesCredentials(resource.getFile()));
             Region usRegion = Region.getRegion(Regions.fromName(hipsterProperties.getAwss3Bucket().getRegion()));
             s3Client.setRegion(usRegion);
+            s3Client.setS3ClientOptions(S3ClientOptions.builder().setAccelerateModeEnabled(true).build());
         } catch (IOException e) {
             log.error("Unable to initialize the AWS S3 Bucket Service");
         }
@@ -60,12 +63,13 @@ public class AWSS3BucketService {
                 User user = userService.getUserWithAuthorities();
 
                 String imageUrl = user.getImageUrl();
-                if(StringUtils.isNotBlank(imageUrl)) {
+                String folderPath = "accounts/" + user.getId() + "/";
+                if (StringUtils.isNotBlank(imageUrl)) {
                     String imageKey = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
-                    s3Client.deleteObject(new DeleteObjectRequest(bucketName+"/accounts/"+user.getId(), imageKey));
+                    s3Client.deleteObject(new DeleteObjectRequest(bucketName, folderPath + imageKey));
                 }
 
-                String name = "user_profile_icon_" + user.getId();
+                String name = USER_PROFILE_ICON + user.getId();
                 String originalFilename = file.getOriginalFilename();
                 if (originalFilename.contains(".")) {
                     name += originalFilename.substring(originalFilename.lastIndexOf("."));
@@ -74,19 +78,24 @@ public class AWSS3BucketService {
                 ObjectMetadata metadata = new ObjectMetadata();
                 metadata.setContentType(file.getContentType());
                 metadata.setContentLength(file.getSize());
-                PutObjectRequest putObject = new PutObjectRequest(bucketName+"/accounts/"+user.getId(), name, file.getInputStream(), metadata);
+                String fileKey = folderPath + name;
+                PutObjectRequest putObject = new PutObjectRequest(bucketName, fileKey, file.getInputStream(), metadata);
                 putObject.withCannedAcl(CannedAccessControlList.PublicRead);
+
                 s3Client.putObject(putObject);
-                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName+"/accounts/"+user.getId(), name);
+
+                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName, fileKey);
                 URL url = s3Client.generatePresignedUrl(urlRequest);
-                uri = new URI(url.toURI().getScheme(), url.toURI().getAuthority(), url.toURI()
-                                                                                      .getPath(), null, url.toURI()
-                                                                                                           .getFragment());
+                uri = new URI(url.toURI().getScheme(),
+                              url.toURI().getAuthority(),
+                              url.toURI().getPath(),
+                              null,
+                              url.toURI().getFragment());
 
 
                 uri = URI.create(uri.toString() + '?' + System.currentTimeMillis());
                 user.setImageUrl(uri.toString());
-                log.info(uri.toString());
+                log.debug("Uploaded profile image to AWS S3 Bucket has URL: {}", uri.toString());
                 userRepository.save(user);
             } catch (Exception e) {
                 log.error("Error occurred while uploading the profile icon file", e);
@@ -102,13 +111,12 @@ public class AWSS3BucketService {
                 String bucketName = hipsterProperties.getAwss3Bucket().getName();
                 User user = userService.getUserWithAuthorities();
 
-
-                if(StringUtils.isNotBlank(id)) {
-
-                    s3Client.deleteObject(new DeleteObjectRequest(bucketName+"/bussinessCardTab/"+user.getId(), id));
+                String folderPath = "bussinessCardTab/" + user.getId() + "/";
+                if (StringUtils.isNotBlank(id)) {
+                    s3Client.deleteObject(new DeleteObjectRequest(bucketName, folderPath + id));
                 }
 
-                String name = "user_profile_icon_" + user.getId() + "_" + System.currentTimeMillis();
+                String name = USER_PROFILE_ICON + user.getId() + "_" + System.currentTimeMillis();
                 String originalFilename = file.getOriginalFilename();
                 if (originalFilename.contains(".")) {
                     name += originalFilename.substring(originalFilename.lastIndexOf("."));
@@ -117,15 +125,20 @@ public class AWSS3BucketService {
                 ObjectMetadata metadata = new ObjectMetadata();
                 metadata.setContentType(file.getContentType());
                 metadata.setContentLength(file.getSize());
-                PutObjectRequest putObject = new PutObjectRequest(bucketName+"/bussinessCardTab/"+user.getId(), name, file.getInputStream(), metadata);
+                String fileKey = folderPath + name;
+                PutObjectRequest putObject = new PutObjectRequest(bucketName, fileKey, file.getInputStream(), metadata);
                 putObject.withCannedAcl(CannedAccessControlList.PublicRead);
-                s3Client.putObject(putObject);
-                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName+"/bussinessCardTab/"+user.getId(), name);
-                URL url = s3Client.generatePresignedUrl(urlRequest);
-                uri = new URI(url.toURI().getScheme(), url.toURI().getAuthority(), url.toURI()
-                    .getPath(), null, url.toURI()
-                    .getFragment());
 
+                s3Client.putObject(putObject);
+
+                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName, fileKey);
+                URL url = s3Client.generatePresignedUrl(urlRequest);
+                uri = new URI(url.toURI().getScheme(),
+                              url.toURI().getAuthority(),
+                              url.toURI().getPath(),
+                              null,
+                              url.toURI().getFragment());
+                log.debug("Uploaded business image to AWS S3 Bucket has URL: {}", uri.toString());
             } catch (Exception e) {
                 log.error("Error occurred while uploading the profile icon file", e);
             }
@@ -133,20 +146,18 @@ public class AWSS3BucketService {
         return uri;
     }
 
-    public URI uploadSignatureImage(MultipartFile file, String cardletId, String fileName) {
+    public URI uploadSignatureImage(MultipartFile file, String cardletId, String name) {
         URI uri = null;
         if (file != null && !file.isEmpty()) {
             try {
                 String bucketName = hipsterProperties.getAwss3Bucket().getName();
                 User user = userService.getUserWithAuthorities();
 
-
-                if(StringUtils.isNotBlank(cardletId)) {
-
-                    s3Client.deleteObject(new DeleteObjectRequest(bucketName+"/signature/"+user.getId()+"/"+cardletId, fileName));
+                String folderPath = "signature/" + user.getId() + "/" + cardletId + "/";
+                if (StringUtils.isNotBlank(cardletId)) {
+                    s3Client.deleteObject(new DeleteObjectRequest(bucketName, folderPath + name));
                 }
 
-                String name = fileName;
                 String originalFilename = file.getOriginalFilename();
                 if (originalFilename.contains(".")) {
                     name += originalFilename.substring(originalFilename.lastIndexOf("."));
@@ -155,17 +166,22 @@ public class AWSS3BucketService {
                 ObjectMetadata metadata = new ObjectMetadata();
                 metadata.setContentType(file.getContentType());
                 metadata.setContentLength(file.getSize());
-                PutObjectRequest putObject = new PutObjectRequest(bucketName+"/signature/"+user.getId()+"/"+cardletId, name, file.getInputStream(), metadata);
+                String fileKey = folderPath + name;
+                PutObjectRequest putObject = new PutObjectRequest(bucketName, fileKey, file.getInputStream(), metadata);
                 putObject.withCannedAcl(CannedAccessControlList.PublicRead);
+
                 s3Client.putObject(putObject);
-                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName+"/signature/"+user.getId()+"/"+cardletId, name);
+
+                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName, fileKey);
                 URL url = s3Client.generatePresignedUrl(urlRequest);
-                uri = new URI(url.toURI().getScheme(), url.toURI().getAuthority(), url.toURI()
-                    .getPath(), null, url.toURI()
-                    .getFragment());
+                uri = new URI(url.toURI().getScheme(),
+                              url.toURI().getAuthority(),
+                              url.toURI().getPath(),
+                              null,
+                              url.toURI().getFragment());
 
                 uri = URI.create(uri.toString() + '?' + System.currentTimeMillis());
-
+                log.debug("Uploaded signature image to AWS S3 Bucket has URL: {}", uri.toString());
             } catch (Exception e) {
                 log.error("Error occurred while uploading the profile icon file", e);
             }
