@@ -4,21 +4,48 @@
         <title th:text="#{email.activation.title}">JHipster activation</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
-    <body>
-        <p th:text="#{email.activation.greeting(${user.login})}">
-            Dear
-        </p>
-        <p th:text="#{email.activation.text1}">
-            Welcome to Sigterra! We are glad to have you as our new client. We are truly thankful that you have chosen Sigterra. We make sure that you get only the best and most reliable service available.
-        </p>
-        <p th:text="#{email.activation.text2}">
-            Please press this link to confirm your e-mail:
-        </p>
-        <p>
-            <a th:href="@{|${baseUrl}/#/activate?key=${user.activationKey}|}">Click here to activate</a>
-        </p>
-        <p>
-            <span th:text="#{email.activation.text3}">Thank you again for your choice of Sigterra. We look forward to a long and successful association.</span>
-        </p>
+    <body style="max-width:600px; font-size: 15pt; color: #000000!important; margin: 0px; border: 1px solid #E7E7E7">
+        <header style="height:80px; text-align: center; background-color: #242424;">
+            <img style="width: 147px;margin-top: 17px;" th:src="@{|${baseUrl}/logo_header.png|}"/>
+        </header>
+        <div style="padding: 50px 50px 50px 50px">
+            <div style="margin: 50px auto; text-align: center"><img th:src="@{|${baseUrl}/content/images/email/email-logo.png|}" alt="" style="width: 130px"/></div>
+
+            <p style="font-weight: bold">
+                Welcome to Sigterra!
+            </p>
+
+            <p>
+                You are now one step closer to turning your email signature
+                into a sophisticated marketing machine.
+                We are excited to help you build your first Sigterra profile.
+            </p>
+            <p style="font-weight: bold">
+                Please press the link below to confirm your e-mail:
+            </p>
+            <p>
+                <a style="background-color: #13BCB5; padding: 12px 154px; border-radius: 3px; color: #ffffff" th:href="@{|${baseUrl}/#/activate?key=${user.activationKey}|}">Click here to activate</a>
+            </p>
+            <p>
+                For any questions or suggestions, please do not hesitate
+                to reach out to us at info@sigterra.com
+            </p>
+            <hr style="display: block;height: 1px;border: 0;border-top: 1px solid #D0D8D9;margin: 31px 0; padding: 0; "/>
+
+            <p style="font-weight: bold">
+                Thank You,<br/>
+                Team@Sigterra
+            </p>
+        </div>
+        <div>
+        <hr style="display: block;height: 1px;border: 0;border-top: 1px solid #D0D8D9;margin: 0; padding: 0; "/>
+        <div style="display: flex;flex-direction: row;flex-wrap: nowrap;justify-content: space-between;align-items: center;align-content: center;padding: 50px">
+            <div><b>Signature Marketing</b>, reinvented turn<br/>
+                your email traffic into engaged leads</div>
+            <div>
+                <img style="width: 103px;" th:src="@{|${baseUrl}/footer-logo.png|}"/>
+            </div>
+        </div>
+        </div>
     </body>
 </html>
