@@ -67,7 +67,7 @@
                             <div class="pre-description-second" ng-style="{'font-family': tabName.phone.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.phone.italic ? 'italic' : 'normal',
                         'text-decoration': tabName.phone.underline ? 'underline' : 'normal'}">
-                                {{tabName.phone.value}}
+                                {{tabName.phone.value | cut:false:30:'...'}}
                             </div>
                         </div>
                         <div class="user-contacts-div-3 margin-top-5" ng-show="tabName.userEmail.value">
