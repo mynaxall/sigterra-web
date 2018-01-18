@@ -185,14 +185,14 @@
                             </div>
                             <div>
                                 <div style="width: 462px; height:265px;position: relative; margin: 0 auto">
-                                    <div class="landing-tab-1"></div>
-                                    <div class="landing-tab-2"></div>
-                                    <div class="landing-tab-3"></div>
-                                    <div class="landing-tab-4"></div>
-                                    <img class="landing-img-1" src="/content/images/landing/Card1.png">
-                                    <img class="landing-img-2" src="/content/images/landing/Card2.png">
-                                    <img class="landing-img-3" src="/content/images/landing/Card3.png">
-                                    <img class="landing-img-4" src="/content/images/landing/Card4.png">
+                                    <div class="landing-tab-1 " ng-click="vm.activateTab('landing-img-1')"></div>
+                                    <div class="landing-tab-2" ng-click="vm.activateTab('landing-img-2')"></div>
+                                    <div class="landing-tab-3" ng-click="vm.activateTab('landing-img-3')"></div>
+                                    <div class="landing-tab-4" ng-click="vm.activateTab('landing-img-4')"></div>
+                                    <img id="landing-img-1" class="landing-img activeLandingTab" src="/content/images/landing/Card1.png">
+                                    <img id="landing-img-2"  class="landing-img" src="/content/images/landing/Card2.png">
+                                    <img id="landing-img-3"  class="landing-img" src="/content/images/landing/Card3.png">
+                                    <img id="landing-img-4"  class="landing-img" src="/content/images/landing/Card4.png">
                                 </div>
                             </div>
                         </div>
@@ -221,7 +221,20 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div style="margin-top: 30px"><img src="/content/images/landing/business-card_01.png"></div>
+                        <div style="margin-top: 30px">
+                            <div>
+                                <div style="width: 462px; height:265px;position: relative; margin: 0 auto">
+                                    <div class="landing-tab-1 " ng-click="vm.activateTabMobile('landing-img-5')"></div>
+                                    <div class="landing-tab-2" ng-click="vm.activateTabMobile('landing-img-6')"></div>
+                                    <div class="landing-tab-3" ng-click="vm.activateTabMobile('landing-img-7')"></div>
+                                    <div class="landing-tab-4" ng-click="vm.activateTabMobile('landing-img-8')"></div>
+                                    <img id="landing-img-5" class="landing-img activeLandingTab" src="/content/images/landing/Card1.png">
+                                    <img id="landing-img-6"  class="landing-img" src="/content/images/landing/Card2.png">
+                                    <img id="landing-img-7"  class="landing-img" src="/content/images/landing/Card3.png">
+                                    <img id="landing-img-8"  class="landing-img" src="/content/images/landing/Card4.png">
+                                </div>
+                            </div>
+                        </div>
                         <div class="landing-text" style="text-align: justify; width: 429px; margin: 18px auto 0">
                             <p>Meet Joe Black. He’s a successful account exec, who sends over 25K emails/year .​
                                 Every email is an opportunity for him to sell, advertise and promote his products and
