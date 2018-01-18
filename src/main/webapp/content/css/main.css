@@ -1496,6 +1496,11 @@ Social Buttons
     text-align: left;
 }
 
+.copy-zone-link{
+    max-width: 400px;
+}
+
+
 .copy-zone-bottom-text{
     color: #a94442;
     font-size: 20px;
