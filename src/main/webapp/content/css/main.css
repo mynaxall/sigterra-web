@@ -5840,13 +5840,20 @@ recent-activity-sidebar .icon-read {
 
 @media (max-width: 1000px) {
     .landing-first-panel-container{
-        text-align: center;
+        text-align: justify;
+
+    }
+    .landing-first-panel-col{
+        margin: 0 auto;
+        max-width: 600px;
     }
 
     .how-it-works-description.header-block{
         width: 100%;
     }
 }
+
+
 
 .landing-tab-1{
     position: absolute;
