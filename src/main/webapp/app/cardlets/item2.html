@@ -10,18 +10,30 @@
                             <div class="second-item-img" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
                             <img crossorigin="anonymous" id="ing-1" class="item-images-second " ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}">
                             <a href="{{slide.link}}" target="_blank" ng-show="slide.link && showLink">
-                                <img crossorigin="anonymous" id="ing-1" class="item-images " ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
+                                <img crossorigin="anonymous" id="ing-1" class="item-images-second " ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
                             </a>
                             </div>
                         </div>
-                        <div class="carousel-item-name-div-first item-carousel-name" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                    'font-style': slide.name.italic ? 'italic' : 'normal',
-                    'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">{{slide.name.value}}</div>
-                        <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="slide.description.value"
-                             ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                    'font-style': slide.description.italic ? 'italic' : 'normal',
-                    'text-decoration': slide.description.underline ? 'underline' : 'normal'}"
-                             data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</div>
+                        <a href="{{slide.link}}" target="_blank" ng-show="slide.link && showLink" class="carousel-text-link">
+                            <div class="carousel-item-name-div-first item-carousel-name" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                        'font-style': slide.name.italic ? 'italic' : 'normal',
+                        'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">{{slide.name.value}}</div>
+                            <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="slide.description.value"
+                                 ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                        'font-style': slide.description.italic ? 'italic' : 'normal',
+                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}"
+                                 data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</div>
+                        </a>
+                        <div ng-hide="slide.link && showLink">
+                            <div class="carousel-item-name-div-first item-carousel-name" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                        'font-style': slide.name.italic ? 'italic' : 'normal',
+                        'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">{{slide.name.value}}</div>
+                            <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="slide.description.value"
+                                 ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                        'font-style': slide.description.italic ? 'italic' : 'normal',
+                        'text-decoration': slide.description.underline ? 'underline' : 'normal'}"
+                                 data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</div>
+                        </div>
                     </div>
                 </div>
 
@@ -46,11 +58,21 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="carousel-item-name-div-first item-carousel-name" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular','font-style': slide.name.italic ? 'italic' : 'normal','text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">{{slide.name.value}}</div>
-                                <div ng-show="slide.description.value" class="carousel-item-name-div-first carousel-item-deskript-div"
-                                     ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                        'font-style': slide.description.italic ? 'italic' : 'normal',
-                        'text-decoration': slide.description.underline ? 'underline' : 'normal' ,}" data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</div>
+                                <a href="{{slide.link}}" target="_blank" ng-show="slide.link && showLink"  class="carousel-text-link">
+                                    <div class="carousel-item-name-div-first item-carousel-name" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular','font-style': slide.name.italic ? 'italic' : 'normal','text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">{{slide.name.value}}</div>
+                                    <div ng-show="slide.description.value" class="carousel-item-name-div-first carousel-item-deskript-div"
+                                         ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                            'font-style': slide.description.italic ? 'italic' : 'normal',
+                            'text-decoration': slide.description.underline ? 'underline' : 'normal' ,}" data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</div>
+
+                                </a>
+                                <div ng-hide="slide.link && showLink">
+                                    <div class="carousel-item-name-div-first item-carousel-name" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular','font-style': slide.name.italic ? 'italic' : 'normal','text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">{{slide.name.value}}</div>
+                                    <div ng-show="slide.description.value" class="carousel-item-name-div-first carousel-item-deskript-div"
+                                         ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                            'font-style': slide.description.italic ? 'italic' : 'normal',
+                            'text-decoration': slide.description.underline ? 'underline' : 'normal' ,}" data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</div>
+                                </div>
                             </div>
 
                             <div class="carousel-item-div" ng-show="tabName.items.length >$index+1" style="width: 234px"
@@ -63,13 +85,25 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="carousel-item-name-div-first item-carousel-name"
-                                     ng-style="{'font-family': tabName.items[$index+1].name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                                'font-style': tabName.items[$index+1].name.italic ? 'italic' : 'normal',
-                                'text-decoration': tabName.items[$index+1].name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">{{tabName.items[$index+1].name.value}}</div>
-                                                         <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="tabName.items[$index+1].description.value" ng-style="{'font-family': tabName.items[$index+1].description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                                'font-style': tabName.items[$index+1].description.italic ? 'italic' : 'normal',
-                                'text-decoration': tabName.items[$index+1].description.underline ? 'underline' : 'normal'}" data-ng-bind="tabName.items[$index+1].description.value" data-ellipsis>{{tabName.items[$index+1].description.value}}</div>
+                                <a href="{{tabName.items[$index+1].link}}" target="_blank" ng-show="tabName.items[$index+1].link && showLink"  class="carousel-text-link">
+                                    <div class="carousel-item-name-div-first item-carousel-name"
+                                         ng-style="{'font-family': tabName.items[$index+1].name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                                    'font-style': tabName.items[$index+1].name.italic ? 'italic' : 'normal',
+                                    'text-decoration': tabName.items[$index+1].name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">{{tabName.items[$index+1].name.value}}</div>
+                                    <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="tabName.items[$index+1].description.value" ng-style="{'font-family': tabName.items[$index+1].description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                                    'font-style': tabName.items[$index+1].description.italic ? 'italic' : 'normal',
+                                      'text-decoration': tabName.items[$index+1].description.underline ? 'underline' : 'normal'}" data-ng-bind="tabName.items[$index+1].description.value" data-ellipsis>{{tabName.items[$index+1].description.value}}</div>
+
+                                </a>
+                                <div ng-hide="tabName.items[$index+1].link && showLink">
+                                    <div class="carousel-item-name-div-first item-carousel-name"
+                                         ng-style="{'font-family': tabName.items[$index+1].name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                                    'font-style': tabName.items[$index+1].name.italic ? 'italic' : 'normal',
+                                    'text-decoration': tabName.items[$index+1].name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">{{tabName.items[$index+1].name.value}}</div>
+                                    <div class="carousel-item-name-div-first carousel-item-deskript-div" ng-show="tabName.items[$index+1].description.value" ng-style="{'font-family': tabName.items[$index+1].description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                                    'font-style': tabName.items[$index+1].description.italic ? 'italic' : 'normal',
+                                      'text-decoration': tabName.items[$index+1].description.underline ? 'underline' : 'normal'}" data-ng-bind="tabName.items[$index+1].description.value" data-ellipsis>{{tabName.items[$index+1].description.value}}</div>
+                                </div>
                             </div>
                             <div class="carousel-item-div" ng-show="tabName.items.length-1 === $index && tabName.items.length > 2" style="width: 234px"
                                 ng-click="readsCounter($event, tabName.id, tabName.items[0].id)">
@@ -81,14 +115,27 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="carousel-item-name-div-first item-carousel-name"
-                                     ng-style="{'font-family': tabName.items[0].name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                        'font-style': tabName.items[0].name.italic ? 'italic' : 'normal',
-                        'text-decoration': tabName.items[0].name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">{{tabName.items[0].name.value}}</div>
-                                <div ng-show="tabName.items[0].description.value" class="carousel-item-name-div-first carousel-item-deskript-div"
-                                     ng-style="{'font-family': tabName.items[0].description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                        'font-style': tabName.items[0].description.italic ? 'italic' : 'normal',
-                        'text-decoration': tabName.items[0].description.underline ? 'underline' : 'normal'}"  data-ng-bind="tabName.items[0].description.value" data-ellipsis>{{tabName.items[0].description.value}}</div>
+                                <a href="{{tabName.items[0].link}}" target="_blank" ng-show="tabName.items[0].link && showLink" class="carousel-text-link">
+                                    <div class="carousel-item-name-div-first item-carousel-name"
+                                         ng-style="{'font-family': tabName.items[0].name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                            'font-style': tabName.items[0].name.italic ? 'italic' : 'normal',
+                            'text-decoration': tabName.items[0].name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">{{tabName.items[0].name.value}}</div>
+                                    <div ng-show="tabName.items[0].description.value" class="carousel-item-name-div-first carousel-item-deskript-div"
+                                         ng-style="{'font-family': tabName.items[0].description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                            'font-style': tabName.items[0].description.italic ? 'italic' : 'normal',
+                            'text-decoration': tabName.items[0].description.underline ? 'underline' : 'normal'}"  data-ng-bind="tabName.items[0].description.value" data-ellipsis>{{tabName.items[0].description.value}}</div>
+                                </a>
+                                <div  ng-hide="tabName.items[0].link && showLink">
+                                    <div class="carousel-item-name-div-first item-carousel-name"
+                                         ng-style="{'font-family': tabName.items[0].name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                            'font-style': tabName.items[0].name.italic ? 'italic' : 'normal',
+                            'text-decoration': tabName.items[0].name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}">{{tabName.items[0].name.value}}</div>
+                                    <div ng-show="tabName.items[0].description.value" class="carousel-item-name-div-first carousel-item-deskript-div"
+                                         ng-style="{'font-family': tabName.items[0].description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                            'font-style': tabName.items[0].description.italic ? 'italic' : 'normal',
+                            'text-decoration': tabName.items[0].description.underline ? 'underline' : 'normal'}"  data-ng-bind="tabName.items[0].description.value" data-ellipsis>{{tabName.items[0].description.value}}</div>
+
+                                </div>
                             </div>
                     </div>
                 </div>
