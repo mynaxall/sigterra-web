@@ -55,7 +55,7 @@
         $scope.dataFetching = false;
         vm.PHONE_PATTERN = new RegExp(PHONE_PATTERN);
         vm.toolbarOptions = angular.fromJson(TOOLBAR_OPTIONS);
-
+        vm.showExctractButton = false;
 
 
         var handleFileSelect=function(evt) {
