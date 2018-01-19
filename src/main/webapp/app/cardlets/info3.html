@@ -5,10 +5,18 @@
                 <div class="main-carousel-image-div-info-3">
                     <div  ng-repeat="slide in tabName.items"  class="main-carousel-info-div-new-3" style="margin-top: 10px">
                         <div  style="margin-top: 10px">
-                            <pre class="carousel-info-name-div-new-3 carousel-item-name-div" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                            'font-style': slide.name.italic ? 'italic' : 'normal',
-                            'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
-                            <div class="text-editor-displaying-third" ta-bind ng-model="slide.description.value"></div>
+                            <a href="{{slide.link}}" target="_blank" ng-show="slide.link && showLink" class="carousel-text-link">
+                                <pre class="carousel-info-name-div-new-3 carousel-item-name-div" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                                'font-style': slide.name.italic ? 'italic' : 'normal',
+                                'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
+                                <div class="text-editor-displaying-third" ta-bind ng-model="slide.description.value"></div>
+                            </a>
+                            <div ng-hide="slide.link && showLink">
+                                <pre class="carousel-info-name-div-new-3 carousel-item-name-div" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                                'font-style': slide.name.italic ? 'italic' : 'normal',
+                                'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
+                                <div class="text-editor-displaying-third" ta-bind ng-model="slide.description.value"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -25,10 +33,18 @@
 
                         <div  class="carousel-info-div-new-3">
                             <div  style="margin-top: 10px">
-                                <pre class="carousel-info-name-div-new-3 carousel-item-name-div" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                            'font-style': slide.name.italic ? 'italic' : 'normal',
-                            'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
-                                <div class="text-editor-displaying-third" ta-bind ng-model="slide.description.value"></div>
+                                <a href="{{slide.link}}" target="_blank" ng-show="slide.link && showLink" class="carousel-text-link">
+                                    <pre class="carousel-info-name-div-new-3 carousel-item-name-div" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                                'font-style': slide.name.italic ? 'italic' : 'normal',
+                                'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
+                                    <div class="text-editor-displaying-third" ta-bind ng-model="slide.description.value"></div>
+                                </a>
+                                <div ng-hide="slide.link && showLink">
+                                    <pre class="carousel-info-name-div-new-3 carousel-item-name-div" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                                'font-style': slide.name.italic ? 'italic' : 'normal',
+                                'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
+                                    <div class="text-editor-displaying-third" ta-bind ng-model="slide.description.value"></div>
+                                </div>
                             </div>
                         </div>
 

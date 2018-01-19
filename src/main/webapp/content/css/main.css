@@ -5854,6 +5854,7 @@ recent-activity-sidebar .icon-read {
 }
 
 
+
 .landing-tab-1{
     position: absolute;
     top: 5px;
@@ -5959,6 +5960,14 @@ recent-activity-sidebar .icon-read {
     width: 100%;
     height: 150px;
     max-width: 500px
+}
+
+.carousel-text-link{
+    color: inherit!important;
+}
+
+.carousel-text-link:hover{
+    text-decoration: none;
 }
 
 
