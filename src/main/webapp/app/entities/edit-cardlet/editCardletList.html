@@ -325,7 +325,7 @@
                                                 <div class="editor-item-inputs-panel">
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
-                                                            <input type="text" class="input-new-editor" id="itemName3{{slide.index}}-{{tabName.position}}" placeholder="Name" ng-model="slide.name.value" maxlength="16">
+                                                            <input type="text" class="input-new-editor" id="itemName3{{slide.index}}-{{tabName.position}}" placeholder="Name" ng-model="slide.name.value" maxlength="40">
                                                             <label for="itemName3{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
@@ -338,7 +338,7 @@
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
                                                             <input ng-hide="true" type="text" class="input-new-editor" placeholder="Description"  ng-model="slide.description.value">
-                                                            <textarea id="description2{{slide.index}}-{{tabName.position}}" class="textarea-new-editor" msd-elastic placeholder="Description"  ng-model="slide.description.value" maxlength="150" ></textarea>
+                                                            <textarea id="description2{{slide.index}}-{{tabName.position}}" class="textarea-new-editor" msd-elastic placeholder="Description"  ng-model="slide.description.value" maxlength="200" ></textarea>
                                                             <label for="description2{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
@@ -351,7 +351,7 @@
                                                     <form name="myItemForm">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
-                                                                <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription2{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
+                                                                <input type="text" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription2{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                 <label for="itemDescription2{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div class="text-decoration-div-editor">
@@ -395,7 +395,7 @@
                                                     <div class="editor-item-inputs-panel">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
-                                                                <input type="text" class="input-new-editor" id="itemName1{{slide.index}}-{{tabName.position}}" placeholder="Name" ng-model="slide.name.value" maxlength="16">
+                                                                <input type="text" class="input-new-editor" id="itemName1{{slide.index}}-{{tabName.position}}" placeholder="Name" ng-model="slide.name.value" maxlength="40">
                                                                 <label for="itemName1{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div class="text-decoration-div-editor" >
@@ -408,7 +408,7 @@
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
                                                                 <input ng-hide="true" type="text" class="input-new-editor" placeholder="Description" ng-model="slide.description.value">
-                                                                <textarea id="description2{{slide.index}}-{{tabName.position}}" class="textarea-new-editor" msd-elastic placeholder="Description"  ng-model="slide.description.value" maxlength="150" ></textarea>
+                                                                <textarea id="description2{{slide.index}}-{{tabName.position}}" class="textarea-new-editor" msd-elastic placeholder="Description"  ng-model="slide.description.value" maxlength="200" ></textarea>
                                                                 <label for="description2{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div class="text-decoration-div-editor" >
@@ -421,7 +421,7 @@
                                                         <form name="myItemForm">
                                                             <div class="form-group form-group-editor clearfix">
                                                                 <div class="input-text-div input-text-div-editor">
-                                                                    <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription4{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
+                                                                    <input type="text" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription4{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                     <label for="itemDescription4{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                                 </div>
                                                                 <div class="text-decoration-div-editor">
@@ -685,7 +685,7 @@
                                                     <div class="form-group form-group-editor clearfix">
                                                         <div class="input-text-div input-text-div-editor">
                                                             <input ng-hide="true" type="text" class="input-new"  placeholder="Name" ng-model="slide.name.value">
-                                                            <textarea msd-elastic class="textarea-new-editor textarea-text-item" id="infoName1{{slide.index}}-{{tabName.position}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
+                                                            <textarea msd-elastic class="textarea-new-editor textarea-text-item" id="infoName1{{slide.index}}-{{tabName.position}}" placeholder="Name" ng-model="slide.name.value" maxlength="100"></textarea>
                                                             <label for="infoName1{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                         </div>
                                                         <div class="text-decoration-div-editor" >
@@ -703,7 +703,7 @@
                                                     <form name="myItemForm">
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor" style="width: 370px">
-                                                                <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription3{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
+                                                                <input type="text" class="input-new-editor" maxlength="300" name="itemLink" id="itemDescription3{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                 <label for="itemDescription3{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                             </div>
                                                             <div class="text-decoration-div-editor">
@@ -746,7 +746,7 @@
                                                         <div class="form-group form-group-editor clearfix">
                                                             <div class="input-text-div input-text-div-editor">
                                                                 <input ng-hide="true" type="text" class="input-new"  placeholder="Name" ng-model="slide.name.value">
-                                                                <textarea class="textarea-new-editor textarea-text-item" msd-elastic id="itemName2{{slide.index}}-{{tabName.position}}" placeholder="Name" ng-model="slide.name.value" maxlength="50"></textarea>
+                                                                <textarea class="textarea-new-editor textarea-text-item" msd-elastic id="itemName2{{slide.index}}-{{tabName.position}}" placeholder="Name" ng-model="slide.name.value" maxlength="100"></textarea>
                                                                 <label  id="itemName2{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
 
                                                             </div>
@@ -765,7 +765,7 @@
                                                         <form name="myItemForm">
                                                             <div class="form-group form-group-editor clearfix">
                                                                 <div class="input-text-div input-text-div-editor" style="width: 370px">
-                                                                    <input type="text" ng-pattern="/^(http|https):///" class="input-new-editor" name="itemLink" maxlength="300" id="itemDescription1{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
+                                                                    <input type="text" class="input-new-editor" name="itemLink" maxlength="300" id="itemDescription1{{slide.index}}-{{tabName.position}}" placeholder="Link" ng-model="slide.link">
                                                                     <label for="itemDescription1{{slide.index}}-{{tabName.position}}" class="editable-inputs"><img src="/content/images/new/pencil_inputfields.png"></label>
                                                                 </div>
                                                                 <div class="text-decoration-div-editor">
@@ -966,7 +966,7 @@
                 <form name="myForm" class="input-padding">
                     <div class="form-group clearfix">
                         <div class="input-text-div input-text-div-editor">
-                            <input ng-change="noSocialChanges = true" type="text" ng-pattern="/^(http|https):///" class="input-new-editor input-new-editor-social" placeholder="Twitter" id="twitter" name="twitter" ng-model="socialLinks.twitter">
+                            <input ng-change="noSocialChanges = true" type="text" class="input-new-editor input-new-editor-social" placeholder="Twitter" id="twitter" name="twitter" ng-model="socialLinks.twitter">
                             <div ng-show="myForm.twitter.$dirty && myForm.twitter.$invalid">
                                 <p class="help-block has-error-new"
                                    ng-show="myForm.twitter.$error.pattern">
@@ -982,7 +982,7 @@
                     <div class="form-group clearfix">
 
                         <div class="input-text-div input-text-div-editor clearfix">
-                            <input ng-change="noSocialChanges = true" type="text" ng-pattern="/^(http|https):///" class="input-new-editor input-new-editor-social" id="facebook" placeholder="Facebook" name="facebook" ng-model="socialLinks.facebook">
+                            <input ng-change="noSocialChanges = true" type="text" class="input-new-editor input-new-editor-social" id="facebook" placeholder="Facebook" name="facebook" ng-model="socialLinks.facebook">
 
                             <div ng-show="myForm.facebook.$dirty && myForm.facebook.$invalid">
                                 <p class="help-block has-error-new"
@@ -999,7 +999,7 @@
                     <div class="form-group clearfix">
 
                         <div class="input-text-div input-text-div-editor">
-                            <input ng-change="noSocialChanges = true" type="text" ng-pattern="/^(http|https):///" class="input-new-editor input-new-editor-social" id="google" placeholder="Google" name="google" ng-model="socialLinks.google">
+                            <input ng-change="noSocialChanges = true" type="text" class="input-new-editor input-new-editor-social" id="google" placeholder="Google" name="google" ng-model="socialLinks.google">
                             <div ng-show="myForm.google.$dirty && myForm.google.$invalid">
                                 <p class="help-block has-error-new"
                                    ng-show="myForm.google.$error.pattern">
@@ -1015,7 +1015,7 @@
                     <div class="form-group clearfix">
 
                         <div class="input-text-div input-text-div-editor">
-                            <input ng-change="noSocialChanges = true"  type="text" ng-pattern="/^(http|https):///" class="input-new-editor input-new-editor-social" id="linkedin" placeholder="Linkedin" name="linkedin" ng-model="socialLinks.linkedin">
+                            <input ng-change="noSocialChanges = true"  type="text" class="input-new-editor input-new-editor-social" id="linkedin" placeholder="Linkedin" name="linkedin" ng-model="socialLinks.linkedin">
                             <div ng-show="myForm.linkedin.$dirty && myForm.linkedin.$invalid">
                                 <p class="help-block has-error-new"
                                    ng-show="myForm.linkedin.$error.pattern">

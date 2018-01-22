@@ -86,7 +86,7 @@
                                 <span class="icon icon-website icon-artboard-default svg-icon-size"
                                       ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                             </div>
-                            <a href="{{tabName.site.value}}" target="_blank" class="pre-description-second first-card-description carousel-text-link" ng-style="{'font-family': tabName.site.bold ?  'Roboto-Bold' : 'Roboto-Regular',
+                            <a href="{{tabName.site.value | link}}" target="_blank" class="pre-description-second first-card-description carousel-text-link" ng-style="{'font-family': tabName.site.bold ?  'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.site.italic ? 'italic' : 'normal',
                         'text-decoration': tabName.site.underline ? 'underline' : 'normal'}">
                                 {{tabName.site.value | cut:false:30:'...'}}
