@@ -27,6 +27,7 @@
                             'font-style': slide.description.italic ? 'italic' : 'normal',
                             'text-decoration': slide.description.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}"
                                      data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</pre>
+                            </a>
                                 <div ng-hide="slide.link && showLink">
                                     <div class="carousel-item-name-first-type" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': slide.name.italic ? 'italic' : 'normal',
@@ -37,7 +38,7 @@
                             'text-decoration': slide.description.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}"
                                          data-ng-bind="slide.description.value" data-ellipsis>{{slide.description.value}}</pre>
                                 </div>
-                            </a>
+
                         </div>
                     </div>
                 </div>
