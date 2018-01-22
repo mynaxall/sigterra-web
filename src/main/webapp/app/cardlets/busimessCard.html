@@ -86,11 +86,11 @@
                                 <span class="icon icon-website icon-artboard-default svg-icon-size"
                                       ng-style="{'color': '#'+tabName.layout.secondaryColor}"></span>
                             </div>
-                            <div class="pre-description-second first-card-description" ng-style="{'font-family': tabName.site.bold ?  'Roboto-Bold' : 'Roboto-Regular',
+                            <a href="{{tabName.site.value}}" target="_blank" class="pre-description-second first-card-description carousel-text-link" ng-style="{'font-family': tabName.site.bold ?  'Roboto-Bold' : 'Roboto-Regular',
                         'font-style': tabName.site.italic ? 'italic' : 'normal',
                         'text-decoration': tabName.site.underline ? 'underline' : 'normal'}">
                                 {{tabName.site.value | cut:false:30:'...'}}
-                            </div>
+                            </a>
                         </div>
                         <div class="user-contacts-div-3 margin-top-5" ng-show="tabName.address.value">
                             <div ng-style="{'margin-top': '10px','margin-bottom': '10px', 'border-color': '#'+tabName.layout.secondaryColor}"></div>
