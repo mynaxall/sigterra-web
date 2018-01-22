@@ -5970,6 +5970,10 @@ recent-activity-sidebar .icon-read {
     text-decoration: none;
 }
 
+.break-all{
+    word-break: break-all;
+}
+
 
 
 
