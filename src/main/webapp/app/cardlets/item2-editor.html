@@ -9,7 +9,7 @@
                         <div id="cf4a" class="second-item-img-main">
                             <div class="second-item-img" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
                                 <img crossorigin="anonymous" id="ing-1" class="item-images-second " ng-hide="slide.link" ng-src="{{slide.image}}?{{time}}">
-                                <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
+                                <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link">
                                     <img crossorigin="anonymous" id="ing-1" class="item-images-second " ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
                                 </a>
                             </div>
@@ -41,7 +41,7 @@
                                 <div id="cf4a" class="second-item-img-main">
                                     <div class="second-item-img" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
                                         <img crossorigin="anonymous" id="ing-1" class="item-images-second " ng-hide="slide.link" ng-src="{{slide.image}}?{{time}}">
-                                        <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
+                                        <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link">
                                             <img crossorigin="anonymous" id="ing-1" class="item-images-second" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
                                         </a>
                                     </div>
@@ -58,7 +58,7 @@
                                 <div id="cf4a" class="second-item-img-main">
                                     <div class="second-item-img" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
                                         <img crossorigin="anonymous" id="ing-1" class="item-images-second" ng-hide="tabName.items[$index+1].link" ng-src="{{tabName.items[$index+1].image}}?{{time}}">
-                                        <a href="{{tabName.items[$index+1].link}}" target="_blank" ng-show="tabName.items[$index+1].link">
+                                        <a href="{{tabName.items[$index+1].link | link}}" target="_blank" ng-show="tabName.items[$index+1].link">
                                             <img crossorigin="anonymous" id="ing-1" class="item-images-second" ng-show="tabName.items[$index+1].image" ng-src="{{tabName.items[$index+1].image}}?{{time}}">
                                         </a>
                                     </div>
@@ -76,7 +76,7 @@
                                 <div id="cf4a" class="second-item-img-main">
                                     <div class="second-item-img" ng-style="{'background-color': '#'+tabName.layout.mainColor}">
                                         <img crossorigin="anonymous" id="ing-1" class="item-images-second" ng-hide="tabName.items[0].link" ng-src="{{tabName.items[0].image}}?{{time}}">
-                                        <a href="{{tabName.items[0].link}}" target="_blank" ng-show="tabName.items[0].link">
+                                        <a href="{{tabName.items[0].link | link}}" target="_blank" ng-show="tabName.items[0].link">
                                             <img crossorigin="anonymous" id="ing-1" class="item-images-second" ng-show="tabName.items[0].image" ng-src="{{tabName.items[0].image}}?{{time}}">
                                         </a>
                                     </div>

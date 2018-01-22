@@ -16,7 +16,7 @@
                             <div class="info-tab-div">
                                 <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="!slide.link"
                                      ng-src="{{slide.image}}?{{time}}">
-                                <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
+                                <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link">
                                     <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="slide.image"
                                          ng-src="{{slide.image}}?{{time}}">
                                 </a>
@@ -50,7 +50,7 @@
                                 <div class="info-tab-div">
                                     <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="!slide.link"
                                          ng-src="{{slide.image}}?{{time}}">
-                                    <a href="{{slide.link}}" target="_blank" ng-show="slide.link">
+                                    <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link">
                                         <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="slide.image"
                                              ng-src="{{slide.image}}?{{time}}">
                                     </a>
