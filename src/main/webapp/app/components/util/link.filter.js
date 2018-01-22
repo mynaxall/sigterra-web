@@ -5,9 +5,13 @@
         .module('sigterraWebApp')
         .filter('link', function () {
             return function (value) {
-                if (!value || value.startsWith('http://' || value.startsWith('https://'))) return '';
-                return 'http://' + value;
-
+                if (!value) {
+                    return ''
+                } else if (value.startsWith('http://') || value.startsWith('https://')) {
+                    return value;
+                } else {
+                    return 'http://' + value;
+                }
             };
         });
 })();
