@@ -96,7 +96,7 @@ gulp.task('ngconstant:dev', function () {
             VERSION: util.parseVersion(),
             BUILD_VERSION: util.parseAppVersion(),
             DEBUG_INFO_ENABLED: true,
-            PHONE_PATTERN: '^[0-9()+-\\\\040]+$',
+            PHONE_PATTERN: '^[0-9()+-\\s]+$',
             TOOLBAR_OPTIONS: '[["bold","italics", "underline", "strikeThrough"], ["ul", "ol","undo", "redo", "clear"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"]]'
         },
         template: config.constantTemplate,
@@ -113,7 +113,7 @@ gulp.task('ngconstant:prod', function () {
             VERSION: util.parseVersion(),
             BUILD_VERSION: util.parseAppVersion(),
             DEBUG_INFO_ENABLED: false,
-            PHONE_PATTERN: '^[0-9()+-\\\\040]+$',
+            PHONE_PATTERN: '^[0-9()+-\\s]+$',
             TOOLBAR_OPTIONS: '[["bold","italics", "underline", "strikeThrough"], ["ul", "ol","undo", "redo", "clear"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"]]'
         },
         template: config.constantTemplate,
@@ -130,7 +130,7 @@ gulp.task('ngconstant:staging', function () {
             VERSION: util.parseVersion(),
             BUILD_VERSION: util.parseAppVersion(),
             DEBUG_INFO_ENABLED: false,
-            PHONE_PATTERN: '^[0-9()+-\\\\040]+$',
+            PHONE_PATTERN: '^[0-9()+-\\s]+$',
             TOOLBAR_OPTIONS: '[["bold","italics", "underline", "strikeThrough"], ["ul", "ol","undo", "redo", "clear"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"]]'
         },
         template: config.constantTemplate,
