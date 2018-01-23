@@ -1482,6 +1482,7 @@ Social Buttons
     -ms-user-select: text!important;
     user-select: text!important;
     line-height: 0%;
+    text-align: center;
 }
 
 .copy-zone-outer{
@@ -5999,7 +6000,6 @@ recent-activity-sidebar .icon-read {
     line-height: 1;
     max-height: 42px;
 }
-
 
 
 
