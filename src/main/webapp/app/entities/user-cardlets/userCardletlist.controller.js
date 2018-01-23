@@ -869,9 +869,9 @@
                         $scope.showCropDialog = false;
                         $scope.showCropDialogTabs = false;
                         if (name == "signature") {
-                            $scope.coptToEmailText = '<a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a>';
+                            $scope.coptToEmailText = '<a class="sigterra-link-block" href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:345px" src="' + $scope.croppedImageUrl + '"></a>';
                             if ($scope.isAddBanner == true) {
-                                $scope.coptToEmailText = '<div style="width: 430px;"><a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a><div><div style=\"text-transform: scale(0.59);\"><img style="text-transform: scale(0.59); width:430px" src="' + $scope.banner + '"></div></div>'
+                                $scope.coptToEmailText = '<div style="width: 430px;"><a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:345px" src="' + $scope.croppedImageUrl + '"></a><div><div style=\"text-transform: scale(0.59);\"><img style="text-transform: scale(0.59); width:430px" src="' + $scope.banner + '"></div></div>'
                                 $scope.isAddBanner = false;
                             }
                         } else if (name == "banner") {
