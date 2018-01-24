@@ -5689,6 +5689,7 @@ recent-activity-sidebar .icon-read {
 .item-images-3 {
     max-width: 153px;
     max-height: 153px;
+    margin: 0 auto;
 }
 
 .first-item-img-main{
