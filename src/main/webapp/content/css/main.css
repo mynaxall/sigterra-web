@@ -1500,6 +1500,7 @@ Social Buttons
     padding: 10px 20px;
     border-width: 1px;
     border-style: solid;
+    margin-top: 20px;
 }
 
 .copy-zone-top-text{
@@ -2639,7 +2640,10 @@ Social Buttons
     color: #595959;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 20px;
+}
+
+.copy-zone-outer-text-margin{
+    margin-left: 20px;
 }
 
 .copy-to-email-step-number{
