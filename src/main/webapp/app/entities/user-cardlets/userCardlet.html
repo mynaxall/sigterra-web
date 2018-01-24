@@ -102,21 +102,21 @@
 
                         <div class="mail-copy-sig-div">
                             <div class="copy-zone-outer-text">Copy Image</div>
-                            <div class="copy-zone-outer copy-zone">
+                            <div class="copy-zone-outer-no-border copy-zone">
                                 <div class="gmailDiv" id="gmailDiv2" style="line-height: 0%"></div>
                             </div>
                             <textarea ng-show="false" id="copyedText" class="copy-to-email-textarea" ng-model="coptToEmailText"></textarea>
                         </div>
                         <div>
-                            <div class="copy-zone-outer-text">Copy Link</div>
-                            <div class="copy-zone-outer copy-zone copy-zone-link">
+                            <div class="copy-zone-outer-text">Link</div>
+                            <div class="copy-zone-outer-solid copy-zone copy-zone-link">
                                 <a href="{{signatureLink}}">{{signatureLink}}</a>
                             </div>
                         </div>
 
                         <div>
-                            <div class="copy-zone-outer-text">Copy Text</div>
-                            <div class="copy-zone-outer copy-zone copy-zone-link">
+                            <div class="copy-zone-outer-text">Text</div>
+                            <div class="copy-zone-outer-solid copy-zone copy-zone-link">
                                 <div ng-if="isCopyTiEmail">
                                     <ng-include src="'app/cardlets/userSigmatureNew.html'"></ng-include>
                                 </div>
