@@ -1485,6 +1485,11 @@ Social Buttons
     text-align: center;
 }
 
+.copy-zone-outer-no-border{
+    padding: 10px 20px;
+    border: none;
+}
+
 .copy-zone-outer{
     padding: 10px 20px;
     border-width: 1px;
