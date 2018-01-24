@@ -1491,6 +1491,12 @@ Social Buttons
     border-style: dashed;
 }
 
+.copy-zone-outer-solid{
+    padding: 10px 20px;
+    border-width: 1px;
+    border-style: solid;
+}
+
 .copy-zone-top-text{
     color: #a94442;
     font-size: 20px;
