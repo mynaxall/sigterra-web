@@ -84,7 +84,7 @@
                         vm.isFirstStep = true;
                         vm.errorEmailExists = 'ERROR';
                     } else {
-                        vm.error = 'ERROR';
+                        vm.errorEmailExists = 'ERROR';
                     }
                 });
             }
@@ -121,7 +121,7 @@
                         vm.isFirstStep = true;
                         vm.errorEmailExists = 'ERROR';
                     } else {
-                        vm.error = 'ERROR';
+                        vm.errorEmailExists = 'ERROR';
                     }
                 });
             }
