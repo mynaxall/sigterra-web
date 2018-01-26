@@ -14,7 +14,6 @@
             'ui.router',
             'infinite-scroll',
             // jhipster-needle-angularjs-add-module JHipster will add new module here
-            'ngImgCrop',
             'dndLists',
             'ngclipboard',
             'base64',
@@ -23,7 +22,8 @@
             'monospaced.elastic',
             'ngMask',
             'textAngular',
-            'dibari.angular-ellipsis'
+            'dibari.angular-ellipsis',
+            'angular-img-cropper'
         ])
         .run(run);
 
