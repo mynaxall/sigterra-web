@@ -31,7 +31,11 @@
         vm.PHONE_PATTERN = new RegExp(PHONE_PATTERN);
 
         $scope.disableSave = true;
-
+        $scope.bounds = {};
+        $scope.bounds.left = 0;
+        $scope.bounds.right = 200;
+        $scope.bounds.top = 200;
+        $scope.bounds.bottom = 0;
 
         /**
          * Store the "settings account" in a separate variable, and not in the shared "account" variable.
@@ -111,6 +115,7 @@
         }
 
         $scope.myImage='';
+        $scope.myCroppedImage = '';
 
         $scope.showCroppedImage = false;
         $scope.showSpinner = false;
@@ -134,6 +139,7 @@
         function showImageDialog(){
             angular.element('#fileInput').val(null);
             $scope.myImage='';
+            $scope.myCroppedImage = '';
             vm.isShowDialog = true;
         }
 
@@ -141,6 +147,7 @@
         function hideImageDialog(clean){
             if(clean){
                 $scope.myImage='';
+                $scope.myCroppedImage = '';
             }
             vm.isShowDialog = false;
         }
@@ -198,7 +205,7 @@
         function saveImage(){
             vm.hideImageDialog();
             $scope.showSpinner = true;
-            var img_b64 = $scope.myImage;
+            var img_b64 = $scope.myCroppedImage;
             var png = img_b64.split(',')[1];
             var file = b64toBlob(png, 'image/png')
             var fd = new FormData();
@@ -212,6 +219,7 @@
                     $scope.showSpinner = false;
                     vm.settingsAccount.imageUrl = data.url;
                     $scope.myImage='';
+                    $scope.myCroppedImage = '';
                 });
 
 

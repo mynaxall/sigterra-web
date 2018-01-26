@@ -23,7 +23,8 @@
             'monospaced.elastic',
             'ngMask',
             'textAngular',
-            'dibari.angular-ellipsis'
+            'dibari.angular-ellipsis',
+            'angular-img-cropper'
         ])
         .run(run);
 
