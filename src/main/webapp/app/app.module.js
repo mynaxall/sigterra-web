@@ -14,7 +14,6 @@
             'ui.router',
             'infinite-scroll',
             // jhipster-needle-angularjs-add-module JHipster will add new module here
-            'ngImgCrop',
             'dndLists',
             'ngclipboard',
             'base64',
