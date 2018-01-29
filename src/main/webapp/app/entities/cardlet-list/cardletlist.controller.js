@@ -49,6 +49,7 @@
 
         $scope.showCropDialog = false;
         $scope.myImage='';
+        $scope.myCroppedImage = '';
         $scope.showConent = true;
         vm.showCarousel = true;
         $scope.showLink = false;
@@ -56,6 +57,11 @@
         vm.PHONE_PATTERN = new RegExp(PHONE_PATTERN);
         vm.toolbarOptions = angular.fromJson(TOOLBAR_OPTIONS);
         vm.showExctractButton = false;
+        $scope.bounds = {};
+        $scope.bounds.left = 0;
+        $scope.bounds.right = 200;
+        $scope.bounds.top = 200;
+        $scope.bounds.bottom = 0;
 
 
         var handleFileSelect=function(evt) {
@@ -70,6 +76,7 @@
                 reader.readAsDataURL(file);
             }else{
                 $scope.myImage = "";
+                $scope.myCroppedImage = "";
             }
         };
         angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
@@ -153,6 +160,7 @@
             $scope.tabImageId = tabId;
             $scope.itemImageId = itemId;
             $scope.imageItemMame = itemImgPosition;
+            $scope.myCroppedImage = '';
 
         }
 
@@ -195,9 +203,10 @@
 
          $scope.saveImage = function(){
              $scope.showSpinner = true;
-            var img_b64 = $scope.myImage;
+             $scope.myImage = "";
+             var img_b64 = $scope.myCroppedImage;
              var png = img_b64.split(',')[1];
-            var file = b64toBlob(png, 'image/png')
+            var file = b64toBlob(png, 'image/png');
             var fd = new FormData();
             fd.append('file', file);
             $http.post("/api/cardlet/upload/icon/test",  fd, {

@@ -5683,11 +5683,8 @@ recent-activity-sidebar .icon-read {
 }
 
 .avatar-div-second{
-    float: left;
     width: 126px;
     height: 126px;
-    margin-top: -5px;
-    margin-left: 20px;
     display:table-cell;
     vertical-align:middle;
     text-align:center;
@@ -6015,6 +6012,12 @@ recent-activity-sidebar .icon-read {
     margin-bottom: 0px;
     line-height: 1;
     max-height: 42px;
+}
+
+.layouts-second{
+    float: left;
+    margin-top: -5px;
+    margin-left: 20px;
 }
 
 

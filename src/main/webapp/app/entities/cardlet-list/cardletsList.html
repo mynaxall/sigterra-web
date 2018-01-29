@@ -933,15 +933,20 @@
                         ng-click="closeCropDialog()">&times;</button>
             </div>
             <div  style="padding: 0px!important; text-align: center" class="modal-body">
+
                 <div>
                     <div class="fileUpload btn btn-primary choose-photo-btn">
                         <span>Choose photo</span>
-                        <input accept="image/png, image/jpeg, image/jpg"  type="file" id="fileInput" class="upload" />
+                        <div>
+                            <input type="file" img-cropper-fileread image="myImage" accept="image/png, image/jpeg, image/jpg" id="fileInput" class="upload" />
+                        </div>
                     </div>
                 </div>
                 <div class="cropArea">
-                    <img class="upload-dialog-image" ng-show="myImage" ng-src="{{myImage}}"/>
-                    <img ng-hide="myImage" src="/content/images/image_placeholder.png">
+                    <div ng-show="myCroppedImage">
+                        <canvas width="350" height="350" id="canvas" image-cropper image="myImage" cropped-image="myCroppedImage" crop-width="bounds.right - bounds.left" crop-height="bounds.top - bounds.bottom"  crop-area-bounds="bounds"></canvas>
+                    </div>
+                    <img ng-hide="myCroppedImage" src="/content/images/image_placeholder.png">
                 </div>
                 <div class="crop-btn-div">
                     <button ng-disabled="!myImage" class="saveButton" ng-click="saveImage()">save</button>
