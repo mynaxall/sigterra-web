@@ -113,6 +113,7 @@
                     vm.isDone = true;
                     $scope.userAccount = response;
                     $scope.getUserProfile();
+                    vm.login();
                 }).catch(function (response) {
                     vm.success = null;
                     if (response.status === 400 && response.data === 'login already in use') {
