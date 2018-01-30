@@ -536,8 +536,18 @@
             return index + 1;
         }
 
+        $scope.getColors = function () {
+            for (var i = 0; i < $scope.tabNames.tabs.length; i++) {
+                if($scope.tabNames.tabs[i].position === $scope.tabNames.tabs.length-1){
+                    $scope.mainColor = $scope.tabNames.tabs[i].layout.mainColor;
+                    $scope.secondaryColor = $scope.tabNames.tabs[i].layout.secondaryColor;
+                    return;
+                }
+            }
+        }
 
         $scope.addInfo = function() {
+            $scope.getColors();
             if ($scope.tabNames.tabs.length <= 3) {
                 var newTab = {"name":"Text Items "+$scope.tabNames.tabs.length,
                     "position": $scope.tabNames.tabs.length,
@@ -545,8 +555,8 @@
                     "layout":{
                         "tabId": $scope.infoTypes[0].id,
                         "url": $scope.infoTypes[0].path,
-                        "mainColor": "FFFFFF",
-                        "secondaryColor": "4BABE2"
+                        "mainColor":  $scope.mainColor,
+                        "secondaryColor": $scope.secondaryColor
                     },
                     "items": [
                         {
@@ -577,6 +587,7 @@
 
 
         $scope.addItem = function() {
+            $scope.getColors();
             if ($scope.tabNames.tabs.length <= 3) {
                 var newTab = {"name":"Image Items "+$scope.tabNames.tabs.length,
                     "position": $scope.tabNames.tabs.length,
@@ -584,8 +595,8 @@
                     "layout":{
                         "tabId": $scope.itemTypes[0].id,
                         "url": $scope.itemTypes[0].path,
-                        "mainColor": "FFFFFF",
-                        "secondaryColor": "4BABE2"
+                        "mainColor":  $scope.mainColor,
+                        "secondaryColor": $scope.secondaryColor
                     },
                     "items": [
                         {
@@ -653,6 +664,7 @@
 
 
         $scope.addTab = function() {
+            $scope.getColors();
             if ($scope.tabNames.tabs.length <= 3) {
 
                 var newTab = {"name":"Contact Info "+$scope.tabNames.tabs.length,
@@ -661,8 +673,8 @@
                     "layout":{
                         "tabId": $scope.tabTypes[0].id,
                         "url": $scope.tabTypes[0].path,
-                        "mainColor": "FFFFFF",
-                        "secondaryColor": "4BABE2"
+                        "mainColor":  $scope.mainColor,
+                        "secondaryColor": $scope.secondaryColor
                     },
                     "userName": {
                         "value":  $scope.userAccount.username

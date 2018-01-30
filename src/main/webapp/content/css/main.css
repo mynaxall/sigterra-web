@@ -1191,12 +1191,14 @@ Social Buttons
     position: absolute;
     top: 150px;
     left: 0px;
+    z-index: 10;
 }
 
 .custom-slide-next-editor{
     position: absolute;
     top: 150px;
     right: 0px;
+    z-index: 10;
 }
 
 .custom-slide-prev{
@@ -1485,6 +1487,8 @@ Social Buttons
     text-align: center;
 }
 
+
+
 .copy-zone-outer-no-border{
     padding: 10px 20px;
     border: none;
@@ -1500,7 +1504,7 @@ Social Buttons
     padding: 10px 20px;
     border-width: 1px;
     border-style: solid;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .copy-zone-top-text{
