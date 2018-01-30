@@ -1485,6 +1485,8 @@ Social Buttons
     text-align: center;
 }
 
+
+
 .copy-zone-outer-no-border{
     padding: 10px 20px;
     border: none;
@@ -1500,7 +1502,7 @@ Social Buttons
     padding: 10px 20px;
     border-width: 1px;
     border-style: solid;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .copy-zone-top-text{
