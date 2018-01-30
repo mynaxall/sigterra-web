@@ -1886,7 +1886,7 @@ Social Buttons
     position: absolute;
     top:20px;
     right:20px;
-    width: 96px;
+    width: 136px;
     height: 30px;
 }
 
@@ -6019,6 +6019,16 @@ recent-activity-sidebar .icon-read {
     margin-top: -5px;
     margin-left: 20px;
 }
+
+.catdlet-btn-top-text{
+    font-size: 15px;
+    color: #089993;
+}
+
+.catdlet-btn-link{
+    text-decoration: none!important;
+}
+
 
 
 
