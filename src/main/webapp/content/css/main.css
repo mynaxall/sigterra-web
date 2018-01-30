@@ -3803,6 +3803,7 @@ button[disabled]:hover{
 .user-name{
     font-size: 22px;
     color: #4BABE2;
+    white-space: nowrap;
 }
 
 .user-name-second-card{
