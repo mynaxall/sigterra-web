@@ -423,10 +423,10 @@
                             "image2": "/content/images/portfolio_img_02.png",
                             "image3": "/content/images/portfolio_img_03.png",
                             "name":{
-                                "value": "Item Header"
+                                "value": ""
                             },
                             "description": {
-                                "value": "<p style=\"text-align: left;\">Item Description</p>"
+                                "value": ""
                             }
                         }
                     ]
@@ -462,10 +462,10 @@
                             "image2": "/content/images/portfolio_img_02.png",
                             "image3": "/content/images/portfolio_img_03.png",
                             "name":{
-                                "value": "Item Header"
+                                "value": ""
                             },
                             "description": {
-                                "value": "Item Description"
+                                "value": ""
                             }
                         }
                     ]
