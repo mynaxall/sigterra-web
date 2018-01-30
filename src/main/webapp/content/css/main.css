@@ -4854,6 +4854,7 @@ a:focus{
     margin-bottom: 10px;
     text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 .carousel-item-deskript-first-type{
@@ -4902,6 +4903,7 @@ a:focus{
     text-align: center;
     text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 
