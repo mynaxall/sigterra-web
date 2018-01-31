@@ -135,6 +135,36 @@
             $scope.itemImageId = itemId;
             $scope.imageItemMame = itemImgPosition;
             $scope.myCroppedImage = '';
+            $scope.myImage = "";
+            var imageUrl;
+            if($scope.itemImageId !== null && $scope.imageItemMame) {
+                imageUrl = $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame];
+            }else{
+                imageUrl =$scope.tabNames.tabs[$scope.tabImageId].photo;
+            }
+            if(imageUrl && !imageUrl.startsWith("/")){
+                getImage(imageUrl);
+            }
+
+        }
+
+        function getImage(url) {
+            $http.get(url, {responseType: "arraybuffer"})
+                .success(function (data) {
+                    var str = _arrayBufferToBase64(data);
+                    $scope.myImage = 'data:image/JPEG;base64,' + str;
+                });
+
+        }
+
+        function _arrayBufferToBase64(buffer) {
+            var binary = '';
+            var bytes = new Uint8Array(buffer);
+            var len = bytes.byteLength;
+            for (var i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
         }
 
         function dataURLtoFile(dataurl, filename) {
