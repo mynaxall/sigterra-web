@@ -52,8 +52,8 @@
                     <div>
                          <div style="text-align: center">
                             <div style="margin-top: 10px">
-                                <img class="image-cropped-profile" ng-show="showCroppedImage && !vm.settingsAccount.imageUrl"  ng-src="{{myCroppedImage}}" />
                                 <img class="image-cropped-profile" ng-show="vm.settingsAccount.imageUrl && !showCroppedImage"  ng-src="{{vm.settingsAccount.imageUrl}}" />
+                                <img id="imgMy" class="image-cropped-profile" ng-show="showCroppedImage && !vm.settingsAccount.imageUrl"  ng-src="{{myCroppedImage}}" />
                                 <img ng-show="!showCroppedImage && !vm.settingsAccount.imageUrl" class="image-cropped" src="/content/images/image_placeholder.png" /></div>
                         </div>
                         <div  style="text-align: center">
