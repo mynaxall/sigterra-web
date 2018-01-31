@@ -6036,6 +6036,10 @@ recent-activity-sidebar .icon-read {
     text-decoration: none!important;
 }
 
+.custom-cursor{
+    cursor: url(/content/images/cursor.png), auto!important;
+}
+
 
 
 

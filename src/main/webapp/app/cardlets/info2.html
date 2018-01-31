@@ -5,7 +5,7 @@
                 <div class="main-carousel-image-div-info">
                     <div style="margin-top: 25px;"  ng-repeat="slide in tabName.items"  class="main-carousel-info-div-new">
                         <div style="float: left;width: 315px; min-height: 30px ">
-                            <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link && showLink" class="carousel-text-link">
+                            <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link && showLink" class="carousel-text-link custom-cursor">
                                 <pre class="carousel-info-name-div-new-2 carousel-item-name-div" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': slide.name.italic ? 'italic' : 'normal',
                                 'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
@@ -21,7 +21,7 @@
                         <div id="cf4a" style="float: left; margin-left: 40px" class="carousel-info-div-main">
                             <div class="info-tab-div">
                                 <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}">
-                                <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link && showLink">
+                                <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link && showLink" class="custom-cursor">
                                     <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
                                 </a>
                             </div>
@@ -40,7 +40,7 @@
 
                         <div  class="carousel-info-div-new">
                             <div style="float: left; width: 315px; min-height: 30px">
-                                <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link && showLink" class="carousel-text-link">
+                                <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link && showLink" class="carousel-text-link custom-cursor">
                                     <pre  class="carousel-info-name-div-new-2 carousel-item-name-div" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                 'font-style': slide.name.italic ? 'italic' : 'normal',
                                 'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
@@ -56,7 +56,7 @@
                             <div id="cf4a" style="float: left; margin-left: 40px" class="carousel-info-div-main">
                                 <div class="info-tab-div">
                                     <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}">
-                                    <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link && showLink">
+                                    <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link && showLink" class="custom-cursor">
                                         <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
                                     </a>
                                 </div>
