@@ -12,7 +12,7 @@
                             </div>
                             <div class="item-3-content" ng-hide="!slide.name.value && !slide.description.value" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}">
                                 <a style="max-height: 239px;" href="{{slide.link | link}}" target="_blank" ng-show="slide.link">
-                                    <div class="carousel-item-name-third-type" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                                    <div class="carousel-item-name-third-type carousel-item-no-wrap" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                     'font-style': slide.name.italic ? 'italic' : 'normal',
                                     'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.mainColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                                     <pre class="carousel-item-name-third-type carousel-item-deskript-third-type" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
@@ -20,7 +20,7 @@
                                     'text-decoration': slide.description.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor }" ng-show="slide.description.value">{{slide.description.value}}</pre>
                                 </a>
                                 <div ng-show="!slide.link">
-                                    <div class="carousel-item-name-third-type" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                                    <div class="carousel-item-name-third-type carousel-item-no-wrap" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                         'font-style': slide.name.italic ? 'italic' : 'normal',
                                         'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.mainColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                                     <pre class="carousel-item-name-third-type carousel-item-deskript-third-type" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
@@ -50,7 +50,7 @@
                         <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link">
                             <div  class="main-carousel-item-div-new-3">
                                 <div class="item-3-content" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}" ng-hide="!slide.name.value && !slide.description.value">
-                                    <div class="carousel-item-name-third-type" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                                    <div class="carousel-item-name-third-type carousel-item-no-wrap" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                     'font-style': slide.name.italic ? 'italic' : 'normal',
                                     'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.mainColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                                     <pre class="carousel-item-name-third-type carousel-item-deskript-third-type" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
@@ -62,7 +62,7 @@
                         </a>
                         <div ng-show="!slide.link" class="main-carousel-item-div-new-3">
                             <div class="item-3-content" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}" ng-hide="!slide.name.value && !slide.description.value">
-                                <div class="carousel-item-name-third-type" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                                <div class="carousel-item-name-third-type carousel-item-no-wrap" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                     'font-style': slide.name.italic ? 'italic' : 'normal',
                                     'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.mainColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
                                 <pre class="carousel-item-name-third-type carousel-item-deskript-third-type" ng-style="{'font-family': slide.description.bold ? 'Roboto-Bold' : 'Roboto-Regular',
