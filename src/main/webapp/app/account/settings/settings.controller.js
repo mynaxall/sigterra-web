@@ -138,9 +138,29 @@
 
         function showImageDialog(){
             angular.element('#fileInput').val(null);
-            $scope.myImage='';
+            $scope.myImage = "";
+            var fd = new FormData();
+            $http.get(vm.settingsAccount.imageUrl, {responseType: "arraybuffer"})
+                .success(function (data, status, headers, config) {
+                    var str = _arrayBufferToBase64(data);
+                    $scope.myImage = 'data:image/JPEG;base64,'+str;
+                });
+
+
+
+
             $scope.myCroppedImage = '';
             vm.isShowDialog = true;
+        }
+
+        function _arrayBufferToBase64(buffer) {
+            var binary = '';
+            var bytes = new Uint8Array(buffer);
+            var len = bytes.byteLength;
+            for (var i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
         }
 
         vm.hideImageDialog = hideImageDialog;
