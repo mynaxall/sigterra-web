@@ -3059,7 +3059,6 @@ ul.tab2 li {
     color: #333;
 }
 
-
 .svg-description{
     margin-left: 30px;
     font-size: 13px;
@@ -4837,6 +4836,25 @@ ul.tab li.active:hover{
     text-overflow: ellipsis;
     height: 30px
 }
+
+.user-name-no-trim{
+    font-size: 22px;
+    overflow: hidden;
+    height: 30px;
+    white-space: normal;
+    word-break: break-all
+}
+
+.user-main-text-no-trim{
+    font-size: 15px;
+    color: #333;
+    overflow: hidden;
+    height: 20px;
+    white-space: normal;
+    word-break: break-all
+}
+
+
 .carousel-image-div{
     margin-left: 29px;
     margin-top: 10px;
@@ -4845,6 +4863,7 @@ a:focus{
     outline: none!important;
     text-decoration: none;
 }
+
 
 .carousel-item-name-first-type{
     width: 290px;
@@ -4855,6 +4874,9 @@ a:focus{
     margin-bottom: 10px;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+.carousel-item-no-wrap{
     white-space: nowrap;
 }
 
@@ -5373,7 +5395,7 @@ recent-activity-sidebar .icon-read {
 }
 
 .first-card-address{
-    width: 240px;
+    width: 290px;
     height: 38px;
     display: block;
 }
@@ -6040,6 +6062,9 @@ recent-activity-sidebar .icon-read {
     cursor: url(/content/images/cursor.png), auto!important;
 }
 
+.main-layouts-first-card {
+    width: 330px;
+}
 
 
 
