@@ -4876,10 +4876,6 @@ a:focus{
     overflow: hidden;
 }
 
-.carousel-item-no-wrap{
-    white-space: nowrap;
-}
-
 .carousel-item-deskript-first-type{
     font-weight: normal;
     font-size: 14px;
@@ -6064,6 +6060,12 @@ recent-activity-sidebar .icon-read {
 
 .main-layouts-first-card {
     width: 330px;
+}
+
+.carousel-item-no-wrap{
+    white-space: normal;
+    word-break: break-all;
+    text-overflow: clip;
 }
 
 
