@@ -136,15 +136,16 @@
 
         vm.showImageDialog = showImageDialog;
 
-        function showImageDialog(){
+        function showImageDialog() {
             angular.element('#fileInput').val(null);
             $scope.myImage = "";
-            var fd = new FormData();
-            $http.get(vm.settingsAccount.imageUrl, {responseType: "arraybuffer"})
-                .success(function (data) {
-                    var str = _arrayBufferToBase64(data);
-                    $scope.myImage = 'data:image/JPEG;base64,'+str;
-                });
+            if (vm.settingsAccount.imageUrl) {
+                $http.get(vm.settingsAccount.imageUrl, {responseType: "arraybuffer"})
+                    .success(function (data) {
+                        var str = _arrayBufferToBase64(data);
+                        $scope.myImage = 'data:image/JPEG;base64,' + str;
+                    });
+            }
             $scope.myCroppedImage = '';
             vm.isShowDialog = true;
         }
