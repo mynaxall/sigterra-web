@@ -141,14 +141,10 @@
             $scope.myImage = "";
             var fd = new FormData();
             $http.get(vm.settingsAccount.imageUrl, {responseType: "arraybuffer"})
-                .success(function (data, status, headers, config) {
+                .success(function (data) {
                     var str = _arrayBufferToBase64(data);
                     $scope.myImage = 'data:image/JPEG;base64,'+str;
                 });
-
-
-
-
             $scope.myCroppedImage = '';
             vm.isShowDialog = true;
         }
