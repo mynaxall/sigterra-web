@@ -4506,6 +4506,7 @@ ul.tab li.active:hover{
     font-family: Roboto-Light;
     font-size: 40px;
     color: #35353b;
+    width: 90%;
 }
 
 .landing-learn-brn{
@@ -5889,6 +5890,10 @@ recent-activity-sidebar .icon-read {
     }
 
     .how-it-works-description.header-block{
+        width: 100%;
+    }
+
+    .landing-first-title{
         width: 100%;
     }
 }
