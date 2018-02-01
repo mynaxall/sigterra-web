@@ -509,10 +509,6 @@
 
         $scope.addItems = function(tabId, index, isInfo) {
             if($scope.tabNames.tabs[tabId].items.length <= 9){
-                var description = "Item Description";
-                if(isInfo){
-                    description = "<p style=\"text-align: left;\">Item Description</p>"
-                }
                 var newItem =  {
                     //"name":  ($scope.tabNames.tabs[tabId].items.length+1)+" item",
                     "index": index+2,
@@ -521,10 +517,10 @@
                     "image2": "/content/images/portfolio_img_02.png",
                     "image3": "/content/images/portfolio_img_03.png",
                     "name":{
-                        "value": "Item Header"
+                        "value": ""
                     },
                     "description": {
-                        "value": description
+                        "value": ""
                     }
                 }
                 $scope.tabNames.tabs[tabId].items.push(newItem);
