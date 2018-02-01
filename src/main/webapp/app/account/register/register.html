@@ -223,6 +223,10 @@
                            ng-show="form2.phoneNumber.$error.pattern">
                             Invalid phone number format
                         </p>
+                        <p class="help-block"
+                           ng-show="form2.phoneNumber.$error.maxlength">
+                            Your Phone number cannot be longer than 50 characters.
+                        </p>
 
                     </div>
                 </div>
@@ -232,7 +236,7 @@
                     <div ng-show="form2.address.$dirty && form2.address.$invalid">
                         <p class="help-block"
                            ng-show="form2.address.$error.maxlength">
-                            Your address cannot be longer than 55 characters.
+                            Your address cannot be longer than 100 characters.
                         </p>
 
                     </div>
