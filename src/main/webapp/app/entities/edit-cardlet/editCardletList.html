@@ -469,7 +469,7 @@
                                             <input ng-model="tabName.layout.secondaryColor"  type="text" name='secondaryColor' value='secondaryColor' id="secondaryColor{{tabName.name}}" class="jscolor secondaryColor-input" value="4BABE2">
                                         </div>
 
-                                        <table style="width: 100%; height: 110px; margin-bottom: 30px;">
+                                        <table style="width: 100%; height: 110px;">
                                             <th>
                                             <td ng-repeat="itemType in itemTypes" style="max-width: 250px!important; max-height: 110px!important; position: relative;width: 250px">
                                                 <div  style=" transform: scale(0.45); display: inline-block; position: absolute; top:-70px;  max-height: 242px" ng-class="$index === 1 ? 'second-cardler-example' : $index === 2 ? 'third-cardler-example': 'first-cardler-example'">
@@ -480,6 +480,7 @@
                                             </td>
                                             </th>
                                         </table>
+                                        <div class="style-description">Recommended Image Dimension 535 x 233</div>
                                     </div>
 
                                 </div>

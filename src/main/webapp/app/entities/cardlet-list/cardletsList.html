@@ -634,17 +634,20 @@
                                             <input ng-model="tabName.layout.secondaryColor"  type="text" name='secondaryColor' value='secondaryColor' id="secondaryColor{{tabName.name}}" class="jscolor secondaryColor-input" value="4BABE2">
                                         </div>
 
-                                        <table style="width: 100%; height: 110px; margin-bottom: 30px;">
-                                            <th>
-                                                <td ng-repeat="itemType in itemTypes"  style="max-width: 250px!important; max-height: 150px!important; position: relative;width: 250px">
-                                                    <div style="position: relative; transform: scale(0.45); display: inline-block; position: absolute; top:-65px;  max-height: 245px" ng-class="$index === 1 ? 'second-cardler-example' : $index === 2 ? 'third-cardler-example': 'first-cardler-example'">
-                                                        <div ng-click="chooseType(tabName.position, itemType.path, itemType.id)" class="choose-tab" ng-class="tabNames.tabs[tabName.position].layout.tabId == itemType.id ? 'choose-tab-active' : ''"></div>
-                                                        <div class="cardlet-top-border" style="border-bottom-width: 1px"></div>
-                                                        <ng-include style="display: block!important" src="itemType.path" ></ng-include>
-                                                    </div>
-                                                </td>
-                                            </th>
+                                        <table style="width: 100%; height: 110px;">
+                                            <tr>
+                                                <th>
+                                                    <td ng-repeat="itemType in itemTypes"  style="max-width: 250px!important; max-height: 150px!important; position: relative;width: 250px">
+                                                        <div style="position: relative; transform: scale(0.45); display: inline-block; position: absolute; top:-65px;  max-height: 245px" ng-class="$index === 1 ? 'second-cardler-example' : $index === 2 ? 'third-cardler-example': 'first-cardler-example'">
+                                                            <div ng-click="chooseType(tabName.position, itemType.path, itemType.id)" class="choose-tab" ng-class="tabNames.tabs[tabName.position].layout.tabId == itemType.id ? 'choose-tab-active' : ''"></div>
+                                                            <div class="cardlet-top-border" style="border-bottom-width: 1px"></div>
+                                                            <ng-include style="display: block!important" src="itemType.path" ></ng-include>
+                                                        </div>
+                                                    </td>
+                                                </th>
+                                            </tr>
                                         </table>
+                                        <div class="style-description">Recommended Image Dimension 535 x 233</div>
                                     </div>
 
                                 </div>
