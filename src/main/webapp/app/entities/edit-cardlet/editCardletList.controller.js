@@ -36,9 +36,9 @@
             };
         });
 
-    EditCardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'orderByFilter', 'PHONE_PATTERN', 'TOOLBAR_OPTIONS'];
+    EditCardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'orderByFilter', 'PHONE_PATTERN', 'TOOLBAR_OPTIONS', 'ImageService'];
 
-    function EditCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter, PHONE_PATTERN, TOOLBAR_OPTIONS) {
+    function EditCardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter, PHONE_PATTERN, TOOLBAR_OPTIONS, ImageService) {
         var vm = this;
 
         $scope.showError = false;
@@ -63,7 +63,7 @@
         $scope.bounds.right = 200;
         $scope.bounds.top = 200;
         $scope.bounds.bottom = 0;
-
+        $scope.imageSize = {width: 200, height: 200};
 
         var handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];
@@ -1065,6 +1065,16 @@
                 }).error(function (response) {
 
             });
+        }
+
+        $scope.cropWidth = function () {
+
+
+            if ($scope.myCroppedImage) {
+                console.log("ss")
+                $scope.imageSize = ImageService.imageSize($scope.bounds)
+            }
+            return $scope.imageSize;
         }
 
 
