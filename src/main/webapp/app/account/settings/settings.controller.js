@@ -19,9 +19,9 @@
         }])
         .controller('SettingsController', SettingsController);
 
-    SettingsController.$inject = ['Principal', 'Auth', '$scope', '$http', '$timeout', 'PHONE_PATTERN'];
+    SettingsController.$inject = ['Principal', 'Auth', '$scope', '$http', '$timeout', 'PHONE_PATTERN', 'ImageService'];
 
-    function SettingsController (Principal, Auth, $scope, $http, $timeout, PHONE_PATTERN) {
+    function SettingsController (Principal, Auth, $scope, $http, $timeout, PHONE_PATTERN, ImageService) {
         var vm = this;
 
         vm.error = null;
@@ -36,6 +36,8 @@
         $scope.bounds.right = 200;
         $scope.bounds.top = 200;
         $scope.bounds.bottom = 0;
+
+        $scope.imageSize = {width: 200, height: 200};
 
         /**
          * Store the "settings account" in a separate variable, and not in the shared "account" variable.
@@ -241,5 +243,14 @@
 
 
         }
+
+        $scope.cropWidth = function () {
+            if ($scope.myCroppedImage) {
+                $scope.imageSize = ImageService.imageSize($scope.bounds)
+            }
+
+            return $scope.imageSize;
+        }
+
     }
 })();

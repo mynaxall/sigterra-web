@@ -97,7 +97,8 @@ gulp.task('ngconstant:dev', function () {
             BUILD_VERSION: util.parseAppVersion(),
             DEBUG_INFO_ENABLED: true,
             PHONE_PATTERN: '^[0-9()+-\\s]+$',
-            TOOLBAR_OPTIONS: '[["bold","italics", "underline", "strikeThrough"], ["ul", "ol","undo", "redo", "clear"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"]]'
+            TOOLBAR_OPTIONS: '[["bold","italics", "underline", "strikeThrough"], ["ul", "ol","undo", "redo", "clear"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"]]',
+            MAX_IMAGE: '1000'
         },
         template: config.constantTemplate,
         stream: true
@@ -114,7 +115,8 @@ gulp.task('ngconstant:prod', function () {
             BUILD_VERSION: util.parseAppVersion(),
             DEBUG_INFO_ENABLED: false,
             PHONE_PATTERN: '^[0-9()+-\\s]+$',
-            TOOLBAR_OPTIONS: '[["bold","italics", "underline", "strikeThrough"], ["ul", "ol","undo", "redo", "clear"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"]]'
+            TOOLBAR_OPTIONS: '[["bold","italics", "underline", "strikeThrough"], ["ul", "ol","undo", "redo", "clear"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"]]',
+            MAX_IMAGE: '1000'
         },
         template: config.constantTemplate,
         stream: true
@@ -131,7 +133,8 @@ gulp.task('ngconstant:staging', function () {
             BUILD_VERSION: util.parseAppVersion(),
             DEBUG_INFO_ENABLED: false,
             PHONE_PATTERN: '^[0-9()+-\\s]+$',
-            TOOLBAR_OPTIONS: '[["bold","italics", "underline", "strikeThrough"], ["ul", "ol","undo", "redo", "clear"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"]]'
+            TOOLBAR_OPTIONS: '[["bold","italics", "underline", "strikeThrough"], ["ul", "ol","undo", "redo", "clear"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"]]',
+            MAX_IMAGE: '1000'
         },
         template: config.constantTemplate,
         stream: true

@@ -36,9 +36,9 @@
             };
         });
 
-    CardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'PHONE_PATTERN', 'TOOLBAR_OPTIONS'];
+    CardletListController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'PHONE_PATTERN', 'TOOLBAR_OPTIONS', 'ImageService'];
 
-    function CardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, PHONE_PATTERN, TOOLBAR_OPTIONS) {
+    function CardletListController ($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, PHONE_PATTERN, TOOLBAR_OPTIONS, ImageService) {
         var vm = this;
 
         $scope.time = Date.now()
@@ -62,6 +62,7 @@
         $scope.bounds.right = 200;
         $scope.bounds.top = 200;
         $scope.bounds.bottom = 0;
+        $scope.imageSize = {width: 200, height: 200};
 
 
         var handleFileSelect=function(evt) {
@@ -1176,6 +1177,14 @@
                 }).error(function (response) {
 
                 });
+        }
+
+        $scope.cropWidth = function () {
+            if ($scope.myCroppedImage) {
+                $scope.imageSize = ImageService.imageSize($scope.bounds)
+            }
+
+            return $scope.imageSize;
         }
 
     }

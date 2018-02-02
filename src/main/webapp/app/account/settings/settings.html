@@ -22,7 +22,7 @@
             </div>
             <div class="cropArea">
                 <div ng-show="myCroppedImage">
-                    <canvas width="350" height="350" id="canvas" image-cropper image="myImage" cropped-image="myCroppedImage" crop-width="bounds.right - bounds.left" crop-height="bounds.top - bounds.bottom"  crop-area-bounds="bounds"></canvas>
+                    <canvas width="350" height="350" id="canvas" image-cropper image="myImage" cropped-image="myCroppedImage" crop-width="cropWidth().width" crop-height="imageSize.height"  crop-area-bounds="bounds" cors="yes"></canvas>
                 </div>
                 <img ng-hide="myCroppedImage" src="/content/images/image_placeholder.png">
             </div>
