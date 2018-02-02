@@ -5309,6 +5309,7 @@ recent-activity-sidebar .icon {
     fill: #CBD4DF;
     height: 20px;
     width: 20px;
+    max-width: 25px;
     flex: 1 0 20px;
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
