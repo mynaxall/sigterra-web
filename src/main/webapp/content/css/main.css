@@ -4503,6 +4503,7 @@ ul.tab li.active:hover{
 }
 
 .landing-first-title{
+    text-align: left;
     font-family: Roboto-Light;
     font-size: 40px;
     color: #35353b;
