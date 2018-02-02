@@ -18,7 +18,7 @@
     <div class="recent-activity-item" ng-repeat="recent in vm.recents">
         <svg class="icon {{recent.type | svgIconCardClass}}"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{{recent.type | svgIconCardHref}}"></use></svg>
         <div class="recent-activity-entry">
-            <a href>{{recent.user}}</a>
+            <a class="recent-activity-linc" href>{{recent.user}}</a>
             {{recent.type | activityString:recent.name}}
             <a ng-if="recent.description" href="{{recent.description}}">{{recent.description}}"</a>
             <time>{{recent.time}}</time>
