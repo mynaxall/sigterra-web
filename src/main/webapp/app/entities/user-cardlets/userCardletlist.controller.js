@@ -6,14 +6,14 @@
         .controller('UserCardletListController', UserCardletListController);
 
 
-    UserCardletListController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'paginationConstants', '$http', '$timeout', '$uibModal', '$location', '$window', '$rootScope'];
+    UserCardletListController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'paginationConstants', '$http', '$timeout', '$uibModal', '$location', '$window', '$rootScope', 'Carousel'];
 
-    function UserCardletListController($scope, $state, CardletList, ParseLinks, AlertService, paginationcardletConstants, $http, $timeout, $uibModal, $location, $window, $rootScope) {
+    function UserCardletListController($scope, $state, CardletList, ParseLinks, AlertService, paginationcardletConstants, $http, $timeout, $uibModal, $location, $window, $rootScope, Carousel) {
         var vm = this;
 
 
         $scope.time = Date.now()
-
+        $scope.Carousel = Carousel;
         vm.currentSlide = 0;
         vm.showCarousel = true;
         $scope.showLink = true;

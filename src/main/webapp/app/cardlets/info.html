@@ -1,71 +1,55 @@
+
+
 <div>
     <div ng-style="{'background-color': '#'+tabName.layout.mainColor}" class="cardlet3" style="position: relative;height: 240px">
         <div>
-            <div ng-show="tabName.items.length == 1">
-                <div class="main-carousel-image-div-info">
-                    <div  ng-repeat="slide in tabName.items"  class="main-carousel-info-div-new" style="margin-top: 25px" >
+            <div>
+                <div ng-carousel ng-carousel-name="example-carousel1" ng-carousel-watch="slides">
+                    <slidecontainer>
+                        <slide ng-repeat="slide in tabName.items track by slide.position">
+                            <div  style="margin-top: 25px" >
 
-                        <div id="cf4a" style="float: left; " class="carousel-info-div-main">
-                            <div class="info-tab-div">
-                                <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}">
-                                <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link && showLink" class="custom-cursor">
-                                    <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
-                                </a>
-                            </div>
-                        </div>
-                        <div style="float: left; margin-left: 30px;">
-                            <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link && showLink" class="carousel-text-link custom-cursor">
+                                <div class="carousel-image-div">
+
+                                    <div  class="carousel-info-div-new">
+                                        <div id="cf4a" style="float: left;" class="carousel-info-div-main">
+                                            <div class="info-tab-div">
+                                                <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}">
+                                                <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link && showLink" class="custom-cursor">
+                                                    <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div style="float: left; margin-left: 30px;">
+                                            <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link && showLink" class="carousel-text-link custom-cursor">
                                 <pre class="carousel-info-name-div-new carousel-item-name-div" style="max-height: 42px;" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                                'font-style': slide.name.italic ? 'italic' : 'normal',
-                                'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
-                                <div class="text-editor-displaying" ta-bind ng-model="slide.description.value"></div>
-                            </a>
-                            <div ng-hide="slide.link && showLink">
-                                <pre class="carousel-info-name-div-new carousel-item-name-div" style="max-height: 42px;" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                                'font-style': slide.name.italic ? 'italic' : 'normal',
-                                'text-decoration': slide.name.underline ? 'underline' : 'normal', 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
-                                <div class="text-editor-displaying" ta-bind ng-model="slide.description.value"></div>
+                            'font-style': slide.name.italic ? 'italic' : 'normal',
+                            'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
+                                                <div class="text-editor-displaying" ta-bind ng-model="slide.description.value"></div>
+                                            </a>
+                                            <div ng-hide="slide.link && showLink">
+                                 <pre class="carousel-info-name-div-new carousel-item-name-div" style="max-height: 42px;" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
+                            'font-style': slide.name.italic ? 'italic' : 'normal',
+                            'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
+                                                <div class="text-editor-displaying" ta-bind ng-model="slide.description.value"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
+                        </slide>
+
+                    </slidecontainer>
+                    <div class="carousel-arrow carousel-arrow-left">
+                        <button class="demo-nav" ng-click="Carousel.get('example-carousel1').previous()">back</button>
+                    </div>
+                    <div class="carousel-arrow carousel-arrow-right">
+                        <button class="demo-nav" ng-click="Carousel.get('example-carousel1').next()">forth</button>
                     </div>
                 </div>
-
             </div>
-            <div class="main-carousel-image-div-info"  uib-carousel active="vm.currentSlide" interval="myInterval" no-wrap="noWrapSlides" ng-show="vm.showCarousel" ng-if="tabName.items.length > 1" ng-init="initSlide(tabName)">
-                <div ng-show="showEditorNavigation" class="custom-slide-prev-editor" style="top: 100px"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
-                <div ng-show="showEditorNavigation"  class="custom-slide-next-editor"  style="top: 100px"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
 
-                <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" style="margin-top: 25px" >
-
-                    <div class="carousel-image-div">
-
-                        <div  class="carousel-info-div-new">
-                            <div id="cf4a" style="float: left;" class="carousel-info-div-main">
-                                <div class="info-tab-div">
-                                    <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-hide="slide.link && showLink" ng-src="{{slide.image}}?{{time}}">
-                                    <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link && showLink" class="custom-cursor">
-                                        <img crossorigin="anonymous" id="ing-1" class="info-tab-image" ng-show="slide.image" ng-src="{{slide.image}}?{{time}}">
-                                    </a>
-                                </div>
-                            </div>
-                            <div style="float: left; margin-left: 30px;">
-                                <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link && showLink" class="carousel-text-link custom-cursor">
-                                    <pre class="carousel-info-name-div-new carousel-item-name-div" style="max-height: 42px;" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                                'font-style': slide.name.italic ? 'italic' : 'normal',
-                                'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
-                                    <div class="text-editor-displaying" ta-bind ng-model="slide.description.value"></div>
-                                </a>
-                                <div ng-hide="slide.link && showLink">
-                                     <pre class="carousel-info-name-div-new carousel-item-name-div" style="max-height: 42px;" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
-                                'font-style': slide.name.italic ? 'italic' : 'normal',
-                                'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.secondaryColor}" ng-show="slide.name.value">{{slide.name.value}}</pre>
-                                    <div class="text-editor-displaying" ta-bind ng-model="slide.description.value"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
             </div>
 
         </div>
