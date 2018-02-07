@@ -18,14 +18,24 @@ public class AnalyticStatVM {
     private Long reads;
 
     public AnalyticStatVM(List<Event> eventList) {
-        this.uniqueViews = countByType(eventList, VIEW);
+        this.uniqueViews = countByTypeUnique(eventList, VIEW);
         this.adds        = countByType(eventList, ADD);
         this.clicks      = countByType(eventList, CLICK);
         this.reads       = countByType(eventList, READ);
     }
 
     private long countByType(List<Event> events, EventType type) {
-        return events.stream().filter(e -> e.getType() == type).count();
+        return events.stream()
+            .filter(e -> e.getType() == type)
+            .count();
+    }
+
+    private long countByTypeUnique(List<Event> events, EventType type) {
+        return events.stream()
+            .filter(e -> e.getType() == type)
+            .map(e -> e.getVisitor().getId())
+            .distinct()
+            .count();
     }
 
     public Long getUniqueViews() {
