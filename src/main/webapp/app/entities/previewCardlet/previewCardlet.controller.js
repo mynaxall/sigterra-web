@@ -6,12 +6,11 @@
         .controller('PreviewCardletController', PreviewCardletController);
 
 
-    PreviewCardletController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'LoginService', '$sce', '$rootScope', '$window', 'Carousel'];
+    PreviewCardletController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'LoginService', '$sce', '$rootScope', '$window'];
 
-    function PreviewCardletController($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants, $http, $timeout, $location, LoginService, $sce, $rootScope, $window, Carousel) {
+    function PreviewCardletController($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants, $http, $timeout, $location, LoginService, $sce, $rootScope, $window) {
 
         var vm = this;
-        $scope.Carousel = Carousel;
         vm.tabId = "";
         $rootScope.title = "";
 
