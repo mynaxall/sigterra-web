@@ -1,0 +1,19 @@
+branch-defaults:
+  master:
+    environment: sigterra-staging
+environment-defaults:
+  sigterra-staging:
+    branch: null
+    repository: null
+global:
+  application_name: Sigterra
+  default_ec2_keyname: sigterra_prod
+  default_platform: Tomcat 8 with Java 8 running on 64bit Amazon Linux
+  default_region: us-west-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: sigterra
+  sc: git
+  workspace_type: Application

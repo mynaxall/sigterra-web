@@ -1,0 +1,136 @@
+{
+    "MetricAlarms": [
+        {
+            "Dimensions": [
+                {
+                    "Name": "EnvironmentName", 
+                    "Value": "sigterra-env"
+                }, 
+                {
+                    "Name": "InstanceId", 
+                    "Value": "i-028b1e2c09e0f5a29"
+                }
+            ], 
+            "Namespace": "AWS/ElasticBeanstalk", 
+            "DatapointsToAlarm": 2, 
+            "ActionsEnabled": true, 
+            "MetricName": "ApplicationLatencyP90", 
+            "EvaluationPeriods": 2, 
+            "StateValue": "OK", 
+            "StateUpdatedTimestamp": "2018-02-13T16:21:44.613Z", 
+            "AlarmConfigurationUpdatedTimestamp": "2018-02-13T16:21:43.959Z", 
+            "AlarmActions": [
+                "arn:aws:sns:us-west-1:887867065009:ElasticBeanstalkNotifications-Environment-sigterra-prod"
+            ], 
+            "InsufficientDataActions": [], 
+            "AlarmArn": "arn:aws:cloudwatch:us-west-1:887867065009:alarm:awseb-e-f8mv3qrpuc-stack-sigteralatencyalarmprod-1XUERQE0IXHW6", 
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2018-02-13T16:21:44.611+0000\",\"statistic\":\"Average\",\"period\":60,\"recentDatapoints\":[],\"threshold\":1.0}", 
+            "Threshold": 1.0, 
+            "StateReason": "Threshold Crossed: no datapoints were received for 2 periods and 2 missing datapoints were treated as [NonBreaching].", 
+            "OKActions": [
+                "arn:aws:sns:us-west-1:887867065009:ElasticBeanstalkNotifications-Environment-sigterra-prod"
+            ], 
+            "AlarmDescription": "Sigterra latency alarm (PROD)", 
+            "Period": 60, 
+            "ComparisonOperator": "GreaterThanThreshold", 
+            "AlarmName": "awseb-e-f8mv3qrpuc-stack-sigteralatencyalarmprod-1XUERQE0IXHW6", 
+            "Statistic": "Average", 
+            "TreatMissingData": "notBreaching"
+        }, 
+        {
+            "Dimensions": [
+                {
+                    "Name": "EnvironmentName", 
+                    "Value": "sigterra-env"
+                }, 
+                {
+                    "Name": "InstanceId", 
+                    "Value": "i-028b1e2c09e0f5a29"
+                }
+            ], 
+            "Namespace": "AWS/ElasticBeanstalk", 
+            "DatapointsToAlarm": 1, 
+            "ActionsEnabled": true, 
+            "MetricName": "ApplicationRequests5xx", 
+            "EvaluationPeriods": 1, 
+            "StateValue": "ALARM", 
+            "StateUpdatedTimestamp": "2018-02-14T10:14:24.660Z", 
+            "AlarmConfigurationUpdatedTimestamp": "2018-02-14T10:14:24.069Z", 
+            "AlarmActions": [
+                "arn:aws:sns:us-west-1:887867065009:ElasticBeanstalkNotifications-Environment-sigterra-prod"
+            ], 
+            "InsufficientDataActions": [], 
+            "AlarmArn": "arn:aws:cloudwatch:us-west-1:887867065009:alarm:awseb-e-f8mv3qrpuc-stack-sigterarequests5xxalarmprod-O7PDSLPB3H0F", 
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2018-02-14T10:14:24.649+0000\",\"startDate\":\"2018-02-14T10:09:00.000+0000\",\"statistic\":\"SampleCount\",\"period\":300,\"recentDatapoints\":[5.0],\"threshold\":1.0}", 
+            "Threshold": 1.0, 
+            "StateReason": "Threshold Crossed: 1 out of the last 1 datapoints [5.0 (14/02/18 10:09:00)] was greater than or equal to the threshold (1.0) (minimum 1 datapoint for OK -> ALARM transition).", 
+            "OKActions": [], 
+            "AlarmDescription": "Sigterra 5xx requests alarm (PROD)", 
+            "Period": 300, 
+            "ComparisonOperator": "GreaterThanOrEqualToThreshold", 
+            "AlarmName": "awseb-e-f8mv3qrpuc-stack-sigterarequests5xxalarmprod-O7PDSLPB3H0F", 
+            "Statistic": "SampleCount", 
+            "TreatMissingData": "missing"
+        }, 
+        {
+            "EvaluationPeriods": 1, 
+            "AlarmArn": "arn:aws:cloudwatch:us-west-1:887867065009:alarm:awseb-e-f8mv3qrpuc-stack-sigterracpuloadalarmprod-2AQ8DLY6YWFT", 
+            "StateUpdatedTimestamp": "2018-02-13T16:00:43.279Z", 
+            "AlarmConfigurationUpdatedTimestamp": "2018-02-13T16:00:42.671Z", 
+            "ComparisonOperator": "GreaterThanOrEqualToThreshold", 
+            "AlarmActions": [
+                "arn:aws:sns:us-west-1:887867065009:ElasticBeanstalkNotifications-Environment-sigterra-prod"
+            ], 
+            "Namespace": "AWS/EC2", 
+            "AlarmDescription": "Sigterra CPU load alarm (PROD)", 
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2018-02-13T16:00:43.269+0000\",\"startDate\":\"2018-02-13T15:50:00.000+0000\",\"statistic\":\"Average\",\"period\":300,\"recentDatapoints\":[20.7666666666676],\"threshold\":50.0}", 
+            "Period": 300, 
+            "StateValue": "OK", 
+            "Threshold": 50.0, 
+            "AlarmName": "awseb-e-f8mv3qrpuc-stack-sigterracpuloadalarmprod-2AQ8DLY6YWFT", 
+            "Dimensions": [
+                {
+                    "Name": "AutoScalingGroupName", 
+                    "Value": "awseb-e-f8mv3qrpuc-stack-AWSEBAutoScalingGroup-EKHTIRMJSSGB"
+                }
+            ], 
+            "Statistic": "Average", 
+            "StateReason": "Threshold Crossed: 1 datapoint [20.7666666666676 (13/02/18 15:50:00)] was not greater than or equal to the threshold (50.0).", 
+            "InsufficientDataActions": [], 
+            "OKActions": [], 
+            "ActionsEnabled": true, 
+            "MetricName": "CPUUtilization"
+        }, 
+        {
+            "EvaluationPeriods": 1, 
+            "AlarmArn": "arn:aws:cloudwatch:us-west-1:887867065009:alarm:awseb-e-f8mv3qrpuc-stack-sigterrahealthstatealarmprod-260I3Y6AN645", 
+            "StateUpdatedTimestamp": "2018-02-13T16:02:14.456Z", 
+            "AlarmConfigurationUpdatedTimestamp": "2018-02-13T16:02:28.236Z", 
+            "ComparisonOperator": "GreaterThanThreshold", 
+            "AlarmActions": [
+                "arn:aws:sns:us-west-1:887867065009:ElasticBeanstalkNotifications-Environment-sigterra-prod"
+            ], 
+            "Namespace": "AWS/ElasticBeanstalk", 
+            "AlarmDescription": "Sigterra health state alarm (PROD)", 
+            "StateReasonData": "{\"version\":\"1.0\",\"queryDate\":\"2018-02-13T16:02:14.442+0000\",\"startDate\":\"2018-02-13T15:57:00.000+0000\",\"statistic\":\"Maximum\",\"period\":300,\"recentDatapoints\":[0.0],\"threshold\":1.0}", 
+            "Period": 300, 
+            "StateValue": "OK", 
+            "Threshold": 1.0, 
+            "AlarmName": "awseb-e-f8mv3qrpuc-stack-sigterrahealthstatealarmprod-260I3Y6AN645", 
+            "Dimensions": [
+                {
+                    "Name": "EnvironmentName", 
+                    "Value": "sigterra-env"
+                }
+            ], 
+            "Statistic": "Maximum", 
+            "StateReason": "Threshold Crossed: 1 datapoint [0.0 (13/02/18 15:57:00)] was not greater than or equal to the threshold (1.0).", 
+            "InsufficientDataActions": [], 
+            "OKActions": [
+                "arn:aws:sns:us-west-1:887867065009:ElasticBeanstalkNotifications-Environment-sigterra-prod"
+            ], 
+            "ActionsEnabled": true, 
+            "MetricName": "EnvironmentHealth"
+        }
+    ]
+}

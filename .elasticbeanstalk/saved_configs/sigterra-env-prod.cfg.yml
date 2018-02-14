@@ -1,0 +1,211 @@
+EnvironmentConfigurationMetadata:
+  Description: Sigterra PROD configuration
+  DateCreated: '1518603712000'
+  DateModified: '1518603712000'
+Platform:
+  PlatformArn: arn:aws:elasticbeanstalk:us-west-1::platform/Tomcat 8 with Java 8 running on 64bit Amazon Linux/2.5.2
+OptionSettings:
+  aws:elasticbeanstalk:command:
+    BatchSize: '30'
+    BatchSizeType: Percentage
+    IgnoreHealthCheck: true
+    DeploymentPolicy: Rolling
+  aws:elasticbeanstalk:container:tomcat:jvmoptions:
+    XX:MaxPermSize: 128m
+    Xmx: 512m
+  aws:elasticbeanstalk:application:environment:
+    JDBC_CONNECTION_STRING: ''
+  aws:elasticbeanstalk:application:
+    Application Healthcheck URL: ''
+  aws:ec2:vpc:
+    Subnets: subnet-3292476a
+    VPCId: vpc-65ff0901
+    DBSubnets: subnet-e849ce8c,subnet-3292476a
+    AssociatePublicIpAddress: true
+  aws:rds:dbinstance:
+    DBEngineVersion: 5.6.27
+    DBPassword: qfe8zLbq
+    DBAllocatedStorage: '5'
+    DBInstanceClass: db.t1.micro
+    DBEngine: mysql
+    DBUser: sigterra
+    MultiAZDatabase: false
+    DBDeletionPolicy: Snapshot
+  aws:autoscaling:updatepolicy:rollingupdate:
+    RollingUpdateType: Health
+    RollingUpdateEnabled: true
+  aws:elasticbeanstalk:sns:topics:
+    Notification Endpoint: ''
+  aws:elasticbeanstalk:hostmanager:
+    LogPublicationControl: false
+  aws:elasticbeanstalk:cloudwatch:logs:
+    RetentionInDays: '30'
+    DeleteOnTerminate: true
+    StreamLogs: true
+  aws:elasticbeanstalk:environment:
+    ServiceRole: aws-elasticbeanstalk-service-role
+    EnvironmentType: SingleInstance
+  aws:elasticbeanstalk:healthreporting:system:
+    ConfigDocument:
+      Version: 1
+      CloudWatchMetrics:
+        Instance:
+          RootFilesystemUtil: null
+          CPUIrq: null
+          LoadAverage5min: 60
+          ApplicationRequests5xx: 60
+          ApplicationRequests4xx: null
+          CPUUser: null
+          LoadAverage1min: null
+          ApplicationLatencyP50: null
+          CPUIdle: null
+          InstanceHealth: null
+          ApplicationLatencyP95: null
+          ApplicationLatencyP85: null
+          ApplicationLatencyP90: 60
+          CPUSystem: null
+          ApplicationLatencyP75: null
+          CPUSoftirq: null
+          ApplicationLatencyP10: null
+          ApplicationLatencyP99: null
+          ApplicationRequestsTotal: null
+          ApplicationLatencyP99.9: null
+          ApplicationRequests3xx: null
+          ApplicationRequests2xx: null
+          CPUIowait: null
+          CPUNice: null
+        Environment:
+          InstancesSevere: null
+          InstancesDegraded: null
+          ApplicationRequests5xx: null
+          ApplicationRequests4xx: null
+          ApplicationLatencyP50: null
+          ApplicationLatencyP95: null
+          ApplicationLatencyP85: null
+          InstancesUnknown: null
+          ApplicationLatencyP90: null
+          InstancesInfo: null
+          InstancesPending: null
+          ApplicationLatencyP75: null
+          ApplicationLatencyP10: null
+          ApplicationLatencyP99: null
+          ApplicationRequestsTotal: null
+          InstancesNoData: null
+          ApplicationLatencyP99.9: null
+          ApplicationRequests3xx: null
+          ApplicationRequests2xx: null
+          InstancesOk: null
+          InstancesWarning: null
+    SystemType: enhanced
+    HealthCheckSuccessThreshold: Warning
+  aws:autoscaling:launchconfiguration:
+    SecurityGroups: sg-d529a3b2
+    IamInstanceProfile: aws-elasticbeanstalk-ec2-role
+    InstanceType: t2.micro
+    EC2KeyName: sigterra_prod
+EnvironmentTier:
+  Type: Standard
+  Name: WebServer
+Extensions:
+  sigterracpuloadalarmprod.EBConsoleSnippet:
+    Order: 500
+    SnippetContents:
+      Resources:
+        sigterracpuloadalarmprod:
+          Type: AWS::CloudWatch::Alarm
+          Properties:
+            AlarmActions:
+            - arn:aws:sns:us-west-1:887867065009:ElasticBeanstalkNotifications-Environment-sigterra-prod
+            MetricName: CPUUtilization
+            ComparisonOperator: GreaterThanOrEqualToThreshold
+            AlarmDescription: Sigterra CPU load alarm (PROD)
+            Statistic: Average
+            Period: 300
+            Dimensions:
+            - Value:
+                Ref: AWSEBAutoScalingGroup
+              Name: AutoScalingGroupName
+            EvaluationPeriods: 1
+            InsufficientDataActions: []
+            Namespace: AWS/EC2
+            OKActions: []
+            Threshold: 50
+  sigterrahealthstatealarmprod.EBConsoleSnippet:
+    Order: 500
+    SnippetContents:
+      Resources:
+        sigterrahealthstatealarmprod:
+          Type: AWS::CloudWatch::Alarm
+          Properties:
+            AlarmActions:
+            - arn:aws:sns:us-west-1:887867065009:ElasticBeanstalkNotifications-Environment-sigterra-prod
+            MetricName: EnvironmentHealth
+            ComparisonOperator: GreaterThanThreshold
+            AlarmDescription: Sigterra health state alarm (PROD)
+            Statistic: Maximum
+            Period: 300
+            Dimensions:
+            - Value:
+                Ref: AWSEBEnvironmentName
+              Name: EnvironmentName
+            EvaluationPeriods: 1
+            InsufficientDataActions: []
+            Namespace: AWS/ElasticBeanstalk
+            OKActions:
+            - arn:aws:sns:us-west-1:887867065009:ElasticBeanstalkNotifications-Environment-sigterra-prod
+            Threshold: 1
+  sigteralatencyalarmprod.EBConsoleSnippet:
+    Order: 500
+    SnippetContents:
+      Resources:
+        sigteralatencyalarmprod:
+          Type: AWS::CloudWatch::Alarm
+          Properties:
+            AlarmActions:
+            - arn:aws:sns:us-west-1:887867065009:ElasticBeanstalkNotifications-Environment-sigterra-prod
+            MetricName: ApplicationLatencyP90
+            ComparisonOperator: GreaterThanThreshold
+            AlarmDescription: Sigterra latency alarm (PROD)
+            Statistic: Average
+            Period: 60
+            Dimensions:
+            - Value: i-028b1e2c09e0f5a29
+              Name: InstanceId
+            - Value:
+                Ref: AWSEBEnvironmentName
+              Name: EnvironmentName
+            EvaluationPeriods: 2
+            InsufficientDataActions: []
+            Namespace: AWS/ElasticBeanstalk
+            OKActions:
+            - arn:aws:sns:us-west-1:887867065009:ElasticBeanstalkNotifications-Environment-sigterra-prod
+            Threshold: 1
+  sigterarequests5xxalarmprod.EBConsoleSnippet:
+    Order: 500
+    SnippetContents:
+      Resources:
+        sigterarequests5xxalarmprod:
+          Type: AWS::CloudWatch::Alarm
+          Properties:
+            AlarmActions:
+            - arn:aws:sns:us-west-1:887867065009:ElasticBeanstalkNotifications-Environment-sigterra-prod
+            MetricName: ApplicationRequests5xx
+            ComparisonOperator: GreaterThanOrEqualToThreshold
+            AlarmDescription: Sigterra 5xx requests alarm (PROD)
+            Statistic: Average
+            Period: 300
+            Dimensions:
+            - Value: i-028b1e2c09e0f5a29
+              Name: InstanceId
+            - Value:
+                Ref: AWSEBEnvironmentName
+              Name: EnvironmentName
+            EvaluationPeriods: 1
+            InsufficientDataActions: []
+            Namespace: AWS/ElasticBeanstalk
+            OKActions: []
+            Threshold: 1
+  RDS.EBConsoleSnippet:
+    Order: null
+    SourceLocation: https://s3-us-west-1.amazonaws.com/elasticbeanstalk-env-resources-us-west-1/eb_snippets/rds/rds.json
+AWSConfigurationTemplateVersion: 1.1.0.0
