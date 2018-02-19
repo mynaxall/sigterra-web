@@ -20,7 +20,7 @@
         }
 
         $scope.tabNames ={
-            "cardletName": "Your Sigterra Profile Name",
+            "cardletName": "Narrative Name",
             "tabs":
                 [{
                     "name": "Contact Info",
