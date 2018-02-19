@@ -40,6 +40,7 @@ import java.util.Optional;
 public class CardletResource {
 
     public static final int MAX_ALLOWED_PROFILE_ICON_SIZE = 20 * 1024 * 1024;
+    public static final int MAX_ALLOWED_PDF_SIZE = 50 * 1024 * 1024;
 
     private final Logger log = LoggerFactory.getLogger(CardletResource.class);
     @Inject
@@ -56,6 +57,25 @@ public class CardletResource {
 
     @Inject
     private AWSS3BucketService awss3BucketService;
+
+
+    @PostMapping("cardlet/uploid/files")
+    @Timed
+    public ResponseEntity<?> uploadCardletFiles(@RequestParam("file") MultipartFile file) throws JSONException {
+        JSONObject successObject = new JSONObject();
+        if (file != null && !file.isEmpty()) {
+            if (file.getSize() > MAX_ALLOWED_PDF_SIZE) {
+                successObject.put("success", false);
+                successObject.put("message", "File is too big. Max allowed file size is 50Mb");
+                return ResponseEntity.ok(successObject);
+            }
+
+        }
+
+        return null;
+    }
+
+
 
 
     /**
