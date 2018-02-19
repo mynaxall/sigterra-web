@@ -16,9 +16,13 @@
         vm.showCarousel = true;
         $scope.showLink = true;
 
+        function  getId(id) {
+            return  window.atob( window.atob( window.atob(window.atob(id))));
+        }
+
         $scope.getCardlet = function(){
             var param1 = $location.search().cardletId;
-            $http.get("/api/cardlet/"+window.atob(param1))
+            $http.get("/api/cardlet/"+ getId(param1))
                 .success(function(response, status, headers) {
                     $scope.tabNames = response;
                 });
