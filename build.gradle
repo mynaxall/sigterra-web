@@ -15,7 +15,7 @@ buildscript {
         classpath "com.moowork.gradle:gradle-node-plugin:0.13"
         classpath "com.moowork.gradle:gradle-gulp-plugin:0.13"
         classpath "io.spring.gradle:dependency-management-plugin:0.6.1.RELEASE"
-        classpath "org.apache.pdfbox:pdfbox:2.0.2"
+        classpath "org.apache.pdfbox:pdfbox:1.8.3"
         //jhipster-needle-gradle-buildscript-dependency - JHipster will add additional gradle build script plugins here
     }
 }
@@ -114,6 +114,7 @@ repositories {
 }
 
 dependencies {
+    compile "org.apache.pdfbox:pdfbox:1.8.3"
     compile "com.amazonaws:aws-java-sdk:${aws_java_sdk_version}"
     compile "io.dropwizard.metrics:metrics-core"
     compile "io.dropwizard.metrics:metrics-graphite:${dropwizard_metrics_version}"

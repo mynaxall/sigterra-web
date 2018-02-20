@@ -19,11 +19,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.activation.MimetypesFileTypeMap;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
+import java.nio.file.Files;
 
 /**
  * Service for AWS S3 Bucket.
@@ -55,6 +59,47 @@ public class AWSS3BucketService {
         }
     }
 
+    public URI uploadCardletImage(File file) {
+        URI uri = null;
+        if (file != null && !file.exists()) {
+            try {
+                String bucketName = hipsterProperties.getAwss3Bucket().getName();
+                User user = userService.getUserWithAuthorities();
+                String imageUrl = user.getImageUrl();
+                String folderPath = "cardletImage/" + user.getId() + "/";
+                if (StringUtils.isNotBlank(imageUrl)) {
+                    String imageKey = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
+                    s3Client.deleteObject(new DeleteObjectRequest(bucketName, folderPath + imageKey));
+                }
+                String name = USER_PROFILE_ICON + user.getId();
+                String originalFilename = file.getName();
+                if (originalFilename.contains(".")) {
+                    name += originalFilename.substring(originalFilename.lastIndexOf("."));
+                }
+                ObjectMetadata metadata = new ObjectMetadata();
+                metadata.setContentType(new MimetypesFileTypeMap().getContentType(file));
+                metadata.setContentLength(file.length());
+                String fileKey = folderPath + name;
+                PutObjectRequest putObject = new PutObjectRequest(bucketName, fileKey, new FileInputStream(file), metadata);
+                putObject.withCannedAcl(CannedAccessControlList.PublicRead);
+
+                s3Client.putObject(putObject);
+
+                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName, fileKey);
+                URL url = s3Client.generatePresignedUrl(urlRequest);
+                uri = new URI(url.toURI().getScheme(),
+                    url.toURI().getAuthority(),
+                    url.toURI().getPath(),
+                    null,
+                    url.toURI().getFragment());
+                log.debug("Uploaded business image to AWS S3 Bucket has URL: {}", uri.toString());
+
+            }catch (Exception e) {
+                log.error("Error occurred while uploading the cardlet images file", e);
+            }
+        }
+        return uri;
+    }
     public URI uploadProfileImage(MultipartFile file) {
         URI uri = null;
         if (file != null && !file.isEmpty()) {

@@ -11,8 +11,10 @@ import itomy.sigterra.service.CardletService;
 import itomy.sigterra.service.EventService;
 import itomy.sigterra.service.UserService;
 import itomy.sigterra.service.dto.UserCardletDTO;
+import itomy.sigterra.web.rest.util.ConverterUtil;
 import itomy.sigterra.web.rest.util.HeaderUtil;
 import itomy.sigterra.web.rest.util.PaginationUtil;
+import org.apache.pdfbox.pdmodel.PDPage;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -25,10 +27,17 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.apache.pdfbox.pdmodel.PDDocument;
 
+import javax.imageio.ImageIO;
 import javax.inject.Inject;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +50,7 @@ public class CardletResource {
 
     public static final int MAX_ALLOWED_PROFILE_ICON_SIZE = 20 * 1024 * 1024;
     public static final int MAX_ALLOWED_PDF_SIZE = 50 * 1024 * 1024;
+    public static final int MAX_NUMBER_OF_PDF_PAGES = 10;
 
     private final Logger log = LoggerFactory.getLogger(CardletResource.class);
     @Inject
@@ -61,7 +71,7 @@ public class CardletResource {
 
     @PostMapping("cardlet/uploid/files")
     @Timed
-    public ResponseEntity<?> uploadCardletFiles(@RequestParam("file") MultipartFile file) throws JSONException {
+    public ResponseEntity<?> uploadCardletFiles(@RequestParam("file") MultipartFile file) throws JSONException, IOException {
         JSONObject successObject = new JSONObject();
         if (file != null && !file.isEmpty()) {
             if (file.getSize() > MAX_ALLOWED_PDF_SIZE) {
@@ -69,13 +79,19 @@ public class CardletResource {
                 successObject.put("message", "File is too big. Max allowed file size is 50Mb");
                 return ResponseEntity.ok(successObject);
             }
-
         }
+        File pdf = new ConverterUtil(file).MultipartFileToJavaFile();
+        PDDocument document = PDDocument.load(pdf);
+//            if (document.getNumberOfPages() > MAX_NUMBER_OF_PDF_PAGES){}
 
-        return null;
+
+        List<PDPage> listOfPages = document.getDocumentCatalog().getAllPages();
+        List<URI> listOfImages = new ConverterUtil(listOfPages).convertPDFToImages();
+
+
+        document.close();
+        return new ResponseEntity<>(listOfImages, HttpStatus.OK);
     }
-
-
 
 
     /**
@@ -127,7 +143,7 @@ public class CardletResource {
      * @return the ResponseEntity with status 200 (OK) and the list of cardlets in body
      * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
      */
-    @GetMapping("/cardlets" )
+    @GetMapping("/cardlets")
     @Timed
     public ResponseEntity<List<?>> getAllCardlets(Pageable pageable)
         throws URISyntaxException {
@@ -206,7 +222,7 @@ public class CardletResource {
         return new ResponseEntity<>(usetCardletDTOs, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/editCardlet", produces=MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/editCardlet", produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<UserCardletDTO> editCardlet(@RequestBody UserCardletDTO cardletDTO)
         throws URISyntaxException {
@@ -217,7 +233,7 @@ public class CardletResource {
     }
 
 
-    @PostMapping(value = "/cardletFirst", produces=MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/cardletFirst", produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<UserCardletDTO> createFirstCardlet(@RequestBody UserCardletDTO cardletDTO, @RequestParam(value = "id") Long id)
         throws URISyntaxException {
@@ -228,9 +244,7 @@ public class CardletResource {
     }
 
 
-
-
-    @PostMapping(value = "/cardlet", produces=MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/cardlet", produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<UserCardletDTO> createCardlet(@RequestBody UserCardletDTO cardletDTO)
         throws URISyntaxException {
@@ -241,7 +255,7 @@ public class CardletResource {
         return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/clone", produces=MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/clone", produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<UserCardletDTO> cloneCardlet(@RequestBody UserCardletDTO cardletDTO)
         throws URISyntaxException {
@@ -251,7 +265,7 @@ public class CardletResource {
         return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
     }
 
-    @PostMapping(value = "cardlet/upload/icon/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "cardlet/upload/icon/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<?> uploadProfileIcon(@RequestBody MultipartFile file, @PathVariable String id) throws JSONException {
         JSONObject successObject = cardletService.fileUploading(file, id, null, false);
@@ -259,7 +273,7 @@ public class CardletResource {
     }
 
 
-    @PostMapping(value = "signature/upload/icon/{id}/{name}", produces=MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "signature/upload/icon/{id}/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<?> uploadSignatureIcon(@RequestBody MultipartFile file, @PathVariable String id, @PathVariable String name) throws JSONException {
         JSONObject successObject = cardletService.fileUploading(file, id, name, true);
