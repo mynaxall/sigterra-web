@@ -18,11 +18,12 @@ public class ItemModel implements Serializable {
     private InputProperties name;
     private InputProperties description;
     private String link;
+    private boolean isPDF;
 
     public ItemModel() {
     }
 
-    public ItemModel(Long id,int index, int position, String image1, String image2, String image3, InputProperties name, InputProperties description, String link) {
+    public ItemModel(Long id, int index, int position, String image1, String image2, String image3, InputProperties name, InputProperties description, String link, boolean isPDF) {
         this.index = index;
         this.position = position;
         this.image = image1;
@@ -31,7 +32,9 @@ public class ItemModel implements Serializable {
         this.name = name;
         this.description = description;
         this.link = link;
+        this.isPDF = isPDF;
     }
+
 
     public Long getId() {
         return id;
@@ -105,6 +108,14 @@ public class ItemModel implements Serializable {
         this.link = link;
     }
 
+    public boolean isPDF() {
+        return isPDF;
+    }
+
+    public void setPDF(boolean PDF) {
+        isPDF = PDF;
+    }
+
     @Override
     public String toString() {
         return "ItemModel{" +
@@ -117,6 +128,8 @@ public class ItemModel implements Serializable {
             ", name=" + name +
             ", description=" + description +
             ", link='" + link + '\'' +
+            ", isPDF=" + isPDF +
             '}';
+
     }
 }

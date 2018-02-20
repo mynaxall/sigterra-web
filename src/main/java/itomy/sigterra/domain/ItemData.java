@@ -43,6 +43,10 @@ public class ItemData implements Serializable {
     @Column(name = "tab_index")
     private Integer tabIndex;
 
+    @Column(name = "is_pdf")
+    private boolean isPDF;
+
+
     @ManyToOne
     private Item item;
 
@@ -205,6 +209,14 @@ public class ItemData implements Serializable {
         this.description = inputProperties;
     }
 
+    public boolean isPDF() {
+        return isPDF;
+    }
+
+    public void setPDF(boolean isPDF) {
+        this.isPDF = isPDF;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -229,14 +241,18 @@ public class ItemData implements Serializable {
     public String toString() {
         return "ItemData{" +
             "id=" + id +
-            ", createdDate='" + createdDate + "'" +
-            ", modifiedDate='" + modifiedDate + "'" +
-            ", firstImage='" + firstImage + "'" +
-            ", secondImage='" + secondImage + "'" +
-            ", thirdImage='" + thirdImage + "'" +
-            ", link='" + link + "'" +
-            ", position='" + position + "'" +
-            ", tabIndex='" + tabIndex + "'" +
+            ", createdDate=" + createdDate +
+            ", modifiedDate=" + modifiedDate +
+            ", firstImage='" + firstImage + '\'' +
+            ", secondImage='" + secondImage + '\'' +
+            ", thirdImage='" + thirdImage + '\'' +
+            ", link='" + link + '\'' +
+            ", position=" + position +
+            ", tabIndex=" + tabIndex +
+            ", isPDF=" + isPDF +
+            ", item=" + item +
+            ", name=" + name +
+            ", description=" + description +
             '}';
     }
 }
