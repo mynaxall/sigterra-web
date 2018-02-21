@@ -59,19 +59,19 @@ public class AWSS3BucketService {
         }
     }
 
-    public URI uploadCardletImage(File file) {
+    public URI uploadPresentationImage(File file, String name) {
         URI uri = null;
         if (file != null && !file.exists()) {
             try {
                 String bucketName = hipsterProperties.getAwss3Bucket().getName();
                 User user = userService.getUserWithAuthorities();
                 String imageUrl = user.getImageUrl();
-                String folderPath = "cardletImage/" + user.getId() + "/";
+                String folderPath = "presentationImage/" + user.getId() + "/";
                 if (StringUtils.isNotBlank(imageUrl)) {
                     String imageKey = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
                     s3Client.deleteObject(new DeleteObjectRequest(bucketName, folderPath + imageKey));
                 }
-                String name = USER_PROFILE_ICON + user.getId();
+
                 String originalFilename = file.getName();
                 if (originalFilename.contains(".")) {
                     name += originalFilename.substring(originalFilename.lastIndexOf("."));
@@ -132,10 +132,10 @@ public class AWSS3BucketService {
                 GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName, fileKey);
                 URL url = s3Client.generatePresignedUrl(urlRequest);
                 uri = new URI(url.toURI().getScheme(),
-                              url.toURI().getAuthority(),
-                              url.toURI().getPath(),
-                              null,
-                              url.toURI().getFragment());
+                    url.toURI().getAuthority(),
+                    url.toURI().getPath(),
+                    null,
+                    url.toURI().getFragment());
 
 
                 uri = URI.create(uri.toString() + '?' + System.currentTimeMillis());
@@ -179,10 +179,10 @@ public class AWSS3BucketService {
                 GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName, fileKey);
                 URL url = s3Client.generatePresignedUrl(urlRequest);
                 uri = new URI(url.toURI().getScheme(),
-                              url.toURI().getAuthority(),
-                              url.toURI().getPath(),
-                              null,
-                              url.toURI().getFragment());
+                    url.toURI().getAuthority(),
+                    url.toURI().getPath(),
+                    null,
+                    url.toURI().getFragment());
                 log.debug("Uploaded business image to AWS S3 Bucket has URL: {}", uri.toString());
             } catch (Exception e) {
                 log.error("Error occurred while uploading the profile icon file", e);
@@ -220,10 +220,10 @@ public class AWSS3BucketService {
                 GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName, fileKey);
                 URL url = s3Client.generatePresignedUrl(urlRequest);
                 uri = new URI(url.toURI().getScheme(),
-                              url.toURI().getAuthority(),
-                              url.toURI().getPath(),
-                              null,
-                              url.toURI().getFragment());
+                    url.toURI().getAuthority(),
+                    url.toURI().getPath(),
+                    null,
+                    url.toURI().getFragment());
 
                 uri = URI.create(uri.toString() + '?' + System.currentTimeMillis());
                 log.debug("Uploaded signature image to AWS S3 Bucket has URL: {}", uri.toString());

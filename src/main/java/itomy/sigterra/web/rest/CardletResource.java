@@ -37,6 +37,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -69,28 +70,57 @@ public class CardletResource {
     private AWSS3BucketService awss3BucketService;
 
 
-    @PostMapping("cardlet/uploid/files")
+    @PostMapping("cardlet/upload/presentationFile")
     @Timed
-    public ResponseEntity<?> uploadCardletFiles(@RequestParam("file") MultipartFile file) throws JSONException, IOException {
+    public ResponseEntity<?> uploadPresentationFile(@RequestParam("file") MultipartFile file) throws JSONException, IOException {
         JSONObject successObject = new JSONObject();
-        if (file != null && !file.isEmpty()) {
-            if (file.getSize() > MAX_ALLOWED_PDF_SIZE) {
-                successObject.put("success", false);
-                successObject.put("message", "File is too big. Max allowed file size is 50Mb");
-                return ResponseEntity.ok(successObject);
-            }
-        }
-        File pdf = new ConverterUtil(file).MultipartFileToJavaFile();
-        PDDocument document = PDDocument.load(pdf);
-//            if (document.getNumberOfPages() > MAX_NUMBER_OF_PDF_PAGES){}
+        if (file == null && file.isEmpty()) {
+            successObject.put("success", false);
+            successObject.put("message", "File is empty");
 
+            return new ResponseEntity<>(successObject, HttpStatus.OK);
+        }
+        if (file.getSize() > MAX_ALLOWED_PDF_SIZE) {
+            successObject.put("success", false);
+            successObject.put("message", "File is too big. Max allowed file size is 50Mb");
+            return ResponseEntity.ok(successObject);
+        }
+
+        File pdf = new ConverterUtil(file).multipartFileToJavaFile();
+        PDDocument document = PDDocument.load(pdf);
 
         List<PDPage> listOfPages = document.getDocumentCatalog().getAllPages();
-        List<URI> listOfImages = new ConverterUtil(listOfPages).convertPDFToImages();
 
+        if (listOfPages.size() > MAX_NUMBER_OF_PDF_PAGES) {
+            listOfPages.subList(9, listOfPages.size() - 1).clear();
+        }
 
+        new ConverterUtil(listOfPages);
+        List<URI> listOfImages = convertPDFToImages(listOfPages);
+//        List<URI> listOfImages = new ConverterUtil(listOfPages).convertPDFToImages();
         document.close();
+        if (listOfImages.isEmpty() || listOfImages == null) {
+            successObject.put("success", false);
+            successObject.put("message", "No response from server"); //?
+            return ResponseEntity.ok(successObject);
+        }
+
         return new ResponseEntity<>(listOfImages, HttpStatus.OK);
+    }
+
+    public List<URI> convertPDFToImages(List<PDPage> listOfPages) throws IOException {
+        List<URI> listOfURIImages = new ArrayList<>();
+        String name = new SimpleDateFormat("yyyy-MM-dd-HH-mm-S").format(new Date());
+        for (PDPage page : listOfPages) {
+            BufferedImage image = page.convertToImage();
+            File outPutFile = new File(".jpeg");
+            ImageIO.write(image, "jpeg", outPutFile);
+            MultipartFile multipartFile = new ConverterUtil().javaFileToMultipartFile(outPutFile);
+            URI url = awss3BucketService.uploadSignatureImage(multipartFile, null, name);
+            listOfURIImages.add(url);
+        }
+
+        return listOfURIImages;
     }
 
 
