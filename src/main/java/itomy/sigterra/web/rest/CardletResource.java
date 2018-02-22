@@ -96,7 +96,7 @@ public class CardletResource {
 
         document.close();
 
-        if (listOfImages.isEmpty() || listOfImages == null) {
+        if (listOfImages == null || listOfImages.isEmpty()) {
             successObject.put("success", false);
             successObject.put("message", "No response from server");
             return ResponseEntity.ok(successObject);
@@ -112,7 +112,7 @@ public class CardletResource {
             BufferedImage image = page.convertToImage();
             String name = PDF_ITEM_NAME + "-" + count++;
             File outPutFile = new File(".jpeg");
-            ImageIO.write(image,"jpeg", outPutFile);
+            ImageIO.write(image, "jpeg", outPutFile);
             MultipartFile multipartFile = ConverterUtil.convertJavaFileToMultipartFile(outPutFile);
             URI url = awss3BucketService.uploadSignatureImage(multipartFile, cardletId, name);
             listOfURIImages.add(url);

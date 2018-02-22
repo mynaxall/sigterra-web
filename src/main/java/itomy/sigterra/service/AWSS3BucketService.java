@@ -59,47 +59,6 @@ public class AWSS3BucketService {
         }
     }
 
-    public URI uploadPresentationImage(File file, String name) {
-        URI uri = null;
-        if (file != null && !file.exists()) {
-            try {
-                String bucketName = hipsterProperties.getAwss3Bucket().getName();
-                User user = userService.getUserWithAuthorities();
-                String imageUrl = user.getImageUrl();
-                String folderPath = "presentationImage/" + user.getId() + "/";
-                if (StringUtils.isNotBlank(imageUrl)) {
-                    String imageKey = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
-                    s3Client.deleteObject(new DeleteObjectRequest(bucketName, folderPath + imageKey));
-                }
-
-                String originalFilename = file.getName();
-                if (originalFilename.contains(".")) {
-                    name += originalFilename.substring(originalFilename.lastIndexOf("."));
-                }
-                ObjectMetadata metadata = new ObjectMetadata();
-                metadata.setContentType(new MimetypesFileTypeMap().getContentType(file));
-                metadata.setContentLength(file.length());
-                String fileKey = folderPath + name;
-                PutObjectRequest putObject = new PutObjectRequest(bucketName, fileKey, new FileInputStream(file), metadata);
-                putObject.withCannedAcl(CannedAccessControlList.PublicRead);
-
-                s3Client.putObject(putObject);
-
-                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName, fileKey);
-                URL url = s3Client.generatePresignedUrl(urlRequest);
-                uri = new URI(url.toURI().getScheme(),
-                    url.toURI().getAuthority(),
-                    url.toURI().getPath(),
-                    null,
-                    url.toURI().getFragment());
-                log.debug("Uploaded business image to AWS S3 Bucket has URL: {}", uri.toString());
-
-            }catch (Exception e) {
-                log.error("Error occurred while uploading the presentation images file", e);
-            }
-        }
-        return uri;
-    }
     public URI uploadProfileImage(MultipartFile file) {
         URI uri = null;
         if (file != null && !file.isEmpty()) {
