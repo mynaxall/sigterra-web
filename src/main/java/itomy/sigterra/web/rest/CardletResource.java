@@ -36,15 +36,13 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-<<<<<<< HEAD
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-=======
+
 import java.util.*;
->>>>>>> development
+
 
 /**
  * REST controller for managing Cardlet.
@@ -55,11 +53,10 @@ public class CardletResource {
 
     public static final int MAX_ALLOWED_PROFILE_ICON_SIZE = 20 * 1024 * 1024;
     public static final int MAX_ALLOWED_PDF_SIZE = 50 * 1024 * 1024;
-<<<<<<< HEAD
-=======
+
     public static final int MAX_NUMBER_OF_PDF_PAGES = 10;
     public static final String PDF_ITEM_NAME = "pdf-item";
->>>>>>> development
+
 
     private final Logger log = LoggerFactory.getLogger(CardletResource.class);
     @Inject
