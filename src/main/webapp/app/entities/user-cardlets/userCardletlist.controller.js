@@ -6,14 +6,13 @@
         .controller('UserCardletListController', UserCardletListController);
 
 
-    UserCardletListController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'paginationConstants', '$http', '$timeout', '$uibModal', '$location', '$window', '$rootScope', 'Carousel'];
+    UserCardletListController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'paginationConstants', '$http', '$timeout', '$uibModal', '$location', '$window', '$rootScope'];
 
-    function UserCardletListController($scope, $state, CardletList, ParseLinks, AlertService, paginationcardletConstants, $http, $timeout, $uibModal, $location, $window, $rootScope, Carousel) {
+    function UserCardletListController($scope, $state, CardletList, ParseLinks, AlertService, paginationcardletConstants, $http, $timeout, $uibModal, $location, $window, $rootScope) {
         var vm = this;
 
 
         $scope.time = Date.now()
-        $scope.Carousel = Carousel;
         vm.currentSlide = 0;
         vm.showCarousel = true;
         $scope.showLink = true;
@@ -245,8 +244,12 @@
         $scope.banner = "";
         $scope.tabsImage = '';
 
+        function setId(id) {
+           return window.btoa(window.btoa(window.btoa(window.btoa(id))));
+        }
+
         $scope.gerPreviewLink = function (id) {
-            return ($location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/previewCardlet?cardletId=' + window.btoa(id))
+            return ($location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/previewCardlet?cardletId=' + setId(id))
         }
 
 
@@ -282,7 +285,7 @@
                     $scope.firstBusinessCardCopyed = "";
                 }
             }
-            $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/previewCardlet?cardletId=' + window.btoa(sigId);
+            $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/previewCardlet?cardletId=' + setId(sigId);
             $scope.element = $("#" + cardId); // global variable
             $scope.getCanvas;
             html2canvas($scope.element, {
@@ -517,7 +520,7 @@
         };
 
         $scope.openModal = function (id, syncData) {
-            $scope.cardletLink = '<iframe style="width: 600px; height: 310px;border: 0px!important" src="' + $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/copyToWeb?cardletId=' + window.btoa(id) + '"></iframe>'
+            $scope.cardletLink = '<iframe style="width: 600px; height: 310px;border: 0px!important" src="' + $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/copyToWeb?cardletId=' + setId(id) + '"></iframe>'
             $scope.isShowModal = true;
         };
 

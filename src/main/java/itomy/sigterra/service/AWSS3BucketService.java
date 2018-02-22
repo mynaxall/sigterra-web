@@ -19,11 +19,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.activation.MimetypesFileTypeMap;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
+import java.nio.file.Files;
 
 /**
  * Service for AWS S3 Bucket.
@@ -87,10 +91,10 @@ public class AWSS3BucketService {
                 GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName, fileKey);
                 URL url = s3Client.generatePresignedUrl(urlRequest);
                 uri = new URI(url.toURI().getScheme(),
-                              url.toURI().getAuthority(),
-                              url.toURI().getPath(),
-                              null,
-                              url.toURI().getFragment());
+                    url.toURI().getAuthority(),
+                    url.toURI().getPath(),
+                    null,
+                    url.toURI().getFragment());
 
 
                 uri = URI.create(uri.toString() + '?' + System.currentTimeMillis());
@@ -134,10 +138,10 @@ public class AWSS3BucketService {
                 GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName, fileKey);
                 URL url = s3Client.generatePresignedUrl(urlRequest);
                 uri = new URI(url.toURI().getScheme(),
-                              url.toURI().getAuthority(),
-                              url.toURI().getPath(),
-                              null,
-                              url.toURI().getFragment());
+                    url.toURI().getAuthority(),
+                    url.toURI().getPath(),
+                    null,
+                    url.toURI().getFragment());
                 log.debug("Uploaded business image to AWS S3 Bucket has URL: {}", uri.toString());
             } catch (Exception e) {
                 log.error("Error occurred while uploading the profile icon file", e);
@@ -175,10 +179,10 @@ public class AWSS3BucketService {
                 GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName, fileKey);
                 URL url = s3Client.generatePresignedUrl(urlRequest);
                 uri = new URI(url.toURI().getScheme(),
-                              url.toURI().getAuthority(),
-                              url.toURI().getPath(),
-                              null,
-                              url.toURI().getFragment());
+                    url.toURI().getAuthority(),
+                    url.toURI().getPath(),
+                    null,
+                    url.toURI().getFragment());
 
                 uri = URI.create(uri.toString() + '?' + System.currentTimeMillis());
                 log.debug("Uploaded signature image to AWS S3 Bucket has URL: {}", uri.toString());

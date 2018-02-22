@@ -6,12 +6,11 @@
         .controller('PreviewCardletController', PreviewCardletController);
 
 
-    PreviewCardletController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'LoginService', '$sce', '$rootScope', '$window', 'Carousel'];
+    PreviewCardletController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'LoginService', '$sce', '$rootScope', '$window'];
 
-    function PreviewCardletController($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants, $http, $timeout, $location, LoginService, $sce, $rootScope, $window, Carousel) {
+    function PreviewCardletController($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants, $http, $timeout, $location, LoginService, $sce, $rootScope, $window) {
 
         var vm = this;
-        $scope.Carousel = Carousel;
         vm.tabId = "";
         $rootScope.title = "";
 
@@ -32,10 +31,13 @@
         vm.showCarousel = true;
         $scope.showLink = true;
 
+        function  getId(id) {
+          return  window.atob( window.atob( window.atob(window.atob(id))));
+        }
+
         $scope.getCardlet = function () {
             var param1 = $location.search().cardletId;
-
-            $http.get("/api/cardlet/" + window.atob(param1))
+            $http.get("/api/cardlet/" + getId(param1))
                 .success(function (response, status, headers) {
                     $scope.tabNames = response;
 
@@ -87,7 +89,7 @@
 
         $scope.addToAddressBook = function () {
             var param1 = $location.search().cardletId;
-            $http.post("/api/address-book/" + window.atob(param1))
+            $http.post("/api/address-book/" + getId(param1))
                 .success(function (response, status, headers) {
 
                     $scope.successfulyAdded = response.message;
@@ -120,7 +122,7 @@
 
             // clicks counter request
             var paramId = $location.search().cardletId;
-            $http.post("api/event/cardlet/" + window.atob(paramId))
+            $http.post("api/event/cardlet/" + getId(paramId))
                 .success(function (response, status, headers) {
                     // Do nothing
                 })
