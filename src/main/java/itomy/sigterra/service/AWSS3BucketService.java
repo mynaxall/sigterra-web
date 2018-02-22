@@ -95,7 +95,7 @@ public class AWSS3BucketService {
                 log.debug("Uploaded business image to AWS S3 Bucket has URL: {}", uri.toString());
 
             }catch (Exception e) {
-                log.error("Error occurred while uploading the cardlet images file", e);
+                log.error("Error occurred while uploading the presentation images file", e);
             }
         }
         return uri;

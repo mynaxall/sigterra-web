@@ -36,11 +36,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * REST controller for managing Cardlet.
@@ -52,6 +48,7 @@ public class CardletResource {
     public static final int MAX_ALLOWED_PROFILE_ICON_SIZE = 20 * 1024 * 1024;
     public static final int MAX_ALLOWED_PDF_SIZE = 50 * 1024 * 1024;
     public static final int MAX_NUMBER_OF_PDF_PAGES = 10;
+    public static final String PDF_ITEM_NAME = "pdf-item";
 
     private final Logger log = LoggerFactory.getLogger(CardletResource.class);
     @Inject
@@ -70,9 +67,9 @@ public class CardletResource {
     private AWSS3BucketService awss3BucketService;
 
 
-    @PostMapping("cardlet/upload/presentationFile")
+    @PostMapping("cardlet/upload/presentation-pdf/{cardletId}")
     @Timed
-    public ResponseEntity<?> uploadPresentationFile(@RequestParam("file") MultipartFile file) throws JSONException, IOException {
+    public ResponseEntity<?> uploadPresentationFile(@RequestParam("file") MultipartFile file, @RequestParam String cardletId) throws JSONException, IOException {
         JSONObject successObject = new JSONObject();
         if (file == null && file.isEmpty()) {
             successObject.put("success", false);
@@ -86,7 +83,7 @@ public class CardletResource {
             return ResponseEntity.ok(successObject);
         }
 
-        File pdf = new ConverterUtil(file).multipartFileToJavaFile();
+        File pdf = ConverterUtil.convertMultipartFileToJavaFile(file);
         PDDocument document = PDDocument.load(pdf);
 
         List<PDPage> listOfPages = document.getDocumentCatalog().getAllPages();
@@ -95,28 +92,29 @@ public class CardletResource {
             listOfPages.subList(9, listOfPages.size() - 1).clear();
         }
 
-        new ConverterUtil(listOfPages);
-        List<URI> listOfImages = convertPDFToImages(listOfPages);
-//        List<URI> listOfImages = new ConverterUtil(listOfPages).convertPDFToImages();
+        List<URI> listOfImages = convertPDFToImages(listOfPages, cardletId);
+
         document.close();
+
         if (listOfImages.isEmpty() || listOfImages == null) {
             successObject.put("success", false);
-            successObject.put("message", "No response from server"); //?
+            successObject.put("message", "No response from server");
             return ResponseEntity.ok(successObject);
         }
 
         return new ResponseEntity<>(listOfImages, HttpStatus.OK);
     }
 
-    public List<URI> convertPDFToImages(List<PDPage> listOfPages) throws IOException {
+    private List<URI> convertPDFToImages(List<PDPage> listOfPages, String cardletId) throws IOException {
         List<URI> listOfURIImages = new ArrayList<>();
-        String name = new SimpleDateFormat("yyyy-MM-dd-HH-mm-S").format(new Date());
+        int count = 1;
         for (PDPage page : listOfPages) {
             BufferedImage image = page.convertToImage();
+            String name = PDF_ITEM_NAME + "-" + count++;
             File outPutFile = new File(".jpeg");
-            ImageIO.write(image, "jpeg", outPutFile);
-            MultipartFile multipartFile = new ConverterUtil().javaFileToMultipartFile(outPutFile);
-            URI url = awss3BucketService.uploadSignatureImage(multipartFile, null, name);
+            ImageIO.write(image,"jpeg", outPutFile);
+            MultipartFile multipartFile = ConverterUtil.convertJavaFileToMultipartFile(outPutFile);
+            URI url = awss3BucketService.uploadSignatureImage(multipartFile, cardletId, name);
             listOfURIImages.add(url);
         }
 
