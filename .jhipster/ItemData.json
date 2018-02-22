@@ -50,6 +50,10 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "is_pdf",
+            "fieldType": "boolean"
+        },
+        {
             "fieldName": "position",
             "fieldType": "Integer"
         },

@@ -120,6 +120,7 @@ public class CardletService {
                 itemModel.setIndex(itemData.getTabIndex());
                 itemModel.setPosition(itemData.getPosition());
                 itemModel.setLink(itemData.getLink());
+                itemModel.setPDF(itemData.isPDF());
                 itemModels.add(itemModel);
 
             }
@@ -156,7 +157,7 @@ public class CardletService {
 
        return userCardletDTO;
     }
-
+    
     public JSONObject fileUploading(MultipartFile file, String id, String name, Boolean upladType) throws JSONException {
         JSONObject successObject = new JSONObject();
         if(file != null && !file.isEmpty()) {
@@ -167,7 +168,7 @@ public class CardletService {
             }
             String fileName = file.getName();
             String mimeType = file.getContentType();
-            if (mimeType.startsWith("image/")) {
+            if (mimeType.startsWith("image/") || mimeType.startsWith("application/pdf")) {
                 URI url;
                 if(upladType) {
                     url = awss3BucketService.uploadSignatureImage(file, id, name);
@@ -375,6 +376,7 @@ public class CardletService {
                     itemData.setPosition(inputModel.getPosition());
                     itemData.setTabIndex(inputModel.getIndex());
                     itemData.setItem(item);
+                    itemData.setPDF(inputModel.isPDF());
                     itemDataRepository.save(itemData);
                     itemDatas.add(itemData);
 

@@ -36,7 +36,13 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
 import java.util.*;
+
 
 /**
  * REST controller for managing Cardlet.
@@ -47,8 +53,10 @@ public class CardletResource {
 
     public static final int MAX_ALLOWED_PROFILE_ICON_SIZE = 20 * 1024 * 1024;
     public static final int MAX_ALLOWED_PDF_SIZE = 50 * 1024 * 1024;
+
     public static final int MAX_NUMBER_OF_PDF_PAGES = 10;
     public static final String PDF_ITEM_NAME = "pdf-item";
+
 
     private final Logger log = LoggerFactory.getLogger(CardletResource.class);
     @Inject
@@ -260,6 +268,29 @@ public class CardletResource {
         return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
     }
 
+    @PostMapping(value = "/cardlet/pdf/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<?> uploadPDF(@RequestBody MultipartFile file, @PathVariable String id) throws JSONException {
+        if (file == null || file.isEmpty()) {
+            JSONObject resp = new JSONObject();
+            resp.put("success", false);
+            resp.put("message", "File is empty");
+
+            return new ResponseEntity<>(resp, HttpStatus.OK);
+        }
+
+        if (file.getSize() > MAX_ALLOWED_PDF_SIZE) {
+            JSONObject resp = new JSONObject();
+            resp.put("success", false);
+            resp.put("message", "File is too big. Max allowed file size is 50Mb");
+
+            return ResponseEntity.ok(resp);
+        }
+        String name = new SimpleDateFormat("yyyy-MM-dd-HH-mm-S").format(new Date());
+        JSONObject successObject = cardletService.fileUploading(file, id, name, false);
+        return new ResponseEntity<>(successObject.toString(), HttpStatus.OK);
+
+    }
 
     @PostMapping(value = "/cardletFirst", produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
