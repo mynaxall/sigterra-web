@@ -7,6 +7,7 @@ import itomy.sigterra.domain.PersistentToken;
 import itomy.sigterra.domain.User;
 import itomy.sigterra.repository.PersistentTokenRepository;
 import itomy.sigterra.repository.UserRepository;
+import itomy.sigterra.security.AuthoritiesConstants;
 import itomy.sigterra.security.SecurityUtils;
 import itomy.sigterra.service.AWSS3BucketService;
 import itomy.sigterra.service.MailService;
@@ -25,6 +26,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -73,6 +75,7 @@ public class AccountResource {
      * @param request the HTTP request
      * @return the ResponseEntity with status 201 (Created) if the user is registered or 400 (Bad Request) if the login or e-mail is already in use
      */
+    @Secured(AuthoritiesConstants.ADMIN)
     @PostMapping(path = "/register",
                     produces={MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_PLAIN_VALUE})
     @Timed

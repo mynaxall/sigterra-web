@@ -89,8 +89,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .csrf()
-            .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-        .and()
+            .disable()
             .exceptionHandling()
             .authenticationEntryPoint(authenticationEntryPoint)
         .and()
@@ -129,6 +128,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/analytic/**").authenticated()
             .antMatchers("/api/event/**").permitAll()
             .antMatchers("/api/**").authenticated()
+            .antMatchers("/api/register").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/login/impersonate").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/logout/impersonate").authenticated()
             .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
