@@ -89,8 +89,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .csrf()
-            .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-        .and()
+            .disable()
             .exceptionHandling()
             .authenticationEntryPoint(authenticationEntryPoint)
         .and()
