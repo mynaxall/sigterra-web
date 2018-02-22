@@ -157,13 +157,7 @@ public class CardletService {
 
        return userCardletDTO;
     }
-    public JSONObject uploadingPdf(MultipartFile file, String id, String name, Boolean upladType) throws JSONException {
-        JSONObject successObject = new JSONObject();
-        URI url = awss3BucketService.uploadSignatureImage(file, id, name);
-        successObject.put("success", true);
-        successObject.put("url", url);
-        return successObject;
-    }
+    
     public JSONObject fileUploading(MultipartFile file, String id, String name, Boolean upladType) throws JSONException {
         JSONObject successObject = new JSONObject();
         if(file != null && !file.isEmpty()) {
@@ -174,7 +168,7 @@ public class CardletService {
             }
             String fileName = file.getName();
             String mimeType = file.getContentType();
-            if (mimeType.startsWith("image/")) {
+            if (mimeType.startsWith("image/") || mimeType.startsWith("application/pdf")) {
                 URI url;
                 if(upladType) {
                     url = awss3BucketService.uploadSignatureImage(file, id, name);

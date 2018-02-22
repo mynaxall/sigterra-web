@@ -219,7 +219,7 @@ public class CardletResource {
             return ResponseEntity.ok(resp);
         }
         String name = new SimpleDateFormat("yyyy-MM-dd-HH-mm-S").format(new Date());
-        JSONObject successObject = cardletService.uploadingPdf(file, id, name, false);
+        JSONObject successObject = cardletService.fileUploading(file, id, name, false);
         return new ResponseEntity<>(successObject.toString(), HttpStatus.OK);
 
     }
