@@ -142,7 +142,47 @@
                 background-color: #FFFFFF !important;
             }
         }
+/* === blockquote ====== */
 
+blockquote{
+  font-size: 2em;
+  width:60%;
+  margin:50px auto;
+  font-family:Open Sans;
+  font-style:italic;
+  color: #555555;
+  padding:1.2em 30px 1.2em 75px;
+  border-left:8px solid #78C0A8 ;
+  line-height:1.6;
+  position: relative;
+  background:#EDEDED;
+}
+
+blockquote::before{
+  font-family:Arial;
+  content: "\201C";
+  color:#78C0A8;
+  font-size:4em;
+  position: absolute;
+  left: 10px;
+  top:-10px;
+}
+
+blockquote::after{
+  content: '';
+}
+
+blockquote span{
+  display:block;
+  color:#333333;
+  font-style: normal;
+  font-weight: bold;
+  margin-top:1em;
+}
+
+.float-rt{
+float: right ;
+}
     </style>
     <div class="landing-first-panel">
         <div class="user-cardlet-panel">
@@ -150,16 +190,12 @@
                 <div style="font-size: 20px;" class="col-md-8 landing-first-panel-col">
                     <div class="landing-first-title">
                         <span class="landing-first-title-b">
-                            WE ARE A CONTEXTUAL MARKETING PLATFORM
+                            Increase Engagement with Personalized Narratives
                         </span>
                     </div>
                     <div class="how-it-works-description header-block" style="color: #656b6f;">
-                        <p>Sigterra's Contextual Marketing Platform lets you create bite-sized narratives inside miniaturized cards.
-                            Embed these cards into a specific context or a conversation and deepen your engagement. Did you know that
-                            a company with 50 employees sends close to 1M emails every year. That's the equivalent of >1M paid impressions
-                            per year. You never know where your next opportunity will come from. Use Sigterra cards to optimize your email
-                            channel to stand out and passively prove yourself, your company and your product.</p>
-                        <p>Create a FREE Sigterra card today and attach it to your email, web page, blogs, Linkedin or Whatsapp.</p>
+                        <p>Sigterra can help you create a quick narrative about your company, product or service and personalize it individually for your customers. Use data, machine learning and competitive intel to generate personalized narratives for every conversation. </p>
+                        <p>Accelerate engagement, track prospects, keep buyers' attention and generate real-time leads. </p>
                     </div>
                     <div style="margin-top: 60px">
                         <a type="submit" href="#" ng-click="vm.login()" class="landing-learn-brn">Get Started</a>
@@ -167,95 +203,101 @@
 
                 </div>
                 <div class="landing-first-img-div">
-                    <img class="landing-first-img" src="/content/images/landing/r-block-phone.png">
+                    <img class="landing-first-img" src="/content/images/landing/hand3.png">
                 </div>
             </div>
         </div>
     </div>
     <div>
-        <div class="home-title">What is a Sigterra Profile</div>
-        <div class="user-cardlet-panel" style="text-align: center; padding-bottom: 0px">
-            <div class="main-director-panel">
-                <div class="row">
-                    <div class="col-md-4 director-bg" style="position: relative;">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="director-flex-panel">
-                            <div class="director-panel-new">
-                                <div class="director-name">Joe Black</div>
-                                <div class="director-job">Director Sales</div>
-                                <div class="director-title">Adaptive Insights</div>
-                            </div>
-                            <div>
-                                <div style="width: 462px; height:265px;position: relative; margin: 0 auto">
-                                    <div class="landing-tab-1 " ng-click="vm.activateTab('landing-img-1')"></div>
-                                    <div class="landing-tab-2" ng-click="vm.activateTab('landing-img-2')"></div>
-                                    <div class="landing-tab-3" ng-click="vm.activateTab('landing-img-3')"></div>
-                                    <div class="landing-tab-4" ng-click="vm.activateTab('landing-img-4')"></div>
-                                    <img id="landing-img-1" class="landing-img activeLandingTab" src="/content/images/landing/Card1.png">
-                                    <img id="landing-img-2"  class="landing-img" src="/content/images/landing/Card2.png">
-                                    <img id="landing-img-3"  class="landing-img" src="/content/images/landing/Card3.png">
-                                    <img id="landing-img-4"  class="landing-img" src="/content/images/landing/Card4.png">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="landing-text" style="text-align: justify; margin: 18px auto 0">
-                            <p>Meet Joe Black. He’s a successful account exec, who sends over 25K emails/year .​
-                                Every email is an opportunity for him to sell, advertise and promote his products and
-                                services.​</p>
-                            ​
-                            <p>Joe creates a Sigterra profile and includes customer testimonials, sales presentation and
-                                information on his products, all neatly encapsulated within one email signature. He
-                                creates multiple Sigterra profiles to target different verticals he sells into. He keeps
-                                his email signatures updated every week with industry relevant content and latest news.
-                                He loves the analytics that shows him which pieces of content his recipients engage
-                                with.</p>
-                        </div>
-                    </div>
-                </div>
+        <br>
+    <div class="home-use-panel">
+        <div class="container">
+            <div class="row" >
+                    <blockquote>
+                        <p>“What information consumes is the attention of its recipients. Hence a wealth of information creates a poverty of attention”.</p>
+                        <footer class= "c">Herbert Simon,
+                            ​1978 Nobel prize winner in economics</footer>
+                    </blockquote>
             </div>
-            <div class="second-director-panel">
-                <div class="row">
-                    <div class="col-lg-6 director-bg" style="position: relative;">
-                        <div class="director-panel">
-                            <div class="director-name">Joe Black</div>
-                            <div class="director-job">Director Sales</div>
-                            <div class="director-title">Adaptive Insights</div>
+        </div>
+    </div>
+    </div><br>
+        <div class="landing-first-panel">
+            <div class="user-cardlet-panel">
+                <div class="row landing-first-panel-container">
+                    <div style="font-size: 20px;" class="col-md-8 landing-first-panel-col">
+                        <div class="landing-first-title">
+                        <span class="landing-first-title-b">
+                            Short Narrative & <br>Decreasing Attention Span
+                        </span>
                         </div>
+                        <div class="how-it-works-description header-block" style="color: #656b6f;">
+                            <p>B2B Marketers care about capturing and keeping their prospects’ attention. A recent study from Microsoft Cananda tells us that attention span for individuals have decreased from 12 sec in 2000 to 8 sec in 2016. This makes the job of a marketer incredibly difficult.</p>
+                            <p>To make matters worse, companies have developed too much content over the years to help with SEO and inbound traffic. Prospects are increasingly getting lost in this content forest.</p>
+                            <p> Sigterra’s narrative automation platform not only helps you tell a quick bite-sized story to your prospects to ensure that you make the best of the attention you receive.</p>
+                        </div>
+
                     </div>
-                    <div class="col-lg-6">
-                        <div style="margin-top: 30px">
-                            <div>
-                                <div style="width: 462px; height:265px;position: relative; margin: 0 auto">
-                                    <div class="landing-tab-1 " ng-click="vm.activateTabMobile('landing-img-5')"></div>
-                                    <div class="landing-tab-2" ng-click="vm.activateTabMobile('landing-img-6')"></div>
-                                    <div class="landing-tab-3" ng-click="vm.activateTabMobile('landing-img-7')"></div>
-                                    <div class="landing-tab-4" ng-click="vm.activateTabMobile('landing-img-8')"></div>
-                                    <img id="landing-img-5" class="landing-img activeLandingTab" src="/content/images/landing/Card1.png">
-                                    <img id="landing-img-6"  class="landing-img" src="/content/images/landing/Card2.png">
-                                    <img id="landing-img-7"  class="landing-img" src="/content/images/landing/Card3.png">
-                                    <img id="landing-img-8"  class="landing-img" src="/content/images/landing/Card4.png">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="landing-text" style="text-align: justify; width: 429px; margin: 18px auto 0">
-                            <p>Meet Joe Black. He’s a successful account exec, who sends over 25K emails/year .​
-                                Every email is an opportunity for him to sell, advertise and promote his products and
-                                services.​</p>
-                            ​
-                            <p>Joe creates a Sigterra profile and includes customer testimonials, sales presentation and
-                                information on his products, all neatly encapsulated within one email signature. He
-                                creates multiple Sigterra profiles to target different verticals he sells into. He keeps
-                                his email signatures updated every week with industry relevant content and latest news.
-                                He loves the analytics that shows him which pieces of content his recipients engage
-                                with.</p>
-                        </div>
+                    <div class="landing-first-img-div">
+                        <img class="landing-first-img" src="/content/images/landing/fish2.png">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="howItWorks" class="home-use-panel">
+    <div>
+        <br>
+    <div class="home-use-panel">
+        <div class="container">
+            <div class="row" >
+                    <blockquote>
+                        <p>““We are moving from a world where computing power was scarce to a place where computing now is almost limitless and where the true scarce commodity is increasingly - human attention.”
+                            ”.</p>
+                        <footer>Satya Nadella
+                            CEO, Microsoft</footer>
+                    </blockquote>
+                </div>
+            </div>
+    </div></div><br>
+        <div class="landing-first-panel">
+            <div class="user-cardlet-panel">
+                <div class="row landing-first-panel-container">
+                    <div style="font-size: 20px;" class="col-md-8 landing-first-panel-col">
+                        <div class="landing-first-title">
+                    <span class="landing-first-title-b">
+                        Many faces of Personalization
+                    </span>
+                        </div>
+                        <div class="how-it-works-description header-block" style="color: #656b6f;">
+                            <p>Personalized conversations can help companies connect their solutions to a prospect’s problems and questions. Marketers have always tried to personalize their content to make it more relevant and contexual.</p>
+                            <p>Content Personalization can comes in different flavors. Some websites change their ‘call to action’s based on past user behavior; while others display different content based on the domain you are logging in from.</p>
+                            <p>At Sigterra we go beyond. We analyze individual prospects based on their B2B data footprint and competitive intel to automatically weave a highly personalized narrative at scale using machine learning and automation. This approach is guaranteed to significantly increase engagement and leadgen.</p>
+                        </div>
+
+                    </div>
+                    <div class="landing-first-img-div">
+                        <img class="landing-first-img" src="/content/images/landing/persons.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div>
+        <br>
+        <div class="home-use-panel">
+            <div class="container">
+                <div class="row" >
+                    <blockquote>
+                        <p>Cost of attention is continually rising and yet Marketers are focused almost entirely on “attention acquisition”.
+
+                            Next generation of marketing technologies need to focus on effective “attention conversion”</p>
+                        <footer>Thales S. Teixeira,
+
+                            Harvard Business School</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+<br>
+    <!-- <div id="howItWorks" class="home-use-panel">
         <div class="user-cardlet-panel">
             <div class="home-title">How it Works ?</div>
             <div style="position:relative; min-height: 600px">
@@ -332,7 +374,8 @@
         </div>
     </div>
 
-
+ -->
+    <!--
     <div style="background-color: #FFFFFF">
         <div class="user-cardlet-panel" style="text-align: center; padding-bottom: 200px">
             <div class="home-title">Sample Sigterra Profiles</div>
@@ -417,8 +460,8 @@
             </div>
         </div>
     </div>
-
-</div>
+ -->
+    </div></div><br>
 <div class="sub-footer"></div>
 <div class="footer" id="contacts" ng-cloak>
     <div class="footer-panel">
@@ -452,7 +495,7 @@
                 </div>
             </div>
             <div class="footer-border-landing" style="margin-top: 40px"></div>
-            <div class="footer-main-text-landing" style="margin-top: 20px">All rights reserved 2017</div>
+            <div class="footer-main-text-landing" style="margin-top: 20px">All rights reserved 2018</div>
             <div class="footer-main-text-landing">v 2.1.9, build: {{BUILD_VERSION}}</div>
         </div>
     </div>

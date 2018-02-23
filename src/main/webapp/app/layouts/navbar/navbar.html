@@ -39,16 +39,16 @@
                         <span>ACTIVITY</span>
                     </a>
                 </li>
-                <li ng-hide="vm.isAuthenticated()"  ng-switch-when="false" uib-dropdown class="navigation-link">
+                <!--<li ng-hide="vm.isAuthenticated()"  ng-switch-when="false" uib-dropdown class="navigation-link">
                     <a href="#/#howItWorks" ng-click="vm.howItWorks()" >
                         <span>HOW IT WORKS?</span>
                     </a>
-                </li>
-                <li ng-hide="vm.isAuthenticated()"  ng-switch-when="false" uib-dropdown class="navigation-link">
+                </li> -->
+               <!-- <li ng-hide="vm.isAuthenticated()"  ng-switch-when="false" uib-dropdown class="navigation-link">
                     <a href="#/#contacts"  ng-click="vm.gotoFooter()">
                         <span>CONTACT US</span>
                     </a>
-                </li>
+                </li> -->
 
                 <li ui-sref-active="active" class="navigation-link" ng-switch-when="true" uib-dropdown class="dropdown pointer">
                     <a ui-sref="userCardletlist">
@@ -78,12 +78,17 @@
                 </li>
                 <li class="navigation-link"  ng-switch-when="false">
                     <a class="newNavbar" href="" ng-click="vm.login()" id="login">
-                        <span class="newNavbar">Sign in</span>
+                        <span class="newNavbar">Login</span>
                     </a>
                 </li>
+                <!--<li class="navigation-link" ng-switch-when="true">-->
+                    <!--<a class="newNavbar navbar-sign-up-btn" ui-sref="register" ng-click="vm.collapseNavbar()">-->
+                        <!--<span class="newNavbar">Register</span>-->
+                    <!--</a>-->
+                <!--</li>-->
                 <li class="navigation-link" ng-switch-when="false">
-                    <a class="newNavbar navbar-sign-up-btn" ui-sref="register" ng-click="vm.collapseNavbar()">
-                        <span class="newNavbar">Register</span>
+                    <a class="newNavbar navbar-sign-up-btn" href="mailto:info@sigterra.com?subject=Demo for sigterra">
+                        <span class="newNavbar">Free Trial</span>
                     </a>
                 </li>
                 <li  ng-class="{activeNavigationTab: vm.$state.includes('admin')}" style="margin-top: 15px;" ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown class="newNavbar dropdown pointer">
