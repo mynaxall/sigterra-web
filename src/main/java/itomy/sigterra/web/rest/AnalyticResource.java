@@ -43,6 +43,17 @@ public class AnalyticResource {
     @Inject
     private AnalyticService analyticService;
 
+    @GetMapping("item/pdf/stats/{itemId:\\d+}")
+    public ResponseEntity getStatsForPdf(@PathVariable("itemId") Long itemId) {
+        log.debug("REST request to get stat for pdf with itemId = {}", itemId);
+        try {
+            AnalyticStatVM vm = new AnalyticStatVM(analyticService.getPdfStats(itemId));
+            return ResponseEntity.ok(vm);
+        } catch (ResponseErrorException rex) {
+            return errorResponse(rex.getHttpStatus(), rex.getMessage());
+        }
+    }
+
     @GetMapping("/stat/{cardletId:\\d+}")
     public ResponseEntity getStatsForCardlet(@PathVariable("cardletId") Long cardletId,
                                              @RequestParam String period) {

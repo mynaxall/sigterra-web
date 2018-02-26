@@ -20,6 +20,9 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface EventRepository extends JpaRepository<Event, Long> {
 
+    @Query("select e from Event e where e.item.id = :id")
+    List<Event> findByItemId(@Param("id") Long id);
+
     @Query("select e from Event e where e.cardlet = :cardlet and e.createdDate > :dateFrom")
     List<Event> findAllEvents(@Param("cardlet") Cardlet cardlet,
                               @Param("dateFrom") Timestamp dateFrom);

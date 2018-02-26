@@ -16,12 +16,16 @@ public class AnalyticStatVM {
     private Long adds;
     private Long clicks;
     private Long reads;
+    private Long pdfReads;
+    private Long pdfClicks;
 
     public AnalyticStatVM(List<Event> eventList) {
         this.uniqueViews = countByTypeUnique(eventList, VIEW);
         this.adds        = countByType(eventList, ADD);
         this.clicks      = countByType(eventList, CLICK);
         this.reads       = countByType(eventList, READ);
+        this.pdfClicks   = countByType(eventList, PDF_CLICK);
+        this.pdfReads    = countByType(eventList, PDF_READ);
     }
 
     private long countByType(List<Event> events, EventType type) {
@@ -36,6 +40,22 @@ public class AnalyticStatVM {
             .map(e -> e.getVisitor().getId())
             .distinct()
             .count();
+    }
+
+    public Long getPdfReads() {
+        return pdfReads;
+    }
+
+    public void setPdfReads(Long pdfReads) {
+        this.pdfReads = pdfReads;
+    }
+
+    public Long getPdfClicks() {
+        return pdfClicks;
+    }
+
+    public void setPdfClicks(Long pdfClicks) {
+        this.pdfClicks = pdfClicks;
     }
 
     public Long getUniqueViews() {

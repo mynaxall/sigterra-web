@@ -5,6 +5,7 @@ import itomy.sigterra.domain.Event;
 import itomy.sigterra.domain.TopDomain;
 import itomy.sigterra.domain.enumeration.EventType;
 import itomy.sigterra.repository.CardletRepository;
+import itomy.sigterra.repository.EventRepository;
 import itomy.sigterra.service.dto.RecentDTO;
 import itomy.sigterra.service.dto.TopDTO;
 import itomy.sigterra.service.exception.ResponseErrorException;
@@ -34,6 +35,8 @@ public class AnalyticService {
     private EventService eventService;
     @Inject
     private CardletRepository cardletRepository;
+    @Inject
+    private EventRepository eventRepository;
 
     public enum Period {DAY, WEEK, MONTH}
 
@@ -51,6 +54,10 @@ public class AnalyticService {
     private static final Pageable DEFAULT_PAGEABLE = new PageRequest(0, 10);
     private static final String CARDLET_NOT_FOUND_MESSAGE = "Cardlet not found";
     private static final String FORBIDDEN_MESSAGE = "User not an cardlet owner.";
+
+    public List<Event> getPdfStats(Long itemId){
+        return eventRepository.findByItemId(itemId);
+    }
 
     public List<Event> getStats(Long cardletId, String period) {
         if (cardletId == null) {
