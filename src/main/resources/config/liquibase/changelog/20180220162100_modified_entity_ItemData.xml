@@ -27,7 +27,7 @@
 
     <changeSet id="20180220162100-2" author="Diachenko_Artem">
         <sql>
-            update item_date set is_pdf = false where is_pdf is null;
+            UPDATE item_data SET is_pdf = false WHERE is_pdf IS NULL;
         </sql>
     </changeSet>
 </databaseChangeLog>
