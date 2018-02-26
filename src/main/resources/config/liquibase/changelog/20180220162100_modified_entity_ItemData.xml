@@ -19,7 +19,7 @@
     <changeSet id="20180220162100-1" author="Diachenko_Artem">
         <addColumn tableName="item_data">
             <column name="is_pdf" type="bit">
-                <constraints nullable="true"/>
+                <constraints nullable="true" />
             </column>
         </addColumn>
         <addDefaultValue tableName="item_data" columnName="is_pdf" defaultValueBoolean="false"/>
