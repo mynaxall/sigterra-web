@@ -25,6 +25,8 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 public class EventResource {
 
     private final Logger log = LoggerFactory.getLogger(EventResource.class);
+    private static final String CLICK_AS_ACTION_TYPE = "click";
+    private static final String READ_AS_ACTION_TYPE = "read";
 
     private final EventService eventService;
     private final CardletRepository cardletRepository;
@@ -86,7 +88,7 @@ public class EventResource {
             return errorResponse(HttpStatus.NOT_FOUND, "Item not found");
         }
         try {
-            eventService.clickItemPdf(itemId, itemDataId, "click");
+            eventService.clickItemPdf(itemId, itemDataId, CLICK_AS_ACTION_TYPE);
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException ex) {
             return errorResponse(BAD_REQUEST, ex.getMessage());
@@ -102,7 +104,7 @@ public class EventResource {
             return errorResponse(HttpStatus.NOT_FOUND, "Item not found");
         }
         try {
-            eventService.clickItemPdf(itemId, itemDataId, "read");
+            eventService.clickItemPdf(itemId, itemDataId, READ_AS_ACTION_TYPE);
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException ex) {
             return errorResponse(BAD_REQUEST, ex.getMessage());

@@ -47,8 +47,8 @@ public class AnalyticResource {
     public ResponseEntity getStatsForPdf(@PathVariable("itemId") Long itemId) {
         log.debug("REST request to get stat for pdf with itemId = {}", itemId);
         try {
-            AnalyticStatVM vm = new AnalyticStatVM(analyticService.getPdfStats(itemId));
-            return ResponseEntity.ok(vm);
+            AnalyticStatVM pdfStats = new AnalyticStatVM(analyticService.getPdfStats(itemId));
+            return ResponseEntity.ok(pdfStats);
         } catch (ResponseErrorException rex) {
             return errorResponse(rex.getHttpStatus(), rex.getMessage());
         }
