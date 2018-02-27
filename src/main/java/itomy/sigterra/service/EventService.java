@@ -74,6 +74,28 @@ public class EventService {
         eventWorker.processEvent(convertToDTO(eventReadItem));
     }
 
+    public void clickItemPdf(Long itemId, Long itemDataId) {
+        Item item = itemRepository.findOne(itemId);
+
+        if (isCardletOwner(item.getCardlet())) {
+            throw new IllegalArgumentException("Self clicks are not counting.");
+        }
+        Event eventClickItem = fromTemplate(item.getCardlet(), EventType.PDF_CLICK, item, null);
+        eventWorker.processEvent(convertToDTO(eventClickItem));
+    }
+
+    public void readItemPdf(Long itemId, Long itemDataId) {
+        Item item = itemRepository.findOne(itemId);
+
+        String link = getLink(item, itemDataId);
+
+        if (isCardletOwner(item.getCardlet())) {
+            throw new IllegalArgumentException("Self clicks are not counting.");
+        }
+        Event eventReadItem = fromTemplate(item.getCardlet(), EventType.PDF_READ, item, link);
+        eventWorker.processEvent(convertToDTO(eventReadItem));
+    }
+
     public void addContactEvent(Cardlet cardlet) {
         if (isCardletOwner(cardlet)) return; // Check if add own Cardlet
 

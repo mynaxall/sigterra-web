@@ -10,10 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static itomy.sigterra.service.util.RequestUtil.getRequestIp;
 import static itomy.sigterra.service.util.RequestUtil.getRequestUserAgent;
@@ -73,6 +70,40 @@ public class EventResource {
         }
         try {
             eventService.clickItem(itemId, itemDataId);
+            return ResponseEntity.ok().build();
+        } catch (IllegalArgumentException ex) {
+            return errorResponse(BAD_REQUEST, ex.getMessage());
+        }
+    }
+
+    @PostMapping("/item/pdf/click/{itemId:\\d+}/{itemDataId:\\d+}")
+    @Analytic(type = {EventType.PDF_CLICK})
+    public ResponseEntity clickItemPdf(@PathVariable Long itemId,
+                                       @PathVariable Long itemDataId) {
+        log.debug("REST request to click item with id = {}, item data with id = {}", itemId, itemDataId);
+
+        if (!(itemRepository.exists(itemId)) || !(itemDataRepository.exists(itemDataId))) {
+            return errorResponse(HttpStatus.NOT_FOUND, "Item not found");
+        }
+        try {
+            eventService.clickItemPdf(itemId, itemDataId);
+            return ResponseEntity.ok().build();
+        } catch (IllegalArgumentException ex) {
+            return errorResponse(BAD_REQUEST, ex.getMessage());
+        }
+    }
+
+    @PostMapping("/item/pdf/read/{itemId:\\d+}/{itemDataId:\\d+}")
+    @Analytic(type = {EventType.PDF_READ})
+    public ResponseEntity readItemPdf(@PathVariable Long itemId,
+                                       @PathVariable Long itemDataId) {
+        log.debug("REST request to read item with id = {}, item data with id = {}", itemId, itemDataId);
+
+        if (!(itemRepository.exists(itemId)) || !(itemDataRepository.exists(itemDataId))) {
+            return errorResponse(HttpStatus.NOT_FOUND, "Item not found");
+        }
+        try {
+            eventService.readItemPdf(itemId, itemDataId);
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException ex) {
             return errorResponse(BAD_REQUEST, ex.getMessage());
