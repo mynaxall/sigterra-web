@@ -92,6 +92,7 @@ public class EventResource {
             return errorResponse(BAD_REQUEST, ex.getMessage());
         }
     }
+
     @PostMapping("/item/pdf/read/{itemId:\\d+}/{itemDataId:\\d+}")
     @Analytic(type = {EventType.PDF_READ})
     public ResponseEntity readItemPdf(@PathVariable Long itemId,
