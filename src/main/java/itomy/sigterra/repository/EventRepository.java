@@ -20,7 +20,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 public interface EventRepository extends JpaRepository<Event, Long> {
 
-    @Query("select e from Event e where e.item.id = :id")
+    @Query("select e from Event e where e.item.id = :id and e.type = 'PDF_READ' or e.type = 'PDF_CLICK'")
     List<Event> findByItemId(@Param("id") Long id);
 
     @Query("select e from Event e where e.cardlet = :cardlet and e.createdDate > :dateFrom")
