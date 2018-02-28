@@ -581,8 +581,6 @@ Social Buttons
     -moz-box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.16);
     box-shadow: 0px 2px 7px 0px rgba(0,0,0,0.16);
     z-index: 5;
-    margin-top: 30px;
-    margin-bottom: 40px;
 }
 .main-head-text{
     color: #13BCB5;
@@ -806,9 +804,14 @@ Social Buttons
     background-color: #13BCB5;
 }
 
+.close-register{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
 .register-container{
-    padding: 0px 65px 0px 65px;
-    margin-bottom: 40px;
+    padding: 0px 60px 0px 60px;
 }
 
 .steps{
@@ -6091,7 +6094,56 @@ recent-activity-sidebar .icon-read {
     word-break: break-all;
 }
 
+.login-btn-group{
+    text-align: center;
+    padding-bottom: 45px;
+}
 
+.registration-steps-div{
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px
+}
+
+.registration-step-one{
+    text-align: left;
+    float: left;
+    width: 50%;
+}
+
+.registration-step-two{
+    text-align: right;
+    float: left;
+    width: 50%
+}
+
+.registration-step-one .registration-steps{
+    margin-left: 0px;
+}
+
+.registration-step-two .registration-steps{
+    margin-right: 0px;
+}
+
+.registration-required-div{
+    text-align: right
+}
+
+.registration-required-div div{
+    color: #7F8C8C;
+    font-size: 11px;
+}
+
+.terms-div{
+    color: #7F8C8C;
+    text-align: center;
+}
+
+.next-step-div{
+    text-align: center;
+    margin-top: 35px;
+    padding-bottom: 45px;
+}
 
 
 
