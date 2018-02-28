@@ -533,138 +533,7 @@
                 }
 
             }
-        }
-
-
-        $scope.getUserProfile = function(){
-            $http.get("/api/account")
-                .success(function(response, status, headers) {
-                    $scope.userAccount = response;
-
-                });
-        }
-        $scope.getUserProfile();
-
-
-        $scope.addTab = function() {
-            $scope.getColors();
-            if ($scope.tabNames.tabs.length <= 3) {
-                var newTab = {"name":"Contact Info "+$scope.tabNames.tabs.length,
-                    "position": $scope.tabNames.tabs.length,
-                    "tabType": 1,
-                    "layout":{
-                        "tabId": $scope.tabTypes[0].id,
-                        "url": $scope.tabTypes[0].path,
-                        "mainColor":  $scope.mainColor,
-                        "secondaryColor": $scope.secondaryColor
-                    },
-                    "userName": {
-                    "value":  $scope.userAccount.username
-                    },
-
-                    "userEmail":{
-                        "value": $scope.userAccount.email
-                    },
-                    "phone":{
-                        "value": $scope.userAccount.phoneNumber
-                    },
-                    "address":{
-                        "value": $scope.userAccount.address
-                    },
-                    "company":{
-                        "value": $scope.userAccount.companyName
-                    },
-                    "site":{
-                        "value": $scope.userAccount.companySite
-                    },
-                    "job":{
-                        "value": $scope.userAccount.jobTitle
-                    },
-                    "photo":  "/content/images/avatar_img.png"
-
-                    }
-                if ($scope.userAccount.username){
-                    newTab.userName = {
-                        "value": $scope.userAccount.username
-                    }
-                }else{
-                    newTab.userName = {
-                        "value": "Your Name"
-                    }
-                }
-
-                if ($scope.userAccount.email) {
-                    newTab.userEmail = {
-                        "value": $scope.userAccount.email
-                    }
-                }else{
-                    newTab.userEmail = {
-                        "value": "Email"
-                    }
-                }
-
-                if ($scope.userAccount.phoneNumber) {
-                    newTab.phone = {
-                        "value": $scope.userAccount.phoneNumber
-                    }
-                }else {
-                    newTab.phone = {
-                        "value": "000000000"
-                    }
-                }
-
-
-                if ($scope.userAccount.address) {
-                    newTab.address = {
-                        "value": $scope.userAccount.address
-                    }
-                }else{
-                    newTab.address = {
-                        "value": "Address"
-                    }
-                }
-
-                if ($scope.userAccount.companyName) {
-                    newTab.company = {
-                        "value": $scope.userAccount.companyName
-                    }
-                }else{
-                    newTab.company = {
-                        "value": "Company Name"
-                    }
-                }
-
-
-                if ($scope.userAccount.companySite) {
-                    newTab.site = {
-                        "value": $scope.userAccount.companySite
-                    }
-                }else{
-                    newTab.site = {
-                        "value": "Website"
-                    }
-                }
-
-                if ($scope.userAccount.jobTitle) {
-                    newTab.job = {
-                        "value": $scope.userAccount.jobTitle
-                    }
-                }else{
-                    newTab.job = {
-                        "value": "Job Title"
-                    }
-                }
-                if($scope.userAccount.imageUrl){
-                    newTab.photo = $scope.userAccount.imageUrl
-                }
-                $scope.tabNames.tabs.push(newTab);
-                if($scope.firstBusinessCardId === '' || $scope.firstBusinessCardId < 0 || $scope.tabNames.tabs[$scope.firstBusinessCardId].tabType != '1'){
-                    $scope.firstBusinessCardId = newTab.position;
-                }
-                setTimeout(function(){
-                    $scope.openCity('settings'+newTab.name+newTab.position, newTab.position, newTab.name+newTab.position, 'card'+newTab.position+newTab.name)}, 500)
-            }
-        }
+        };
 
         $scope.deleteItems = function(tabId, index){
             if($scope.tabNames.tabs[tabId].items.length > 1){
@@ -684,8 +553,7 @@
                     $scope.tabNames.tabs[tabId].items[i].position = i;
                 }
             }
-        }
-
+        };
 
         $scope.accordionActive = 2;
 
