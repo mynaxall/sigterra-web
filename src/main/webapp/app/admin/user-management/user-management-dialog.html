@@ -1,106 +1,244 @@
-<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+<div ng-show="vm.isFirstStep && !vm.isDone" class="registration-div">
+    <div class="register-head"></div>
+    <div class="register-container">
+        <div>
+            <div class="row main-head-text ">
+                <div>Registration</div>
+                <button type="button" class="close close-register" data-dismiss="modal" aria-hidden="true"
+                        ng-click="vm.clear()">&times;</button>
+            </div>
 
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myUserLabel">
-            Create or edit a User</h4>
+            <div class="registration-steps-div">
+                <div class="registration-steps-line"></div>
+                <div class="row registration-steps-bar">
+                    <div class="registration-step-one">
+                        <div class="registration-steps registration-steps-active">
+                            <div class="registration-steps-number" >1</div>
+                        </div>
+                    </div>
+                    <div class="registration-step-two">
+                        <div class="registration-steps">
+                            <div class="registration-steps-number">2</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success" check-position-scroll ng-show="vm.success">
+                <strong>Registration saved!</strong> Please check your email for confirmation.
+            </div>
+
+            <div class="alert alert-danger" ng-show="vm.error">
+                <strong>Registration failed!</strong> Please try again later.
+            </div>
+
+            <div class="alert alert-danger" ng-show="vm.errorUserExists">
+                <strong>Login name already registered!</strong> Please choose another one.
+            </div>
+
+            <div class="alert alert-danger" ng-show="vm.errorEmailExists">
+                <strong>E-mail is already in use!</strong> Please choose another one.
+            </div>
+
+            <div class="alert alert-danger" ng-show="vm.doNotMatch">
+                The password and its confirmation do not match!
+            </div>
+        </div>
+        <div>
+            <form ng-show="!vm.success" name="form" role="form" novalidate show-validation>
+
+                <div class="form-group-new">
+                    <input type="text" class="profile-input" id="username" name="username" placeholder="Your Name *"
+                           ng-model="vm.registerAccount.username" ng-maxlength="50" required>
+                    <div ng-show="form.username.$dirty && form.username.$invalid">
+                        <p class="help-block"
+                           ng-show="form.username.$error.required">
+                            Your username is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.username.$error.minlength">
+                            Your username is required to be at least 1 character.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.username.$error.maxlength">
+                            Your username cannot be longer than 50 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.username.$error.pattern">
+                            Your username can only contain lower-case letters and digits.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group-new">
+                    <input type="text" ng-change="vm.errorEmailExists = null;" class="profile-input" id="email" name="email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" placeholder="E-mail *"
+                           ng-model="vm.registerAccount.email" ng-minlength=5 ng-maxlength=100 ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" required>
+                    <div ng-show="form.email.$dirty && form.email.$invalid">
+                        <p class="help-block"
+                           ng-show="form.email.$error.required">
+                            Your e-mail is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.email.$error.email || form.email.$error.pattern">
+                            Your e-mail is invalid.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.email.$error.minlength">
+                            Your e-mail is required to be at least 5 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.email.$error.maxlength">
+                            Your e-mail cannot be longer than 100 characters.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group-new">
+                    <input type="password" class="profile-input" id="password" name="password" placeholder="Password *"
+                           ng-model="vm.registerAccount.password" ng-minlength=4 ng-maxlength=50 required>
+                    <div ng-show="form.password.$dirty && form.password.$invalid">
+                        <p class="help-block"
+                           ng-show="form.password.$error.required">
+                            Your password is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.password.$error.minlength">
+                            Your password is required to be at least 4 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.password.$error.maxlength">
+                            Your password cannot be longer than 50 characters.
+                        </p>
+                    </div>
+                    <password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>
+                </div>
+                <div class="form-group-new">
+                    <input type="password" class="profile-input" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password *"
+                           ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50  pw-check='password' required>
+                    <div ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
+                        <p class="help-block"
+                           ng-show="form.confirmPassword.$error.required">
+                            Your confirmation password is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.confirmPassword.$error.minlength">
+                            Your confirmation password is required to be at least 4 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.confirmPassword.$error.maxlength">
+                            Your confirmation password cannot be longer than 50 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.confirmPassword.$error.pwmatch">
+                            Passwords don't match.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="registration-required-div">
+                    <div>* Required</div>
+                </div>
+                <div class="terms-div">
+                    Choosing Next means that you agree to the <a target="_blank" class="terms-and-conditions" href="/termsAndConditions.html">Terms and Conditions</a>.
+                </div>
+                <div class="next-step-div">
+                    <button ng-click="vm.nextStep()" type="submit" ng-disabled="form.$invalid || trimValue(vm.registerAccount.password)" class="loginButton">Next</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
-        <div class="form-group form-group-new">
-            <label>ID</label>
-            <input type="text" class="form-control" name="id"
-                   ng-model="vm.user.id" readonly>
-        </div>
+</div>
 
-        <div class="form-group form-group-new">
-            <label class="control-label">Login</label>
-            <input disabled="true"  type="text" class="form-control" name="login"
-                   ng-model="vm.user.login" ng-required="vm.user.id == null" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/">
 
-            <div ng-show="editForm.login.$invalid">
-                <p class="help-block"
-                   ng-show="editForm.login.$error.required">
-                    This field is required.
-                </p>
 
-                <p class="help-block"
-                   ng-show="editForm.login.$error.maxlength"
-                  >
-                    This field cannot be longer than 50 characters.
-                </p>
+<div ng-show="!vm.isFirstStep && !vm.isDone" class="registration-div">
+    <div class="register-head"></div>
+    <div class="register-container">
+        <div>
+            <div class="row main-head-text">
+                <div>Additional information</div>
+            </div>
+
+            <div class="registration-steps-div">
+                <div class="registration-steps-line"></div>
+                <div class="row registration-steps-bar">
+                    <div class="registration-step-one">
+                        <div><img src="/content/images/new/registerStepDone.png" class="registration-steps-image"></div>
+                    </div>
+                    <div class="registration-step-two">
+                        <div class="registration-steps registration-steps-active">
+                            <div class="registration-steps-number">2</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="alert alert-success" ng-show="vm.success">
+                <strong>Registration saved!</strong> Please check your email for confirmation.
+            </div>
+
+            <div class="alert alert-danger" ng-show="vm.error">
+                <strong>Registration failed!</strong> Please try again later.
+            </div>
+
+            <div class="alert alert-danger" ng-show="vm.errorUserExists">
+                <strong>Login name already registered!</strong> Please choose another one.
+            </div>
+
+            <div class="alert alert-danger" ng-show="vm.errorEmailExists">
+                <strong>E-mail is already in use!</strong> Please choose another one.
+            </div>
+
+            <div class="alert alert-danger" ng-show="vm.doNotMatch">
+                The password and its confirmation do not match!
             </div>
         </div>
-        <div class="form-group form-group-new">
-            <label class="control-label">First Name</label>
-            <input type="text" class="form-control" name="firstName"
-                   ng-model="vm.user.firstName" ng-maxlength="50">
+        <div>
+            <form ng-show="!vm.success" name="form2" role="form" novalidate show-validation>
 
-            <div ng-show="editForm.firstName.$invalid">
-                <p class="help-block"
-                   ng-show="editForm.firstName.$error.maxlength"
-                  >
-                    This field cannot be longer than 50 characters.
-                </p>
-            </div>
-        </div>
-        <div class="form-group form-group-new">
-            <label>Last Name</label>
-            <input type="text" class="form-control" name="lastName"
-                   ng-model="vm.user.lastName" ng-maxlength="50">
+                <div class="form-group-new">
+                    <input type="text" class="profile-input" id="phoneNumber" name="phoneNumber" placeholder="Phone number" ng-model="vm.registerAccount.phoneNumber" ng-pattern="vm.PHONE_PATTERN" ng-maxlength="50">
+                    <div ng-show="form2.phoneNumber.$dirty && form2.phoneNumber.$invalid">
+                        <p class="help-block"
+                           ng-show="form2.phoneNumber.$error.pattern">
+                            Invalid phone number format
+                        </p>
+                        <p class="help-block"
+                           ng-show="form2.phoneNumber.$error.maxlength">
+                            Your Phone number cannot be longer than 50 characters.
+                        </p>
 
-            <div ng-show="editForm.lastName.$invalid">
-                <p class="help-block"
-                   ng-show="editForm.lastName.$error.maxlength"
-                  >
-                    This field cannot be longer than 50 characters.
-                </p>
-            </div>
-        </div>
-        <div class="form-group form-group-new">
-            <label class="control-label">Email</label>
-            <input disabled="true" type="email" class="form-control" name="email"
-                   ng-model="vm.user.email" required ng-maxlength="100">
+                    </div>
+                </div>
+                <div class="form-group-new">
+                    <input type="text" class="profile-input" id="companyName" name="companyName" placeholder="Company name"
+                           ng-model="vm.registerAccount.companyName" ng-maxlength="100">
+                    <div ng-show="form2.companyName.$dirty && form2.companyName.$invalid">
+                        <p class="help-block"
+                           ng-show="form2.companyName.$error.maxlength">
+                            Your company name cannot be longer than 100 characters.
+                        </p>
 
-            <div ng-show="editForm.email.$invalid">
-                <p class="help-block"
-                   ng-show="editForm.email.$error.required">
-                    This field is required.
-                </p>
+                    </div>
+                </div>
 
-                <p class="help-block"
-                   ng-show="editForm.email.$error.maxlength"
-                  >
-                    This field cannot be longer than 100 characters.
-                </p>
-				<p class="help-block"
-                   ng-show="editForm.email.$error.email">
-                    Your e-mail is invalid.
-                 </p>
-            </div>
-        </div>
-        <div class="form-group form-group-new">
-            <label for="activated">
-                <input ng-disabled="vm.user.id === null" type="checkbox" id="activated" name="activated" ng-model="vm.user.activated">
-                <span>Activated</span>
-            </label>
-        </div>
+                <div class="form-group-new">
+                    <input type="text" class="profile-input" id="jobTitle" name="jobTitle" placeholder="Job title"
+                           ng-model="vm.registerAccount.jobTitle" ng-maxlength="50">
+                    <div ng-show="form2.jobTitle.$dirty && form2.jobTitle.$invalid">
+                        <p class="help-block"
+                           ng-show="form2.jobTitle.$error.maxlength">
+                            Your job title cannot be longer than 50 characters.
+                        </p>
 
-        <div class="form-group form-group-new">
-            <label>Profiles</label>
-            <select class="form-control" multiple name="authority" ng-model="vm.user.authorities"
-                    ng-options="authority for authority in vm.authorities">
-            </select>
+                    </div>
+                </div>
+
+                <div class="login-btn-group">
+                    <button  type="submit" ng-click="vm.back()" class="loginButton skip-btn">back</button>
+                    <button  type="submit" ng-disabled="form2.$invalid" ng-click="vm.register()" class="loginButton save-btn">Save</button>
+                    <button  type="submit" ng-click="vm.skip()" class="loginButton skip-btn">skip</button>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
-           >Cancel</span>
-        </button>
-        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
-        </button>
-    </div>
-</form>
+</div>
