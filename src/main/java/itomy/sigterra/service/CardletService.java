@@ -157,7 +157,7 @@ public class CardletService {
 
        return userCardletDTO;
     }
-    
+
     public JSONObject fileUploading(MultipartFile file, String id, String name, Boolean upladType) throws JSONException {
         JSONObject successObject = new JSONObject();
         if(file != null && !file.isEmpty()) {
@@ -332,7 +332,7 @@ public class CardletService {
                 business.setTabType(tabTypeRepository.findOne(tab.getLayout().getTabId()));
                 businesses.add(business);
                 businessRepository.save(business);
-            }else if(tab.getTabType().equals(2) || tab.getTabType().equals(3)){
+            }else if(tab.getTabType().equals(2) || tab.getTabType().equals(3) || tab.getTabType().equals(4)){
                 Item item = new Item();
                 if(update){
                     item.setId(tab.getId());
