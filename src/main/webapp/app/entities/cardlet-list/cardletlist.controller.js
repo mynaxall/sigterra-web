@@ -270,114 +270,15 @@
         vm.reverse = pagingParams.ascending;
         vm.transition = transition;
 
-        $scope.getUserProfile = function(){
-            $http.get("/api/account")
-                .success(function(response, status, headers) {
-                    $scope.userAccount = response;
-                    if ($scope.userAccount.username){
-                            $scope.tabNames.tabs[0].userName = {
-                                "value": $scope.userAccount.username
-                            }
-                    }else{
-                        $scope.tabNames.tabs[0].userName = {
-                            "value": "Your Name"
-                        }
-                    }
-
-                    if ($scope.userAccount.email) {
-                        $scope.tabNames.tabs[0].userEmail = {
-                            "value": $scope.userAccount.email
-                        }
-                    }else{
-                        $scope.tabNames.tabs[0].userEmail = {
-                            "value": "Email"
-                        }
-                    }
-
-                    if ($scope.userAccount.phoneNumber) {
-                        $scope.tabNames.tabs[0].phone = {
-                            "value": $scope.userAccount.phoneNumber
-                        }
-                    }else {
-                        $scope.tabNames.tabs[0].phone = {
-                            "value": "000000000"
-                        }
-                    }
-
-
-                    if ($scope.userAccount.address) {
-                        $scope.tabNames.tabs[0].address = {
-                            "value": $scope.userAccount.address
-                        }
-                    }else{
-                        $scope.tabNames.tabs[0].address = {
-                            "value": "Address"
-                        }
-                    }
-
-                    if ($scope.userAccount.companyName) {
-                        $scope.tabNames.tabs[0].company = {
-                            "value": $scope.userAccount.companyName
-                        }
-                    }else{
-                        $scope.tabNames.tabs[0].company = {
-                            "value": "Company Name"
-                        }
-                    }
-
-
-                    if ($scope.userAccount.companySite) {
-                        $scope.tabNames.tabs[0].site = {
-                            "value": $scope.userAccount.companySite
-                        }
-                    }else{
-                        $scope.tabNames.tabs[0].site = {
-                            "value": "Website"
-                        }
-                    }
-
-                    if ($scope.userAccount.jobTitle) {
-                        $scope.tabNames.tabs[0].job = {
-                            "value": $scope.userAccount.jobTitle
-                        }
-                    }else{
-                        $scope.tabNames.tabs[0].job = {
-                            "value": "Job Title"
-                        }
-                    }
-                    if($scope.userAccount.imageUrl){
-                        $scope.tabNames.tabs[0].photo = $scope.userAccount.imageUrl
-                    }else{
-                        $scope.tabNames.tabs[0].photo = $location.protocol() + '://' + $location.host() + ':' + $location.port()+"/content/images/avatar_img.png"
-                    }
-
-                });
-        }
-        $scope.getUserProfile();
-
         $scope.firstBusinessCardId = 0;
 
         $scope.tabNames ={
             "cardletName": "Narrative Name",
             "tabs":
-                [{
-                    "name": "Contact Info",
-                    'position': 0,
-                    "display": "block",
-                    "tabType": 1,
-                    "layout":{
-                        "mainColor": "FFFFFF",
-                        "secondaryColor": "4BABE2"
-
-                    },
-                    "photo": "/content/images/avatar_img.png"
-
-
-
-                },
+                [
                     {
                         "name": "Image Items",
-                        "position": 1,
+                        "position": 0,
                         "tabType": 2,
                         "layout": {
                             "mainColor": "FFFFFF",
@@ -514,24 +415,12 @@
         $scope.userCard();
 
 
-
-
-        $scope.getTabTypes = function(){
-            $http.get("/api/tab-types-by-type/1")
-                .success(function(response, status, headers) {
-                    $scope.tabTypes = response;
-                    $scope.tabNames.tabs[0].layout.tabId = $scope.tabTypes[0].id;
-                    $scope.tabNames.tabs[0].layout.url = $scope.tabTypes[0].path;
-
-                });
-        }
-
         $scope.getItemTypes = function(){
             $http.get("/api/tab-types-by-type/2")
                 .success(function(response, status, headers) {
                     $scope.itemTypes = response;
-                    $scope.tabNames.tabs[1].layout.tabId = $scope.itemTypes[0].id;
-                    $scope.tabNames.tabs[1].layout.url = $scope.itemTypes[0].path;
+                    $scope.tabNames.tabs[0].layout.tabId = $scope.itemTypes[0].id;
+                    $scope.tabNames.tabs[0].layout.url = $scope.itemTypes[0].path;
                 });
         }
 
@@ -543,7 +432,6 @@
         }
 
         $scope.getItemTypes();
-        $scope.getTabTypes();
         $scope.getInfoTypes();
 
         $scope.isNewTab = true;
@@ -616,7 +504,6 @@
             }
         }
 
-
         $scope.addItem = function() {
             $scope.getColors();
             if ($scope.tabNames.tabs.length <= 3) {
@@ -683,138 +570,9 @@
                 }else{
                 $scope.changeAccordionActivity(index + 2)
                 }
-
-            }
-
-
-        }
-
-
-        $scope.addTab = function() {
-            $scope.getColors();
-            if ($scope.tabNames.tabs.length <= 3) {
-
-                var newTab = {"name":"Contact Info "+$scope.tabNames.tabs.length,
-                    "position": $scope.tabNames.tabs.length,
-                    "tabType": 1,
-                    "layout":{
-                        "tabId": $scope.tabTypes[0].id,
-                        "url": $scope.tabTypes[0].path,
-                        "mainColor":  $scope.mainColor,
-                        "secondaryColor": $scope.secondaryColor
-                    },
-                    "userName": {
-                        "value":  $scope.userAccount.username
-                    },
-
-                    "userEmail":{
-                        "value": $scope.userAccount.email
-                    },
-                    "phone":{
-                        "value": $scope.userAccount.phoneNumber
-                    },
-                    "address":{
-                        "value": $scope.userAccount.address
-                    },
-                    "company":{
-                        "value": $scope.userAccount.companyName
-                    },
-                    "site":{
-                        "value": $scope.userAccount.companySite
-                    },
-                    "job":{
-                        "value": $scope.userAccount.jobTitle
-                    },
-                    "photo": "/content/images/avatar_img.png"
-
-                }
-                if ($scope.userAccount.username){
-                    newTab.userName = {
-                        "value": $scope.userAccount.username
-                    }
-                }else{
-                    newTab.userName = {
-                        "value": "Your Name"
-                    }
-                }
-
-                if ($scope.userAccount.email) {
-                    newTab.userEmail = {
-                        "value": $scope.userAccount.email
-                    }
-                }else{
-                    newTab.userEmail = {
-                        "value": "Email"
-                    }
-                }
-
-                if ($scope.userAccount.phoneNumber) {
-                    newTab.phone = {
-                        "value": $scope.userAccount.phoneNumber
-                    }
-                }else {
-                    newTab.phone = {
-                        "value": "000000000"
-                    }
-                }
-
-
-                if ($scope.userAccount.address) {
-                    newTab.address = {
-                        "value": $scope.userAccount.address
-                    }
-                }else{
-                    newTab.address = {
-                        "value": "Address"
-                    }
-                }
-
-                if ($scope.userAccount.companyName) {
-                    newTab.company = {
-                        "value": $scope.userAccount.companyName
-                    }
-                }else{
-                    newTab.company = {
-                        "value": "Company Name"
-                    }
-                }
-
-
-                if ($scope.userAccount.companySite) {
-                    newTab.site = {
-                        "value": $scope.userAccount.companySite
-                    }
-                }else{
-                    newTab.site = {
-                        "value": "Website"
-                    }
-                }
-
-                if ($scope.userAccount.jobTitle) {
-                    newTab.job = {
-                        "value": $scope.userAccount.jobTitle
-                    }
-                }else{
-                    newTab.job = {
-                        "value": "Job Title"
-                    }
-                }
-                if($scope.userAccount.imageUrl){
-                    newTab.photo = $scope.userAccount.imageUrl
-                }
-
-                $scope.tabNames.tabs.push(newTab);
-                if($scope.firstBusinessCardId === '' || $scope.firstBusinessCardId < 0 || $scope.tabNames.tabs[$scope.firstBusinessCardId].tabType != '1'){
-                    $scope.firstBusinessCardId = newTab.position;
-                }
-                setTimeout(function(){
-
-                $scope.openCity('settings'+newTab.name+newTab.position, 'tab'+newTab.position, newTab.name+newTab.position, 'li'+newTab.position+newTab.name)}, 500)
-            }
-            if($scope.tabNames.tabs.length == 4){
-                $scope.isNewTab = false;
             }
         }
+
 
         $scope.isDeleteItem = false;
 
