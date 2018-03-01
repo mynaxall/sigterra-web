@@ -96,7 +96,7 @@
         vm.lockedTopEng = true;
         vm.activityCounters = null;
         vm.cardlets = null;
-        vm.toggleText = 'All Profiles';
+        vm.toggleText = 'All Narratives';
         vm.cardletID = 0;
         vm.activityPeriod = 'day';
         vm.engagementsPeriod = 'day';
