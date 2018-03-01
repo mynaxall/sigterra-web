@@ -94,7 +94,6 @@
                     return cb(account);
                 },
                 function (err) {
-                    this.logout();
                     return cb(err);
                 }.bind(this)).$promise;
         }
