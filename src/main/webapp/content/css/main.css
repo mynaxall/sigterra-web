@@ -6145,7 +6145,24 @@ recent-activity-sidebar .icon-read {
     padding-bottom: 45px;
 }
 
+.create-cardlet-btn{
+    background-color: #E8645A!important;
+    border-color: #E8645A!important
+}
 
+.create-cardlet-btn .copy-btn-part{
+    background-color: #DA4941!important
+}
+
+.create-cardlet-btn-div{
+    padding: 12px 25px;
+    display: inline;
+    font-size: 13px
+}
+
+.create-cardlet-btn:hover{
+    background-color: #e87771!important;
+}
 
 
 
