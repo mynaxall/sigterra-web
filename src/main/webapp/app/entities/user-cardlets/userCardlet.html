@@ -434,6 +434,12 @@
     </style>
     <div class="user-cardlet-panel ng-hide" ng-show="showConent" ng-style="{'min-height': isCopyTiEmail ? '1400px' : 'none'}">
         <div class="portfolio-header"></div>
+        <button type="submit" ng-disabled="for2m.$invalid" class="btn btn-primary main-btn copy-btn create-cardlet-btn">
+            <div class="copy-btn-part">
+                <img class="btn-ing" src="/content/images/new/plus_icon.png">
+            </div>
+            <div class="create-cardlet-btn-div">Create New</div>
+        </button>
         <div class="row">
             <div style="margin-bottom: 70px;" class="col-lg-6" ng-repeat="tabNames in userCardlets">
                 <div class="cardlet-panel">
@@ -491,13 +497,6 @@
                     </div>
                 </div>
 
-            </div>
-            <div style="margin-bottom: 30px;" class="col-lg-6">
-                <div class="create-new-cardlet" ui-sref="cardletlist">
-                    <div class="add-new-panel">
-                        <button type="submit" ng-disabled="for2m.$invalid" class="btn btn-primary main-btn copy-btn" style="background-color: #E8645A!important; border-color: #E8645A!important"><div style="background-color: #DA4941!important" class="copy-btn-part"><img class="btn-ing" src="/content/images/new/plus_icon.png"></div><div style="padding: 12px 25px; display: inline;font-size: 13px">Create New</div></button>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
