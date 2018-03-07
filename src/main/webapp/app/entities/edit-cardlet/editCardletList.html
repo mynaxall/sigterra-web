@@ -110,13 +110,6 @@
         padding-top: 10px;
     }
 
-    .tabs2 a{
-        color: #7F8C8C;
-    }
-
-    .active a{
-        color: #4BABE2;
-    }
 
     ul.tab2 {
         list-style-type: none;
@@ -839,7 +832,7 @@
                     <div style="min-height: 320px;">
                         <div>
                             <ul class="tab2">
-                                <li style="background-color: #fff" class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink2'+tabName.position)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}">
+                                <li class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink2'+tabName.position)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}">
                                     <div style="position: relative;display: table; width: 100%;">
                                         <a style="overflow: hidden; text-overflow: ellipsis;" href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}" id="tabLink2{{tabName.position}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
                                     </div>
