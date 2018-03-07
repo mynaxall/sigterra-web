@@ -4652,12 +4652,7 @@ ul.tab li.active:hover{
 }
 
 .preview-bg{
-    height: calc(100vh - 80px);
-    background: url(/content/images/background.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    height: calc(100vh);
 }
 
 .director-bg{
@@ -5635,8 +5630,11 @@ recent-activity-sidebar .icon-read {
 
 .preview-title{
     margin-top: 50px;
-    font-size: 20px;
+    font-size: 30px;
     color: #000000;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
     font-family: Roboto-Bold-Italic;
 }
 
@@ -6336,7 +6334,19 @@ ul.editor-tab li.active .editor-line{
     min-width: 48px;
 }
 
+.preview-cardlet{
+    margin: auto;
+    width: 570px;
+    padding-top: 10px;
+    padding-left: 30px; position: relative
+}
 
+.img-with-text{
+    text-align: center;
+}
 
+.click-sec{
+    width: 48%;
+}
 
 
