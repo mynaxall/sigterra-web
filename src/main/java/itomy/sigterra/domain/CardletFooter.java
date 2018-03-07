@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "cardlet_footer")
+//    ,uniqueConstraints = @UniqueConstraint(columnNames = {"cardlet_id","index"}))
 public class CardletFooter extends AbstractAuditingEntity{
 
     private static final long serialVersionUID = 1L;

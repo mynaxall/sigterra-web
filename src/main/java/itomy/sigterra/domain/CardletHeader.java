@@ -12,6 +12,9 @@ public class CardletHeader extends AbstractAuditingEntity{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "cta_button_color")
+    private String ctaButtonColor;
+
     @Column(name = "cta_text")
     private String ctaText;
 
