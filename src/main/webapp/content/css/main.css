@@ -6170,7 +6170,7 @@ recent-activity-sidebar .icon-read {
 
 .style-description{
     width: 100%;
-    text-align: right;
+    text-align: left;
     font-size: 12px;
     font-style: italic;
     padding-right: 8px;
@@ -6374,5 +6374,13 @@ ul.editor-tab li.active .editor-line{
 .tabs2 a:hover {
     color: #676767;
     text-decoration: none;
+}
+
+.cardlet-example-div{
+    max-width: 250px!important;
+    max-height: 150px!important;
+    position: relative;
+    width: 250px;
+    height: 120px
 }
 
