@@ -43,6 +43,19 @@ public class Cardlet implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "cardlet", cascade = CascadeType.ALL)
     private Set<Item> items = new HashSet<>();
 
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(unique = true)
+    private CardletHeader cardletHeader;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(unique = true)
+    private CardletBackground cardletBackground;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(unique = true)
+    private CardletFooter cardletFooter;
+
+
     public Long getId() {
         return id;
     }
