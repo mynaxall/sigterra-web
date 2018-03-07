@@ -419,24 +419,14 @@
             $http.get("/api/tab-types-by-type/2")
                 .success(function(response, status, headers) {
                     $scope.itemTypes = response;
-                    $scope.tabNames.tabs[0].layout.tabId = $scope.itemTypes[0].id;
-                    $scope.tabNames.tabs[0].layout.url = $scope.itemTypes[0].path;
+                    $scope.tabNames.tabs[0].layout.tabId = $scope.itemTypes[2].id;
+                    $scope.tabNames.tabs[0].layout.url = $scope.itemTypes[2].path;
                 });
-        }
-
-        $scope.getInfoTypes = function(){
-            $http.get("/api/tab-types-by-type/3")
-                .success(function(response, status, headers) {
-                    $scope.infoTypes = response;
-                });
-        }
+        };
 
         $scope.getItemTypes();
-        $scope.getInfoTypes();
 
         $scope.isNewTab = true;
-
-
 
 
         angular.element(document).ready(function () {
@@ -463,46 +453,7 @@
                     return;
                 }
             }
-        }
-
-        $scope.addInfo = function() {
-            $scope.getColors();
-            if ($scope.tabNames.tabs.length <= 3) {
-                var newTab = {"name":"Text Items "+$scope.tabNames.tabs.length,
-                    "position": $scope.tabNames.tabs.length,
-                    "tabType": 3,
-                    "layout":{
-                        "tabId": $scope.infoTypes[0].id,
-                        "url": $scope.infoTypes[0].path,
-                        "mainColor":  $scope.mainColor,
-                        "secondaryColor": $scope.secondaryColor
-                    },
-                    "items": [
-                        {
-                            //"name": "1 item",
-                            "index": 2,
-                            "position": 0,
-                            "image": "/content/images/portfolio_img_01.png",
-                            "image2": "/content/images/portfolio_img_02.png",
-                            "image3": "/content/images/portfolio_img_03.png",
-                            "name":{
-                                "value": ""
-                            },
-                            "description": {
-                                "value": ""
-                            }
-                        }
-                    ]
-
-                }
-                setTimeout(function(){
-                    $scope.openCity('settings'+newTab.name+newTab.position, 'tab'+newTab.position, newTab.name+newTab.position, 'li'+newTab.position+newTab.name)}, 500)
-                $scope.tabNames.tabs.push(newTab);
-            }
-            if($scope.tabNames.tabs.length == 4){
-                $scope.isNewTab = false;
-            }
-        }
+        };
 
         $scope.addItem = function() {
             $scope.getColors();
@@ -511,8 +462,8 @@
                     "position": $scope.tabNames.tabs.length,
                     "tabType": 2,
                     "layout":{
-                        "tabId": $scope.itemTypes[0].id,
-                        "url": $scope.itemTypes[0].path,
+                        "tabId": $scope.itemTypes[2].id,
+                        "url": $scope.itemTypes[2].path,
                         "mainColor":  $scope.mainColor,
                         "secondaryColor": $scope.secondaryColor
                     },
