@@ -442,14 +442,6 @@
             var currentEl = document.getElementById(id);
             var link = document.getElementById(linkId);
             if (currentEl) {
-                currentEl.style.background = "#F9F9F9";
-                currentEl.style.borderTop = "1px solid #D0D8D9"
-                currentEl.style.borderBottom = "1px solid #D0D8D9";
-                if (angular.element(document.getElementById(id)).hasClass('active')) {
-                    currentEl.style.background = "#FFFFFF";
-                    currentEl.style.borderTop = "2px solid #" + colorSecond;
-                    currentEl.style.borderBottom = "0px";
-                }
 
                 if ($scope.tabNames) {
 
@@ -459,17 +451,17 @@
                         link.style.maxWidth = "535px";
                     }
                     if ($scope.tabNames.tabs.length === 2) {
-                        currentEl.style.width = "270px";
+                        currentEl.style.width = "268px";
                         link.style.width = "265px";
                         link.style.maxWidth = "265px";
                     }
                     if ($scope.tabNames.tabs.length === 3) {
-                        currentEl.style.width = "180px";
+                        currentEl.style.width = "178px";
                         link.style.width = "175px";
                         link.style.maxWidth = "175px";
                     }
                     if ($scope.tabNames.tabs.length === 4) {
-                        currentEl.style.width = "135px";
+                        currentEl.style.width = "133px";
                         link.style.width = "130px";
                         link.style.maxWidth = "130px";
                     }

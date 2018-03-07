@@ -772,16 +772,6 @@
             var cyrrentEl = document.getElementById(id);
             var link = document.getElementById(linkId);
             if (cyrrentEl) {
-                cyrrentEl.style.background = "#F9F9F9";
-                cyrrentEl.style.borderTop = "1px solid #D0D8D9"
-                cyrrentEl.style.borderBottom = "1px solid #D0D8D9";
-                link.style.color = "#7F8C8C"
-                if (angular.element(document.getElementById(id)).hasClass('active')) {
-                    link.style.color = "#" + colorSecond;
-                    cyrrentEl.style.background = "#FFFFFF";
-                    cyrrentEl.style.borderTop = "2px solid #" + colorSecond;
-                    cyrrentEl.style.borderBottom = "0px";
-                }
 
                 if ($scope.tabNames) {
                     if ($scope.userCardlets[index].tabs.length == 1) {
@@ -791,17 +781,17 @@
                     }
 
                     if ($scope.userCardlets[index].tabs.length == 2) {
-                        cyrrentEl.style.width = "270px"
+                        cyrrentEl.style.width = "268px"
                         link.style.width = "265px";
                         link.style.maxWidth = "265px";
                     }
                     if ($scope.userCardlets[index].tabs.length == 3) {
-                        cyrrentEl.style.width = "180px";
+                        cyrrentEl.style.width = "178px";
                         link.style.width = "175px";
                         link.style.maxWidth = "175px";
                     }
                     if ($scope.userCardlets[index].tabs.length == 4) {
-                        cyrrentEl.style.width = "135px";
+                        cyrrentEl.style.width = "133px";
                         link.style.width = "130px";
                         link.style.maxWidth = "130px";
                     }
