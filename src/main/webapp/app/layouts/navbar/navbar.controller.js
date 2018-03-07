@@ -12,6 +12,7 @@
 
         vm.isNavbarCollapsed = true;
         vm.isAuthenticated = Principal.isAuthenticated;
+        vm.showNavigation = false;
 
         ProfileService.getProfileInfo().then(function(response) {
             vm.inProduction = response.inProduction;
@@ -21,6 +22,13 @@
         $scope.homeLogo = false;
 
         $scope.$watch('$location.path()', function(value){
+            console.log($location.path())
+            if($location.path() ==='/previewCardlet'){
+                vm.showNavigation = false;
+            }else{
+                vm.showNavigation = true;
+            }
+
             if(($location.path()) === "/"){
                 $scope.homeLogo = true;
             }else{

@@ -12,6 +12,8 @@
 
         var vm = this;
         vm.tabId = "";
+        vm.bg = "/content/images/background.jpg";
+        vm.title = 'Conversational Commerce is the biggest opportunity for brands to act like people in digital channels & build customer engagement and loyalty.'
         $rootScope.title = "";
 
 

@@ -214,14 +214,13 @@
     }
 
 </style>
-<div class="entiti-content preview-bg" ng-init="getCardlet()" style="padding-bottom: 30px;">
+<div class="entiti-content preview-bg" ng-init="getCardlet()" ng-style="{'background': 'url(' + vm.bg + ') no-repeat center center fixed', 'background-size': 'cover'}">
 
 
     <div class="preview-border">
         <div class="preview-title"></div>
     </div>
-    <div class="preview-cardlet" ng-click="clicksCounter($event)"
-         style="margin: auto;width: 570px;padding-top: 100px; padding-left: 30px; position: relative">
+    <div class="preview-cardlet" ng-click="clicksCounter($event)">
         <div class="alert alert-success-added" check-position-scroll ng-show="successfulyAdded">
             <strong>{{successfulyAdded}}</strong>
         </div>
@@ -229,6 +228,8 @@
         <div class="alert alert-danger" check-position-scroll ng-show="errorAddeding">
             <strong>{{errorAddeding}}</strong>
         </div>
+
+        <h2 class="preview-title">{{vm.title}}</h2>
 
         <div style="position:relative;">
             <div>
@@ -316,7 +317,25 @@
 
     </style>
 </div>
+<section class="service-info-sec">
+    <h2 class="text-center" id="capture">CapGemini's Experts are standing by</h2>
+    <br>
+    <div class="container service-info" >
+        <div class="col-sm-4 img-with-text"><img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon02.png?17535346864100737432" border="0" alt="Carl Call"  />
+            <p class="click-sec-text"><a href="#myModalNorm" data-toggle="modal">Request Info</a></p><br />
+            <!--   (931)268-2040<br /><a href="mailto:carlcall@centergrovecoc.com">Email Carl Call</a>  </p>
+             --></div>
+        <div class="col-sm-4  img-with-text"><img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon01.png?17535346864100737432" border="0" alt="Sjon Gentry"  />
+            <p class="click-sec-text"><a href="#myModalNorm1" data-toggle="modal">Schedule a Deep Dive</a></p><br />
+            <!--   (931)268-3273<br /><a href="mailto:sjongentry@centergrovecoc.com">Email Sjon Gentry</a></p>
+             --></div>
+        <div class="col-sm-4  img-with-text"><img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/icon3.png?12339313325764754835" border="0" alt="John Mabery" />
+            <p class="click-sec-text"><a href="#myModalNorm" data-toggle="modal">Connect with our Experts</a></p><br />
+            <!--   (931)268-0651<br /><a href="mailto:johnmabery@centergrovecoc.com">Email John Mabery</a> </p>
+             --></div>
 
+    </div>
+</section>
 
 
 
