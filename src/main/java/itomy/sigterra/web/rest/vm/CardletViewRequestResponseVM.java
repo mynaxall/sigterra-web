@@ -1,4 +1,4 @@
-package itomy.sigterra.domain;
+package itomy.sigterra.web.rest.vm;
 
 
 import itomy.sigterra.domain.enumeration.CardletFooterIndex;
@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-public class CardletViewRequestVM {
+public class CardletViewRequestResponseVM {
     @NotNull
     private Long cardletId;
 
@@ -26,11 +26,11 @@ public class CardletViewRequestVM {
     @Valid
     private List<CardletFooterVM> footers;
 
-    public CardletViewRequestVM() {
+    public CardletViewRequestResponseVM() {
         // For Jackson
     }
 
-    public CardletViewRequestVM(Long cardletId, CardletHeaderVM headers, CardletBackgroundVM background, List<CardletFooterVM> footers) {
+    public CardletViewRequestResponseVM(Long cardletId, CardletHeaderVM headers, CardletBackgroundVM background, List<CardletFooterVM> footers) {
         this.cardletId = cardletId;
         this.headers = headers;
         this.background = background;
@@ -71,7 +71,7 @@ public class CardletViewRequestVM {
 
     @Override
     public String toString() {
-        return "CardletViewRequestVM{" +
+        return "CardletViewRequestResponseVM{" +
             "cardletId=" + cardletId +
             ", headers=" + headers +
             ", background=" + background +

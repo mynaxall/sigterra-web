@@ -37,6 +37,8 @@ public class ExceptionTranslator {
         return processFieldErrors(fieldErrors);
     }
 
+
+
     @ExceptionHandler(CustomParameterizedException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody

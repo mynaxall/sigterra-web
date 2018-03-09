@@ -59,6 +59,33 @@ public class AWSS3BucketService {
         }
     }
 
+    public URL uploadImage(MultipartFile file,String fullPath){
+        URL url = null;
+        if (file != null && !file.isEmpty()) {
+            try {
+
+                String bucketName = hipsterProperties.getAwss3Bucket().getName();
+                User user = userService.getUserWithAuthorities();
+
+                ObjectMetadata metadata = new ObjectMetadata();
+                metadata.setContentType(file.getContentType());
+                metadata.setContentLength(file.getSize());
+
+                PutObjectRequest putObject = new PutObjectRequest(bucketName, fullPath, file.getInputStream(), metadata);
+                putObject.withCannedAcl(CannedAccessControlList.PublicRead);
+
+                s3Client.putObject(putObject);
+
+                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName, fullPath);
+                url = s3Client.generatePresignedUrl(urlRequest);
+                log.debug("Uploaded image file to AWS S3 Bucket has URL: {}", url.toString());
+            } catch (Exception e) {
+                log.error("Error occurred while uploading the file", e);
+            }
+        }
+        return url;
+    }
+
     public URI uploadProfileImage(MultipartFile file) {
         URI uri = null;
         if (file != null && !file.isEmpty()) {
@@ -191,6 +218,14 @@ public class AWSS3BucketService {
             }
         }
         return uri;
+    }
+
+    @Transactional
+    public URL renameFile(String url, String replace) {
+        String bucketName = hipsterProperties.getAwss3Bucket().getName();
+        s3Client.copyObject(bucketName,url,bucketName,replace);
+        s3Client.deleteObject(bucketName,url);
+        return s3Client.generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName,replace));
     }
 }
 
