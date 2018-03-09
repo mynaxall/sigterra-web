@@ -72,7 +72,7 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
-        width: 550px;
+        width: 916px;
         padding-top: 10px;
     }
 
@@ -175,23 +175,6 @@
         display: none;
     }
 
-
-    .custom-slide-prev{
-        position: absolute;
-        top: 180px;
-        left: -150px;
-        display: block;
-    }
-
-    .custom-slide-next{
-        position: absolute;
-        top: 180px;
-        right: -150px;
-        display: block;
-    }
-
-
-
     @media (max-width: 970px){
         .right.carousel-control,  .left.carousel-control {
             display: block;
@@ -204,7 +187,50 @@
     }
 
 </style>
-<div class="entiti-content preview-bg" ng-init="getCardlet()" ng-style="{'background': 'url(' + vm.bg + ') no-repeat center center fixed', 'background-size': 'cover'}">
+
+<nav class="navbar navbar-default preview-nav" >
+    <div>
+        <div class="navbar-header navbar-brand-preview">
+            <button type="button" class="navbar-toggle navbar-toggle-preview" ng-click="vm.toggleNavbar()">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img  alt="Brand" src="https://cdn.shopify.com/s/files/1/1081/0328/files/logo-cap.svg?12226597222098781749">
+            </a>
+        </div>
+        <div class="navbar-collapse navbar-collapse-preview" uib-collapse="vm.isNavbarCollapsed">
+            <ul class="nav navbar-nav nav-preview">
+                <div class="top-pad">
+                    <div class="col-md-2 circle" >
+                        <img class="image "  src="https://media.licdn.com/media/p/7/005/057/111/022dd0b.jpg">
+                    </div>
+                    <div class="col-md-6 alignme ">
+                        <span class="bold"><strong>Harshad Apte</strong></span>
+                        <br>
+                        <span class="small text-light">Social Media Stream Lead</span>
+                        <br>
+                    </div>
+                </div>
+            </ul>
+            <ul class="nav navbar-nav nav-preview">
+                <div class="prof-details">
+                    <span class="small  fa fa-envelope"></span><span class="text-light">Harshad.apte@capgemini.com</span>
+                    <br>
+                    <span class="small fa fa-phone"> </span><span class="text-light">(+91) 959-045-6473</span>
+                </div>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <button class="btn  btn-warning connect-btn"  data-toggle="modal" data-target="#myModalNorm" >Connect With Our Experts</button>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="entiti-content" ng-init="getCardlet()" ng-style="{'background': 'url(' + vm.bg + ') no-repeat center center fixed', 'background-size': 'cover'}">
 
 
     <div class="preview-border">
@@ -231,20 +257,20 @@
                     </li>
                 </ul>
             </div>
-            <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
+            <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent-preview" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
                 <div class="custom-slide-prev"><img src="/content/images/arrow_left.png" ng-show="vm.tabType != 1 && tabName.items.length > 1" ng-click="prevSlide($index)"></div>
                 <div data-item-id="{{tabNames.tabs[$index].id}}"  ng-click="openPreviewDialog(tabName.tabType)" class="tab-item">
-                    <ng-include style="display: block!important" src="tabName.layout.url"></ng-include>
+                    <ng-include style="display: block!important" src="getUrl(tabName.layout.url)"></ng-include>
                 </div>
                 <div class="custom-slide-next"><img src="/content/images/arrow_right.png" ng-show="vm.tabType != 1 && tabName.items.length > 1"  ng-click="nextSlide($index)"></div>
+                <div class="arrow-link">
+                    <a class="fa fa-arrow-down fa-2x hidden-sm hidden-md" href="" ng-click="scrollToFooter('capture')" target="_self"></a>
+                </div>
             </div>
             <div style="margin-top: 30px; margin-bottom: 60px; position: relative; z-index: 10; text-align: center">
-                <div><button class="preview-add-button" ng-click="addToAddressBook()">Add contact</button></div>
-                <div><button class="preview-create-button" ui-sref="cardletlist">Whats’s Sigterra</button></div>
             </div>
         </div>
     </div>
-
     <style>
 
 
@@ -311,21 +337,55 @@
     <h2 class="text-center" id="capture">CapGemini's Experts are standing by</h2>
     <br>
     <div class="container service-info" >
-        <div class="col-sm-4 img-with-text"><img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon02.png?17535346864100737432" border="0" alt="Carl Call"  />
-            <p class="click-sec-text"><a href="#myModalNorm" data-toggle="modal">Request Info</a></p><br />
+        <div class="col-sm-4 img-with-text">
+            <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon02.png?17535346864100737432" border="0" alt="Carl Call"  />
+            <p class="click-sec-text">
+                <a class="preview-footer-link" href="#myModalNorm" data-toggle="modal">Request Info</a>
+            </p>
+            <br />
             <!--   (931)268-2040<br /><a href="mailto:carlcall@centergrovecoc.com">Email Carl Call</a>  </p>
-             --></div>
-        <div class="col-sm-4  img-with-text"><img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon01.png?17535346864100737432" border="0" alt="Sjon Gentry"  />
-            <p class="click-sec-text"><a href="#myModalNorm1" data-toggle="modal">Schedule a Deep Dive</a></p><br />
+             -->
+        </div>
+        <div class="col-sm-4  img-with-text">
+            <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon01.png?17535346864100737432" border="0" alt="Sjon Gentry"  />
+            <p class="click-sec-text">
+                <a class="preview-footer-link" href="#myModalNorm1" data-toggle="modal">Schedule a Deep Dive</a>
+            </p>
+            <br />
             <!--   (931)268-3273<br /><a href="mailto:sjongentry@centergrovecoc.com">Email Sjon Gentry</a></p>
-             --></div>
-        <div class="col-sm-4  img-with-text"><img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/icon3.png?12339313325764754835" border="0" alt="John Mabery" />
-            <p class="click-sec-text"><a href="#myModalNorm" data-toggle="modal">Connect with our Experts</a></p><br />
+             -->
+        </div>
+        <div class="col-sm-4  img-with-text">
+            <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/icon3.png?12339313325764754835" border="0" alt="John Mabery" />
+            <p class="click-sec-text">
+                <a class="preview-footer-link" href="#myModalNorm" data-toggle="modal">Connect with our Experts</a>
+            </p>
+            <br />
             <!--   (931)268-0651<br /><a href="mailto:johnmabery@centergrovecoc.com">Email John Mabery</a> </p>
-             --></div>
+             -->
+        </div>
 
     </div>
 </section>
+<div class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div class="copyright-text">
+                    CopyRight © 2018 Digital All Rights Reserved
+                </div>
+            </div> <!-- End Col -->
+            <!-- <div class="col-sm-4">
+                <ul class="social-link pull-right footer-icons">
+                    <li><a href=""><span class="fa fa-facebook"></span></a></li>
+                    <li><a href=""><span class="fa fa-skype"></span></a></li>
+                    <li><a href=""><span class="fa fa-linkedin"></span></a></li>
+                    <li><a href=""><span class="fa fa-twitter"></span></a></li>
+                </ul>
+            </div> --> <!-- End Col -->
+        </div>
+    </div>
+</div>
 
 
 
