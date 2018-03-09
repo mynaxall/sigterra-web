@@ -51,9 +51,8 @@ public class Cardlet implements Serializable {
     @JoinColumn(unique = true)
     private CardletBackground cardletBackground;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(unique = true)
-    private CardletFooter cardletFooter;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "cardlet", cascade = CascadeType.ALL)
+    private Set<CardletFooter> cardletFooter;
 
 
     public Long getId() {
