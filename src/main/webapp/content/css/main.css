@@ -1204,19 +1204,6 @@ Social Buttons
     z-index: 10;
 }
 
-.custom-slide-prev{
-    position: absolute;
-    top: 180px;
-    left: -150px;
-}
-
-.custom-slide-next{
-    position: absolute;
-    top: 180px;
-    right: -150px;
-}
-
-
 .border-line-new-header{
     background-color: #D0D8D9;
     position: absolute;
@@ -6350,9 +6337,12 @@ ul.editor-tab li.active .editor-line{
 
 .preview-cardlet{
     margin: auto;
-    width: 570px;
+    width: 943px;
     padding-top: 10px;
-    padding-left: 30px; position: relative
+    padding-left: 30px;
+    padding-bottom: 50px;
+    position: relative;
+
 }
 
 .img-with-text{
@@ -6361,6 +6351,7 @@ ul.editor-tab li.active .editor-line{
 
 .click-sec{
     width: 48%;
+    max-width: 150px;
 }
 
 .tabs2 a{
@@ -6382,5 +6373,153 @@ ul.editor-tab li.active .editor-line{
     position: relative;
     width: 250px;
     height: 120px
+}
+
+.cardlet-image--preview{
+    border: 0px ;
+    height: 606px;
+    width: 913px;
+}
+
+.main-carousel-item-preview{
+    text-align: center;
+    height: 606px;
+}
+
+.main-carousel-item-div-preview{
+    display: inline-block;
+    width: 913px;
+    vertical-align: top;
+    text-align: left;
+    height: 100%;
+}
+
+.tabcontent-preview {
+    display: none;
+    border: 0px solid #ccc;
+    width: 913px;
+    background-color: #F9F9F9;
+    margin-top: -1px;
+}
+
+
+.item-3-content-preview{
+    width: 709px;
+    height: 304px;
+    margin: 0 auto;
+    top: 150px;
+    left: 102px;
+    position: absolute;
+    opacity: .7;
+}
+
+.custom-slide-prev{
+    position: absolute;
+    top: 300px;
+    left: -40px;
+    display: block;
+    background-color: #000000;
+    padding: 5px;
+    opacity: 0.6;
+}
+
+.custom-slide-prev:hover{
+    opacity: 1;
+}
+
+.custom-slide-prev img{
+    width: 20px;
+}
+
+.custom-slide-next{
+    position: absolute;
+    top: 300px;
+    right: -40px;
+    display: block;
+    background-color: #000000;
+    padding: 5px;
+    opacity: 0.6;
+}
+
+.custom-slide-next:hover{
+    opacity: 1;
+}
+
+.custom-slide-next img{
+    width: 20px;
+}
+
+.service-info-sec{
+    background: #8080800f;
+    padding: 25px 0px 29px 0px;
+}
+
+.click-sec-text{
+    margin-top: 1em;
+    font-size: 16px;
+}
+
+a.preview-footer-link {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    padding: 10px 0px;
+    border-top: 1px solid #666;
+    background: #1e1e1e;
+    color: #ccc;
+}
+
+.arrow-link{
+    position: absolute;
+    bottom: 0px;
+    right: -70px;
+    animation-name: arrow;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes arrow {
+    0%   {bottom: 0;}
+    15%  {bottom: 15px;}
+    30%  {bottom: 20px; opacity: 0}
+    50%  {bottom: 0px; opacity: 1}
+    55%  {bottom: -5px;}
+    65%  {bottom: 10px}
+    80%  {boottom: 0px}
+}
+
+.navbar-toggle-preview{
+    border-color: #dddddd!important;
+}
+
+.navbar-default .navbar-toggle-preview .icon-bar{
+    background-color: #888;
+}
+
+.preview-nav{
+    background-color: #ffffff!important;
+    height: 84px;
+}
+
+.navbar-collapse-preview{
+    background-color: #ffffff!important;
+}
+
+
+.nav-preview{
+}
+
+.prof-details{
+    padding-top: 20px;
+}
+
+.top-pad{
+    padding-top: 20px;
+}
+
+.connect-btn{
+    margin-top: 20px;
 }
 

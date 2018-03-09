@@ -15,6 +15,8 @@
         vm.bg = "/content/images/background.jpg";
         vm.title = 'Conversational Commerce is the biggest opportunity for brands to act like people in digital channels & build customer engagement and loyalty.'
         $rootScope.title = "";
+        vm.toggleNavbar = toggleNavbar;
+        vm.isNavbarCollapsed = true;
 
 
         $scope.getUser = function () {
@@ -387,7 +389,7 @@
 
 
             var i, tabcontent2, tablinks2, tabs2;
-            tabcontent2 = document.getElementsByClassName("tabcontent2");
+            tabcontent2 = document.getElementsByClassName("tabcontent-preview");
             for (i = 0; i < tabcontent2.length; i++) {
                 tabcontent2[i].style.display = "none";
             }
@@ -418,7 +420,7 @@
 
 
         angular.element(document).ready(function () {
-            document.getElementsByClassName("tabcontent2")[0].style.display = "block";
+            document.getElementsByClassName("tabcontent-preview")[0].style.display = "block";
             document.getElementsByClassName("tabs2")[0].className += " active";
         });
 
@@ -446,29 +448,46 @@
                 if ($scope.tabNames) {
 
                     if ($scope.tabNames.tabs.length == 1) {
-                        currentEl.style.width = "538px";
-                        link.style.width = "535px";
-                        link.style.maxWidth = "535px";
+                        currentEl.style.width = "912px";
+                        link.style.width = "912px";
+                        link.style.maxWidth = "912px";
                     }
                     if ($scope.tabNames.tabs.length === 2) {
-                        currentEl.style.width = "268px";
-                        link.style.width = "265px";
-                        link.style.maxWidth = "265px";
+                        currentEl.style.width = "456px";
+                        link.style.width = "456px";
+                        link.style.maxWidth = "456px";
                     }
                     if ($scope.tabNames.tabs.length === 3) {
-                        currentEl.style.width = "178px";
-                        link.style.width = "175px";
-                        link.style.maxWidth = "175px";
+                        currentEl.style.width = "303px";
+                        link.style.width = "355px";
+                        link.style.maxWidth = "355px";
                     }
                     if ($scope.tabNames.tabs.length === 4) {
-                        currentEl.style.width = "133px";
-                        link.style.width = "130px";
-                        link.style.maxWidth = "130px";
+                        currentEl.style.width = "227px";
+                        link.style.width = "265px";
+                        link.style.maxWidth = "265px";
                     }
                 }
             }
         };
 
+        $scope.getUrl = function (url) {
+            if (url === "app/cardlets/item3.html") {
+                return "app/cardlets/itemPreview.html"
+            } else {
+                return url;
+            }
+        }
+
+        $scope.scrollToFooter = function (id) {
+            var el = document.getElementById(id);
+            console.log(el)
+            el.scrollIntoView();
+        }
+
+        function toggleNavbar() {
+            vm.isNavbarCollapsed = !vm.isNavbarCollapsed;
+        }
 
     }
 
