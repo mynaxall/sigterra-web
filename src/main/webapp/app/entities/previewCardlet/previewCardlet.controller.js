@@ -446,7 +446,7 @@
                 if ($scope.tabNames) {
 
                     if ($scope.tabNames.tabs.length == 1) {
-                        currentEl.style.width = "540px";
+                        currentEl.style.width = "538px";
                         link.style.width = "535px";
                         link.style.maxWidth = "535px";
                     }

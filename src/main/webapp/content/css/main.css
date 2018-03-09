@@ -2928,7 +2928,7 @@ div.navbar-collapse.in.collapse{
 
 .cardletImage{
     border: 0px ;
-    height: 240px;
+    height: 303px;
     width: 538px;
 }
 
@@ -2937,7 +2937,7 @@ div.navbar-collapse.in.collapse{
 .tabcontent2 {
     display: none;
     border: 0px solid #ccc;
-    width: 540px;
+    width: 538px;
     background-color: #F9F9F9;
     margin-top: -1px;
 }
@@ -5027,11 +5027,11 @@ a:focus{
 }
 
 .item-3-content{
-    width: 400px;
-    height: 170px;
+    width: 420px;
+    height: 180px;
     margin: 0 auto;
-    top: 35px;
-    left: 69px;
+    top: 61px;
+    left: 58px;
     position: absolute;
     opacity: .7;
 }

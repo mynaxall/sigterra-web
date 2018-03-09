@@ -4,11 +4,11 @@
         <div>
             <div ng-show="tabName.items.length == 1" style="position: relative;">
                 <div class="main-carousel-image-div-new-3" >
-                    <div style="border: 1px solid #D0D8D9;border-top-width: 0px;height: 240px">
+                    <div style="border: 1px solid #D0D8D9;border-top-width: 0px;height: 303px">
                         <div ng-repeat="slide in tabName.items"  class="main-carousel-item-div-new-3"
                             ng-click="readsCounter($event, tabName.id, slide.id)">
-                            <div style="max-height: 239px;overflow:hidden;">
-                                <img crossorigin="anonymous"  style="width: 100%" id="ing-1" ng-src="{{slide.image}}?{{time}}">
+                            <div style="max-height: 302px;overflow:hidden;">
+                                <img crossorigin="anonymous"  style="width: 536px" id="ing-1" ng-src="{{slide.image}}?{{time}}">
                             </div>
                             <div class="item-3-content" ng-hide="!slide.name.value && !slide.description.value" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}">
                                 <a style="max-height: 239px;" href="{{slide.link | link}}" target="_blank" ng-show="slide.link  && showLink" class="custom-cursor">
@@ -40,13 +40,13 @@
             <div ng-show="showEditorNavigation" class="custom-slide-prev-editor" style="top: 100px;z-index: 2"><img src="/content/images/new/arrow_left.png" ng-click="prevSlide(tabName.position)"></div>
             <div ng-show="showEditorNavigation"  class="custom-slide-next-editor"  style="top: 100px;z-index: 2"><img src="/content/images/new/arrow_right.png" ng-click="nextSlide(tabName.position)"></div>
             <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" style="position:relative;">
-                <div style="border: 1px solid #D0D8D9;border-top-width: 0px;height: 240px"
+                <div style="border: 1px solid #D0D8D9;border-top-width: 0px;height: 303px"
                     ng-click="readsCounter($event, tabName.id, slide.id)">
                     <div style="max-height: 239px;overflow: hidden">
                         <img crossorigin="anonymous" style="width: 100%" id="ing-1" ng-src="{{slide.image}}?{{time}}">
 
                     </div>
-                    <div class="main-carousel-image-div-new-3" style="position: absolute;top:0;left:0; height: 240px">
+                    <div class="main-carousel-image-div-new-3" style="position: absolute;top:0;left:0; height: 303px">
                         <a href="{{slide.link | link}}" target="_blank" ng-show="slide.link && showLink" class="custom-cursor">
                             <div  class="main-carousel-item-div-new-3">
                                 <div class="item-3-content" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}" ng-hide="!slide.name.value && !slide.description.value">
@@ -99,7 +99,7 @@
 
     .main-carousel-image-div-new-3{
         text-align: center;
-        height: 240px;
+        height: 303px;
     }
 
     .main-carousel-item-div{

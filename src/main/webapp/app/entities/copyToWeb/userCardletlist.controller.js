@@ -81,7 +81,7 @@
                 if($scope.tabNames) {
 
                     if ($scope.tabNames.tabs.length == 1) {
-                        cyrrentEl.style.width = "540px";
+                        cyrrentEl.style.width = "538px";
                         link.style.width = "535px";
                         link.style.maxWidth = "535px"
                     }
