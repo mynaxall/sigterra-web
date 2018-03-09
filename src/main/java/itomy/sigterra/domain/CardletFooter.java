@@ -5,6 +5,11 @@ import itomy.sigterra.domain.enumeration.CardletFooterIndex;
 import javax.persistence.*;
 import java.util.Objects;
 
+/*
+   data for "Edit page", tab: footer
+ */
+
+
 @Entity
 @Table(name = "cardlet_footer")
 public class CardletFooter extends AbstractAuditingEntity{

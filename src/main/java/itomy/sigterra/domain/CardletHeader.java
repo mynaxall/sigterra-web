@@ -4,6 +4,9 @@ package itomy.sigterra.domain;
 import javax.persistence.*;
 import java.util.Objects;
 
+/*
+   data for "Edit page", tab: header
+ */
 @Entity
 @Table(name="cardlet_header")
 public class CardletHeader extends AbstractAuditingEntity{

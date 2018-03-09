@@ -3,6 +3,11 @@ package itomy.sigterra.domain;
 import javax.persistence.*;
 import java.util.Objects;
 
+/*
+   data for "Edit page", tab: background
+ */
+
+
 @Entity
 @Table(name = "cardlet_background")
 public class CardletBackground extends AbstractAuditingEntity {
