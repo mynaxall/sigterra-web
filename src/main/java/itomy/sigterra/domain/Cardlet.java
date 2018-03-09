@@ -174,6 +174,19 @@ public class Cardlet implements Serializable {
         return this;
     }
 
+    public CardletHeader getCardletHeader() {
+        return cardletHeader;
+    }
+
+    public CardletBackground getCardletBackground() {
+        return cardletBackground;
+    }
+
+    public Set<CardletFooter> getCardletFooter() {
+        return cardletFooter;
+    }
+
+
     public void setItems(Set<Item> items) {
         this.items = items;
     }
@@ -208,4 +221,5 @@ public class Cardlet implements Serializable {
             ", active='" + active + "'" +
             '}';
     }
+
 }

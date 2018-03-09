@@ -31,7 +31,7 @@
             <column name="cta_text" type="varchar(20)">
                 <constraints nullable="true" />
             </column>
-            <column name="logo" type="varchar(255)">
+            <column name="logoUrl" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="photo" type="varchar(255)">
@@ -129,7 +129,7 @@
             <column name="url" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="logo" type="varchar(255)">
+            <column name="logoUrl" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
 
