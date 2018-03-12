@@ -22,9 +22,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.inject.Inject;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /*
   work with Cartdlet views: header,background, footers
@@ -61,13 +64,12 @@ public class CardletViewService {
     @Inject
     private AWSS3BucketService awss3BucketService;
 
-    public CardletViewRequestResponseVM getCardletView(Long cardletId){
+    public CardletViewRequestResponseVM getCardletView(Long cardletId) {
         Cardlet cardlet = cardletRepository.findOneByIdAndUserIsCurrentUser(cardletId);
         CardletViewRequestResponseVM cardletView = null;
-        if (cardlet!=null) cardletView = createCardletViewVM(cardlet);
+        if (cardlet != null) cardletView = createCardletViewVM(cardlet);
         return cardletView;
     }
-
 
 
     private CardletViewRequestResponseVM createCardletViewVM(Cardlet cardlet) {
@@ -75,7 +77,7 @@ public class CardletViewService {
         cardletView.setCardletId(cardlet.getId());
         CardletHeaderVM cardletHeaderVM = null;
         CardletHeader cardletHeader = cardlet.getCardletHeader();
-        if (cardletHeader!=null) {
+        if (cardletHeader != null) {
             cardletHeaderVM = new CardletHeaderVM(
                 cardletHeader.getId(),
                 cardletHeader.getCtaButtonColor(),
@@ -91,10 +93,10 @@ public class CardletViewService {
         }
         cardletView.setHeaders(cardletHeaderVM);
 
-        CardletBackgroundVM cardletBackgroundVM= null;
+        CardletBackgroundVM cardletBackgroundVM = null;
         CardletBackground cardletBackground = cardlet.getCardletBackground();
 
-        if (cardletBackground!=null){
+        if (cardletBackground != null) {
             cardletBackgroundVM = new CardletBackgroundVM(
                 cardletBackground.getId(),
                 cardletBackground.getImage(),
@@ -105,7 +107,7 @@ public class CardletViewService {
         cardletView.setBackground(cardletBackgroundVM);
 
         List<CardletFooterVM> footers = new ArrayList<>();
-        for (CardletFooter cardletFooter:cardlet.getCardletFooter()) {
+        for (CardletFooter cardletFooter : cardlet.getCardletFooter()) {
             CardletFooterVM cardletFooterVM = new CardletFooterVM(
                 cardletFooter.getId(),
                 cardletFooter.getIndex(),
@@ -121,103 +123,118 @@ public class CardletViewService {
     }
 
     @Transactional
-    public CardletViewRequestResponseVM saveCardletView(CardletViewRequestResponseVM cardletView){
+    public CardletViewRequestResponseVM saveCardletView(CardletViewRequestResponseVM cardletView) {
         Cardlet cardlet = cardletRepository.findOneByIdAndUserIsCurrentUser(cardletView.getCardletId());
-        if (cardlet!=null) {
+        if (cardlet == null) {
+            throw new CustomParameterizedException("Cardlet ID not found for user");
+        } else {
             CardletHeaderVM cardletHeaderVM = cardletView.getHeaders();
             if (cardletHeaderVM != null) {
                 CardletHeader cardletHeader;
                 if (cardletHeaderVM.getId() == null) {
-                    cardletHeader = new CardletHeader(cardlet);
+                    if (cardlet.getCardletHeader() != null)
+                        throw new CustomParameterizedException("Bad cardlet header ID");
+                    cardletHeader = new CardletHeader();
+                    cardletHeader.setCardlet(cardlet);
                 } else {
-                    cardletHeader=cardletHeaderRepository.findOne(cardletHeaderVM.getId());
-                    if (cardletHeader==null) cardletHeader = new CardletHeader(cardlet); //todo or must bad arguments??
+                    cardletHeader = cardletHeaderRepository.findOne(cardletHeaderVM.getId());
+                    if (cardletHeader == null || !cardlet.equals(cardletHeader.getCardlet()))
+                        throw new CustomParameterizedException("Bad cardlet header ID");
                 }
                 cardletHeader.setCtaButtonColor(cardletHeaderVM.getCtaColor());
                 cardletHeader.setCtaText(cardletHeaderVM.getText());
-                String logoURL=changeIfTmp(cardletHeaderVM.getLogoUrl(),FILE_NAME_LOGO_TMP,FILE_NAME_LOGO_PERSIST);
+                String logoURL = renameIfTmp(cardletHeaderVM.getLogoUrl(), FILE_NAME_LOGO_TMP, FILE_NAME_LOGO_PERSIST);
                 cardletHeader.setLogo(logoURL);
-                String photoURL=changeIfTmp(cardletHeaderVM.getPhotoUrl(),FILE_NAME_LOGO_TMP,FILE_NAME_PHOTO_PERSIST);
+                String photoURL = renameIfTmp(cardletHeaderVM.getPhotoUrl(), FILE_NAME_LOGO_TMP, FILE_NAME_PHOTO_PERSIST);
                 cardletHeader.setPhoto(photoURL);
                 cardletHeader.setName(cardletHeaderVM.getName());
                 cardletHeader.setTitle(cardletHeaderVM.getTitle());
                 cardletHeader.setCompany(cardletHeaderVM.getCompany());
                 cardletHeader.setPhone(cardletHeaderVM.getPhone());
                 cardletHeader.setEmail(cardletHeaderVM.getEmail());
-                cardletHeaderRepository.save(cardletHeader);
+                cardletHeader = cardletHeaderRepository.save(cardletHeader);
+                cardlet.setCardletHeader(cardletHeader);
             }
 
             CardletBackgroundVM cardletBackgroundVM = cardletView.getBackground();
             if (cardletBackgroundVM != null) {
                 CardletBackground cardletBackground;
                 if (cardletBackgroundVM.getId() == null) {
-                    cardletBackground = new CardletBackground(cardlet);
+                    if (cardlet.getCardletBackground() != null)
+                        throw new CustomParameterizedException("Bad cardlet header ID");
+                    cardletBackground = new CardletBackground();
+                    cardletBackground.setCardlet(cardlet);
                 } else {
                     cardletBackground = cardletBackgroundRepository.findOne(cardletBackgroundVM.getId());
-                    if (cardletBackground == null) cardletBackground = new CardletBackground(cardlet); //todo or must bad arguments??
+                    if (cardletBackground == null || !cardlet.equals(cardletBackground.getCardlet()))
+                        throw new CustomParameterizedException("Bad cardlet background ID");
                 }
-                String imageURL = changeIfTmp(cardletBackgroundVM.getImageUrl(),FILE_NAME_BACKIMAGE_TMP,FILE_NAME_BACKIMAGE_PERSIST);
+                String imageURL = renameIfTmp(cardletBackgroundVM.getImageUrl(), FILE_NAME_BACKIMAGE_TMP, FILE_NAME_BACKIMAGE_PERSIST);
                 cardletBackground.setImage(imageURL);
                 cardletBackground.setCaptionText(cardletBackgroundVM.getText());
                 cardletBackground.setTextColor(cardletBackgroundVM.isTextColor());
-                cardletBackgroundRepository.save(cardletBackground);
-
+                cardletBackground = cardletBackgroundRepository.save(cardletBackground);
+                cardlet.setCardletBackground(cardletBackground);
             }
 
             List<CardletFooterVM> cardletFooterVMList = cardletView.getFooters();
             if (cardletFooterVMList != null) {
-                for (CardletFooterVM cardletFoterVM :
-                    cardletFooterVMList) {
+                Set<CardletFooter> cardletFooters = new HashSet<>();
+                for (CardletFooterVM cardletFoterVM : cardletFooterVMList) {
                     CardletFooter cardletFooter;
                     if (cardletFoterVM.getId() == null) {
-                        cardletFooter = new CardletFooter(cardlet);
+                        cardletFooter = new CardletFooter();
+                        cardletFooter.setCardlet(cardlet);
                     } else {
                         cardletFooter = cardletFooterRepository.findOne(cardletFoterVM.getId());
-                        if (cardletFooter==null) cardletFooter = new CardletFooter(cardlet);
+                        if (cardletFooter == null || !cardlet.equals(cardletFooter.getCardlet()))
+                            throw new CustomParameterizedException("Bad cardlet header ID");
                     }
                     CardletFooterIndex index = cardletFoterVM.getIndex();
                     cardletFooter.setIndex(index);
-                    String logoUrl = changeIfTmp(cardletFoterVM.getLogoUrl(),FILE_NAME_LINKLOGO_TMP+index,FILE_NAME_LINKLOGO_PERSIST+index);
+                    String logoUrl = renameIfTmp(cardletFoterVM.getLogoUrl(), FILE_NAME_LINKLOGO_TMP + index, FILE_NAME_LINKLOGO_PERSIST + index);
                     cardletFooter.setLogo(logoUrl);
                     cardletFooter.setName(cardletFoterVM.getName());
                     cardletFooter.setUrl(cardletFoterVM.getUrl());
-                    cardletFooterRepository.save(cardletFooter);
+                    cardletFooter = cardletFooterRepository.save(cardletFooter);
+                    cardletFooters.add(cardletFooter);
                 }
+                cardlet.setCardletFooter(cardletFooters);
             }
 
-
-        } else {
-            new CustomParameterizedException("Cardlet ID not found for user");
         }
         return createCardletViewVM(cardlet);
     }
 
-    private String changeIfTmp(String url, String from, String to) {
+    private String renameIfTmp(String url, String from, String to) {
         String result = url;
-        if (url.contains(from))
-            result = awss3BucketService.renameFile(url,url.replace(from,to)).toString();
+        if (url.contains(from)) {
+            String dest = url.replace(from, to);
+            dest = dest.substring(0,dest.indexOf("?")); //truncate URL parameters
+            result = awss3BucketService.renameFile(url, dest).toString();
+        }
         return result;
     }
 
-    public JSONObject  uploadFile(MultipartFile file,String path,int maxSize) throws JSONException {
+    public JSONObject uploadFile(MultipartFile file, String path, int maxSize) throws JSONException {
         JSONObject successObject = new JSONObject();
-        if(file != null && !file.isEmpty()) {
-            if(file.getSize() > maxSize) {
+        if (file != null && !file.isEmpty()) {
+            if (file.getSize() > maxSize) {
                 successObject.put("success", false);
-                successObject.put("message", "File is too big. Max allowed file size is "+maxSize);
+                successObject.put("message", "File is too big. Max allowed file size is " + maxSize);
             }
             String fileName = file.getName();
             String mimeType = file.getContentType();
             if (mimeType.startsWith("image/")) {
-                  URL url = awss3BucketService.uploadImage(file,path);
-                if(url == null) {
+                URI url = awss3BucketService.uploadImage(file, path);
+                if (url == null) {
                     successObject.put("success", false);
                     successObject.put("message", "Unable to fetch the file from S3 bucket.");
                 } else {
                     successObject.put("success", true);
                     successObject.put("url", url);
                 }
-            }else{
+            } else {
                 successObject.put("success", false);
                 successObject.put("message", "Invalid file type");
             }
@@ -234,57 +251,66 @@ public class CardletViewService {
 
     public JSONObject uploadLogo(MultipartFile file, Long cardletId) throws JSONException {
         Cardlet cardlet = validateAndGetCardlet(cardletId);
-        String startFolder = getStartFolder(cardlet);
-        String path=startFolder+FILE_NAME_LOGO_TMP;
-        String originalFilename = file.getOriginalFilename();
-        if (originalFilename.contains(".")) {
-            path += originalFilename.substring(originalFilename.lastIndexOf("."));
-        }
-        return uploadFile(file,path,MAX_SIZE_LOGO);
+        String path = getFileNameInBucket(FILE_NAME_LOGO_TMP, file, cardlet);
+        return uploadFile(file, path, MAX_SIZE_LOGO);
     }
 
     public JSONObject uploadPhoto(MultipartFile file, Long cardletId) throws JSONException {
         Cardlet cardlet = validateAndGetCardlet(cardletId);
-        String startFolder = getStartFolder(cardlet);
-        String path=startFolder+FILE_NAME_PHOTO_TMP;
-        String originalFilename = file.getOriginalFilename();
-        if (originalFilename.contains(".")) {
-            path += originalFilename.substring(originalFilename.lastIndexOf("."));
-        }
-        return uploadFile(file,path,MAX_SIZE_PHOTO);
+        String path = getFileNameInBucket(FILE_NAME_PHOTO_TMP, file, cardlet);
+        return uploadFile(file, path, MAX_SIZE_PHOTO);
     }
 
     public JSONObject uploadBackgroundImage(MultipartFile file, Long cardletId) throws JSONException {
         Cardlet cardlet = validateAndGetCardlet(cardletId);
-        String startFolder = getStartFolder(cardlet);
-        String path=startFolder+FILE_NAME_BACKIMAGE_TMP;
-        String originalFilename = file.getOriginalFilename();
-        if (originalFilename.contains(".")) {
-            path += originalFilename.substring(originalFilename.lastIndexOf("."));
-        }
-        return uploadFile(file,path,MAX_SIZE_BACKIMAGE);
+        String path = getFileNameInBucket(FILE_NAME_BACKIMAGE_TMP, file, cardlet);
+        return uploadFile(file, path, MAX_SIZE_BACKIMAGE);
     }
 
-    public JSONObject uploadLinkLogo(MultipartFile file, Long cardletId,int index) throws JSONException {
+    public JSONObject uploadLinkLogo(MultipartFile file, Long cardletId, int index) throws JSONException {
         Cardlet cardlet = validateAndGetCardlet(cardletId);
-        String startFolder = getStartFolder(cardlet);
-        String path=startFolder+FILE_NAME_LINKLOGO_TMP+index;
-        String originalFilename = file.getOriginalFilename();
-        if (originalFilename.contains(".")) {
-            path += originalFilename.substring(originalFilename.lastIndexOf("."));
-        }
-        return uploadFile(file,path,MAX_SIZE_LINKLOGO);
+        String path = getFileNameInBucket(FILE_NAME_LINKLOGO_TMP + index, file, cardlet);
+        return uploadFile(file, path, MAX_SIZE_LINKLOGO);
     }
 
     private String getStartFolder(Cardlet cardlet) {
-        return "accounts/"+cardlet.getUser().getId()+"/"+cardlet.getId()+"/";
+        return "accounts/" + cardlet.getUser().getId() + "/" + cardlet.getId() + "/";
+    }
+
+    private String getFileNameInBucket(String name, MultipartFile file, Cardlet cardlet) {
+        name = getStartFolder(cardlet) + name;
+        String originalFilename = file.getOriginalFilename();
+        if (originalFilename.contains(".")) {
+            name += originalFilename.substring(originalFilename.lastIndexOf("."));
+        }
+        return name;
     }
 
     private Cardlet validateAndGetCardlet(Long cardletId) {
         Cardlet cardlet = cardletRepository.findOneByIdAndUserIsCurrentUser(cardletId);
-        if (cardlet==null) new CustomParameterizedException("Bad cardlet ID");
+        if (cardlet == null) throw new CustomParameterizedException("Bad cardlet ID");
         return cardlet;
     }
 
 
+    public void delete(Cardlet cardlet) {
+        if (cardlet.getCardletHeader() != null) {
+            deleteFile(cardlet.getCardletHeader().getLogo());
+            deleteFile(cardlet.getCardletHeader().getPhoto());
+        }
+        if (cardlet.getCardletBackground() != null) {
+            deleteFile(cardlet.getCardletBackground().getImage());
+        }
+        if (cardlet.getCardletFooter() != null) {
+            for (CardletFooter ent :
+                cardlet.getCardletFooter()) {
+                deleteFile(ent.getUrl());
+            }
+        }
+
+    }
+
+    private void deleteFile(String path) {
+        awss3BucketService.deleteFile(path);
+    }
 }

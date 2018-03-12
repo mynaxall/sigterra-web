@@ -44,10 +44,31 @@ public class CardletHeader extends AbstractAuditingEntity{
     private String email;
 
     @OneToOne
+    @JoinColumn(name = "cardlet_id")
     private Cardlet cardlet;
 
-    public CardletHeader(Cardlet cardlet) {
+    public CardletHeader(String ctaButtonColor, String ctaText, String logo, String photo, String name, String title, String company, String phone, String email, Cardlet cardlet) {
+        this.ctaButtonColor = ctaButtonColor;
+        this.ctaText = ctaText;
+        this.logo = logo;
+        this.photo = photo;
+        this.name = name;
+        this.title = title;
+        this.company = company;
+        this.phone = phone;
+        this.email = email;
         this.cardlet = cardlet;
+    }
+
+
+    public void setCardlet(Cardlet cardlet) {
+        this.cardlet = cardlet;
+    }
+
+
+
+    public CardletHeader() {
+
     }
 
     @Override

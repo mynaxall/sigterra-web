@@ -31,7 +31,7 @@
             <column name="cta_text" type="varchar(20)">
                 <constraints nullable="true" />
             </column>
-            <column name="logoUrl" type="varchar(255)">
+            <column name="logo" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="photo" type="varchar(255)">
@@ -120,18 +120,10 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="index" type="tinyint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="name" type="varchar(64)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="url" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="logoUrl" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
+            <column name="ind" type="tinyint" />
+            <column name="name" type="varchar(64)"/>
+            <column name="url" type="varchar(255)"/>
+            <column name="logo" type="varchar(255)"/>
 
 
             <column name="cardlet_id" type="bigint">
@@ -149,6 +141,7 @@
             <column name="last_modified_date" type="timestamp"/>
         </createTable>
 
+
         <addForeignKeyConstraint baseTableName="cardlet_footer"
                                  baseColumnNames="cardlet_id"
                                  constraintName="fk_cardlet_footer_cardlet_id"
@@ -157,7 +150,7 @@
                                  deleteCascade="true"
                                  onDelete="CASCADE"/>
 
-        <addUniqueConstraint tableName="cardlet_footer" columnNames="cardlet_id,index"/>
+
 
     </changeSet>
 

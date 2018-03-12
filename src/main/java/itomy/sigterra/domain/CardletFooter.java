@@ -21,8 +21,8 @@ public class CardletFooter extends AbstractAuditingEntity{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "index",columnDefinition = "tinyint")
-    @Enumerated
+    @Column(name = "ind")
+    @Enumerated(EnumType.ORDINAL)
     private CardletFooterIndex index;
 
     @Column(name = "name")
@@ -34,11 +34,13 @@ public class CardletFooter extends AbstractAuditingEntity{
     @Column(name = "logo")
     private String logo;
 
+
     @ManyToOne
+    @JoinColumn(name = "cardlet_id")
     private Cardlet cardlet;
 
-    public CardletFooter(Cardlet cardlet) {
-        this.cardlet = cardlet;
+    public CardletFooter() {
+        //for JPA
     }
 
     @Override
@@ -108,4 +110,13 @@ public class CardletFooter extends AbstractAuditingEntity{
     public Cardlet getCardlet() {
         return cardlet;
     }
+
+    public void setCardlet(Cardlet cardlet) {
+        this.cardlet = cardlet;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

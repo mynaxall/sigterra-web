@@ -1,12 +1,9 @@
-package itomy.sigterra.web;
+package itomy.sigterra.web.rest;
 
 
 import com.codahale.metrics.annotation.Timed;
-import itomy.sigterra.annotation.Analytic;
 import itomy.sigterra.domain.enumeration.CardletFooterIndex;
-import itomy.sigterra.domain.enumeration.EventType;
 import itomy.sigterra.service.CardletViewService;
-import itomy.sigterra.web.rest.util.HeaderUtil;
 import itomy.sigterra.web.rest.vm.CardletViewRequestResponseVM;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -70,28 +67,28 @@ public class CardletViewResource {
             .body(result);
     }
 
-    @PostMapping(value = "logo/{cardletId}", produces=MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "logo-image/{cardletId}", produces=MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<?> uploadLogo(@RequestBody MultipartFile file, @PathVariable Long cardletId) throws JSONException {
         JSONObject successObject = cardletViewService.uploadLogo(file,cardletId);
         return new ResponseEntity<>(successObject.toString(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "photo/{cardletId}", produces=MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "photo-image/{cardletId}", produces=MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<?> uploadPhoto(@RequestBody MultipartFile file, @PathVariable Long cardletId) throws JSONException {
         JSONObject successObject = cardletViewService.uploadPhoto(file,cardletId);
         return new ResponseEntity<>(successObject.toString(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "background/{cardletId}", produces=MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "background-image/{cardletId}", produces=MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<?> uploadBackground(@RequestBody MultipartFile file, @PathVariable Long cardletId) throws JSONException {
         JSONObject successObject = cardletViewService.uploadLogo(file,cardletId);
         return new ResponseEntity<>(successObject.toString(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "linkimage/{cardletId}/{index}", produces=MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "link-image/{cardletId}/{index}", produces=MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<?> uploadLinkImage(@RequestBody MultipartFile file, @PathVariable Long cardletId,@PathVariable CardletFooterIndex index) throws JSONException {
         JSONObject successObject = cardletViewService.uploadLinkLogo(file,cardletId,index.ordinal());

@@ -25,16 +25,31 @@ public class CardletBackground extends AbstractAuditingEntity {
     @Column(name="text_color")
     private boolean textColor;
 
-    @Column(name = "caption_text")
+    @Column(name = "text")
     private String captionText;
 
     @OneToOne
+    @JoinColumn(name = "cardlet_id")
     private Cardlet cardlet;
 
 
-    public CardletBackground(Cardlet cardlet) {
+    public CardletBackground() {
+    }
+
+    public CardletBackground(String image, boolean textColor, String captionText, Cardlet cardlet) {
+        this.image = image;
+        this.textColor = textColor;
+        this.captionText = captionText;
         this.cardlet = cardlet;
     }
+
+    public void setCardlet(Cardlet cardlet) {
+        this.cardlet = cardlet;
+    }
+
+
+
+
 
     @Override
     public boolean equals(Object o) {

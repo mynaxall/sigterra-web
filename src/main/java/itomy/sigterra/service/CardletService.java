@@ -43,6 +43,8 @@ public class CardletService {
     private ItemRepository itemRepository;
     @Inject
     private TabTypeRepository tabTypeRepository;
+    @Inject
+    private CardletViewService cardletViewService;
 
     @Inject
     private EventService eventService;
@@ -231,6 +233,9 @@ public class CardletService {
             inputPropertiesRepository.delete(business.getUserName());
             businessRepository.delete(business);
         }
+
+        cardletViewService.delete(cardlet);
+
         cardletRepository.delete(cardlet);
 
         List<UserCardletDTO> userCardletDTOs = userCardlets();
