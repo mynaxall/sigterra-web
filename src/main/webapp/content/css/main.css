@@ -3849,6 +3849,12 @@ button[disabled]:hover{
     margin: 0px auto;
 }
 
+.second-column-editor{
+    padding-top: 30px;
+    width: 800px;
+    margin: 0px auto;
+}
+
 .left-column-editor-content{
     padding-top: 30px;
     float: none;
@@ -3879,6 +3885,12 @@ button[disabled]:hover{
     .second-column {
         padding-top: 100px;
         width: 540px;
+        margin: 0px 0px;
+    }
+
+    .second-column-editor{
+        padding-top: 100px;
+        width: 800px;
         margin: 0px 0px;
     }
 
@@ -6450,7 +6462,7 @@ ul.editor-tab li.active .editor-line{
 }
 
 .service-info-sec{
-    background: #8080800f;
+    background: #f8f8f8;
     padding: 25px 0px 29px 0px;
 }
 
@@ -6507,7 +6519,6 @@ a.preview-footer-link {
     background-color: #ffffff!important;
 }
 
-
 .nav-preview{
 }
 
@@ -6519,7 +6530,102 @@ a.preview-footer-link {
     padding-top: 20px;
 }
 
-.connect-btn{
-    margin-top: 20px;
+.tab-preview{
+    height: 70px;
 }
+
+.tablinks-preview{
+    height: 68px!important;
+}
+
+.editor-preview-panel{
+    height: 550px;
+    max-height: 550px;
+    overflow: auto;
+    width: 800px;
+    background-color: #ffffff;
+}
+
+.editor-preview-title{
+    font-size: 17px;
+    padding: 15px 0px;
+    text-align: center;
+    font-family: Roboto-Bold-Italic
+}
+
+.service-info-min-height{
+    min-height: 200px;
+}
+
+.editor-preview-header{
+    height: 40px;
+    background-color: #ffffff;
+}
+
+.editor-preview-header-flex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    font-size: 8px;
+    height: 40px;
+}
+
+.bnt-edit-preview{
+    font-size: 8px;
+}
+
+.right-chevron{
+    font-size: 30px;
+    color: #ffffff;
+}
+
+.tabcontent-editor{
+    position: relative;
+}
+
+.slide-prev-editor{
+    top: calc(50% - 35px);
+    left: -28px;
+}
+
+.slide-next-editor{
+    top: calc(50% - 35px);
+    right: -28px;
+}
+
+.chevron-editor{
+    font-size: 17px;
+    color: #ffffff;
+}
+
+.nav-view{
+    display: flex!important;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.view-header-logo-main{
+    display: none;
+}
+
+.view-header-logo-collapse{
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .view-header-logo-main{
+        display: block;
+    }
+
+    .view-header-logo-collapse{
+        display: none;
+    }
+}
+
 
