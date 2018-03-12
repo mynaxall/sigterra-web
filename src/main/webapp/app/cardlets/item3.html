@@ -11,7 +11,7 @@
                                 <img crossorigin="anonymous"  style="width: 536px" id="ing-1" ng-src="{{slide.image}}?{{time}}">
                             </div>
                             <div class="item-3-content" ng-hide="!slide.name.value && !slide.description.value" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}">
-                                <a style="max-height: 239px;" href="{{slide.link | link}}" target="_blank" ng-show="slide.link  && showLink" class="custom-cursor">
+                                <a style="max-height: 302px;" href="{{slide.link | link}}" target="_blank" ng-show="slide.link  && showLink" class="custom-cursor">
                                     <div class="carousel-item-name-third-type carousel-item-no-wrap" ng-style="{'font-family': slide.name.bold ? 'Roboto-Bold' : 'Roboto-Regular',
                                     'font-style': slide.name.italic ? 'italic' : 'normal',
                                     'text-decoration': slide.name.underline ? 'underline' : 'normal' , 'color': '#'+tabName.layout.mainColor}" ng-show="slide.name.value">{{slide.name.value}}</div>
@@ -42,7 +42,7 @@
             <div uib-slide ng-repeat="slide in tabName.items track by slide.position" index="slide.position" style="position:relative;">
                 <div style="border: 1px solid #D0D8D9;border-top-width: 0px;height: 303px"
                     ng-click="readsCounter($event, tabName.id, slide.id)">
-                    <div style="max-height: 239px;overflow: hidden">
+                    <div style="max-height: 303px;overflow: hidden">
                         <img crossorigin="anonymous" style="width: 100%" id="ing-1" ng-src="{{slide.image}}?{{time}}">
 
                     </div>

@@ -197,15 +197,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand view-header-logo-main" href="#">
                 <img  alt="Brand" src="https://cdn.shopify.com/s/files/1/1081/0328/files/logo-cap.svg?12226597222098781749">
             </a>
         </div>
-        <div class="navbar-collapse navbar-collapse-preview" uib-collapse="vm.isNavbarCollapsed">
+        <div class="navbar-collapse navbar-collapse-preview nav-view" style="display: flex!important" uib-collapse="vm.isNavbarCollapsed">
+
+            <a class="navbar-brand view-header-logo-collapse" href="#">
+                <img  alt="Brand" src="https://cdn.shopify.com/s/files/1/1081/0328/files/logo-cap.svg?12226597222098781749">
+            </a>
             <ul class="nav navbar-nav nav-preview">
-                <div class="top-pad">
+                <div >
                     <div class="col-md-2 circle" >
-                        <img class="image "  src="https://media.licdn.com/media/p/7/005/057/111/022dd0b.jpg">
+                        <img class="image "  src="">
                     </div>
                     <div class="col-md-6 alignme ">
                         <span class="bold"><strong>Harshad Apte</strong></span>
@@ -216,7 +220,7 @@
                 </div>
             </ul>
             <ul class="nav navbar-nav nav-preview">
-                <div class="prof-details">
+                <div>
                     <span class="small  fa fa-envelope"></span><span class="text-light">Harshad.apte@capgemini.com</span>
                     <br>
                     <span class="small fa fa-phone"> </span><span class="text-light">(+91) 959-045-6473</span>
@@ -250,19 +254,23 @@
         <div style="position:relative;">
             <div>
                 <ul class="tab2">
-                    <li class="tabs2 tabs2{{tabNames.id}}" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink'+tabName.name)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
+                    <li class="tabs2 tab-preview tabs2{{tabNames.id}}" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink'+tabName.name)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
                         <div style="position: relative; display: table; width: 100%;">
-                            <a style="overflow: hidden; text-overflow: ellipsis;" href="javascript:void(0)" id="tabLink{{tabName.name}}" class="tablinks2" style="color:#{{tabName.layout.secondaryColor}}" ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name, tabName.position)">{{tabName.name}}</a>
+                            <a style="overflow: hidden; text-overflow: ellipsis;" href="javascript:void(0)" id="tabLink{{tabName.name}}" class="tablinks2 tablinks-preview" style="color:#{{tabName.layout.secondaryColor}}" ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name, tabName.position)">{{tabName.name}}</a>
                         </div>
                     </li>
                 </ul>
             </div>
             <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent-preview" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-                <div class="custom-slide-prev"><img src="/content/images/arrow_left.png" ng-show="vm.tabType != 1 && tabName.items.length > 1" ng-click="prevSlide($index)"></div>
+                <div class="custom-slide-prev"  ng-show="vm.tabType != 1 && tabName.items.length > 1">
+                    <span class="glyphicon glyphicon-chevron-left right-chevron" ng-click="prevSlide($index)"></span>
+                </div>
                 <div data-item-id="{{tabNames.tabs[$index].id}}"  ng-click="openPreviewDialog(tabName.tabType)" class="tab-item">
                     <ng-include style="display: block!important" src="getUrl(tabName.layout.url)"></ng-include>
                 </div>
-                <div class="custom-slide-next"><img src="/content/images/arrow_right.png" ng-show="vm.tabType != 1 && tabName.items.length > 1"  ng-click="nextSlide($index)"></div>
+                <div class="custom-slide-next" ng-show="vm.tabType != 1 && tabName.items.length > 1">
+                    <span class="glyphicon glyphicon-chevron-right right-chevron" ng-click="nextSlide($index)"></span>
+                </div>
                 <div class="arrow-link">
                     <a class="fa fa-arrow-down fa-2x hidden-sm hidden-md" href="" ng-click="scrollToFooter('capture')" target="_self"></a>
                 </div>

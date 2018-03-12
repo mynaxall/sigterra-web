@@ -1,5 +1,43 @@
 <div ng-show="showSpinner" class="spinner-shadow"><div style="position:absolute;top:40%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -88px;"></div></div>
 
+<style>
+    body{
+        min-width: 850px;
+    }
+
+    .tabs a{
+        color: #7F8C8C;
+    }
+
+
+    .remove{
+        padding: 0px!important;
+        position: absolute;
+        background: #fff;
+        color: #000!important;
+        border-radius: 20px;
+        width: 15px;
+        height: 15px;
+        top: -7px;
+        right: -7px;
+        text-transform: none;
+        z-index: 10
+    }
+
+    ul.tab2 {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 550px;
+        padding-top: 10px;
+    }
+    .right.carousel-control,  .left.carousel-control {
+        display: none;
+    }
+</style>
+
+
 <script>
     $(document).ready(function(){
         $("#default-navbar").removeClass("navbar-fixed-top");
@@ -21,15 +59,15 @@
                     <div style="height: 47px;">
                         <ul class="editor-tab" >
                             <li class="editor-tabs" ng-class="vm.activeTab == '1' ? 'active' : ''">
-                                <a ng-click="setActive(1)">Header</a>
+                                <a ng-click="setActive(1, 'editor-preview-header')">Header</a>
                                 <div class="cadlet-top-title-border editor-line"></div>
                             </li>
                             <li class="editor-tabs" ng-class="vm.activeTab == '2' ? 'active' : ''">
-                                <a ng-click="setActive(2)">Background</a>
+                                <a ng-click="setActive(2, 'editor-preview-body')">Background</a>
                                 <div class="cadlet-top-title-border editor-line"></div>
                             </li>
                             <li class="editor-tabs" ng-class="vm.activeTab == '3' ? 'active' : ''">
-                                <a ng-click="setActive(3)">Footer</a>
+                                <a ng-click="setActive(3, 'editor-preview-footer')">Footer</a>
                                 <div class="cadlet-top-title-border editor-line"></div>
                             </li>
                         </ul>
@@ -117,6 +155,118 @@
                 </div>
             </div>
             <div class="right-column-editor">
+                <div class="second-column-editor">
+                    <div class="editor-preview-panel"  ng-style="{'background': 'url(' + vm.bg + ') no-repeat center center fixed', 'background-size': 'cover'}">
+                        <div class="editor-preview-header" id="editor-preview-header">
+                            <div class="editor-preview-header-flex">
+                                <div>
+                                    <a class="navbar-brand" href="#">
+                                        <img  alt="Brand" src="https://cdn.shopify.com/s/files/1/1081/0328/files/logo-cap.svg?12226597222098781749">
+                                    </a>
+                                </div>
+                                <div>
+                                    <div>
+                                        <div class="col-md-2 circle" >
+                                            <img class="image "  src="">
+                                        </div>
+                                        <div class="col-md-6 alignme ">
+                                            <span class="bold"><strong>Harshad Apte</strong></span>
+                                            <br>
+                                            <span class="small text-light">Social Media Stream Lead</span>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>
+                                        <span class="small  fa fa-envelope"></span><span class="text-light">Harshad.apte@capgemini.com</span>
+                                        <br>
+                                        <span class="small fa fa-phone"> </span><span class="text-light">(+91) 959-045-6473</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button class="btn-warning bnt-edit-preview">Connect With Our Experts</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="editor-preview-body" style="min-height: 470px; margin: 0 auto; width: 538px">
+                            <div class="editor-preview-title">
+                             Conversational Commerce is the biggest opportunity for brands to act like people in digital channels & build customer engagement and loyalty.
+                            </div>
+                            <div>
+                            <ul class="tab2">
+                                <li class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink2'+tabName.position)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}">
+                                    <div style="position: relative;display: table; width: 100%;">
+                                        <a style="overflow: hidden; text-overflow: ellipsis;" href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}" id="tabLink2{{tabName.position}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2 tabcontent-editor" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
+                            <div class="custom-slide-prev slide-prev-editor" ng-show="vm.tabType != 1 && tabName.items.length > 1">
+                                <span class="glyphicon glyphicon-chevron-left chevron-editor" ng-click="prevSlide($index)"></span>
+                            </div>
+                            <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+                            <div class="custom-slide-next slide-next-editor" ng-show="vm.tabType != 1 && tabName.items.length > 1">
+                                <span class="glyphicon glyphicon-chevron-right chevron-editor" ng-click="nextSlide($index)"></span>
+                            </div>
+                            <div class="arrow-link">
+                                <a class="fa fa-arrow-down hidden-sm hidden-md" href="" ng-click="scrollToFooter('capture')" target="_self"></a>
+                            </div>
+                        </div>
+
+                    </div>
+                        <div id="editor-preview-footer">
+                            <section class="service-info-sec">
+                                <h2 class="text-center" id="capture">CapGemini's Experts are standing by</h2>
+                                <br>
+                                <div class="service-info service-info-min-height" >
+                                    <div class="col-sm-4 img-with-text">
+                                        <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon02.png?17535346864100737432" border="0" alt="Carl Call"  />
+                                        <p class="click-sec-text">
+                                            <a class="preview-footer-link" href="#myModalNorm" data-toggle="modal">Request Info</a>
+                                        </p>
+                                        <br />
+                                        <!--   (931)268-2040<br /><a href="mailto:carlcall@centergrovecoc.com">Email Carl Call</a>  </p>
+                                         -->
+                                    </div>
+                                    <div class="col-sm-4  img-with-text">
+                                        <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon01.png?17535346864100737432" border="0" alt="Sjon Gentry"  />
+                                        <p class="click-sec-text">
+                                            <a class="preview-footer-link" href="#myModalNorm1" data-toggle="modal">Schedule a Deep Dive</a>
+                                        </p>
+                                        <br />
+                                        <!--   (931)268-3273<br /><a href="mailto:sjongentry@centergrovecoc.com">Email Sjon Gentry</a></p>
+                                         -->
+                                    </div>
+                                    <div class="col-sm-4  img-with-text">
+                                        <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/icon3.png?12339313325764754835" border="0" alt="John Mabery" />
+                                        <p class="click-sec-text">
+                                            <a class="preview-footer-link" href="#myModalNorm" data-toggle="modal">Connect with our Experts</a>
+                                        </p>
+                                        <br />
+                                        <!--   (931)268-0651<br /><a href="mailto:johnmabery@centergrovecoc.com">Email John Mabery</a> </p>
+                                         -->
+                                    </div>
+
+                                </div>
+                            </section>
+                            <div class="footer-bottom">
+                                <div>
+                                    <div class="row">
+                                        <div class="col-sm-12 text-center">
+                                            <div class="copyright-text">
+                                                CopyRight © 2018 Digital All Rights Reserved
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
