@@ -143,9 +143,9 @@ public class CardletViewService {
                 }
                 cardletHeader.setCtaButtonColor(cardletHeaderVM.getCtaColor());
                 cardletHeader.setCtaText(cardletHeaderVM.getText());
-                String logoURL = renameIfTmp(cardletHeaderVM.getLogoUrl(), FILE_NAME_LOGO_TMP, FILE_NAME_LOGO_PERSIST);
+                String logoURL = renameIfTmp(cardlet,cardletHeaderVM.getLogoUrl(), FILE_NAME_LOGO_TMP, FILE_NAME_LOGO_PERSIST);
                 cardletHeader.setLogo(logoURL);
-                String photoURL = renameIfTmp(cardletHeaderVM.getPhotoUrl(), FILE_NAME_LOGO_TMP, FILE_NAME_PHOTO_PERSIST);
+                String photoURL = renameIfTmp(cardlet,cardletHeaderVM.getPhotoUrl(), FILE_NAME_LOGO_TMP, FILE_NAME_PHOTO_PERSIST);
                 cardletHeader.setPhoto(photoURL);
                 cardletHeader.setName(cardletHeaderVM.getName());
                 cardletHeader.setTitle(cardletHeaderVM.getTitle());
@@ -169,7 +169,7 @@ public class CardletViewService {
                     if (cardletBackground == null || !cardlet.equals(cardletBackground.getCardlet()))
                         throw new CustomParameterizedException("Bad cardlet background ID");
                 }
-                String imageURL = renameIfTmp(cardletBackgroundVM.getImageUrl(), FILE_NAME_BACKIMAGE_TMP, FILE_NAME_BACKIMAGE_PERSIST);
+                String imageURL = renameIfTmp(cardlet,cardletBackgroundVM.getImageUrl(), FILE_NAME_BACKIMAGE_TMP, FILE_NAME_BACKIMAGE_PERSIST);
                 cardletBackground.setImage(imageURL);
                 cardletBackground.setCaptionText(cardletBackgroundVM.getText());
                 cardletBackground.setTextColor(cardletBackgroundVM.isTextColor());
@@ -192,7 +192,7 @@ public class CardletViewService {
                     }
                     CardletFooterIndex index = cardletFoterVM.getIndex();
                     cardletFooter.setIndex(index);
-                    String logoUrl = renameIfTmp(cardletFoterVM.getLogoUrl(), FILE_NAME_LINKLOGO_TMP + index, FILE_NAME_LINKLOGO_PERSIST + index);
+                    String logoUrl = renameIfTmp(cardlet,cardletFoterVM.getLogoUrl(), FILE_NAME_LINKLOGO_TMP + index, FILE_NAME_LINKLOGO_PERSIST + index);
                     cardletFooter.setLogo(logoUrl);
                     cardletFooter.setName(cardletFoterVM.getName());
                     cardletFooter.setUrl(cardletFoterVM.getUrl());
@@ -206,12 +206,14 @@ public class CardletViewService {
         return createCardletViewVM(cardlet);
     }
 
-    private String renameIfTmp(String url, String from, String to) {
+    private String renameIfTmp(Cardlet cardlet,String url, String from, String to) {
         String result = url;
         if (url.contains(from)) {
-            String dest = url.replace(from, to);
-            dest = dest.substring(0,dest.indexOf("?")); //truncate URL parameters
-            result = awss3BucketService.renameFile(url, dest).toString();
+            String source = getFileNameInBucket(from,null,cardlet);
+            String dest = getFileNameInBucket(to,null,cardlet)
+                +source.substring(source.lastIndexOf("."));//save extension
+            awss3BucketService.renameFile(url, dest);
+            result = dest;
         }
         return result;
     }
@@ -279,9 +281,11 @@ public class CardletViewService {
 
     private String getFileNameInBucket(String name, MultipartFile file, Cardlet cardlet) {
         name = getStartFolder(cardlet) + name;
-        String originalFilename = file.getOriginalFilename();
-        if (originalFilename.contains(".")) {
-            name += originalFilename.substring(originalFilename.lastIndexOf("."));
+        if (file!=null){
+            String originalFilename = file.getOriginalFilename();
+            if (originalFilename.contains(".")) {
+                name += originalFilename.substring(originalFilename.lastIndexOf("."));
+            }
         }
         return name;
     }
