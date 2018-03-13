@@ -233,7 +233,8 @@ public class AWSS3BucketService {
         try {
             String bucketName = hipsterProperties.getAwss3Bucket().getName();
             s3Client.copyObject(bucketName,source,bucketName,dest);
-            s3Client.deleteObject(bucketName,source);
+            //don't delete tmp file
+//            s3Client.deleteObject(bucketName,source);
             URL url = s3Client.generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName,dest));
             uri = new URI(url.toURI().getScheme(),
                 url.toURI().getAuthority(),
@@ -242,7 +243,7 @@ public class AWSS3BucketService {
                 url.toURI().getFragment());
 
             uri = URI.create(uri.toString() + '?' + System.currentTimeMillis());
-            log.debug("File renamed "+source+"->"+dest);
+            log.debug("File copied "+source+"->"+dest);
         } catch (Exception e) {
             log.error("Error occurred while rename the profile icon file", e);
 

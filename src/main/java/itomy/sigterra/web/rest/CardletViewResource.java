@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -44,7 +45,7 @@ public class CardletViewResource {
      */
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<CardletViewRequestResponseVM> createPageView(@RequestBody CardletViewRequestResponseVM cardletView) throws URISyntaxException {
+    public ResponseEntity<CardletViewRequestResponseVM> createPageView(@RequestBody @Valid CardletViewRequestResponseVM cardletView) throws URISyntaxException {
         log.debug("REST request to create new CardletView : {}", cardletView);
         CardletViewRequestResponseVM result = cardletViewService.saveCardletView(cardletView);
         return ResponseEntity.created(new URI("/api/cardlet/pageview/"+result.getCardletId()))
@@ -60,7 +61,7 @@ public class CardletViewResource {
      */
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<CardletViewRequestResponseVM> updatePageView(@RequestBody CardletViewRequestResponseVM cardletView) throws URISyntaxException {
+    public ResponseEntity<CardletViewRequestResponseVM> updatePageView(@RequestBody @Valid CardletViewRequestResponseVM cardletView) throws URISyntaxException {
         log.debug("REST request to save new CardletView : {}", cardletView);
         CardletViewRequestResponseVM result = cardletViewService.saveCardletView(cardletView);
         return ResponseEntity.ok()
@@ -84,7 +85,7 @@ public class CardletViewResource {
     @PostMapping(value = "background-image/{cardletId}", produces=MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<?> uploadBackground(@RequestBody MultipartFile file, @PathVariable Long cardletId) throws JSONException {
-        JSONObject successObject = cardletViewService.uploadLogo(file,cardletId);
+        JSONObject successObject = cardletViewService.uploadBackgroundImage(file,cardletId);
         return new ResponseEntity<>(successObject.toString(), HttpStatus.OK);
     }
 

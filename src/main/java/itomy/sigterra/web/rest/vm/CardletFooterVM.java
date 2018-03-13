@@ -1,9 +1,11 @@
 package itomy.sigterra.web.rest.vm;
 
 import itomy.sigterra.domain.enumeration.CardletFooterIndex;
+import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Size;
 
+@Validated
 public class CardletFooterVM {
     private Long id;
 
@@ -15,6 +17,7 @@ public class CardletFooterVM {
     @Size(max = 25)
     private String url;
 
+    @Size(max = 255)
     private String logoUrl;
 
     public CardletFooterVM() {

@@ -2,9 +2,11 @@ package itomy.sigterra.web.rest.vm;
 
 import itomy.sigterra.config.Constants;
 import org.hibernate.validator.constraints.Email;
+import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Size;
 
+@Validated
 public class CardletHeaderVM {
     private Long id;
 
@@ -14,13 +16,16 @@ public class CardletHeaderVM {
     @Size(max = 20)
     private String text;
 
+    @Size(max = 255)
     private String logoUrl;
 
+    @Size(max = 255)
     private String photoUrl;
 
     @Size(max = 50)
     private String name;
 
+    @Size(max = 255)
     private String title;
 
     @Size(max = 100)

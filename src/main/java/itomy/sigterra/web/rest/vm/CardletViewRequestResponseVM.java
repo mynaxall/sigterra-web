@@ -6,6 +6,7 @@ import itomy.sigterra.repository.CardletRepository;
 import itomy.sigterra.web.rest.vm.CardletBackgroundVM;
 import itomy.sigterra.web.rest.vm.CardletFooterVM;
 import itomy.sigterra.web.rest.vm.CardletHeaderVM;
+import org.springframework.validation.annotation.Validated;
 
 import javax.inject.Inject;
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+@Validated
 public class CardletViewRequestResponseVM {
     @NotNull
     private Long cardletId;

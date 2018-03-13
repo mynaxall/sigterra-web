@@ -84,4 +84,12 @@ public class ExceptionTranslator {
         }
         return builder.body(errorVM);
     }
+
+    @ExceptionHandler(CardletNotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public ErrorVM processCardletNotFoundException(CardletNotFound e){
+        ErrorVM error = new ErrorVM(e.getMessage());
+        return error;
+    }
 }
