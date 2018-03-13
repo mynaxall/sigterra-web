@@ -21,9 +21,9 @@ public class CardletFooter extends AbstractAuditingEntity{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "ind")
+    @Column(name = "position")
     @Enumerated(EnumType.ORDINAL)
-    private CardletFooterIndex index;
+    private CardletFooterIndex position;
 
     @Column(name = "name")
     private String name;
@@ -34,6 +34,8 @@ public class CardletFooter extends AbstractAuditingEntity{
     @Column(name = "logo")
     private String logo;
 
+    @Column(name="title")
+    private String title;
 
     @ManyToOne
     @JoinColumn(name = "cardlet_id")
@@ -63,7 +65,7 @@ public class CardletFooter extends AbstractAuditingEntity{
     public String toString() {
         return "CardletFooter{" +
             "id=" + id +
-            ", index=" + index +
+            ", index=" + position +
             ", name='" + name + '\'' +
             ", url='" + url + '\'' +
             ", logo='" + logo + '\'' +
@@ -71,12 +73,12 @@ public class CardletFooter extends AbstractAuditingEntity{
             '}';
     }
 
-    public CardletFooterIndex getIndex() {
-        return index;
+    public CardletFooterIndex getPosition() {
+        return position;
     }
 
-    public void setIndex(CardletFooterIndex index) {
-        this.index = index;
+    public void setPosition(CardletFooterIndex position) {
+        this.position = position;
     }
 
     public String getName() {
@@ -119,4 +121,11 @@ public class CardletFooter extends AbstractAuditingEntity{
         this.id = id;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }

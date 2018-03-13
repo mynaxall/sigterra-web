@@ -120,10 +120,11 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="ind" type="tinyint" />
+            <column name="position" type="tinyint" />
             <column name="name" type="varchar(64)"/>
             <column name="url" type="varchar(255)"/>
             <column name="logo" type="varchar(255)"/>
+            <column name="title" type="varchar(255)"/>
 
 
             <column name="cardlet_id" type="bigint">
@@ -150,7 +151,7 @@
                                  deleteCascade="true"
                                  onDelete="CASCADE"/>
 
-
+        <addUniqueConstraint tableName="cardlet_footer" columnNames="cardlet_id,position"/>
 
     </changeSet>
 

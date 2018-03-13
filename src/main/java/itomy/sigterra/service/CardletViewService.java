@@ -26,11 +26,8 @@ import javax.inject.Inject;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.regex.Pattern;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /*
   work with Cartdlet views: header,background, footers
@@ -122,10 +119,11 @@ public class CardletViewService {
         for (CardletFooter cardletFooter : cardlet.getCardletFooter()) {
             CardletFooterVM cardletFooterVM = new CardletFooterVM(
                 cardletFooter.getId(),
-                cardletFooter.getIndex(),
+                cardletFooter.getPosition(),
                 cardletFooter.getName(),
                 cardletFooter.getUrl(),
-                cardletFooter.getLogo()
+                cardletFooter.getLogo(),
+                cardletFooter.getTitle()
             );
             footers.add(cardletFooterVM);
         }
@@ -197,7 +195,7 @@ public class CardletViewService {
 
         List<CardletFooterVM> cardletFooterVMList = cardletView.getFooters();
         if (cardletFooterVMList != null) {
-            Set<CardletFooter> cardletFooters = new HashSet<>();
+            Map<CardletFooterIndex,CardletFooter> cardletFooters = new HashMap<>();
             for (CardletFooterVM cardletFoterVM : cardletFooterVMList) {
                 CardletFooter cardletFooter;
                 if (cardletFoterVM.getId() == null) {
@@ -206,18 +204,26 @@ public class CardletViewService {
                 } else {
                     cardletFooter = cardletFooterRepository.findOne(cardletFoterVM.getId());
                     if (cardletFooter == null || !cardlet.equals(cardletFooter.getCardlet()))
-                        throw new CustomParameterizedException("Bad cardlet header ID");
+                        throw new CustomParameterizedException("Bad cardlet footer ID",cardletFoterVM.getId().toString());
                 }
-                CardletFooterIndex index = cardletFoterVM.getIndex();
-                cardletFooter.setIndex(index);
+                CardletFooterIndex index = cardletFoterVM.getPosition();
+                if (cardletFooters.containsKey(index))  {
+                    throw new CustomParameterizedException("Bad cardlet footer position",index.toString());
+                }
+                cardletFooter.setPosition(index);
                 String logoUrl = renameIfTmp(cardlet,cardletFoterVM.getLogoUrl(), FILE_NAME_LINKLOGO_TMP + index, FILE_NAME_LINKLOGO_PERSIST + index);
                 cardletFooter.setLogo(logoUrl);
                 cardletFooter.setName(cardletFoterVM.getName());
                 cardletFooter.setUrl(cardletFoterVM.getUrl());
-                cardletFooter = cardletFooterRepository.save(cardletFooter);
-                cardletFooters.add(cardletFooter);
+                cardletFooter.setTitle(cardletFoterVM.getTitle());
+                cardletFooters.put(index,cardletFooter);
+
             }
-            cardlet.setCardletFooter(cardletFooters);
+            cardlet.setCardletFooter(cardletFooters.entrySet().parallelStream()
+                                    .map(en->en.getValue())
+                                    .peek(a->cardletFooterRepository.save(a))
+                                    .collect(Collectors.toSet())
+            );
         }
 
         return createCardletViewVM(cardlet);
@@ -243,9 +249,9 @@ public class CardletViewService {
             }
             String dest = getFileNameInBucket(to,null,cardlet)
                 +source.substring(source.lastIndexOf("."));//save extension
-            result = awss3BucketService.renameFile(source, dest).getPath();
+            result = awss3BucketService.renameFile(source, dest).toString();
             //remove parameters
-            result=result.substring(0,result.indexOf("?"));
+            if (result.contains("?")) result=result.substring(0,result.indexOf("?"));
         }
         return result;
     }

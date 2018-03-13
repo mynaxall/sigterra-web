@@ -41,13 +41,12 @@ public class CardletViewResource {
      *
      * @param cardletView the cardletView to create
      * @return the ResponseEntity with status 201 (Created) and with body the new CardletViewRequestResponseVM
-     * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<CardletViewRequestResponseVM> createPageView(@RequestBody @Valid CardletViewRequestResponseVM cardletView) throws URISyntaxException {
         log.debug("REST request to create new CardletView : {}", cardletView);
-        CardletViewRequestResponseVM result = cardletViewService.saveCardletView(cardletView);
+         CardletViewRequestResponseVM result = cardletViewService.saveCardletView(cardletView);
         return ResponseEntity.created(new URI("/api/cardlet/pageview/"+result.getCardletId()))
             .body(result);
     }
@@ -61,8 +60,8 @@ public class CardletViewResource {
      */
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<CardletViewRequestResponseVM> updatePageView(@RequestBody @Valid CardletViewRequestResponseVM cardletView) throws URISyntaxException {
-        log.debug("REST request to save new CardletView : {}", cardletView);
+    public ResponseEntity<CardletViewRequestResponseVM> updatePageView(@RequestBody @Valid CardletViewRequestResponseVM cardletView){
+        log.debug("REST request to save CardletView : {}", cardletView);
         CardletViewRequestResponseVM result = cardletViewService.saveCardletView(cardletView);
         return ResponseEntity.ok()
             .body(result);
