@@ -194,6 +194,12 @@ public class AWSS3BucketService {
         return uri;
     }
 
+    /**
+     * upload image to S3 bucket
+     * @param file file
+     * @param fullPath fileKey in bucket
+     * @return new file URI
+     */
     public URI uploadImage(MultipartFile file,String fullPath){
         URI uri = null;
         if (file != null && !file.isEmpty()) {
@@ -228,6 +234,12 @@ public class AWSS3BucketService {
         return uri;
     }
 
+    /**
+     * rename file in bucket. Don't delete source file, only copy
+     * @param source source fileKey in bucket
+     * @param dest dest fileKet in bucket.
+     * @return
+     */
     public URI renameFile(String source, String dest) {
         URI uri = null;
         try {
@@ -251,6 +263,10 @@ public class AWSS3BucketService {
         return uri;
     }
 
+    /**
+     * delete file in bucket
+     * @param path fileKey in bucket
+     */
     public void deleteFile(String path) {
         String bucketName = hipsterProperties.getAwss3Bucket().getName();
         s3Client.deleteObject(bucketName,path);

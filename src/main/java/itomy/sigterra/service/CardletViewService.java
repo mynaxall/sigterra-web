@@ -244,6 +244,8 @@ public class CardletViewService {
             String dest = getFileNameInBucket(to,null,cardlet)
                 +source.substring(source.lastIndexOf("."));//save extension
             result = awss3BucketService.renameFile(source, dest).getPath();
+            //remove parameters
+            result=result.substring(0,result.indexOf("?"));
         }
         return result;
     }
