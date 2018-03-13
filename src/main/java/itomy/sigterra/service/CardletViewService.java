@@ -195,10 +195,15 @@ public class CardletViewService {
 
         List<CardletFooterVM> cardletFooterVMList = cardletView.getFooters();
         if (cardletFooterVMList != null) {
-            Map<CardletFooterIndex,CardletFooter> cardletFooters = new HashMap<>();
+            Map<CardletFooterIndex,CardletFooter> cardletFooters = new EnumMap<CardletFooterIndex, CardletFooter>(CardletFooterIndex.class);
             for (CardletFooterVM cardletFoterVM : cardletFooterVMList) {
                 CardletFooter cardletFooter;
+                CardletFooterIndex position = cardletFoterVM.getPosition();
                 if (cardletFoterVM.getId() == null) {
+
+                    if (cardlet.getCardletFooter().stream().anyMatch(a->a.getPosition().equals(position)))
+                        throw new CustomParameterizedException("Bad cardlet footer position. It's exist",position.toString());
+
                     cardletFooter = new CardletFooter();
                     cardletFooter.setCardlet(cardlet);
                 } else {
@@ -206,26 +211,21 @@ public class CardletViewService {
                     if (cardletFooter == null || !cardlet.equals(cardletFooter.getCardlet()))
                         throw new CustomParameterizedException("Bad cardlet footer ID",cardletFoterVM.getId().toString());
                 }
-                CardletFooterIndex index = cardletFoterVM.getPosition();
-                if (cardletFooters.containsKey(index))  {
-                    throw new CustomParameterizedException("Bad cardlet footer position",index.toString());
+                if (cardletFooters.containsKey(position)) {
+                    throw new CustomParameterizedException("Bad cardlet footer position",position.toString());
                 }
-                cardletFooter.setPosition(index);
-                String logoUrl = renameIfTmp(cardlet,cardletFoterVM.getLogoUrl(), FILE_NAME_LINKLOGO_TMP + index, FILE_NAME_LINKLOGO_PERSIST + index);
+                cardletFooter.setPosition(position);
+                String logoUrl = renameIfTmp(cardlet,cardletFoterVM.getLogoUrl(), FILE_NAME_LINKLOGO_TMP + position, FILE_NAME_LINKLOGO_PERSIST + position);
                 cardletFooter.setLogo(logoUrl);
                 cardletFooter.setName(cardletFoterVM.getName());
                 cardletFooter.setUrl(cardletFoterVM.getUrl());
                 cardletFooter.setTitle(cardletFoterVM.getTitle());
-                cardletFooters.put(index,cardletFooter);
-
+                cardletFooter = cardletFooterRepository.save(cardletFooter);
+                cardletFooters.put(position,cardletFooter);
             }
-            cardlet.setCardletFooter(cardletFooters.entrySet().parallelStream()
-                                    .map(en->en.getValue())
-                                    .peek(a->cardletFooterRepository.save(a))
-                                    .collect(Collectors.toSet())
-            );
-        }
+            cardlet.setCardletFooter(cardletFooters.entrySet().stream().map(en->en.getValue()).collect(Collectors.toSet()));
 
+        }
         return createCardletViewVM(cardlet);
     }
 
