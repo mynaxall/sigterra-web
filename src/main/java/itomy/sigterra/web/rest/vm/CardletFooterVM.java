@@ -4,6 +4,7 @@ import itomy.sigterra.domain.CardletFooter;
 import itomy.sigterra.domain.enumeration.CardletFooterIndex;
 import org.springframework.validation.annotation.Validated;
 
+import javax.smartcardio.Card;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
