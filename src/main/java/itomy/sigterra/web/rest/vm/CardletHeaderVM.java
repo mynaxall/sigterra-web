@@ -1,6 +1,7 @@
 package itomy.sigterra.web.rest.vm;
 
 import itomy.sigterra.config.Constants;
+import itomy.sigterra.domain.CardletHeader;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.validation.annotation.Validated;
 
@@ -53,6 +54,10 @@ public class CardletHeaderVM {
         this.company = company;
         this.phone = phone;
         this.email = email;
+    }
+
+    public CardletHeaderVM(CardletHeader cardletHeader){
+        mapToCardletHeader(cardletHeader);
     }
 
     public Long getId() {
@@ -149,5 +154,31 @@ public class CardletHeaderVM {
             ", phone='" + phone + '\'' +
             ", email='" + email + '\'' +
             '}';
+    }
+
+    public void mapToCardletHeader(CardletHeader cardletHeaderEntity){
+        cardletHeaderEntity.setCtaButtonColor(this.ctaColor);
+        cardletHeaderEntity.setCtaText(this.text);
+        cardletHeaderEntity.setLogo(this.logoUrl);
+        cardletHeaderEntity.setPhoto(this.photoUrl);
+        cardletHeaderEntity.setName(this.name);
+        cardletHeaderEntity.setTitle(this.title);
+        cardletHeaderEntity.setCompany(this.company);
+        cardletHeaderEntity.setPhone(this.phone);
+        cardletHeaderEntity.setEmail(this.email);
+
+    }
+
+    public void mapFromCardletHeader(CardletHeader cardletHeaderEntity){
+        this.id = cardletHeaderEntity.getId();
+        this.ctaColor = cardletHeaderEntity.getCtaButtonColor();
+        this.text = cardletHeaderEntity.getCtaText();
+        this.logoUrl = cardletHeaderEntity.getLogo();
+        this.photoUrl = cardletHeaderEntity.getPhoto();
+        this.name = cardletHeaderEntity.getName();
+        this.title = cardletHeaderEntity.getTitle();
+        this.company = cardletHeaderEntity.getCompany();
+        this.phone = cardletHeaderEntity.getPhone();
+        this.email = cardletHeaderEntity.getEmail();
     }
 }

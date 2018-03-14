@@ -18,15 +18,27 @@ import itomy.sigterra.web.rest.vm.CardletHeaderVM;
 import itomy.sigterra.web.rest.vm.CardletViewRequestResponseVM;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.inject.Inject;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 /*
@@ -36,6 +48,8 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 public class CardletViewService {
+    private final Logger log               = LoggerFactory.getLogger(CardletViewService.class);
+
     private static final String FILE_NAME_LOGO_TMP = "logo.tmp";
     private static final int MAX_SIZE_LOGO = 1 * 1024 * 1024;
     private static final String FILE_NAME_LOGO_PERSIST = "logoview";
@@ -48,6 +62,13 @@ public class CardletViewService {
     private static final String FILE_NAME_LINKLOGO_TMP = "tmplinklogo";
     private static final int MAX_SIZE_LINKLOGO = 1 * 1024 * 1024;
     private static final String FILE_NAME_LINKLOGO_PERSIST = "linklogoview";
+
+    @Value("${sigterra-project.paths.banner-images}")
+    private String pathToBannerImages;
+
+    @Value("${sigterra-project.paths.links-images}")
+    private String pathToLinkImages;
+
 
     @Inject
     private CardletRepository cardletRepository;
@@ -63,6 +84,9 @@ public class CardletViewService {
 
     @Inject
     private AWSS3BucketService awss3BucketService;
+
+    @Inject
+    private ApplicationContext applicationContext;
 
     /**
      * read cardlet data and create view object by cardlet id
@@ -87,18 +111,7 @@ public class CardletViewService {
         CardletHeaderVM cardletHeaderVM = null;
         CardletHeader cardletHeader = cardlet.getCardletHeader();
         if (cardletHeader != null) {
-            cardletHeaderVM = new CardletHeaderVM(
-                cardletHeader.getId(),
-                cardletHeader.getCtaButtonColor(),
-                cardletHeader.getCtaText(),
-                cardletHeader.getLogo(),
-                cardletHeader.getPhoto(),
-                cardletHeader.getName(),
-                cardletHeader.getTitle(),
-                cardletHeader.getCompany(),
-                cardletHeader.getPhone(),
-                cardletHeader.getEmail()
-            );
+            cardletHeaderVM = new CardletHeaderVM(cardletHeader);
         }
         cardletView.setHeaders(cardletHeaderVM);
 
@@ -106,25 +119,13 @@ public class CardletViewService {
         CardletBackground cardletBackground = cardlet.getCardletBackground();
 
         if (cardletBackground != null) {
-            cardletBackgroundVM = new CardletBackgroundVM(
-                cardletBackground.getId(),
-                cardletBackground.getImage(),
-                cardletBackground.isTextColor(),
-                cardletBackground.getCaptionText()
-            );
+            cardletBackgroundVM = new CardletBackgroundVM(cardletBackground);
         }
         cardletView.setBackground(cardletBackgroundVM);
 
         List<CardletFooterVM> footers = new ArrayList<>();
         for (CardletFooter cardletFooter : cardlet.getCardletFooter()) {
-            CardletFooterVM cardletFooterVM = new CardletFooterVM(
-                cardletFooter.getId(),
-                cardletFooter.getPosition(),
-                cardletFooter.getName(),
-                cardletFooter.getUrl(),
-                cardletFooter.getLogo(),
-                cardletFooter.getTitle()
-            );
+            CardletFooterVM cardletFooterVM = new CardletFooterVM(cardletFooter);
             footers.add(cardletFooterVM);
         }
         cardletView.setFooters(footers);
@@ -157,17 +158,11 @@ public class CardletViewService {
                 if (cardletHeader == null || !cardlet.equals(cardletHeader.getCardlet()))
                     throw new CustomParameterizedException("Bad cardlet header ID");
             }
-            cardletHeader.setCtaButtonColor(cardletHeaderVM.getCtaColor());
-            cardletHeader.setCtaText(cardletHeaderVM.getText());
-            String logoURL = renameIfTmp(cardlet,cardletHeaderVM.getLogoUrl(), FILE_NAME_LOGO_TMP, FILE_NAME_LOGO_PERSIST);
-            cardletHeader.setLogo(logoURL);
-            String photoURL = renameIfTmp(cardlet,cardletHeaderVM.getPhotoUrl(), FILE_NAME_PHOTO_TMP, FILE_NAME_PHOTO_PERSIST);
-            cardletHeader.setPhoto(photoURL);
-            cardletHeader.setName(cardletHeaderVM.getName());
-            cardletHeader.setTitle(cardletHeaderVM.getTitle());
-            cardletHeader.setCompany(cardletHeaderVM.getCompany());
-            cardletHeader.setPhone(cardletHeaderVM.getPhone());
-            cardletHeader.setEmail(cardletHeaderVM.getEmail());
+            cardletHeaderVM.setLogoUrl(
+                renameIfTmp(cardlet,cardletHeaderVM.getLogoUrl(), FILE_NAME_LOGO_TMP, FILE_NAME_LOGO_PERSIST));
+            cardletHeaderVM.setPhotoUrl(
+                renameIfTmp(cardlet,cardletHeaderVM.getPhotoUrl(), FILE_NAME_PHOTO_TMP, FILE_NAME_PHOTO_PERSIST));
+            cardletHeaderVM.mapToCardletHeader(cardletHeader);
             cardletHeader = cardletHeaderRepository.save(cardletHeader);
             cardlet.setCardletHeader(cardletHeader);
         }
@@ -185,10 +180,7 @@ public class CardletViewService {
                 if (cardletBackground == null || !cardlet.equals(cardletBackground.getCardlet()))
                     throw new CustomParameterizedException("Bad cardlet background ID");
             }
-            String imageURL = renameIfTmp(cardlet,cardletBackgroundVM.getImageUrl(), FILE_NAME_BACKIMAGE_TMP, FILE_NAME_BACKIMAGE_PERSIST);
-            cardletBackground.setImage(imageURL);
-            cardletBackground.setCaptionText(cardletBackgroundVM.getText());
-            cardletBackground.setTextColor(cardletBackgroundVM.isTextColor());
+            cardletBackgroundVM.mapToCardletBackground(cardletBackground);
             cardletBackground = cardletBackgroundRepository.save(cardletBackground);
             cardlet.setCardletBackground(cardletBackground);
         }
@@ -214,12 +206,7 @@ public class CardletViewService {
                 if (cardletFooters.containsKey(position)) {
                     throw new CustomParameterizedException("Bad cardlet footer position",position.toString());
                 }
-                cardletFooter.setPosition(position);
-                String logoUrl = renameIfTmp(cardlet,cardletFoterVM.getLogoUrl(), FILE_NAME_LINKLOGO_TMP + position, FILE_NAME_LINKLOGO_PERSIST + position);
-                cardletFooter.setLogo(logoUrl);
-                cardletFooter.setName(cardletFoterVM.getName());
-                cardletFooter.setUrl(cardletFoterVM.getUrl());
-                cardletFooter.setTitle(cardletFoterVM.getTitle());
+                cardletFoterVM.mapToCardletFooter(cardletFooter);
                 cardletFooter = cardletFooterRepository.save(cardletFooter);
                 cardletFooters.put(position,cardletFooter);
             }
@@ -263,6 +250,7 @@ public class CardletViewService {
      * @param maxSize constraint max size
      * @return JSONObjectd with new path
      */
+    //todo need to refactor
     public JSONObject uploadFile(MultipartFile file, String path, int maxSize) throws JSONException {
         JSONObject successObject = new JSONObject();
         if (file != null && !file.isEmpty()) {
@@ -405,4 +393,50 @@ public class CardletViewService {
     private void deleteFile(String path) {
         awss3BucketService.deleteFile(path);
     }
+
+    /**
+     * get backgrounds list in resource
+     * @return files list
+     */
+    public Collection<String> getBackground(){
+        return getFilePaths(pathToBannerImages);
+    }
+
+    /**
+     * get images list in resource
+     * @return files list
+     */
+    public Collection<String> getLinkImages(){
+        return getFilePaths(pathToLinkImages);
+    }
+
+    /**
+     *  get files list
+     * @param sourcePath resource path
+     * @return files list
+     */
+    private List<String> getFilePaths(String sourcePath){
+        List<String> files = new ArrayList<>();
+        Resource resource = applicationContext.getResource(sourcePath);
+        if (resource.exists()) {
+            try {
+                File fileRoot= resource.getFile();
+                if (fileRoot.isDirectory()) {
+                    //add files only from root
+                    for (File f:fileRoot.listFiles()) {
+                        if (!f.isDirectory()){
+                            files.add(sourcePath+"\\"+f.getName());
+                        }
+                    }
+                } else {
+                    files.add(fileRoot.getPath());
+                }
+            } catch (IOException e) {
+                log.error("Cant't read resources path",e);
+            }
+        }
+        return files;
+    }
+
+
 }

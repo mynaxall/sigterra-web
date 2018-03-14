@@ -53,9 +53,9 @@ public class CardletViewResource {
     }
 
     /**
-     * POST  update  page view
+     * PUT  update  page view
      *
-     * @param cardletView the cardletView to create
+     * @param cardletView the cardletView to update
      * @return the ResponseEntity with status 200 (OK) and with body the updated CardletViewRequestResponseVM
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */

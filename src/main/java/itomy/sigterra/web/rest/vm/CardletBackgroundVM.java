@@ -1,5 +1,6 @@
 package itomy.sigterra.web.rest.vm;
 
+import itomy.sigterra.domain.CardletBackground;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Size;
@@ -20,6 +21,10 @@ public class CardletBackgroundVM {
         this.imageUrl = imageUrl;
         this.textColor = textColor;
         this.text = text;
+    }
+
+    public CardletBackgroundVM(CardletBackground cardletBackground){
+        mapFromCardletBackground(cardletBackground);
     }
 
     public Long getId() {
@@ -62,5 +67,18 @@ public class CardletBackgroundVM {
             ", textColor=" + textColor +
             ", text='" + text + '\'' +
             '}';
+    }
+
+    public void mapToCardletBackground(CardletBackground cardletBackgroundEntity){
+        cardletBackgroundEntity.setImage(this.getImageUrl());
+        cardletBackgroundEntity.setCaptionText(this.getText());
+        cardletBackgroundEntity.setTextColor(this.isTextColor());
+    }
+
+    public void mapFromCardletBackground(CardletBackground cardletBackgroundEntity){
+        this.id = cardletBackgroundEntity.getId();
+        this.imageUrl = cardletBackgroundEntity.getImage();
+        this.textColor = cardletBackgroundEntity.isTextColor();
+        this.text = cardletBackgroundEntity.getCaptionText();
     }
 }

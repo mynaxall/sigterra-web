@@ -245,8 +245,6 @@ public class AWSS3BucketService {
         try {
             String bucketName = hipsterProperties.getAwss3Bucket().getName();
             s3Client.copyObject(bucketName,source,bucketName,dest);
-            //don't delete tmp file
-//            s3Client.deleteObject(bucketName,source);
             URL url = s3Client.generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName,dest));
             uri = new URI(url.toURI().getScheme(),
                 url.toURI().getAuthority(),

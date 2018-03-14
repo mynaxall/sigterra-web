@@ -1,5 +1,6 @@
 package itomy.sigterra.web.rest.vm;
 
+import itomy.sigterra.domain.CardletFooter;
 import itomy.sigterra.domain.enumeration.CardletFooterIndex;
 import org.springframework.validation.annotation.Validated;
 
@@ -22,6 +23,12 @@ public class CardletFooterVM {
     @Size(max = 255)
     private String logoUrl;
 
+    @Size(max=255)
+    private String title;
+
+    public CardletFooterVM() {
+        //For Jackson
+    }
 
     public CardletFooterVM(Long id, CardletFooterIndex position, String name, String url, String logoUrl, String title) {
         this.id = id;
@@ -32,6 +39,10 @@ public class CardletFooterVM {
         this.title = title;
     }
 
+    public CardletFooterVM(CardletFooter cardletFooter) {
+        mapFromCardletFooter(cardletFooter);
+    }
+
     public String getTitle() {
         return title;
     }
@@ -39,14 +50,6 @@ public class CardletFooterVM {
     public void setTitle(String title) {
         this.title = title;
     }
-
-    @Size(max=255)
-    private String title;
-
-    public CardletFooterVM() {
-        //For Jackson
-    }
-
 
     public Long getId() {
         return id;
@@ -97,5 +100,22 @@ public class CardletFooterVM {
             ", url='" + url + '\'' +
             ", logoUrl='" + logoUrl + '\'' +
             '}';
+    }
+
+    public void mapToCardletFooter(CardletFooter cardletFooterEntity){
+        cardletFooterEntity.setPosition(this.getPosition());
+        cardletFooterEntity.setLogo(this.getLogoUrl());
+        cardletFooterEntity.setName(this.getName());
+        cardletFooterEntity.setUrl(this.getUrl());
+        cardletFooterEntity.setTitle(this.getTitle());
+    }
+
+    public void mapFromCardletFooter(CardletFooter cardletFooterEntity){
+        this.id = cardletFooterEntity.getId();
+        this.position = cardletFooterEntity.getPosition();
+        this.name = cardletFooterEntity.getName();
+        this.url = cardletFooterEntity.getUrl();
+        this.logoUrl = cardletFooterEntity.getLogo();
+        this.title = cardletFooterEntity.getTitle();
     }
 }

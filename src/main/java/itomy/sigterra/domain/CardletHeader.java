@@ -60,15 +60,8 @@ public class CardletHeader extends AbstractAuditingEntity{
         this.cardlet = cardlet;
     }
 
-
-    public void setCardlet(Cardlet cardlet) {
-        this.cardlet = cardlet;
-    }
-
-
-
     public CardletHeader() {
-
+        //for Jackson
     }
 
     @Override
@@ -183,4 +176,9 @@ public class CardletHeader extends AbstractAuditingEntity{
     public Cardlet getCardlet() {
         return cardlet;
     }
+
+    public void setCardlet(Cardlet cardlet) {
+        this.cardlet = cardlet;
+    }
+
 }

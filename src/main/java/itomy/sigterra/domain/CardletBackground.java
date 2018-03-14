@@ -32,7 +32,6 @@ public class CardletBackground extends AbstractAuditingEntity {
     @JoinColumn(name = "cardlet_id")
     private Cardlet cardlet;
 
-
     public CardletBackground() {
     }
 
@@ -42,14 +41,6 @@ public class CardletBackground extends AbstractAuditingEntity {
         this.captionText = captionText;
         this.cardlet = cardlet;
     }
-
-    public void setCardlet(Cardlet cardlet) {
-        this.cardlet = cardlet;
-    }
-
-
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -68,7 +59,6 @@ public class CardletBackground extends AbstractAuditingEntity {
     public int hashCode() {
         return Objects.hashCode(id);
     }
-
 
     @Override
     public String toString() {
@@ -111,5 +101,9 @@ public class CardletBackground extends AbstractAuditingEntity {
 
     public Cardlet getCardlet() {
         return cardlet;
+    }
+
+    public void setCardlet(Cardlet cardlet) {
+        this.cardlet = cardlet;
     }
 }
