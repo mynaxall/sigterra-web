@@ -52,7 +52,6 @@ public class Cardlet implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "cardlet", cascade = CascadeType.ALL)
     private Set<CardletFooter> cardletFooter;
 
-
     public Long getId() {
         return id;
     }
