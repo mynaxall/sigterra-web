@@ -49,6 +49,11 @@ server:
         cookie:
             http-only: true
 
+sigterra-project:
+    paths:
+        banner-images: \content\images\viewpage\backgrounds
+        links-images: \content\images\viewpage\linkimages
+
 # ===================================================================
 # JHipster specific properties
 # ===================================================================

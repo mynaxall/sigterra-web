@@ -19,6 +19,7 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/api/cardlet/pageview/")
@@ -67,6 +68,13 @@ public class CardletViewResource {
             .body(result);
     }
 
+    /**
+     * upload image for logo
+     * @param file - file
+     * @param cardletId - cardlet ID
+     * @return
+     * @throws JSONException
+     */
     @PostMapping(value = "logo-image/{cardletId}", produces=MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<?> uploadLogo(@RequestBody MultipartFile file, @PathVariable Long cardletId) throws JSONException {
@@ -74,6 +82,13 @@ public class CardletViewResource {
         return new ResponseEntity<>(successObject.toString(), HttpStatus.OK);
     }
 
+    /**
+     * upload image for logo
+     * @param file - file
+     * @param cardletId - cardlet ID
+     * @return
+     * @throws JSONException
+     */
     @PostMapping(value = "photo-image/{cardletId}", produces=MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<?> uploadPhoto(@RequestBody MultipartFile file, @PathVariable Long cardletId) throws JSONException {
@@ -81,18 +96,22 @@ public class CardletViewResource {
         return new ResponseEntity<>(successObject.toString(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "background-image/{cardletId}", produces=MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<?> uploadBackground(@RequestBody MultipartFile file, @PathVariable Long cardletId) throws JSONException {
-        JSONObject successObject = cardletViewService.uploadBackgroundImage(file,cardletId);
-        return new ResponseEntity<>(successObject.toString(), HttpStatus.OK);
+    /**
+     * getting list available background
+     * @return array of background path
+     */
+    @GetMapping(value = "listbackgrounds")
+    public ResponseEntity<Collection<String>> getBackgrounds(){
+        return ResponseEntity.ok(cardletViewService.getBackground());
     }
 
-    @PostMapping(value = "link-image/{cardletId}/{index}", produces=MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public ResponseEntity<?> uploadLinkImage(@RequestBody MultipartFile file, @PathVariable Long cardletId,@PathVariable CardletFooterIndex index) throws JSONException {
-        JSONObject successObject = cardletViewService.uploadLinkLogo(file,cardletId,index.ordinal());
-        return new ResponseEntity<>(successObject.toString(), HttpStatus.OK);
+    /**
+     * getting list available icons
+     * @return array of icon path
+     */
+    @GetMapping(value = "listicons")
+    public ResponseEntity<Collection<String>> getIcons(){
+        return ResponseEntity.ok(cardletViewService.getBackground());
     }
 
 }
