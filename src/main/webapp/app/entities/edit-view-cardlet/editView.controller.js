@@ -36,11 +36,12 @@
             };
         });
 
-    EditViewController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'orderByFilter', 'PHONE_PATTERN', 'TOOLBAR_OPTIONS', 'ImageService'];
+    EditViewController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'orderByFilter', 'PHONE_PATTERN', 'TOOLBAR_OPTIONS', 'ImageService', 'Carousel'];
 
-    function EditViewController($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter, PHONE_PATTERN, TOOLBAR_OPTIONS, ImageService) {
+    function EditViewController($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter, PHONE_PATTERN, TOOLBAR_OPTIONS, ImageService, Carousel) {
         var vm = this;
         $scope.showError = false;
+        $scope.Carousel = Carousel;
         $scope.time = Date.now();
         $scope.showEditorNavigation = false;
         $scope.showCropDialog = false;
@@ -63,14 +64,14 @@
         $scope.bounds.top = 200;
         $scope.bounds.bottom = 0;
         $scope.imageSize = {width: 200, height: 200};
-        vm.activeTab = 1;
+        $scope.secondaryColor = "";
+        vm.activeTab = 2;
         vm.bg = "/content/images/background.jpg";
+        vm.bgSlides = ["/content/images/background.jpg", "/content/images/background2.jpg", "/content/images/background3jpg"];
 
-        $scope.setActive = function (index, id) {
+
+        $scope.setActive = function (index) {
             vm.activeTab = index;
-            var el = document.getElementById(id);
-            console.log(el)
-            el.scrollIntoView();
         }
 
         $scope.showSocialDialog = false;
@@ -417,6 +418,33 @@
                 $scope.accordion = 0
             }
         }
+
+        $scope.prevSlideBg = function(){
+            $scope.currentUrl = undefined;
+            if( vm.currentSlideBg == 0){
+                console.log( vm.currentSlideBg)
+                vm.currentSlideBg = vm.bgSlides.length -1;
+                console.log( vm.currentSlideBg)
+            }else{
+                console.log( vm.currentSlideBg)
+                vm.currentSlideBg = parseInt(vm.currentSlideBg) - 1;
+                console.log( vm.currentSlideBg)
+            }
+        };
+
+        $scope.nextSlideBg = function(){
+            console.log(vm.currentSlideBg)
+            $scope.currentUrl = undefined
+            if( vm.currentSlideBg == vm.bgSlides.length -1){
+                console.log( vm.currentSlideBg)
+                vm.currentSlideBg = 0
+                console.log( vm.currentSlideBg)
+            }else{
+                console.log( vm.currentSlideBg)
+                vm.currentSlideBg = parseInt(vm.currentSlideBg) + 1;
+            }
+            console.log(vm.currentSlideBg)
+        };
 
 
         $scope.prevSlide = function(index){
