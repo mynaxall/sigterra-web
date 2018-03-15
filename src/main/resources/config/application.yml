@@ -92,4 +92,6 @@ jhipster:
         processEventDelay: 5
         processEventInitialDelay: 20
         processEventDelayTimeUnit: SECONDS # Possible TimeUnit values [SECONDS, MINUTES, HOURS, DAYS]
-
+    sigterraProperties:
+         pathBannerImages: \content\images\viewpage\backgrounds
+         pathLinkImages: \content\images\viewpage\linkimages

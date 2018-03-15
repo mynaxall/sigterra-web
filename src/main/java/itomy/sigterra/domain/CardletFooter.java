@@ -1,9 +1,6 @@
 package itomy.sigterra.domain;
 
-import itomy.sigterra.domain.enumeration.CardletFooterIndex;
-
 import javax.persistence.*;
-import java.util.Objects;
 
 /*
    data for "Edit page", tab: footer
@@ -12,8 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "cardlet_footer")
-public class CardletFooter extends AbstractAuditingEntity{
-
+public class CardletFooter extends AbstractAuditingEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -21,100 +17,27 @@ public class CardletFooter extends AbstractAuditingEntity{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "position")
-    @Enumerated(EnumType.ORDINAL)
-    private CardletFooterIndex position;
-
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "url")
-    private String url;
-
-    @Column(name = "logo")
-    private String logo;
-
-    @Column(name="title")
+    @Column(name = "title")
     private String title;
 
-    @ManyToOne
+    @Column(name = "facebook_link")
+    private String facebookLink;
+
+    @Column(name = "twitter_link")
+    private String twitterLink;
+
+    @Column(name = "linkedin_link")
+    private String linkedin_link;
+
+    @OneToOne
     @JoinColumn(name = "cardlet_id")
     private Cardlet cardlet;
 
     public CardletFooter() {
-        //for JPA
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CardletFooter that = (CardletFooter) o;
-        if(that.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "CardletFooter{" +
-            "id=" + id +
-            ", index=" + position +
-            ", name='" + name + '\'' +
-            ", url='" + url + '\'' +
-            ", logo='" + logo + '\'' +
-            ", cardlet=" + cardlet +
-            '}';
-    }
-
-    public CardletFooterIndex getPosition() {
-        return position;
-    }
-
-    public void setPosition(CardletFooterIndex position) {
-        this.position = position;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
     }
 
     public Long getId() {
-        return id;
-    }
-
-    public Cardlet getCardlet() {
-        return cardlet;
-    }
-
-    public void setCardlet(Cardlet cardlet) {
-        this.cardlet = cardlet;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -122,10 +45,69 @@ public class CardletFooter extends AbstractAuditingEntity{
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getFacebookLink() {
+        return this.facebookLink;
+    }
+
+    public void setFacebookLink(String facebookLink) {
+        this.facebookLink = facebookLink;
+    }
+
+    public String getTwitterLink() {
+        return this.twitterLink;
+    }
+
+    public void setTwitterLink(String twitterLink) {
+        this.twitterLink = twitterLink;
+    }
+
+    public String getLinkedin_link() {
+        return this.linkedin_link;
+    }
+
+    public void setLinkedin_link(String linkedin_link) {
+        this.linkedin_link = linkedin_link;
+    }
+
+    public Cardlet getCardlet() {
+        return this.cardlet;
+    }
+
+    public void setCardlet(Cardlet cardlet) {
+        this.cardlet = cardlet;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CardletFooter that = (CardletFooter) o;
+
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "CardletFooter{" +
+            "id=" + id +
+            ", title='" + title + '\'' +
+            ", facebookLink='" + facebookLink + '\'' +
+            ", twitterLink='" + twitterLink + '\'' +
+            ", linkedin_link='" + linkedin_link + '\'' +
+            ", cardlet=" + cardlet +
+            '}';
     }
 }

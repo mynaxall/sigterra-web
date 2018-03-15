@@ -11,6 +11,7 @@ public class CardletBackgroundVM {
     @Size(max = 255)
     private String imageUrl;
     private boolean textColor;
+    @Size(max = 140)
     private String text;
 
     public CardletBackgroundVM() {
