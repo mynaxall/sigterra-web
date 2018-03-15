@@ -24,7 +24,6 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /*
@@ -100,7 +99,7 @@ public class CardletViewService {
         if (cardletHeader != null) {
             cardletHeaderVM = new CardletHeaderVM(cardletHeader);
         }
-        cardletView.setHeaders(cardletHeaderVM);
+        cardletView.setHeader(cardletHeaderVM);
 
         CardletBackgroundVM cardletBackgroundVM = null;
         CardletBackground cardletBackground = cardlet.getCardletBackground();
@@ -116,7 +115,7 @@ public class CardletViewService {
         if (cardletLinks != null) {
             cardletLinksVM = new CardletLinksVM(cardletLinks);
         }
-        cardletView.setLink(cardletLinksVM);
+        cardletView.setLinks(cardletLinksVM);
 
         CardletFooterVM cardletFooterVM = null;
         CardletFooter cardletFooter = cardlet.getCardletFooter();
@@ -144,7 +143,7 @@ public class CardletViewService {
             throw new CustomParameterizedException(errorMessage);
         }
 
-        CardletHeaderVM cardletHeaderVM = cardletView.getHeaders();
+        CardletHeaderVM cardletHeaderVM = cardletView.getHeader();
         if (cardletHeaderVM != null) {
             CardletHeader cardletHeader;
             if (cardletHeaderVM.getId() == null) {
@@ -431,7 +430,7 @@ public class CardletViewService {
      *
      * @return files list
      */
-    public Collection<String> getBackground() {
+    public List<String> getBackground() {
         return getFilePaths(jHipsterProperties.getSigterraProperties().getPathBackgroundImages());
     }
 
@@ -440,7 +439,7 @@ public class CardletViewService {
      *
      * @return files list
      */
-    public Collection<String> getLinksImages() {
+    public List<String> getLinksImages() {
         return getFilePaths(jHipsterProperties.getSigterraProperties().getPathLinkImages());
     }
 

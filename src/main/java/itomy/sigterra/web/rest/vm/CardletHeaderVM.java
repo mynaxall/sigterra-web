@@ -53,7 +53,7 @@ public class CardletHeaderVM {
     }
 
     public CardletHeaderVM(CardletHeader cardletHeader){
-        mapToCardletHeader(cardletHeader);
+        mapFromCardletHeader(cardletHeader);
     }
 
     public Long getId() {

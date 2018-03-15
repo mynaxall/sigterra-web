@@ -4,6 +4,7 @@ package itomy.sigterra.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import itomy.sigterra.service.CardletViewService;
 import itomy.sigterra.web.rest.vm.CardletViewRequestResponseVM;
+import itomy.sigterra.web.rest.vm.ListFilesPathsResponseVM;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -99,9 +100,10 @@ public class CardletViewResource {
      *
      * @return array of background path
      */
-    @GetMapping(value = "listbackgrounds")
-    public ResponseEntity<?> getBackgrounds() {
-        return ResponseEntity.ok(cardletViewService.getBackground());
+    @GetMapping(value = "listbackgrounds", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ListFilesPathsResponseVM> getBackgrounds() {
+        ListFilesPathsResponseVM list = new ListFilesPathsResponseVM(cardletViewService.getBackground());
+        return ResponseEntity.ok(list);
     }
 
     /**
@@ -109,8 +111,9 @@ public class CardletViewResource {
      *
      * @return array of icon path
      */
-    @GetMapping(value = "listicons")
-    public ResponseEntity<?> getIcons() {
-        return ResponseEntity.ok(cardletViewService.getLinksImages());
+    @GetMapping(value = "listicons", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ListFilesPathsResponseVM> getIcons() {
+        ListFilesPathsResponseVM list = new ListFilesPathsResponseVM(cardletViewService.getLinksImages());
+        return ResponseEntity.ok(list);
     }
 }

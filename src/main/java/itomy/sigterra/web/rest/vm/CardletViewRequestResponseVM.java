@@ -12,13 +12,13 @@ public class CardletViewRequestResponseVM {
     private Long cardletId;
 
     @Valid
-    private CardletHeaderVM headers;
+    private CardletHeaderVM header;
 
     @Valid
     private CardletBackgroundVM background;
 
     @Valid
-    private CardletLinksVM link;
+    private CardletLinksVM links;
 
     @Valid
     private CardletFooterVM footer;
@@ -27,11 +27,11 @@ public class CardletViewRequestResponseVM {
         // For Jackson
     }
 
-    public CardletViewRequestResponseVM(Long cardletId, CardletHeaderVM headers, CardletBackgroundVM background, CardletLinksVM link) {
+    public CardletViewRequestResponseVM(Long cardletId, CardletHeaderVM header, CardletBackgroundVM background, CardletLinksVM links) {
         this.cardletId = cardletId;
-        this.headers = headers;
+        this.header = header;
         this.background = background;
-        this.link = link;
+        this.links = links;
     }
 
     public Long getCardletId() {
@@ -42,12 +42,12 @@ public class CardletViewRequestResponseVM {
         this.cardletId = cardletId;
     }
 
-    public CardletHeaderVM getHeaders() {
-        return headers;
+    public CardletHeaderVM getHeader() {
+        return header;
     }
 
-    public void setHeaders(CardletHeaderVM headers) {
-        this.headers = headers;
+    public void setHeader(CardletHeaderVM header) {
+        this.header = header;
     }
 
     public CardletBackgroundVM getBackground() {
@@ -59,20 +59,20 @@ public class CardletViewRequestResponseVM {
     }
 
     public CardletLinksVM getLinks() {
-        return link;
+        return links;
     }
 
-    public void setLink(CardletLinksVM link) {
-        this.link = link;
+    public void setLinks(CardletLinksVM links) {
+        this.links = links;
     }
 
     @Override
     public String toString() {
         return "CardletViewRequestResponseVM{" +
             "cardletId=" + cardletId +
-            ", headers=" + headers +
+            ", headers=" + header +
             ", background=" + background +
-            ", link=" + link +
+            ", links=" + links +
             '}';
     }
 
