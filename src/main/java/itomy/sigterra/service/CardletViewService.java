@@ -4,6 +4,10 @@ package itomy.sigterra.service;
 import itomy.sigterra.config.JHipsterProperties;
 import itomy.sigterra.domain.*;
 import itomy.sigterra.repository.*;
+import itomy.sigterra.service.mapper.CardletBackgroundMapper;
+import itomy.sigterra.service.mapper.CardletFooterMapper;
+import itomy.sigterra.service.mapper.CardletHeaderMapper;
+import itomy.sigterra.service.mapper.CardletLinksMapper;
 import itomy.sigterra.web.rest.errors.CardletNotFound;
 import itomy.sigterra.web.rest.errors.CustomParameterizedException;
 import itomy.sigterra.web.rest.vm.*;
@@ -144,7 +148,7 @@ public class CardletViewService {
                 renameIfTmp(cardlet, cardletHeaderVM.getLogoUrl(), FILE_NAME_LOGO_TMP, FILE_NAME_LOGO_PERSIST));
             cardletHeaderVM.setPhotoUrl(
                 renameIfTmp(cardlet, cardletHeaderVM.getPhotoUrl(), FILE_NAME_PHOTO_TMP, FILE_NAME_PHOTO_PERSIST));
-            cardletHeaderVM.mapToCardletHeader(cardletHeader);
+            CardletHeaderMapper.map(cardletHeaderVM, cardletHeader);
             cardletHeader = cardletHeaderRepository.save(cardletHeader);
             cardlet.setCardletHeader(cardletHeader);
         }
@@ -152,7 +156,7 @@ public class CardletViewService {
         CardletBackgroundVM cardletBackgroundVM = cardletView.getBackground();
         if (cardletBackgroundVM != null) {
             CardletBackground cardletBackground = checkAndGetCardletBackground(cardlet, cardletBackgroundVM);
-            cardletBackgroundVM.mapToCardletBackground(cardletBackground);
+            CardletBackgroundMapper.map(cardletBackgroundVM, cardletBackground);
             cardletBackground = cardletBackgroundRepository.save(cardletBackground);
             cardlet.setCardletBackground(cardletBackground);
         }
@@ -160,7 +164,7 @@ public class CardletViewService {
         CardletLinksVM cardletLinksVM = cardletView.getLinks();
         if (cardletLinksVM != null) {
             CardletLinks cardletLinks = checkAndGetCardletLinks(cardlet, cardletLinksVM);
-            cardletLinksVM.mapToCardletLinks(cardletLinks);
+            CardletLinksMapper.map(cardletLinksVM, cardletLinks);
             cardletLinks = cardletLinksRepository.save(cardletLinks);
             cardlet.setCardletLinks(cardletLinks);
         }
@@ -168,7 +172,7 @@ public class CardletViewService {
         CardletFooterVM cardletFooterVM = cardletView.getFooter();
         if (cardletFooterVM != null) {
             CardletFooter cardletFooter = checkAndGetCardletFooter(cardlet, cardletFooterVM);
-            cardletFooterVM.mapToCardletFooter(cardletFooter);
+            CardletFooterMapper.map(cardletFooterVM, cardletFooter);
             cardletFooter = cardletFooterRepository.save(cardletFooter);
             cardlet.setCardletFooter(cardletFooter);
         }

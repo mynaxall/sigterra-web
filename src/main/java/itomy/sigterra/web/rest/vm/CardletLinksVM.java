@@ -1,6 +1,7 @@
 package itomy.sigterra.web.rest.vm;
 
 import itomy.sigterra.domain.CardletLinks;
+import itomy.sigterra.service.mapper.CardletLinksMapper;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Size;
@@ -38,7 +39,7 @@ public class CardletLinksVM {
     }
 
     public CardletLinksVM(CardletLinks cardletLinks) {
-        mapFromCardletLinks(cardletLinks);
+        CardletLinksMapper.map(cardletLinks, this);
     }
 
     public CardletLinksVM(Long id, String name1, String url1, String logoUrl1, String name2, String url2, String logoUrl2, String name3, String url3, String logoUrl3, String title) {
@@ -143,30 +144,4 @@ public class CardletLinksVM {
         this.id = id;
     }
 
-    public void mapToCardletLinks(CardletLinks cardletLinksEntity) {
-        cardletLinksEntity.setLogo1(this.logoUrl1);
-        cardletLinksEntity.setTitle(this.getTitle());
-        cardletLinksEntity.setName1(this.name1);
-        cardletLinksEntity.setUrl1(this.url1);
-        cardletLinksEntity.setLogo2(this.logoUrl2);
-        cardletLinksEntity.setName2(this.name2);
-        cardletLinksEntity.setUrl2(this.url2);
-        cardletLinksEntity.setLogo3(this.logoUrl3);
-        cardletLinksEntity.setName3(this.name3);
-        cardletLinksEntity.setUrl3(this.url3);
-    }
-
-    public void mapFromCardletLinks(CardletLinks cardletLinksEntity) {
-        this.id = cardletLinksEntity.getId();
-        this.title = cardletLinksEntity.getTitle();
-        this.name1 = cardletLinksEntity.getName1();
-        this.url1 = cardletLinksEntity.getUrl1();
-        this.logoUrl1 = cardletLinksEntity.getLogo1();
-        this.name2 = cardletLinksEntity.getName2();
-        this.url2 = cardletLinksEntity.getUrl2();
-        this.logoUrl2 = cardletLinksEntity.getLogo2();
-        this.name3 = cardletLinksEntity.getName3();
-        this.url3 = cardletLinksEntity.getUrl3();
-        this.logoUrl3 = cardletLinksEntity.getLogo3();
-    }
 }

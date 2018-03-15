@@ -1,6 +1,7 @@
 package itomy.sigterra.web.rest.vm;
 
 import itomy.sigterra.domain.CardletFooter;
+import itomy.sigterra.service.mapper.CardletFooterMapper;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Size;
@@ -31,7 +32,7 @@ public class CardletFooterVM {
     }
 
     public CardletFooterVM(CardletFooter cardletFooter) {
-        mapFromCardletFooter(cardletFooter);
+        CardletFooterMapper.map(cardletFooter, this);
     }
 
     public Long getId() {
@@ -111,18 +112,4 @@ public class CardletFooterVM {
 
 
 
-    public void mapToCardletFooter(CardletFooter cardletFooterEntity){
-        cardletFooterEntity.setTitle(this.title);
-        cardletFooterEntity.setFacebookLink(this.facebookLink);
-        cardletFooterEntity.setTwitterLink(this.twitterLink);
-        cardletFooterEntity.setLinkedin_link(this.linkedin_link);
-    }
-
-    public void mapFromCardletFooter(CardletFooter cardletFooterEntity){
-        this.id = cardletFooterEntity.getId();
-        this.title = cardletFooterEntity.getTitle();
-        this.facebookLink = cardletFooterEntity.getFacebookLink();
-        this.twitterLink = cardletFooterEntity.getTwitterLink();
-        this.linkedin_link = cardletFooterEntity.getLinkedin_link();
-    }
 }
