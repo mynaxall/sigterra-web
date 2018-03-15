@@ -37,6 +37,8 @@ public class ExceptionTranslator {
         return processFieldErrors(fieldErrors);
     }
 
+
+
     @ExceptionHandler(CustomParameterizedException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
@@ -81,5 +83,13 @@ public class ExceptionTranslator {
             errorVM = new ErrorVM(ErrorConstants.ERR_INTERNAL_SERVER_ERROR, "Internal server error");
         }
         return builder.body(errorVM);
+    }
+
+    @ExceptionHandler(CardletNotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public ErrorVM processCardletNotFoundException(CardletNotFound e){
+        ErrorVM error = new ErrorVM(e.getMessage());
+        return error;
     }
 }

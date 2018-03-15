@@ -43,6 +43,15 @@ public class Cardlet implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "cardlet", cascade = CascadeType.ALL)
     private Set<Item> items = new HashSet<>();
 
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL,mappedBy = "cardlet")
+    private CardletHeader cardletHeader;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL,mappedBy = "cardlet")
+    private CardletBackground cardletBackground;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "cardlet", cascade = CascadeType.ALL)
+    private Set<CardletFooter> cardletFooter;
+
     public Long getId() {
         return id;
     }
@@ -162,8 +171,33 @@ public class Cardlet implements Serializable {
         return this;
     }
 
+    public CardletHeader getCardletHeader() {
+        return cardletHeader;
+    }
+
+    public CardletBackground getCardletBackground() {
+        return cardletBackground;
+    }
+
+    public Set<CardletFooter> getCardletFooter() {
+        return cardletFooter;
+    }
+
+
     public void setItems(Set<Item> items) {
         this.items = items;
+    }
+
+    public void setCardletHeader(CardletHeader cardletHeader) {
+        this.cardletHeader = cardletHeader;
+    }
+
+    public void setCardletBackground(CardletBackground cardletBackground) {
+        this.cardletBackground = cardletBackground;
+    }
+
+    public void setCardletFooter(Set<CardletFooter> cardletFooter) {
+        this.cardletFooter = cardletFooter;
     }
 
     @Override
@@ -196,4 +230,5 @@ public class Cardlet implements Serializable {
             ", active='" + active + "'" +
             '}';
     }
+
 }

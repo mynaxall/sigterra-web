@@ -59,6 +59,7 @@ public class AWSS3BucketService {
         }
     }
 
+
     public URI uploadProfileImage(MultipartFile file) {
         URI uri = null;
         if (file != null && !file.isEmpty()) {
@@ -191,6 +192,82 @@ public class AWSS3BucketService {
             }
         }
         return uri;
+    }
+
+    /**
+     * upload image to S3 bucket
+     * @param file file
+     * @param fullPath fileKey in bucket
+     * @return new file URI
+     */
+    public URI uploadImage(MultipartFile file,String fullPath){
+        URI uri = null;
+        if (file != null && !file.isEmpty()) {
+            try {
+
+                String bucketName = hipsterProperties.getAwss3Bucket().getName();
+                User user = userService.getUserWithAuthorities();
+
+                ObjectMetadata metadata = new ObjectMetadata();
+                metadata.setContentType(file.getContentType());
+                metadata.setContentLength(file.getSize());
+
+                PutObjectRequest putObject = new PutObjectRequest(bucketName, fullPath, file.getInputStream(), metadata);
+                putObject.withCannedAcl(CannedAccessControlList.PublicRead);
+
+                s3Client.putObject(putObject);
+
+                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName, fullPath);
+                URL url = s3Client.generatePresignedUrl(urlRequest);
+                uri = new URI(url.toURI().getScheme(),
+                    url.toURI().getAuthority(),
+                    url.toURI().getPath(),
+                    null,
+                    url.toURI().getFragment());
+
+                uri = URI.create(uri.toString() + '?' + System.currentTimeMillis());
+                log.debug("Uploaded image file to AWS S3 Bucket has URL: {}", url.toString());
+            } catch (Exception e) {
+                log.error("Error occurred while uploading the file", e);
+            }
+        }
+        return uri;
+    }
+
+    /**
+     * rename file in bucket. Don't delete source file, only copy
+     * @param source source fileKey in bucket
+     * @param dest dest fileKet in bucket.
+     * @return
+     */
+    public URI renameFile(String source, String dest) {
+        URI uri = null;
+        try {
+            String bucketName = hipsterProperties.getAwss3Bucket().getName();
+            s3Client.copyObject(bucketName,source,bucketName,dest);
+            URL url = s3Client.generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName,dest));
+            uri = new URI(url.toURI().getScheme(),
+                url.toURI().getAuthority(),
+                url.toURI().getPath(),
+                null,
+                url.toURI().getFragment());
+
+            uri = URI.create(uri.toString() + '?' + System.currentTimeMillis());
+            log.debug("File copied "+source+"->"+dest);
+        } catch (Exception e) {
+            log.error("Error occurred while rename the profile icon file", e);
+
+        }
+        return uri;
+    }
+
+    /**
+     * delete file in bucket
+     * @param path fileKey in bucket
+     */
+    public void deleteFile(String path) {
+        String bucketName = hipsterProperties.getAwss3Bucket().getName();
+        s3Client.deleteObject(bucketName,path);
     }
 }
 
