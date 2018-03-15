@@ -176,6 +176,34 @@ public class CardletViewService {
         return createCardletViewVM(cardlet);
     }
 
+    /**
+     * id we have tmp file we must rename it in AWS bucket  before save
+     *
+     * @param cardlet cardlet for generate path
+     * @param url     source url of file
+     * @param from    tempalate for source file
+     * @param to      name for destination file
+     * @return renamed file if did, or equivalent to input
+     */
+    private String renameIfTmp(Cardlet cardlet, String url, String from, String to) {
+        String result = url;
+        if (url != null && url.contains(from)) {
+            String source;
+            try {
+                source = new URL(url).getPath();
+                source = source.substring(1); //remove first "/"
+            } catch (MalformedURLException e) {
+                throw new CustomParameterizedException(e.getMessage());
+            }
+            String dest = getFileNameInBucket(to, null, cardlet)
+                + source.substring(source.lastIndexOf("."));//save extension
+            result = awss3BucketService.renameFile(source, dest).toString();
+            //remove parameters
+            if (result.contains("?")) result = result.substring(0, result.indexOf("?"));
+        }
+        return result;
+    }
+
     private CardletFooter checkAndGetCardletFooter(Cardlet cardlet, CardletFooterVM cardletFooterVM) {
         CardletFooter cardletFooter;
         if (cardletFooterVM.getId() == null) {
@@ -258,34 +286,6 @@ public class CardletViewService {
             }
         }
         return cardletHeader;
-    }
-
-    /**
-     * id we have tmp file we must rename it in AWS bucket  before save
-     *
-     * @param cardlet cardlet for generate path
-     * @param url     source url of file
-     * @param from    tempalate for source file
-     * @param to      name for destination file
-     * @return renamed file if did, or equivalent to input
-     */
-    private String renameIfTmp(Cardlet cardlet, String url, String from, String to) {
-        String result = url;
-        if (url != null && url.contains(from)) {
-            String source;
-            try {
-                source = new URL(url).getPath();
-                source = source.substring(1); //remove first "/"
-            } catch (MalformedURLException e) {
-                throw new CustomParameterizedException(e.getMessage());
-            }
-            String dest = getFileNameInBucket(to, null, cardlet)
-                + source.substring(source.lastIndexOf("."));//save extension
-            result = awss3BucketService.renameFile(source, dest).toString();
-            //remove parameters
-            if (result.contains("?")) result = result.substring(0, result.indexOf("?"));
-        }
-        return result;
     }
 
     /**
