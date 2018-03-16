@@ -16,15 +16,15 @@ public class CardletFooterVM {
     @Size(max = 255)
     private String twitterLink;
     @Size(max = 255)
-    private String linkedin_link;
+    private String linkedinLink;
 
-    public CardletFooterVM(Long id, String title, String facebookLink, String twitterLink, String linkedin_link) {
+    public CardletFooterVM(Long id, String title, String facebookLink, String twitterLink, String linkedinLink) {
 
         this.id = id;
         this.title = title;
         this.facebookLink = facebookLink;
         this.twitterLink = twitterLink;
-        this.linkedin_link = linkedin_link;
+        this.linkedinLink = linkedinLink;
     }
 
     public CardletFooterVM() {
@@ -67,12 +67,12 @@ public class CardletFooterVM {
         this.twitterLink = twitterLink;
     }
 
-    public String getLinkedin_link() {
-        return linkedin_link;
+    public String getLinkedinLink() {
+        return linkedinLink;
     }
 
-    public void setLinkedin_link(String linkedin_link) {
-        this.linkedin_link = linkedin_link;
+    public void setLinkedinLink(String linkedinLink) {
+        this.linkedinLink = linkedinLink;
     }
 
     @Override
@@ -82,7 +82,7 @@ public class CardletFooterVM {
             ", title='" + title + '\'' +
             ", facebookLink='" + facebookLink + '\'' +
             ", twitterLink='" + twitterLink + '\'' +
-            ", linkedin_link='" + linkedin_link + '\'' +
+            ", linkedinLink='" + linkedinLink + '\'' +
             '}';
     }
 
@@ -97,7 +97,7 @@ public class CardletFooterVM {
         if (title != null ? !title.equals(that.title) : that.title != null) return false;
         if (facebookLink != null ? !facebookLink.equals(that.facebookLink) : that.facebookLink != null) return false;
         if (twitterLink != null ? !twitterLink.equals(that.twitterLink) : that.twitterLink != null) return false;
-        return linkedin_link != null ? linkedin_link.equals(that.linkedin_link) : that.linkedin_link == null;
+        return linkedinLink != null ? linkedinLink.equals(that.linkedinLink) : that.linkedinLink == null;
     }
 
     @Override
@@ -106,7 +106,7 @@ public class CardletFooterVM {
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (facebookLink != null ? facebookLink.hashCode() : 0);
         result = 31 * result + (twitterLink != null ? twitterLink.hashCode() : 0);
-        result = 31 * result + (linkedin_link != null ? linkedin_link.hashCode() : 0);
+        result = 31 * result + (linkedinLink != null ? linkedinLink.hashCode() : 0);
         return result;
     }
 

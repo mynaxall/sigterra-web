@@ -8,7 +8,7 @@ public class CardletFooterMapper {
         destination.setTitle(source.getTitle());
         destination.setFacebookLink(source.getFacebookLink());
         destination.setTwitterLink(source.getTwitterLink());
-        destination.setLinkedin_link(source.getLinkedin_link());
+        destination.setLinkedin_link(source.getLinkedinLink());
     }
 
     public static void map(CardletFooter source, CardletFooterVM destination) {
@@ -16,6 +16,6 @@ public class CardletFooterMapper {
         destination.setTitle(source.getTitle());
         destination.setFacebookLink(source.getFacebookLink());
         destination.setTwitterLink(source.getTwitterLink());
-        destination.setLinkedin_link(source.getLinkedin_link());
+        destination.setLinkedinLink(source.getLinkedin_link());
     }
 }
