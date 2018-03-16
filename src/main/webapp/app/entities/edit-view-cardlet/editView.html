@@ -135,7 +135,10 @@
                                     Name:
                                 </div>
                                 <div>
-                                    <input class="editor-input" type="text" ng-model="header.name">
+                                    <input class="editor-input" type="text" ng-model="header.name" maxlength="20">
+                                </div>
+                                <div class="editor-limits">
+                                    ({{header.name.length}}/20)
                                 </div>
                             </div>
                             <div class="input-editor-flex">
@@ -143,7 +146,10 @@
                                     Title:
                                 </div>
                                 <div>
-                                    <input class="editor-input" type="text" ng-model="header.title">
+                                    <input class="editor-input" type="text" ng-model="header.title" maxlength="30">
+                                </div>
+                                <div class="editor-limits">
+                                    ({{header.title.length}}/30)
                                 </div>
                             </div>
                             <div class="input-editor-flex">
@@ -167,7 +173,10 @@
                     <div class="editor-div editor-div-flex">
                         <label class="login-lable label-editor label-editor-logo">Title (CTA)</label>
                         <div>
-                            <input class="editor-input" type="text" ng-model="header.text">
+                            <input class="editor-input" type="text" ng-model="header.text" maxlength="20">
+                        </div>
+                        <div class="editor-limits">
+                            ({{header.text.length}}/20)
                         </div>
                     </div>
                     <div class="editor-div editor-div-flex">
@@ -181,7 +190,10 @@
                     <div class="editor-div editor-div-flex">
                         <label class="login-lable label-editor label-editor-logo">Headline</label>
                         <div>
-                            <textarea class="editor-textarea" ng-model="background.text"></textarea>
+                            <textarea class="editor-textarea" ng-model="background.text" maxlength="140px"></textarea>
+                            <div class="editor-limits align-right">
+                                (Max 140 Char)
+                            </div>
                         </div>
                     </div>
                     <div class="editor-div editor-div-flex">
@@ -204,7 +216,12 @@
                             <div ng-carousel ng-carousel-name="example-carousel1" ng-carousel-watch="slides">
                                 <slidecontainer>
                                     <slide ng-repeat="slide in vm.bgSlides">
-                                        <div class="slide-content">{{slide}}</div>
+                                        <div class="slide-content">
+                                            <div class="slide-bg">{{slide}}</div>
+                                            <div>
+                                                <button class="select-bg-btn">Select</button>
+                                            </div>
+                                        </div>
                                     </slide>
 
                                 </slidecontainer>
@@ -232,7 +249,10 @@
                     <div class="editor-div editor-div-flex">
                         <label class="login-lable label-editor label-editor-links">Add Title</label>
                         <div>
-                            <input class="editor-input editor-input-title" type="text" ng-model="links.title">
+                            <input class="editor-input editor-input-title" type="text" ng-model="links.title" maxlength="30">
+                        </div>
+                        <div class="editor-limits">
+                            (Max 30 Char)
                         </div>
                     </div>
                     <div class="editor-div editor-div-flex">
@@ -255,7 +275,10 @@
                             <div class="editor-links-group">
                                 <div class="editor-div-flex">
                                     <div class="editor-links-group-title editor-links-group-title-margin">Title</div>
-                                    <input class="editor-input editor-link-title" type="text" ng-model="links.name1">
+                                    <input class="editor-input editor-link-title" type="text" ng-model="links.name1" maxlength="20">
+                                    <div class="editor-limits">
+                                        ({{links.name1.length}}/20)
+                                    </div>
                                 </div>
                                 <div class="editor-div-flex">
                                     <div class="editor-links-group-title">URL</div>
@@ -271,7 +294,10 @@
                             <div class="editor-links-group">
                                 <div class="editor-div-flex">
                                     <div class="editor-links-group-title editor-links-group-title-margin">Title</div>
-                                    <input class="editor-input editor-link-title" type="text" ng-model="links.name2">
+                                    <input class="editor-input editor-link-title" type="text" ng-model="links.name2" maxlength="20">
+                                    <div class="editor-limits">
+                                        ({{links.name2.length}}/20)
+                                    </div>
                                 </div>
                                 <div class="editor-div-flex">
                                     <div class="editor-links-group-title">URL</div>
@@ -287,7 +313,10 @@
                             <div class="editor-links-group">
                                 <div class="editor-div-flex">
                                     <div class="editor-links-group-title editor-links-group-title-margin">Title</div>
-                                    <input class="editor-input editor-link-title" type="text" ng-model="links.name3">
+                                    <input class="editor-input editor-link-title" type="text" ng-model="links.name3" maxlength="20">
+                                    <div class="editor-limits">
+                                        ({{links.name3.length}}/20)
+                                    </div>
                                 </div>
                                 <div class="editor-div-flex">
                                     <div class="editor-links-group-title">URL</div>
@@ -349,6 +378,10 @@
             <div class="second-column-editor">
                 <div class="editor-preview-panel"  ng-style="{'background': 'url(' + vm.bg + ') no-repeat center center fixed', 'background-size': 'cover'}">
                     <div class="editor-preview-header" id="editor-preview-header">
+                        <div class="header-focus" ng-if="vm.activeTab == '1'">
+                            <img class="focus-editing-marker" src="/content/images/editor/edit-marker.png">
+                            <div class="focus-editing-title">Header</div>
+                        </div>
                         <div class="editor-preview-header-flex">
                             <div>
                                 <a href="#">
@@ -370,9 +403,9 @@
                             </div>
                             <div>
                                 <div>
-                                    <span class="small  fa fa-envelope"></span><span class="text-light">{{header.email}}</span>
+                                    <span ng-show="header.email" class="small  fa fa-envelope"></span><span class="text-light">{{header.email}}</span>
                                     <br>
-                                    <span class="small fa fa-phone"> </span><span class="text-light">{{header.phone}}</span>
+                                    <span ng-show="header.phone" class="small fa fa-phone"> </span><span class="text-light">{{header.phone}}</span>
                                 </div>
                             </div>
                             <div>
@@ -380,37 +413,47 @@
                             </div>
                         </div>
                     </div>
-                    <div id="editor-preview-body" style="min-height: 470px; margin: 0 auto; width: 538px">
-                        <div class="editor-preview-title">
-                            {{background.text}}
+                    <div class="editor-preview">
+                        <div class="header-focus" ng-if="vm.activeTab == '2'">
+                            <img class="focus-editing-marker" src="/content/images/editor/edit-marker.png">
+                            <div class="focus-editing-title">Banner</div>
                         </div>
-                        <div>
-                            <ul class="tab2">
-                                <li class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink2'+tabName.position)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}">
-                                    <div style="position: relative;display: table; width: 100%;">
-                                        <a style="overflow: hidden; text-overflow: ellipsis;" href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}" id="tabLink2{{tabName.position}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                        <div class="editor-preview-body">
+                            <div class="editor-preview-title">
+                                {{background.text}}
+                            </div>
+                            <div>
+                                <ul class="tab2">
+                                    <li class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink2'+tabName.position)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}">
+                                        <div style="position: relative;display: table; width: 100%;">
+                                            <a style="overflow: hidden; text-overflow: ellipsis;" href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}" id="tabLink2{{tabName.position}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
 
-                        <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2 tabcontent-editor" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-                            <div class="custom-slide-prev slide-prev-editor" ng-show="vm.tabType != 1 && tabName.items.length > 1">
-                                <span class="glyphicon glyphicon-chevron-left chevron-editor" ng-click="prevSlide($index)"></span>
+                            <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2 tabcontent-editor" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
+                                <div class="custom-slide-prev slide-prev-editor" ng-show="vm.tabType != 1 && tabName.items.length > 1">
+                                    <span class="glyphicon glyphicon-chevron-left chevron-editor" ng-click="prevSlide($index)"></span>
+                                </div>
+                                <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
+                                <div class="custom-slide-next slide-next-editor" ng-show="vm.tabType != 1 && tabName.items.length > 1">
+                                    <span class="glyphicon glyphicon-chevron-right chevron-editor" ng-click="nextSlide($index)"></span>
+                                </div>
+                                <div class="arrow-link">
+                                    <a class="fa fa-arrow-down hidden-sm hidden-md" href="" ng-click="scrollToFooter('capture')" target="_self"></a>
+                                </div>
                             </div>
-                            <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
-                            <div class="custom-slide-next slide-next-editor" ng-show="vm.tabType != 1 && tabName.items.length > 1">
-                                <span class="glyphicon glyphicon-chevron-right chevron-editor" ng-click="nextSlide($index)"></span>
-                            </div>
-                            <div class="arrow-link">
-                                <a class="fa fa-arrow-down hidden-sm hidden-md" href="" ng-click="scrollToFooter('capture')" target="_self"></a>
-                            </div>
-                        </div>
 
+                        </div>
                     </div>
                     <div id="editor-preview-footer">
                         <section class="service-info-sec">
-                            <h4 class="text-center" id="capture">CapGemini's Experts are standing by</h4>
+                            <div class="header-focus" ng-if="vm.activeTab == '3'">
+                                <img class="focus-editing-marker" src="/content/images/editor/edit-marker.png">
+                                <div class="focus-editing-title">Links</div>
+                            </div>
+                            <h4 class="text-center" id="capture">{{links.title}}</h4>
                             <br>
                             <div class="service-info-editor service-info-min-height" >
                                 <div class="col-sm-4 img-with-text">
@@ -438,6 +481,10 @@
                             </div>
                         </section>
                         <div class="footer-bottom-editor">
+                            <div class="header-focus" ng-if="vm.activeTab == '4'">
+                                <img class="focus-editing-marker" src="/content/images/editor/edit-marker.png">
+                                <div class="focus-editing-title">Footer</div>
+                            </div>
                             <div>
                                 <div class="row">
                                     <div class="col-sm-12 text-center">

@@ -6490,6 +6490,7 @@ ul.editor-tab li a:hover{
 }
 
 .service-info-sec{
+    position: relative;
     background: #f8f8f8;
     padding: 25px 0px 29px 0px;
 }
@@ -6583,6 +6584,7 @@ a.preview-footer-link {
 }
 
 .editor-preview-panel{
+    position: relative;
     width: 800px;
     background-color: #ffffff;
 }
@@ -6601,6 +6603,7 @@ a.preview-footer-link {
 .editor-preview-header{
     height: 40px;
     background-color: #ffffff;
+    position: relative;
 }
 
 .editor-preview-header-flex{
@@ -6679,6 +6682,15 @@ a.preview-footer-link {
     align-content: stretch;
     background-color: #e0e7ed;
 }
+
+@media (max-width: 1600px) {
+    .view-editor-flex{
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+    }
+}
+
 
 .view-editor-col{
     margin: 50px 25px;
@@ -6869,7 +6881,7 @@ a.preview-footer-link {
 }
 
 .editor-input-title {
-    width: 480px;
+    width: 440px;
 }
 
 .editor-header-bg-div {
@@ -6901,3 +6913,60 @@ a.preview-footer-link {
     margin-top: 5px;
     margin-bottom: 25px;
 }
+
+.align-right{
+    text-align: right;
+}
+
+.header-focus{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #17b552;
+}
+
+.focus-editing-title{
+    background: #17b552;
+    color: #ffffff;
+    font-size: 12px;
+    width: 55px;
+    text-align: center;
+}
+
+.focus-editing-marker{
+    position: absolute;
+    top: 0px;
+    left: -15px;
+    width: 12px;
+}
+
+.editor-preview-body {
+    min-height: 470px;
+    margin: 0 auto;
+    width: 538px;
+    position: relative;
+}
+
+.editor-preview {
+    position: relative;
+}
+
+.slide-bg{
+    height: 258px;
+}
+
+.select-bg-btn {
+    font-size: 16px;
+    color: #599c57;
+    width: 100%;
+    height: 37px;
+    background: #efeded;
+    border: none;
+    text-transform: uppercase;
+}
+
+
+
+
