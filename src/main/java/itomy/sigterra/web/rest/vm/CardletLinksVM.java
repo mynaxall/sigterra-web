@@ -7,7 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import javax.validation.constraints.Size;
 
 @Validated
-public class CardletLinksVM {
+public class CardletLinksVM implements VmWithLongId {
     private Long id;
 
     @Size(max = 30)

@@ -9,7 +9,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name="cardlet_header")
-public class CardletHeader extends AbstractAuditingEntity{
+public class CardletHeader extends AbstractAuditingEntity implements EntityWithLongId {
     private static final long serialVersionUID = 1L;
 
     @Id

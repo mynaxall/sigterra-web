@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "cardlet_footer")
-public class CardletFooter extends AbstractAuditingEntity {
+public class CardletFooter extends AbstractAuditingEntity implements EntityWithLongId {
 
     private static final long serialVersionUID = 1L;
 

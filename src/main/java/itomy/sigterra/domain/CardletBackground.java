@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "cardlet_background")
-public class CardletBackground extends AbstractAuditingEntity {
+public class CardletBackground extends AbstractAuditingEntity implements EntityWithLongId {
 
     private static final long serialVersionUID = 1L;
 

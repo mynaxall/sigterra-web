@@ -7,7 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import javax.validation.constraints.Size;
 
 @Validated
-public class CardletBackgroundVM {
+public class CardletBackgroundVM implements VmWithLongId {
     private Long id;
     @Size(max = 255)
     private String imageUrl;
