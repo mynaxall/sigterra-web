@@ -27,11 +27,12 @@ public class CardletViewRequestResponseVM {
         // For Jackson
     }
 
-    public CardletViewRequestResponseVM(Long cardletId, CardletHeaderVM header, CardletBackgroundVM background, CardletLinksVM links) {
+    public CardletViewRequestResponseVM(Long cardletId, CardletHeaderVM header, CardletBackgroundVM background, CardletLinksVM links, CardletFooterVM cardletFooterVM) {
         this.cardletId = cardletId;
         this.header = header;
         this.background = background;
         this.links = links;
+        this.footer = cardletFooterVM;
     }
 
     public Long getCardletId() {
