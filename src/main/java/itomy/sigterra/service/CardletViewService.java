@@ -395,7 +395,7 @@ public class CardletViewService {
                     //add files only from root
                     for (File f : fileRoot.listFiles()) {
                         if (!f.isDirectory()) {
-                            files.add(sourcePath + "\\" + f.getName());
+                            files.add(sourcePath + "/" + f.getName());
                         }
                     }
                 } else {
