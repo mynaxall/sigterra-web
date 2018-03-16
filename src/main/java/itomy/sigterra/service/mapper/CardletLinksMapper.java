@@ -4,7 +4,10 @@ import itomy.sigterra.domain.CardletLinks;
 import itomy.sigterra.web.rest.vm.CardletLinksVM;
 
 public class CardletLinksMapper {
-    public static void map(CardletLinksVM source, CardletLinks destination) {
+    public static void mapToEntity(CardletLinksVM source, CardletLinks destination) {
+        if (source == null || destination == null) {
+            new IllegalArgumentException();
+        }
         destination.setTitle(source.getTitle());
         destination.setLogo1(source.getLogoUrl1());
         destination.setName1(source.getName1());
@@ -17,7 +20,11 @@ public class CardletLinksMapper {
         destination.setUrl3(source.getUrl3());
     }
 
-    public static void map(CardletLinks source, CardletLinksVM destination) {
+    public static CardletLinksVM mapFromEntity(CardletLinks source) {
+        if (source == null) {
+            return null;
+        }
+        CardletLinksVM destination = new CardletLinksVM();
         destination.setId(source.getId());
         destination.setTitle(source.getTitle());
         destination.setLogoUrl1(source.getLogo1());
@@ -29,5 +36,6 @@ public class CardletLinksMapper {
         destination.setLogoUrl3(source.getLogo3());
         destination.setName3(source.getName3());
         destination.setUrl3(source.getUrl3());
+        return destination;
     }
 }

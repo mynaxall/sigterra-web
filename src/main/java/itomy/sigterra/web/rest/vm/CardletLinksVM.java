@@ -1,7 +1,5 @@
 package itomy.sigterra.web.rest.vm;
 
-import itomy.sigterra.domain.CardletLinks;
-import itomy.sigterra.service.mapper.CardletLinksMapper;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Size;
@@ -36,10 +34,6 @@ public class CardletLinksVM implements VmWithLongId {
 
     public CardletLinksVM() {
         //For Jackson
-    }
-
-    public CardletLinksVM(CardletLinks cardletLinks) {
-        CardletLinksMapper.map(cardletLinks, this);
     }
 
     public CardletLinksVM(Long id, String name1, String url1, String logoUrl1, String name2, String url2, String logoUrl2, String name3, String url3, String logoUrl3, String title) {

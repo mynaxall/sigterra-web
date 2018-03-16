@@ -1,7 +1,5 @@
 package itomy.sigterra.web.rest.vm;
 
-import itomy.sigterra.domain.CardletBackground;
-import itomy.sigterra.service.mapper.CardletBackgroundMapper;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Size;
@@ -25,9 +23,6 @@ public class CardletBackgroundVM implements VmWithLongId {
         this.text = text;
     }
 
-    public CardletBackgroundVM(CardletBackground cardletBackground){
-        CardletBackgroundMapper.map(cardletBackground, this);
-    }
 
     public Long getId() {
         return id;

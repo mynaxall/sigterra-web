@@ -96,7 +96,7 @@ public class CardletViewService {
         CardletHeaderVM cardletHeaderVM = null;
         CardletHeader cardletHeader = cardlet.getCardletHeader();
         if (cardletHeader != null) {
-            cardletHeaderVM = new CardletHeaderVM(cardletHeader);
+            cardletHeaderVM = CardletHeaderMapper.mapFromEntity(cardletHeader);
         }
         cardletView.setHeader(cardletHeaderVM);
 
@@ -104,7 +104,7 @@ public class CardletViewService {
         CardletBackground cardletBackground = cardlet.getCardletBackground();
 
         if (cardletBackground != null) {
-            cardletBackgroundVM = new CardletBackgroundVM(cardletBackground);
+            cardletBackgroundVM = CardletBackgroundMapper.mapFromEntity(cardletBackground);
         }
         cardletView.setBackground(cardletBackgroundVM);
 
@@ -112,7 +112,7 @@ public class CardletViewService {
         CardletLinks cardletLinks = cardlet.getCardletLinks();
 
         if (cardletLinks != null) {
-            cardletLinksVM = new CardletLinksVM(cardletLinks);
+            cardletLinksVM = CardletLinksMapper.mapFromEntity(cardletLinks);
         }
         cardletView.setLinks(cardletLinksVM);
 
@@ -120,7 +120,7 @@ public class CardletViewService {
         CardletFooter cardletFooter = cardlet.getCardletFooter();
 
         if (cardletFooter != null) {
-            cardletFooterVM = new CardletFooterVM(cardletFooter);
+            cardletFooterVM = CardletFooterMapper.mapFromEnity(cardletFooter);
         }
         cardletView.setFooter(cardletFooterVM);
 
@@ -149,7 +149,7 @@ public class CardletViewService {
                 renameIfTmp(cardlet, cardletHeaderVM.getLogoUrl(), FILE_NAME_LOGO_TMP, FILE_NAME_LOGO_PERSIST));
             cardletHeaderVM.setPhotoUrl(
                 renameIfTmp(cardlet, cardletHeaderVM.getPhotoUrl(), FILE_NAME_PHOTO_TMP, FILE_NAME_PHOTO_PERSIST));
-            CardletHeaderMapper.map(cardletHeaderVM, cardletHeader);
+            CardletHeaderMapper.mapToEntity(cardletHeaderVM, cardletHeader);
             cardletHeader = cardletHeaderRepository.save(cardletHeader);
             cardlet.setCardletHeader(cardletHeader);
         }
@@ -157,7 +157,7 @@ public class CardletViewService {
         CardletBackgroundVM cardletBackgroundVM = cardletView.getBackground();
         if (cardletBackgroundVM != null) {
             CardletBackground cardletBackground = checkAndGetCardletVewPageTab(cardletBackgroundRepository, cardlet, cardlet.getCardletBackground(), cardletBackgroundVM, CardletBackground.class);
-            CardletBackgroundMapper.map(cardletBackgroundVM, cardletBackground);
+            CardletBackgroundMapper.mapToEntity(cardletBackgroundVM, cardletBackground);
             cardletBackground = cardletBackgroundRepository.save(cardletBackground);
             cardlet.setCardletBackground(cardletBackground);
         }
@@ -165,7 +165,7 @@ public class CardletViewService {
         CardletLinksVM cardletLinksVM = cardletView.getLinks();
         if (cardletLinksVM != null) {
             CardletLinks cardletLinks = checkAndGetCardletVewPageTab(cardletLinksRepository, cardlet, cardlet.getCardletLinks(), cardletLinksVM, CardletLinks.class);
-            CardletLinksMapper.map(cardletLinksVM, cardletLinks);
+            CardletLinksMapper.mapToEntity(cardletLinksVM, cardletLinks);
             cardletLinks = cardletLinksRepository.save(cardletLinks);
             cardlet.setCardletLinks(cardletLinks);
         }
@@ -173,7 +173,7 @@ public class CardletViewService {
         CardletFooterVM cardletFooterVM = cardletView.getFooter();
         if (cardletFooterVM != null) {
             CardletFooter cardletFooter = checkAndGetCardletVewPageTab(cardletFooterRepository, cardlet, cardlet.getCardletFooter(), cardletFooterVM, CardletFooter.class);
-            CardletFooterMapper.map(cardletFooterVM, cardletFooter);
+            CardletFooterMapper.mapToEntity(cardletFooterVM, cardletFooter);
             cardletFooter = cardletFooterRepository.save(cardletFooter);
             cardlet.setCardletFooter(cardletFooter);
         }

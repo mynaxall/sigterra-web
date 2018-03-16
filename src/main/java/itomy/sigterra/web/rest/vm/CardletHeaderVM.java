@@ -1,8 +1,6 @@
 package itomy.sigterra.web.rest.vm;
 
 import itomy.sigterra.config.Constants;
-import itomy.sigterra.domain.CardletHeader;
-import itomy.sigterra.service.mapper.CardletHeaderMapper;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.validation.annotation.Validated;
 
@@ -53,9 +51,6 @@ public class CardletHeaderVM implements VmWithLongId {
         this.email = email;
     }
 
-    public CardletHeaderVM(CardletHeader cardletHeader){
-        CardletHeaderMapper.map(cardletHeader, this);
-    }
 
     public Long getId() {
         return id;

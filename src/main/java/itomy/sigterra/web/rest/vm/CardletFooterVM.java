@@ -1,7 +1,5 @@
 package itomy.sigterra.web.rest.vm;
 
-import itomy.sigterra.domain.CardletFooter;
-import itomy.sigterra.service.mapper.CardletFooterMapper;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Size;
@@ -29,10 +27,6 @@ public class CardletFooterVM implements VmWithLongId {
 
     public CardletFooterVM() {
 
-    }
-
-    public CardletFooterVM(CardletFooter cardletFooter) {
-        CardletFooterMapper.map(cardletFooter, this);
     }
 
     public Long getId() {

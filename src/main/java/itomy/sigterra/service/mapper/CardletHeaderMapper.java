@@ -4,7 +4,10 @@ import itomy.sigterra.domain.CardletHeader;
 import itomy.sigterra.web.rest.vm.CardletHeaderVM;
 
 public class CardletHeaderMapper {
-    public static void map(CardletHeaderVM source, CardletHeader destination) {
+    public static void mapToEntity(CardletHeaderVM source, CardletHeader destination) {
+        if (source == null || destination == null) {
+            new IllegalArgumentException();
+        }
         destination.setCtaButtonColor(source.getCtaColor());
         destination.setCtaText(source.getText());
         destination.setLogo(source.getLogoUrl());
@@ -16,7 +19,11 @@ public class CardletHeaderMapper {
 
     }
 
-    public static void map(CardletHeader source, CardletHeaderVM destination) {
+    public static CardletHeaderVM mapFromEntity(CardletHeader source) {
+        if (source == null) {
+            return null;
+        }
+        CardletHeaderVM destination = new CardletHeaderVM();
         destination.setId(source.getId());
         destination.setCtaColor(source.getCtaButtonColor());
         destination.setText(source.getCtaText());
@@ -26,5 +33,6 @@ public class CardletHeaderMapper {
         destination.setTitle(source.getTitle());
         destination.setPhone(source.getPhone());
         destination.setEmail(source.getEmail());
+        return destination;
     }
 }
