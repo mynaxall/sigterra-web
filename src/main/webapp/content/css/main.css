@@ -6517,11 +6517,13 @@ a.preview-footer-link {
 }
 
 .footer-bottom-editor{
+    position: relative;
     padding: 7px 0px;
     border-top: 1px solid #666;
     background: #1e1e1e;
-    color: #ccc;
+    color: #ffffff;
     font-size: 10px;
+    height: 29px;
 }
 
 .arrow-link{
@@ -6695,12 +6697,14 @@ a.preview-footer-link {
 }
 
 .editor-header-logo-div{
+    position: relative;
     width: 240px;
     height: 70px;
     border: 1px solid #d1d1d1;
 }
 
 .editor-header-avatar-div{
+    position: relative;
     width: 100px;
     height: 100px;
     border: 1px solid #d1d1d1;
@@ -6717,6 +6721,10 @@ a.preview-footer-link {
 
 .label-editor-logo{
     width: 140px;
+}
+
+.label-editor-links{
+    width: 105px;
 }
 
 .label-editor-profile {
@@ -6801,6 +6809,9 @@ a.preview-footer-link {
 
 .demo-nav{
     margin-top: 130px;
+    border: none;
+    background: transparent;
+    padding: 0px;
 }
 
 .slide-content{
@@ -6815,7 +6826,78 @@ a.preview-footer-link {
 }
 
 .editor-textarea{
+    max-height: 70px;
+    max-width: 485px;
     width: 485px;
     height: 67px;
     border: 1px solid #d1d1d1;
+}
+
+.footer-editor-icon {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+    width: 100px;
+    position: absolute;
+    top: 3px;
+    right: 105px;
+}
+
+.footer-editor-icon div{
+    width: 33px;
+}
+
+.footer-editor-icon div a img {
+   width: 20px;
+}
+
+.upload-img-btn {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+    border: none;
+}
+
+.upload-img-btn img {
+    width: 20px;
+}
+
+.editor-input-title {
+    width: 480px;
+}
+
+.editor-header-bg-div {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #d1d1d1;
+}
+
+.editor-link-title {
+    width: 135px;
+}
+
+.editor-link-url {
+    width: 285px;
+}
+
+.editor-links-group{
+    margin-left: 22px;
+}
+
+.editor-links-group-title{
+    width: 42px;
+    color: #868d9b;
+    font-size: 15px;
+}
+
+.editor-links-group-title-margin {
+    margin-top: 5px;
+    margin-bottom: 25px;
 }
