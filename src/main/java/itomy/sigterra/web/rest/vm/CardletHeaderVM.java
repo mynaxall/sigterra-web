@@ -1,14 +1,13 @@
 package itomy.sigterra.web.rest.vm;
 
 import itomy.sigterra.config.Constants;
-import itomy.sigterra.domain.CardletHeader;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Size;
 
 @Validated
-public class CardletHeaderVM {
+public class CardletHeaderVM implements VmWithLongId {
     private Long id;
 
     @Size(max = 6)
@@ -23,14 +22,11 @@ public class CardletHeaderVM {
     @Size(max = 255)
     private String photoUrl;
 
-    @Size(max = 50)
+    @Size(max = 20)
     private String name;
 
-    @Size(max = 255)
+    @Size(max = 30)
     private String title;
-
-    @Size(max = 100)
-    private String company;
 
     @Size(max = 50)
     private String phone;
@@ -43,7 +39,7 @@ public class CardletHeaderVM {
         //For Jackson
     }
 
-    public CardletHeaderVM(Long id, String ctaColor, String text, String logoUrl, String photoUrl, String name, String title, String company, String phone, String email) {
+    public CardletHeaderVM(Long id, String ctaColor, String text, String logoUrl, String photoUrl, String name, String title, String phone, String email) {
         this.id = id;
         this.ctaColor = ctaColor;
         this.text = text;
@@ -51,14 +47,10 @@ public class CardletHeaderVM {
         this.photoUrl = photoUrl;
         this.name = name;
         this.title = title;
-        this.company = company;
         this.phone = phone;
         this.email = email;
     }
 
-    public CardletHeaderVM(CardletHeader cardletHeader){
-        mapToCardletHeader(cardletHeader);
-    }
 
     public Long getId() {
         return id;
@@ -116,14 +108,6 @@ public class CardletHeaderVM {
         this.title = title;
     }
 
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -150,35 +134,9 @@ public class CardletHeaderVM {
             ", photoUrl='" + photoUrl + '\'' +
             ", name='" + name + '\'' +
             ", title='" + title + '\'' +
-            ", company='" + company + '\'' +
             ", phone='" + phone + '\'' +
             ", email='" + email + '\'' +
             '}';
     }
 
-    public void mapToCardletHeader(CardletHeader cardletHeaderEntity){
-        cardletHeaderEntity.setCtaButtonColor(this.ctaColor);
-        cardletHeaderEntity.setCtaText(this.text);
-        cardletHeaderEntity.setLogo(this.logoUrl);
-        cardletHeaderEntity.setPhoto(this.photoUrl);
-        cardletHeaderEntity.setName(this.name);
-        cardletHeaderEntity.setTitle(this.title);
-        cardletHeaderEntity.setCompany(this.company);
-        cardletHeaderEntity.setPhone(this.phone);
-        cardletHeaderEntity.setEmail(this.email);
-
-    }
-
-    public void mapFromCardletHeader(CardletHeader cardletHeaderEntity){
-        this.id = cardletHeaderEntity.getId();
-        this.ctaColor = cardletHeaderEntity.getCtaButtonColor();
-        this.text = cardletHeaderEntity.getCtaText();
-        this.logoUrl = cardletHeaderEntity.getLogo();
-        this.photoUrl = cardletHeaderEntity.getPhoto();
-        this.name = cardletHeaderEntity.getName();
-        this.title = cardletHeaderEntity.getTitle();
-        this.company = cardletHeaderEntity.getCompany();
-        this.phone = cardletHeaderEntity.getPhone();
-        this.email = cardletHeaderEntity.getEmail();
-    }
 }

@@ -1,45 +1,35 @@
 package itomy.sigterra.service;
 
 
-import itomy.sigterra.domain.Cardlet;
-import itomy.sigterra.domain.CardletBackground;
-import itomy.sigterra.domain.CardletFooter;
-import itomy.sigterra.domain.CardletHeader;
-import itomy.sigterra.domain.enumeration.CardletFooterIndex;
-import itomy.sigterra.repository.CardletBackgroundRepository;
-import itomy.sigterra.repository.CardletFooterRepository;
-import itomy.sigterra.repository.CardletHeaderRepository;
-import itomy.sigterra.repository.CardletRepository;
+import itomy.sigterra.config.JHipsterProperties;
+import itomy.sigterra.domain.*;
+import itomy.sigterra.repository.*;
+import itomy.sigterra.service.mapper.CardletBackgroundMapper;
+import itomy.sigterra.service.mapper.CardletFooterMapper;
+import itomy.sigterra.service.mapper.CardletHeaderMapper;
+import itomy.sigterra.service.mapper.CardletLinksMapper;
 import itomy.sigterra.web.rest.errors.CardletNotFound;
 import itomy.sigterra.web.rest.errors.CustomParameterizedException;
-import itomy.sigterra.web.rest.vm.CardletBackgroundVM;
-import itomy.sigterra.web.rest.vm.CardletFooterVM;
-import itomy.sigterra.web.rest.vm.CardletHeaderVM;
-import itomy.sigterra.web.rest.vm.CardletViewRequestResponseVM;
+import itomy.sigterra.web.rest.vm.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.inject.Inject;
 import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
-import java.util.*;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
   work with Cartdlet views: header,background, footers
@@ -48,19 +38,15 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 public class CardletViewService {
+    private final Logger log = LoggerFactory.getLogger(CardletViewService.class);
+
     private static final String FILE_NAME_LOGO_TMP = "logo.tmp";
     private static final int MAX_SIZE_LOGO = 1 * 1024 * 1024;
     private static final String FILE_NAME_LOGO_PERSIST = "logoview";
     private static final String FILE_NAME_PHOTO_TMP = "photo.tmp";
     private static final int MAX_SIZE_PHOTO = 2 * 1024 * 1024;
     private static final String FILE_NAME_PHOTO_PERSIST = "photoview";
-    private static final String FILE_NAME_BACKIMAGE_TMP = "backimage.tmp";
-    private static final int MAX_SIZE_BACKIMAGE = 10 * 1024 * 1024;
-    private static final String FILE_NAME_BACKIMAGE_PERSIST = "backgroundview";
-    private static final String FILE_NAME_LINKLOGO_TMP = "tmplinklogo";
-    private static final int MAX_SIZE_LINKLOGO = 1 * 1024 * 1024;
-    private static final String FILE_NAME_LINKLOGO_PERSIST = "linklogoview";
-    private final Logger log = LoggerFactory.getLogger(CardletViewService.class);
+
     @Inject
     private CardletRepository cardletRepository;
 
@@ -71,6 +57,9 @@ public class CardletViewService {
     private CardletBackgroundRepository cardletBackgroundRepository;
 
     @Inject
+    private CardletLinksRepository cardletLinksRepository;
+
+    @Inject
     private CardletFooterRepository cardletFooterRepository;
 
     @Inject
@@ -78,6 +67,9 @@ public class CardletViewService {
 
     @Inject
     private ApplicationContext applicationContext;
+
+    @Inject
+    private JHipsterProperties jHipsterProperties;
 
     /**
      * read cardlet data and create view object by cardlet id
@@ -104,24 +96,33 @@ public class CardletViewService {
         CardletHeaderVM cardletHeaderVM = null;
         CardletHeader cardletHeader = cardlet.getCardletHeader();
         if (cardletHeader != null) {
-            cardletHeaderVM = new CardletHeaderVM(cardletHeader);
+            cardletHeaderVM = CardletHeaderMapper.mapFromEntity(cardletHeader);
         }
-        cardletView.setHeaders(cardletHeaderVM);
+        cardletView.setHeader(cardletHeaderVM);
 
         CardletBackgroundVM cardletBackgroundVM = null;
         CardletBackground cardletBackground = cardlet.getCardletBackground();
 
         if (cardletBackground != null) {
-            cardletBackgroundVM = new CardletBackgroundVM(cardletBackground);
+            cardletBackgroundVM = CardletBackgroundMapper.mapFromEntity(cardletBackground);
         }
         cardletView.setBackground(cardletBackgroundVM);
 
-        List<CardletFooterVM> footers = new ArrayList<>();
-        for (CardletFooter cardletFooter : cardlet.getCardletFooter()) {
-            CardletFooterVM cardletFooterVM = new CardletFooterVM(cardletFooter);
-            footers.add(cardletFooterVM);
+        CardletLinksVM cardletLinksVM = null;
+        CardletLinks cardletLinks = cardlet.getCardletLinks();
+
+        if (cardletLinks != null) {
+            cardletLinksVM = CardletLinksMapper.mapFromEntity(cardletLinks);
         }
-        cardletView.setFooters(footers);
+        cardletView.setLinks(cardletLinksVM);
+
+        CardletFooterVM cardletFooterVM = null;
+        CardletFooter cardletFooter = cardlet.getCardletFooter();
+
+        if (cardletFooter != null) {
+            cardletFooterVM = CardletFooterMapper.mapFromEnity(cardletFooter);
+        }
+        cardletView.setFooter(cardletFooterVM);
 
         return cardletView;
     }
@@ -141,99 +142,42 @@ public class CardletViewService {
             throw new CustomParameterizedException(errorMessage);
         }
 
-        CardletHeaderVM cardletHeaderVM = cardletView.getHeaders();
+        CardletHeaderVM cardletHeaderVM = cardletView.getHeader();
         if (cardletHeaderVM != null) {
-            CardletHeader cardletHeader;
-            if (cardletHeaderVM.getId() == null) {
-                if (cardlet.getCardletHeader() != null) {
-                    String errorMessage = "Unable to create cardlet header if it's already exist";
-                    log.warn(errorMessage);
-                    throw new CustomParameterizedException(errorMessage);
-                }
-                cardletHeader = new CardletHeader();
-                cardletHeader.setCardlet(cardlet);
-            } else {
-                cardletHeader = cardletHeaderRepository.findOne(cardletHeaderVM.getId());
-                if (cardletHeader == null || !cardlet.equals(cardletHeader.getCardlet())) {
-                    String errorMessage = "Unable to create cardlet header if it's already exist";
-                    log.warn(errorMessage);
-                    throw new CustomParameterizedException(errorMessage);
-                }
-            }
+            CardletHeader cardletHeader = checkAndGetCardletVewPageTab(cardletHeaderRepository, cardlet, cardlet.getCardletHeader(), cardletHeaderVM, CardletHeader.class);
             cardletHeaderVM.setLogoUrl(
                 renameIfTmp(cardlet, cardletHeaderVM.getLogoUrl(), FILE_NAME_LOGO_TMP, FILE_NAME_LOGO_PERSIST));
             cardletHeaderVM.setPhotoUrl(
                 renameIfTmp(cardlet, cardletHeaderVM.getPhotoUrl(), FILE_NAME_PHOTO_TMP, FILE_NAME_PHOTO_PERSIST));
-            cardletHeaderVM.mapToCardletHeader(cardletHeader);
+            CardletHeaderMapper.mapToEntity(cardletHeaderVM, cardletHeader);
             cardletHeader = cardletHeaderRepository.save(cardletHeader);
             cardlet.setCardletHeader(cardletHeader);
         }
 
         CardletBackgroundVM cardletBackgroundVM = cardletView.getBackground();
         if (cardletBackgroundVM != null) {
-            CardletBackground cardletBackground;
-            if (cardletBackgroundVM.getId() == null) {
-                if (cardlet.getCardletBackground() != null) {
-                    String errorMessage = "Unable to create cardlet background if it's already exist";
-                    log.warn(errorMessage);
-                    throw new CustomParameterizedException(errorMessage);
-                }
-                cardletBackground = new CardletBackground();
-                cardletBackground.setCardlet(cardlet);
-            } else {
-                cardletBackground = cardletBackgroundRepository.findOne(cardletBackgroundVM.getId());
-                if (cardletBackground == null || !cardlet.equals(cardletBackground.getCardlet())) {
-                    String errorMessage = "Unable to create cardlet background if it's already exist";
-                    log.warn(errorMessage);
-                    throw new CustomParameterizedException(errorMessage);
-                }
-            }
-            cardletBackgroundVM.mapToCardletBackground(cardletBackground);
+            CardletBackground cardletBackground = checkAndGetCardletVewPageTab(cardletBackgroundRepository, cardlet, cardlet.getCardletBackground(), cardletBackgroundVM, CardletBackground.class);
+            CardletBackgroundMapper.mapToEntity(cardletBackgroundVM, cardletBackground);
             cardletBackground = cardletBackgroundRepository.save(cardletBackground);
             cardlet.setCardletBackground(cardletBackground);
         }
 
-        List<CardletFooterVM> cardletFooterVMList = cardletView.getFooters();
-        if (cardletFooterVMList != null) {
-            Map<CardletFooterIndex, CardletFooter> cardletFooters = new EnumMap<CardletFooterIndex, CardletFooter>(CardletFooterIndex.class);
-            for (CardletFooterVM cardletFoterVM : cardletFooterVMList) {
-                CardletFooter cardletFooter;
-                CardletFooterIndex position = cardletFoterVM.getPosition();
-                if (cardletFoterVM.getId() == null) {
-
-                    if (cardlet.getCardletFooter().stream().anyMatch(a -> a.getPosition().equals(position))) {
-                        String errorMessage = "Unable to create cardlet footer if it's already exist";
-                        log.warn(errorMessage);
-                        throw new CustomParameterizedException(errorMessage, position.toString());
-                    }
-
-                    cardletFooter = new CardletFooter();
-                    cardletFooter.setCardlet(cardlet);
-                } else {
-                    cardletFooter = cardletFooterRepository.findOne(cardletFoterVM.getId());
-                    if (cardletFooter == null) {
-                        String errorMessage = "Cardlet footer ID didn't found";
-                        log.warn(errorMessage);
-                        throw new CustomParameterizedException(errorMessage, cardletFoterVM.getId().toString());
-                    } else if (!cardlet.equals(cardletFooter.getCardlet())) {
-                        String errorMessage = "Cardlet footer ID does not match exists cardlet";
-                        log.warn(errorMessage);
-                        throw new CustomParameterizedException(errorMessage, cardletFoterVM.getId().toString());
-                    }
-
-                }
-                if (cardletFooters.containsKey(position)) {
-                    String errorMessage = "Duplicate cardlet footer position";
-                    log.warn(errorMessage);
-                    throw new CustomParameterizedException(errorMessage, position.toString());
-                }
-                cardletFoterVM.mapToCardletFooter(cardletFooter);
-                cardletFooter = cardletFooterRepository.save(cardletFooter);
-                cardletFooters.put(position, cardletFooter);
-            }
-            cardlet.setCardletFooter(cardletFooters.entrySet().stream().map(en -> en.getValue()).collect(Collectors.toSet()));
-
+        CardletLinksVM cardletLinksVM = cardletView.getLinks();
+        if (cardletLinksVM != null) {
+            CardletLinks cardletLinks = checkAndGetCardletVewPageTab(cardletLinksRepository, cardlet, cardlet.getCardletLinks(), cardletLinksVM, CardletLinks.class);
+            CardletLinksMapper.mapToEntity(cardletLinksVM, cardletLinks);
+            cardletLinks = cardletLinksRepository.save(cardletLinks);
+            cardlet.setCardletLinks(cardletLinks);
         }
+
+        CardletFooterVM cardletFooterVM = cardletView.getFooter();
+        if (cardletFooterVM != null) {
+            CardletFooter cardletFooter = checkAndGetCardletVewPageTab(cardletFooterRepository, cardlet, cardlet.getCardletFooter(), cardletFooterVM, CardletFooter.class);
+            CardletFooterMapper.mapToEntity(cardletFooterVM, cardletFooter);
+            cardletFooter = cardletFooterRepository.save(cardletFooter);
+            cardlet.setCardletFooter(cardletFooter);
+        }
+
         return createCardletViewVM(cardlet);
     }
 
@@ -263,6 +207,31 @@ public class CardletViewService {
             if (result.contains("?")) result = result.substring(0, result.indexOf("?"));
         }
         return result;
+    }
+
+    private <T> T checkAndGetCardletVewPageTab(JpaRepository repository, Cardlet cardlet
+        , EntityWithLongId entity, VmWithLongId vm
+        , Class<T> classObject) {
+        EntityWithLongId result = null;
+        if (vm.getId() == null) {
+            if (entity != null) {
+                String errorMessage = "Unable to create " + classObject.getSimpleName() + " if it's already exist";
+                log.warn(errorMessage);
+                throw new CustomParameterizedException(errorMessage);
+            }
+            try {
+                result = (EntityWithLongId) classObject.newInstance();
+            } catch (Exception e) { //ignore
+            }
+        } else {
+            result = (EntityWithLongId) repository.findOne(vm.getId());
+            if (result == null || (entity != null && !entity.equals(result))) {
+                String errorMessage = "Unable to create " + classObject.getSimpleName() + " if it's already exist";
+                log.warn(errorMessage);
+                throw new CustomParameterizedException(errorMessage);
+            }
+        }
+        return (T) result;
     }
 
     /**
@@ -331,30 +300,6 @@ public class CardletViewService {
     }
 
     /**
-     * upload background image to AWS
-     *
-     * @param file gotten file
-     * @return JSONObjectd with new path
-     */
-    public JSONObject uploadBackgroundImage(MultipartFile file, Long cardletId) throws JSONException {
-        Cardlet cardlet = validateAndGetCardlet(cardletId);
-        String path = getFileNameInBucket(FILE_NAME_BACKIMAGE_TMP, file, cardlet);
-        return uploadFile(file, path, MAX_SIZE_BACKIMAGE);
-    }
-
-    /**
-     * upload logo for link to AWS
-     *
-     * @param file gotten file
-     * @return JSONObjectd with new path
-     */
-    public JSONObject uploadLinkLogo(MultipartFile file, Long cardletId, int index) throws JSONException {
-        Cardlet cardlet = validateAndGetCardlet(cardletId);
-        String path = getFileNameInBucket(FILE_NAME_LINKLOGO_TMP + index, file, cardlet);
-        return uploadFile(file, path, MAX_SIZE_LINKLOGO);
-    }
-
-    /**
      * generate path begin in bucket
      *
      * @param cardlet
@@ -405,16 +350,6 @@ public class CardletViewService {
             deleteFile(cardlet.getCardletHeader().getLogo());
             deleteFile(cardlet.getCardletHeader().getPhoto());
         }
-        if (cardlet.getCardletBackground() != null) {
-            deleteFile(cardlet.getCardletBackground().getImage());
-        }
-        if (cardlet.getCardletFooter() != null) {
-            for (CardletFooter ent :
-                cardlet.getCardletFooter()) {
-                deleteFile(ent.getUrl());
-            }
-        }
-
     }
 
     /**
@@ -424,6 +359,53 @@ public class CardletViewService {
      */
     private void deleteFile(String path) {
         awss3BucketService.deleteFile(path);
+    }
+
+    /**
+     * get backgrounds list in resource
+     *
+     * @return files list
+     */
+    public List<String> getBackground() {
+        return getFilePaths(jHipsterProperties.getSigterraProperties().getPathBackgroundImages());
+    }
+
+    /**
+     * get images list in resource
+     *
+     * @return files list
+     */
+    public List<String> getLinksImages() {
+        return getFilePaths(jHipsterProperties.getSigterraProperties().getPathLinkImages());
+    }
+
+    /**
+     * get files list
+     *
+     * @param sourcePath resource path
+     * @return files list
+     */
+    private List<String> getFilePaths(String sourcePath) {
+        List<String> files = new ArrayList<>();
+        Resource resource = applicationContext.getResource(sourcePath);
+        if (resource.exists()) {
+            try {
+                File fileRoot = resource.getFile();
+                if (fileRoot.isDirectory()) {
+                    //add files only from root
+                    for (File f : fileRoot.listFiles()) {
+                        if (!f.isDirectory()) {
+                            files.add(sourcePath + "/" + f.getName());
+                        }
+                    }
+                } else {
+                    files.add(fileRoot.getPath());
+                }
+            } catch (IOException e) {
+                log.error("Cant't read resources path", e);
+            }
+        }
+        return files;
     }
 
 }

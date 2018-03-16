@@ -9,7 +9,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name="cardlet_header")
-public class CardletHeader extends AbstractAuditingEntity{
+public class CardletHeader extends AbstractAuditingEntity implements EntityWithLongId {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -34,9 +34,6 @@ public class CardletHeader extends AbstractAuditingEntity{
     @Column(name = "title")
     private String title;
 
-    @Column(name = "company")
-    private String company;
-
     @Column(name = "phone")
     private String phone;
 
@@ -47,14 +44,13 @@ public class CardletHeader extends AbstractAuditingEntity{
     @JoinColumn(name = "cardlet_id")
     private Cardlet cardlet;
 
-    public CardletHeader(String ctaButtonColor, String ctaText, String logo, String photo, String name, String title, String company, String phone, String email, Cardlet cardlet) {
+    public CardletHeader(String ctaButtonColor, String ctaText, String logo, String photo, String name, String title, String phone, String email, Cardlet cardlet) {
         this.ctaButtonColor = ctaButtonColor;
         this.ctaText = ctaText;
         this.logo = logo;
         this.photo = photo;
         this.name = name;
         this.title = title;
-        this.company = company;
         this.phone = phone;
         this.email = email;
         this.cardlet = cardlet;
@@ -90,7 +86,6 @@ public class CardletHeader extends AbstractAuditingEntity{
             ", photo='" + photo + '\'' +
             ", name='" + name + '\'' +
             ", title='" + title + '\'' +
-            ", company='" + company + '\'' +
             ", phone='" + phone + '\'' +
             ", email='" + email + '\'' +
             ", cardlet=" + cardlet +
@@ -143,14 +138,6 @@ public class CardletHeader extends AbstractAuditingEntity{
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
     }
 
     public String getPhone() {

@@ -1,18 +1,10 @@
 package itomy.sigterra.web.rest.vm;
 
 
-import itomy.sigterra.domain.enumeration.CardletFooterIndex;
-import itomy.sigterra.repository.CardletRepository;
-import itomy.sigterra.web.rest.vm.CardletBackgroundVM;
-import itomy.sigterra.web.rest.vm.CardletFooterVM;
-import itomy.sigterra.web.rest.vm.CardletHeaderVM;
 import org.springframework.validation.annotation.Validated;
 
-import javax.inject.Inject;
-import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Validated
 public class CardletViewRequestResponseVM {
@@ -20,23 +12,27 @@ public class CardletViewRequestResponseVM {
     private Long cardletId;
 
     @Valid
-    private CardletHeaderVM headers;
+    private CardletHeaderVM header;
 
     @Valid
     private CardletBackgroundVM background;
 
     @Valid
-    private List<CardletFooterVM> footers;
+    private CardletLinksVM links;
+
+    @Valid
+    private CardletFooterVM footer;
 
     public CardletViewRequestResponseVM() {
         // For Jackson
     }
 
-    public CardletViewRequestResponseVM(Long cardletId, CardletHeaderVM headers, CardletBackgroundVM background, List<CardletFooterVM> footers) {
+    public CardletViewRequestResponseVM(Long cardletId, CardletHeaderVM header, CardletBackgroundVM background, CardletLinksVM links, CardletFooterVM cardletFooterVM) {
         this.cardletId = cardletId;
-        this.headers = headers;
+        this.header = header;
         this.background = background;
-        this.footers = footers;
+        this.links = links;
+        this.footer = cardletFooterVM;
     }
 
     public Long getCardletId() {
@@ -47,12 +43,12 @@ public class CardletViewRequestResponseVM {
         this.cardletId = cardletId;
     }
 
-    public CardletHeaderVM getHeaders() {
-        return headers;
+    public CardletHeaderVM getHeader() {
+        return header;
     }
 
-    public void setHeaders(CardletHeaderVM headers) {
-        this.headers = headers;
+    public void setHeader(CardletHeaderVM header) {
+        this.header = header;
     }
 
     public CardletBackgroundVM getBackground() {
@@ -63,21 +59,30 @@ public class CardletViewRequestResponseVM {
         this.background = background;
     }
 
-    public List<CardletFooterVM> getFooters() {
-        return footers;
+    public CardletLinksVM getLinks() {
+        return links;
     }
 
-    public void setFooters(List<CardletFooterVM> footers) {
-        this.footers = footers;
+    public void setLinks(CardletLinksVM links) {
+        this.links = links;
     }
 
     @Override
     public String toString() {
         return "CardletViewRequestResponseVM{" +
             "cardletId=" + cardletId +
-            ", headers=" + headers +
+            ", headers=" + header +
             ", background=" + background +
-            ", footers=" + footers +
+            ", links=" + links +
             '}';
     }
+
+    public CardletFooterVM getFooter() {
+        return footer;
+    }
+
+    public void setFooter(CardletFooterVM footer) {
+        this.footer = footer;
+    }
+
 }

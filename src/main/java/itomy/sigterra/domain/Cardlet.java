@@ -1,13 +1,11 @@
 package itomy.sigterra.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A Cardlet.
@@ -49,8 +47,11 @@ public class Cardlet implements Serializable {
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL,mappedBy = "cardlet")
     private CardletBackground cardletBackground;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "cardlet", cascade = CascadeType.ALL)
-    private Set<CardletFooter> cardletFooter;
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "cardlet")
+    private CardletLinks cardletLinks;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "cardlet")
+    private CardletFooter cardletFooter;
 
     public Long getId() {
         return id;
@@ -179,8 +180,8 @@ public class Cardlet implements Serializable {
         return cardletBackground;
     }
 
-    public Set<CardletFooter> getCardletFooter() {
-        return cardletFooter;
+    public CardletLinks getCardletLinks() {
+        return cardletLinks;
     }
 
 
@@ -196,7 +197,15 @@ public class Cardlet implements Serializable {
         this.cardletBackground = cardletBackground;
     }
 
-    public void setCardletFooter(Set<CardletFooter> cardletFooter) {
+    public void setCardletLinks(CardletLinks cardletLinks) {
+        this.cardletLinks = cardletLinks;
+    }
+
+    public CardletFooter getCardletFooter() {
+        return cardletFooter;
+    }
+
+    public void setCardletFooter(CardletFooter cardletFooter) {
         this.cardletFooter = cardletFooter;
     }
 

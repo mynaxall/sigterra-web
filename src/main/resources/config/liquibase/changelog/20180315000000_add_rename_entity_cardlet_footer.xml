@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql,oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the geoIp table.
+    -->
+    <changeSet id="20180315000000-1" author="Aleksandr Korzhenko">
+        <renameTable oldTableName="cardlet_footer" newTableName="cardlet_link"/>
+
+        <dropColumn tableName="cardlet_header" columnName="company"/>
+        <dropColumn tableName="cardlet_link" columnName="position"/>
+        <renameColumn tableName="cardlet_link" oldColumnName="name" newColumnName="name1" columnDataType="varchar(64)"/>
+        <renameColumn tableName="cardlet_link" oldColumnName="url" newColumnName="url1" columnDataType="varchar(255)"/>
+        <renameColumn tableName="cardlet_link" oldColumnName="logo" newColumnName="logo1"
+                      columnDataType="varchar(255)"/>
+        <renameColumn tableName="cardlet_link" oldColumnName="title" newColumnName="title"
+                      columnDataType="varchar(64)"/>
+        <addUniqueConstraint tableName="cardlet_link" columnNames="cardlet_id"
+                             constraintName="cardlet_footer_cardlet_id_uindex"/>
+        <dropForeignKeyConstraint baseTableName="cardlet_link" constraintName="fk_cardlet_footer_cardlet_id"/>
+        <addForeignKeyConstraint baseTableName="cardlet_link"
+                                 baseColumnNames="cardlet_id"
+                                 constraintName="fk_cardlet_link_cardlet_id"
+                                 referencedTableName="cardlet"
+                                 referencedColumnNames="id"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
+        <dropUniqueConstraint tableName="cardlet_link" constraintName="cardlet_id"/>
+
+        <addColumn tableName="cardlet_link">
+            <column name="name2" type="varchar(64)"/>
+            <column name="url2" type="varchar(255)"/>
+            <column name="logo2" type="varchar(255)"/>
+            <column name="name3" type="varchar(64)"/>
+            <column name="url3" type="varchar(255)"/>
+            <column name="logo3" type="varchar(255)"/>
+        </addColumn>
+
+
+        <createTable tableName="cardlet_footer">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(64)"/>
+            <column name="facebook_link" type="varchar(255)"/>
+            <column name="twitter_link" type="varchar(255)"/>
+            <column name="linkedin_link" type="varchar(255)"/>
+
+
+            <column name="cardlet_id" type="bigint">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <!--AbstractAuditingEntity fields-->
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </createTable>
+
+
+        <addForeignKeyConstraint baseTableName="cardlet_footer"
+                                 baseColumnNames="cardlet_id"
+                                 constraintName="fk_cardlet_footer_cardlet_id"
+                                 referencedTableName="cardlet"
+                                 referencedColumnNames="id"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"/>
+
+    </changeSet>
+
+</databaseChangeLog>
