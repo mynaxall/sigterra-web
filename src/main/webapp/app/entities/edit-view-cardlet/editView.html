@@ -1,5 +1,31 @@
 <div ng-show="showSpinner" class="spinner-shadow"><div style="position:absolute;top:40%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -88px;"></div></div>
+<div ng-show="vm.isShowDialog" class="image-popup">
+    <div class="row image-dialog">
+        <button type="button" class="close login-close-gray" ng-click="vm.hideImageDialog(true)">×</button>
+        <div class="crop-dialog-header">Upload an avatar</div>
+        <div class="image-dialog-crop-panel">
 
+            <div>
+                <div class="fileUpload btn btn-primary choose-photo-btn">
+                    <span>Choose photo</span>
+                    <div>
+                        <input type="file" img-cropper-fileread image="myImage" accept="image/png, image/jpeg, image/jpg" id="fileInput" class="upload" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="cropArea">
+                <div ng-show="myCroppedImage">
+                    <canvas width="350" height="350" id="canvas" image-cropper image="myImage" cropped-image="myCroppedImage" crop-width="cropWidth().width" crop-height="imageSize.height"  crop-area-bounds="bounds" cors="yes"></canvas>
+                </div>
+                <img ng-hide="myCroppedImage" src="/content/images/image_placeholder.png">
+            </div>
+            <div class="crop-btn-div">
+                <button ng-disabled="!myCroppedImage" class="saveButton" ng-click="vm.saveImage()">save</button>
+            </div>
+        </div>
+    </div>
+</div>
 <style>
     body{
         min-width: 850px;
@@ -51,156 +77,320 @@
     <div class="alert alert-danger cardlet-alert" ng-show="showError">
         <strong>Access denied</strong>
     </div>
-    <div>
-        <div class="row" style="margin: 0px">
-            <div class="left-column-editor">
-                <div class="left-column-editor-content">
-                    <div class="edit-page-top-title">Edit page</div>
-                    <div style="height: 47px;">
-                        <ul class="editor-tab" >
-                            <li class="editor-tabs" ng-class="vm.activeTab == '1' ? 'active' : ''">
-                                <a ng-click="setActive(1, 'editor-preview-header')">Header</a>
-                                <div class="cadlet-top-title-border editor-line"></div>
-                            </li>
-                            <li class="editor-tabs" ng-class="vm.activeTab == '2' ? 'active' : ''">
-                                <a ng-click="setActive(2, 'editor-preview-body')">Background</a>
-                                <div class="cadlet-top-title-border editor-line"></div>
-                            </li>
-                            <li class="editor-tabs" ng-class="vm.activeTab == '3' ? 'active' : ''">
-                                <a ng-click="setActive(3, 'editor-preview-footer')">Footer</a>
-                                <div class="cadlet-top-title-border editor-line"></div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div ng-if="vm.activeTab == '1'" class="editor-panel">
-                        <div class="editor-div">
-                            <label class="login-lable label-editor" for="color">CTA Button color</label>
-                            <input ng-model="tabName.layout.mainColor" type="text" name='mainColorr' value='mainColor' id="color" class="jscolor mainColor-input" value="FFFFFF">
-                        </div>
-                        <div class="editor-div">
-                            <label class="login-lable label-editor label-upload">Logo</label>
-                            <button class="editor-upload-btn label-upload">Upload</button>
-                        </div>
-                        <div class="editor-div">
-                            <label class="login-lable label-editor label-upload">Photo</label>
-                            <button class="editor-upload-btn">Upload</button>
-                        </div>
-                        <div class="editor-div">
-                            <input class="editor-input" type="text" placeholder="Name">
-                        </div>
-                        <div class="editor-div">
-                            <input class="editor-input" type="text" placeholder="Title">
-                        </div>
-                        <div class="editor-div">
-                            <input class="editor-input" type="text" placeholder="Сompany">
-                        </div>
-                        <div class="editor-div">
-                            <input class="editor-input" type="text" placeholder="Phone">
-                        </div>
-                        <div class="editor-div">
-                            <input class="editor-input" type="text" placeholder="Email">
+    <div class="view-editor-flex">
+        <div class="view-editor-col">
+            <div class="left-column-editor-content">
+                <div class="editor-view-header">
+                    <ul class="editor-tab" >
+                        <li class="editor-tabs" ng-class="vm.activeTab == '1' ? 'active' : ''">
+                            <a ng-click="setActive(1)">Header</a>
+                        </li>
+                        <li class="editor-tabs" ng-class="vm.activeTab == '2' ? 'active' : ''">
+                            <a ng-click="setActive(2)">Banner</a>
+                        </li>
+                        <li class="editor-tabs" ng-class="vm.activeTab == '3' ? 'active' : ''">
+                            <a ng-click="setActive(3)">Links</a>
+                        </li>
+                        <li class="editor-tabs" ng-class="vm.activeTab == '4' ? 'active' : ''">
+                            <a ng-click="setActive(4)">Footer</a>
+                        </li>
+                    </ul>
+                </div>
+                <div ng-if="vm.activeTab == '1'" class="editor-panel">
+                    <div class="editor-div editor-div-flex">
+                        <label class="login-lable label-editor label-editor-logo">Company Logo</label>
+                        <div>
+                            <div class="editor-header-logo-div">
+                                <button ng-click="vm.showImageDialog()" class="upload-img-btn">
+                                    <img src="/content/images/editor/edit.png">
+                                </button>
+                                logoUrl
+                            </div>
+                            <div class="editor-limits">
+                                (240 x 70 px recommended)
+                            </div>
                         </div>
                     </div>
-                    <div ng-if="vm.activeTab == '2'" class="editor-panel">
-                        <div class="editor-div">
-                            <label class="login-lable label-editor label-upload">Background Image</label>
-                            <button class="editor-upload-btn label-upload">Upload</button>
-                        </div>
-                        <div class="editor-div">
-                            <label class="login-lable label-editor label-upload">Caption Text Color</label>
-                        </div>
-                        <div class="editor-div">
-                            <input class="editor-input" type="text" placeholder="Caption Text">
-                        </div>
-                    </div>
-                    <div ng-if="vm.activeTab == '3'" class="editor-panel">
-                        <div class="editor-div">
-                            <input class="editor-input" type="text" placeholder="Link 1">
-                        </div>
-                        <div class="editor-div">
-                            <input class="editor-input" type="text" placeholder="Link 1 Name">
-                        </div>
-                        <div class="editor-div">
-                            <label class="login-lable label-editor">Link 1 Logo</label>
-                            <span class="image-size-descript">(Recomended size 10х10)</span>
-                            <button class="editor-upload-btn">Upload</button>
-                        </div>
-                        <div class="editor-div">
-                            <input class="editor-input" type="text" placeholder="Link 2">
-                        </div>
-                        <div class="editor-div">
-                            <input class="editor-input" type="text" placeholder="Link 2 Name">
-                        </div>
-                        <div class="editor-div">
-                            <label class="login-lable label-editor">Link 2 Logo</label>
-                            <span class="image-size-descript">(Recomended size 10х10)</span>
-                            <button class="editor-upload-btn">Upload</button>
-                        </div>
-                        <div class="editor-div">
-                            <input class="editor-input" type="text" placeholder="Link 3">
-                        </div>
-                        <div class="editor-div">
-                            <input class="editor-input" type="text" placeholder="Link 3 Name">
-                        </div>
-                        <div class="editor-div">
-                            <label class="login-lable label-editor">Link 3 Logo</label>
-                            <span class="image-size-descript">(Recomended size 10х10)</span>
-                            <button class="editor-upload-btn">Upload</button>
+                    <div class="editor-div editor-div-flex">
+                        <label class="login-lable label-editor label-editor-logo">Display Profile</label>
+                        <div>
+                            <div class="editor-header-avatar-div">
+                                <button ng-click="vm.showImageDialog()" class="upload-img-btn">
+                                    <img src="/content/images/editor/edit.png">
+                                </button>
+                                photoUrl
+                            </div>
+                            <div class="editor-limits">
+                                (100 x 100 px recommended)
+                            </div>
                         </div>
                     </div>
-
-                    <div class="saveButtonDiv">
-                        <button class="saveButton saveButtonNew" ng-disabled="disableSaveBtn" ng-click="saveCardlet()">Save Sigterra Profile</button>
+                    <div class="editor-div editor-div-flex">
+                        <div>
+                            <label class="login-lable label-editor label-editor-profile">Title (CTA)</label>
+                        </div>
+                        <div>
+                            <div class="input-editor-flex no-margin">
+                                <div class="small-editor-label">
+                                    Name:
+                                </div>
+                                <div>
+                                    <input class="editor-input" type="text" ng-model="header.name">
+                                </div>
+                            </div>
+                            <div class="input-editor-flex">
+                                <div class="small-editor-label">
+                                    Title:
+                                </div>
+                                <div>
+                                    <input class="editor-input" type="text" ng-model="header.title">
+                                </div>
+                            </div>
+                            <div class="input-editor-flex">
+                                <div class="small-editor-label">
+                                    Email:
+                                </div>
+                                <div>
+                                    <input class="editor-input" type="text" ng-model="header.email">
+                                </div>
+                            </div>
+                            <div class="input-editor-flex">
+                                <div class="small-editor-label">
+                                    Phone:
+                                </div>
+                                <div>
+                                    <input class="editor-input" type="text" ng-model="header.phone">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="editor-div editor-div-flex">
+                        <label class="login-lable label-editor label-editor-logo">Title (CTA)</label>
+                        <div>
+                            <input class="editor-input" type="text" ng-model="header.text">
+                        </div>
+                    </div>
+                    <div class="editor-div editor-div-flex">
+                        <label class="login-lable label-editor label-editor-logo">Color (CTA)</label>
+                        <div>
+                            <input ng-model="header.ctaColor" type="text" name='secondaryColor' value='secondaryColor' id="secondaryColor" class="jscolor editor-color-input" value="4BABE2">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="right-column-editor">
-                <div class="second-column-editor">
-                    <div class="editor-preview-panel"  ng-style="{'background': 'url(' + vm.bg + ') no-repeat center center fixed', 'background-size': 'cover'}">
-                        <div class="editor-preview-header" id="editor-preview-header">
-                            <div class="editor-preview-header-flex">
-                                <div>
-                                    <a class="navbar-brand" href="#">
-                                        <img  alt="Brand" src="https://cdn.shopify.com/s/files/1/1081/0328/files/logo-cap.svg?12226597222098781749">
-                                    </a>
+                <div ng-if="vm.activeTab == '2'" class="editor-panel">
+                    <div class="editor-div editor-div-flex">
+                        <label class="login-lable label-editor label-editor-logo">Headline</label>
+                        <div>
+                            <textarea class="editor-textarea" ng-model="background.text"></textarea>
+                        </div>
+                    </div>
+                    <div class="editor-div editor-div-flex">
+                        <label class="login-lable label-editor label-editor-logo">Font Color</label>
+                        <div class="editor-div-flex">
+                            <div class="editor-div-flex">
+                                <input type="radio" name="selector" class="editor-radio" ng-model="background.textColor" value="true">
+                                <div class="radio-label">Black</div>
+                            </div>
+                            <div class="editor-div-flex margin-left-35">
+                                <input type="radio" name="selector" class="editor-radio" ng-model="background.textColor" value="false">
+                                <div class="radio-label">White</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="editor-div editor-div-flex">
+                        <label class="login-lable label-editor label-editor-slide">Color Theme</label>
+                        <div>
+                            <div ng-carousel ng-carousel-name="example-carousel1" ng-carousel-watch="slides">
+                                <slidecontainer>
+                                    <slide ng-repeat="slide in vm.bgSlides">
+                                        <div class="slide-content">{{slide}}</div>
+                                    </slide>
+
+                                </slidecontainer>
+                                <div class="carousel-arrow carousel-arrow-left">
+                                    <button class="demo-nav" ng-click="Carousel.get('example-carousel1').previous()">
+                                        <img src="/content/images/editor/left.png">
+                                    </button>
                                 </div>
-                                <div>
-                                    <div>
-                                        <div class="col-md-2 circle" >
-                                            <img class="image "  src="">
-                                        </div>
-                                        <div class="col-md-6 alignme ">
-                                            <span class="bold"><strong>Harshad Apte</strong></span>
-                                            <br>
-                                            <span class="small text-light">Social Media Stream Lead</span>
-                                            <br>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div>
-                                        <span class="small  fa fa-envelope"></span><span class="text-light">Harshad.apte@capgemini.com</span>
-                                        <br>
-                                        <span class="small fa fa-phone"> </span><span class="text-light">(+91) 959-045-6473</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <button class="btn-warning bnt-edit-preview">Connect With Our Experts</button>
+                                <div class="carousel-arrow carousel-arrow-right">
+                                    <button class="demo-nav" ng-click="Carousel.get('example-carousel1').next()">
+                                        <img src="/content/images/editor/right.png">
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <div id="editor-preview-body" style="min-height: 470px; margin: 0 auto; width: 538px">
-                            <div class="editor-preview-title">
-                             Conversational Commerce is the biggest opportunity for brands to act like people in digital channels & build customer engagement and loyalty.
+                    </div>
+                    <div class="editor-div editor-div-flex">
+                        <label class="login-lable label-editor label-editor-logo">Current Theme</label>
+                        <div>
+                            <div class="theme-div"></div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="vm.activeTab == '3'" class="editor-panel">
+                    <div class="editor-div editor-div-flex">
+                        <label class="login-lable label-editor label-editor-links">Add Title</label>
+                        <div>
+                            <input class="editor-input editor-input-title" type="text" ng-model="links.title">
+                        </div>
+                    </div>
+                    <div class="editor-div editor-div-flex">
+                        <div class="login-lable label-editor label-editor-links">
+                            <div>Add Icons</div>
+                            <div class="editor-limits">( Pick any 3 )</div>
+                        </div>
+                        <div>
+                            <div class="editor-div-flex">
+                                <div class="editor-header-bg-div"></div>
+                                <div class="editor-links-group">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="editor-div editor-div-flex">
+                        <label class="login-lable label-editor label-editor-links">Icon #1</label>
+                        <div class="editor-div-flex">
+                            <div class="editor-header-bg-div"></div>
+                            <div class="editor-links-group">
+                                <div class="editor-div-flex">
+                                    <div class="editor-links-group-title editor-links-group-title-margin">Title</div>
+                                    <input class="editor-input editor-link-title" type="text" ng-model="links.name1">
+                                </div>
+                                <div class="editor-div-flex">
+                                    <div class="editor-links-group-title">URL</div>
+                                    <input class="editor-input editor-link-url" type="text" ng-model="links.url1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="editor-div editor-div-flex">
+                        <label class="login-lable label-editor label-editor-links">Icon #2</label>
+                        <div class="editor-div-flex">
+                            <div class="editor-header-bg-div"></div>
+                            <div class="editor-links-group">
+                                <div class="editor-div-flex">
+                                    <div class="editor-links-group-title editor-links-group-title-margin">Title</div>
+                                    <input class="editor-input editor-link-title" type="text" ng-model="links.name2">
+                                </div>
+                                <div class="editor-div-flex">
+                                    <div class="editor-links-group-title">URL</div>
+                                    <input class="editor-input editor-link-url" type="text" ng-model="links.url2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="editor-div editor-div-flex">
+                        <label class="login-lable label-editor label-editor-links">Icon #3</label>
+                        <div class="editor-div-flex">
+                            <div class="editor-header-bg-div"></div>
+                            <div class="editor-links-group">
+                                <div class="editor-div-flex">
+                                    <div class="editor-links-group-title editor-links-group-title-margin">Title</div>
+                                    <input class="editor-input editor-link-title" type="text" ng-model="links.name3">
+                                </div>
+                                <div class="editor-div-flex">
+                                    <div class="editor-links-group-title">URL</div>
+                                    <input class="editor-input editor-link-url" type="text" ng-model="links.url3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="vm.activeTab == '4'" class="editor-panel">
+                    <div class="editor-div editor-div-flex">
+                        <label class="login-lable label-editor label-editor-logo">Footer Title</label>
+                        <div>
+                            <input class="editor-input" type="text" ng-model="footer.title">
+                        </div>
+                    </div>
+                    <div class="editor-div-flex editor-url">
+                        <div class="login-lable label-editor label-editor-logo editor-div-flex">
+                            <div class="editor-url-icon">
+                                <img src="/content/images/editor/fb-icon.png">
+                            </div>
+                            <div>(URL)</div>
+                        </div>
+                        <div>
+                            <input class="editor-input" type="text" ng-model="footer.facebookLink">
+                        </div>
+                    </div>
+                    <div class="editor-div-flex editor-url">
+                        <div class="login-lable label-editor label-editor-logo editor-div-flex">
+                            <div class="editor-url-icon">
+                                <img src="/content/images/editor/twitter-icon.png">
+                            </div>
+                            <div>(URL)</div>
+                        </div>
+                        <div>
+                            <input class="editor-input" type="text" ng-model="footer.twitterLink">
+                        </div>
+                    </div>
+                    <div class="editor-div-flex editor-url">
+                        <div class="login-lable label-editor label-editor-logo editor-div-flex">
+                            <div class="editor-url-icon">
+                                <img src="/content/images/editor/in-icon.png">
+                            </div>
+                            <div>(URL)</div>
+
+                        </div>
+                        <div>
+                            <input class="editor-input" type="text" ng-model="footer.linkedinLink">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="saveButtonDiv">
+                    <button class="saveButton saveButtonNew" ng-disabled="disableSaveBtn" ng-click="saveCardlet()">Save Sigterra Profile</button>
+                </div>
+            </div>
+        </div>
+        <div class="view-editor-col">
+            <div class="second-column-editor">
+                <div class="editor-preview-panel"  ng-style="{'background': 'url(' + vm.bg + ') no-repeat center center fixed', 'background-size': 'cover'}">
+                    <div class="editor-preview-header" id="editor-preview-header">
+                        <div class="editor-preview-header-flex">
+                            <div>
+                                <a href="#">
+                                    <img ng-show="header.logoUrl" alt="Brand" ng-src="header.logoUrl">
+                                </a>
                             </div>
                             <div>
+                                <div>
+                                    <div class="col-md-2 circle" >
+                                        <img class="image " ng-show="header.photoUrl" ng-src="header.photoUrl">
+                                    </div>
+                                    <div class="col-md-6 alignme ">
+                                        <span class="bold"><strong>{{header.name}}</strong></span>
+                                        <br>
+                                        <span class="small text-light">{{header.title}}</span>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <span class="small  fa fa-envelope"></span><span class="text-light">{{header.email}}</span>
+                                    <br>
+                                    <span class="small fa fa-phone"> </span><span class="text-light">{{header.phone}}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <button class="btn-warning bnt-edit-preview" ng-style="{'background-color': '#'+header.ctaColor}">{{header.text}}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="editor-preview-body" style="min-height: 470px; margin: 0 auto; width: 538px">
+                        <div class="editor-preview-title">
+                            {{background.text}}
+                        </div>
+                        <div>
                             <ul class="tab2">
                                 <li class="tabs2" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink2'+tabName.position)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}">
                                     <div style="position: relative;display: table; width: 100%;">
                                         <a style="overflow: hidden; text-overflow: ellipsis;" href="javascript:void(0)"  ng-class="{disabledLink: !isEmptyName()}" id="tabLink2{{tabName.position}}" class="tablinks2" ng-click="openCity('settings'+tabName.name+tabName.position, tabName.position, tabName.name+tabName.position, 'card'+tabName.position+tabName.name)">{{tabName.name}}</a>
                                     </div>
                                 </li>
-
                             </ul>
                         </div>
 
@@ -218,49 +408,59 @@
                         </div>
 
                     </div>
-                        <div id="editor-preview-footer">
-                            <section class="service-info-sec">
-                                <h2 class="text-center" id="capture">CapGemini's Experts are standing by</h2>
-                                <br>
-                                <div class="service-info service-info-min-height" >
-                                    <div class="col-sm-4 img-with-text">
-                                        <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon02.png?17535346864100737432" border="0" alt="Carl Call"  />
-                                        <p class="click-sec-text">
-                                            <a class="preview-footer-link" href="#myModalNorm" data-toggle="modal">Request Info</a>
-                                        </p>
-                                        <br />
-                                        <!--   (931)268-2040<br /><a href="mailto:carlcall@centergrovecoc.com">Email Carl Call</a>  </p>
-                                         -->
-                                    </div>
-                                    <div class="col-sm-4  img-with-text">
-                                        <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon01.png?17535346864100737432" border="0" alt="Sjon Gentry"  />
-                                        <p class="click-sec-text">
-                                            <a class="preview-footer-link" href="#myModalNorm1" data-toggle="modal">Schedule a Deep Dive</a>
-                                        </p>
-                                        <br />
-                                        <!--   (931)268-3273<br /><a href="mailto:sjongentry@centergrovecoc.com">Email Sjon Gentry</a></p>
-                                         -->
-                                    </div>
-                                    <div class="col-sm-4  img-with-text">
-                                        <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/icon3.png?12339313325764754835" border="0" alt="John Mabery" />
-                                        <p class="click-sec-text">
-                                            <a class="preview-footer-link" href="#myModalNorm" data-toggle="modal">Connect with our Experts</a>
-                                        </p>
-                                        <br />
-                                        <!--   (931)268-0651<br /><a href="mailto:johnmabery@centergrovecoc.com">Email John Mabery</a> </p>
-                                         -->
-                                    </div>
-
+                    <div id="editor-preview-footer">
+                        <section class="service-info-sec">
+                            <h4 class="text-center" id="capture">CapGemini's Experts are standing by</h4>
+                            <br>
+                            <div class="service-info-editor service-info-min-height" >
+                                <div class="col-sm-4 img-with-text">
+                                    <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon02.png?17535346864100737432" border="0" alt="Carl Call"  />
+                                    <p class="click-sec-text-editor">
+                                        <a class="preview-footer-link" ng-href="links.url1" data-toggle="modal" target="_blank">{{links.name1}}</a>
+                                    </p>
+                                    <br />
                                 </div>
-                            </section>
-                            <div class="footer-bottom">
-                                <div>
-                                    <div class="row">
-                                        <div class="col-sm-12 text-center">
-                                            <div class="copyright-text">
-                                                CopyRight © 2018 Digital All Rights Reserved
-                                            </div>
+                                <div class="col-sm-4  img-with-text">
+                                    <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon01.png?17535346864100737432" border="0" alt="Sjon Gentry"  />
+                                    <p class="click-sec-text-editor">
+                                        <a class="preview-footer-link" ng-href="links.url2" data-toggle="modal" target="_blank">{{links.name2}}</a>
+                                    </p>
+                                    <br />
+                                </div>
+                                <div class="col-sm-4  img-with-text">
+                                    <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/icon3.png?12339313325764754835" border="0" alt="John Mabery" />
+                                    <p class="click-sec-text-editor">
+                                        <a class="preview-footer-link" ng-href="links.url3" data-toggle="modal" target="_blank">{{links.name3}}</a>
+                                    </p>
+                                    <br />
+                                </div>
+
+                            </div>
+                        </section>
+                        <div class="footer-bottom-editor">
+                            <div>
+                                <div class="row">
+                                    <div class="col-sm-12 text-center">
+                                        <div class="copyright-text">
+                                            {{footer.title}}
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="nav-view footer-editor-icon">
+                                    <div ng-show="footer.facebookLink">
+                                        <a ng-href="footer.facebookLink" target="_blank">
+                                            <img src="/content/images/editor/FB.png">
+                                        </a>
+                                    </div>
+                                    <div ng-show="footer.twitterLink">
+                                        <a ng-href="footer.twitterLink" target="_blank">
+                                            <img src="/content/images/editor/tweeter.png">
+                                        </a>
+                                    </div>
+                                    <div ng-show="footer.linkedinLink">
+                                        <a ng-href="footer.linkedinLink" target="_blank">
+                                            <img src="/content/images/editor/Linkdn.png">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -270,11 +470,5 @@
             </div>
         </div>
     </div>
+
 </div>
-
-
-
-
-
-
-

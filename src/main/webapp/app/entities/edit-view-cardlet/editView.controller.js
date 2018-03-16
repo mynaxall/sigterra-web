@@ -36,11 +36,12 @@
             };
         });
 
-    EditViewController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'orderByFilter', 'PHONE_PATTERN', 'TOOLBAR_OPTIONS', 'ImageService'];
+    EditViewController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'orderByFilter', 'PHONE_PATTERN', 'TOOLBAR_OPTIONS', 'ImageService', 'Carousel'];
 
-    function EditViewController($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter, PHONE_PATTERN, TOOLBAR_OPTIONS, ImageService) {
+    function EditViewController($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter, PHONE_PATTERN, TOOLBAR_OPTIONS, ImageService, Carousel) {
         var vm = this;
         $scope.showError = false;
+        $scope.Carousel = Carousel;
         $scope.time = Date.now();
         $scope.showEditorNavigation = false;
         $scope.showCropDialog = false;
@@ -63,14 +64,29 @@
         $scope.bounds.top = 200;
         $scope.bounds.bottom = 0;
         $scope.imageSize = {width: 200, height: 200};
-        vm.activeTab = 1;
+        $scope.secondaryColor = "";
+        vm.activeTab = 3;
         vm.bg = "/content/images/background.jpg";
+        vm.bgSlides = ["/content/images/background.jpg", "/content/images/background2.jpg", "/content/images/background3jpg"];
+        $scope.cardletView = {};
+        $scope.header = {};
+        $scope.background = {
+            'text' : 'Conversational Commerce is the biggest opportunity for brands to act like people in digital channels & build customer engagement and loyalty.',
+            'textColor' : 'true'
+        };
+        $scope.links = {};
+        $scope.footer = {};
 
-        $scope.setActive = function (index, id) {
+        $scope.myImage='';
+        $scope.myCroppedImage = '';
+        vm.saveImage = saveImage;
+        vm.showImageDialog = showImageDialog;
+        vm.hideImageDialog = hideImageDialog;
+
+
+
+        $scope.setActive = function (index) {
             vm.activeTab = index;
-            var el = document.getElementById(id);
-            console.log(el)
-            el.scrollIntoView();
         }
 
         $scope.showSocialDialog = false;
@@ -418,6 +434,33 @@
             }
         }
 
+        $scope.prevSlideBg = function(){
+            $scope.currentUrl = undefined;
+            if( vm.currentSlideBg == 0){
+                console.log( vm.currentSlideBg)
+                vm.currentSlideBg = vm.bgSlides.length -1;
+                console.log( vm.currentSlideBg)
+            }else{
+                console.log( vm.currentSlideBg)
+                vm.currentSlideBg = parseInt(vm.currentSlideBg) - 1;
+                console.log( vm.currentSlideBg)
+            }
+        };
+
+        $scope.nextSlideBg = function(){
+            console.log(vm.currentSlideBg)
+            $scope.currentUrl = undefined
+            if( vm.currentSlideBg == vm.bgSlides.length -1){
+                console.log( vm.currentSlideBg)
+                vm.currentSlideBg = 0
+                console.log( vm.currentSlideBg)
+            }else{
+                console.log( vm.currentSlideBg)
+                vm.currentSlideBg = parseInt(vm.currentSlideBg) + 1;
+            }
+            console.log(vm.currentSlideBg)
+        };
+
 
         $scope.prevSlide = function(index){
             $scope.currentUrl = undefined;
@@ -495,6 +538,60 @@
             var el = document.getElementById(id);
             console.log(el)
             el.scrollIntoView();
+        }
+
+
+        function showImageDialog() {
+            angular.element('#fileInput').val(null);
+            $scope.myImage = "";
+            if ($scope.header.imageUrl) {
+                $http.get($scope.header.imageUrl, {responseType: "arraybuffer"})
+                    .success(function (data) {
+                        var str = _arrayBufferToBase64(data);
+                        $scope.myImage = 'data:image/JPEG;base64,' + str;
+                    });
+            }
+            $scope.myCroppedImage = '';
+            vm.isShowDialog = true;
+        }
+
+        function _arrayBufferToBase64(buffer) {
+            var binary = '';
+            var bytes = new Uint8Array(buffer);
+            var len = bytes.byteLength;
+            for (var i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        }
+
+        function hideImageDialog(clean){
+            if(clean){
+                $scope.myImage='';
+                $scope.myCroppedImage = '';
+            }
+            vm.isShowDialog = false;
+        }
+
+        function saveImage(){
+            vm.hideImageDialog();
+            $scope.showSpinner = true;
+            var img_b64 = $scope.myCroppedImage;
+            var png = img_b64.split(',')[1];
+            var file = b64toBlob(png, 'image/png')
+            var fd = new FormData();
+            fd.append('file', file);
+            vm.settingsAccount.imageUrl = "";
+            $http.post("/api/account/upload/icon",  fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            })
+                .success(function (data, status, headers, config) {
+                    $scope.showSpinner = false;
+                    vm.settingsAccount.imageUrl = data.url;
+                    $scope.myImage='';
+                    $scope.myCroppedImage = '';
+                });
         }
 
 

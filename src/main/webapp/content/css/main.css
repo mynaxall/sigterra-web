@@ -3889,7 +3889,6 @@ button[disabled]:hover{
     }
 
     .second-column-editor{
-        padding-top: 100px;
         width: 800px;
         margin: 0px 0px;
     }
@@ -6254,22 +6253,31 @@ ul.editor-tab{
     list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+    height: 70px;
 }
 
 ul.editor-tab li{
-    min-height: 45px;
-    height: 45px;
-    margin-right: 50px;
     float: left;
     background: transparent;
     border: none;
     text-align: left;
+    width: 110px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #dce0e6;
 }
 
 .editor-tabs a{
-    font-size: 24px;
-    color: #000000;
-
+    font-size: 18px;
+    color: #888e98;
 }
 
 .editor-line{
@@ -6277,19 +6285,21 @@ ul.editor-tab li{
 }
 
 ul.editor-tab li.active{
-    color: #000000!important;
+    border-bottom-color: #5cbcff;
+}
+
+ul.editor-tab li.hover{
+    border-bottom-color: #5cbcff;
+}
+
+
+ul.editor-tab li.active a{
+    color: #5cbcff!important;
+
 }
 
 ul.editor-tab li a:hover{
     text-decoration: none;
-}
-
-ul.editor-tab li:hover .editor-line{
-    display: block;
-}
-
-ul.editor-tab li.active .editor-line{
-    display: block;
 }
 
 .edit-page-top-title{
@@ -6301,30 +6311,48 @@ ul.editor-tab li.active .editor-line{
 }
 
 .editor-panel{
-    border: 1px solid #BFBFBF;
-    padding: 17px;
-    height: 464px;
+    border: 1px solid #dce0e6;
+    padding: 50px;
+    height: 712px;
+    width: 760px;
+    background-color: #ffffff;
 }
 
 .label-editor{
-    font-size: 14px;
-    color: #000000;
+    font-size: 18px;
+    color: #868d9b;
+    font-family: Roboto-Light;
 }
 
 .editor-div{
-    margin-bottom: 6px;
+    margin-bottom: 40px;
+}
+
+.input-editor-flex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: stretch;
+    margin-top: 15px;
 }
 
 .editor-input{
-    width: 100%;
-    height: 34px;
-    background-color: #F6F8FA;
+    width: 300px;
+    height: 20px;
+    background-color: #ffffff;
     font-size: 14px;
-    border: none;
-
+    border: 0px solid #d1d1d1;
+    border-bottom-width: 1px;
+    padding-left: 10px;
 }
 
-.editor-input::placeholder{
+.editor-input:focus {
+    outline: none;
+}
+
+.editor-input::placeholder {
     color: #000000;
 }
 
@@ -6428,7 +6456,7 @@ ul.editor-tab li.active .editor-line{
 .custom-slide-prev{
     position: absolute;
     top: 300px;
-    left: -40px;
+    left: -42px;
     display: block;
     background-color: #000000;
     padding: 5px;
@@ -6446,7 +6474,7 @@ ul.editor-tab li.active .editor-line{
 .custom-slide-next{
     position: absolute;
     top: 300px;
-    right: -40px;
+    right: -42px;
     display: block;
     background-color: #000000;
     padding: 5px;
@@ -6471,6 +6499,11 @@ ul.editor-tab li.active .editor-line{
     font-size: 16px;
 }
 
+.click-sec-text-editor{
+    margin-top: 1em;
+    font-size: 10px;
+}
+
 a.preview-footer-link {
     color: #337ab7;
     text-decoration: none;
@@ -6481,6 +6514,16 @@ a.preview-footer-link {
     border-top: 1px solid #666;
     background: #1e1e1e;
     color: #ccc;
+}
+
+.footer-bottom-editor{
+    position: relative;
+    padding: 7px 0px;
+    border-top: 1px solid #666;
+    background: #1e1e1e;
+    color: #ffffff;
+    font-size: 10px;
+    height: 29px;
 }
 
 .arrow-link{
@@ -6536,12 +6579,10 @@ a.preview-footer-link {
 
 .tablinks-preview{
     height: 68px!important;
+    font-size: 20px;
 }
 
 .editor-preview-panel{
-    height: 550px;
-    max-height: 550px;
-    overflow: auto;
     width: 800px;
     background-color: #ffffff;
 }
@@ -6554,7 +6595,7 @@ a.preview-footer-link {
 }
 
 .service-info-min-height{
-    min-height: 200px;
+    min-height: 130px;
 }
 
 .editor-preview-header{
@@ -6629,3 +6670,234 @@ a.preview-footer-link {
 }
 
 
+.view-editor-flex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+    background-color: #e0e7ed;
+}
+
+.view-editor-col{
+    margin: 50px 25px;
+}
+
+.editor-view-header{
+    height: 70px;
+    background-color: #ffffff;
+    border: 1px solid #dce0e6;
+    border-bottom-width: 0px;
+}
+
+.service-info-editor{
+    width: 700px;
+    margin: 0 auto;
+}
+
+.editor-header-logo-div{
+    position: relative;
+    width: 240px;
+    height: 70px;
+    border: 1px solid #d1d1d1;
+}
+
+.editor-header-avatar-div{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #d1d1d1;
+}
+
+.editor-div-flex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.label-editor-logo{
+    width: 140px;
+}
+
+.label-editor-links{
+    width: 105px;
+}
+
+.label-editor-profile {
+    width: 95px;
+}
+
+.label-editor-slide {
+    width: 102px;
+}
+
+.editor-limits{
+    margin-top: 5px;
+    color: #8ebfa4;
+    font-size: 12px;
+}
+
+.no-margin{
+    margin-top: 0px;
+}
+
+.small-editor-label{
+    font-size: 12px;
+    color: #a7b0b6;
+    text-align: right;
+    width: 45px;
+}
+
+.editor-color-input {
+    border: 1px solid #d1d1d1;
+    width: 120px;
+    height: 30px;
+}
+
+.editor-color-input:focus {
+    outline: none;
+}
+
+.editor-url{
+    margin-bottom: 25px;
+}
+
+.editor-url-icon {
+    width: 40px;
+    text-align: center;
+}
+
+.editor-radio {
+    display: block!important;
+}
+
+.radio-label {
+    margin-left: 12px;
+    font-size: 16px;
+    color: #868d9b;
+    font-family: Roboto-Light;
+}
+
+.margin-left-35{
+    margin-left: 35px;
+}
+
+.ng-carousel{
+    width: 525px;
+    height: 295px!important;
+    background-color: #868d9b;
+}
+
+
+.carousel-arrow-left {
+    position: absolute;
+    left: 0;
+    background: #ffffff;
+    width: 40px!important;
+}
+
+.carousel-arrow-right {
+    position: absolute;
+    right: 0;
+    background: #ffffff;
+    width: 40px!important;
+}
+
+.demo-nav{
+    margin-top: 130px;
+    border: none;
+    background: transparent;
+    padding: 0px;
+}
+
+.slide-content{
+    width: 445px;
+    margin: 0 auto;
+}
+
+.theme-div{
+    width: 130px;
+    height: 85px;
+    background-color: #868d9b;
+}
+
+.editor-textarea{
+    max-height: 70px;
+    max-width: 485px;
+    width: 485px;
+    height: 67px;
+    border: 1px solid #d1d1d1;
+}
+
+.footer-editor-icon {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+    width: 100px;
+    position: absolute;
+    top: 3px;
+    right: 105px;
+}
+
+.footer-editor-icon div{
+    width: 33px;
+}
+
+.footer-editor-icon div a img {
+   width: 20px;
+}
+
+.upload-img-btn {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+    border: none;
+}
+
+.upload-img-btn img {
+    width: 20px;
+}
+
+.editor-input-title {
+    width: 480px;
+}
+
+.editor-header-bg-div {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #d1d1d1;
+}
+
+.editor-link-title {
+    width: 135px;
+}
+
+.editor-link-url {
+    width: 285px;
+}
+
+.editor-links-group{
+    margin-left: 22px;
+}
+
+.editor-links-group-title{
+    width: 42px;
+    color: #868d9b;
+    font-size: 15px;
+}
+
+.editor-links-group-title-margin {
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
