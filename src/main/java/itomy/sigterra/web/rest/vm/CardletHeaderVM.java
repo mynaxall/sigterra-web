@@ -27,7 +27,7 @@ public class CardletHeaderVM {
     @Size(max = 20)
     private String name;
 
-    @Size(max = 20)
+    @Size(max = 30)
     private String title;
 
     @Size(max = 50)
