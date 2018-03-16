@@ -65,16 +65,25 @@
         $scope.bounds.bottom = 0;
         $scope.imageSize = {width: 200, height: 200};
         $scope.secondaryColor = "";
-        vm.activeTab = 3;
+        vm.activeTab = 1;
         vm.bg = "/content/images/background.jpg";
         vm.bgSlides = ["/content/images/background.jpg", "/content/images/background2.jpg", "/content/images/background3jpg"];
         $scope.cardletView = {};
-        $scope.header = {};
+        $scope.header = {
+            'name' : '',
+            'title' : '',
+            'text' : 'Request For Demo'
+        };
         $scope.background = {
-            'text' : 'Conversational Commerce is the biggest opportunity for brands to act like people in digital channels & build customer engagement and loyalty.',
+            'text' : 'Conversational Commerce is the biggest opportunity for brands to act like people in digital channels & build customer engagement and loyalty',
             'textColor' : 'true'
         };
-        $scope.links = {};
+        $scope.links = {
+            'title' : 'CapGemini\'s Experts are standing by',
+            'name1' : '',
+            'name2' : '',
+            'name3' : ''
+        };
         $scope.footer = {};
 
         $scope.myImage='';
@@ -434,34 +443,6 @@
             }
         }
 
-        $scope.prevSlideBg = function(){
-            $scope.currentUrl = undefined;
-            if( vm.currentSlideBg == 0){
-                console.log( vm.currentSlideBg)
-                vm.currentSlideBg = vm.bgSlides.length -1;
-                console.log( vm.currentSlideBg)
-            }else{
-                console.log( vm.currentSlideBg)
-                vm.currentSlideBg = parseInt(vm.currentSlideBg) - 1;
-                console.log( vm.currentSlideBg)
-            }
-        };
-
-        $scope.nextSlideBg = function(){
-            console.log(vm.currentSlideBg)
-            $scope.currentUrl = undefined
-            if( vm.currentSlideBg == vm.bgSlides.length -1){
-                console.log( vm.currentSlideBg)
-                vm.currentSlideBg = 0
-                console.log( vm.currentSlideBg)
-            }else{
-                console.log( vm.currentSlideBg)
-                vm.currentSlideBg = parseInt(vm.currentSlideBg) + 1;
-            }
-            console.log(vm.currentSlideBg)
-        };
-
-
         $scope.prevSlide = function(index){
             $scope.currentUrl = undefined;
             if( vm.currentSlide == 0){
@@ -528,7 +509,6 @@
 
 
             if ($scope.myCroppedImage) {
-                console.log("ss")
                 $scope.imageSize = ImageService.imageSize($scope.bounds)
             }
             return $scope.imageSize;
@@ -536,12 +516,11 @@
 
         $scope.scrollToFooter = function (id) {
             var el = document.getElementById(id);
-            console.log(el)
             el.scrollIntoView();
         }
 
 
-        function showImageDialog() {
+        function showImageDialog(type) {
             angular.element('#fileInput').val(null);
             $scope.myImage = "";
             if ($scope.header.imageUrl) {
