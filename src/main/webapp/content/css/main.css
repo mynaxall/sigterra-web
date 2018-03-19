@@ -6511,10 +6511,10 @@ a.preview-footer-link {
 }
 
 .footer-bottom {
-    padding: 10px 0px;
     border-top: 1px solid #666;
     background: #1e1e1e;
     color: #ccc;
+    height: 47px;
 }
 
 .footer-bottom-editor{
@@ -6880,6 +6880,11 @@ a.preview-footer-link {
     right: 105px;
 }
 
+.footer-editor-icon-div{
+    width: 150px;
+}
+
+
 .footer-editor-icon div{
     width: 33px;
 }
@@ -7068,6 +7073,30 @@ a.preview-footer-link {
 
 .editor-subheader-btn{
     margin-right: 30px;
+    color: #8b919a;
+}
+
+.prview-logo{
+    max-width: 270px;
+    max-height: 77px;
+}
+
+.prview-avatar{
+    max-width: 77px;
+    max-height: 77px;
+    border-radius: 77px;
+}
+
+.footer-preview-icon{
+    width: 35px!important;
+}
+
+.copyright-text{
+    padding: 10px;
+}
+
+.footer-preview-icon-div{
+    width: 45px!important;
 }
 
 
