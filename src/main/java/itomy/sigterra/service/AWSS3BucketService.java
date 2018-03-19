@@ -19,15 +19,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.activation.MimetypesFileTypeMap;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
-import java.nio.file.Files;
 
 /**
  * Service for AWS S3 Bucket.
@@ -245,6 +241,7 @@ public class AWSS3BucketService {
         try {
             String bucketName = hipsterProperties.getAwss3Bucket().getName();
             s3Client.copyObject(bucketName,source,bucketName,dest);
+            s3Client.setObjectAcl(bucketName,dest,CannedAccessControlList.PublicRead);
             URL url = s3Client.generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName,dest));
             uri = new URI(url.toURI().getScheme(),
                 url.toURI().getAuthority(),
