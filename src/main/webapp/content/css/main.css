@@ -1365,7 +1365,7 @@ Social Buttons
     position: absolute;
     top: 0;
     left: 0;
-    height: 242px;
+    height: 304px;
     width: 100%;
     z-index: 10;
     border: 3px solid #BFBFBF;
@@ -6390,7 +6390,7 @@ ul.editor-tab li a:hover{
 }
 
 .click-sec{
-    width: 48%;
+    width: 95px;
     max-width: 150px;
 }
 
@@ -6511,10 +6511,10 @@ a.preview-footer-link {
 }
 
 .footer-bottom {
-    padding: 10px 0px;
     border-top: 1px solid #666;
     background: #1e1e1e;
     color: #ccc;
+    height: 47px;
 }
 
 .footer-bottom-editor{
@@ -6586,7 +6586,7 @@ a.preview-footer-link {
 .editor-preview-panel{
     position: relative;
     width: 800px;
-    background-color: #ffffff;
+    background-color: #ffffff!important;
 }
 
 .editor-preview-title{
@@ -6619,6 +6619,7 @@ a.preview-footer-link {
 
 .bnt-edit-preview{
     font-size: 8px;
+    border: none!important;
 }
 
 .right-chevron{
@@ -6704,8 +6705,14 @@ a.preview-footer-link {
 }
 
 .service-info-editor{
-    width: 700px;
+    width: 550px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: top;
+    align-content: center;
 }
 
 .editor-header-logo-div{
@@ -6715,11 +6722,21 @@ a.preview-footer-link {
     border: 1px solid #d1d1d1;
 }
 
+.editor-header-logo-img{
+    max-width: 240px;
+    max-height: 70px;
+}
+
 .editor-header-avatar-div{
     position: relative;
     width: 100px;
     height: 100px;
     border: 1px solid #d1d1d1;
+}
+
+.editor-header-avatar-img{
+    max-width: 100px;
+    max-height: 100px;
 }
 
 .editor-div-flex{
@@ -6833,8 +6850,13 @@ a.preview-footer-link {
 
 .theme-div{
     width: 130px;
-    height: 85px;
+    height: 73px;
     background-color: #868d9b;
+}
+
+.theme-div-img{
+    max-width: 130px;
+    max-height: 73px;
 }
 
 .editor-textarea{
@@ -6857,6 +6879,11 @@ a.preview-footer-link {
     top: 3px;
     right: 105px;
 }
+
+.footer-editor-icon-div{
+    width: 150px;
+}
+
 
 .footer-editor-icon div{
     width: 33px;
@@ -6889,6 +6916,11 @@ a.preview-footer-link {
     width: 80px;
     height: 80px;
     border: 1px solid #d1d1d1;
+}
+
+.editor-header-bg-img{
+    width: 80px;
+    height: 80px;
 }
 
 .editor-link-title {
@@ -6954,19 +6986,118 @@ a.preview-footer-link {
 }
 
 .slide-bg{
-    height: 258px;
+    height: 250px;
+}
+
+.slide-bg img{
+    width: 445px;
 }
 
 .select-bg-btn {
     font-size: 16px;
     color: #599c57;
     width: 100%;
-    height: 37px;
+    height: 45px;
     background: #efeded;
     border: none;
     text-transform: uppercase;
 }
 
+.editor-flex-icons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.editor-flex-icons div {
+    margin-left: 10px;
+    text-align: center;
+}
+
+.editor-flex-icons div img{
+    width: 80px;
+}
+
+
+.save-preview-panel{
+    position: relative;
+}
+
+.save-preview-btn{
+    position: absolute;
+    bottom: 64px;
+    right: 90px;
+    width: 140px;
+    height: 50px;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    background-color: #44bcf7;
+    border: none;
+}
+
+.header-preview-editor-logo{
+    max-height: 40px;
+    max-width: 137px;
+}
+
+.header-preview-editor-avatar{
+    max-height: 40px;
+    max-width: 40px;
+    border-radius: 40px;
+}
+
+
+.preview-image-group{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
+
+.editor-subheader{
+    height: 85px;
+    background-color: #efeded;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+}
+
+.editor-subheader-btn{
+    margin-right: 30px;
+    color: #8b919a;
+}
+
+.prview-logo{
+    max-width: 270px;
+    max-height: 77px;
+}
+
+.prview-avatar{
+    max-width: 77px;
+    max-height: 77px;
+    border-radius: 77px;
+}
+
+.footer-preview-icon{
+    width: 35px!important;
+}
+
+.copyright-text{
+    padding: 10px;
+}
+
+.footer-preview-icon-div{
+    width: 45px!important;
+}
 
 
 

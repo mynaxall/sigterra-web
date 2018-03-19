@@ -73,6 +73,10 @@
         jscolor.installByClassName("jscolor");
     });
 </script>
+<div class="editor-subheader">
+    <a class="editor-subheader-btn" ng-click="save(false)"><img src="/content/images/editor/Edit-2.png"> Edit Card</a>
+    <a class="editor-subheader-btn"  target="_blank" href="{{gerPreviewLink(cardletId)}}"><img src="/content/images/editor/Eye.png"> View Page</a>
+</div>
 <div class="entiti-content" ng-init="getCardlet()">
     <div class="alert alert-danger cardlet-alert" ng-show="showError">
         <strong>Access denied</strong>
@@ -96,287 +100,307 @@
                         </li>
                     </ul>
                 </div>
-                <div ng-if="vm.activeTab == '1'" class="editor-panel">
-                    <div class="editor-div editor-div-flex">
-                        <label class="login-lable label-editor label-editor-logo">Company Logo</label>
-                        <div>
-                            <div class="editor-header-logo-div">
-                                <button ng-click="vm.showImageDialog()" class="upload-img-btn">
-                                    <img src="/content/images/editor/edit.png">
-                                </button>
-                                logoUrl
-                            </div>
-                            <div class="editor-limits">
-                                (240 x 70 px recommended)
-                            </div>
-                        </div>
-                    </div>
-                    <div class="editor-div editor-div-flex">
-                        <label class="login-lable label-editor label-editor-logo">Display Profile</label>
-                        <div>
-                            <div class="editor-header-avatar-div">
-                                <button ng-click="vm.showImageDialog()" class="upload-img-btn">
-                                    <img src="/content/images/editor/edit.png">
-                                </button>
-                                photoUrl
-                            </div>
-                            <div class="editor-limits">
-                                (100 x 100 px recommended)
-                            </div>
-                        </div>
-                    </div>
-                    <div class="editor-div editor-div-flex">
-                        <div>
-                            <label class="login-lable label-editor label-editor-profile">Title (CTA)</label>
-                        </div>
-                        <div>
-                            <div class="input-editor-flex no-margin">
-                                <div class="small-editor-label">
-                                    Name:
-                                </div>
-                                <div>
-                                    <input class="editor-input" type="text" ng-model="header.name" maxlength="20">
+                <div class="save-preview-panel">
+                    <div ng-if="vm.activeTab == '1'" class="editor-panel">
+                        <div class="editor-div editor-div-flex">
+                            <label class="login-lable label-editor label-editor-logo">Company Logo</label>
+                            <div>
+                                <div class="editor-header-logo-div">
+                                    <button ng-click="vm.showImageDialog(true)" class="upload-img-btn">
+                                        <img src="/content/images/editor/edit.png">
+                                    </button>
+                                    <img class="editor-header-logo-img" ng-src="{{header.logoUrl}}">
                                 </div>
                                 <div class="editor-limits">
-                                    ({{header.name.length}}/20)
+                                    (240 x 70 px recommended)
                                 </div>
                             </div>
-                            <div class="input-editor-flex">
-                                <div class="small-editor-label">
-                                    Title:
-                                </div>
-                                <div>
-                                    <input class="editor-input" type="text" ng-model="header.title" maxlength="30">
+                        </div>
+                        <div class="editor-div editor-div-flex">
+                            <label class="login-lable label-editor label-editor-logo">Display Profile</label>
+                            <div>
+                                <div class="editor-header-avatar-div">
+                                    <button ng-click="vm.showImageDialog(false)" class="upload-img-btn">
+                                        <img src="/content/images/editor/edit.png">
+                                    </button>
+                                    <img class="editor-header-avatar-img" ng-src="{{header.photoUrl}}">
                                 </div>
                                 <div class="editor-limits">
-                                    ({{header.title.length}}/30)
-                                </div>
-                            </div>
-                            <div class="input-editor-flex">
-                                <div class="small-editor-label">
-                                    Email:
-                                </div>
-                                <div>
-                                    <input class="editor-input" type="text" ng-model="header.email">
-                                </div>
-                            </div>
-                            <div class="input-editor-flex">
-                                <div class="small-editor-label">
-                                    Phone:
-                                </div>
-                                <div>
-                                    <input class="editor-input" type="text" ng-model="header.phone">
+                                    (100 x 100 px recommended)
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="editor-div editor-div-flex">
-                        <label class="login-lable label-editor label-editor-logo">Title (CTA)</label>
-                        <div>
-                            <input class="editor-input" type="text" ng-model="header.text" maxlength="20">
+                        <div class="editor-div editor-div-flex">
+                            <div>
+                                <label class="login-lable label-editor label-editor-profile">Title (CTA)</label>
+                            </div>
+                            <div>
+                                <div class="input-editor-flex no-margin">
+                                    <div class="small-editor-label">
+                                        Name:
+                                    </div>
+                                    <div>
+                                        <input class="editor-input" type="text" ng-model="header.name" maxlength="20">
+                                    </div>
+                                    <div class="editor-limits">
+                                        ({{header.name.length}}/20)
+                                    </div>
+                                </div>
+                                <div class="input-editor-flex">
+                                    <div class="small-editor-label">
+                                        Title:
+                                    </div>
+                                    <div>
+                                        <input class="editor-input" type="text" ng-model="header.title" maxlength="30">
+                                    </div>
+                                    <div class="editor-limits">
+                                        ({{header.title.length}}/30)
+                                    </div>
+                                </div>
+                                <div class="input-editor-flex">
+                                    <div class="small-editor-label">
+                                        Email:
+                                    </div>
+                                    <div>
+                                        <input class="editor-input" type="text" ng-model="header.email">
+                                    </div>
+                                </div>
+                                <div class="input-editor-flex">
+                                    <div class="small-editor-label">
+                                        Phone:
+                                    </div>
+                                    <div>
+                                        <input class="editor-input" type="text" ng-model="header.phone">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="editor-limits">
-                            ({{header.text.length}}/20)
+                        <div class="editor-div editor-div-flex">
+                            <label class="login-lable label-editor label-editor-logo">Title (CTA)</label>
+                            <div>
+                                <input class="editor-input" type="text" ng-model="header.text" maxlength="20">
+                            </div>
+                            <div class="editor-limits">
+                                ({{header.text.length}}/20)
+                            </div>
                         </div>
-                    </div>
-                    <div class="editor-div editor-div-flex">
-                        <label class="login-lable label-editor label-editor-logo">Color (CTA)</label>
-                        <div>
-                            <input ng-model="header.ctaColor" type="text" name='secondaryColor' value='secondaryColor' id="secondaryColor" class="jscolor editor-color-input" value="4BABE2">
-                        </div>
-                    </div>
-                </div>
-                <div ng-if="vm.activeTab == '2'" class="editor-panel">
-                    <div class="editor-div editor-div-flex">
-                        <label class="login-lable label-editor label-editor-logo">Headline</label>
-                        <div>
-                            <textarea class="editor-textarea" ng-model="background.text" maxlength="140px"></textarea>
-                            <div class="editor-limits align-right">
-                                (Max 140 Char)
+                        <div class="editor-div editor-div-flex">
+                            <label class="login-lable label-editor label-editor-logo">Color (CTA)</label>
+                            <div>
+                                <script>
+                                    $(document).ready(function() {
+                                        jscolor.installByClassName("jscolor");
+                                    });
+                                </script>
+                                <input ng-model="header.ctaColor" type="text" name='secondaryColor' value='secondaryColor' id="secondaryColor" class="jscolor editor-color-input" value="4BABE2">
                             </div>
                         </div>
                     </div>
-                    <div class="editor-div editor-div-flex">
-                        <label class="login-lable label-editor label-editor-logo">Font Color</label>
-                        <div class="editor-div-flex">
+                    <div ng-if="vm.activeTab == '2'" class="editor-panel">
+                        <div class="editor-div editor-div-flex">
+                            <label class="login-lable label-editor label-editor-logo">Headline</label>
+                            <div>
+                                <textarea class="editor-textarea" ng-model="background.text" maxlength="140px"></textarea>
+                                <div class="editor-limits align-right">
+                                    (Max 140 Char)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="editor-div editor-div-flex">
+                            <label class="login-lable label-editor label-editor-logo">Font Color</label>
                             <div class="editor-div-flex">
-                                <input type="radio" name="selector" class="editor-radio" ng-model="background.textColor" value="true">
-                                <div class="radio-label">Black</div>
-                            </div>
-                            <div class="editor-div-flex margin-left-35">
-                                <input type="radio" name="selector" class="editor-radio" ng-model="background.textColor" value="false">
-                                <div class="radio-label">White</div>
-                            </div>
+                                <div class="editor-div-flex">
+                                    <input type="radio" name="selector" class="editor-radio" ng-model="background.textColor" value="true">
+                                    <div class="radio-label">Black</div>
+                                </div>
+                                <div class="editor-div-flex margin-left-35">
+                                    <input type="radio" name="selector" class="editor-radio" ng-model="background.textColor" value="false">
+                                    <div class="radio-label">White</div>
+                                </div>
 
+                            </div>
                         </div>
-                    </div>
-                    <div class="editor-div editor-div-flex">
-                        <label class="login-lable label-editor label-editor-slide">Color Theme</label>
-                        <div>
-                            <div ng-carousel ng-carousel-name="example-carousel1" ng-carousel-watch="slides">
-                                <slidecontainer>
-                                    <slide ng-repeat="slide in vm.bgSlides">
-                                        <div class="slide-content">
-                                            <div class="slide-bg">{{slide}}</div>
-                                            <div>
-                                                <button class="select-bg-btn">Select</button>
+                        <div class="editor-div editor-div-flex">
+                            <label class="login-lable label-editor label-editor-slide">Color Theme</label>
+                            <div>
+                                <div ng-carousel ng-carousel-name="example-carousel1" ng-carousel-watch="slides">
+                                    <slidecontainer>
+                                        <slide ng-repeat="slide in bgArray.listFilesPaths">
+                                            <div class="slide-content">
+                                                <div class="slide-bg">
+                                                    <img src="{{slide.url}}">
+                                                </div>
+                                                <div>
+                                                    <button class="select-bg-btn" ng-click="select($index)">Select</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </slide>
-
-                                </slidecontainer>
-                                <div class="carousel-arrow carousel-arrow-left">
-                                    <button class="demo-nav" ng-click="Carousel.get('example-carousel1').previous()">
-                                        <img src="/content/images/editor/left.png">
-                                    </button>
+                                        </slide>
+                                    </slidecontainer>
+                                    <div class="carousel-arrow carousel-arrow-left">
+                                        <button class="demo-nav" ng-click="Carousel.get('example-carousel1').previous()">
+                                            <img src="/content/images/editor/left.png">
+                                        </button>
+                                    </div>
+                                    <div class="carousel-arrow carousel-arrow-right">
+                                        <button class="demo-nav" ng-click="Carousel.get('example-carousel1').next()">
+                                            <img src="/content/images/editor/right.png">
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="carousel-arrow carousel-arrow-right">
-                                    <button class="demo-nav" ng-click="Carousel.get('example-carousel1').next()">
-                                        <img src="/content/images/editor/right.png">
-                                    </button>
+                            </div>
+                        </div>
+                        <div class="editor-div editor-div-flex">
+                            <label class="login-lable label-editor label-editor-logo">Current Theme</label>
+                            <div>
+                                <div class="theme-div">
+                                    <img ng-show="background.imageUrl" ng-src="{{background.imageUrl}}" class="theme-div-img">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="editor-div editor-div-flex">
-                        <label class="login-lable label-editor label-editor-logo">Current Theme</label>
-                        <div>
-                            <div class="theme-div"></div>
+                    <div ng-if="vm.activeTab == '3'" class="editor-panel">
+                        <div class="editor-div editor-div-flex">
+                            <label class="login-lable label-editor label-editor-links">Add Title</label>
+                            <div>
+                                <input class="editor-input editor-input-title" type="text" ng-model="links.title" maxlength="30">
+                            </div>
+                            <div class="editor-limits">
+                                (Max 30 Char)
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div ng-if="vm.activeTab == '3'" class="editor-panel">
-                    <div class="editor-div editor-div-flex">
-                        <label class="login-lable label-editor label-editor-links">Add Title</label>
-                        <div>
-                            <input class="editor-input editor-input-title" type="text" ng-model="links.title" maxlength="30">
+                        <div class="editor-div editor-div-flex">
+                            <div class="login-lable label-editor label-editor-links">
+                                <div>Add Icons</div>
+                                <div class="editor-limits">( Pick any 3 )</div>
+                            </div>
+                            <div>
+                                <div class="editor-flex-icons">
+                                    <div ng-repeat="listIcon in listIcons.listFilesPaths">
+                                        <img ng-src="{{listIcon.url}}">
+                                        <input type="checkbox"
+                                               value="{{listIcon.url}}"
+                                               ng-checked="selection.indexOf(listIcon.url) > -1"
+                                               ng-click="toggleSelection(listIcon.url)">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="editor-limits">
-                            (Max 30 Char)
-                        </div>
-                    </div>
-                    <div class="editor-div editor-div-flex">
-                        <div class="login-lable label-editor label-editor-links">
-                            <div>Add Icons</div>
-                            <div class="editor-limits">( Pick any 3 )</div>
-                        </div>
-                        <div>
+                        <div class="editor-div editor-div-flex">
+                            <label class="login-lable label-editor label-editor-links">Icon #1</label>
                             <div class="editor-div-flex">
-                                <div class="editor-header-bg-div"></div>
+                                <div ng-if="!selection[0]" class="editor-header-bg-div"></div>
+                                <div ng-if="selection[0]">
+                                    <img class="editor-header-bg-img" ng-src="{{selection[0]}}">
+                                </div>
                                 <div class="editor-links-group">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="editor-div editor-div-flex">
-                        <label class="login-lable label-editor label-editor-links">Icon #1</label>
-                        <div class="editor-div-flex">
-                            <div class="editor-header-bg-div"></div>
-                            <div class="editor-links-group">
-                                <div class="editor-div-flex">
-                                    <div class="editor-links-group-title editor-links-group-title-margin">Title</div>
-                                    <input class="editor-input editor-link-title" type="text" ng-model="links.name1" maxlength="20">
-                                    <div class="editor-limits">
-                                        ({{links.name1.length}}/20)
+                                    <div class="editor-div-flex">
+                                        <div class="editor-links-group-title editor-links-group-title-margin">Title</div>
+                                        <input ng-disabled="!selection[0]" class="editor-input editor-link-title" type="text" ng-model="links.name1" maxlength="20">
+                                        <div class="editor-limits">
+                                            ({{links.name1.length}}/20)
+                                        </div>
+                                    </div>
+                                    <div class="editor-div-flex">
+                                        <div class="editor-links-group-title">URL</div>
+                                        <input ng-disabled="!selection[0]" class="editor-input editor-link-url" type="text" ng-model="links.url1">
                                     </div>
                                 </div>
-                                <div class="editor-div-flex">
-                                    <div class="editor-links-group-title">URL</div>
-                                    <input class="editor-input editor-link-url" type="text" ng-model="links.url1">
-                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="editor-div editor-div-flex">
-                        <label class="login-lable label-editor label-editor-links">Icon #2</label>
-                        <div class="editor-div-flex">
-                            <div class="editor-header-bg-div"></div>
-                            <div class="editor-links-group">
-                                <div class="editor-div-flex">
-                                    <div class="editor-links-group-title editor-links-group-title-margin">Title</div>
-                                    <input class="editor-input editor-link-title" type="text" ng-model="links.name2" maxlength="20">
-                                    <div class="editor-limits">
-                                        ({{links.name2.length}}/20)
+                        <div class="editor-div editor-div-flex">
+                            <label class="login-lable label-editor label-editor-links">Icon #2</label>
+                            <div class="editor-div-flex">
+                                <div ng-if="!selection[1]" class="editor-header-bg-div"></div>
+                                <div ng-if="selection[1]">
+                                    <img class="editor-header-bg-img" ng-src="{{selection[1]}}">
+                                </div>
+                                <div class="editor-links-group">
+                                    <div class="editor-div-flex">
+                                        <div class="editor-links-group-title editor-links-group-title-margin">Title</div>
+                                        <input ng-disabled="!selection[1]" class="editor-input editor-link-title" type="text" ng-model="links.name2" maxlength="20">
+                                        <div class="editor-limits">
+                                            ({{links.name2.length}}/20)
+                                        </div>
+                                    </div>
+                                    <div class="editor-div-flex">
+                                        <div class="editor-links-group-title">URL</div>
+                                        <input ng-disabled="!selection[1]" class="editor-input editor-link-url" type="text" ng-model="links.url2">
                                     </div>
                                 </div>
-                                <div class="editor-div-flex">
-                                    <div class="editor-links-group-title">URL</div>
-                                    <input class="editor-input editor-link-url" type="text" ng-model="links.url2">
-                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="editor-div editor-div-flex">
-                        <label class="login-lable label-editor label-editor-links">Icon #3</label>
-                        <div class="editor-div-flex">
-                            <div class="editor-header-bg-div"></div>
-                            <div class="editor-links-group">
-                                <div class="editor-div-flex">
-                                    <div class="editor-links-group-title editor-links-group-title-margin">Title</div>
-                                    <input class="editor-input editor-link-title" type="text" ng-model="links.name3" maxlength="20">
-                                    <div class="editor-limits">
-                                        ({{links.name3.length}}/20)
+                        <div class="editor-div editor-div-flex">
+                            <label class="login-lable label-editor label-editor-links">Icon #3</label>
+                            <div class="editor-div-flex">
+                                <div ng-if="!selection[2]" class="editor-header-bg-div"></div>
+                                <div ng-if="selection[2]">
+                                    <img class="editor-header-bg-img" ng-src="{{selection[2]}}">
+                                </div>
+                                <div class="editor-links-group">
+                                    <div class="editor-div-flex">
+                                        <div class="editor-links-group-title editor-links-group-title-margin">Title</div>
+                                        <input ng-disabled="!selection[2]" class="editor-input editor-link-title" type="text" ng-model="links.name3" maxlength="20">
+                                        <div class="editor-limits">
+                                            ({{links.name3.length}}/20)
+                                        </div>
+                                    </div>
+                                    <div class="editor-div-flex">
+                                        <div class="editor-links-group-title">URL</div>
+                                        <input ng-disabled="!selection[2]" class="editor-input editor-link-url" type="text" ng-model="links.url3">
                                     </div>
                                 </div>
-                                <div class="editor-div-flex">
-                                    <div class="editor-links-group-title">URL</div>
-                                    <input class="editor-input editor-link-url" type="text" ng-model="links.url3">
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="vm.activeTab == '4'" class="editor-panel">
+                        <div class="editor-div editor-div-flex">
+                            <label class="login-lable label-editor label-editor-logo">Footer Title</label>
+                            <div>
+                                <input class="editor-input" type="text" ng-model="footer.title">
+                            </div>
+                        </div>
+                        <div class="editor-div-flex editor-url">
+                            <div class="login-lable label-editor label-editor-logo editor-div-flex">
+                                <div class="editor-url-icon">
+                                    <img src="/content/images/editor/fb-icon.png">
                                 </div>
+                                <div>(URL)</div>
+                            </div>
+                            <div>
+                                <input class="editor-input" type="text" ng-model="footer.facebookLink">
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div ng-if="vm.activeTab == '4'" class="editor-panel">
-                    <div class="editor-div editor-div-flex">
-                        <label class="login-lable label-editor label-editor-logo">Footer Title</label>
-                        <div>
-                            <input class="editor-input" type="text" ng-model="footer.title">
-                        </div>
-                    </div>
-                    <div class="editor-div-flex editor-url">
-                        <div class="login-lable label-editor label-editor-logo editor-div-flex">
-                            <div class="editor-url-icon">
-                                <img src="/content/images/editor/fb-icon.png">
+                        <div class="editor-div-flex editor-url">
+                            <div class="login-lable label-editor label-editor-logo editor-div-flex">
+                                <div class="editor-url-icon">
+                                    <img src="/content/images/editor/twitter-icon.png">
+                                </div>
+                                <div>(URL)</div>
                             </div>
-                            <div>(URL)</div>
-                        </div>
-                        <div>
-                            <input class="editor-input" type="text" ng-model="footer.facebookLink">
-                        </div>
-                    </div>
-                    <div class="editor-div-flex editor-url">
-                        <div class="login-lable label-editor label-editor-logo editor-div-flex">
-                            <div class="editor-url-icon">
-                                <img src="/content/images/editor/twitter-icon.png">
+                            <div>
+                                <input class="editor-input" type="text" ng-model="footer.twitterLink">
                             </div>
-                            <div>(URL)</div>
                         </div>
-                        <div>
-                            <input class="editor-input" type="text" ng-model="footer.twitterLink">
-                        </div>
-                    </div>
-                    <div class="editor-div-flex editor-url">
-                        <div class="login-lable label-editor label-editor-logo editor-div-flex">
-                            <div class="editor-url-icon">
-                                <img src="/content/images/editor/in-icon.png">
-                            </div>
-                            <div>(URL)</div>
+                        <div class="editor-div-flex editor-url">
+                            <div class="login-lable label-editor label-editor-logo editor-div-flex">
+                                <div class="editor-url-icon">
+                                    <img src="/content/images/editor/in-icon.png">
+                                </div>
+                                <div>(URL)</div>
 
-                        </div>
-                        <div>
-                            <input class="editor-input" type="text" ng-model="footer.linkedinLink">
+                            </div>
+                            <div>
+                                <input class="editor-input" type="text" ng-model="footer.linkedinLink">
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="saveButtonDiv">
-                    <button class="saveButton saveButtonNew" ng-disabled="disableSaveBtn" ng-click="saveCardlet()">Save Sigterra Profile</button>
+                    <button class="save-preview-btn" ng-click="save(true)">save</button>
                 </div>
             </div>
         </div>
         <div class="view-editor-col">
             <div class="second-column-editor">
-                <div class="editor-preview-panel"  ng-style="{'background': 'url(' + vm.bg + ') no-repeat center center fixed', 'background-size': 'cover'}">
+                <div class="editor-preview-panel"  ng-style="{'background': 'url(' + background.imageUrl + ') no-repeat center center fixed', 'background-size': 'cover'}">
                     <div class="editor-preview-header" id="editor-preview-header">
                         <div class="header-focus" ng-if="vm.activeTab == '1'">
                             <img class="focus-editing-marker" src="/content/images/editor/edit-marker.png">
@@ -385,15 +409,15 @@
                         <div class="editor-preview-header-flex">
                             <div>
                                 <a href="#">
-                                    <img ng-show="header.logoUrl" alt="Brand" ng-src="header.logoUrl">
+                                    <img class="header-preview-editor-logo" ng-show="header.logoUrl" alt="Brand" ng-src="{{header.logoUrl}}">
                                 </a>
                             </div>
                             <div>
-                                <div>
-                                    <div class="col-md-2 circle" >
-                                        <img class="image " ng-show="header.photoUrl" ng-src="header.photoUrl">
+                                <div class="preview-image-group">
+                                    <div >
+                                        <img  class="header-preview-editor-avatar"  class="image " ng-show="header.photoUrl" ng-src="{{header.photoUrl}}">
                                     </div>
-                                    <div class="col-md-6 alignme ">
+                                    <div class=" alignme ">
                                         <span class="bold"><strong>{{header.name}}</strong></span>
                                         <br>
                                         <span class="small text-light">{{header.title}}</span>
@@ -419,7 +443,7 @@
                             <div class="focus-editing-title">Banner</div>
                         </div>
                         <div class="editor-preview-body">
-                            <div class="editor-preview-title">
+                            <div class="editor-preview-title" ng-style="{'color': background.textColor === 'true' ? '#000000' : '#ffffff'}">
                                 {{background.text}}
                             </div>
                             <div>
@@ -455,23 +479,23 @@
                             </div>
                             <h4 class="text-center" id="capture">{{links.title}}</h4>
                             <br>
-                            <div class="service-info-editor service-info-min-height" >
-                                <div class="col-sm-4 img-with-text">
-                                    <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon02.png?17535346864100737432" border="0" alt="Carl Call"  />
+                            <div class="service-info-editor service-info-min-height" ng-show="links.logoUrl1">
+                                <div class="img-with-text">
+                                    <img class="click-sec" ng-src="{{links.logoUrl1}}" border="0" alt="Carl Call"  />
                                     <p class="click-sec-text-editor">
                                         <a class="preview-footer-link" ng-href="links.url1" data-toggle="modal" target="_blank">{{links.name1}}</a>
                                     </p>
                                     <br />
                                 </div>
-                                <div class="col-sm-4  img-with-text">
-                                    <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon01.png?17535346864100737432" border="0" alt="Sjon Gentry"  />
+                                <div class="img-with-text" ng-show="links.logoUrl2">
+                                    <img class="click-sec" ng-src="{{links.logoUrl2}}" border="0" alt="Sjon Gentry"  />
                                     <p class="click-sec-text-editor">
                                         <a class="preview-footer-link" ng-href="links.url2" data-toggle="modal" target="_blank">{{links.name2}}</a>
                                     </p>
                                     <br />
                                 </div>
-                                <div class="col-sm-4  img-with-text">
-                                    <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/icon3.png?12339313325764754835" border="0" alt="John Mabery" />
+                                <div class="img-with-text" ng-show="links.logoUrl3">
+                                    <img class="click-sec" ng-src="{{links.logoUrl3}}" border="0" alt="John Mabery" />
                                     <p class="click-sec-text-editor">
                                         <a class="preview-footer-link" ng-href="links.url3" data-toggle="modal" target="_blank">{{links.name3}}</a>
                                     </p>

@@ -150,6 +150,7 @@ public class CardletViewService {
             cardletHeaderVM.setPhotoUrl(
                 renameIfTmp(cardlet, cardletHeaderVM.getPhotoUrl(), FILE_NAME_PHOTO_TMP, FILE_NAME_PHOTO_PERSIST));
             CardletHeaderMapper.mapToEntity(cardletHeaderVM, cardletHeader);
+            cardletHeader.setCardlet(cardlet);
             cardletHeader = cardletHeaderRepository.save(cardletHeader);
             cardlet.setCardletHeader(cardletHeader);
         }
@@ -158,6 +159,7 @@ public class CardletViewService {
         if (cardletBackgroundVM != null) {
             CardletBackground cardletBackground = checkAndGetCardletVewPageTab(cardletBackgroundRepository, cardlet, cardlet.getCardletBackground(), cardletBackgroundVM, CardletBackground.class);
             CardletBackgroundMapper.mapToEntity(cardletBackgroundVM, cardletBackground);
+            cardletBackground.setCardlet(cardlet);
             cardletBackground = cardletBackgroundRepository.save(cardletBackground);
             cardlet.setCardletBackground(cardletBackground);
         }
@@ -166,6 +168,7 @@ public class CardletViewService {
         if (cardletLinksVM != null) {
             CardletLinks cardletLinks = checkAndGetCardletVewPageTab(cardletLinksRepository, cardlet, cardlet.getCardletLinks(), cardletLinksVM, CardletLinks.class);
             CardletLinksMapper.mapToEntity(cardletLinksVM, cardletLinks);
+            cardletLinks.setCardlet(cardlet);
             cardletLinks = cardletLinksRepository.save(cardletLinks);
             cardlet.setCardletLinks(cardletLinks);
         }
@@ -174,6 +177,7 @@ public class CardletViewService {
         if (cardletFooterVM != null) {
             CardletFooter cardletFooter = checkAndGetCardletVewPageTab(cardletFooterRepository, cardlet, cardlet.getCardletFooter(), cardletFooterVM, CardletFooter.class);
             CardletFooterMapper.mapToEntity(cardletFooterVM, cardletFooter);
+            cardletFooter.setCardlet(cardlet);
             cardletFooter = cardletFooterRepository.save(cardletFooter);
             cardlet.setCardletFooter(cardletFooter);
         }

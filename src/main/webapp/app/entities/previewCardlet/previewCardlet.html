@@ -197,45 +197,40 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand view-header-logo-main" href="#">
-                <img  alt="Brand" src="https://cdn.shopify.com/s/files/1/1081/0328/files/logo-cap.svg?12226597222098781749">
-            </a>
+            <img class="prview-logo view-header-logo-main" alt="Brand" ng-show="header.logoUrl"  ng-src="{{header.logoUrl}}">
         </div>
         <div class="navbar-collapse navbar-collapse-preview nav-view" style="display: flex!important" uib-collapse="vm.isNavbarCollapsed">
 
-            <a class="navbar-brand view-header-logo-collapse" href="#">
-                <img  alt="Brand" src="https://cdn.shopify.com/s/files/1/1081/0328/files/logo-cap.svg?12226597222098781749">
-            </a>
+            <img class="prview-logo view-header-logo-collapse"  alt="Brand" ng-show="header.logoUrl"  ng-src="{{header.logoUrl}}">
             <ul class="nav navbar-nav nav-preview">
-                <div >
-                    <div class="col-md-2 circle" >
-                        <img class="image "  src="">
+                <div class="preview-image-group">
+                    <div >
+                        <img class="prview-avatar" ng-show="header.photoUrl" ng-src="{{header.photoUrl}}">
                     </div>
-                    <div class="col-md-6 alignme ">
-                        <span class="bold"><strong>Harshad Apte</strong></span>
+                    <div class=" alignme ">
+                        <span class="bold"><strong>{{header.name}}</strong></span>
                         <br>
-                        <span class="small text-light">Social Media Stream Lead</span>
+                        <span class="small text-light">{{header.title}}</span>
                         <br>
                     </div>
                 </div>
             </ul>
             <ul class="nav navbar-nav nav-preview">
                 <div>
-                    <span class="small  fa fa-envelope"></span><span class="text-light">Harshad.apte@capgemini.com</span>
+                    <span ng-show="header.email" class="small  fa fa-envelope"></span><span class="text-light">{{header.email}}</span>
                     <br>
-                    <span class="small fa fa-phone"> </span><span class="text-light">(+91) 959-045-6473</span>
+                    <span ng-show="header.phone" class="small fa fa-phone"> </span><span class="text-light">{{header.phone}}</span>
                 </div>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <button class="btn  btn-warning connect-btn"  data-toggle="modal" data-target="#myModalNorm" >Connect With Our Experts</button>
+                <button class="btn  btn-warning connect-btn"  data-toggle="modal" data-target="#myModalNorm" ng-style="{'background-color': '#'+header.ctaColor}">{{header.text}}</button>
             </ul>
         </div>
     </div>
 </nav>
 
 
-<div class="entiti-content" ng-init="getCardlet()" ng-style="{'background': 'url(' + vm.bg + ') no-repeat center center fixed', 'background-size': 'cover'}">
-
+<div class="entiti-content" ng-init="getCardlet()" ng-style="{'background': 'url(' + background.imageUrl + ') no-repeat center center fixed', 'background-size': 'cover'}">
 
     <div class="preview-border">
         <div class="preview-title"></div>
@@ -249,7 +244,7 @@
             <strong>{{errorAddeding}}</strong>
         </div>
 
-        <h2 class="preview-title">{{vm.title}}</h2>
+        <h2 class="preview-title" ng-style="{'color': background.textColor === 'true' ? '#000000' : '#ffffff'}">{{background.text}}</h2>
 
         <div style="position:relative;">
             <div>
@@ -342,31 +337,31 @@
     </style>
 </div>
 <section class="service-info-sec">
-    <h2 class="text-center" id="capture">CapGemini's Experts are standing by</h2>
+    <h2 class="text-center" id="capture">{{links.title}}</h2>
     <br>
     <div class="container service-info" >
         <div class="col-sm-4 img-with-text">
-            <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon02.png?17535346864100737432" border="0" alt="Carl Call"  />
+            <img class="click-sec" ng-src="{{links.logoUrl1}}" border="0" alt="Carl Call"  />
             <p class="click-sec-text">
-                <a class="preview-footer-link" href="#myModalNorm" data-toggle="modal">Request Info</a>
+                <a class="preview-footer-link" ng-href="links.url1" data-toggle="modal" target="_blank">{{links.name1}}</a>
             </p>
             <br />
             <!--   (931)268-2040<br /><a href="mailto:carlcall@centergrovecoc.com">Email Carl Call</a>  </p>
              -->
         </div>
         <div class="col-sm-4  img-with-text">
-            <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/Icon01.png?17535346864100737432" border="0" alt="Sjon Gentry"  />
+            <img class="click-sec" ng-src="{{links.logoUrl2}}"/>
             <p class="click-sec-text">
-                <a class="preview-footer-link" href="#myModalNorm1" data-toggle="modal">Schedule a Deep Dive</a>
+                <a class="preview-footer-link" ng-href="links.url2" data-toggle="modal" target="_blank">{{links.name2}}</a>
             </p>
             <br />
             <!--   (931)268-3273<br /><a href="mailto:sjongentry@centergrovecoc.com">Email Sjon Gentry</a></p>
              -->
         </div>
         <div class="col-sm-4  img-with-text">
-            <img class="click-sec" src="https://cdn.shopify.com/s/files/1/1081/0328/files/icon3.png?12339313325764754835" border="0" alt="John Mabery" />
+            <img class="click-sec" ng-src="{{links.logoUrl3}}"/>
             <p class="click-sec-text">
-                <a class="preview-footer-link" href="#myModalNorm" data-toggle="modal">Connect with our Experts</a>
+                <a class="preview-footer-link" ng-href="links.url3" data-toggle="modal" target="_blank">{{links.name3}}</a>
             </p>
             <br />
             <!--   (931)268-0651<br /><a href="mailto:johnmabery@centergrovecoc.com">Email John Mabery</a> </p>
@@ -382,6 +377,32 @@
                 <div class="copyright-text">
                     CopyRight © 2018 Digital All Rights Reserved
                 </div>
+                <div>
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <div class="copyright-text">
+                                {{footer.title}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-view footer-editor-icon footer-editor-icon-div">
+                        <div ng-show="footer.facebookLink" class="footer-preview-icon-div">
+                            <a ng-href="footer.facebookLink" target="_blank">
+                                <img class="footer-preview-icon" src="/content/images/editor/FB.png">
+                            </a>
+                        </div>
+                        <div ng-show="footer.twitterLink" class="footer-preview-icon-div">
+                            <a class="footer-preview-icon" ng-href="footer.twitterLink" target="_blank">
+                                <img class="footer-preview-icon" src="/content/images/editor/tweeter.png">
+                            </a>
+                        </div>
+                        <div ng-show="footer.linkedinLink" class="footer-preview-icon-div">
+                            <a class="footer-preview-icon" ng-href="footer.linkedinLink" target="_blank">
+                                <img class="footer-preview-icon" src="/content/images/editor/Linkdn.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div> <!-- End Col -->
             <!-- <div class="col-sm-4">
                 <ul class="social-link pull-right footer-icons">
@@ -392,6 +413,7 @@
                 </ul>
             </div> --> <!-- End Col -->
         </div>
+
     </div>
 </div>
 

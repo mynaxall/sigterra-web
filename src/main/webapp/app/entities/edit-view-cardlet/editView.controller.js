@@ -36,9 +36,9 @@
             };
         });
 
-    EditViewController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'orderByFilter', 'PHONE_PATTERN', 'TOOLBAR_OPTIONS', 'ImageService', 'Carousel'];
+    EditViewController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'orderByFilter', 'PHONE_PATTERN', 'TOOLBAR_OPTIONS', 'ImageService', 'Carousel', 'EditViewerService'];
 
-    function EditViewController($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter, PHONE_PATTERN, TOOLBAR_OPTIONS, ImageService, Carousel) {
+    function EditViewController($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter, PHONE_PATTERN, TOOLBAR_OPTIONS, ImageService, Carousel, EditViewerService) {
         var vm = this;
         $scope.showError = false;
         $scope.Carousel = Carousel;
@@ -67,24 +67,29 @@
         $scope.secondaryColor = "";
         vm.activeTab = 1;
         vm.bg = "/content/images/background.jpg";
-        vm.bgSlides = ["/content/images/background.jpg", "/content/images/background2.jpg", "/content/images/background3jpg"];
         $scope.cardletView = {};
+        $scope.isLogo = false;
+        $scope.cardletId = '';
         $scope.header = {
             'name' : '',
             'title' : '',
-            'text' : 'Request For Demo'
+            'text' : 'Request For Demo',
+            'ctaColor' : 'f0ad4e'
         };
+        $scope.selection = [];
         $scope.background = {
             'text' : 'Conversational Commerce is the biggest opportunity for brands to act like people in digital channels & build customer engagement and loyalty',
             'textColor' : 'true'
         };
         $scope.links = {
-            'title' : 'CapGemini\'s Experts are standing by',
+            'title' : 'CapGemini\'s Experts',
             'name1' : '',
             'name2' : '',
             'name3' : ''
         };
         $scope.footer = {};
+        $scope.bgArray = {};
+        $scope.listIcons = {};
 
         $scope.myImage='';
         $scope.myCroppedImage = '';
@@ -119,10 +124,9 @@
         $scope.showSpinner = true;
 
         $scope.getCardlet = function(){
-            console.log("asdas" +
-                "dasdasd")
-            var param1 = $location.search().cardletId;
-            $http.get("/api/userCardlet/"+param1)
+            console.log("asdasdasdasd")
+            $scope.cardletId = $location.search().cardletId;
+            $http.get("/api/userCardlet/"+ $scope.cardletId)
                 .success(function(response, status, headers) {
                     $scope.showError = false;
                     $scope.tabNames = response;
@@ -143,14 +147,54 @@
                 }).error(function (response) {
                 $scope.showError = true;
                 $scope.showSpinner = false;
+
             });
-            $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ window.btoa(param1);
+            EditViewerService.getPreview($scope.cardletId).then(function (response) {
+                $scope.cardletView = response;
+                if($scope.cardletView.header){
+                    $scope.header = $scope.cardletView.header;
+                }
+                if($scope.cardletView.background){
+                    $scope.background = $scope.cardletView.background;
+                }
+                if($scope.cardletView.links){
+                    $scope.links = $scope.cardletView.links;
+                    if($scope.links.logoUrl1) {
+                        $scope.selection.push($scope.links.logoUrl1);
+                    }
+                    if($scope.links.logoUrl2) {
+                        $scope.selection.push($scope.links.logoUrl2);
+                    }
+                    if($scope.links.logoUrl3) {
+                        $scope.selection.push($scope.links.logoUrl3);
+                    }
+                }
+
+                if($scope.cardletView.footer){
+                    $scope.footer = $scope.cardletView.footer;
+                }
+
+
+                console.log(response)
+            }).catch(function (response) {
+            });
+            $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ window.btoa($scope.cardletId);
         };
 
         loadAll();
 
-
         function loadAll () {
+            EditViewerService.getBackgrounds().then(function (response) {
+                $scope.bgArray = response;
+
+            }).catch(function (response) {
+            });
+
+            EditViewerService.getListIcons().then(function (response) {
+                $scope.listIcons = response;
+            }).catch(function (response) {
+            });
+
             CardletList.query({
                 sort: sort()
             }, onSuccess, onError);
@@ -419,20 +463,6 @@
         }
 
         $scope.disableSaveBtn = false;
-
-        $scope.saveCardlet = function(){
-
-            if($scope.isEmptyName()) {
-                $scope.disableSaveBtn = true;
-                $http.post("/api/editCardlet", $scope.tabNames)
-                    .success(function (data, status, headers, config) {
-                        $location.path('/user-cardlets')
-                    }).error(function (response) {
-                    $scope.disableSaveBtn = false;
-                });
-            }
-        }
-
         $scope.accordion = 1;
 
         $scope.accordionActivete = function(Id){
@@ -521,6 +551,7 @@
 
 
         function showImageDialog(type) {
+            $scope.isLogo = type;
             angular.element('#fileInput').val(null);
             $scope.myImage = "";
             if ($scope.header.imageUrl) {
@@ -553,6 +584,12 @@
         }
 
         function saveImage(){
+            var url = '';
+            if($scope.isLogo){
+                url = '/api/cardlet/pageview/logo-image/' + $scope.cardletId;
+            }else{
+                url = '/api/cardlet/pageview/photo-image/' + $scope.cardletId;
+            }
             vm.hideImageDialog();
             $scope.showSpinner = true;
             var img_b64 = $scope.myCroppedImage;
@@ -560,21 +597,102 @@
             var file = b64toBlob(png, 'image/png')
             var fd = new FormData();
             fd.append('file', file);
-            vm.settingsAccount.imageUrl = "";
-            $http.post("/api/account/upload/icon",  fd, {
+            $http.post(url,  fd, {
                 transformRequest: angular.identity,
                 headers: {'Content-Type': undefined}
             })
                 .success(function (data, status, headers, config) {
+                    if($scope.isLogo){
+                        $scope.header.logoUrl = data.url
+                    }else{
+                        $scope.header.photoUrl = data.url
+                    }
                     $scope.showSpinner = false;
-                    vm.settingsAccount.imageUrl = data.url;
                     $scope.myImage='';
                     $scope.myCroppedImage = '';
                 });
         }
 
+        function b64toBlob(b64Data, contentType, sliceSize) {
+            contentType = contentType || '';
+            sliceSize = sliceSize || 512;
+
+            var byteCharacters = atob(b64Data);
+            var byteArrays = [];
+
+            for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+                var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+                var byteNumbers = new Array(slice.length);
+                for (var i = 0; i < slice.length; i++) {
+                    byteNumbers[i] = slice.charCodeAt(i);
+                }
+
+                var byteArray = new Uint8Array(byteNumbers);
+
+                byteArrays.push(byteArray);
+            }
+
+            var blob = new Blob(byteArrays, {type: contentType});
+            return blob;
+        };
+
+        $scope.save = function (isSave) {
+            $scope.showSpinner = true;
+            $scope.cardletView.header = $scope.header;
+            $scope.cardletView.background = $scope.background;
+            $scope.cardletView.links = $scope.links;
+            $scope.cardletView.footer = $scope.footer;
+            $scope.cardletView.cardletId = $scope.cardletId;
+            EditViewerService.updateViewer($scope.cardletView ).then(function (response) {
+                $scope.showSpinner = false;
+                if(isSave) {
+                    $location.path('/user-cardlets')
+                }else{
+                    $location.path('/edit-cardlet-list').search({cardletId: $scope.cardletId});
+                }
+            }).catch(function (response) {
+                $scope.showSpinner = false;
+            });
+        }
+
+        $scope.select = function (index) {
+            $scope.background.imageUrl = $scope.bgArray.listFilesPaths[index].url;
+        }
+
+        $scope.toggleSelection = function toggleSelection(img) {
+            console.log(img)
+            var idx = $scope.selection.indexOf(img);
+            $scope.links.logoUrl1 = '';
+            $scope.links.logoUrl2 = '';
+            $scope.links.logoUrl3 = '';
+
+            if (idx > -1) {
+                $scope.selection.splice(idx, 1);
+            }
+            else {
+                $scope.selection.push(img);
+            }
+
+            console.log($scope.selection[0])
+            if($scope.selection[0]){
+                $scope.links.logoUrl1 = $scope.selection[0];
+            }
+            if($scope.selection[1]){
+                $scope.links.logoUrl2 = $scope.selection[1];
+            }
+            if($scope.selection[2]){
+                $scope.links.logoUrl3 = $scope.selection[2];
+            }
+
+        };
+
+        $scope.gerPreviewLink = function (id) {
+            return ($location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/previewCardlet?cardletId=' + id)
+        }
 
     }
+
 
 
 })();

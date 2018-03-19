@@ -6,9 +6,9 @@
         .controller('PreviewCardletController', PreviewCardletController);
 
 
-    PreviewCardletController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'LoginService', '$sce', '$rootScope', '$window'];
+    PreviewCardletController.$inject = ['$scope', '$state', 'UserCardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'LoginService', '$sce', '$rootScope', '$window', 'EditViewerService'];
 
-    function PreviewCardletController($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants, $http, $timeout, $location, LoginService, $sce, $rootScope, $window) {
+    function PreviewCardletController($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants, $http, $timeout, $location, LoginService, $sce, $rootScope, $window, EditViewerService) {
 
         var vm = this;
         vm.tabId = "";
@@ -84,6 +84,24 @@
                         vm.showSpinner = false;
                     }, 4000)
                 });
+
+            EditViewerService.getPreview(getId(param1)).then(function (response) {
+                $scope.cardletView = response;
+                if($scope.cardletView.header){
+                    $scope.header = $scope.cardletView.header;
+                }
+                if($scope.cardletView.background){
+                    $scope.background = $scope.cardletView.background;
+                }
+                if($scope.cardletView.footer){
+                    $scope.footer = $scope.cardletView.footer;
+                }
+                if($scope.cardletView.links) {
+                    $scope.links = $scope.cardletView.links;
+                }
+
+            }).catch(function (response) {
+            });
         };
 
 

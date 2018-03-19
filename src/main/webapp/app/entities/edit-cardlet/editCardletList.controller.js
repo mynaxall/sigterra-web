@@ -63,6 +63,7 @@
         $scope.bounds.top = 200;
         $scope.bounds.bottom = 0;
         $scope.imageSize = {width: 200, height: 200};
+        $scope.cadletId = '';
 
         var handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];
@@ -257,7 +258,9 @@
         $scope.showSpinner = true;
 
         $scope.getCardlet = function(){
+
             var param1 = $location.search().cardletId;
+            $scope.cadletId = param1;
             $http.get("/api/userCardlet/"+param1)
                 .success(function(response, status, headers) {
                     $scope.showError = false;
@@ -790,13 +793,17 @@
 
         $scope.disableSaveBtn = false;
 
-        $scope.saveCardlet = function(){
+        $scope.saveCardlet = function(isSave){
 
             if($scope.isEmptyName()) {
                 $scope.disableSaveBtn = true;
                 $http.post("/api/editCardlet", $scope.tabNames)
                     .success(function (data, status, headers, config) {
-                        $location.path('/user-cardlets')
+                        if(isSave) {
+                            $location.path('/user-cardlets')
+                        }else{
+                            $location.path('/edit-view').search({cardletId: $scope.cadletId});
+                        }
                     }).error(function (response) {
                         $scope.disableSaveBtn = false;
                     });
@@ -877,14 +884,17 @@
         }
 
         $scope.cropWidth = function () {
-
-
             if ($scope.myCroppedImage) {
                 console.log("ss")
                 $scope.imageSize = ImageService.imageSize($scope.bounds)
             }
             return $scope.imageSize;
         }
+
+        $scope.gerPreviewLink = function (id) {
+            return ($location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/previewCardlet?cardletId=' + id)
+        }
+
 
 
     }

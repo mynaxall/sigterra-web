@@ -790,7 +790,6 @@
                 $scope.disableSaveBtn = true;
             $http.post("/api/cardlet", $scope.tabNames)
                 .success(function (data, status, headers, config) {
-                    $location.path('/user-cardlets')
                 }).error(function (response) {
                     $scope.disableSaveBtn = false;
                 });
