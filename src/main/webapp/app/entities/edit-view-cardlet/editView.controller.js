@@ -159,10 +159,15 @@
                 }
                 if($scope.cardletView.links){
                     $scope.links = $scope.cardletView.links;
-                    $scope.selection.push($scope.links.logoUrl1);
-                    $scope.selection.push($scope.links.logoUrl2);
-                    $scope.selection.push($scope.links.logoUrl3);
-
+                    if($scope.links.logoUrl1) {
+                        $scope.selection.push($scope.links.logoUrl1);
+                    }
+                    if($scope.links.logoUrl2) {
+                        $scope.selection.push($scope.links.logoUrl2);
+                    }
+                    if($scope.links.logoUrl3) {
+                        $scope.selection.push($scope.links.logoUrl3);
+                    }
                 }
 
                 if($scope.cardletView.footer){
@@ -458,20 +463,6 @@
         }
 
         $scope.disableSaveBtn = false;
-
-        $scope.saveCardlet = function(){
-
-            if($scope.isEmptyName()) {
-                $scope.disableSaveBtn = true;
-                $http.post("/api/editCardlet", $scope.tabNames)
-                    .success(function (data, status, headers, config) {
-                        $location.path('/user-cardlets')
-                    }).error(function (response) {
-                    $scope.disableSaveBtn = false;
-                });
-            }
-        }
-
         $scope.accordion = 1;
 
         $scope.accordionActivete = function(Id){
@@ -647,13 +638,17 @@
         };
 
         $scope.save = function () {
+            $scope.showSpinner = true;
             $scope.cardletView.header = $scope.header;
             $scope.cardletView.background = $scope.background;
             $scope.cardletView.links = $scope.links;
             $scope.cardletView.footer = $scope.footer;
             $scope.cardletView.cardletId = $scope.cardletId;
             EditViewerService.updateViewer($scope.cardletView ).then(function (response) {
+                $scope.showSpinner = false;
+                $location.path('/user-cardlets')
             }).catch(function (response) {
+                $scope.showSpinner = false;
             });
         }
 
@@ -662,6 +657,7 @@
         }
 
         $scope.toggleSelection = function toggleSelection(img) {
+            console.log(img)
             var idx = $scope.selection.indexOf(img);
             $scope.links.logoUrl1 = '';
             $scope.links.logoUrl2 = '';
@@ -673,6 +669,8 @@
             else {
                 $scope.selection.push(img);
             }
+
+            console.log($scope.selection[0])
             if($scope.selection[0]){
                 $scope.links.logoUrl1 = $scope.selection[0];
             }
