@@ -73,6 +73,10 @@
         jscolor.installByClassName("jscolor");
     });
 </script>
+<div class="editor-subheader">
+    <a class="editor-subheader-btn" ng-click="save(false)">Edit Card</a>
+    <a class="editor-subheader-btn"  target="_blank" href="{{gerPreviewLink(cardletId)}}">View Page</a>
+</div>
 <div class="entiti-content" ng-init="getCardlet()">
     <div class="alert alert-danger cardlet-alert" ng-show="showError">
         <strong>Access denied</strong>
@@ -390,7 +394,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="save-preview-btn" ng-click="save()">save</button>
+                    <button class="save-preview-btn" ng-click="save(true)">save</button>
                 </div>
             </div>
         </div>

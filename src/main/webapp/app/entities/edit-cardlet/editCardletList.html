@@ -217,6 +217,10 @@
         $("#main-footer").removeClass("ng-hide");
     });
 </script>
+<div class="editor-subheader">
+    <a class="editor-subheader-btn" ng-click="saveCardlet(false)">Edit Page</a>
+    <a class="editor-subheader-btn" target="_blank" href="{{gerPreviewLink(cardletId)}}">View Page</a>
+</div>
 <div class="entiti-content" ng-init="getCardlet()">
     <div class="alert alert-danger cardlet-alert" ng-show="showError">
         <strong>Access denied</strong>
@@ -812,7 +816,7 @@
                         </div>
                     </div>
                     <div class="saveButtonDiv">
-                        <button class="saveButton saveButtonNew" ng-disabled="disableSaveBtn" ng-click="saveCardlet()">Save Sigterra Profile</button>
+                        <button class="saveButton saveButtonNew" ng-disabled="disableSaveBtn" ng-click="saveCardlet(true)">Save Sigterra Profile</button>
                     </div>
                 </div>
             </div>

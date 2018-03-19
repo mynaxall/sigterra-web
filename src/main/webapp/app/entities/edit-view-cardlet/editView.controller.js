@@ -637,7 +637,7 @@
             return blob;
         };
 
-        $scope.save = function () {
+        $scope.save = function (isSave) {
             $scope.showSpinner = true;
             $scope.cardletView.header = $scope.header;
             $scope.cardletView.background = $scope.background;
@@ -646,7 +646,11 @@
             $scope.cardletView.cardletId = $scope.cardletId;
             EditViewerService.updateViewer($scope.cardletView ).then(function (response) {
                 $scope.showSpinner = false;
-                $location.path('/user-cardlets')
+                if(isSave) {
+                    $location.path('/user-cardlets')
+                }else{
+                    $location.path('/edit-cardlet-list').search({cardletId: $scope.cardletId});
+                }
             }).catch(function (response) {
                 $scope.showSpinner = false;
             });
@@ -682,6 +686,11 @@
             }
 
         };
+
+        $scope.gerPreviewLink = function (id) {
+            return ($location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/previewCardlet?cardletId=' + id)
+        }
+
     }
 
 

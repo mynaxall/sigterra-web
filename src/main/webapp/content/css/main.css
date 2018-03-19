@@ -1365,7 +1365,7 @@ Social Buttons
     position: absolute;
     top: 0;
     left: 0;
-    height: 242px;
+    height: 304px;
     width: 100%;
     z-index: 10;
     border: 3px solid #BFBFBF;
@@ -7053,6 +7053,21 @@ a.preview-footer-link {
     justify-content: flex-start;
     align-items: center;
     align-content: center;
+}
+
+.editor-subheader{
+    height: 85px;
+    background-color: #efeded;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+}
+
+.editor-subheader-btn{
+    margin-right: 30px;
 }
 
 
