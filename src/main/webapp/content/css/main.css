@@ -3823,7 +3823,6 @@ button[disabled]:hover{
     background-color: rgba(115, 140, 158, 0.37);
     padding-right: 50px!important;
     padding-left: 50px!important;
-    padding-bottom: 270px;
     float: none;
 }
 
@@ -7097,6 +7096,15 @@ a.preview-footer-link {
 
 .footer-preview-icon-div{
     width: 45px!important;
+}
+
+
+.row-edit{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: stretch;
+    height: 1000px;
 }
 
 
