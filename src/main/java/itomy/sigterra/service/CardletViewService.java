@@ -351,8 +351,14 @@ public class CardletViewService {
      */
     public void delete(Cardlet cardlet) {
         if (cardlet.getCardletHeader() != null) {
-            deleteFile(cardlet.getCardletHeader().getLogo());
-            deleteFile(cardlet.getCardletHeader().getPhoto());
+            String url = cardlet.getCardletHeader().getLogo();
+            if (url != null && !url.isEmpty()) {
+                deleteFile(url);
+            }
+            url = cardlet.getCardletHeader().getLogo();
+            if (url != null && !url.isEmpty()) {
+                deleteFile(url);
+            }
         }
     }
 
@@ -362,7 +368,14 @@ public class CardletViewService {
      * @param path
      */
     private void deleteFile(String path) {
-        awss3BucketService.deleteFile(path);
+        if (path != null) {
+            try {
+                awss3BucketService.deleteFile(path);
+                log.info("Deleted file: "+path);
+            } catch (Exception e){
+                log.error("Error delete file " + path,e);
+            }
+        }
     }
 
     /**
