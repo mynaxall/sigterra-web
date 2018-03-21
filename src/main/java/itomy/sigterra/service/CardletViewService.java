@@ -11,6 +11,7 @@ import itomy.sigterra.service.mapper.CardletLinksMapper;
 import itomy.sigterra.web.rest.errors.CardletNotFound;
 import itomy.sigterra.web.rest.errors.CustomParameterizedException;
 import itomy.sigterra.web.rest.vm.*;
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -352,11 +353,11 @@ public class CardletViewService {
     public void delete(Cardlet cardlet) {
         if (cardlet.getCardletHeader() != null) {
             String url = cardlet.getCardletHeader().getLogo();
-            if (url != null && !url.isEmpty()) {
+            if (StringUtils.isNotBlank(url)) {
                 deleteFile(url);
             }
             url = cardlet.getCardletHeader().getLogo();
-            if (url != null && !url.isEmpty()) {
+            if (StringUtils.isNotBlank(url)) {
                 deleteFile(url);
             }
         }
@@ -368,7 +369,7 @@ public class CardletViewService {
      * @param path
      */
     private void deleteFile(String path) {
-        if (path != null) {
+        if (StringUtils.isNotBlank(path)) {
             try {
                 awss3BucketService.deleteFile(path);
                 log.info("Deleted file: "+path);
