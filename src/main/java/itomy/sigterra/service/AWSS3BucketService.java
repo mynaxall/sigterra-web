@@ -263,8 +263,13 @@ public class AWSS3BucketService {
      * @param path fileKey in bucket
      */
     public void deleteFile(String path) {
-        String bucketName = hipsterProperties.getAwss3Bucket().getName();
-        s3Client.deleteObject(bucketName,path);
+        try {
+            String bucketName = hipsterProperties.getAwss3Bucket().getName();
+            s3Client.deleteObject(bucketName,path);
+            log.info("Deleted file: "+path);
+        } catch (Exception e){
+            log.error("Error delete file " + path,e);
+        }
     }
 }
 
