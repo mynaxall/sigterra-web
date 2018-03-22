@@ -197,15 +197,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <img class="prview-logo view-header-logo-main" alt="Brand" ng-show="header.logoUrl"  ng-src="{{header.logoUrl}}">
+            <img class="prview-logo view-header-logo-main" alt="Brand" ng-show="header.logoUrl"  ng-src="{{header.logoUrl}}?{{time}}">
         </div>
         <div class="navbar-collapse navbar-collapse-preview nav-view" style="display: flex!important" uib-collapse="vm.isNavbarCollapsed">
 
-            <img class="prview-logo view-header-logo-collapse"  alt="Brand" ng-show="header.logoUrl"  ng-src="{{header.logoUrl}}">
+            <img class="prview-logo view-header-logo-collapse"  alt="Brand" ng-show="header.logoUrl"  ng-src="{{header.logoUrl}}?{{time}}">
             <ul class="nav navbar-nav nav-preview">
                 <div class="preview-image-group">
                     <div >
-                        <img class="prview-avatar" ng-show="header.photoUrl" ng-src="{{header.photoUrl}}">
+                        <img class="prview-avatar" ng-show="header.photoUrl" ng-src="{{header.photoUrl}}?{{time}}">
                     </div>
                     <div class=" alignme ">
                         <span class="bold"><strong>{{header.name}}</strong></span>

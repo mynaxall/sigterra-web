@@ -69,6 +69,7 @@
         vm.bg = "/content/images/background.jpg";
         $scope.cardletView = {};
         $scope.isLogo = false;
+        $scope.time = Date.now();
         $scope.cardletId = '';
         $scope.header = {
             'name' : '',
