@@ -29,7 +29,7 @@ public class CardletLinksMapper {
         destination.setTitle(source.getTitle());
         destination.setLogoUrl1(source.getLogo1());
         destination.setName1(source.getName1());
-        destination.setUrl2(source.getUrl2());
+        destination.setUrl1(source.getUrl1());
         destination.setLogoUrl2(source.getLogo2());
         destination.setName2(source.getName2());
         destination.setUrl2(source.getUrl2());

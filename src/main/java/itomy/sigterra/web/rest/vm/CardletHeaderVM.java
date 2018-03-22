@@ -1,7 +1,5 @@
 package itomy.sigterra.web.rest.vm;
 
-import itomy.sigterra.config.Constants;
-import org.hibernate.validator.constraints.Email;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Size;
@@ -28,10 +26,9 @@ public class CardletHeaderVM implements VmWithLongId {
     @Size(max = 30)
     private String title;
 
-    @Size(max = 50)
+    @Size(max = 255)
     private String phone;
 
-    @Email(regexp = Constants.LOGIN_REGEX)
     @Size(max = 100)
     private String email;
 

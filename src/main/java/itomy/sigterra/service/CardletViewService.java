@@ -79,7 +79,7 @@ public class CardletViewService {
      * @return
      */
     public CardletViewRequestResponseVM getCardletView(Long cardletId) {
-        Cardlet cardlet = cardletRepository.findOneByIdAndUserIsCurrentUser(cardletId);
+        Cardlet cardlet = cardletRepository.findOne(cardletId);
         if (cardlet == null) throw new CardletNotFound(cardletId);
         CardletViewRequestResponseVM cardletView = createCardletViewVM(cardlet);
         return cardletView;
