@@ -17,6 +17,7 @@
         $rootScope.title = "";
         vm.toggleNavbar = toggleNavbar;
         vm.isNavbarCollapsed = true;
+        $scope.time = Date.now();
 
 
         $scope.getUser = function () {

@@ -69,6 +69,7 @@
         vm.bg = "/content/images/background.jpg";
         $scope.cardletView = {};
         $scope.isLogo = false;
+        $scope.time = Date.now();
         $scope.cardletId = '';
         $scope.header = {
             'name' : '',
@@ -688,7 +689,11 @@
         };
 
         $scope.gerPreviewLink = function (id) {
-            return ($location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/previewCardlet?cardletId=' + id)
+            return ($location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/previewCardlet?cardletId=' + setId(id))
+        }
+
+        function setId(id) {
+            return window.btoa(window.btoa(window.btoa(window.btoa(id))));
         }
 
     }

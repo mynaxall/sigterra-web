@@ -109,7 +109,7 @@
                                     <button ng-click="vm.showImageDialog(true)" class="upload-img-btn">
                                         <img src="/content/images/editor/edit.png">
                                     </button>
-                                    <img class="editor-header-logo-img" ng-src="{{header.logoUrl}}">
+                                    <img class="editor-header-logo-img" ng-src="{{header.logoUrl}}?{{time}}">
                                 </div>
                                 <div class="editor-limits">
                                     (240 x 70 px recommended)
@@ -123,7 +123,7 @@
                                     <button ng-click="vm.showImageDialog(false)" class="upload-img-btn">
                                         <img src="/content/images/editor/edit.png">
                                     </button>
-                                    <img class="editor-header-avatar-img" ng-src="{{header.photoUrl}}">
+                                    <img class="editor-header-avatar-img" ng-src="{{header.photoUrl}}?{{time}}">
                                 </div>
                                 <div class="editor-limits">
                                     (100 x 100 px recommended)
@@ -403,13 +403,13 @@
                         <div class="editor-preview-header-flex">
                             <div>
                                 <a href="#">
-                                    <img class="header-preview-editor-logo" ng-show="header.logoUrl" alt="Brand" ng-src="{{header.logoUrl}}">
+                                    <img class="header-preview-editor-logo" ng-show="header.logoUrl" alt="Brand" ng-src="{{header.logoUrl}}?{{time}}">
                                 </a>
                             </div>
                             <div>
                                 <div class="preview-image-group">
                                     <div >
-                                        <img  class="header-preview-editor-avatar"  class="image " ng-show="header.photoUrl" ng-src="{{header.photoUrl}}">
+                                        <img  class="header-preview-editor-avatar"  class="image " ng-show="header.photoUrl" ng-src="{{header.photoUrl}}?{{time}}">
                                     </div>
                                     <div class=" alignme ">
                                         <span class="bold"><strong>{{header.name}}</strong></span>
