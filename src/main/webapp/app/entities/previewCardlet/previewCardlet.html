@@ -343,7 +343,7 @@
         <div class="col-sm-4 img-with-text">
             <img class="click-sec" ng-src="{{links.logoUrl1}}" border="0" alt="Carl Call"  />
             <p class="click-sec-text">
-                <a class="preview-footer-link" ng-href="links.url1" data-toggle="modal" target="_blank">{{links.name1}}</a>
+                <a class="preview-footer-link" href="{{createURL(links.url1)}}" data-toggle="modal" target="_blank">{{links.name1}}</a>
             </p>
             <br />
             <!--   (931)268-2040<br /><a href="mailto:carlcall@centergrovecoc.com">Email Carl Call</a>  </p>
@@ -352,7 +352,7 @@
         <div class="col-sm-4  img-with-text">
             <img class="click-sec" ng-src="{{links.logoUrl2}}"/>
             <p class="click-sec-text">
-                <a class="preview-footer-link" ng-href="links.url2" data-toggle="modal" target="_blank">{{links.name2}}</a>
+                <a class="preview-footer-link" href="{{createURL(links.url2)}}" data-toggle="modal" target="_blank">{{links.name2}}</a>
             </p>
             <br />
             <!--   (931)268-3273<br /><a href="mailto:sjongentry@centergrovecoc.com">Email Sjon Gentry</a></p>
@@ -361,7 +361,7 @@
         <div class="col-sm-4  img-with-text">
             <img class="click-sec" ng-src="{{links.logoUrl3}}"/>
             <p class="click-sec-text">
-                <a class="preview-footer-link" ng-href="links.url3" data-toggle="modal" target="_blank">{{links.name3}}</a>
+                <a class="preview-footer-link" href="{{createURL(links.url3)}}" data-toggle="modal" target="_blank">{{links.name3}}</a>
             </p>
             <br />
             <!--   (931)268-0651<br /><a href="mailto:johnmabery@centergrovecoc.com">Email John Mabery</a> </p>
@@ -382,17 +382,17 @@
                     </div>
                     <div class="nav-view footer-editor-icon footer-editor-icon-div">
                         <div ng-show="footer.facebookLink" class="footer-preview-icon-div">
-                            <a ng-href="footer.facebookLink" target="_blank">
+                            <a ng-href="createURL(footer.facebookLink)" target="_blank">
                                 <img class="footer-preview-icon" src="/content/images/editor/FB.png">
                             </a>
                         </div>
                         <div ng-show="footer.twitterLink" class="footer-preview-icon-div">
-                            <a class="footer-preview-icon" ng-href="footer.twitterLink" target="_blank">
+                            <a class="footer-preview-icon" ng-href="createURL(footer.twitterLink)" target="_blank">
                                 <img class="footer-preview-icon" src="/content/images/editor/tweeter.png">
                             </a>
                         </div>
                         <div ng-show="footer.linkedinLink" class="footer-preview-icon-div">
-                            <a class="footer-preview-icon" ng-href="footer.linkedinLink" target="_blank">
+                            <a class="footer-preview-icon" ng-href="createURL(footer.linkedinLink)" target="_blank">
                                 <img class="footer-preview-icon" src="/content/images/editor/Linkdn.png">
                             </a>
                         </div>
