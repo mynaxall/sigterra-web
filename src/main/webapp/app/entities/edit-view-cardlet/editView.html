@@ -210,11 +210,11 @@
                             <label class="login-lable label-editor label-editor-logo">Font Color</label>
                             <div class="editor-div-flex">
                                 <div class="editor-div-flex">
-                                    <input type="radio" name="selector" class="editor-radio" ng-model="background.textColor" value="true">
+                                    <input type="radio" name="selector" class="editor-radio" ng-model="background.textColor" ng-value="true">
                                     <div class="radio-label">Black</div>
                                 </div>
                                 <div class="editor-div-flex margin-left-35">
-                                    <input type="radio" name="selector" class="editor-radio" ng-model="background.textColor" value="false">
+                                    <input type="radio" name="selector" class="editor-radio" ng-model="background.textColor" ng-value="false">
                                     <div class="radio-label">White</div>
                                 </div>
 
@@ -437,7 +437,7 @@
                             <div class="focus-editing-title">Banner</div>
                         </div>
                         <div class="editor-preview-body">
-                            <div class="editor-preview-title" ng-style="{'color': background.textColor === 'true' ? '#000000' : '#ffffff'}">
+                            <div class="editor-preview-title" ng-style="{'color': background.textColor ? '#000000' : '#ffffff'}">
                                 {{background.text}}
                             </div>
                             <div>
