@@ -63,7 +63,7 @@
         $scope.bounds.top = 200;
         $scope.bounds.bottom = 0;
         $scope.imageSize = {width: 200, height: 200};
-        $scope.cadletId = '';
+        $scope.cardletId = '';
 
         var handleFileSelect=function(evt) {
             var file=evt.currentTarget.files[0];
@@ -260,7 +260,7 @@
         $scope.getCardlet = function(){
 
             var param1 = $location.search().cardletId;
-            $scope.cadletId = param1;
+            $scope.cardletId = param1;
             $http.get("/api/userCardlet/"+param1)
                 .success(function(response, status, headers) {
                     $scope.showError = false;
@@ -802,7 +802,7 @@
                         if(isSave) {
                             $location.path('/user-cardlets')
                         }else{
-                            $location.path('/edit-view').search({cardletId: $scope.cadletId});
+                            $location.path('/edit-view').search({cardletId: $scope.cardletId});
                         }
                     }).error(function (response) {
                         $scope.disableSaveBtn = false;
@@ -892,9 +892,12 @@
         }
 
         $scope.gerPreviewLink = function (id) {
-            return ($location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/previewCardlet?cardletId=' + id)
+            return ($location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/previewCardlet?cardletId=' + setId(id))
         }
 
+        function setId(id) {
+            return window.btoa(window.btoa(window.btoa(window.btoa(id))));
+        }
 
 
     }

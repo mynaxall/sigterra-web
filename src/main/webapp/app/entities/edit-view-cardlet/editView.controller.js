@@ -688,7 +688,11 @@
         };
 
         $scope.gerPreviewLink = function (id) {
-            return ($location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/previewCardlet?cardletId=' + id)
+            return ($location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/previewCardlet?cardletId=' + setId(id))
+        }
+
+        function setId(id) {
+            return window.btoa(window.btoa(window.btoa(window.btoa(id))));
         }
 
     }
