@@ -34,4 +34,6 @@
     <include file="classpath:config/liquibase/changelog/20180307000000_added_entity_cardlet_viewpagetables.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20180315000000_add_rename_entity_cardlet_footer.xml"
              relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20180322000000_change_cardlet_header_phone_column.xml" relativeToChangelogFile="false"/>
+
 </databaseChangeLog>

@@ -28,7 +28,7 @@ public class CardletHeaderVM implements VmWithLongId {
     @Size(max = 30)
     private String title;
 
-    @Size(max = 50)
+    @Size(max = 255)
     private String phone;
 
     @Email(regexp = Constants.LOGIN_REGEX)
