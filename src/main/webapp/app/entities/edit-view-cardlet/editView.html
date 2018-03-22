@@ -90,7 +90,7 @@
                             <a ng-click="setActive(1)">Header</a>
                         </li>
                         <li class="editor-tabs" ng-class="vm.activeTab == '2' ? 'active' : ''">
-                            <a ng-click="setActive(2)">Banner</a>
+                            <a ng-click="setActive(2)">Background</a>
                         </li>
                         <li class="editor-tabs" ng-class="vm.activeTab == '3' ? 'active' : ''">
                             <a ng-click="setActive(3)">Links</a>
@@ -434,7 +434,7 @@
                     <div class="editor-preview">
                         <div class="header-focus" ng-if="vm.activeTab == '2'">
                             <img class="focus-editing-marker" src="/content/images/editor/edit-marker.png">
-                            <div class="focus-editing-title">Banner</div>
+                            <div class="focus-editing-title focus-editing-title-bg">Background</div>
                         </div>
                         <div class="editor-preview-body">
                             <div class="editor-preview-title" ng-style="{'color': background.textColor === 'true' ? '#000000' : '#ffffff'}">
