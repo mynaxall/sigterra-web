@@ -3823,6 +3823,7 @@ button[disabled]:hover{
     background-color: rgba(115, 140, 158, 0.37);
     padding-right: 50px!important;
     padding-left: 50px!important;
+    padding-bottom: 50px;
     float: none;
 }
 
@@ -3879,7 +3880,7 @@ button[disabled]:hover{
 
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1420px) {
 
     .second-column {
         padding-top: 100px;
@@ -7110,6 +7111,20 @@ a.preview-footer-link {
     align-content: stretch;
     height: 1000px;
 }
+
+@media (max-width: 1420px){
+    .row-edit{
+        flex-direction: column;
+        height: 100%;
+    }
+}
+
+.cardlet-div{
+    min-height: 750px;
+    position:relative;
+}
+
+
 
 
 
