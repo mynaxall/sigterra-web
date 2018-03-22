@@ -6966,6 +6966,10 @@ a.preview-footer-link {
     text-align: center;
 }
 
+.focus-editing-title-bg{
+    width: 75px;
+}
+
 .focus-editing-marker{
     position: absolute;
     top: 0px;
