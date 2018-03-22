@@ -163,11 +163,14 @@
         };
 
         $scope.createURL = function (link) {
-            if (link.indexOf('https://') == -1 && link.indexOf('http://') == -1) {
-                link = "http://" + link
-            } else if (link.indexOf('https://') != -1) {
-                link.replace("https://", "http://")
+            if (link) {
 
+                if (link.indexOf('https://') == -1 && link.indexOf('http://') == -1) {
+                    link = "http://" + link
+                } else if (link.indexOf('https://') != -1) {
+                    link.replace("https://", "http://")
+
+                }
             }
             return link
         }
