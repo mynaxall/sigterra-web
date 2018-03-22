@@ -204,7 +204,7 @@
             <img class="prview-logo view-header-logo-collapse"  alt="Brand" ng-show="header.logoUrl"  ng-src="{{header.logoUrl}}?{{time}}">
             <ul class="nav navbar-nav nav-preview">
                 <div class="preview-image-group">
-                    <div >
+                    <div>
                         <img class="prview-avatar" ng-show="header.photoUrl" ng-src="{{header.photoUrl}}?{{time}}">
                     </div>
                     <div class=" alignme ">
@@ -217,9 +217,9 @@
             </ul>
             <ul class="nav navbar-nav nav-preview">
                 <div>
-                    <span ng-show="header.email" class="small  fa fa-envelope"></span><span class="text-light">{{header.email}}</span>
+                    <span ng-show="header.email" class="small  fa fa-envelope header-icons"></span><span class="text-light">{{header.email}}</span>
                     <br>
-                    <span ng-show="header.phone" class="small fa fa-phone"> </span><span class="text-light">{{header.phone}}</span>
+                    <span ng-show="header.phone" class="small fa fa-phone header-icons"> </span><span class="text-light">{{header.phone}}</span>
                 </div>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -341,13 +341,11 @@
     <br>
     <div class="container service-info" >
         <div class="col-sm-4 img-with-text">
-            <img class="click-sec" ng-src="{{links.logoUrl1}}" border="0" alt="Carl Call"  />
+            <img class="click-sec" ng-src="{{links.logoUrl1}}" border="0"/>
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url1)}}" data-toggle="modal" target="_blank">{{links.name1}}</a>
             </p>
             <br />
-            <!--   (931)268-2040<br /><a href="mailto:carlcall@centergrovecoc.com">Email Carl Call</a>  </p>
-             -->
         </div>
         <div class="col-sm-4  img-with-text">
             <img class="click-sec" ng-src="{{links.logoUrl2}}"/>
@@ -355,8 +353,7 @@
                 <a class="preview-footer-link" href="{{createURL(links.url2)}}" data-toggle="modal" target="_blank">{{links.name2}}</a>
             </p>
             <br />
-            <!--   (931)268-3273<br /><a href="mailto:sjongentry@centergrovecoc.com">Email Sjon Gentry</a></p>
-             -->
+
         </div>
         <div class="col-sm-4  img-with-text">
             <img class="click-sec" ng-src="{{links.logoUrl3}}"/>
@@ -364,10 +361,7 @@
                 <a class="preview-footer-link" href="{{createURL(links.url3)}}" data-toggle="modal" target="_blank">{{links.name3}}</a>
             </p>
             <br />
-            <!--   (931)268-0651<br /><a href="mailto:johnmabery@centergrovecoc.com">Email John Mabery</a> </p>
-             -->
         </div>
-
     </div>
 </section>
 <div class="footer-bottom">
@@ -398,15 +392,7 @@
                         </div>
                     </div>
                 </div>
-            </div> <!-- End Col -->
-            <!-- <div class="col-sm-4">
-                <ul class="social-link pull-right footer-icons">
-                    <li><a href=""><span class="fa fa-facebook"></span></a></li>
-                    <li><a href=""><span class="fa fa-skype"></span></a></li>
-                    <li><a href=""><span class="fa fa-linkedin"></span></a></li>
-                    <li><a href=""><span class="fa fa-twitter"></span></a></li>
-                </ul>
-            </div> --> <!-- End Col -->
+            </div>
         </div>
 
     </div>
