@@ -14,6 +14,7 @@ import itomy.sigterra.service.dto.UserCardletDTO;
 import itomy.sigterra.web.rest.util.ConverterUtil;
 import itomy.sigterra.web.rest.util.HeaderUtil;
 import itomy.sigterra.web.rest.util.PaginationUtil;
+import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,7 +28,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.apache.pdfbox.pdmodel.PDDocument;
 
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
@@ -37,11 +37,10 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
-import java.util.*;
 
 
 /**
@@ -223,8 +222,7 @@ public class CardletResource {
 
     @GetMapping("/userCardlets")
     @Timed
-    public ResponseEntity<List<?>> getAllCardletsByUser()
-        throws URISyntaxException {
+    public ResponseEntity<List<?>> getAllCardletsByUser() {
 
 
         List<UserCardletDTO> usetCardletDTOs = cardletService.userCardlets();
@@ -260,8 +258,7 @@ public class CardletResource {
 
     @PostMapping(value = "/editCardlet", produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<UserCardletDTO> editCardlet(@RequestBody UserCardletDTO cardletDTO)
-        throws URISyntaxException {
+    public ResponseEntity<UserCardletDTO> editCardlet(@RequestBody UserCardletDTO cardletDTO) {
 
         cardletService.createCardlet(cardletDTO, true, null, false, false);
 
@@ -294,8 +291,7 @@ public class CardletResource {
 
     @PostMapping(value = "/cardletFirst", produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<UserCardletDTO> createFirstCardlet(@RequestBody UserCardletDTO cardletDTO, @RequestParam(value = "id") Long id)
-        throws URISyntaxException {
+    public ResponseEntity<UserCardletDTO> createFirstCardlet(@RequestBody UserCardletDTO cardletDTO, @RequestParam(value = "id") Long id) {
 
         cardletService.createCardlet(cardletDTO, false, id, true, false);
 
@@ -305,19 +301,17 @@ public class CardletResource {
 
     @PostMapping(value = "/cardlet", produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<UserCardletDTO> createCardlet(@RequestBody UserCardletDTO cardletDTO)
-        throws URISyntaxException {
+    public ResponseEntity<UserCardletDTO> createCardlet(@RequestBody UserCardletDTO cardletDTO) {
 
 
-        cardletService.createCardlet(cardletDTO, false, null, false, false);
+        UserCardletDTO result = cardletService.createCardlet(cardletDTO, false, null, false, false);
 
-        return new ResponseEntity<>(cardletDTO, HttpStatus.OK);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @PostMapping(value = "/clone", produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<UserCardletDTO> cloneCardlet(@RequestBody UserCardletDTO cardletDTO)
-        throws URISyntaxException {
+    public ResponseEntity<UserCardletDTO> cloneCardlet(@RequestBody UserCardletDTO cardletDTO) {
 
         cardletService.createCardlet(cardletDTO, false, null, false, true);
 

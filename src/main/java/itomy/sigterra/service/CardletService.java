@@ -444,9 +444,9 @@ public class CardletService {
             }
         }
 
-        cardletRepository.save(cardlet);
+        cardlet = cardletRepository.save(cardlet);
 
-        return null;
+        return getCardlet(cardlet.getId(),true);
     }
 
 
