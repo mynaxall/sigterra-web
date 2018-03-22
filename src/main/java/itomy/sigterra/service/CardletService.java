@@ -446,7 +446,7 @@ public class CardletService {
 
         cardlet = cardletRepository.save(cardlet);
 
-        return getCardlet(cardlet.getId(),true);
+        return createUserCatdletDTO(cardlet);
     }
 
 
