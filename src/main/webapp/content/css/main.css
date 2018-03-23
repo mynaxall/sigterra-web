@@ -6417,8 +6417,8 @@ ul.editor-tab li a:hover{
 
 .cardlet-image--preview{
     border: 0px ;
-    height: 606px;
-    width: 913px;
+    height: 510px;
+    width: 910px;
 }
 
 .main-carousel-item-preview{
@@ -6428,7 +6428,7 @@ ul.editor-tab li a:hover{
 
 .main-carousel-item-div-preview{
     display: inline-block;
-    width: 913px;
+    width: 910px;
     vertical-align: top;
     text-align: left;
     height: 100%;
@@ -6437,7 +6437,7 @@ ul.editor-tab li a:hover{
 .tabcontent-preview {
     display: none;
     border: 0px solid #ccc;
-    width: 913px;
+    width: 910px;
     background-color: #F9F9F9;
     margin-top: -1px;
 }
@@ -6723,8 +6723,8 @@ a.preview-footer-link {
 }
 
 .editor-header-logo-img{
-    max-width: 240px;
-    max-height: 70px;
+    max-width: 238px;
+    max-height: 68px;
 }
 
 .editor-header-avatar-div{
@@ -6735,8 +6735,8 @@ a.preview-footer-link {
 }
 
 .editor-header-avatar-img{
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 98px;
+    max-height: 98px;
 }
 
 .editor-div-flex{
@@ -7130,6 +7130,13 @@ a.preview-footer-link {
 
 .editor-radio-btn{
     height: 20px;
+}
+
+.logo-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 
 
