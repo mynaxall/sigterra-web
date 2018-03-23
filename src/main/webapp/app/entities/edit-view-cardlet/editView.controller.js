@@ -154,6 +154,11 @@
                 $scope.cardletView = response;
                 if($scope.cardletView.header){
                     $scope.header = $scope.cardletView.header;
+                    if(!$scope.header.ctaColor){
+                        $scope.header.ctaColor = "f0ad4e";
+                    }
+                }else {
+                    $scope.header.ctaColor = "f0ad4e";
                 }
                 if($scope.cardletView.background){
                     $scope.background = $scope.cardletView.background;
