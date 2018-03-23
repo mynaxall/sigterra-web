@@ -6723,8 +6723,8 @@ a.preview-footer-link {
 }
 
 .editor-header-logo-img{
-    max-width: 240px;
-    max-height: 70px;
+    max-width: 238px;
+    max-height: 68px;
 }
 
 .editor-header-avatar-div{
@@ -6735,8 +6735,8 @@ a.preview-footer-link {
 }
 
 .editor-header-avatar-img{
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 98px;
+    max-height: 98px;
 }
 
 .editor-div-flex{
@@ -7128,6 +7128,13 @@ a.preview-footer-link {
     margin-right: 5px;
 }
 
+
+.logo-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
 
 
 
