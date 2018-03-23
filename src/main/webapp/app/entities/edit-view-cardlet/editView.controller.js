@@ -688,6 +688,10 @@
 
         };
 
+        $scope.deleteIcon = function(id){
+            $scope.selection.splice(id, 1);
+        }
+
         $scope.gerPreviewLink = function (id) {
             return ($location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/previewCardlet?cardletId=' + setId(id))
         }
