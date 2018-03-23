@@ -3037,7 +3037,6 @@ ul.tab2 li span:hover {
 ul.tab2 li {
     margin-right: 2px;
     line-height: 1.42857143;
-    border: 1px solid transparent;
     border-radius: 15px 15px 0 0;
     background-color: #000000;
     color: #ffffff;
