@@ -6417,8 +6417,8 @@ ul.editor-tab li a:hover{
 
 .cardlet-image--preview{
     border: 0px ;
-    height: 606px;
-    width: 913px;
+    height: 510px;
+    width: 910px;
 }
 
 .main-carousel-item-preview{
@@ -6428,7 +6428,7 @@ ul.editor-tab li a:hover{
 
 .main-carousel-item-div-preview{
     display: inline-block;
-    width: 913px;
+    width: 910px;
     vertical-align: top;
     text-align: left;
     height: 100%;
@@ -6437,7 +6437,7 @@ ul.editor-tab li a:hover{
 .tabcontent-preview {
     display: none;
     border: 0px solid #ccc;
-    width: 913px;
+    width: 910px;
     background-color: #F9F9F9;
     margin-top: -1px;
 }
