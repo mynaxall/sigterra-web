@@ -784,17 +784,30 @@
 
 
         $scope.disableSaveBtn = false;
-        $scope.saveCardlet = function() {
+        $scope.saveCardlet = function(isSave, isView) {
 
             if ($scope.isEmptyName()) {
                 $scope.disableSaveBtn = true;
             $http.post("/api/cardlet", $scope.tabNames)
                 .success(function (data, status, headers, config) {
-                    $location.path('/user-cardlets');
+                    console.log(data)
+                    if(isSave) {
+                        $location.path('/user-cardlets')
+                    }else{
+                        if(isView){
+                            $location.path('/previewCardlet').search({cardletId: setId(data.id)});
+                        }else {
+                            $location.path('/edit-view').search({cardletId: data.id});
+                        }
+                    }
                 }).error(function (response) {
                     $scope.disableSaveBtn = false;
                 });
             }
+        }
+
+        function setId(id) {
+            return window.btoa(window.btoa(window.btoa(window.btoa(id))));
         }
 
         $scope.accordion = 1;

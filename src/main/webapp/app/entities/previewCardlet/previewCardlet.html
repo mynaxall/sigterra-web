@@ -376,17 +376,17 @@
                     </div>
                     <div class="nav-view footer-editor-icon footer-editor-icon-div">
                         <div ng-show="footer.facebookLink" class="footer-preview-icon-div">
-                            <a ng-href="createURL(footer.facebookLink)" target="_blank">
+                            <a href="{{createURL(footer.facebookLink)}}" target="_blank">
                                 <img class="footer-preview-icon" src="/content/images/editor/FB.png">
                             </a>
                         </div>
                         <div ng-show="footer.twitterLink" class="footer-preview-icon-div">
-                            <a class="footer-preview-icon" ng-href="createURL(footer.twitterLink)" target="_blank">
+                            <a class="footer-preview-icon" href="{{createURL(footer.twitterLink)}}" target="_blank">
                                 <img class="footer-preview-icon" src="/content/images/editor/tweeter.png">
                             </a>
                         </div>
                         <div ng-show="footer.linkedinLink" class="footer-preview-icon-div">
-                            <a class="footer-preview-icon" ng-href="createURL(footer.linkedinLink)" target="_blank">
+                            <a class="footer-preview-icon" href="{{createURL(footer.linkedinLink)}}" target="_blank">
                                 <img class="footer-preview-icon" src="/content/images/editor/Linkdn.png">
                             </a>
                         </div>

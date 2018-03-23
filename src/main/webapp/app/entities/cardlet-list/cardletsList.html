@@ -221,7 +221,10 @@
     }
 
 </style>
-
+<div class="editor-subheader">
+    <a class="editor-subheader-btn" ng-click="saveCardlet(false, false)"><img class="header-icons" src="/content/images/editor/Edit-2.png">Edit Page</a>
+    <a class="editor-subheader-btn" target="_blank" ng-click="saveCardlet(false, true)"><img class="header-icons" src="/content/images/editor/Eye.png"> View Page</a>
+</div>
 <div class="entiti-content">
 
     <div class="ng-hide" ng-show="showConent">
@@ -467,7 +470,7 @@
                         </div>
                     </div>
                     <div class="saveButtonDiv">
-                        <button class="saveButton saveButtonNew" ng-disabled="disableSaveBtn"  ng-click="saveCardlet()">Save Sigterra Profile</button>
+                        <button class="saveButton saveButtonNew" ng-disabled="disableSaveBtn"  ng-click="saveCardlet(true)">Save Sigterra Profile</button>
                     </div>
                 </div>
             </div>
