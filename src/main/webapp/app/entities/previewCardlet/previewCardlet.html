@@ -341,14 +341,14 @@
     <br>
     <div class="container service-info" >
         <div class="col-sm-4 img-with-text">
-            <img class="click-sec" ng-src="{{links.logoUrl1}}" border="0"/>
+            <img class="click-sec" ng-src="{{links.logoUrl1}}" border="0" ng-style="{'background-color': '#'+header.ctaColor}"/>
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url1)}}" data-toggle="modal" target="_blank">{{links.name1}}</a>
             </p>
             <br />
         </div>
         <div class="col-sm-4  img-with-text">
-            <img class="click-sec" ng-src="{{links.logoUrl2}}"/>
+            <img class="click-sec" ng-src="{{links.logoUrl2}}" ng-style="{'background-color': '#'+header.ctaColor}"/>
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url2)}}" data-toggle="modal" target="_blank">{{links.name2}}</a>
             </p>
@@ -356,7 +356,7 @@
 
         </div>
         <div class="col-sm-4  img-with-text">
-            <img class="click-sec" ng-src="{{links.logoUrl3}}"/>
+            <img class="click-sec" ng-src="{{links.logoUrl3}}" ng-style="{'background-color': '#'+header.ctaColor}"/>
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url3)}}" data-toggle="modal" target="_blank">{{links.name3}}</a>
             </p>

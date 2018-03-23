@@ -6391,6 +6391,8 @@ ul.editor-tab li a:hover{
 .click-sec{
     width: 95px;
     max-width: 150px;
+    padding: 10px;
+    border-radius: 20px;
 }
 
 .tabs2 a{
@@ -6916,6 +6918,10 @@ a.preview-footer-link {
 .editor-header-bg-img{
     width: 80px;
     height: 80px;
+    padding: 10px;
+    border: 1px solid #d8d7d7;
+    border-radius: 15px;
+    background-color: #efefef;
 }
 
 .editor-link-title {
@@ -7018,6 +7024,10 @@ a.preview-footer-link {
 
 .editor-flex-icons div img{
     width: 80px;
+    padding: 10px;
+    border: 1px solid #d8d7d7;
+    border-radius: 15px;
+    background-color: #efefef;
 }
 
 
@@ -7142,6 +7152,7 @@ a.preview-footer-link {
     height: 19px;
     padding: 0px;
     border: none;
+    background: transparent;
 }
 
 .editor-header-bg-img-div{
