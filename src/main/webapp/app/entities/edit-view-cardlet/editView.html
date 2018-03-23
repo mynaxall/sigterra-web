@@ -108,7 +108,7 @@
                                     <button ng-click="vm.showImageDialog(true)" class="upload-img-btn">
                                         <img src="/content/images/editor/edit.png">
                                     </button>
-                                    <img class="editor-header-logo-img" ng-src="{{header.logoUrl}}?{{time}}">
+                                    <img ng-if="header.logoUrl" class="editor-header-logo-img" ng-src="{{header.logoUrl}}?{{time}}">
                                 </div>
                                 <div class="editor-limits">
                                     (240 x 70 px recommended)
@@ -122,7 +122,7 @@
                                     <button ng-click="vm.showImageDialog(false)" class="upload-img-btn">
                                         <img src="/content/images/editor/edit.png">
                                     </button>
-                                    <img class="editor-header-avatar-img" ng-src="{{header.photoUrl}}?{{time}}">
+                                    <img ng-if="header.photoUrl" class="editor-header-avatar-img" ng-src="{{header.photoUrl}}?{{time}}">
                                 </div>
                                 <div class="editor-limits">
                                     (100 x 100 px recommended)
@@ -288,7 +288,10 @@
                             <label class="login-lable label-editor label-editor-links">Icon #1</label>
                             <div class="editor-div-flex">
                                 <div ng-if="!selection[0]" class="editor-header-bg-div"></div>
-                                <div ng-if="selection[0]">
+                                <div ng-if="selection[0]" class="editor-header-bg-img-div">
+                                    <button class="delete-editor-links-icon" ng-click="deleteIcon(0)">
+                                        <img src="/content/images/editor/cncl.png">
+                                    </button>
                                     <img class="editor-header-bg-img" ng-src="{{selection[0]}}">
                                 </div>
                                 <div class="editor-links-group">
@@ -310,7 +313,10 @@
                             <label class="login-lable label-editor label-editor-links">Icon #2</label>
                             <div class="editor-div-flex">
                                 <div ng-if="!selection[1]" class="editor-header-bg-div"></div>
-                                <div ng-if="selection[1]">
+                                <div ng-if="selection[1]" class="editor-header-bg-img-div">
+                                    <button class="delete-editor-links-icon" ng-click="deleteIcon(1)">
+                                        <img src="/content/images/editor/cncl.png">
+                                    </button>
                                     <img class="editor-header-bg-img" ng-src="{{selection[1]}}">
                                 </div>
                                 <div class="editor-links-group">
@@ -332,7 +338,10 @@
                             <label class="login-lable label-editor label-editor-links">Icon #3</label>
                             <div class="editor-div-flex">
                                 <div ng-if="!selection[2]" class="editor-header-bg-div"></div>
-                                <div ng-if="selection[2]">
+                                <div ng-if="selection[2]" class="editor-header-bg-img-div">
+                                    <button class="delete-editor-links-icon" ng-click="deleteIcon(2)">
+                                        <img src="/content/images/editor/cncl.png">
+                                    </button>
                                     <img class="editor-header-bg-img" ng-src="{{selection[2]}}">
                                 </div>
                                 <div class="editor-links-group">
@@ -503,28 +512,29 @@
                                 <div class="focus-editing-title">Footer</div>
                             </div>
                             <div>
-                                <div class="row">
-                                    <div class="col-sm-12 text-center">
+                                <div>
+                                    <div class="text-center-footer-editor">
+                                        <div class="footer-using-editor">Built using - <a class="footer-using-link">Sigterra.com</a> </div>
                                         <div class="copyright-text">
-                                            {{footer.title}}
+                                            CopyRight © 2018 Digital All Rights Reserved
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="nav-view footer-editor-icon">
-                                    <div ng-show="footer.facebookLink">
-                                        <a ng-href="footer.facebookLink" target="_blank">
-                                            <img src="/content/images/editor/FB.png">
-                                        </a>
-                                    </div>
-                                    <div ng-show="footer.twitterLink">
-                                        <a ng-href="footer.twitterLink" target="_blank">
-                                            <img src="/content/images/editor/tweeter.png">
-                                        </a>
-                                    </div>
-                                    <div ng-show="footer.linkedinLink">
-                                        <a ng-href="footer.linkedinLink" target="_blank">
-                                            <img src="/content/images/editor/Linkdn.png">
-                                        </a>
+                                        <div class="nav-view footer-editor-icon">
+                                            <div ng-show="footer.facebookLink">
+                                                <a ng-href="footer.facebookLink" target="_blank">
+                                                    <img src="/content/images/editor/FB.png">
+                                                </a>
+                                            </div>
+                                            <div ng-show="footer.twitterLink">
+                                                <a ng-href="footer.twitterLink" target="_blank">
+                                                    <img src="/content/images/editor/tweeter.png">
+                                                </a>
+                                            </div>
+                                            <div ng-show="footer.linkedinLink">
+                                                <a ng-href="footer.linkedinLink" target="_blank">
+                                                    <img src="/content/images/editor/Linkdn.png">
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -6518,12 +6518,11 @@ a.preview-footer-link {
 
 .footer-bottom-editor{
     position: relative;
-    padding: 7px 0px;
     border-top: 1px solid #666;
     background: #1e1e1e;
     color: #ffffff;
     font-size: 10px;
-    height: 29px;
+    height: 34px;
 }
 
 .arrow-link{
@@ -6874,9 +6873,6 @@ a.preview-footer-link {
     align-items: center;
     align-content: center;
     width: 100px;
-    position: absolute;
-    top: 3px;
-    right: 105px;
 }
 
 .footer-editor-icon-div{
@@ -7138,5 +7134,48 @@ a.preview-footer-link {
     align-content: center;
 }
 
+.delete-editor-links-icon{
+    position: absolute;
+    top: 0px;
+    right: 1px;
+    width: 19px;
+    height: 19px;
+    padding: 0px;
+    border: none;
+}
+
+.editor-header-bg-img-div{
+    position: relative;
+}
+
+.footer-using{
+    color: #abaea5;
+    font-size: 16px;
+}
+
+.footer-using-link{
+    color: #d8d8d8;
+    text-decoration: underline;
+}
+
+.text-center-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.text-center-footer-editor{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 540px;
+    margin: 0 auto;
+}
+
+.footer-using-editor{
+    font-size: 11px;
+}
 
 
