@@ -74,9 +74,7 @@
         $scope.header = {
             'name' : '',
             'title' : '',
-            'text' : 'Request For Demo',
-            'ctaColor' : 'f0ad4e'
-        };
+            'text' : 'Request For Demo'};
         $scope.selection = [];
         $scope.background = {
             'text' : 'Conversational Commerce is the biggest opportunity for brands to act like people in digital channels & build customer engagement and loyalty',
