@@ -6618,7 +6618,7 @@ a.preview-footer-link {
 }
 
 .editor-preview-header{
-    height: 40px;
+    height: 60px;
     background-color: #ffffff;
     position: relative;
 }
@@ -6630,13 +6630,24 @@ a.preview-footer-link {
     justify-content: space-around;
     align-items: center;
     align-content: center;
-    font-size: 8px;
-    height: 40px;
+    font-size: 10px;
+    height: 60px;
 }
 
 .bnt-edit-preview{
-    font-size: 8px;
+    height: 30px;
+    font-size: 12px;
     border: none!important;
+    border-radius: 3px;
+}
+
+.connect-btn{
+    height: 44px;
+    border: none!important;
+    font-size: 16px;
+    color: #ffffff;
+    border-radius: 5px;
+    margin: 24px 0px;
 }
 
 .right-chevron{
