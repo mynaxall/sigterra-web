@@ -6386,12 +6386,23 @@ ul.editor-tab li a:hover{
 
 .img-with-text{
     text-align: center;
+    margin: 0 27px;
+}
+
+.img-with-text-editor{
+    text-align: center;
+    margin: 0 20px;
 }
 
 .click-sec{
-    width: 95px;
-    max-width: 150px;
-    padding: 10px;
+    width: 116px;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.click-sec-editor{
+    width: 83px;
+    padding: 15px;
     border-radius: 20px;
 }
 
@@ -6507,7 +6518,7 @@ ul.editor-tab li a:hover{
 }
 
 a.preview-footer-link {
-    color: #337ab7;
+    color: #33363b;
     text-decoration: none;
 }
 
@@ -6710,9 +6721,14 @@ a.preview-footer-link {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: top;
     align-content: center;
+}
+
+.service-info{
+    margin-top: 20px;
+    margin-bottom: 60px;
 }
 
 .editor-header-logo-div{
