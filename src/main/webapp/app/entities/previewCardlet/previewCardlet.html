@@ -205,7 +205,7 @@
             <ul class="nav navbar-nav nav-preview">
                 <div class="preview-image-group">
                     <div>
-                        <img class="prview-avatar" ng-show="header.photoUrl" ng-src="{{header.photoUrl}}?{{time}}">
+                        <img class="prview-avatar header-icons" ng-show="header.photoUrl" ng-src="{{header.photoUrl}}?{{time}}">
                     </div>
                     <div class=" alignme ">
                         <span class="bold"><strong>{{header.name}}</strong></span>
@@ -217,13 +217,13 @@
             </ul>
             <ul class="nav navbar-nav nav-preview">
                 <div>
-                    <span ng-show="header.email" class="small  fa fa-envelope header-icons"></span><span class="text-light">{{header.email}}</span>
+                    <span class="text-light">{{header.email}}</span>
                     <br>
-                    <span ng-show="header.phone" class="small fa fa-phone header-icons"> </span><span class="text-light">{{header.phone}}</span>
+                    <span class="text-light">{{header.phone}}</span>
                 </div>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <button class="btn  btn-warning connect-btn"  data-toggle="modal" data-target="#myModalNorm" ng-style="{'background-color': '#'+header.ctaColor}">{{header.text}}</button>
+                <button class="btn connect-btn"  data-toggle="modal" data-target="#myModalNorm" ng-style="{'background-color': '#'+header.ctaColor}">{{header.text}}</button>
             </ul>
         </div>
     </div>
@@ -257,14 +257,14 @@
                 </ul>
             </div>
             <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent-preview" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-                <div class="custom-slide-prev"  ng-show="vm.tabType != 1 && tabName.items.length > 1">
-                    <span class="glyphicon glyphicon-chevron-left right-chevron" ng-click="prevSlide($index)"></span>
+                <div class="custom-slide-prev custom-slide"  ng-show="vm.tabType != 1 && tabName.items.length > 1">
+                      <img src="/content/images/editor/arrow_left.png">
                 </div>
                 <div data-item-id="{{tabNames.tabs[$index].id}}"  ng-click="openPreviewDialog(tabName.tabType)" class="tab-item">
                     <ng-include style="display: block!important" src="getUrl(tabName.layout.url)"></ng-include>
                 </div>
-                <div class="custom-slide-next" ng-show="vm.tabType != 1 && tabName.items.length > 1">
-                    <span class="glyphicon glyphicon-chevron-right right-chevron" ng-click="nextSlide($index)"></span>
+                <div class="custom-slide-next custom-slide" ng-show="vm.tabType != 1 && tabName.items.length > 1">
+                    <img src="/content/images/editor/arrow_right.png">
                 </div>
                 <div class="arrow-link">
                     <a class="fa fa-arrow-down fa-2x hidden-sm hidden-md" href="" ng-click="scrollToFooter('capture')" target="_self"></a>
@@ -339,15 +339,15 @@
 <section class="service-info-sec">
     <h2 class="text-center" id="capture">{{links.title}}</h2>
     <br>
-    <div class="container service-info" >
-        <div class="col-sm-4 img-with-text">
+    <div class="container service-info-editor service-info">
+        <div class="img-with-text">
             <img class="click-sec" ng-src="{{links.logoUrl1}}" border="0" ng-style="{'background-color': '#'+header.ctaColor}"/>
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url1)}}" data-toggle="modal" target="_blank">{{links.name1}}</a>
             </p>
             <br />
         </div>
-        <div class="col-sm-4  img-with-text">
+        <div class="img-with-text">
             <img class="click-sec" ng-src="{{links.logoUrl2}}" ng-style="{'background-color': '#'+header.ctaColor}"/>
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url2)}}" data-toggle="modal" target="_blank">{{links.name2}}</a>
@@ -355,7 +355,7 @@
             <br />
 
         </div>
-        <div class="col-sm-4  img-with-text">
+        <div class="img-with-text">
             <img class="click-sec" ng-src="{{links.logoUrl3}}" ng-style="{'background-color': '#'+header.ctaColor}"/>
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url3)}}" data-toggle="modal" target="_blank">{{links.name3}}</a>

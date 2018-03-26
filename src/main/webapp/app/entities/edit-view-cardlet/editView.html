@@ -421,7 +421,7 @@
                             <div>
                                 <div class="preview-image-group">
                                     <div >
-                                        <img  class="header-preview-editor-avatar"  class="image " ng-show="header.photoUrl" ng-src="{{header.photoUrl}}?{{time}}">
+                                        <img  class="header-preview-editor-avatar header-icons"  class="image " ng-show="header.photoUrl" ng-src="{{header.photoUrl}}?{{time}}">
                                     </div>
                                     <div class=" alignme ">
                                         <span class="bold"><strong>{{header.name}}</strong></span>
@@ -433,9 +433,9 @@
                             </div>
                             <div>
                                 <div>
-                                    <span ng-show="header.email" class="small  fa fa-envelope"></span><span class="text-light">{{header.email}}</span>
+                                    <span class="text-light">{{header.email}}</span>
                                     <br>
-                                    <span ng-show="header.phone" class="small fa fa-phone"> </span><span class="text-light">{{header.phone}}</span>
+                                    <span class="text-light">{{header.phone}}</span>
                                 </div>
                             </div>
                             <div>
@@ -486,22 +486,22 @@
                             <h4 class="text-center" id="capture">{{links.title}}</h4>
                             <br>
                             <div class="service-info-editor service-info-min-height" ng-show="links.logoUrl1">
-                                <div class="img-with-text">
-                                    <img class="click-sec" ng-src="{{links.logoUrl1}}" border="0" ng-style="{'background-color': '#'+header.ctaColor}"/>
+                                <div class="img-with-text-editor">
+                                    <img class="click-sec-editor" ng-src="{{links.logoUrl1}}" border="0" ng-style="{'background-color': '#'+header.ctaColor}"/>
                                     <p class="click-sec-text-editor">
                                         <a class="preview-footer-link" ng-href="links.url1" data-toggle="modal" target="_blank">{{links.name1}}</a>
                                     </p>
                                     <br />
                                 </div>
-                                <div class="img-with-text" ng-show="links.logoUrl2">
-                                    <img class="click-sec" ng-src="{{links.logoUrl2}}" border="0" ng-style="{'background-color': '#'+header.ctaColor}"/>
+                                <div class="img-with-text-editor" ng-show="links.logoUrl2">
+                                    <img class="click-sec-editor" ng-src="{{links.logoUrl2}}" border="0" ng-style="{'background-color': '#'+header.ctaColor}"/>
                                     <p class="click-sec-text-editor">
                                         <a class="preview-footer-link" ng-href="links.url2" data-toggle="modal" target="_blank">{{links.name2}}</a>
                                     </p>
                                     <br />
                                 </div>
-                                <div class="img-with-text" ng-show="links.logoUrl3">
-                                    <img class="click-sec" ng-src="{{links.logoUrl3}}" border="0"  ng-style="{'background-color': '#'+header.ctaColor}"/>
+                                <div class="img-with-text-editor" ng-show="links.logoUrl3">
+                                    <img class="click-sec-editor" ng-src="{{links.logoUrl3}}" border="0"  ng-style="{'background-color': '#'+header.ctaColor}"/>
                                     <p class="click-sec-text-editor">
                                         <a class="preview-footer-link" ng-href="links.url3" data-toggle="modal" target="_blank">{{links.name3}}</a>
                                     </p>
