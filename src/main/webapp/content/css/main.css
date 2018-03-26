@@ -7146,13 +7146,14 @@ a.preview-footer-link {
 
 .delete-editor-links-icon{
     position: absolute;
-    top: 0px;
-    right: 1px;
+    top: 2px;
+    right: 2px;
     width: 19px;
     height: 19px;
     padding: 0px;
     border: none;
     background: transparent;
+    display: flex;
 }
 
 .editor-header-bg-img-div{
