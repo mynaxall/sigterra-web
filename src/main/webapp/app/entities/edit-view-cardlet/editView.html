@@ -72,6 +72,10 @@
         jscolor.installByClassName("jscolor");
     });
 </script>
+
+<div class="alert alert-success" check-position-scroll ng-show="vm.success">
+    <strong>Saved!</strong>
+</div>
 <div class="editor-subheader">
     <a class="editor-subheader-btn" ng-click="save(false)"><img class="header-icons" src="/content/images/editor/Edit-2.png"> Edit Card</a>
     <a class="editor-subheader-btn"  target="_blank" href="{{gerPreviewLink(cardletId)}}"><img class="header-icons" src="/content/images/editor/Eye.png"> View Page</a>
