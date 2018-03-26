@@ -3887,11 +3887,6 @@ button[disabled]:hover{
         margin: 0px 0px;
     }
 
-    .second-column-editor{
-        width: 800px;
-        margin: 0px 0px;
-    }
-
     .left-column-content{
         float: right;
     }
@@ -6549,6 +6544,7 @@ a.preview-footer-link {
 }
 
 .arrow-link{
+    display: block;
     position: absolute;
     bottom: 0px;
     right: -70px;
@@ -6704,15 +6700,6 @@ a.preview-footer-link {
     align-content: stretch;
     background-color: #e0e7ed;
 }
-
-@media (max-width: 1600px) {
-    .view-editor-flex{
-        flex-direction: column;
-        align-items: center;
-        align-content: center;
-    }
-}
-
 
 .view-editor-col{
     margin: 50px 25px;
@@ -7049,7 +7036,7 @@ a.preview-footer-link {
 }
 
 .editor-flex-icons div img{
-    width: 80px;
+    width: 100%;
     padding: 10px;
     border: 1px solid #d8d7d7;
     border-radius: 15px;
@@ -7215,5 +7202,92 @@ a.preview-footer-link {
 .footer-using-editor{
     font-size: 11px;
 }
+
+@media (max-width: 1600px) {
+
+    .editor-preview-panel{
+        width: 700px;
+    }
+
+    .second-column-editor{
+        width: 700px;
+    }
+
+    .editor-panel{
+        width: 660px;
+    }
+
+    .editor-textarea{
+        width: 385px;
+    }
+
+    .editor-input-title{
+        width: 340px;
+    }
+
+    .editor-header-bg-img{
+        width: 70px;
+        height: 70px;
+    }
+
+    .ng-carousel {
+        width: 425px;
+    }
+
+    .slide-content{
+        width: 345px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .editor-panel{
+        width: 560px;
+    }
+
+    .editor-textarea{
+        width: 285px;
+    }
+
+    .editor-input-title{
+        width: 240px;
+    }
+
+    .editor-header-bg-img{
+        width: 60px;
+        height: 60px;
+    }
+
+    .ng-carousel {
+        width: 325px;
+    }
+
+    .slide-content{
+        width: 245px;
+    }
+
+    .second-column-editor{
+        width: 600px;
+    }
+
+    .editor-preview-panel{
+        width: 600px;
+    }
+
+    .view-editor-col{
+        margin: 50px 10px;
+    }
+
+}
+
+@media (max-width: 1230px) {
+
+    .view-editor-flex{
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+    }
+}
+
+
 
 
