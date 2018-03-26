@@ -40,6 +40,7 @@
 
     function EditViewController($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter, PHONE_PATTERN, TOOLBAR_OPTIONS, ImageService, Carousel, EditViewerService) {
         var vm = this;
+        vm.success = false;
         $scope.showError = false;
         $scope.Carousel = Carousel;
         $scope.time = Date.now();
@@ -651,7 +652,10 @@
             EditViewerService.updateViewer($scope.cardletView ).then(function (response) {
                 $scope.showSpinner = false;
                 if(isSave) {
-                    $location.path('/user-cardlets')
+                    vm.success = true;
+                    $timeout(function() {
+                        vm.success = false;
+                    }, 3000);
                 }else{
                     $location.path('/edit-cardlet-list').search({cardletId: $scope.cardletId});
                 }
