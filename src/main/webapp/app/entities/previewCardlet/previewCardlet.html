@@ -257,14 +257,14 @@
                 </ul>
             </div>
             <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent-preview" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-                <div class="custom-slide-prev"  ng-show="vm.tabType != 1 && tabName.items.length > 1">
-                    <span class="glyphicon glyphicon-chevron-left right-chevron" ng-click="prevSlide($index)"></span>
+                <div class="custom-slide-prev custom-slide"  ng-show="vm.tabType != 1 && tabName.items.length > 1">
+                      <img src="/content/images/editor/arrow_left.png">
                 </div>
                 <div data-item-id="{{tabNames.tabs[$index].id}}"  ng-click="openPreviewDialog(tabName.tabType)" class="tab-item">
                     <ng-include style="display: block!important" src="getUrl(tabName.layout.url)"></ng-include>
                 </div>
-                <div class="custom-slide-next" ng-show="vm.tabType != 1 && tabName.items.length > 1">
-                    <span class="glyphicon glyphicon-chevron-right right-chevron" ng-click="nextSlide($index)"></span>
+                <div class="custom-slide-next custom-slide" ng-show="vm.tabType != 1 && tabName.items.length > 1">
+                    <img src="/content/images/editor/arrow_right.png">
                 </div>
                 <div class="arrow-link">
                     <a class="fa fa-arrow-down fa-2x hidden-sm hidden-md" href="" ng-click="scrollToFooter('capture')" target="_self"></a>
