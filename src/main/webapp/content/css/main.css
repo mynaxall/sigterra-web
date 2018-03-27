@@ -6662,14 +6662,12 @@ a.preview-footer-link {
 
 .slide-prev-editor{
     top: calc(50% - 35px);
-    left: -35px;
+    left: -34px;
 }
 
 .slide-editor{
     background-color: #081211;
     padding: 8px 12px;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
 }
 
 .slide-editor img {
@@ -6678,7 +6676,7 @@ a.preview-footer-link {
 
 .slide-next-editor{
     top: calc(50% - 35px);
-    right: -35px;
+    right: -34px;
 }
 
 .chevron-editor{
