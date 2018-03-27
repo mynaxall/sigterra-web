@@ -171,6 +171,7 @@
             }
             if($scope.cardletView.links){
                 $scope.links = $scope.cardletView.links;
+                $scope.selection = [];
                 if($scope.links.logoUrl1) {
                     $scope.selection.push($scope.links.logoUrl1);
                 }
@@ -652,7 +653,7 @@
             $scope.cardletView.cardletId = $scope.cardletId;
             EditViewerService.updateViewer($scope.cardletView ).then(function (response) {
                 $scope.showSpinner = false;
-                setValues(response)
+                setValues(response);
                 if(isSave) {
                     vm.success = true;
                     $timeout(function() {
