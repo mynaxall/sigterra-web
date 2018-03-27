@@ -6307,7 +6307,7 @@ ul.editor-tab li a:hover{
 .editor-panel{
     border: 1px solid #dce0e6;
     padding: 50px;
-    height: 712px;
+    height: 749px;
     width: 760px;
     background-color: #ffffff;
 }
@@ -6539,8 +6539,8 @@ a.preview-footer-link {
     border-top: 1px solid #666;
     background: #1e1e1e;
     color: #ffffff;
-    font-size: 10px;
-    height: 34px;
+    font-size: 11px;
+    height: 45px;
 }
 
 .arrow-link{
@@ -7136,7 +7136,7 @@ a.preview-footer-link {
 }
 
 .copyright-text{
-    padding: 10px;
+    padding: 15px;
 }
 
 .footer-preview-icon-div{
@@ -7222,7 +7222,7 @@ a.preview-footer-link {
 }
 
 .footer-using-editor{
-    font-size: 11px;
+    font-size: 12px;
 }
 
 @media (max-width: 1600px) {
@@ -7236,7 +7236,7 @@ a.preview-footer-link {
     }
 
     .editor-panel{
-        width: 660px;
+        width: 749px;
     }
 
     .editor-textarea{
@@ -7263,7 +7263,7 @@ a.preview-footer-link {
 
 @media (max-width: 1500px) {
     .editor-panel{
-        width: 560px;
+        width: 749px;
     }
 
     .editor-textarea{
