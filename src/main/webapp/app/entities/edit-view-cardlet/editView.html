@@ -463,12 +463,12 @@
                             </div>
 
                             <div ng-repeat="tabName in tabNames.tabs " id="{{tabName.name}}{{tabName.position}}" class="tabcontent2 tabcontent-editor" ng-class="tabName.position == 0 ? 'display' : 'none-display'">
-                                <div class="custom-slide-prev slide-prev-editor" ng-show="vm.tabType != 1 && tabName.items.length > 1">
-                                    <span class="glyphicon glyphicon-chevron-left chevron-editor" ng-click="prevSlide($index)"></span>
+                                <div class="custom-slide-prev slide-prev-editor slide-editor" ng-show="vm.tabType != 1 && tabName.items.length > 1">
+                                    <span ng-click="prevSlide($index)"><img src="/content/images/editor/arrow_left.png"></span>
                                 </div>
                                 <ng-include style="display: block!important" src="tabName.layout.url" ></ng-include>
-                                <div class="custom-slide-next slide-next-editor" ng-show="vm.tabType != 1 && tabName.items.length > 1">
-                                    <span class="glyphicon glyphicon-chevron-right chevron-editor" ng-click="nextSlide($index)"></span>
+                                <div class="custom-slide-next slide-next-editor slide-editor" ng-show="vm.tabType != 1 && tabName.items.length > 1">
+                                    <span ng-click="nextSlide($index)"><img src="/content/images/editor/arrow_right.png"></span>
                                 </div>
                                 <div class="arrow-link">
                                     <a class="fa fa-arrow-down hidden-sm hidden-md" href="" ng-click="scrollToFooter('capture')" target="_self"></a>
