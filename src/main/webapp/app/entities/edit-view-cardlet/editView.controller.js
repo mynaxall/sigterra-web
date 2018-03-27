@@ -150,41 +150,42 @@
 
             });
             EditViewerService.getPreview($scope.cardletId).then(function (response) {
-                $scope.cardletView = response;
-                if($scope.cardletView.header){
-                    $scope.header = $scope.cardletView.header;
-                    if(!$scope.header.ctaColor){
-                        $scope.header.ctaColor = "f0ad4e";
-                    }
-                }else {
-                    $scope.header.ctaColor = "f0ad4e";
-                }
-                if($scope.cardletView.background){
-                    $scope.background = $scope.cardletView.background;
-                }
-                if($scope.cardletView.links){
-                    $scope.links = $scope.cardletView.links;
-                    if($scope.links.logoUrl1) {
-                        $scope.selection.push($scope.links.logoUrl1);
-                    }
-                    if($scope.links.logoUrl2) {
-                        $scope.selection.push($scope.links.logoUrl2);
-                    }
-                    if($scope.links.logoUrl3) {
-                        $scope.selection.push($scope.links.logoUrl3);
-                    }
-                }
-
-                if($scope.cardletView.footer){
-                    $scope.footer = $scope.cardletView.footer;
-                }
-
-
-                console.log(response)
+                setValues(response);
             }).catch(function (response) {
             });
             $scope.signatureLink = $location.protocol() + '://' + $location.host() + ':' + $location.port()+'/#/previewCardlet?cardletId='+ window.btoa($scope.cardletId);
         };
+
+        function setValues(response) {
+            $scope.cardletView = response;
+            if($scope.cardletView.header){
+                $scope.header = $scope.cardletView.header;
+                if(!$scope.header.ctaColor){
+                    $scope.header.ctaColor = "f0ad4e";
+                }
+            }else {
+                $scope.header.ctaColor = "f0ad4e";
+            }
+            if($scope.cardletView.background){
+                $scope.background = $scope.cardletView.background;
+            }
+            if($scope.cardletView.links){
+                $scope.links = $scope.cardletView.links;
+                if($scope.links.logoUrl1) {
+                    $scope.selection.push($scope.links.logoUrl1);
+                }
+                if($scope.links.logoUrl2) {
+                    $scope.selection.push($scope.links.logoUrl2);
+                }
+                if($scope.links.logoUrl3) {
+                    $scope.selection.push($scope.links.logoUrl3);
+                }
+            }
+
+            if($scope.cardletView.footer){
+                $scope.footer = $scope.cardletView.footer;
+            }
+        }
 
         loadAll();
 
@@ -651,6 +652,7 @@
             $scope.cardletView.cardletId = $scope.cardletId;
             EditViewerService.updateViewer($scope.cardletView ).then(function (response) {
                 $scope.showSpinner = false;
+                setValues(response)
                 if(isSave) {
                     vm.success = true;
                     $timeout(function() {
