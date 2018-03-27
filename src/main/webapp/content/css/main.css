@@ -7252,6 +7252,11 @@ a.preview-footer-link {
         height: 70px;
     }
 
+    .editor-header-bg-div{
+        width: 70px;
+        height: 70px;
+    }
+
     .ng-carousel {
         width: 425px;
     }
@@ -7275,6 +7280,11 @@ a.preview-footer-link {
     }
 
     .editor-header-bg-img{
+        width: 60px;
+        height: 60px;
+    }
+
+    .editor-header-bg-div{
         width: 60px;
         height: 60px;
     }
