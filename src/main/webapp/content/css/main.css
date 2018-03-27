@@ -5636,12 +5636,12 @@ recent-activity-sidebar .icon-read {
 
 .preview-title{
     margin-top: 50px;
-    font-size: 30px;
+    font-size: 30pt;
     color: #000000;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 20px;
-    font-family: Roboto-Bold-Italic;
+    font-family: Roboto-Light;
 }
 
 .carousel-info-name-div-new{
@@ -6610,7 +6610,7 @@ a.preview-footer-link {
     font-size: 18px;
     padding: 15px 0px;
     text-align: center;
-    font-family: Roboto-Bold-Italic
+    font-family: Roboto-Light
 }
 
 .service-info-min-height{
