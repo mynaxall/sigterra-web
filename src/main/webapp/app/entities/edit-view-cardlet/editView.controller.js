@@ -671,11 +671,9 @@
         }
 
         $scope.toggleSelection = function toggleSelection(img) {
-            console.log(img)
+
             var idx = $scope.selection.indexOf(img);
-            $scope.links.logoUrl1 = '';
-            $scope.links.logoUrl2 = '';
-            $scope.links.logoUrl3 = '';
+
 
             if (idx > -1) {
                 $scope.selection.splice(idx, 1);
@@ -684,7 +682,20 @@
                 $scope.selection.push(img);
             }
 
-            console.log($scope.selection[0])
+            setSelction();
+
+        };
+
+        $scope.deleteIcon = function(id){
+            $scope.selection.splice(id, 1);
+            setSelction();
+        }
+
+        function setSelction() {
+            $scope.links.logoUrl1 = '';
+            $scope.links.logoUrl2 = '';
+            $scope.links.logoUrl3 = '';
+
             if($scope.selection[0]){
                 $scope.links.logoUrl1 = $scope.selection[0];
             }
@@ -694,11 +705,6 @@
             if($scope.selection[2]){
                 $scope.links.logoUrl3 = $scope.selection[2];
             }
-
-        };
-
-        $scope.deleteIcon = function(id){
-            $scope.selection.splice(id, 1);
         }
 
         $scope.gerPreviewLink = function (id) {
