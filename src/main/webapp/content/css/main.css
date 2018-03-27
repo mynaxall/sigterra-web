@@ -6280,10 +6280,12 @@ ul.editor-tab li{
 
 ul.editor-tab li.active{
     border-bottom-color: #5cbcff;
+    z-index: 1;
 }
 
 ul.editor-tab li.hover{
     border-bottom-color: #5cbcff;
+    z-index: 1;
 }
 
 
