@@ -6261,12 +6261,12 @@ ul.editor-tab li{
     background: transparent;
     border: none;
     text-align: left;
-    width: 110px;
     height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid #dce0e6;
+    margin: 0px 44px;
 }
 
 .editor-tabs a{
@@ -6934,6 +6934,7 @@ a.preview-footer-link {
     height: 20px;
     padding: 0px;
     border: none;
+    border-radius: 20px;
 }
 
 .upload-img-btn img {
@@ -7080,8 +7081,9 @@ a.preview-footer-link {
     font-size: 16px;
     color: #FFFFFF;
     text-transform: uppercase;
-    background-color: #44bcf7;
+    background-color: #5cbcff;
     border: none;
+    border-radius: 5px;
 }
 
 .header-preview-editor-logo{
@@ -7230,7 +7232,23 @@ a.preview-footer-link {
     font-size: 12px;
 }
 
+.editor-subheader-container{
+    width: 1550px;
+    margin: 0 auto;
+    height: 85px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+}
+
 @media (max-width: 1600px) {
+
+    .editor-subheader-container{
+        width: 1450px;
+    }
 
     .editor-preview-panel{
         width: 700px;
@@ -7272,8 +7290,14 @@ a.preview-footer-link {
 }
 
 @media (max-width: 1500px) {
+
+    .editor-subheader-container{
+        width: 1350px;
+    }
+
+
     .editor-panel{
-        width: 749px;
+        width: 649px;
     }
 
     .editor-textarea{
@@ -7323,6 +7347,11 @@ a.preview-footer-link {
         align-items: center;
         align-content: center;
     }
+
+    .editor-subheader-container{
+        width: 650px;
+    }
+
 }
 
 .container-footer{
