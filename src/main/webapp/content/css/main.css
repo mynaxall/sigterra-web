@@ -6371,9 +6371,8 @@ ul.editor-tab li a:hover{
 
 .preview-cardlet{
     margin: auto;
-    width: 943px;
+    width: 910px;
     padding-top: 10px;
-    padding-left: 30px;
     padding-bottom: 50px;
     position: relative;
 
@@ -6482,7 +6481,7 @@ ul.editor-tab li a:hover{
 .custom-slide-next{
     position: absolute;
     top: 270px;
-    right: -40px;
+    right: -43px;
     display: block;
     background-color: #081211;
     padding: 5px;
@@ -6531,7 +6530,7 @@ a.preview-footer-link {
     border-top: 1px solid #666;
     background: #1e1e1e;
     color: #ccc;
-    height: 47px;
+    height: 63px;
 }
 
 .footer-bottom-editor{
@@ -7135,12 +7134,16 @@ a.preview-footer-link {
     width: 35px!important;
 }
 
-.copyright-text{
+.copyright-text-editor{
     padding: 15px;
 }
 
+.copyright-text{
+    padding: 21px;
+}
+
 .footer-preview-icon-div{
-    width: 45px!important;
+    margin-left: 16px;
 }
 
 
@@ -7318,6 +7321,11 @@ a.preview-footer-link {
         align-items: center;
         align-content: center;
     }
+}
+
+.container-footer{
+    width: 910px;
+    margin: 0 auto;
 }
 
 
