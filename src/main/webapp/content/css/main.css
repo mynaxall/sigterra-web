@@ -6391,9 +6391,10 @@ ul.editor-tab li a:hover{
 }
 
 .click-sec{
-    width: 116px;
+    width: 114px;
     padding: 25px;
-    border-radius: 20px;
+    border-radius: 12px;
+    border: 1px solid  #d6d6d6;
 }
 
 .click-sec-editor{
@@ -6644,12 +6645,12 @@ a.preview-footer-link {
 }
 
 .connect-btn{
-    height: 44px;
-    border: none!important;
+    height: 42px;
     font-size: 16px;
     color: #ffffff;
-    border-radius: 5px;
+    border-radius: 12px;
     margin: 24px 0px;
+    border: 1px solid  #d6d6d6;
 }
 
 .right-chevron{
