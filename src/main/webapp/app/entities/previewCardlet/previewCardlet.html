@@ -210,7 +210,7 @@
                     <div class="alignme">
                         <span>{{header.name}}</span>
                         <br>
-                        <span>{{header.title}}</span>
+                        <span class="small text-light">{{header.title}}</span>
                         <br>
                     </div>
                 </div>
@@ -269,8 +269,6 @@
                 <div class="arrow-link">
                     <a class="fa fa-arrow-down fa-2x hidden-sm hidden-md" href="" ng-click="scrollToFooter('capture')" target="_self"></a>
                 </div>
-            </div>
-            <div style="margin-top: 30px; margin-bottom: 60px; position: relative; z-index: 10; text-align: center">
             </div>
         </div>
     </div>
@@ -345,14 +343,13 @@
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url1)}}" data-toggle="modal" target="_blank">{{links.name1}}</a>
             </p>
-            <br />
+
         </div>
         <div ng-show="links.logoUrl2" class="img-with-text">
             <img class="click-sec" ng-src="{{links.logoUrl2}}" ng-style="{'background-color': '#'+header.ctaColor}"/>
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url2)}}" data-toggle="modal" target="_blank">{{links.name2}}</a>
             </p>
-            <br />
 
         </div>
         <div ng-show="links.logoUrl3" class="img-with-text">
@@ -360,7 +357,6 @@
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url3)}}" data-toggle="modal" target="_blank">{{links.name3}}</a>
             </p>
-            <br />
         </div>
     </div>
 </section>
