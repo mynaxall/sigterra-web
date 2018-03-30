@@ -18,6 +18,14 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: Roboto-Medium;
+    src: url('/content/fonts/Roboto-Medium.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @font-face {
     font-family: Roboto-Black;
     src: url('/content/fonts/Roboto-Black.ttf');
@@ -5636,7 +5644,7 @@ recent-activity-sidebar .icon-read {
 
 .preview-title{
     margin-top: 50px;
-    font-size: 30pt;
+    font-size: 31px;
     color: #000000;
     text-align: center;
     margin-top: 10px;
@@ -6526,6 +6534,8 @@ ul.editor-tab li a:hover{
 a.preview-footer-link {
     color: #33363b;
     text-decoration: none;
+    font-size: 15px;
+    font-family: Roboto-Medium;
 }
 
 .footer-bottom {
@@ -6582,6 +6592,8 @@ a.preview-footer-link {
 }
 
 .nav-preview{
+    font-size: 14px;
+    font-family: Roboto-Regular;
 }
 
 .prof-details{
@@ -6595,11 +6607,16 @@ a.preview-footer-link {
 .tab-preview{
     height: 53px;
     margin-right: 5px!important;
+    font-size: 19px;
+    font-family: Roboto-Regular;
 }
 
 .tablinks-preview{
     height: 51px!important;
-    font-size: 20px;
+}
+
+.active.tab-preview{
+    font-family: Roboto-Medium;
 }
 
 .editor-preview-panel{
@@ -6646,10 +6663,11 @@ a.preview-footer-link {
 .connect-btn{
     height: 44px;
     border: none!important;
-    font-size: 16px;
+    font-size: 15px;
     color: #ffffff;
     border-radius: 5px;
     margin: 24px 0px;
+    font-family: Roboto-Medium;
 }
 
 .right-chevron{
@@ -7142,7 +7160,8 @@ a.preview-footer-link {
 }
 
 .copyright-text{
-    padding: 21px;
+    font-size: 10px;
+    font-family: Roboto-Light;
 }
 
 .footer-preview-icon-div{
@@ -7203,7 +7222,8 @@ a.preview-footer-link {
 
 .footer-using{
     color: #abaea5;
-    font-size: 16px;
+    font-size: 12px;
+    font-family: Roboto-Light;
 }
 
 .footer-using-link{
@@ -7216,6 +7236,7 @@ a.preview-footer-link {
     justify-content: space-between;
     align-items: center;
     align-content: center;
+    height: 63px;
 }
 
 .text-center-footer-editor{
@@ -7356,6 +7377,11 @@ a.preview-footer-link {
 .container-footer{
     width: 910px;
     margin: 0 auto;
+}
+
+.preview-text-center{
+    font-family: Roboto-Regular;
+    font-size: 27px;
 }
 
 
