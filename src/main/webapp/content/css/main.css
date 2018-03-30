@@ -5648,7 +5648,7 @@ recent-activity-sidebar .icon-read {
     color: #000000;
     text-align: center;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-family: Roboto-Light;
 }
 
@@ -6399,9 +6399,10 @@ ul.editor-tab li a:hover{
 }
 
 .click-sec{
-    width: 116px;
+    width: 114px;
     padding: 25px;
-    border-radius: 20px;
+    border-radius: 12px;
+    border: 1px solid  #d6d6d6;
 }
 
 .click-sec-editor{
@@ -6542,7 +6543,7 @@ a.preview-footer-link {
     border-top: 1px solid #666;
     background: #1e1e1e;
     color: #ccc;
-    height: 63px;
+    height: 66px;
 }
 
 .footer-bottom-editor{
@@ -6584,7 +6585,7 @@ a.preview-footer-link {
 
 .preview-nav{
     background-color: #ffffff!important;
-    height: 92px;
+    height: 90px;
 }
 
 .navbar-collapse-preview{
@@ -6661,13 +6662,16 @@ a.preview-footer-link {
 }
 
 .connect-btn{
+    height: 42px;
+    font-size: 16px;
     height: 44px;
     border: none!important;
     font-size: 15px;
     color: #ffffff;
-    border-radius: 5px;
+    border-radius: 12px;
     margin: 24px 0px;
     font-family: Roboto-Medium;
+    border: 1px solid  #d6d6d6;
 }
 
 .right-chevron{
@@ -6761,11 +6765,6 @@ a.preview-footer-link {
     justify-content: center;
     align-items: top;
     align-content: center;
-}
-
-.service-info{
-    margin-top: 20px;
-    margin-bottom: 60px;
 }
 
 .editor-header-logo-div{
@@ -7238,7 +7237,7 @@ a.preview-footer-link {
     justify-content: space-between;
     align-items: center;
     align-content: center;
-    height: 63px;
+    height: 66px;
 }
 
 .text-center-footer-editor{
@@ -7384,6 +7383,10 @@ a.preview-footer-link {
 .preview-text-center{
     font-family: Roboto-Regular;
     font-size: 27px;
+}
+
+.service-info{
+    margin-top: 19px;
 }
 
 
