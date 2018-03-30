@@ -7146,9 +7146,11 @@ a.preview-footer-link {
 }
 
 .prview-avatar{
-    max-width: 77px;
-    max-height: 77px;
-    border-radius: 77px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50px;
+    border: 1px solid #d6d6d6;
+
 }
 
 .footer-preview-icon{
