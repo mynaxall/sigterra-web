@@ -6426,7 +6426,7 @@ ul.editor-tab li a:hover{
 .cardlet-image--preview{
     border: 0px ;
     height: 510px;
-    width: 910px;
+    width: 907px;
 }
 
 .main-carousel-item-preview{
@@ -6436,7 +6436,7 @@ ul.editor-tab li a:hover{
 
 .main-carousel-item-div-preview{
     display: inline-block;
-    width: 910px;
+    width: 907px;
     vertical-align: top;
     text-align: left;
     height: 100%;
@@ -6445,7 +6445,7 @@ ul.editor-tab li a:hover{
 .tabcontent-preview {
     display: none;
     border: 0px solid #ccc;
-    width: 910px;
+    width: 907px;
     background-color: #F9F9F9;
     margin-top: -1px;
 }
@@ -6483,7 +6483,7 @@ ul.editor-tab li a:hover{
 .custom-slide-next{
     position: absolute;
     top: 270px;
-    right: -43px;
+    right: -40px;
     display: block;
     background-color: #081211;
     padding: 5px;
@@ -6594,6 +6594,7 @@ a.preview-footer-link {
 
 .tab-preview{
     height: 53px;
+    margin-right: 5px!important;
 }
 
 .tablinks-preview{

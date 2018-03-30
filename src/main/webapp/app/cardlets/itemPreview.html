@@ -8,7 +8,7 @@
                         <div ng-repeat="slide in tabName.items"  class="main-carousel-item-div-preview"
                              ng-click="readsCounter($event, tabName.id, slide.id)">
                             <div style="max-height: 510px;overflow:hidden;">
-                                <img crossorigin="anonymous"  style="width: 913px" id="ing-1" ng-src="{{slide.image}}?{{time}}">
+                                <img crossorigin="anonymous"  style="width: 907px" id="ing-1" ng-src="{{slide.image}}?{{time}}">
                             </div>
                             <div class="item-3-content-preview" ng-hide="!slide.name.value && !slide.description.value" ng-style="{'background-color': '#'+tabName.layout.secondaryColor}">
                                 <a style="max-height: 510px;" href="{{slide.link | link}}" target="_blank" ng-show="slide.link  && showLink" class="custom-cursor">
