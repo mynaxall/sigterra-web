@@ -338,21 +338,19 @@
 </div>
 <section class="service-info-sec">
     <h2 class="text-center" id="capture">{{links.title}}</h2>
-    <br>
     <div class="container service-info-editor service-info">
         <div ng-show="links.logoUrl1" class="img-with-text">
             <img class="click-sec" ng-src="{{links.logoUrl1}}" border="0" ng-style="{'background-color': '#'+header.ctaColor}"/>
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url1)}}" data-toggle="modal" target="_blank">{{links.name1}}</a>
             </p>
-            <br />
+
         </div>
         <div ng-show="links.logoUrl2" class="img-with-text">
             <img class="click-sec" ng-src="{{links.logoUrl2}}" ng-style="{'background-color': '#'+header.ctaColor}"/>
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url2)}}" data-toggle="modal" target="_blank">{{links.name2}}</a>
             </p>
-            <br />
 
         </div>
         <div ng-show="links.logoUrl3" class="img-with-text">
@@ -360,7 +358,6 @@
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url3)}}" data-toggle="modal" target="_blank">{{links.name3}}</a>
             </p>
-            <br />
         </div>
     </div>
 </section>
