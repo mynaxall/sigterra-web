@@ -5640,7 +5640,7 @@ recent-activity-sidebar .icon-read {
     color: #000000;
     text-align: center;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-family: Roboto-Light;
 }
 
@@ -6532,7 +6532,7 @@ a.preview-footer-link {
     border-top: 1px solid #666;
     background: #1e1e1e;
     color: #ccc;
-    height: 63px;
+    height: 66px;
 }
 
 .footer-bottom-editor{
@@ -6574,7 +6574,7 @@ a.preview-footer-link {
 
 .preview-nav{
     background-color: #ffffff!important;
-    height: 92px;
+    height: 90px;
 }
 
 .navbar-collapse-preview{
@@ -6743,11 +6743,6 @@ a.preview-footer-link {
     justify-content: center;
     align-items: top;
     align-content: center;
-}
-
-.service-info{
-    margin-top: 20px;
-    margin-bottom: 60px;
 }
 
 .editor-header-logo-div{
@@ -7216,6 +7211,7 @@ a.preview-footer-link {
     justify-content: space-between;
     align-items: center;
     align-content: center;
+    height: 66px;
 }
 
 .text-center-footer-editor{
@@ -7356,6 +7352,10 @@ a.preview-footer-link {
 .container-footer{
     width: 910px;
     margin: 0 auto;
+}
+
+.service-info{
+    margin-top: 19px;
 }
 
 
