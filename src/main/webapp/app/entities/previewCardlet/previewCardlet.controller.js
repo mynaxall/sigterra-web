@@ -475,19 +475,19 @@
                         link.style.maxWidth = "910px";
                     }
                     if ($scope.tabNames.tabs.length === 2) {
-                        currentEl.style.width = "454px";
-                        link.style.width = "454px";
-                        link.style.maxWidth = "454px";
+                        currentEl.style.width = "451px";
+                        link.style.width = "451px";
+                        link.style.maxWidth = "451px";
                     }
                     if ($scope.tabNames.tabs.length === 3) {
-                        currentEl.style.width = "302px";
-                        link.style.width = "302px";
-                        link.style.maxWidth = "302px";
+                        currentEl.style.width = "299px";
+                        link.style.width = "299px";
+                        link.style.maxWidth = "299px";
                     }
                     if ($scope.tabNames.tabs.length === 4) {
-                        currentEl.style.width = "226px";
-                        link.style.width = "265px";
-                        link.style.maxWidth = "265px";
+                        currentEl.style.width = "223px";
+                        link.style.width = "223px";
+                        link.style.maxWidth = "223px";
                     }
                 }
             }
