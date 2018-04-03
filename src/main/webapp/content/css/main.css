@@ -6258,10 +6258,11 @@ ul.editor-tab{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     align-content: stretch;
     height: 70px;
+    padding: 0px 124px;
 }
 
 ul.editor-tab li{
@@ -6274,7 +6275,7 @@ ul.editor-tab li{
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid #dce0e6;
-    margin: 0px 44px;
+    padding: 0px 4px;
 }
 
 .editor-tabs a{
