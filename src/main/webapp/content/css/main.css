@@ -6404,6 +6404,9 @@ ul.editor-tab li a:hover{
     padding: 25px;
     border-radius: 12px;
     border: 1px solid  #d6d6d6;
+    -webkit-box-shadow: 0px 7px 12px -6px rgba(214,214,214,1);
+    -moz-box-shadow: 0px 7px 12px -6px rgba(214,214,214,1);
+    box-shadow: 0px 7px 12px -6px rgba(214,214,214,1);
 }
 
 .click-sec-editor{
@@ -7230,6 +7233,10 @@ a.preview-footer-link {
     text-decoration: underline;
 }
 
+.footer-using-link:hover{
+    color: #fff;
+}
+
 .text-center-footer{
     display: flex;
     justify-content: space-between;
@@ -7381,10 +7388,11 @@ a.preview-footer-link {
 .preview-text-center{
     font-family: Roboto-Regular;
     font-size: 27px;
+    margin-top: 10px;
 }
 
 .service-info{
-    margin-top: 19px;
+    margin-top: 35px;
 }
 
 .preview-image{
