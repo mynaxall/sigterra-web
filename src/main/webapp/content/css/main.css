@@ -82,19 +82,18 @@
     font-style: normal;
 }
 
-
-.roboto-bold-italic{
+.roboto-bold-italic {
     font-family: Roboto-Bold-Italic;
 }
-.roboto-italic{
+
+.roboto-italic {
     font-family: Roboto-Italic;
 }
 
-
 @font-face {
     font-family: 'icomoon';
-    src:  url('/content/fonts/icomoon.eot?1zpznw');
-    src:  url('/content/fonts/icomoon.eot?1zpznw#iefix') format('embedded-opentype'),
+    src: url('/content/fonts/icomoon.eot?1zpznw');
+    src: url('/content/fonts/icomoon.eot?1zpznw#iefix') format('embedded-opentype'),
     url('/content/fonts/icomoon.ttf?1zpznw') format('truetype'),
     url('/content/fonts/icomoon.woff?1zpznw') format('woff'),
     url('/content/fonts/icomoon.svg?1zpznw#icomoon') format('svg');
@@ -120,34 +119,40 @@
 .icon-Facebook:before {
     content: "\e901";
 }
+
 .icon-Google:before {
     content: "\e902";
 }
+
 .icon-latter:before {
     content: "\e903";
 }
+
 .icon-linkedin:before {
     content: "\e904";
 }
+
 .icon-location:before {
     content: "\e905";
 }
+
 .icon-Smartphone:before {
     content: "\e906";
 }
+
 .icon-Twitter:before {
     content: "\e907";
 }
+
 .icon-website:before {
     content: "\e908";
 }
+
 .icon-smartphone:before {
     content: "\e900";
 }
 
-
-
-html{
+html {
     background: #FFFFFF;
     height: 100%;
     box-sizing: border-box;
@@ -157,19 +162,19 @@ html{
 
 body {
     background: #ffffff;
-    font-family: Roboto-Regular!important;
+    font-family: Roboto-Regular !important;
     color: #333;
     min-height: 100%;
     min-width: 600px;
-    padding-right: 0px!important;
+    padding-right: 0px !important;
 }
 
-pre{
+pre {
     font-family: Roboto-Regular;
-    white-space: pre-wrap;       /* Since CSS 2.1 */
-    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-    white-space: -pre-wrap;      /* Opera 4-6 */
-    white-space: -o-pre-wrap;    /* Opera 7 */
+    white-space: pre-wrap; /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
     word-wrap: break-word;
     -webkit-word-wrap: break-word;
     -o-word-wrap: break-word;
@@ -178,7 +183,7 @@ pre{
 
 .footer {
     position: absolute;
-    width:100%;
+    width: 100%;
     bottom: 0;
     left: 0;
 }
@@ -253,8 +258,8 @@ Logo styles
     display: inline-block;
 }
 
-.log{
-    padding: 15px 0px!important;
+.log {
+    padding: 15px 0px !important;
 }
 
 /* ==========================================================================
@@ -286,13 +291,7 @@ Main page styles
 }
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (   min--moz-device-pixel-ratio: 2),
-only screen and (     -o-min-device-pixel-ratio: 2/1),
-only screen and (        min-device-pixel-ratio: 2),
-only screen and (                min-resolution: 192dpi),
-only screen and (                min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (   min--moz-device-pixel-ratio: 2), only screen and (     -o-min-device-pixel-ratio: 2/1), only screen and (        min-device-pixel-ratio: 2), only screen and (                min-resolution: 192dpi), only screen and (                min-resolution: 2dppx) {
     .hipster {
         background: url("../images/hipster2x.png") no-repeat center top;
         background-size: contain;
@@ -375,6 +374,7 @@ ul#strengthBar {
 .point:last {
     margin:0 !important;
 }
+
 .point {
     background:#DDD;
     border-radius:2px;
@@ -435,15 +435,31 @@ entity tables helpers
 ========================================================================== */
 /* Remove Bootstrap padding from the element
    http://stackoverflow.com/questions/19562903/remove-padding-from-columns-in-bootstrap-3 */
-.no-padding-left { padding-left: 0 !important; }
-.no-padding-right { padding-right: 0 !important; }
-.no-padding-top { padding-top: 0 !important; }
-.no-padding-bottom { padding-bottom: 0 !important; }
-.no-padding { padding: 0 !important; }
+.no-padding-left {
+    padding-left: 0 !important;
+}
+
+.no-padding-right {
+    padding-right: 0 !important;
+}
+
+.no-padding-top {
+    padding-top: 0 !important;
+}
+
+.no-padding-bottom {
+    padding-bottom: 0 !important;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
 
 /* bootstrap 3 input-group 100% width
    http://stackoverflow.com/questions/23436430/bootstrap-3-input-group-100-width */
-.width-min { width: 1% !important; }
+.width-min {
+    width: 1% !important;
+}
 
 /* Makes toolbar not wrap on smaller screens
  http://www.sketchingwithcss.com/samplechapter/cheatsheet.html#right */
@@ -554,13 +570,13 @@ Social Buttons
 
 /* jhipster-needle-css-add-main JHipster will add new css style */
 .navbar-custom {
-    background-color: #242424!important;
-    border-color: #242424!important;
+    background-color: #242424 !important;
+    border-color: #242424 !important;
     border-style: solid;
-    height:80px;
+    height: 80px;
 }
 
-.navbar{
+.navbar {
     margin-bottom: 0;
     border-radius: 0px;
 }
@@ -569,17 +585,17 @@ Social Buttons
     margin-top: 0px;
     margin-bottom: 0px;
     background-color: #FFFFFF;
-    padding: 0!important;
+    padding: 0 !important;
     border: none;
     height: 100%;
     box-shadow: none;
 }
 
-.reset-pass-container{
+.reset-pass-container {
     padding: 0px 90px;
 }
 
-.registration-div{
+.registration-div {
     background-color: #fff;
     max-width: 410px;
     margin-right: auto;
@@ -911,7 +927,6 @@ Social Buttons
     margin-top: 40px;
 }
 
-
 .cropArea {
     background: #E4E4E4;
     overflow: hidden;
@@ -1019,6 +1034,7 @@ Social Buttons
     overflow: hidden;
     margin: 10px;
 }
+
 .fileUpload input.upload {
     position: absolute;
     top: 0;
@@ -1086,7 +1102,7 @@ Social Buttons
     z-index: 100;
 }
 
-.signature-text-sample{
+.signature-text-sample {
     color: #5C5C5C;
     font-size: 14px;
     margin-left: 10px;
@@ -6664,6 +6680,8 @@ a.preview-footer-link {
 .connect-btn{
     height: 42px;
     font-size: 16px;
+    height: 44px;
+    font-size: 15px;
     color: #ffffff;
     border-radius: 12px;
     margin: 24px 0px;
@@ -6711,6 +6729,14 @@ a.preview-footer-link {
     justify-content: space-between;
     align-items: center;
     align-content: center;
+    padding: 0px 30px;
+}
+
+
+@media (max-width: 900px) {
+    .nav-view {
+        display: block!important;
+    }
 }
 
 .view-header-logo-main{
@@ -7142,9 +7168,11 @@ a.preview-footer-link {
 }
 
 .prview-avatar{
-    max-width: 77px;
-    max-height: 77px;
-    border-radius: 77px;
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50px;
+    border: 1px solid #d6d6d6;
+
 }
 
 .footer-preview-icon{

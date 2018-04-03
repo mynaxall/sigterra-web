@@ -199,32 +199,33 @@
             </button>
             <img class="prview-logo view-header-logo-main" alt="Brand" ng-show="header.logoUrl"  ng-src="{{header.logoUrl}}?{{time}}">
         </div>
-        <div class="navbar-collapse navbar-collapse-preview nav-view" style="display: flex!important" uib-collapse="vm.isNavbarCollapsed">
-
-            <img class="prview-logo view-header-logo-collapse"  alt="Brand" ng-show="header.logoUrl"  ng-src="{{header.logoUrl}}?{{time}}">
-            <ul class="nav navbar-nav nav-preview">
-                <div class="preview-image-group">
+        <div class="navbar-collapse navbar-collapse-preview" uib-collapse="vm.isNavbarCollapsed">
+            <div class="nav-view">
+                <img class="prview-logo view-header-logo-collapse"  alt="Brand" ng-show="header.logoUrl"  ng-src="{{header.logoUrl}}?{{time}}">
+                <ul class="nav navbar-nav nav-preview">
+                    <div class="preview-image-group">
+                        <div>
+                            <img class="prview-avatar header-icons" ng-show="header.photoUrl" ng-src="{{header.photoUrl}}?{{time}}">
+                        </div>
+                        <div class="alignme">
+                            <span>{{header.name}}</span>
+                            <br>
+                            <span>{{header.title}}</span>
+                            <br>
+                        </div>
+                    </div>
+                </ul>
+                <ul class="nav navbar-nav nav-preview">
                     <div>
-                        <img class="prview-avatar header-icons" ng-show="header.photoUrl" ng-src="{{header.photoUrl}}?{{time}}">
-                    </div>
-                    <div class="alignme">
-                        <span>{{header.name}}</span>
+                        <span>{{header.email}}</span>
                         <br>
-                        <span class="small text-light">{{header.title}}</span>
-                        <br>
+                        <span>{{header.phone}}</span>
                     </div>
-                </div>
-            </ul>
-            <ul class="nav navbar-nav nav-preview">
-                <div>
-                    <span>{{header.email}}</span>
-                    <br>
-                    <span>{{header.phone}}</span>
-                </div>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <button ng-show="header.text" class="btn connect-btn"  data-toggle="modal" data-target="#myModalNorm" ng-style="{'background-color': '#'+header.ctaColor}">{{header.text}}</button>
-            </ul>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <button ng-show="header.text" class="btn connect-btn"  data-toggle="modal" data-target="#myModalNorm" ng-style="{'background-color': '#'+header.ctaColor}">{{header.text}}</button>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>
@@ -337,6 +338,7 @@
 <section class="service-info-sec">
     <h2 class="text-center preview-text-center" id="capture">{{links.title}}</h2>
     <br>
+    <h2 class="text-center" id="capture">{{links.title}}</h2>
     <div class="container service-info-editor service-info">
         <div ng-show="links.logoUrl1" class="img-with-text">
             <img class="click-sec" ng-src="{{links.logoUrl1}}" border="0" ng-style="{'background-color': '#'+header.ctaColor}"/>
