@@ -7412,6 +7412,13 @@ a.preview-footer-link {
     margin-top: 19px;
 }
 
+.preview-image{
+    max-height: 507px;
+    overflow: hidden;
+    border: 1px solid #D0D8D9;
+    border-top: 0px;
+}
+
 
 
 
