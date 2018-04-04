@@ -6453,7 +6453,7 @@ ul.editor-tab li a:hover{
 
 .cardlet-image--preview{
     border: 0px ;
-    height: 510px;
+    height: 507px;
     width: 907px;
 }
 
@@ -6511,7 +6511,7 @@ ul.editor-tab li a:hover{
 .custom-slide-next{
     position: absolute;
     top: 270px;
-    right: -40px;
+    right: -43px;
     display: block;
     background-color: #081211;
     padding: 5px;
@@ -7429,6 +7429,23 @@ a.preview-footer-link {
 
 .tab-preview div{
     padding-top: 4px;
+}
+
+.tab2-preview {
+    padding-top: 0px!important;
+}
+
+.tab-preview-diw{
+    border-radius: 15px 15px 0 0;
+}
+
+.cardlet-preview {
+    border-radius: 15px 15px 0 0;
+    position: relative;
+    width: 907px;
+    -webkit-box-shadow: 0px 11px 18px 1px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 11px 18px 1px rgba(0,0,0,0.3);
+    box-shadow: 0px 11px 18px 1px rgba(0,0,0,0.3);
 }
 
 

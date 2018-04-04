@@ -247,9 +247,9 @@
 
         <h2 class="preview-title" ng-style="{'color': background.textColor? '#000000' : '#ffffff'}">{{background.text}}</h2>
 
-        <div style="position:relative;">
-            <div>
-                <ul class="tab2">
+        <div class="cardlet-preview">
+            <div class="tab-preview-diw">
+                <ul class="tab2 tab2-preview">
                     <li class="tabs2 tab-preview tabs2{{tabNames.id}}" ng-style="addColors('card'+tabName.position+tabName.name, tabName.layout.mainColor, tabName.layout.secondaryColor, 'tabLink'+tabName.name)" ng-repeat="tabName in tabNames.tabs" id="card{{tabName.position}}{{tabName.name}}" ng-class="tabName.position == 0 ? 'active' : ''">
                         <div style="position: relative; display: table; width: 100%;">
                             <a style="overflow: hidden; text-overflow: ellipsis;" href="javascript:void(0)" id="tabLink{{tabName.name}}" class="tablinks2 tablinks-preview" style="color:#{{tabName.layout.secondaryColor}}" ng-click="openCity(tabName.name+tabName.position, 'card'+tabName.position+tabName.name, tabName.position)">{{tabName.name}}</a>
