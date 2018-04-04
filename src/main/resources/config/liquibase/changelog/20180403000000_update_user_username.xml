@@ -13,15 +13,10 @@
     <property name="floatType" value="float4" dbms="postgresql, h2"/>
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
-    <!--
-        Added the geoIp table.
-    -->
     <changeSet id="20180403000000-1" author="Aleksandr Korzhenko">
-        <sql dbms="mysql">UPDATE jhi_user AS a
-            INNER JOIN jhi_user AS b
-            ON a.id = b.id
-            SET a.username = b.login
-            WHERE a.username is null
+        <sql dbms="mysql">UPDATE jhi_user
+            SET username = login
+            WHERE username is null
         </sql>
     </changeSet>
 
