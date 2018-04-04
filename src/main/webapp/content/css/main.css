@@ -6261,7 +6261,7 @@ ul.editor-tab{
     justify-content: space-between;
     align-items: center;
     align-content: stretch;
-    height: 70px;
+    height: 69px;
     padding: 0px 124px;
 }
 
@@ -6270,12 +6270,12 @@ ul.editor-tab li{
     background: transparent;
     border: none;
     text-align: left;
-    height: 70px;
+    height: 69px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid #dce0e6;
-    padding: 0px 4px;
+    padding: 11px 4px 0px 4px;
 }
 
 .editor-tabs a{
@@ -6317,7 +6317,7 @@ ul.editor-tab li a:hover{
 
 .editor-panel{
     border: 1px solid #dce0e6;
-    padding: 50px;
+    padding: 63px 50px 50px 46px;
     height: 757px;
     width: 760px;
     background-color: #ffffff;
@@ -6330,7 +6330,7 @@ ul.editor-tab li a:hover{
 }
 
 .editor-div{
-    margin-bottom: 40px;
+    margin-bottom: 34px;
 }
 
 .input-editor-flex{
@@ -6340,7 +6340,7 @@ ul.editor-tab li a:hover{
     justify-content: flex-start;
     align-items: center;
     align-content: stretch;
-    margin-top: 15px;
+    margin-top: 16px;
 }
 
 .editor-input{
@@ -6748,7 +6748,7 @@ a.preview-footer-link {
 }
 
 .editor-view-header{
-    height: 70px;
+    height: 69px;
     background-color: #ffffff;
     border: 1px solid #dce0e6;
     border-bottom-width: 0px;
@@ -6855,7 +6855,7 @@ a.preview-footer-link {
 }
 
 .radio-label {
-    margin-left: 12px;
+    margin-left: 10px;
     font-size: 16px;
     color: #868d9b;
     font-family: Roboto-Light;
@@ -7387,6 +7387,32 @@ a.preview-footer-link {
     margin-top: 19px;
 }
 
+.editor-header-logo-div-container{
+    padding-top: 4px;
+}
 
+.editor-div-avatar{
+    margin-bottom: 29px;
+}
 
+.editor-input-group{
+    padding-top: 8px;
+}
+
+.editor-div-data{
+    margin-bottom: 29px;
+}
+
+.editor-div-headline{
+    margin-bottom: 0px;
+}
+
+.font-color-pading{
+    padding-top:  4px;
+    padding-left: 3px;
+}
+
+.editor-div-font-color{
+    margin-bottom: 41px;
+}
 
