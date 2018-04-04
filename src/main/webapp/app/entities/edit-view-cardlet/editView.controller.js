@@ -654,6 +654,7 @@
             EditViewerService.updateViewer($scope.cardletView ).then(function (response) {
                 $scope.showSpinner = false;
                 setValues(response);
+                $scope.time = Date.now();
                 if(isSave) {
                     vm.success = true;
                     $timeout(function() {

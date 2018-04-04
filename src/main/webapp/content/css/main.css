@@ -7187,7 +7187,7 @@ a.preview-footer-link {
 }
 
 .copyright-text{
-    font-size: 10px;
+    font-size: 12px;
     font-family: Roboto-Light;
 }
 
@@ -7249,7 +7249,7 @@ a.preview-footer-link {
 
 .footer-using{
     color: #abaea5;
-    font-size: 12px;
+    font-size: 10px;
     font-family: Roboto-Light;
 }
 
@@ -7425,6 +7425,10 @@ a.preview-footer-link {
     overflow: hidden;
     border: 1px solid #D0D8D9;
     border-top: 0px;
+}
+
+.tab-preview div{
+    padding-top: 4px;
 }
 
 
