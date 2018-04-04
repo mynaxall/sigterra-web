@@ -6333,7 +6333,7 @@ ul.editor-tab li a:hover{
 .editor-panel{
     border: 1px solid #dce0e6;
     padding: 50px;
-    height: 757px;
+    height: 762px;
     width: 760px;
     background-color: #ffffff;
 }
@@ -6677,7 +6677,7 @@ a.preview-footer-link {
     height: 30px;
     font-size: 12px;
     border: none!important;
-    border-radius: 3px;
+    border-radius: 8px;
 }
 
 .connect-btn{
