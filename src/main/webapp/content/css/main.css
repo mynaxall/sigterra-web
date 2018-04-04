@@ -6664,7 +6664,7 @@ a.preview-footer-link {
 
 .connect-btn{
     height: 42px;
-    font-size: 16px;
+    font-size: 15px;
     color: #ffffff;
     border-radius: 12px;
     margin: 24px 0px;
@@ -7159,7 +7159,7 @@ a.preview-footer-link {
 }
 
 .copyright-text{
-    font-size: 10px;
+    font-size: 12px;
     font-family: Roboto-Light;
 }
 
@@ -7221,7 +7221,7 @@ a.preview-footer-link {
 
 .footer-using{
     color: #abaea5;
-    font-size: 12px;
+    font-size: 10px;
     font-family: Roboto-Light;
 }
 
