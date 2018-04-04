@@ -336,26 +336,30 @@
     </style>
 </div>
 <section class="service-info-sec">
-    <h2 class="text-center preview-text-center" id="capture">{{links.title}}</h2>
-    <br>
-    <h2 class="text-center" id="capture">{{links.title}}</h2>
+    <div class="text-center preview-text-center" id="capture">{{links.title}}</div>
     <div class="container service-info-editor service-info">
         <div ng-show="links.logoUrl1" class="img-with-text">
-            <img class="click-sec" ng-src="{{links.logoUrl1}}" border="0" ng-style="{'background-color': '#'+header.ctaColor}"/>
+            <a href="{{createURL(links.url1)}}" data-toggle="modal" target="_blank">
+                <img class="click-sec" ng-src="{{links.logoUrl1}}" border="0" ng-style="{'background-color': '#'+header.ctaColor}"/>
+            </a>
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url1)}}" data-toggle="modal" target="_blank">{{links.name1}}</a>
             </p>
 
         </div>
         <div ng-show="links.logoUrl2" class="img-with-text">
-            <img class="click-sec" ng-src="{{links.logoUrl2}}" ng-style="{'background-color': '#'+header.ctaColor}"/>
+            <a href="{{createURL(links.url2)}}" data-toggle="modal" target="_blank">
+                <img class="click-sec" ng-src="{{links.logoUrl2}}" ng-style="{'background-color': '#'+header.ctaColor}"/>
+            <a>
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url2)}}" data-toggle="modal" target="_blank">{{links.name2}}</a>
             </p>
 
         </div>
         <div ng-show="links.logoUrl3" class="img-with-text">
-            <img class="click-sec" ng-src="{{links.logoUrl3}}" ng-style="{'background-color': '#'+header.ctaColor}"/>
+            <a href="{{createURL(links.url3)}}" data-toggle="modal" target="_blank">
+                <img class="click-sec" ng-src="{{links.logoUrl3}}" ng-style="{'background-color': '#'+header.ctaColor}"/>
+            </a>
             <p class="click-sec-text">
                 <a class="preview-footer-link" href="{{createURL(links.url3)}}" data-toggle="modal" target="_blank">{{links.name3}}</a>
             </p>
