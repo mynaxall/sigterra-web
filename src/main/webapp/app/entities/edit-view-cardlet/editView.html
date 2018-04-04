@@ -68,9 +68,6 @@
         $("#default-navbar").removeClass("navbar-fixed-top");
         $("#main-footer").removeClass("ng-hide");
     });
-    $(document).ready(function() {
-        jscolor.installByClassName("jscolor");
-    });
 </script>
 
 <div class="alert alert-success" check-position-scroll ng-show="vm.success">
@@ -192,11 +189,6 @@
                         <div class="editor-div editor-div-flex">
                             <label class="login-lable label-editor label-editor-logo">Color (CTA)</label>
                             <div>
-                                <script>
-                                    $(document).ready(function() {
-                                        jscolor.installByClassName("jscolor");
-                                    });
-                                </script>
                                 <input ng-model="header.ctaColor" type="text" name='ctaColor' value='header.ctaColor' id="secondaryColor" class="jscolor editor-color-input">
                             </div>
                         </div>
@@ -550,5 +542,9 @@
             </div>
         </div>
     </div>
-
+    <script>
+        $(document).ready(function() {
+            jscolor.installByClassName("jscolor");
+        });
+    </script>
 </div>
