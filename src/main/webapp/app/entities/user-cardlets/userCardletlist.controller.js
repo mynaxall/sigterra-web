@@ -87,12 +87,25 @@
                 return "app/cardlets/info2-editor.html"
             } else if (url === "app/cardlets/info3.html") {
                 return "app/cardlets/info3-editor.html"
+            }  else if (url === "app/cardlets/pres1.html") {
+                return "app/cardlets/pres1-editor.html"
             } else {
 
                 return url;
             }
         }
 
+        $scope.setActive = function (index) {
+       var sigId = $scope.userCardlets[$scope.segnatureId].id ;
+       if(index == 1){
+      // $scope.copyToEmail(index, 'copy-to-clip'+sigId, sigId)
+       vm.activeTab = index;
+       }
+       else{
+              vm.activeTab = index;
+
+       }
+        }
         $scope.saveBanner = function (name, image64, isFile) {
             $scope.showSpinner = true;
             if (isFile) {
@@ -116,7 +129,8 @@
                     $scope.showCropDialog = false;
                     $scope.showCropDialogTabs = false;
                     $scope.banner = $scope.bannerImageUrl;
-                    document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText
+                    //document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText
+                    document.getElementById("sigImg").innerHTML = $scope.coptToEmailText
 
                     $scope.showSpinner = false;
                     $scope.addBanner();
@@ -208,8 +222,36 @@
                 search: vm.currentSearch
             });
         }
+$scope.copied = false;
+$scope.copyToClipboardLink =function (elementId) {
+
+  // Create an auxiliary hidden input
+  var aux = document.createElement("input");
+console.log(elementId   );
+  // Get the text from the element passed into the input
+  aux.setAttribute("value", document.getElementById(elementId).innerHTML);
+
+  // Append the aux input to the body
+  document.body.appendChild(aux);
+
+  // Highlight the content
+  aux.select();
+
+  // Execute the copy command
+  document.execCommand("copy");
+$scope.copied = true ;
+       $timeout(function(){
+$scope.copied = false ;
+       }, 3000);
+  // Remove the input from the body
+  document.body.removeChild(aux);
 
 
+}
+
+function log(){
+	console.log('---')
+}
         $scope.openCity = function (cityName, tabId) {
             var i, tabcontent, tablinks, tabs;
             tabcontent = document.getElementsByClassName("tabcontent");
@@ -266,6 +308,7 @@
         }
 
         $scope.copyToEmail = function (id, cardId, sigId) {
+            console.log(id + " CardId: " +  cardId + " sigId: " +sigId)
             $scope.showSpinner = true;
             $scope.selected = $scope.fieldTable[0];
             $scope.isAddBanner = false;
@@ -296,7 +339,7 @@
                     $scope.selectSignature(1);
                 }
             });
-
+$scope.openModal();
             $scope.testSelect();
         };
 
@@ -502,12 +545,11 @@
             var imgageData = $scope.getCanvas.toDataURL("image/png");
             // Now browser starts downloading it instead of just showing it
             $scope.newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+
             $scope.saveImage("signature", imgageData)
 
         };
-
-
-        $scope.testimg = function () {
+      $scope.testimg = function () {
             $scope.element = $("#cardlet-signature"); // global variable
             $scope.getCanvas;
             html2canvas($scope.element, {
@@ -521,7 +563,7 @@
 
         $scope.openModal = function (id, syncData) {
             $scope.cardletLink = '<iframe style="width: 600px; height: 310px;border: 0px!important" src="' + $location.protocol() + '://' + $location.host() + ':' + $location.port() + '/#/copyToWeb?cardletId=' + setId(id) + '"></iframe>'
-            $scope.isShowModal = true;
+           // $scope.isShowModal = true;
         };
 
         /* @ngInject */
@@ -853,7 +895,6 @@
 
 
             if (!$scope.croppedImageUrl || $scope.croppedImageUrl === undefined) {
-
                 $http.post("/api/signature/upload/icon/" + $scope.userCardlets[$scope.segnatureId].id + "/" + name, fd, {
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
@@ -875,13 +916,14 @@
                             $scope.userCardlets[$scope.segnatureId].tabs[$scope.ImageTabIndex].sigImage = $scope.croppedImageUrl;
 
                         }
-                        document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText;
-                        document.getElementById("gmailDiv2").innerHTML = $scope.copyToEmailImage;
+                        document.getElementById("sigImg").innerHTML = $scope.coptToEmailText;
+                       // document.getElementById("gmailDiv2").innerHTML = $scope.copyToEmailImage;
                         $scope.showSpinner = false;
 
                     });
             } else {
                 if (name == "signature") {
+
                     $scope.coptToEmailText = '<a href="' + $scope.signatureLink + '"> <img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a>';
                     if ($scope.isAddBanner == true) {
                         $scope.coptToEmailText = '<div style="width: 430px;"><a href="' + $scope.signatureLink + '"><img style="text-transform: scale(0.59);width:430px" src="' + $scope.croppedImageUrl + '"></a><div><div style=\"text-transform: scale(0.59);\"><img style="text-transform: scale(0.59); width:430px" src="' + $scope.banner + '"></div></div>'
@@ -893,8 +935,8 @@
 
                 }
                 $scope.showSpinner = false;
-                document.getElementById("gmailDiv").innerHTML = $scope.coptToEmailText
-                document.getElementById("gmailDiv2").innerHTML = $scope.coptToEmailText
+               document.getElementById("sigImg").innerHTML = $scope.coptToEmailText
+               // document.getElementById("gmailDiv2").innerHTML = $scope.coptToEmailText
             }
 
         };

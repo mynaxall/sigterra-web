@@ -16,6 +16,8 @@
     <include file="classpath:config/liquibase/changelog/20171006082907_added_entity_Visitor.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171006084606_added_entity_Event.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20171011144500_added_geoip_table.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20180329000000_added_entity_TabType.xml" relativeToChangelogFile="false"/>
+
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20161206143946_added_entity_constraints_Cardlet.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20161207121408_added_entity_constraints_Business.xml" relativeToChangelogFile="false"/>

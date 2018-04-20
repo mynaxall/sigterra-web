@@ -5,130 +5,230 @@
         $("#main-footer").removeClass("ng-hide");
     });
 </script>
-
+<style>
+    .shareTablist {
+    float: left;
+    background: transparent;
+    border: none;
+    text-align: left;
+    height: 22px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #dce0e6;
+    margin: 0px 44px;
+}
+.sharetabs:hover, .sharetabs:focus {
+  color: #607D8B;
+}
+.text-clr{
+color: #59bdb6;
+}
+.sharetabs {
+    color: #5d6362 !important;
+}
+    .editor-view-header {
+    height: 70px;
+    background-color: #e0e7ee !important;
+    }
+    .view-editor-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+    background-color: #ffffff;
+}
+.siglinks{
+color: #59bdb6;
+}
+p{
+    font-size: 19px;
+    line-height: 1.5;
+    margin-bottom: 5px;
+    margin-top: 2em;
+    }
+.editor-view-header{
+margin-top: -6em;
+}
+.save-preview-btn {
+    position: absolute;
+    bottom: -1 !important;
+    right: -2 !important;
+    width: 140px;
+    height: 50px;
+    font-size: 16px;
+    color: #FFFFFF;
+    }
+    .copy-zone-outer {
+    padding: 10px 1px;
+    }
+    .download-btn{
+left: 20px;
+    bottom: -51px;
+    }
+</style>
 <div ng-show="showSpinner" class="spinner-shadow"><div style="position:absolute;top:40%; left: 50%"><img src="/content/images/spinner.svg" style="margin-left: -88px;"></div></div>
 <div class="modeal-custom-window ng-hide" ng-show="isCopyTiEmail"></div>
 <div class="modeal-custom-window ng-hide" ng-show="isCopyTiEmail" style="position: absolute; background-color: rgba(0, 0, 0, 0);">
     <div class="modal-dialog " style="margin-top: -100px; width: 1400px!important;">
-        <div class="modal-content">
+        <div class="modal-content ">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                         ng-click="closeDialog()">&times;</button>
-                <h4 class="modal-title" id="myUserLabel">
-                    Copy to e-mail</h4>
             </div>
-            <div  style=" padding: 50px!important;" class="modal-body">
-                <div style="position: relative">
-                    <div class="copy-to-email-step-number">
-                        <div class="registration-steps-number">1</div>
-                    </div>
-                    <div class="copy-to-email-steps">Place cursor inside the dotted box, select your signature and hit Ctrl + C.<br>Then paste it in your Email signature template or Email compose window:</div>
-                </div>
-                <div class="mail-copy-div">
-
-                    <div class="copy-to-web-div">
-                        <div class="copy-zone-outer">
-                            <div class="copy-zone-top-text">Click here and drag...</div>
-                            <div class="copy-zone-image">
-                                <div class="gmailDiv" id="gmailDiv" style="line-height: 0%"></div>
-                            </div>
-                            <div class="copy-zone-bottom-text">...until here and hit Ctrl+C</div>
+            <div class="view-editor-flex">
+                <div class="view-editor-col">
+                    <div class="left-column-editor-content">
+                        <div class="editor-view-header">
+                            <ul class="editor-tab" >
+                                <li class="editor-tabs shareTablist" ng-class="vm.activeTab == '1' ? 'active' : ''">
+                                    <a class="sharetabs " ng-click="setActive(1)">Email  </a>
+                                </li>
+                                <li class="editor-tabs shareTablist" ng-class="vm.activeTab == '2' ? 'active' : ''">
+                                    <a class="sharetabs" ng-click="setActive(2)">Web</a>
+                                </li>
+                                <li class="editor-tabs shareTablist" ng-class="vm.activeTab == '3' ? 'active' : ''">
+                                    <a class="sharetabs" ng-click="setActive(3)">Social</a>
+                                </li>
+                                <!--<li class="editor-tabs" ng-class="vm.activeTab == '4' ? 'active' : ''">-->
+                                <!--<a ng-click="setActive(4)">Footer</a>-->
+                                <!--</li>-->
+                            </ul>
                         </div>
-                        <textarea ng-show="false" id="copyedText" class="copy-to-email-textarea" ng-model="coptToEmailText"></textarea>
-                    </div>
-                </div>
+                        <div class="save-preview-panel">
+                            <div ng-if="vm.activeTab == '1'" class="">
 
-                <div style="padding-top: 40px">
-                    <div style="position:relative; display: inline-block;">
-                        <div class="copy-to-email-step-number">
-                            <div class="registration-steps-number">2</div>
-                        </div>
-                        <div class="copy-to-email-steps" style="display: inline-block;">Choose an e-mail client</div>
-                    </div>
-                    <div style="display: inline-block">
-                        <select class="form-control" ng-options="item.title for item in fieldTable"  ng-model="selected" ng-change="hasChanged(selected)" style="margin-left: 20px; width: 150px; background-color: #FFF">
-                        </select>
-                    </div>
-                </div>
-                <div  style=" padding: 0px!important;" class="modal-body">
-                    <div ng-show="instructions==1 " class="mail-instructions-open" >
-                        <div class="instructions-title">Gmail instructions</div>
+                                <div  style=" padding: 50px!important;" class="">
+                                    <div style="position: relative">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <div class="mail-copy-sig-div">
+                                                    <div class="copy-zone-outer-no-border copy-zone-image">
+                                                        <img style="text-transform: scale(0.59);text-align: center;width: 345px;margin-left: 27%;" src="{{croppedImageUrl}}">                                                    <!--</div>-->
+                                                    </div>
+                                                </div>
 
-                        1. Open <a href="https://mail.google.com/" target="_blank">Gmail</a>.<br>
-                        2. In the top right, click Settings  <img src="/content/images/gmailSettings.png" style="margin-top: -3px;"> > <b>Settings.</b><br>
-                        3. In the "Signature" section, add your signature text in the box. If you want, you can format your message by adding an image or changing the text style.<br>
-                        4. At the bottom of the page, click <b>Save Changes</b>.<br>
-                        <a target="_blank" href="https://support.google.com/mail/answer/8395?co=GENIE.Platform%3DDesktop&hl=en">Support</a>
-
-                    </div>
-                    <div class="mail-instructions-open" ng-show="instructions==3">
-                        <div class="instructions-title">Airmail instructions</div>
-
-                        Go to Preferences > Accounts >  Signature to change or add signatures to your outgoing email messages. Signatures are created on a per-account basis, so you can configure each email account with multiple signatures.
-                        Additionally, you can control whether a signature is automatically added to a message (again, on a per-account basis). Just go to Preferences > Accounts > (select an account) then click on 'Composer' tab. Choose whether to add a signature to the message while replying.<br>
-                        <a target="_blank" href="http://docs.airmailapp.com/airmail-for-mac/composer/signature-add-multiple-signatures-airmail-for-macos">Support</a>
+                                            </div> <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                            <p>Send Narrative attached as an image through Email </p>
+                                            <!--<a href="{{croppedImageUrl}}"  ng-click="hello()" target="_blank" download>-->
+                                            <a class="siglinks" download="sigterra.jpeg" href="{{newData}}">
+                                                <button class="save-preview-btn siglinks download-btn" >Download</button>
+                                            </a>
 
 
-                    </div>
-                    <div class="mail-instructions-open" ng-show="instructions==2">
-                        <div class="instructions-title">Outlook instructions</div>
+                                        </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <!--<textarea ng-show="false" id="copyedText" class="copy-to-email-textarea" ng-model="coptToEmailText"></textarea>-->
+                                                <div class="copy-to-web-div">
+                                                    <div class="copy-zone-outer" style="text-align:center;">
+                                                        <textarea ng-show="false" id="copyedText" class="copy-to-email-textarea" ng-model="coptToEmailText"></textarea>
+
+                                                        <div class="copy-zone-top-text text-clr"><img src="/content/images/c2_.png" style="margin-top: -21px;height: 20px;margin-right: -1.2em;"> &nbsp Click here and drag...</div>
+                                                        <div class="copy-zone-image " id="sigImg">
+                                                            <img  style="text-transform: scale(0.59);text-align: center;width: 345px;" src="{{croppedImageUrl}}">                                                    <!--</div>-->
+                                                        </div>
+                                                        <div class="copy-zone-bottom-text text-clr">...copy till here(Ctrl+C) &nbsp <img src="/content/images/c1.png" style="margin-bottom: -16px;height: 20px;margin-left: -1.2em;"></div>
+                                                    </div>
+                                                    <!--<textarea ng-show="false" id="copyedText" class="copy-to-email-textarea" ng-model="coptToEmailText"></textarea>-->
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <p>Click on Image and here and drag </p>
+                                                <!--<a href="{{croppedImageUrl}}"  ng-click="hello()" target="_blank" download>-->
+                                                <!--<a download="sigterra.jpeg" href="{{newData}}">-->
+                                                <!--<button class="siglinks" >download</button>-->
+                                                <!--</a>-->
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <div class="mail-copy-sig-div" style="    max-width: 100%;">
+                                                    <div class="copy-zone-outer-solid copy-zone-link" style="text-align:  center;margin-left: 12%;max-width: 472px;vertical-align:  middle;background: #e0e7ef;">
+
+                                                        <!--<div class="copy-zone-outer-solid copy-zone copy-zone-link">-->
+                                                        <a class="siglinks" id="linkUrl" href="{{signatureLink}}">{{signatureLink}}</a>
+
+                                                    </div>
+                                                </div>
+
+                                            </div> <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"  >
+                                            <p style="max-width: 100%; font-size: 19px;line-height: 1.5;margin-bottom: 0px;">Copy Narrative link and share through email</p>
+                                            <!--<a href="{{croppedImageUrl}}"  ng-click="hello()" target="_blank" download>-->
+                                            <a class="siglinks" ng-click="copyToClipboardLink('linkUrl')">copy link</a>
+                                            <span ng-show="copied">copied</span>
 
 
-                        1. Create a new email message.<br>
-                        2. On the <b>Message tab</b>, in the Include group, choose <b>Signature</b> > <b>Signatures</b>.<br>
-                        3. Under <b>Select signature to edit</b>, choose <b>New</b>, and in the <b>New Signature</b> dialog box, type a name for the signature.<br>
-                        4. Under <b>Choose default signature</b>, set the following options for your signature:<br>
-                        In the <b>E-mail account list</b>, choose an email account to associate with the signature. You can have different signatures for each email account.<br>
-                        In the <b>New messages</b> list, choose the signature that you want to be added automatically to all new email messages. If you don't want to auto sign your new email messages, accept the default option of <b>(none)</b>.<br>
-                        In the <b>Replies/forwards</b> list, choose the signature that you want to be added automatically (auto sign) when you reply to or forward messages. Otherwise, accept the default option of <b>(none)</b>.<br>
-                        5.Under <b>Edit signature</b>, type the signature, and then choose <b>OK</b>.<br>
-                        <a target="_blank" href="https://support.office.com/en-us/article/Create-and-add-a-signature-to-messages-8ee5d4f4-68fd-464a-a1c1-0e1c80bb27f2">Support</a>
-
-                    </div>
-                    <div class=" mail-instructions-open" ng-show="instructions==4">
-                        <div class="instructions-title">Yahoo instructions</div>
-
-                        1. Mouse over the <b>Settings menu icon</b> <img src="/content/images/yahooSettings.png" style="margin-top: -3px;"> | select <b>Settings</b> .<br>
-                        2. Click <b>Accounts</b> .<br>
-                        3. Click your <b>Yahoo</b>  account.<br>
-                        4. Select <b>Append a signature to the emails you send</b>.<br>
-                        5. Enter or edit your signature text in the Signature field.<br>
-                        6. Click <b>Save</b>.<br>
-                        <a target="_blank" href="https://help.yahoo.com/kb/SLN16030.html">Support</a>
-
-                    </div>
-                    <div style="text-align: center; padding: 10px; border-width: 0px; border-color: #F1F1F1; border-style: solid;border-bottom-width: 1px">
-                    </div>
-                    <div class="copy-zone-title">OR use the following</div>
-                    <div class="mail-copy-sig-types">
-
-                        <div class="mail-copy-sig-div">
-                            <div class="copy-zone-outer-text copy-zone-outer-text-margin">Image</div>
-                            <div class="copy-zone-outer-no-border copy-zone-image">
-                                <div class="gmailDiv" id="gmailDiv2" style="line-height: 0%"></div>
-                            </div>
-                            <textarea ng-show="false" id="copyedText" class="copy-to-email-textarea" ng-model="coptToEmailText"></textarea>
-                        </div>
-                        <div>
-                            <div class="copy-zone-outer-text">Link</div>
-                            <div class="copy-zone-outer-solid copy-zone copy-zone-link">
-                                <a href="{{signatureLink}}">{{signatureLink}}</a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="copy-zone-outer-text">Text</div>
-                            <div class="copy-zone-outer-solid copy-zone copy-zone-link">
-                                <div ng-if="isCopyTiEmail">
-                                    <ng-include src="'app/cardlets/userSigmatureNew.html'"></ng-include>
+                                        </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        <div ng-if="vm.activeTab == '2'" class="editor-panel">
+                            <div  style=" padding: 50px!important;" class="">
+                                <div style="position: relative">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                            <div class="mail-copy-sig-div" style="    max-width: 100%;">
+                                                <div class="copy-zone-outer-solid copy-zone-link" style="text-align:  center;margin-left: 12%;max-width: 472px;vertical-align:  middle;">
+
+                                                    <!--<div class="copy-zone-outer-solid copy-zone copy-zone-link">-->
+                                                    <span  class="siglinks" id="linkUrl1" ng-click="copyToClipboard('linkUrl1')"> {{cardletLink}}</span>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                                            <p style="max-width: 100%; font-size: 19px;line-height: 1.5;margin-bottom: 0px;">Copy Iframe and integrate into any website</p>
+                                            <!--<a href="{{croppedImageUrl}}"  ng-click="hello()" target="_blank" download>-->
+                                            <a class="siglinks" ng-click="copyToClipboard('linkUrl1')">copy link</a>
+                                            <span ng-show="copied">copied</span>
+
+
+                                        </div>
+                                    </div>
+                                </div></div>
+                        </div>
+                        <div ng-if="vm.activeTab == '3'" class="editor-panel">
+                            <div  style=" padding: 50px!important;" class="">
+                                <div style="position: relative">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                            <div class="mail-copy-sig-div" style="    max-width: 100%;">
+                                                <div class="copy-zone-outer-solid copy-zone-link" style="text-align:  center;margin-left: 12%;max-width: 472px;vertical-align:  middle;">
+
+                                                    <!--<div class="copy-zone-outer-solid copy-zone copy-zone-link">-->
+                                                    <a class="siglinks" id="linkUrl" href="{{signatureLink}}">{{signatureLink}}</a>
+
+                                                </div>
+                                            </div>
+
+                                        </div> <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
+                                        <p style="max-width: 100%; font-size: 19px;line-height: 1.5;margin-bottom: 0px;">Copy Narrative link and share through social websites</p>
+                                        <!--<a href="{{croppedImageUrl}}"  ng-click="hello()" target="_blank" download>-->
+                                        <a class="siglinks" ng-click="copyToClipboardLink('linkUrl')">copy link</a>
+                                        <span ng-show="copied">copied</span>
+
+
+                                    </div>
+                                    </div>
+                                </div></div>
+                        </div>
+
+                    </div></div>
             </div>
         </div>
-    </div>
+    </div></div>
+
+</div>
+</div>
 </div>
 
 
@@ -420,8 +520,32 @@
             width: auto;
             padding-left: 0px;
         }
+.cardlet-top-control {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 254px !important;
+    height: 30px;
+}
+.catdlet-btn-col-top {
+    padding: 0px!important;
+    width: 20% !important;
+    height: 30px;
+    float: left;
+}
+.view-editor-col{
+width:100%;
+}
+.editor-panel{
+width:100%;
 
+}
+.copy-to-web-div {
+    margin-top: 20px;
+    }
     </style>
+
+
     <div class="user-cardlet-panel ng-hide" ng-show="showConent" ng-style="{'min-height': isCopyTiEmail ? '1400px' : 'none'}">
         <div class="portfolio-header"></div>
         <button type="submit" ng-disabled="for2m.$invalid" class="btn btn-primary main-btn copy-btn create-cardlet-btn" ui-sref="cardletlist">
@@ -433,18 +557,17 @@
         <div class="row">
             <div style="margin-bottom: 70px;" class="col-lg-6" ng-repeat="tabNames in userCardlets">
                 <div class="cardlet-panel">
-
                     <div class="cardlet-top-control">
                         <div class="catdlet-btn-col-top">
                             <div class="catdlet-btn-top" ng-click="cloneCardlet(tabNames)">
-                                <img src="/content/images/clone.png" style="margin-top: 5px;">
+                                <img src="/content/images/Duplicate.png" style="margin-top: 5px;">
                                 <div class="catdlet-btn-top-text">Clone</div>
                             </div>
                         </div>
                         <div class=" catdlet-btn-col-top">
                             <div class="catdlet-btn-top">
                                 <a class="catdlet-btn-link" target="_blank" href="{{gerPreviewLink(tabNames.id)}}">
-                                    <img src="/content/images/preview_icon.png" style="margin-top: 5px;">
+                                    <img src="/content/images/View2.png" style="margin-top: 5px;">
                                     <div class="catdlet-btn-top-text">View</div>
                                 </a>
 
@@ -453,17 +576,26 @@
                         <div class=" catdlet-btn-col-top">
                             <div class="catdlet-btn-top">
                                 <a class="catdlet-btn-link" ui-sref="editcardletlist({ cardletId: tabNames.id })">
-                                    <img src="/content/images/edit_icon.png" style="margin-top: 5px;">
+                                    <img src="/content/images/Edit.png" style="margin-top: 5px;">
                                     <div class="catdlet-btn-top-text">Edit</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class=" catdlet-btn-col-top">
+                            <div class="catdlet-btn-top">
+                                <a class="catdlet-btn-link" ng-click="copyToEmail($index, 'copy-to-clip'+tabNames.id, tabNames.id);setActive(1) ">
+                                    <img src="/content/images/Deliver.png" style="margin-top: 5px;">
+                                    <div class="catdlet-btn-top-text">Deliver</div>
                                 </a>
                             </div>
                         </div>
                         <div class="catdlet-btn-col-top">
                             <div class="catdlet-btn-top" ng-click="delteCardletDialog(tabNames.id)">
-                                <img src="/content/images/delete_icon.png" style="margin-top: 5px;">
+                                <img src="/content/images/Delete.png" style="margin-top: 5px;">
                                 <div class="catdlet-btn-top-text">Delete</div>
                             </div>
                         </div>
+
                     </div>
                     <div class="cardlet-name-title">{{tabNames.cardletName}}</div>
                     <div class="cardlet-central-panel" >
@@ -557,11 +689,3 @@
 </style>
 
 </div>
-
-
-
-
-
-
-
-

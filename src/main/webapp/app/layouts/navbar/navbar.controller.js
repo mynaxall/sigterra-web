@@ -22,29 +22,54 @@
         $scope.homeLogo = false;
 
         $scope.$watch('$location.path()', function(value){
+
             console.log($location.path())
+
             if($location.path() ==='/previewCardlet'){
+            unLoadChat();
                 vm.showNavigation = false;
             }else{
                 vm.showNavigation = true;
             }
-
-            if(($location.path()) === "/"){
+            if(($location.path()) === "/" && vm.isAuthenticated() ===  false){
                 $scope.homeLogo = true;
+
             }else{
+            unLoadChat();
+
                 $scope.homeLogo = false;
             }
         })
 
         $scope.$on('$locationChangeStart', function(event) {
-            if(($location.path()) === "/"){
+
+            if(($location.path()) === "/" && vm.isAuthenticated() ===  false){
+                loadChat()
                 $scope.homeLogo = true;
 
             }else{
+                unLoadChat();
                 $scope.homeLogo = false;
             }
         });
 
+
+        function unLoadChat(){
+
+            drift.on("ready", function(api) {
+                api.widget.hide()
+
+            })
+
+        }
+        function loadChat(){
+
+            drift.on("ready", function(api) {
+                api.widget.show()
+
+            })
+
+        }
 
 
         vm.login = login;

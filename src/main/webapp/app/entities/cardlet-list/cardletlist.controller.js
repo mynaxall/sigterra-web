@@ -232,6 +232,106 @@
         };
 
 
+        $scope.uploadFiles = function (files, tabId, itemId, itemImgPosition ) {
+
+
+            if(files[0].type === "image/png" || files[0].type !== "application/pdf" ) {
+            $scope.showError = true;
+            $scope.showSpinner = false;
+
+            }
+            else{
+                $scope.showSpinner = true;
+                // $scope.showCropDialog = true;
+                $scope.tabImageId = tabId;
+                $scope.itemImageId = itemId;
+                $scope.imageItemMame = itemImgPosition;
+                //$scope.myCroppedImage = '';
+                $scope.myImage = "";
+                //var files = document.getElementById('fileInput').files;
+                var test;
+                if (files.length > 0) {
+                    test=  getBase641(files[0]);
+                }
+                var fd = new FormData();
+
+                fd.append('file', test);
+
+                $http.post("/api/cardlet/upload/convert/presentation-pdf/test",  fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+                })
+                .success(function (data, status, headers, config) {
+                // $scope.imageUrl = data;
+
+                if(data.length > 1 ){
+
+                for(i=0;i <= data.length-1; i ++){
+                    var index = $scope.tabNames.tabs[tabId].items[i].index ;
+
+                    $scope.tabNames.tabs[tabId].items[i].image = data[i]
+
+                    $scope.imageUrl = data[i];
+
+                    if($scope.itemImageId != null){
+                     $scope.tabNames.tabs[$scope.tabImageId].items[$scope.itemImageId][$scope.imageItemMame] = $scope.imageUrl;
+                    }else {
+                     setTabImage();
+                    }
+                    $scope.isDeleteItem = true;
+
+                    var newItem = {
+                        //"name":  ($scope.tabNames.tabs[tabId].items.length+1)+" item",
+                        "index": index + 1,
+                        "position": $scope.tabNames.tabs[tabId].items.length,
+                        "image": "/content/images/portfolio_img_01.png",
+                        "image2": "/content/images/portfolio_img_02.png",
+                        "image3": "/content/images/portfolio_img_03.png",
+                        "name": {
+                        "value": ""
+                        },
+                        "description": {
+                        "value": ""
+                        }
+                    }
+                    $scope.tabNames.tabs[tabId].items.push(newItem);
+                    $scope.slides2 = $scope.tabNames.tabs[tabId].items;
+                    var delIndex = $scope.slides2[$scope.slides2.length - 2].index;
+
+                }
+                    var delposition = $scope.slides2[$scope.slides2.length -1].position;
+                    $scope.tabNames.tabs[tabId].items.splice((delIndex-1), 1);
+
+                        }
+                    else{
+                        $scope.tabNames.tabs[tabId].items[0].image = data[0]
+                        $scope.showSpinner = false;
+                        $scope.showCropDialog = false;
+                    }
+                $scope.slides2 = $scope.tabNames.tabs[tabId].items;
+                $scope.showSpinner = false;
+                $scope.showCropDialog = false;
+
+                });
+                }
+        };
+
+     function getBase641(file) {
+
+                console.log(file)
+                var reader = new FileReader();
+                reader.onload = function () {
+                var base64str = reader.result;
+                var base64 = base64str.split(',')[1];
+                var file = b64toBlob(base64, 'application/pdf');
+                // var binary = atob(reader.result.replace(/\s/g, ''));
+
+                };
+                reader.onerror = function (error) {
+                console.log('Error: ', error);
+                };
+                return file;
+                };
          $scope.saveImage = function(){
              $scope.showSpinner = true;
              $scope.myImage = "";
@@ -423,8 +523,16 @@
                     $scope.tabNames.tabs[0].layout.url = $scope.itemTypes[2].path;
                 });
         };
+        $scope.getPresentationTab = function(){
+                    $http.get("/api/tab-types-by-type/4")
+                        .success(function(response, status, headers) {
+                            $scope.presentationTab = response;
+
+                        });
+        }
 
         $scope.getItemTypes();
+        $scope.getPresentationTab();
 
         $scope.isNewTab = true;
 
@@ -455,6 +563,44 @@
             }
         };
 
+         $scope.addPresentation = function() {
+                    $scope.getColors();
+                    if ($scope.tabNames.tabs.length <= 3) {
+                        var newTab = {"name":"New tab "+$scope.tabNames.tabs.length,
+                            "position": $scope.tabNames.tabs.length,
+                            "tabType": 4,
+                            "layout":{
+                                "tabId": $scope.presentationTab[0].id,
+                                "url": $scope.presentationTab[0].path,
+                                "mainColor":  $scope.mainColor,
+                                "secondaryColor": $scope.secondaryColor
+                            },
+                            "items": [
+                                {
+                                    //"name": "1 item",
+                                    "index": 2,
+                                    "position": 0,
+                                    "image": "/content/images/portfolio_img_01.png",
+                                    "image2": "/content/images/portfolio_img_02.png",
+                                    "image3": "/content/images/portfolio_img_03.png",
+                                    "name":{
+                                        "value": ""
+                                    },
+                                    "description": {
+                                        "value": ""
+                                    }
+                                }
+                            ]
+
+                        }
+                        setTimeout(function(){
+                            $scope.openCity('settings'+newTab.name+newTab.position, 'tab'+newTab.position, newTab.name+newTab.position, 'li'+newTab.position+newTab.name)}, 500)
+                        $scope.tabNames.tabs.push(newTab);
+                    }
+                    if($scope.tabNames.tabs.length == 4){
+                        $scope.isNewTab = false;
+                    }
+                }
         $scope.addItem = function() {
             $scope.getColors();
             if ($scope.tabNames.tabs.length <= 3) {
@@ -790,7 +936,6 @@
                 $scope.disableSaveBtn = true;
             $http.post("/api/cardlet", $scope.tabNames)
                 .success(function (data, status, headers, config) {
-                    console.log(data)
                     if(isSave) {
                         $location.path('/user-cardlets')
                     }else{
@@ -891,7 +1036,6 @@
         }
 
     }
-
 
 
 })();

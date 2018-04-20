@@ -334,4 +334,63 @@ public class CardletResource {
     }
 
 
+    @PostMapping(value = "cardlet/upload/convert/presentation-pdf/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<?> uploadPresentationPdfFile(@RequestParam("file") MultipartFile file,  @PathVariable String id) throws JSONException, IOException {
+        JSONObject successObject = new JSONObject();
+        if (file == null && file.isEmpty()) {
+            successObject.put("success", false);
+            successObject.put("message", "File is empty");
+
+            return new ResponseEntity<>(successObject, HttpStatus.OK);
+        }
+        if (file.getSize() > MAX_ALLOWED_PDF_SIZE) {
+            successObject.put("success", false);
+            successObject.put("message", "File is too big. Max allowed file size is 50Mb");
+            return ResponseEntity.ok(successObject);
+        }
+
+        PDDocument document = PDDocument.load(file.getInputStream());
+        List<PDPage> listOfPages = document.getDocumentCatalog().getAllPages();
+
+        if (listOfPages.size() > MAX_NUMBER_OF_PDF_PAGES) {
+            listOfPages.subList(9, listOfPages.size() - 1).clear();
+        }
+
+        List<URI> listOfImages = convertPresentationPDFToImages(listOfPages);
+
+        document.close();
+
+        if (listOfImages == null || listOfImages.isEmpty()) {
+            successObject.put("success", false);
+            successObject.put("message", "No response from server");
+            return ResponseEntity.ok(successObject);
+        }
+
+        for(int i = 0; i < listOfImages.size(); i++) {
+            System.out.println(listOfImages.get(i));
+        }
+
+        return new ResponseEntity<>(listOfImages, HttpStatus.OK);
+    }
+
+    private List<URI> convertPresentationPDFToImages(List<PDPage> listOfPages) throws IOException , JSONException {
+        List<URI> listOfURIImages = new ArrayList<>();
+        int count = 1;
+        for (PDPage page : listOfPages) {
+            BufferedImage image = page.convertToImage();
+            String name = PDF_ITEM_NAME + "-" + count++;
+            File outPutFile = new File(".jpeg");
+            ImageIO.write(image, "jpeg", outPutFile);
+            MultipartFile multipartFile = ConverterUtil.convertJavaFileToMultipartFile(outPutFile);
+            URI   url = awss3BucketService.uploadBusinessImage(multipartFile, "test");
+            listOfURIImages.add(url);
+            log.info(listOfURIImages.toString());
+
+        }
+
+        return listOfURIImages;
+    }
+
+
 }

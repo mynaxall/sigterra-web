@@ -496,7 +496,10 @@
         $scope.getUrl = function (url) {
             if (url === "app/cardlets/item3.html") {
                 return "app/cardlets/itemPreview.html"
-            } else {
+            }
+            else if (url === "app/cardlets/pres1.html"){
+                              return "app/cardlets/itemPreview.html"
+            }else {
                 return url;
             }
         }
