@@ -27,4 +27,10 @@ public class ConverterUtil {
         multipartFile = new MockMultipartFile("file", file.getName(), "text/plain", IOUtils.toByteArray(input));
         return multipartFile;
     }
+    public static MultipartFile convertInputFileToMultipartFile(InputStream file) throws IOException {
+        MultipartFile multipartFile = null;
+        multipartFile = new MockMultipartFile("file", "image", "text/plain", IOUtils.toByteArray(file));
+        file.close();
+        return multipartFile;
+    }
 }

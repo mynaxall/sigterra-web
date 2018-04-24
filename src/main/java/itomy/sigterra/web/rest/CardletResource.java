@@ -30,17 +30,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageInputStream;
 import javax.inject.Inject;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 /**
@@ -379,18 +376,16 @@ public class CardletResource {
         int count = 1;
         for (PDPage page : listOfPages) {
             BufferedImage image = page.convertToImage();
-            String name = PDF_ITEM_NAME + "-" + count++;
-            File outPutFile = new File(".jpeg");
-            ImageIO.write(image, "jpeg", outPutFile);
-            MultipartFile multipartFile = ConverterUtil.convertJavaFileToMultipartFile(outPutFile);
+            ImageInputStream iis = ImageIO.createImageInputStream(image);
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
+            ImageIO.write(image,"png", os);
+            InputStream fis = new ByteArrayInputStream(os.toByteArray());
+            os.flush();
+            MultipartFile multipartFile = ConverterUtil.convertInputFileToMultipartFile(fis);
             URI   url = awss3BucketService.uploadBusinessImage(multipartFile, "test");
             listOfURIImages.add(url);
             log.info(listOfURIImages.toString());
-
         }
-
         return listOfURIImages;
     }
-
-
 }
