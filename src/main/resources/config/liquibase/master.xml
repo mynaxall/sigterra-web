@@ -38,6 +38,7 @@
              relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20180322000000_change_cardlet_header_phone_column.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20180403000000_update_user_username.xml" relativeToChangelogFile="false"/>
-
+    <include file="classpath:config/liquibase/changelog/20180510101713_added_entity_CardletTestimonialWidget.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20180510101714_added_entity_constraints_CardletTestimonialWidget.xml" relativeToChangelogFile="false"/>
 
 </databaseChangeLog>
