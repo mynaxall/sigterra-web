@@ -1,7 +1,9 @@
 package itomy.sigterra.service.mapper;
 
 import itomy.sigterra.domain.Cardlet;
+import itomy.sigterra.domain.CardletQuickBitesWidget;
 import itomy.sigterra.domain.CardletTestimonialWidget;
+import itomy.sigterra.web.rest.vm.CardletQuickBitesWidgetRequestVM;
 import itomy.sigterra.web.rest.vm.CardletTestimonialWidgetRequestVM;
 
 public class CardletWidgetMapper {
@@ -16,5 +18,14 @@ public class CardletWidgetMapper {
         cardletTestimonialWidget.setCardlet(cardlet);
 
         return cardletTestimonialWidget;
+    }
+
+    public static CardletQuickBitesWidget mapToEntity(CardletQuickBitesWidgetRequestVM vm, Cardlet cardlet) {
+        CardletQuickBitesWidget cardletQuickBitesWidget = new CardletQuickBitesWidget();
+        cardletQuickBitesWidget.setTitle(vm.getTitle());
+        cardletQuickBitesWidget.setDescription(vm.getDescription());
+        cardletQuickBitesWidget.setCardlet(cardlet);
+
+        return cardletQuickBitesWidget;
     }
 }
