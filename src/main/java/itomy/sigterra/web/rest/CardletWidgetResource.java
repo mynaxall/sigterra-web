@@ -6,6 +6,7 @@ import itomy.sigterra.repository.CardletTestimonialWidgetRepository;
 import itomy.sigterra.service.CardletWidgetService;
 import itomy.sigterra.web.rest.util.HeaderUtil;
 import itomy.sigterra.web.rest.util.PaginationUtil;
+import itomy.sigterra.web.rest.util.ResponseUtil;
 import itomy.sigterra.web.rest.vm.CardletTestimonialWidgetRequestVM;
 import itomy.sigterra.web.rest.vm.CardletTestimonialWidgetResponseVM;
 import org.slf4j.Logger;
@@ -41,7 +42,6 @@ public class CardletWidgetResource {
     @Inject
     private CardletWidgetService cardletWidgetService;
 
-
     /**
      * POST  /cardlet-testimonial-widgets : Create a new cardletTestimonialWidget.
      *
@@ -54,7 +54,9 @@ public class CardletWidgetResource {
     public ResponseEntity<CardletTestimonialWidgetResponseVM> createCardletTestimonialWidget(@Valid @RequestBody CardletTestimonialWidgetRequestVM cardletTestimonialWidget) throws URISyntaxException {
         log.debug("REST request to save CardletTestimonialWidget : {}", cardletTestimonialWidget);
         if (cardletTestimonialWidget.getCardletId() == null) {
-            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new cardletTestimonialWidget cannot already have an ID")).body(null);
+            return ResponseEntity.badRequest()
+                .headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new cardletTestimonialWidget cannot already have an ID"))
+                .body(null);
         }
         CardletTestimonialWidgetResponseVM result = cardletWidgetService.saveCardletTestimonialWidget(cardletTestimonialWidget);
         return ResponseEntity.created(new URI("/api/cardlet-testimonial-widgets/" + result.getId()))
@@ -95,7 +97,7 @@ public class CardletWidgetResource {
     public ResponseEntity<List<CardletTestimonialWidgetResponseVM>> getAllCardletTestimonialWidgets(@PathVariable Long cardletId, Pageable pageable) throws URISyntaxException {
         log.debug("REST request to get a page of CardletTestimonialWidgets");
         Page<CardletTestimonialWidgetResponseVM> page = cardletWidgetService.findAllByCardletId(cardletId, pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/cardlet-testimonial-widgets/all" + cardletId);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/cardlet-testimonial-widgets/all/cardlet/" + cardletId);
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
@@ -129,6 +131,8 @@ public class CardletWidgetResource {
     public ResponseEntity<Void> deleteCardletTestimonialWidget(@PathVariable Long id) {
         log.debug("REST request to delete CardletTestimonialWidget : {}", id);
         cardletTestimonialWidgetRepository.deleteById(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString()))
+            .build();
     }
 }

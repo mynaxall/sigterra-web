@@ -24,7 +24,6 @@ public class CardletTestimonialWidgetResponseVM {
         this.coName = cardletTestimonialWidget.getCoName();
         this.designation = cardletTestimonialWidget.getDesignation();
         this.description = cardletTestimonialWidget.getDescription();
-        // For Jackson
     }
 
     public Long getId() {
