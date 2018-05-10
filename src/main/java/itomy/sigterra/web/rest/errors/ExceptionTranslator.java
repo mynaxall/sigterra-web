@@ -38,6 +38,12 @@ public class ExceptionTranslator {
     }
 
 
+    @ExceptionHandler(BadRequestAlertException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ParameterizedErrorVM processParameterizedValidationError(BadRequestAlertException ex) {
+        return ex.getErrorVM();
+    }
 
     @ExceptionHandler(CustomParameterizedException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -88,7 +94,7 @@ public class ExceptionTranslator {
     @ExceptionHandler(CardletNotFound.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
-    public ErrorVM processCardletNotFoundException(CardletNotFound e){
+    public ErrorVM processCardletNotFoundException(CardletNotFound e) {
         ErrorVM error = new ErrorVM(e.getMessage());
         return error;
     }

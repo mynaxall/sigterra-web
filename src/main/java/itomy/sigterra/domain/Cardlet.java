@@ -53,6 +53,9 @@ public class Cardlet implements Serializable {
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "cardlet")
     private CardletFooter cardletFooter;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "cardlet", cascade = CascadeType.ALL)
+    private Set<CardletTestimonialWidget> cardletTestimonialWidgets = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -207,6 +210,14 @@ public class Cardlet implements Serializable {
 
     public void setCardletFooter(CardletFooter cardletFooter) {
         this.cardletFooter = cardletFooter;
+    }
+
+    public Set<CardletTestimonialWidget> getCardletTestimonialWidgets() {
+        return cardletTestimonialWidgets;
+    }
+
+    public void setCardletTestimonialWidgets(Set<CardletTestimonialWidget> cardletTestimonialWidgets) {
+        this.cardletTestimonialWidgets = cardletTestimonialWidgets;
     }
 
     @Override
