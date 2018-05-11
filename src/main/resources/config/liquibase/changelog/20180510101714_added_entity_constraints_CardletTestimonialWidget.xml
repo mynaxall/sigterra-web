@@ -13,6 +13,8 @@
                                  constraintName="fk_cardlet_testimonial_widget_cardlet_id"
                                  referencedColumnNames="id"
                                  referencedTableName="cardlet"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"
         />
 
     </changeSet>

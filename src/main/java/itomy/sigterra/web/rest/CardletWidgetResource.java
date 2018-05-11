@@ -1,7 +1,6 @@
 package itomy.sigterra.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import itomy.sigterra.domain.CardletQuickBitesWidget;
 import itomy.sigterra.repository.CardletQuickBitesWidgetRepository;
 import itomy.sigterra.repository.CardletTestimonialWidgetRepository;
 import itomy.sigterra.service.CardletWidgetService;
@@ -60,6 +59,7 @@ public class CardletWidgetResource {
     @PostMapping("/cardlet-testimonial-widgets")
     @Timed
     public ResponseEntity<CardletTestimonialWidgetResponseVM> createCardletTestimonialWidget(@Valid @RequestBody CardletTestimonialWidgetRequestVM cardletTestimonialWidget) throws URISyntaxException {
+        cardletTestimonialWidget.setId(0L);
         log.debug("REST request to save CardletTestimonialWidget : {}", cardletTestimonialWidget);
         if (cardletTestimonialWidget.getCardletId() == null) {
             return ResponseEntity.badRequest()
@@ -67,6 +67,7 @@ public class CardletWidgetResource {
                 .body(null);
         }
         CardletTestimonialWidgetResponseVM result = cardletWidgetService.saveCardletTestimonialWidget(cardletTestimonialWidget);
+
         return ResponseEntity.created(new URI("/api/cardlet-testimonial-widgets/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME_TESTIOMONIAL, result.getId().toString()))
             .body(result);
@@ -89,6 +90,7 @@ public class CardletWidgetResource {
             return createCardletTestimonialWidget(cardletTestimonialWidget);
         }
         CardletTestimonialWidgetResponseVM result = cardletWidgetService.saveCardletTestimonialWidget(cardletTestimonialWidget);
+
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME_TESTIOMONIAL, cardletTestimonialWidget.getId().toString()))
             .body(result);
@@ -106,6 +108,7 @@ public class CardletWidgetResource {
         log.debug("REST request to get a page of CardletTestimonialWidgets");
         Page<CardletTestimonialWidgetResponseVM> page = cardletWidgetService.findAllByCardletId(cardletId, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/cardlet-testimonial-widgets/all/cardlet/" + cardletId);
+
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
@@ -139,11 +142,11 @@ public class CardletWidgetResource {
     public ResponseEntity<Void> deleteCardletTestimonialWidget(@PathVariable Long id) {
         log.debug("REST request to delete CardletTestimonialWidget : {}", id);
         cardletTestimonialWidgetRepository.deleteById(id);
+
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME_TESTIOMONIAL, id.toString()))
             .build();
     }
-
 
     /**
      * POST  /cardlet-quick-bites-widgets : Create a new cardletQuickBitesWidget.
@@ -155,11 +158,13 @@ public class CardletWidgetResource {
     @PostMapping("/cardlet-quick-bites-widgets")
     @Timed
     public ResponseEntity<CardletQuickBitesWidgetResponseVM> createCardletQuickBitesWidget(@Valid @RequestBody CardletQuickBitesWidgetRequestVM cardletQuickBitesWidget) throws URISyntaxException {
+        cardletQuickBitesWidget.setId(0L);
         log.debug("REST request to save CardletQuickBitesWidget : {}", cardletQuickBitesWidget);
         if (cardletQuickBitesWidget.getCardletId() == null) {
             throw new BadRequestAlertException("A new cardletQuickBitesWidget cannot already have an ID", ENTITY_NAME_QUICK_BITES);
         }
         CardletQuickBitesWidgetResponseVM result = cardletWidgetService.saveQuickBitesWidget(cardletQuickBitesWidget);
+
         return ResponseEntity.created(new URI("/api/cardlet-quick-bites-widgets/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME_QUICK_BITES, result.getId().toString()))
             .body(result);
@@ -182,37 +187,40 @@ public class CardletWidgetResource {
             return createCardletQuickBitesWidget(cardletQuickBitesWidget);
         }
         CardletQuickBitesWidgetResponseVM result = cardletWidgetService.saveQuickBitesWidget(cardletQuickBitesWidget);
+
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME_QUICK_BITES, cardletQuickBitesWidget.getId().toString()))
             .body(result);
     }
 
     /**
-     * GET  /cardlet-quick-bites-widgets : get all the cardletQuickBitesWidgets.
+     * GET  /cardlet-quick-bites-widgets/all/cardlet/{cardletId} : get all the cardletQuickBitesWidgets.
      *
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of cardletQuickBitesWidgets in body
      */
-    @GetMapping("/cardlet-quick-bites-widgets")
+    @GetMapping("/cardlet-quick-bites-widgets/all/cardlet/{cardletId}")
     @Timed
-    public ResponseEntity<List<CardletQuickBitesWidgetResponseVM>> getAllCardletQuickBitesWidgets(Pageable pageable) throws URISyntaxException {
+    public ResponseEntity<List<CardletQuickBitesWidgetResponseVM>> getAllCardletQuickBitesWidgets(@PathVariable Long cardletId, Pageable pageable) throws URISyntaxException {
         log.debug("REST request to get a page of CardletQuickBitesWidgets");
-        Page<CardletQuickBitesWidgetResponseVM> page = cardletWidgetService.findAllCardletQuickBitesWidgetRepository(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/cardlet-quick-bites-widgets");
+        Page<CardletQuickBitesWidgetResponseVM> page = cardletWidgetService.findAllCardletQuickBitesWidgetRepository(cardletId, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/cardlet-quick-bites-widgets/all/cardlet/" + cardletId);
+
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
-     * GET  /cardlet-quick-bites-widgets/:id : get the "id" cardletQuickBitesWidget.
+     * GET  /cardlet-quick-bites-widgets/{id}/cardlet/{cardletId} : get the "id" cardletQuickBitesWidget.
      *
      * @param id the id of the cardletQuickBitesWidget to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the cardletQuickBitesWidget, or with status 404 (Not Found)
      */
-    @GetMapping("/cardlet-quick-bites-widgets/{id}")
+    @GetMapping("/cardlet-quick-bites-widgets/{id}/cardlet/{cardletId}")
     @Timed
-    public ResponseEntity<CardletQuickBitesWidget> getCardletQuickBitesWidget(@PathVariable Long id) {
+    public ResponseEntity<CardletQuickBitesWidgetResponseVM> getCardletQuickBitesWidget(@PathVariable Long id, @PathVariable Long cardletId) {
         log.debug("REST request to get CardletQuickBitesWidget : {}", id);
-        CardletQuickBitesWidget cardletQuickBitesWidget = cardletQuickBitesWidgetRepository.findOne(id);
+        CardletQuickBitesWidgetResponseVM cardletQuickBitesWidget = cardletWidgetService.findCardletQuickBitesWidget(id, cardletId);
+
         return Optional.ofNullable(cardletQuickBitesWidget)
             .map(result -> new ResponseEntity<>(
                 result,

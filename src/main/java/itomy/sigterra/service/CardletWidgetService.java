@@ -1,6 +1,5 @@
 package itomy.sigterra.service;
 
-
 import itomy.sigterra.domain.Cardlet;
 import itomy.sigterra.domain.CardletQuickBitesWidget;
 import itomy.sigterra.domain.CardletTestimonialWidget;
@@ -34,19 +33,25 @@ public class CardletWidgetService {
     private CardletRepository cardletRepository;
 
     public CardletTestimonialWidgetResponseVM findTestimonialWidget(Long id, Long cardletId) {
-        CardletTestimonialWidget cardletTestimonialWidget = cardletTestimonialWidgetRepository.findByIdAndCardletId(cardletId, cardletId);
+        CardletTestimonialWidget cardletTestimonialWidget = cardletTestimonialWidgetRepository.findByIdAndCardletId(id, cardletId);
+        if (cardletTestimonialWidget == null) {
+            throw new BadRequestAlertException("cardlet_testimonial_widget",
+                "Curent cardletTestimonialWidget does not exist. Cardlet id: " + cardletId);
+        }
+
         return new CardletTestimonialWidgetResponseVM(cardletTestimonialWidget);
     }
 
-    public Page<CardletQuickBitesWidgetResponseVM> findAllCardletQuickBitesWidgetRepository(Pageable pageable) {
-        return cardletQuickBitesWidgetRepository.findAll(pageable).map(CardletQuickBitesWidgetResponseVM::new);
+    public Page<CardletQuickBitesWidgetResponseVM> findAllCardletQuickBitesWidgetRepository(Long cardletId, Pageable pageable) {
+        return cardletQuickBitesWidgetRepository.findAllByCardletId(cardletId, pageable).map(CardletQuickBitesWidgetResponseVM::new);
     }
 
     @Transactional
     public CardletTestimonialWidgetResponseVM saveCardletTestimonialWidget(CardletTestimonialWidgetRequestVM testimonialWidgetRequestVM) {
         Cardlet cardlet = cardletRepository.findOne(testimonialWidgetRequestVM.getCardletId());
         if (cardlet == null) {
-            throw new BadRequestAlertException("cardlet_testimonial_widget", "A new cardletTestimonialWidget has't cardlet ID");
+            throw new BadRequestAlertException("cardlet_testimonial_widget",
+                "A new cardletTestimonialWidget has't cardlet ID");
         }
 
         CardletTestimonialWidget cardletTestimonialWidget = CardletWidgetMapper.mapToEntity(testimonialWidgetRequestVM, cardlet);
@@ -82,6 +87,15 @@ public class CardletWidgetService {
         }
 
         return new CardletQuickBitesWidgetResponseVM(cardletQuickBitesWidgetRepository.save(cardletTestimonialWidget));
+    }
+
+    public CardletQuickBitesWidgetResponseVM findCardletQuickBitesWidget(Long id, Long cardletId) {
+        CardletQuickBitesWidget cardletQuickBitesWidget = cardletQuickBitesWidgetRepository.findByIdAndCardletId(id, cardletId);
+        if (cardletQuickBitesWidget == null) {
+            throw new BadRequestAlertException("cardlet_quick_bites_widget", "Curent cardletQuickBitesWidget does not exist. Cardlet id: " + cardletId);
+        }
+
+        return new CardletQuickBitesWidgetResponseVM(cardletQuickBitesWidget);
     }
 
 }

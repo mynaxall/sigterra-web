@@ -7,12 +7,15 @@
         Added the constraints for entity CardletQuickBitesWidget.
     -->
     <changeSet id="20180510165547-2" author="jhipster">
-        
+
         <addForeignKeyConstraint baseColumnNames="cardlet_id"
                                  baseTableName="cardlet_quick_bites_widget"
                                  constraintName="fk_cardlet_quick_bites_widget_cardlet_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="cardlet"/>
+                                 referencedTableName="cardlet"
+                                 deleteCascade="true"
+                                 onDelete="CASCADE"
+            />
 
     </changeSet>
 </databaseChangeLog>
