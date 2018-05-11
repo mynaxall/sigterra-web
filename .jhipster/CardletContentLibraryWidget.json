@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "cardlet",
+            "otherEntityName": "cardlet",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "coverImageUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "uploadFileUrl",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180511101522",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "cardlet_content_library_widget",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

@@ -6,7 +6,6 @@ import itomy.sigterra.repository.CardletTestimonialWidgetRepository;
 import itomy.sigterra.service.CardletWidgetService;
 import itomy.sigterra.web.rest.util.HeaderUtil;
 import itomy.sigterra.web.rest.util.PaginationUtil;
-import itomy.sigterra.web.rest.util.ResponseUtil;
 import itomy.sigterra.web.rest.vm.CardletTestimonialWidgetRequestVM;
 import itomy.sigterra.web.rest.vm.CardletTestimonialWidgetResponseVM;
 import org.slf4j.Logger;
