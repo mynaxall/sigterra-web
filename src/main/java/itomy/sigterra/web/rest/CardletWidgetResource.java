@@ -102,7 +102,7 @@ public class CardletWidgetResource {
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of cardletTestimonialWidgets in body
      */
-    @GetMapping("/cardlet-testimonial-widgets/all/cardlet/{cardletId}")
+    @GetMapping("/cardlet/{cardletId}/cardlet-testimonial-widgets")
     @Timed
     public ResponseEntity<List<CardletTestimonialWidgetResponseVM>> getAllCardletTestimonialWidgets(@PathVariable Long cardletId, Pageable pageable) throws URISyntaxException {
         log.debug("REST request to get a page of CardletTestimonialWidgets");
@@ -118,7 +118,7 @@ public class CardletWidgetResource {
      * @param id the id of the cardletTestimonialWidget to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the cardletTestimonialWidget, or with status 404 (Not Found)
      */
-    @GetMapping("/cardlet-testimonial-widgets/{id}/cardlet/{cardletId}")
+    @GetMapping("/cardlet/{cardletId}/cardlet-testimonial-widgets/{id}")
     @Timed
     public ResponseEntity<CardletTestimonialWidgetResponseVM> getCardletTestimonialWidget(@PathVariable Long id, @PathVariable Long cardletId) {
         log.debug("REST request to get CardletTestimonialWidget : {}", id);
@@ -194,12 +194,12 @@ public class CardletWidgetResource {
     }
 
     /**
-     * GET  /cardlet-quick-bites-widgets/all/cardlet/{cardletId} : get all the cardletQuickBitesWidgets.
+     * GET  /cardlet/{cardletId}/cardlet-quick-bites-widgets : get all the cardletQuickBitesWidgets.
      *
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of cardletQuickBitesWidgets in body
      */
-    @GetMapping("/cardlet-quick-bites-widgets/all/cardlet/{cardletId}")
+    @GetMapping("/cardlet/{cardletId}/cardlet-quick-bites-widgets")
     @Timed
     public ResponseEntity<List<CardletQuickBitesWidgetResponseVM>> getAllCardletQuickBitesWidgets(@PathVariable Long cardletId, Pageable pageable) throws URISyntaxException {
         log.debug("REST request to get a page of CardletQuickBitesWidgets");
@@ -210,12 +210,12 @@ public class CardletWidgetResource {
     }
 
     /**
-     * GET  /cardlet-quick-bites-widgets/{id}/cardlet/{cardletId} : get the "id" cardletQuickBitesWidget.
+     * GET  /cardlet/{cardletId}/cardlet-quick-bites-widgets/{id} : get the "id" cardletQuickBitesWidget.
      *
      * @param id the id of the cardletQuickBitesWidget to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the cardletQuickBitesWidget, or with status 404 (Not Found)
      */
-    @GetMapping("/cardlet-quick-bites-widgets/{id}/cardlet/{cardletId}")
+    @GetMapping("/cardlet/{cardletId}/cardlet-quick-bites-widgets/{id}")
     @Timed
     public ResponseEntity<CardletQuickBitesWidgetResponseVM> getCardletQuickBitesWidget(@PathVariable Long id, @PathVariable Long cardletId) {
         log.debug("REST request to get CardletQuickBitesWidget : {}", id);

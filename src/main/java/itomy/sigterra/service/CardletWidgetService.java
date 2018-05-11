@@ -75,18 +75,18 @@ public class CardletWidgetService {
     public CardletQuickBitesWidgetResponseVM saveQuickBitesWidget(CardletQuickBitesWidgetRequestVM cardletQuickBitesWidgetRequestVM) {
         Cardlet cardlet = cardletRepository.findOne(cardletQuickBitesWidgetRequestVM.getCardletId());
         if (cardlet == null) {
-            throw new BadRequestAlertException("cardlet_quick_bites", "A new cardletTestimonialWidget has't cardlet ID");
+            throw new BadRequestAlertException("cardlet_quick_bites", "A new quickBitesWidget has't cardlet ID");
         }
 
-        CardletQuickBitesWidget cardletTestimonialWidget = CardletWidgetMapper.mapToEntity(cardletQuickBitesWidgetRequestVM, cardlet);
+        CardletQuickBitesWidget cardletQuickBitesWidget = CardletWidgetMapper.mapToEntity(cardletQuickBitesWidgetRequestVM, cardlet);
 
         Long widgetId = cardletQuickBitesWidgetRequestVM.getId();
         CardletQuickBitesWidget cardletWidget = cardletQuickBitesWidgetRepository.findOne(widgetId);
         if (cardletWidget != null) {
-            cardletTestimonialWidget.setId(widgetId);
+            cardletQuickBitesWidget.setId(widgetId);
         }
 
-        return new CardletQuickBitesWidgetResponseVM(cardletQuickBitesWidgetRepository.save(cardletTestimonialWidget));
+        return new CardletQuickBitesWidgetResponseVM(cardletQuickBitesWidgetRepository.save(cardletQuickBitesWidget));
     }
 
     public CardletQuickBitesWidgetResponseVM findCardletQuickBitesWidget(Long id, Long cardletId) {
