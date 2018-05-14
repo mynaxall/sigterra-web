@@ -403,8 +403,33 @@
                         </div>
                     </div>
 
-                    <div ng-if="vm.activeTab == '5'" class="editor-panel">
-                        Widgets
+                    <div ng-if="vm.activeTab == '5'" class="widgets-panel">
+
+                        <div class="editor-widgets-header">
+                            <ul class="editor-tab" >
+                                <li class="editor-tabs widgets-tabs" ng-class="vm.activeWidget == '1' ? 'active' : ''">
+                                    <a ng-click="setActiveWidget(1)">Quick Bites</a>
+                                </li>
+                                <li class="editor-tabs widgets-tabs" ng-class="vm.activeWidget == '2' ? 'active' : ''">
+                                    <a ng-click="setActiveWidget(2)">Testimonials</a>
+                                </li>
+                                <li class="editor-tabs widgets-tabs" ng-class="vm.activeWidget == '3' ? 'active' : ''">
+                                    <a ng-click="setActiveWidget(3)">Content Library</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="save-preview-panel">
+                            <div ng-if="vm.activeWidget == '1'" class="editor-panel">
+                                Quick Bites Content
+                            </div>
+                            <div ng-if="vm.activeWidget == '2'" class="editor-panel">
+                                Testimonials Content
+                            </div>
+                            <div ng-if="vm.activeWidget == '3'" class="editor-panel">
+                                Content Library Content
+                            </div>
+                        </div>
+
                     </div>
                     <button class="save-preview-btn" ng-click="save(true)">save</button>
                 </div>
