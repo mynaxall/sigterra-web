@@ -7,6 +7,7 @@ public class BadRequestAlertException extends RuntimeException {
     private final String errorKey;
 
     public BadRequestAlertException(String entityName, String errorKey) {
+        super(errorKey);
         this.entityName = entityName;
         this.errorKey = errorKey;
     }
