@@ -157,6 +157,7 @@ public class CardletContentLibraryWidgetResource {
     public ResponseEntity<Void> deleteCardletContentLibraryWidget(@PathVariable Long id) {
         log.debug("REST request to delete CardletContentLibraryWidget : {}", id);
         cardletWidgetService.deleteContentLibrary(id);
+        cardletContentLibraryWidgetRepository.deleteById(id);
 
         return ResponseEntity
             .ok()

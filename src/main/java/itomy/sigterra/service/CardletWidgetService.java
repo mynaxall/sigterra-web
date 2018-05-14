@@ -207,11 +207,15 @@ public class CardletWidgetService {
         if (widget == null) {
             throw new BadRequestAlertException(ENTITY_CONTENT_LIBRARY, "Incorrect widget ID");
         }
+        String coverImageUrl = widget.getCoverImageUrl();
+        if (coverImageUrl != null) {
+            deleteCoverImage(widget);
+        }
 
-        deleteCoverImage(widget);
-        deleteWidgetUploadFile(widget);
-
-        cardletContentLibraryWidgetRepository.deleteById(contentLibraryId);
+        String uploadFileUrl = widget.getUploadFileUrl();
+        if (uploadFileUrl != null) {
+            deleteWidgetUploadFile(widget);
+        }
     }
 
     private void deleteWidgetUploadFile(CardletContentLibraryWidget widget) {
