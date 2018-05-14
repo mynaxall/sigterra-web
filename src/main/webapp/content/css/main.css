@@ -7448,6 +7448,28 @@ a.preview-footer-link {
     box-shadow: 0px 11px 18px 1px rgba(0,0,0,0.3);
 }
 
+.widgets-panel{
+    border: 1px solid #dce0e6;
+    padding: 50px;
+    padding-top: 0px;
+    background-color: #ffffff;
+}
+
+.editor-widgets-header{
+    height: 70px;
+    background-color: #ffffff;
+    border: none!important;
+    border-bottom-width: 0px;
+}
+
+.widgets-tabs{
+    align-items: flex-end!important;
+    padding-bottom: 10px;
+    border: 0!important;
+}
+
+
+
 
 
 

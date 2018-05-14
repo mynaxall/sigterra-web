@@ -67,6 +67,7 @@
         $scope.imageSize = {width: 200, height: 200};
         $scope.secondaryColor = "";
         vm.activeTab = 1;
+        vm.activeWidget = 1;
         vm.bg = "/content/images/background.jpg";
         $scope.cardletView = {};
         $scope.isLogo = false;
@@ -101,6 +102,10 @@
 
         $scope.setActive = function (index) {
             vm.activeTab = index;
+        }
+
+        $scope.setActiveWidget = function (index) {
+            vm.activeWidget = index;
         }
 
         $scope.showSocialDialog = false;
