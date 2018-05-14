@@ -94,6 +94,9 @@
                         <li class="editor-tabs" ng-class="vm.activeTab == '2' ? 'active' : ''">
                             <a ng-click="setActive(2)">Background</a>
                         </li>
+                        <li class="editor-tabs" ng-class="vm.activeTab == '5' ? 'active' : ''">
+                            <a ng-click="setActive(5)">Widgets</a>
+                        </li>
                         <li class="editor-tabs" ng-class="vm.activeTab == '3' ? 'active' : ''">
                             <a ng-click="setActive(3)">Links</a>
                         </li>
@@ -398,6 +401,10 @@
                                 <input class="editor-input" type="text" ng-model="footer.linkedinLink">
                             </div>
                         </div>
+                    </div>
+
+                    <div ng-if="vm.activeTab == '5'" class="editor-panel">
+                        Widgets
                     </div>
                     <button class="save-preview-btn" ng-click="save(true)">save</button>
                 </div>
