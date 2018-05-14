@@ -40,6 +40,8 @@
     <include file="classpath:config/liquibase/changelog/20180403000000_update_user_username.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20180510101713_added_entity_CardletTestimonialWidget.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20180510101714_added_entity_constraints_CardletTestimonialWidget.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20180510165547_added_entity_CardletQuickBitesWidget.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20180510165547_added_entity_constraints_CardletQuickBitesWidget.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20180511101522_added_entity_CardletContentLibraryWidget.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20180511101522_added_entity_constraints_CardletContentLibraryWidget.xml" relativeToChangelogFile="false"/>
 
