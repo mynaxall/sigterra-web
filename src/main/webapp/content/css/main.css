@@ -7469,6 +7469,30 @@ a.preview-footer-link {
 }
 
 
+.widget-carousel{
+    width: 100%;
+    height: 470px!important;
+    background-color: transparent;
+    border: 1px solid #dce0e6;
+}
+
+
+
+.widget-carousel-arrow-left {
+    position: absolute;
+    top:0;
+    left: -35px;
+    background: #ffffff;
+    width: 30px!important;
+}
+
+.widget-carousel-arrow-right {
+    position: absolute;
+    top:0;
+    right: -35px;
+    background: #ffffff;
+    width: 30px!important;
+}
 
 
 
