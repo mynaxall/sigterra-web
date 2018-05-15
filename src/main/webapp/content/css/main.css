@@ -7494,6 +7494,30 @@ a.preview-footer-link {
     width: 30px!important;
 }
 
+.testimonial-paging{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: stretch;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 20px;
+}
+
+.testimonial-page-number{
+    padding: 10px;
+    color: #adbedb;
+    font-size: 15px;
+}
+
+.testimonial-page-number.active{
+    color: #13bcb5;
+}
+
+
 
 
 
