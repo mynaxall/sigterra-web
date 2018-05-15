@@ -105,6 +105,8 @@
 
         }
 
+        $scope.activetTestimonial = 0;
+
         $scope.testimonials = [];
 
 
@@ -750,10 +752,15 @@
 
         $scope.toLastTestimonial = function () {
             var index = $scope.testimonials.length - 1;
-
+            $scope.activetTestimonial = index;
             setTimeout(function(){
                 Carousel.get('widget-carousel').toIndex(index)
             }, 10)
+        }
+
+        $scope.setActiveTestimonial = function (index) {
+            $scope.activetTestimonial = index;
+            Carousel.get('widget-carousel').toIndex(index);
         }
 
 
