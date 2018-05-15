@@ -423,7 +423,26 @@
                                 Quick Bites Content
                             </div>
                             <div ng-if="vm.activeWidget == '2'" class="editor-panel">
-                                Testimonials Content
+                                <button ng-if="testimonials.length < 9" ng-click="addTestimonial()">Add</button>
+                                <div ng-carousel ng-carousel-name="widget-carousel" class="widget-carousel" ng-carousel-watch="testimonials" ng-carousel-loop="false">
+                                    <slidecontainer class="carousel-slides">
+                                        <slide class="carousel-example"  ng-repeat="testimonial in testimonials track by $index">Slide {{$index}}
+                                            <button ng-click="deleteTestimonial($index)">delete</button>
+                                        </slide>
+                                    </slidecontainer>
+                                </div>
+                                <div ng-if="testimonials.length > 1">
+                                    <div class="carousel-arrow widget-carousel-arrow-left">
+                                        <button class="demo-nav" ng-click="Carousel.get('widget-carousel').previous()">
+                                            <img src="/content/images/editor/left.png">
+                                        </button>
+                                    </div>
+                                    <div class="carousel-arrow  widget-carousel-arrow-right">
+                                        <button class="demo-nav" ng-click="Carousel.get('widget-carousel').next()">
+                                            <img src="/content/images/editor/right.png">
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             <div ng-if="vm.activeWidget == '3'" class="editor-panel">
                                 Content Library Content

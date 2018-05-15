@@ -66,8 +66,8 @@
         $scope.bounds.bottom = 0;
         $scope.imageSize = {width: 200, height: 200};
         $scope.secondaryColor = "";
-        vm.activeTab = 1;
-        vm.activeWidget = 1;
+        vm.activeTab = 5;
+        vm.activeWidget = 2;
         vm.bg = "/content/images/background.jpg";
         $scope.cardletView = {};
         $scope.isLogo = false;
@@ -91,6 +91,22 @@
         $scope.footer = {};
         $scope.bgArray = {};
         $scope.listIcons = {};
+
+
+        $scope.widget = {
+            'testimonials' : []
+        };
+
+        $scope.newTestimonial = {
+            'name': '',
+            'coName': '',
+            'designation': '',
+            'descriptionArea': ''
+
+        }
+
+        $scope.testimonials = [];
+
 
         $scope.myImage='';
         $scope.myCroppedImage = '';
@@ -722,7 +738,28 @@
             return window.btoa(window.btoa(window.btoa(window.btoa(id))));
         }
 
+        $scope.addTestimonial = function () {
+            $scope.testimonials.push($scope.newTestimonial);
+            $scope.toLastTestimonial();
+        }
+
+        $scope.deleteTestimonial = function (index) {
+            $scope.testimonials.splice(index, 1);
+            $scope.toLastTestimonial();
+        }
+
+        $scope.toLastTestimonial = function () {
+            var index = $scope.testimonials.length - 1;
+
+            setTimeout(function(){
+                Carousel.get('widget-carousel').toIndex(index)
+            }, 10)
+        }
+
+
+
     }
+
 
 
 
