@@ -1,13 +1,14 @@
 package itomy.sigterra.repository;
 
 import itomy.sigterra.domain.CardletTestimonialWidget;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
-import org.springframework.data.jpa.repository.*;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 /**
@@ -17,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface CardletTestimonialWidgetRepository extends JpaRepository<CardletTestimonialWidget, Long> {
 
-    Page<CardletTestimonialWidget> findAllByCardletId(Long cardletId, Pageable pageable);
+    List<CardletTestimonialWidget> findAllByCardletId(Long cardletId);
 
     CardletTestimonialWidget findByIdAndCardletId(Long id, Long cardletId);
 

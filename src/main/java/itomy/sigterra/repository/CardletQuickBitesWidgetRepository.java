@@ -6,6 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 /**
  * Spring Data JPA repository for the CardletQuickBitesWidget entity.
@@ -14,7 +16,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CardletQuickBitesWidgetRepository extends JpaRepository<CardletQuickBitesWidget, Long> {
 
-    Page<CardletQuickBitesWidget> findAllByCardletId(Long cardletId, Pageable pageable);
+    List<CardletQuickBitesWidget> findAllByCardletId(Long cardletId);
 
     CardletQuickBitesWidget findByIdAndCardletId(Long id, Long cardletId);
 }

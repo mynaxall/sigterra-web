@@ -1,14 +1,16 @@
 package itomy.sigterra.web.rest.vm;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.validation.annotation.Validated;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Validated
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CardletQuickBitesWidgetRequestVM {
 
     private Long id;
-
-    @NotNull
-    private Long cardletId;
 
     @NotNull
     @Size(min = 1, max = 30)
@@ -43,13 +45,5 @@ public class CardletQuickBitesWidgetRequestVM {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Long getCardletId() {
-        return cardletId;
-    }
-
-    public void setCardletId(Long cardletId) {
-        this.cardletId = cardletId;
     }
 }

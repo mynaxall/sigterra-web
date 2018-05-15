@@ -1,23 +1,13 @@
 package itomy.sigterra.service;
 
-import itomy.sigterra.domain.Cardlet;
-import itomy.sigterra.domain.CardletContentLibraryWidget;
-import itomy.sigterra.domain.CardletQuickBitesWidget;
-import itomy.sigterra.domain.CardletTestimonialWidget;
+import itomy.sigterra.domain.*;
 import itomy.sigterra.repository.CardletContentLibraryWidgetRepository;
 import itomy.sigterra.repository.CardletQuickBitesWidgetRepository;
 import itomy.sigterra.repository.CardletRepository;
 import itomy.sigterra.repository.CardletTestimonialWidgetRepository;
 import itomy.sigterra.service.mapper.CardletWidgetMapper;
 import itomy.sigterra.web.rest.errors.BadRequestAlertException;
-import itomy.sigterra.web.rest.vm.CardletContentLibraryWidgetResponseVM;
-import itomy.sigterra.web.rest.vm.CardletImagesContentLibraryResponseVM;
-import itomy.sigterra.web.rest.vm.CardletQuickBitesWidgetRequestVM;
-import itomy.sigterra.web.rest.vm.CardletQuickBitesWidgetResponseVM;
-import itomy.sigterra.web.rest.vm.CardletTestimonialWidgetRequestVM;
-import itomy.sigterra.web.rest.vm.CardletTestimonialWidgetResponseVM;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import itomy.sigterra.web.rest.vm.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,6 +19,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -51,80 +42,128 @@ public class CardletWidgetService {
 
     @Inject
     private CardletRepository cardletRepository;
+    @Inject
+    private UserService userService;
 
-    public CardletTestimonialWidgetResponseVM findTestimonialWidget(Long id, Long cardletId) {
-        CardletTestimonialWidget cardletTestimonialWidget = cardletTestimonialWidgetRepository.findByIdAndCardletId(id, cardletId);
-        if (cardletTestimonialWidget == null) {
-            throw new BadRequestAlertException("cardlet_testimonial_widget",
-                "Curent cardletTestimonialWidget does not exist. Cardlet id: " + cardletId);
-        }
-
-        return new CardletTestimonialWidgetResponseVM(cardletTestimonialWidget);
-    }
-
-    public Page<CardletQuickBitesWidgetResponseVM> findAllCardletQuickBitesWidgetRepository(Long cardletId, Pageable pageable) {
-        return cardletQuickBitesWidgetRepository.findAllByCardletId(cardletId, pageable).map(CardletQuickBitesWidgetResponseVM::new);
-    }
-
-    @Transactional
-    public CardletTestimonialWidgetResponseVM saveCardletTestimonialWidget(CardletTestimonialWidgetRequestVM testimonialWidgetRequestVM) {
-        Cardlet cardlet = cardletRepository.findOne(testimonialWidgetRequestVM.getCardletId());
+    public CardletWidgetResponseVM getCardletWidgetesByCardletId(Long cardletId) {
+        Cardlet cardlet = cardletRepository.findOne(cardletId);
         if (cardlet == null) {
             throw new BadRequestAlertException(ENTITY_CONTENT_LIBRARY, "A new cardletTestimonialWidget has't cardlet ID");
         }
 
-        CardletTestimonialWidget cardletTestimonialWidget = CardletWidgetMapper.mapToEntity(testimonialWidgetRequestVM, cardlet);
+        List<CardletTestimonialWidget> testimonialWidget = cardletTestimonialWidgetRepository.findAllByCardletId(cardletId);
+        List<CardletQuickBitesWidget> quickBitesWidgets = cardletQuickBitesWidgetRepository.findAllByCardletId(cardletId);
+        List<CardletContentLibraryWidget> contentLibraryWidget = cardletContentLibraryWidgetRepository.findAllByCardletId(cardletId);
 
-        Long widgetId = testimonialWidgetRequestVM.getId();
-        CardletTestimonialWidget cardletWidget = cardletTestimonialWidgetRepository.findOne(widgetId);
-        if (cardletWidget != null) {
-            cardletTestimonialWidget.setId(widgetId);
-        }
+        CardletWidgetResponseVM responseVM = new CardletWidgetResponseVM();
+        responseVM.setCardletId(cardletId);
 
-        return new CardletTestimonialWidgetResponseVM(cardletTestimonialWidgetRepository.save(cardletTestimonialWidget));
-    }
+        List<CardletTestimonialWidgetResponseVM> testimonialWidgetList = testimonialWidget
+            .stream()
+            .map(CardletTestimonialWidgetResponseVM::new)
+            .collect(Collectors.toList());
+        responseVM.setCardletTestimonialWidget(testimonialWidgetList);
 
-    public Page<CardletTestimonialWidgetResponseVM> findAllByCardletId(Long cardletId, Pageable pageable) {
-        return cardletTestimonialWidgetRepository.findAllByCardletId(cardletId, pageable)
-            .map(CardletTestimonialWidgetResponseVM::new);
+        List<CardletQuickBitesWidgetResponseVM> quickBitesWidgetsList = quickBitesWidgets
+            .stream()
+            .map(CardletQuickBitesWidgetResponseVM::new)
+            .collect(Collectors.toList());
+        responseVM.setCardletQuickBitesWidget(quickBitesWidgetsList);
+
+        List<CardletContentLibraryWidgetResponseVM> contentLibraryWidgetList = contentLibraryWidget
+            .stream()
+            .map(CardletContentLibraryWidgetResponseVM::new)
+            .collect(Collectors.toList());
+        responseVM.setCardletContentLibraryWidget(contentLibraryWidgetList);
+
+        return responseVM;
     }
 
     @Transactional
-    public CardletQuickBitesWidgetResponseVM saveQuickBitesWidget(CardletQuickBitesWidgetRequestVM cardletQuickBitesWidgetRequestVM) {
-        Cardlet cardlet = cardletRepository.findOne(cardletQuickBitesWidgetRequestVM.getCardletId());
+    public CardletWidgetResponseVM saveCardletlWidgetes(CardletWidgetRequestVM widget) {
+        Cardlet cardlet = cardletRepository.findOne(widget.getCardletId());
         if (cardlet == null) {
-            throw new BadRequestAlertException("cardlet_quick_bites", "A new quickBitesWidget has't cardlet ID");
+            throw new BadRequestAlertException(ENTITY_CONTENT_LIBRARY, "A new cardletTestimonialWidget has't cardlet ID");
+        }
+        widget.setCardletId(cardlet.getId());
+
+        if (widget.getCardletTestimonialWidget() != null && !widget.getCardletTestimonialWidget().isEmpty()) {
+            for (CardletTestimonialWidgetRequestVM testimonial : widget.getCardletTestimonialWidget()) {
+                CardletTestimonialWidget cardletTestimonialWidget = CardletWidgetMapper.mapToEntity(testimonial, cardlet);
+
+                saveCardletTestimonialWidget(cardletTestimonialWidget);
+            }
         }
 
-        CardletQuickBitesWidget cardletQuickBitesWidget = CardletWidgetMapper.mapToEntity(cardletQuickBitesWidgetRequestVM, cardlet);
+        if (widget.getCardletQuickBitesWidget() != null && !widget.getCardletQuickBitesWidget().isEmpty()) {
+            for (CardletQuickBitesWidgetRequestVM quickBites : widget.getCardletQuickBitesWidget()) {
+                CardletQuickBitesWidget cardletQuickBitesWidget = CardletWidgetMapper.mapToEntity(quickBites, cardlet);
 
-        Long widgetId = cardletQuickBitesWidgetRequestVM.getId();
-        CardletQuickBitesWidget cardletWidget = cardletQuickBitesWidgetRepository.findOne(widgetId);
-        if (cardletWidget != null) {
-            cardletQuickBitesWidget.setId(widgetId);
+                saveCardletQuickBitesWidget(cardletQuickBitesWidget);
+            }
         }
 
-        return new CardletQuickBitesWidgetResponseVM(cardletQuickBitesWidgetRepository.save(cardletQuickBitesWidget));
-    }
+        if (widget.getCardletContentLibraryWidget() != null && !widget.getCardletContentLibraryWidget().isEmpty()) {
+            for (CardletContentLibraryWidgetRequestVM contentLibrary : widget.getCardletContentLibraryWidget()) {
+                CardletContentLibraryWidget cardletContentLibraryWidget = CardletWidgetMapper.mapToEntity(contentLibrary, cardlet);
 
-    public CardletQuickBitesWidgetResponseVM findCardletQuickBitesWidget(Long id, Long cardletId) {
-        CardletQuickBitesWidget cardletQuickBitesWidget = cardletQuickBitesWidgetRepository.findByIdAndCardletId(id, cardletId);
-        if (cardletQuickBitesWidget == null) {
-            throw new BadRequestAlertException("cardlet_quick_bites_widget", "Curent cardletQuickBitesWidget does not exist. Cardlet id: " + cardletId);
+                saveCardletContentLibraryWidget(cardletContentLibraryWidget);
+            }
         }
 
-        return new CardletQuickBitesWidgetResponseVM(cardletQuickBitesWidget);
+
+        return getCardletWidgetResponseVM(cardlet.getId());
     }
 
-    public Page<CardletContentLibraryWidgetResponseVM> findAllContentLibraryByCardletId(Long cardletId, Pageable pageable) {
-        return cardletContentLibraryWidgetRepository.findAllByCardletId(cardletId, pageable)
-            .map(CardletContentLibraryWidgetResponseVM::new);
+    public CardletWidgetResponseVM getCardletWidgetResponseVM(Long cardletId) {
+        List<CardletTestimonialWidget> testimonialWidget = cardletTestimonialWidgetRepository.findAllByCardletId(cardletId);
+        List<CardletQuickBitesWidget> quickBitesWidgets = cardletQuickBitesWidgetRepository.findAllByCardletId(cardletId);
+        List<CardletContentLibraryWidget> contentLibraryWidget = cardletContentLibraryWidgetRepository.findAllByCardletId(cardletId);
+        CardletWidgetResponseVM responseVM = new CardletWidgetResponseVM();
+        responseVM.setCardletId(cardletId);
+
+        List<CardletTestimonialWidgetResponseVM> testimonialWidgetList = testimonialWidget
+            .stream()
+            .map(CardletTestimonialWidgetResponseVM::new)
+            .collect(Collectors.toList());
+        responseVM.setCardletTestimonialWidget(testimonialWidgetList);
+
+        List<CardletQuickBitesWidgetResponseVM> quickBitesWidgetsList = quickBitesWidgets
+            .stream()
+            .map(CardletQuickBitesWidgetResponseVM::new)
+            .collect(Collectors.toList());
+        responseVM.setCardletQuickBitesWidget(quickBitesWidgetsList);
+
+        List<CardletContentLibraryWidgetResponseVM> contentLibraryWidgetList = contentLibraryWidget
+            .stream()
+            .map(CardletContentLibraryWidgetResponseVM::new)
+            .collect(Collectors.toList());
+        responseVM.setCardletContentLibraryWidget(contentLibraryWidgetList);
+
+        return responseVM;
     }
 
-    public CardletContentLibraryWidget mergeCardletContentLibraryWidget(CardletContentLibraryWidget widget) {
+    private CardletContentLibraryWidget saveCardletContentLibraryWidget(CardletContentLibraryWidget widget) {
+        if (widget.getId() == null) {
+            return cardletContentLibraryWidgetRepository.save(widget);
+        }
+        String coverImageUrl = widget.getCoverImageUrl();
+        String uploadFileUrl = widget.getUploadFileUrl();
+
+        if (!isWebLink(coverImageUrl)) {
+            throw new BadRequestAlertException(ENTITY_CONTENT_LIBRARY,
+                "Incorrect cover image link for content library widget: " + coverImageUrl);
+        }
+
+        if (uploadFileUrl != null && !isWebLink(uploadFileUrl)) {
+            throw new BadRequestAlertException(ENTITY_CONTENT_LIBRARY,
+                "Incorrect upload file link for content library widget: " + uploadFileUrl);
+        }
+
         CardletContentLibraryWidget oldWidget = cardletContentLibraryWidgetRepository.findOne(widget.getId());
+
         if (oldWidget == null) {
-            throw new BadRequestAlertException(ENTITY_CONTENT_LIBRARY, "Request has incorrect id");
+            return cardletContentLibraryWidgetRepository.save(widget);
         }
 
         if (!widget.getTitle().equals(oldWidget.getTitle())) {
@@ -138,7 +177,56 @@ public class CardletWidgetService {
             deleteWidgetUploadFile(oldWidget);
             oldWidget.setUploadFileUrl(widget.getUploadFileUrl());
         }
+
         return cardletContentLibraryWidgetRepository.save(oldWidget);
+    }
+
+    private CardletQuickBitesWidget saveCardletQuickBitesWidget(CardletQuickBitesWidget widget) {
+        if (widget.getId() == null) {
+            return cardletQuickBitesWidgetRepository.save(widget);
+        }
+
+        CardletQuickBitesWidget oldWidget = cardletQuickBitesWidgetRepository.findOne(widget.getId());
+
+        if (oldWidget == null) {
+            return cardletQuickBitesWidgetRepository.save(widget);
+        }
+
+        if (!widget.getTitle().equals(oldWidget.getTitle())) {
+            oldWidget.setTitle(widget.getTitle());
+        }
+        if (!widget.getDescription().equals(oldWidget.getDescription())) {
+            oldWidget.setDescription(widget.getDescription());
+        }
+
+        return cardletQuickBitesWidgetRepository.save(oldWidget);
+    }
+
+    private CardletTestimonialWidget saveCardletTestimonialWidget(CardletTestimonialWidget widget) {
+        if (widget.getId() == null) {
+            return cardletTestimonialWidgetRepository.save(widget);
+        }
+
+        CardletTestimonialWidget oldWidget = cardletTestimonialWidgetRepository.findOne(widget.getId());
+
+        if (oldWidget == null) {
+            return cardletTestimonialWidgetRepository.save(widget);
+        }
+
+        if (!widget.getName().equals(oldWidget.getName())) {
+            oldWidget.setName(widget.getName());
+        }
+        if (!widget.getCoName().equals(oldWidget.getCoName())) {
+            oldWidget.setCoName(widget.getCoName());
+        }
+        if (!widget.getDescription().equals(oldWidget.getDescription())) {
+            oldWidget.setDescription(widget.getDescription());
+        }
+        if (!widget.getDesignation().equals(oldWidget.getDesignation())) {
+            oldWidget.setDesignation(widget.getDesignation());
+        }
+
+        return cardletTestimonialWidgetRepository.save(oldWidget);
     }
 
     @Transactional
@@ -250,18 +338,27 @@ public class CardletWidgetService {
      * Delete all data by contentLibraryId from awss3
      */
     public void deleteContentLibrary(Long contentLibraryId) {
-        CardletContentLibraryWidget widget = cardletContentLibraryWidgetRepository.findOne(contentLibraryId);
-        if (widget == null) {
-            throw new BadRequestAlertException(ENTITY_CONTENT_LIBRARY, "Incorrect widget ID");
-        }
-        String coverImageUrl = widget.getCoverImageUrl();
-        if (coverImageUrl != null) {
-            deleteCoverImage(widget);
-        }
+        User currentUser = userService.getUserWithAuthorities();
 
-        String uploadFileUrl = widget.getUploadFileUrl();
-        if (uploadFileUrl != null) {
-            deleteWidgetUploadFile(widget);
+        CardletContentLibraryWidget widget = cardletContentLibraryWidgetRepository.findOne(contentLibraryId);
+        User cardletOwner = widget.getCardlet().getUser();
+
+        if (currentUser.equals(cardletOwner)) {
+            if (widget == null) {
+                throw new BadRequestAlertException(ENTITY_CONTENT_LIBRARY, "Incorrect widget ID");
+            }
+            String coverImageUrl = widget.getCoverImageUrl();
+            if (coverImageUrl != null) {
+                deleteCoverImage(widget);
+            }
+
+            String uploadFileUrl = widget.getUploadFileUrl();
+            if (uploadFileUrl != null) {
+                deleteWidgetUploadFile(widget);
+            }
+            //} else {
+            //   throw new BadRequestAlertException(ENTITY_CONTENT_LIBRARY,
+            //       "Current user has't access for deleting content library widget with ID: " + contentLibraryId);
         }
     }
 

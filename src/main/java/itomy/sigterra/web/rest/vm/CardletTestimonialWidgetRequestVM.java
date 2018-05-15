@@ -1,17 +1,17 @@
 package itomy.sigterra.web.rest.vm;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.validation.annotation.Validated;
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Validated
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CardletTestimonialWidgetRequestVM {
 
     private Long id;
-
-    @NotNull
-    private Long cardletId;
 
     @NotEmpty
     private String name;
@@ -34,14 +34,6 @@ public class CardletTestimonialWidgetRequestVM {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getCardletId() {
-        return cardletId;
-    }
-
-    public void setCardletId(Long cardletId) {
-        this.cardletId = cardletId;
     }
 
     public String getName() {

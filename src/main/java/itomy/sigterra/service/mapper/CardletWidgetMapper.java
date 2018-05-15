@@ -13,6 +13,7 @@ public class CardletWidgetMapper {
     public static CardletTestimonialWidget mapToEntity(CardletTestimonialWidgetRequestVM vm, Cardlet cardlet) {
         CardletTestimonialWidget entity = new CardletTestimonialWidget();
 
+        entity.setId(vm.getId());
         entity.setName(vm.getName());
         entity.setCoName(vm.getCoName());
         entity.setDesignation(vm.getDesignation());
@@ -22,23 +23,26 @@ public class CardletWidgetMapper {
         return entity;
     }
 
-    public static CardletContentLibraryWidget mapToEntity(CardletContentLibraryWidgetRequestVM vm) {
+    public static CardletContentLibraryWidget mapToEntity(CardletContentLibraryWidgetRequestVM vm, Cardlet cardlet) {
         CardletContentLibraryWidget entity = new CardletContentLibraryWidget();
 
         entity.setId(vm.getId());
         entity.setTitle(vm.getTitle());
         entity.setUploadFileUrl(vm.getUploadFileUrl());
         entity.setCoverImageUrl(vm.getCoverImageUrl());
+        entity.setCardlet(cardlet);
 
         return entity;
     }
 
     public static CardletQuickBitesWidget mapToEntity(CardletQuickBitesWidgetRequestVM vm, Cardlet cardlet) {
-        CardletQuickBitesWidget cardletQuickBitesWidget = new CardletQuickBitesWidget();
-        cardletQuickBitesWidget.setTitle(vm.getTitle());
-        cardletQuickBitesWidget.setDescription(vm.getDescription());
-        cardletQuickBitesWidget.setCardlet(cardlet);
+        CardletQuickBitesWidget entity = new CardletQuickBitesWidget();
 
-        return cardletQuickBitesWidget;
+        entity.setId(vm.getId());
+        entity.setTitle(vm.getTitle());
+        entity.setDescription(vm.getDescription());
+        entity.setCardlet(cardlet);
+
+        return entity;
     }
 }
