@@ -759,7 +759,7 @@
             $scope.activetTestimonial = index;
         }
 
-        $scope.prevSlide = function(index){
+        $scope.prevTimonialSlide = function(index){
             $scope.currentUrl = undefined;
             if( $scope.activetTestimonial == 0){
                 $scope.activetTestimonial = $scope.testimonials.length -1
@@ -769,7 +769,7 @@
 
         };
 
-        $scope.nextSlide = function(index){
+        $scope.nextTimonialSlide = function(index){
             $scope.currentUrl = undefined
             if( $scope.activetTestimonial == $scope.testimonials.length -1){
                 $scope.activetTestimonial = 0
