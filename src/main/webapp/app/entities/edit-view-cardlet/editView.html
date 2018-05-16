@@ -432,7 +432,7 @@
                                                 Name:
                                             </div>
                                             <div>
-                                                <input class="editor-input widget-input" type="text" ng-model="testimonial.name">
+                                                <input class="editor-input widget-input" type="text" ng-model="testimonial.name" required>
                                             </div>
                                         </div>
                                         <div class="editor-div-flex editor-url">
@@ -456,7 +456,7 @@
                                                 Description:
                                             </div>
                                             <div>
-                                                <textarea class="editor-textarea" ng-model="testimonial.descriptionArea" maxlength="300"></textarea>
+                                                <textarea class="editor-textarea" ng-model="testimonial.description" maxlength="300" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -483,7 +483,8 @@
                         </div>
 
                     </div>
-                    <button class="save-preview-btn" ng-click="save(true)">save</button>
+
+                    <button ng-disabled="isInvalid()" class="save-preview-btn" ng-click="save(true)">save</button>
                 </div>
             </div>
         </div>
@@ -561,18 +562,18 @@
                         </div>
                     </div>
                     <div class="editor-preview">
-                        <div class="header-focus" ng-if="vm.activeWidget == '2'">
+                        <div class="header-focus" ng-if="vm.activeWidget == '2' && vm.activeTab == '5'">
                             <img class="focus-editing-marker" src="/content/images/editor/edit-marker.png">
                             <div class="focus-editing-title focus-editing-title-bg">Testimonials</div>
                         </div>
                         <div class="editor-preview-testimonials">
+                            <div ng-if="testimonials.length" class="testimonials-title">Testimonials</div>
                             <div uib-carousel active="activetTestimonial" interval="myInterval" no-wrap="noWrapSlides">
                                 <div uib-slide ng-repeat="testimonial in testimonials track by $index" index="$index" class="widget-slide-testimonials">
-
                                     <div>{{testimonial.name}}</div>
                                     <div>{{testimonial.coName}}</div>
                                     <div>{{testimonial.designation}}</div>
-                                    <div>{{testimonial.descriptionArea}}</div>
+                                    <div>{{testimonial.description}}</div>
                                 </div>
                             </div>
                             <div ng-if="testimonials.length > 1">
