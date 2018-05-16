@@ -463,12 +463,12 @@
                                 </div>
                                 <div ng-if="testimonials.length > 1">
                                     <div class="carousel-arrow widget-carousel-arrow-left">
-                                        <button class="demo-nav" ng-click="prevTimonialSlide()">
+                                        <button class="demo-nav testimonial-arrow" ng-click="prevTimonialSlide()">
                                             <img src="/content/images/editor/left.png">
                                         </button>
                                     </div>
                                     <div class="carousel-arrow  widget-carousel-arrow-right">
-                                        <button class="demo-nav" ng-click="nextTimonialSlide()">
+                                        <button class="demo-nav testimonial-arrow" ng-click="nextTimonialSlide()">
                                             <img src="/content/images/editor/right.png">
                                         </button>
                                     </div>
@@ -558,6 +558,35 @@
                                 </div>
                             </div>
 
+                        </div>
+                    </div>
+                    <div class="editor-preview">
+                        <div class="header-focus" ng-if="vm.activeWidget == '2'">
+                            <img class="focus-editing-marker" src="/content/images/editor/edit-marker.png">
+                            <div class="focus-editing-title focus-editing-title-bg">Testimonials</div>
+                        </div>
+                        <div class="editor-preview-testimonials">
+                            <div uib-carousel active="activetTestimonial" interval="myInterval" no-wrap="noWrapSlides">
+                                <div uib-slide ng-repeat="testimonial in testimonials track by $index" index="$index" class="widget-slide-testimonials">
+
+                                    <div>{{testimonial.name}}</div>
+                                    <div>{{testimonial.coName}}</div>
+                                    <div>{{testimonial.designation}}</div>
+                                    <div>{{testimonial.descriptionArea}}</div>
+                                </div>
+                            </div>
+                            <div ng-if="testimonials.length > 1">
+                                <div class="carousel-arrow testimonial-carousel-arrow-left">
+                                    <button class="demo-nav testimonial-arrow" ng-click="prevTimonialSlide()">
+                                        <img src="/content/images/editor/left.png">
+                                    </button>
+                                </div>
+                                <div class="carousel-arrow  testimonial-carousel-arrow-right">
+                                    <button class="demo-nav testimonial-arrow" ng-click="nextTimonialSlide()">
+                                        <img src="/content/images/editor/right.png">
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div id="editor-preview-footer">
