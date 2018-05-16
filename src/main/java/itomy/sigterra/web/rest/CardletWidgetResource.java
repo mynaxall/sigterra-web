@@ -2,9 +2,6 @@ package itomy.sigterra.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import itomy.sigterra.domain.Cardlet;
-import itomy.sigterra.domain.CardletContentLibraryWidget;
-import itomy.sigterra.domain.CardletQuickBitesWidget;
-import itomy.sigterra.domain.CardletTestimonialWidget;
 import itomy.sigterra.repository.CardletContentLibraryWidgetRepository;
 import itomy.sigterra.repository.CardletQuickBitesWidgetRepository;
 import itomy.sigterra.repository.CardletRepository;
@@ -12,7 +9,9 @@ import itomy.sigterra.repository.CardletTestimonialWidgetRepository;
 import itomy.sigterra.service.CardletWidgetService;
 import itomy.sigterra.web.rest.errors.BadRequestAlertException;
 import itomy.sigterra.web.rest.util.HeaderUtil;
-import itomy.sigterra.web.rest.vm.*;
+import itomy.sigterra.web.rest.vm.CardletImagesContentLibraryResponseVM;
+import itomy.sigterra.web.rest.vm.CardletWidgetRequestVM;
+import itomy.sigterra.web.rest.vm.CardletWidgetResponseVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -22,10 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
-import java.net.URISyntaxException;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * REST controller for managing CardletTestimonialWidget.
@@ -62,7 +58,7 @@ public class CardletWidgetResource {
      * or with status 400 (Bad Request) if the cardletTestimonialWidget is not valid,
      * or with status 500 (Internal Server Error) if the cardletTestimonialWidget couldn't be updated
      */
-    @PutMapping("/cardlet-testimonial-widgets")
+    @PutMapping("/cardlet-widgets")
     @Timed
     public ResponseEntity<CardletWidgetResponseVM> updateCardletTestimonialWidget(@Valid @RequestBody CardletWidgetRequestVM widget) {
         log.debug("REST request to update CardletTestimonialWidget : {}", widget);
@@ -121,6 +117,7 @@ public class CardletWidgetResource {
     public ResponseEntity<Void> deleteCardletQuickBitesWidget(@PathVariable Long id) {
         log.debug("REST request to delete CardletQuickBitesWidget : {}", id);
         cardletQuickBitesWidgetRepository.delete(id);
+
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME_QUICK_BITES, id.toString())).build();
     }
 

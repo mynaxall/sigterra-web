@@ -8,6 +8,8 @@ import itomy.sigterra.repository.CardletTestimonialWidgetRepository;
 import itomy.sigterra.service.mapper.CardletWidgetMapper;
 import itomy.sigterra.web.rest.errors.BadRequestAlertException;
 import itomy.sigterra.web.rest.vm.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,6 +29,8 @@ public class CardletWidgetService {
 
     private final static String ENTITY_CONTENT_LIBRARY = "cardlet_content_library_widget";
     private final static Long LIMIT_SIZE = 50L * 1024L * 1024L; //50mb
+
+    private final Logger log = LoggerFactory.getLogger(CardletWidgetService.class);
 
     @Inject
     private CardletTestimonialWidgetRepository cardletTestimonialWidgetRepository;
@@ -111,42 +115,10 @@ public class CardletWidgetService {
             }
         }
 
-
-        return getCardletWidgetResponseVM(cardlet.getId());
-    }
-
-    public CardletWidgetResponseVM getCardletWidgetResponseVM(Long cardletId) {
-        List<CardletTestimonialWidget> testimonialWidget = cardletTestimonialWidgetRepository.findAllByCardletId(cardletId);
-        List<CardletQuickBitesWidget> quickBitesWidgets = cardletQuickBitesWidgetRepository.findAllByCardletId(cardletId);
-        List<CardletContentLibraryWidget> contentLibraryWidget = cardletContentLibraryWidgetRepository.findAllByCardletId(cardletId);
-        CardletWidgetResponseVM responseVM = new CardletWidgetResponseVM();
-        responseVM.setCardletId(cardletId);
-
-        List<CardletTestimonialWidgetResponseVM> testimonialWidgetList = testimonialWidget
-            .stream()
-            .map(CardletTestimonialWidgetResponseVM::new)
-            .collect(Collectors.toList());
-        responseVM.setCardletTestimonialWidget(testimonialWidgetList);
-
-        List<CardletQuickBitesWidgetResponseVM> quickBitesWidgetsList = quickBitesWidgets
-            .stream()
-            .map(CardletQuickBitesWidgetResponseVM::new)
-            .collect(Collectors.toList());
-        responseVM.setCardletQuickBitesWidget(quickBitesWidgetsList);
-
-        List<CardletContentLibraryWidgetResponseVM> contentLibraryWidgetList = contentLibraryWidget
-            .stream()
-            .map(CardletContentLibraryWidgetResponseVM::new)
-            .collect(Collectors.toList());
-        responseVM.setCardletContentLibraryWidget(contentLibraryWidgetList);
-
-        return responseVM;
+        return getCardletWidgetesByCardletId(cardlet.getId());
     }
 
     private CardletContentLibraryWidget saveCardletContentLibraryWidget(CardletContentLibraryWidget widget) {
-        if (widget.getId() == null) {
-            return cardletContentLibraryWidgetRepository.save(widget);
-        }
         String coverImageUrl = widget.getCoverImageUrl();
         String uploadFileUrl = widget.getUploadFileUrl();
 
@@ -160,20 +132,24 @@ public class CardletWidgetService {
                 "Incorrect upload file link for content library widget: " + uploadFileUrl);
         }
 
+        if (widget.getId() == null) {
+            return cardletContentLibraryWidgetRepository.save(widget);
+        }
+
         CardletContentLibraryWidget oldWidget = cardletContentLibraryWidgetRepository.findOne(widget.getId());
 
         if (oldWidget == null) {
             return cardletContentLibraryWidgetRepository.save(widget);
         }
 
-        if (!widget.getTitle().equals(oldWidget.getTitle())) {
+        if (!Objects.equals(widget.getTitle(), oldWidget.getTitle())) {
             oldWidget.setTitle(widget.getTitle());
         }
-        if (!widget.getCoverImageUrl().equals(oldWidget.getCoverImageUrl())) {
+        if (!Objects.equals(widget.getCoverImageUrl(), oldWidget.getCoverImageUrl())) {
             deleteCoverImage(oldWidget);
             oldWidget.setCoverImageUrl(widget.getCoverImageUrl());
         }
-        if (!widget.getUploadFileUrl().equals(oldWidget.getUploadFileUrl())) {
+        if (!Objects.equals(widget.getUploadFileUrl(), oldWidget.getUploadFileUrl())) {
             deleteWidgetUploadFile(oldWidget);
             oldWidget.setUploadFileUrl(widget.getUploadFileUrl());
         }
@@ -192,10 +168,10 @@ public class CardletWidgetService {
             return cardletQuickBitesWidgetRepository.save(widget);
         }
 
-        if (!widget.getTitle().equals(oldWidget.getTitle())) {
+        if (!Objects.equals(widget.getTitle(), oldWidget.getTitle())) {
             oldWidget.setTitle(widget.getTitle());
         }
-        if (!widget.getDescription().equals(oldWidget.getDescription())) {
+        if (!Objects.equals(widget.getDescription(), oldWidget.getDescription())) {
             oldWidget.setDescription(widget.getDescription());
         }
 
@@ -213,16 +189,16 @@ public class CardletWidgetService {
             return cardletTestimonialWidgetRepository.save(widget);
         }
 
-        if (!widget.getName().equals(oldWidget.getName())) {
+        if (!Objects.equals(widget.getName(), oldWidget.getName())) {
             oldWidget.setName(widget.getName());
         }
-        if (!widget.getCoName().equals(oldWidget.getCoName())) {
+        if (!Objects.equals(widget.getCoName(), oldWidget.getCoName())) {
             oldWidget.setCoName(widget.getCoName());
         }
-        if (!widget.getDescription().equals(oldWidget.getDescription())) {
+        if (!Objects.equals(widget.getDescription(), oldWidget.getDescription())) {
             oldWidget.setDescription(widget.getDescription());
         }
-        if (!widget.getDesignation().equals(oldWidget.getDesignation())) {
+        if (!Objects.equals(widget.getDesignation(), oldWidget.getDesignation())) {
             oldWidget.setDesignation(widget.getDesignation());
         }
 
@@ -356,9 +332,6 @@ public class CardletWidgetService {
             if (uploadFileUrl != null) {
                 deleteWidgetUploadFile(widget);
             }
-            //} else {
-            //   throw new BadRequestAlertException(ENTITY_CONTENT_LIBRARY,
-            //       "Current user has't access for deleting content library widget with ID: " + contentLibraryId);
         }
     }
 
@@ -368,6 +341,7 @@ public class CardletWidgetService {
             try {
                 awss3BucketService.deleteFile(uploadFileUrl.substring(uploadFileUrl.indexOf("widget"), uploadFileUrl.indexOf("?")));
             } catch (Exception e) {
+                log.error("Error. Can'not delete widget upload file: {}", uploadFileUrl);
                 //NOP
             }
         }
@@ -380,6 +354,7 @@ public class CardletWidgetService {
             try {
                 awss3BucketService.deleteFile(coverImageUrl.substring(coverImageUrl.indexOf("widget"), coverImageUrl.indexOf("?")));
             } catch (Exception e) {
+                log.error("Error. Can'not delete cover image file: {}", coverImageUrl);
                 //NOP
             }
         }
