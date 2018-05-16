@@ -15,7 +15,10 @@
             getListIcons: getListIcons,
             saveViewer: saveViewer,
             getPreview: getPreview,
-            updateViewer: updateViewer
+            updateViewer: updateViewer,
+            updateWidgets: updateWidgets,
+            getWidgets: getWidgets,
+            deleteWidget: deleteWidget
 
         };
 
@@ -56,6 +59,31 @@
             });
             return service;
         }
+
+        function updateWidgets(value) {
+            var service = $http.put('api/cardlet-widgets/', value).then(function(result) {
+                return result.data;
+            });
+            return service;
+        }
+
+
+        function getWidgets(id){
+            var service = $http.get('api/cardlet/'+ id +'/widgets').then(function(result) {
+                return result.data;
+            });
+            return service;
+        }
+
+        function deleteWidget(id){
+            var service = $http.delete('api/cardlet-testimonial-widgets/' + id).then(function(result) {
+                return result.data;
+            });
+            return service;
+        }
+
+
+
     }
 })();
 

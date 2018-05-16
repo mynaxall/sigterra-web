@@ -93,9 +93,13 @@
         $scope.listIcons = {};
 
 
-        $scope.widget = {
-            'testimonials' : []
+        $scope.widgets = {
+            "cardletContentLibraryWidget": [],
+            "cardletId": 0,
+            "cardletQuickBitesWidget": [],
+            "cardletTestimonialWidget": []
         };
+
 
         $scope.activetTestimonial = 0;
 
@@ -137,10 +141,9 @@
         vm.reverse = pagingParams.ascending;
         vm.transition = transition;
         $scope.showSpinner = true;
+        $scope.cardletId = $location.search().cardletId;
 
         $scope.getCardlet = function(){
-            console.log("asdasdasdasd")
-            $scope.cardletId = $location.search().cardletId;
             $http.get("/api/userCardlet/"+ $scope.cardletId)
                 .success(function(response, status, headers) {
                     $scope.showError = false;
@@ -216,6 +219,13 @@
                 $scope.listIcons = response;
             }).catch(function (response) {
             });
+
+            EditViewerService.getWidgets($scope.cardletId).then(function (response) {
+                $scope.widgets = response;
+                $scope.setWidgets()
+            }).catch(function (response) {
+            });
+
 
             CardletList.query({
                 sort: sort()
@@ -666,10 +676,21 @@
             $scope.cardletView.links = $scope.links;
             $scope.cardletView.footer = $scope.footer;
             $scope.cardletView.cardletId = $scope.cardletId;
+            $scope.widgets.cardletTestimonialWidget = $scope.testimonials;
+            $scope.widgets.cardletId = $scope.cardletId;
             EditViewerService.updateViewer($scope.cardletView ).then(function (response) {
-                $scope.showSpinner = false;
+
                 setValues(response);
                 $scope.time = Date.now();
+
+                EditViewerService.updateWidgets($scope.widgets).then(function (response) {
+                    $scope.showSpinner = false;
+                    $scope.widgets = response;
+                    $scope.setWidgets();
+                }).catch(function (response) {
+                    $scope.showSpinner = false;
+                });
+
                 if(isSave) {
                     vm.success = true;
                     $timeout(function() {
@@ -681,6 +702,7 @@
             }).catch(function (response) {
                 $scope.showSpinner = false;
             });
+
         }
 
         $scope.select = function (index) {
@@ -737,7 +759,7 @@
                 'name': '',
                 'coName': '',
                 'designation': '',
-                'descriptionArea': ''
+                'description': ''
 
             };
             $scope.testimonials.push(newTestimonial);
@@ -745,9 +767,18 @@
         }
 
         $scope.deleteTestimonial = function (index) {
-            $scope.testimonials.splice(index, 1);
-            $scope.toLastTestimonial();
-        }
+
+            if($scope.testimonials[index].id) {
+                EditViewerService.deleteWidget($scope.testimonials[index].id).then(function (response) {
+                    $scope.testimonials.splice(index, 1);
+                    $scope.toLastTestimonial();
+                }).catch(function (response) {
+                });
+            }else{
+                $scope.testimonials.splice(index, 1);
+                $scope.toLastTestimonial();
+            }
+        };
 
         $scope.toLastTestimonial = function () {
             var index = $scope.testimonials.length - 1;
@@ -779,7 +810,11 @@
 
         };
 
+        $scope.setWidgets = function () {
+            $scope.testimonials = $scope.widgets.cardletTestimonialWidget;
+        }
     }
+
 
 
 
