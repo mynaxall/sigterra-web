@@ -818,7 +818,7 @@
         $scope.isInvalid = function() {
             for(var i = 0; i < $scope.testimonials.length; i++) {
                 var value = $scope.testimonials[i];
-                if(!value.name || !value.coName || !value.designation || !value.description){
+                if(!value.name ||!value.description){
                     return true
                 }
             }
