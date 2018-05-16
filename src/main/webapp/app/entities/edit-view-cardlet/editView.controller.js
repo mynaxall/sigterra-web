@@ -97,14 +97,6 @@
             'testimonials' : []
         };
 
-        $scope.newTestimonial = {
-            'name': '',
-            'coName': '',
-            'designation': '',
-            'descriptionArea': ''
-
-        }
-
         $scope.activetTestimonial = 0;
 
         $scope.testimonials = [];
@@ -741,7 +733,14 @@
         }
 
         $scope.addTestimonial = function () {
-            $scope.testimonials.push($scope.newTestimonial);
+            var newTestimonial = {
+                'name': '',
+                'coName': '',
+                'designation': '',
+                'descriptionArea': ''
+
+            };
+            $scope.testimonials.push(newTestimonial);
             $scope.toLastTestimonial();
         }
 
@@ -753,17 +752,32 @@
         $scope.toLastTestimonial = function () {
             var index = $scope.testimonials.length - 1;
             $scope.activetTestimonial = index;
-            setTimeout(function(){
-                Carousel.get('widget-carousel').toIndex(index)
-            }, 10)
+
         }
 
         $scope.setActiveTestimonial = function (index) {
             $scope.activetTestimonial = index;
-            Carousel.get('widget-carousel').toIndex(index);
         }
 
+        $scope.prevTimonialSlide = function(index){
+            $scope.currentUrl = undefined;
+            if( $scope.activetTestimonial == 0){
+                $scope.activetTestimonial = $scope.testimonials.length -1
+            }else{
+                $scope.activetTestimonial = parseInt($scope.activetTestimonial) - 1;
+            }
 
+        };
+
+        $scope.nextTimonialSlide = function(index){
+            $scope.currentUrl = undefined
+            if( $scope.activetTestimonial == $scope.testimonials.length -1){
+                $scope.activetTestimonial = 0
+            }else{
+                $scope.activetTestimonial = parseInt($scope.activetTestimonial) + 1;
+            }
+
+        };
 
     }
 
