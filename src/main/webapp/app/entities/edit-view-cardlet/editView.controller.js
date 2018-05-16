@@ -813,6 +813,18 @@
         $scope.setWidgets = function () {
             $scope.testimonials = $scope.widgets.cardletTestimonialWidget;
         }
+
+
+        $scope.isInvalid = function() {
+
+            for(var i = 0; i < $scope.testimonials.length; i++) {
+                var value = $scope.testimonials[i];
+                if(!value.name || !value.coName || !value.designation || !value.description){
+                    return true
+                }
+                return false;
+            };
+        }
     }
 
 

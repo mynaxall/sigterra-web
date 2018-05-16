@@ -432,7 +432,7 @@
                                                 Name:
                                             </div>
                                             <div>
-                                                <input class="editor-input widget-input" type="text" ng-model="testimonial.name">
+                                                <input class="editor-input widget-input" type="text" ng-model="testimonial.name" required>
                                             </div>
                                         </div>
                                         <div class="editor-div-flex editor-url">
@@ -440,7 +440,7 @@
                                                 Co.Name:
                                             </div>
                                             <div>
-                                                <input class="editor-input widget-input" type="text" ng-model="testimonial.coName">
+                                                <input class="editor-input widget-input" type="text" ng-model="testimonial.coName" required>
                                             </div>
                                         </div>
                                         <div class="editor-div-flex editor-url">
@@ -448,7 +448,7 @@
                                                 Designation:
                                             </div>
                                             <div>
-                                                <input class="editor-input widget-input" type="text" ng-model="testimonial.designation">
+                                                <input class="editor-input widget-input" type="text" ng-model="testimonial.designation" required>
                                             </div>
                                         </div>
                                         <div class="editor-div-flex editor-url">
@@ -456,7 +456,7 @@
                                                 Description:
                                             </div>
                                             <div>
-                                                <textarea class="editor-textarea" ng-model="testimonial.description" maxlength="300"></textarea>
+                                                <textarea class="editor-textarea" ng-model="testimonial.description" maxlength="300" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -483,7 +483,8 @@
                         </div>
 
                     </div>
-                    <button class="save-preview-btn" ng-click="save(true)">save</button>
+
+                    <button ng-disabled="isInvalid()" class="save-preview-btn" ng-click="save(true)">save</button>
                 </div>
             </div>
         </div>
