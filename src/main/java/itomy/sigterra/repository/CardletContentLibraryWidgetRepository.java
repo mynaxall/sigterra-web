@@ -1,6 +1,6 @@
 package itomy.sigterra.repository;
 
-import itomy.sigterra.domain.CardletTestimonialWidget;
+import itomy.sigterra.domain.CardletContentLibraryWidget;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,18 +12,19 @@ import java.util.List;
 
 
 /**
- * Spring Data JPA repository for the CardletTestimonialWidget entity.
+ * Spring Data JPA repository for the CardletContentLibraryWidget entity.
  */
 @SuppressWarnings("unused")
 @Repository
-public interface CardletTestimonialWidgetRepository extends JpaRepository<CardletTestimonialWidget, Long> {
+public interface CardletContentLibraryWidgetRepository extends JpaRepository<CardletContentLibraryWidget, Long> {
 
-    List<CardletTestimonialWidget> findAllByCardletId(Long cardletId);
+    List<CardletContentLibraryWidget> findAllByCardletId(Long cardletId);
 
-    CardletTestimonialWidget findByIdAndCardletId(Long id, Long cardletId);
+    CardletContentLibraryWidget findByIdAndCardletId(Long id, Long cardletId);
 
     @Modifying
     @Transactional
-    @Query(value = "delete from cardlet_testimonial_widget where id = :id", nativeQuery = true)
+    @Query(value = "delete from cardlet_content_library_widget where id = :id", nativeQuery = true)
     void deleteById(@Param("id") Long id);
+
 }

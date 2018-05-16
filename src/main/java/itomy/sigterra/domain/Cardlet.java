@@ -41,10 +41,10 @@ public class Cardlet implements Serializable {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "cardlet", cascade = CascadeType.ALL)
     private Set<Item> items = new HashSet<>();
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL,mappedBy = "cardlet")
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "cardlet")
     private CardletHeader cardletHeader;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL,mappedBy = "cardlet")
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "cardlet")
     private CardletBackground cardletBackground;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "cardlet")
@@ -55,6 +55,9 @@ public class Cardlet implements Serializable {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "cardlet", cascade = CascadeType.ALL)
     private Set<CardletTestimonialWidget> cardletTestimonialWidgets = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "cardlet", cascade = CascadeType.ALL)
+    private Set<CardletContentLibraryWidget> cardletContentLibraryWidgets = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -220,6 +223,14 @@ public class Cardlet implements Serializable {
         this.cardletTestimonialWidgets = cardletTestimonialWidgets;
     }
 
+    public Set<CardletContentLibraryWidget> getCardletContentLibraryWidgets() {
+        return cardletContentLibraryWidgets;
+    }
+
+    public void setCardletContentLibraryWidgets(Set<CardletContentLibraryWidget> cardletContentLibraryWidgets) {
+        this.cardletContentLibraryWidgets = cardletContentLibraryWidgets;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -229,7 +240,7 @@ public class Cardlet implements Serializable {
             return false;
         }
         Cardlet cardlet = (Cardlet) o;
-        if(cardlet.id == null || id == null) {
+        if (cardlet.id == null || id == null) {
             return false;
         }
         return Objects.equals(id, cardlet.id);

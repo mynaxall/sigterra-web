@@ -24,6 +24,7 @@ import javax.inject.Inject;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
+import java.util.UUID;
 
 /**
  * Service for AWS S3 Bucket.
@@ -32,13 +33,13 @@ import java.net.URL;
 @Service
 @Transactional
 public class AWSS3BucketService {
-    public static final String   USER_PROFILE_ICON = "user_profile_icon_";
-    protected static    AmazonS3 s3Client          = null;
-    private final       Logger   log               = LoggerFactory.getLogger(AWSS3BucketService.class);
+    public static final String USER_PROFILE_ICON = "user_profile_icon_";
+    protected static AmazonS3 s3Client = null;
+    private final Logger log = LoggerFactory.getLogger(AWSS3BucketService.class);
     @Inject
-    private UserService        userService;
+    private UserService userService;
     @Inject
-    private UserRepository     userRepository;
+    private UserRepository userRepository;
     @Inject
     private JHipsterProperties hipsterProperties;
 
@@ -192,11 +193,12 @@ public class AWSS3BucketService {
 
     /**
      * upload image to S3 bucket
-     * @param file file
+     *
+     * @param file     file
      * @param fullPath fileKey in bucket
      * @return new file URI
      */
-    public URI uploadImage(MultipartFile file,String fullPath){
+    public URI uploadImage(MultipartFile file, String fullPath) {
         URI uri = null;
         if (file != null && !file.isEmpty()) {
             try {
@@ -232,17 +234,18 @@ public class AWSS3BucketService {
 
     /**
      * rename file in bucket. Don't delete source file, only copy
+     *
      * @param source source fileKey in bucket
-     * @param dest dest fileKet in bucket.
+     * @param dest   dest fileKet in bucket.
      * @return
      */
     public URI renameFile(String source, String dest) {
         URI uri = null;
         try {
             String bucketName = hipsterProperties.getAwss3Bucket().getName();
-            s3Client.copyObject(bucketName,source,bucketName,dest);
-            s3Client.setObjectAcl(bucketName,dest,CannedAccessControlList.PublicRead);
-            URL url = s3Client.generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName,dest));
+            s3Client.copyObject(bucketName, source, bucketName, dest);
+            s3Client.setObjectAcl(bucketName, dest, CannedAccessControlList.PublicRead);
+            URL url = s3Client.generatePresignedUrl(new GeneratePresignedUrlRequest(bucketName, dest));
             uri = new URI(url.toURI().getScheme(),
                 url.toURI().getAuthority(),
                 url.toURI().getPath(),
@@ -250,7 +253,7 @@ public class AWSS3BucketService {
                 url.toURI().getFragment());
 
             uri = URI.create(uri.toString() + '?' + System.currentTimeMillis());
-            log.debug("File copied "+source+"->"+dest);
+            log.debug("File copied " + source + "->" + dest);
         } catch (Exception e) {
             log.error("Error occurred while rename the profile icon file", e);
 
@@ -260,16 +263,62 @@ public class AWSS3BucketService {
 
     /**
      * delete file in bucket
+     *
      * @param path fileKey in bucket
      */
     public void deleteFile(String path) {
         try {
             String bucketName = hipsterProperties.getAwss3Bucket().getName();
-            s3Client.deleteObject(bucketName,path);
-            log.info("Deleted file: "+path);
-        } catch (Exception e){
-            log.error("Error delete file " + path,e);
+            s3Client.deleteObject(bucketName, path);
+            log.info("Deleted file: " + path);
+        } catch (Exception e) {
+            log.error("Error delete file " + path, e);
         }
+    }
+
+    public URI uploadImage(MultipartFile file, Long cardletId, String basePath) {
+        URI uri = null;
+        if (file != null && !file.isEmpty()) {
+            try {
+                String bucketName = hipsterProperties.getAwss3Bucket().getName();
+                User user = userService.getUserWithAuthorities();
+
+                String originalFilename = file.getOriginalFilename();
+                String name = UUID.randomUUID().toString();
+
+                String folderPath = basePath + user.getId() + "/" + cardletId + "/";
+                if (StringUtils.isNotBlank(cardletId.toString())) {
+                    s3Client.deleteObject(new DeleteObjectRequest(bucketName, folderPath + name));
+                }
+
+                if (originalFilename.contains(".")) {
+                    name += originalFilename.substring(originalFilename.lastIndexOf("."));
+                }
+
+                ObjectMetadata metadata = new ObjectMetadata();
+                metadata.setContentType(file.getContentType());
+                metadata.setContentLength(file.getSize());
+                String fileKey = folderPath + name;
+                PutObjectRequest putObject = new PutObjectRequest(bucketName, fileKey, file.getInputStream(), metadata);
+                putObject.withCannedAcl(CannedAccessControlList.PublicRead);
+
+                s3Client.putObject(putObject);
+
+                GeneratePresignedUrlRequest urlRequest = new GeneratePresignedUrlRequest(bucketName, fileKey);
+                URL url = s3Client.generatePresignedUrl(urlRequest);
+                uri = new URI(url.toURI().getScheme(),
+                    url.toURI().getAuthority(),
+                    url.toURI().getPath(),
+                    null,
+                    url.toURI().getFragment());
+
+                uri = URI.create(uri.toString() + '?' + System.currentTimeMillis());
+                log.debug("Uploaded signature image to AWS S3 Bucket has URL: {}", uri.toString());
+            } catch (Exception e) {
+                log.error("Error occurred while uploading the profile icon file", e);
+            }
+        }
+        return uri;
     }
 }
 

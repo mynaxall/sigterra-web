@@ -1,31 +1,48 @@
 package itomy.sigterra.service.mapper;
 
 import itomy.sigterra.domain.Cardlet;
+import itomy.sigterra.domain.CardletContentLibraryWidget;
 import itomy.sigterra.domain.CardletQuickBitesWidget;
 import itomy.sigterra.domain.CardletTestimonialWidget;
+import itomy.sigterra.web.rest.vm.CardletContentLibraryWidgetRequestVM;
 import itomy.sigterra.web.rest.vm.CardletQuickBitesWidgetRequestVM;
 import itomy.sigterra.web.rest.vm.CardletTestimonialWidgetRequestVM;
 
 public class CardletWidgetMapper {
 
-    public static CardletTestimonialWidget mapToEntity(CardletTestimonialWidgetRequestVM cardletTestimonialWidgetRequestVM, Cardlet cardlet) {
-        CardletTestimonialWidget cardletTestimonialWidget = new CardletTestimonialWidget();
+    public static CardletTestimonialWidget mapToEntity(CardletTestimonialWidgetRequestVM vm, Cardlet cardlet) {
+        CardletTestimonialWidget entity = new CardletTestimonialWidget();
 
-        cardletTestimonialWidget.setName(cardletTestimonialWidgetRequestVM.getName());
-        cardletTestimonialWidget.setCoName(cardletTestimonialWidgetRequestVM.getCoName());
-        cardletTestimonialWidget.setDesignation(cardletTestimonialWidgetRequestVM.getDesignation());
-        cardletTestimonialWidget.setDescription(cardletTestimonialWidgetRequestVM.getDescription());
-        cardletTestimonialWidget.setCardlet(cardlet);
+        entity.setId(vm.getId());
+        entity.setName(vm.getName());
+        entity.setCoName(vm.getCoName());
+        entity.setDesignation(vm.getDesignation());
+        entity.setDescription(vm.getDescription());
+        entity.setCardlet(cardlet);
 
-        return cardletTestimonialWidget;
+        return entity;
+    }
+
+    public static CardletContentLibraryWidget mapToEntity(CardletContentLibraryWidgetRequestVM vm, Cardlet cardlet) {
+        CardletContentLibraryWidget entity = new CardletContentLibraryWidget();
+
+        entity.setId(vm.getId());
+        entity.setTitle(vm.getTitle());
+        entity.setUploadFileUrl(vm.getUploadFileUrl());
+        entity.setCoverImageUrl(vm.getCoverImageUrl());
+        entity.setCardlet(cardlet);
+
+        return entity;
     }
 
     public static CardletQuickBitesWidget mapToEntity(CardletQuickBitesWidgetRequestVM vm, Cardlet cardlet) {
-        CardletQuickBitesWidget cardletQuickBitesWidget = new CardletQuickBitesWidget();
-        cardletQuickBitesWidget.setTitle(vm.getTitle());
-        cardletQuickBitesWidget.setDescription(vm.getDescription());
-        cardletQuickBitesWidget.setCardlet(cardlet);
+        CardletQuickBitesWidget entity = new CardletQuickBitesWidget();
 
-        return cardletQuickBitesWidget;
+        entity.setId(vm.getId());
+        entity.setTitle(vm.getTitle());
+        entity.setDescription(vm.getDescription());
+        entity.setCardlet(cardlet);
+
+        return entity;
     }
 }

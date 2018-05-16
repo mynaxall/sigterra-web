@@ -15,26 +15,22 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity CardletTestimonialWidget.
+        Added the entity CardletContentLibraryWidget.
     -->
-    <changeSet id="20180510101713-1" author="jhipster">
-        <createTable tableName="cardlet_testimonial_widget">
+    <changeSet id="20180511101522-1" author="jhipster">
+        <createTable tableName="cardlet_content_library_widget">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(255)">
+            <column name="title" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="cover_image_url" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
 
-            <column name="co_name" type="varchar(255)">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="designation" type="varchar(255)">
-                <constraints nullable="true"/>
-            </column>
-
-            <column name="description" type="varchar(255)">
+            <column name="upload_file_url" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
 
