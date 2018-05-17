@@ -67,7 +67,7 @@
         $scope.imageSize = {width: 200, height: 200};
         $scope.secondaryColor = "";
         vm.activeTab = 5;
-        vm.activeWidget = 2;
+        vm.activeWidget = 3;
         vm.bg = "/content/images/background.jpg";
         $scope.cardletView = {};
         $scope.isLogo = false;
@@ -105,8 +105,10 @@
 
 
         $scope.activetTestimonial = 0;
+        $scope.activeContentLibrary = 0;
 
         $scope.testimonials = [];
+        $scope.contentLibrary = [];
 
 
         $scope.myImage='';
@@ -857,10 +859,35 @@
         $scope.closeDialog = function () {
             $scope.showDelteDialog = false;
         }
+
+        $scope.toLastContentLibrary = function () {
+            var index = $scope.contentLibrary.length - 1;
+            $scope.activeContentLibrary = index;
+
+        }
+
+        $scope.prevContentLibrarySlide = function(){
+            if( $scope.activeContentLibrary == 0){
+                $scope.activeContentLibrary = $scope.contentLibrary.length -1
+            }else{
+                $scope.activeContentLibrary = parseInt($scope.activeContentLibrary) - 1;
+            }
+
+        };
+
+        $scope.nextContentLibrarySlide = function(){
+
+            if( $scope.activeContentLibrary == $scope.contentLibrary.length -1){
+                $scope.activeContentLibrary = 0
+            }else{
+                $scope.activeContentLibrary = parseInt($scope.activeContentLibrary) + 1;
+            }
+
+        };
+
+        $scope.setActiveContentLibrary = function (index) {
+            $scope.activeContentLibrary = index;
+        }
     }
-
-
-
-
 
 })();

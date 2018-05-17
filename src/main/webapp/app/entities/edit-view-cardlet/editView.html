@@ -606,6 +606,26 @@
                             </div>
                             <div ng-if="vm.activeWidget == '3'" class="editor-panel">
                                 Content Library Content
+                                <div uib-carousel active="activeContentLibrary" interval="myInterval" no-wrap="noWrapSlides">
+                                    <div uib-slide ng-repeat="item in contentLibrary track by $index" index="$index" class="widget-slide">
+                                       {{$index}}
+                                    </div>
+                                </div>
+                                <div ng-if="contentLibrary.length > 1">
+                                    <div class="carousel-arrow widget-carousel-arrow-left">
+                                        <button class="demo-nav testimonial-arrow" ng-click="prevContentLibrarySlide()">
+                                            <img src="/content/images/editor/left.png">
+                                        </button>
+                                    </div>
+                                    <div class="carousel-arrow  widget-carousel-arrow-right">
+                                        <button class="demo-nav testimonial-arrow" ng-click="nextContentLibrarySlide()">
+                                            <img src="/content/images/editor/right.png">
+                                        </button>
+                                    </div>
+                                </div>
+                                <div ng-if="contentLibrary.length > 1" class="testimonial-paging">
+                                    <div class="testimonial-page-number" ng-class="{active: activeContentLibrary === $index}" ng-repeat="item in contentLibrary track by $index" ng-click="setActiveContentLibrary($index)">{{$index + 1}}</div>
+                                </div>
                             </div>
                         </div>
 
