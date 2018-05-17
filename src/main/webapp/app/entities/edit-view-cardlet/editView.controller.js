@@ -99,6 +99,9 @@
             "cardletQuickBitesWidget": [],
             "cardletTestimonialWidget": []
         };
+        $scope.showDelteDialog = false;
+        $scope.delteMsg = '';
+        $scope.deleteId = '';
 
 
         $scope.activetTestimonial = 0;
@@ -785,18 +788,19 @@
         }
 
 
-        $scope.deleteTestimonial = function (index) {
+        $scope.deleteTestimonial = function () {
 
-            if($scope.testimonials[index].id) {
-                EditViewerService.deleteWidget($scope.testimonials[index].id).then(function (response) {
-                    $scope.testimonials.splice(index, 1);
+            if($scope.testimonials[$scope.deleteId].id) {
+                EditViewerService.deleteWidget($scope.testimonials[$scope.deleteId].id).then(function (response) {
+                    $scope.testimonials.splice($scope.deleteId, 1);
                     $scope.toLastTestimonial();
                 }).catch(function (response) {
                 });
             }else{
-                $scope.testimonials.splice(index, 1);
+                $scope.testimonials.splice($scope.deleteId, 1);
                 $scope.toLastTestimonial();
             }
+            $scope.showDelteDialog = false;
         };
 
         $scope.toLastTestimonial = function () {
@@ -842,6 +846,16 @@
                 }
             }
             return false;
+        }
+
+        $scope.showDeleteTestimonialDialog = function (id) {
+            $scope.deleteMsg = "Do you want to delete this testimonial?";
+            $scope.showDelteDialog = true;
+            $scope.deleteId = id;
+        }
+
+        $scope.closeDialog = function () {
+            $scope.showDelteDialog = false;
         }
     }
 

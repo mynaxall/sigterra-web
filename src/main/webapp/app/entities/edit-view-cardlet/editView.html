@@ -48,6 +48,7 @@
         </div>
     </div>
 </div>
+<ng-include src="'app/entities/edit-view-cardlet/deleteWidgetDialog.html'"></ng-include>
 <style>
     body{
         min-width: 850px;
@@ -552,7 +553,7 @@
                                 <button ng-if="testimonials.length < 9" ng-click="addTestimonial()">Add</button>
                                 <div uib-carousel active="activetTestimonial" interval="myInterval" no-wrap="noWrapSlides">
                                     <div uib-slide ng-repeat="testimonial in testimonials track by $index" index="$index" class="widget-slide">
-                                        <button ng-click="deleteTestimonial($index)">delete</button>
+                                        <button ng-click="showDeleteTestimonialDialog($index)">delete</button>
                                         <div class="editor-div-flex editor-url">
                                             <div class="login-lable label-editor label-editor-logo editor-div-flex">
                                                 Name:

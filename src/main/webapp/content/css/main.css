@@ -7570,4 +7570,14 @@ a.preview-footer-link {
     font-size: 20px;
 }
 
+.modeal-custom-window {
+    top: 0;
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, 0.6);
+    z-index: 1000;
+}
+
 
