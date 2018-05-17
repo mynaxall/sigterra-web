@@ -102,6 +102,7 @@
         $scope.showDelteDialog = false;
         $scope.delteMsg = '';
         $scope.deleteId = '';
+        $scope.isWidget = false;
 
 
         $scope.activetTestimonial = 0;
@@ -118,6 +119,7 @@
         vm.hideImageDialog = hideImageDialog;
         vm.hideIconPopUpDialog = hideIconPopUpDialog;
         vm.showIconPopUpDialog = showIconPopUpDialog;
+        vm.showWidgetImageDialog = showWidgetImageDialog;
         $scope.iconvalue = "";
 
 
@@ -589,7 +591,8 @@
         }
 
 
-        function showImageDialog(type) {
+        function showImageDialog(isWidget, type) {
+            $scope.isWidget = isWidget;
             $scope.isLogo = type;
             angular.element('#fileInput').val(null);
             $scope.myImage = "";
@@ -629,6 +632,7 @@
                 $scope.myImage='';
                 $scope.myCroppedImage = '';
             }
+            $scope.isWidget = false;
             vm.isShowDialog = false;
         }
 
@@ -642,24 +646,33 @@
 
         function saveImage(){
             var url = '';
-            if($scope.isLogo){
+            if($scope.isWidget){
+                url = '/api/cardlet/' + $scope.cardletId + '/widgets/images/upload'
+            } else if($scope.isLogo){
                 url = '/api/cardlet/pageview/logo-image/' + $scope.cardletId;
             }else{
                 url = '/api/cardlet/pageview/photo-image/' + $scope.cardletId;
             }
-            vm.hideImageDialog();
             $scope.showSpinner = true;
             var img_b64 = $scope.myCroppedImage;
             var png = img_b64.split(',')[1];
             var file = b64toBlob(png, 'image/png')
             var fd = new FormData();
-            fd.append('file', file);
+
+            if($scope.isWidget) {
+                fd.append('coverImage', file);
+            }else{
+                fd.append('file', file);
+            }
+            console.log(fd)
             $http.post(url,  fd, {
                 transformRequest: angular.identity,
                 headers: {'Content-Type': undefined}
             })
                 .success(function (data, status, headers, config) {
-                    if($scope.isLogo){
+                    if($scope.isWidget){
+                        $scope.contentLibrary[$scope.contentLibraryImageIndex].coverImageUrl = data.coverImageUrl;
+                    }if($scope.isLogo){
                         $scope.header.logoUrl = data.url
                     }else{
                         $scope.header.photoUrl = data.url
@@ -667,6 +680,10 @@
                     $scope.showSpinner = false;
                     $scope.myImage='';
                     $scope.myCroppedImage = '';
+                    vm.hideImageDialog();
+                })
+                .error(function (error) {
+                    vm.hideImageDialog();
                 });
         }
 
@@ -702,6 +719,7 @@
             $scope.cardletView.footer = $scope.footer;
             $scope.cardletView.cardletId = $scope.cardletId;
             $scope.widgets.cardletTestimonialWidget = $scope.testimonials;
+            $scope.widgets.cardletContentLibraryWidget = $scope.contentLibrary;
             $scope.widgets.cardletId = $scope.cardletId;
             EditViewerService.updateViewer($scope.cardletView ).then(function (response) {
 
@@ -837,16 +855,24 @@
 
         $scope.setWidgets = function () {
             $scope.testimonials = $scope.widgets.cardletTestimonialWidget;
+            $scope.contentLibrary = $scope.widgets.cardletContentLibraryWidget;
         }
 
 
         $scope.isInvalid = function() {
             for(var i = 0; i < $scope.testimonials.length; i++) {
-                var value = $scope.testimonials[i];
-                if(!value.name ||!value.description){
+                var testimonial = $scope.testimonials[i];
+                if(!testimonial.name ||!testimonial.description){
                     return true
                 }
             }
+            for(var j = 0; j < $scope.contentLibrary.length; j++) {
+                var value = $scope.contentLibrary[j];
+                if(!value.title || !value.uploadFileUrl ||!value.coverImageUrl){
+                    return true
+                }
+            }
+
             return false;
         }
 
@@ -860,11 +886,32 @@
             $scope.showDelteDialog = false;
         }
 
+
+        $scope.addContentLibrary = function () {
+            var newContentLibrary = {
+                'title': '',
+                'uploadFileUrl': '',
+                'coverImageUrl': ''
+
+            };
+            $scope.contentLibrary.push(newContentLibrary);
+            $scope.toLastContentLibrary();
+        }
+
+
         $scope.toLastContentLibrary = function () {
             var index = $scope.contentLibrary.length - 1;
             $scope.activeContentLibrary = index;
 
         }
+
+        $scope.deleteContentLibrary = function (index) {
+
+            $scope.contentLibrary.splice(index, 1);
+            $scope.toLastContentLibrary();
+            $scope.showDelteDialog = false;
+        };
+
 
         $scope.prevContentLibrarySlide = function(){
             if( $scope.activeContentLibrary == 0){
@@ -886,7 +933,18 @@
         };
 
         $scope.setActiveContentLibrary = function (index) {
+            console.log('asdasdas')
             $scope.activeContentLibrary = index;
+            console.log($scope.activeContentLibrary)
+        }
+
+        function showWidgetImageDialog(isWidget, index) {
+            $scope.isWidget = isWidget;
+            $scope.contentLibraryImageIndex = index;
+            angular.element('#fileInput').val(null);
+            $scope.myImage = "";
+            $scope.myCroppedImage = '';
+            vm.isShowDialog = true;
         }
     }
 

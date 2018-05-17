@@ -605,10 +605,40 @@
                                 </div>
                             </div>
                             <div ng-if="vm.activeWidget == '3'" class="editor-panel">
-                                Content Library Content
+                                <button ng-if="contentLibrary.length < 9" ng-click="addContentLibrary()">Add</button>
                                 <div uib-carousel active="activeContentLibrary" interval="myInterval" no-wrap="noWrapSlides">
                                     <div uib-slide ng-repeat="item in contentLibrary track by $index" index="$index" class="widget-slide">
-                                       {{$index}}
+                                        <button ng-click="deleteContentLibrary($index)">delete</button>
+                                        <div class="editor-div-flex editor-url">
+                                            <div class="login-lable label-editor label-editor-logo editor-div-flex">
+                                                Title:
+                                            </div>
+                                            <div>
+                                                <textarea class="editor-textarea" ng-model="item.title" maxlength="100" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="editor-div editor-div-flex header-prof">
+                                            <label class="login-lable label-editor label-editor-logo">Cover image</label>
+                                            <div class="editor-header-logo-div-container">
+                                                <div class="editor-header-logo-div logo-flex">
+                                                    <button ng-click="vm.showWidgetImageDialog(true, $index)" class="upload-img-btn">
+                                                        <img src="/content/images/editor/edit.png">
+                                                    </button>
+                                                    <img ng-if="item.coverImageUrl" class="editor-header-logo-img" ng-src="{{item.coverImageUrl}}?{{time}}">
+                                                </div>
+                                                <div class="editor-limits">
+                                                    (260 x 70 px)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="editor-div-flex editor-url">
+                                            <div class="login-lable label-editor label-editor-logo editor-div-flex">
+                                                Upload File / URL:
+                                            </div>
+                                            <div>
+                                                <input class="editor-input widget-input" type="text" ng-model="item.uploadFileUrl">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div ng-if="contentLibrary.length > 1">
