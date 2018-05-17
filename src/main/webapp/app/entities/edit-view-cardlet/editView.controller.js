@@ -111,7 +111,9 @@
         vm.saveImage = saveImage;
         vm.showImageDialog = showImageDialog;
         vm.hideImageDialog = hideImageDialog;
-
+        vm.hideIconPopUpDialog = hideIconPopUpDialog;
+        vm.showIconPopUpDialog = showIconPopUpDialog;
+        $scope.iconvalue = "";
 
 
         $scope.setActive = function (index) {
@@ -597,6 +599,16 @@
             vm.isShowDialog = true;
         }
 
+        function showIconPopUpDialog(type) {
+                    $scope.listIcons.listFilesPaths.forEach(function (listIcon, i) {
+                        listIcon.checked = false;
+                    });
+                    $scope.iconvalue = angular.element('.icon1val').val();
+                    $scope.gender = '';
+                     $scope.myImage = "";
+                    vm.isShowDialog1 = true;
+                }
+
         function _arrayBufferToBase64(buffer) {
             var binary = '';
             var bytes = new Uint8Array(buffer);
@@ -613,6 +625,14 @@
                 $scope.myCroppedImage = '';
             }
             vm.isShowDialog = false;
+        }
+
+        function hideIconPopUpDialog(clean){
+//            if(clean){
+//                $scope.myImage='';
+//                $scope.myCroppedImage = '';
+//            }
+            vm.isShowDialog1 = false;
         }
 
         function saveImage(){
@@ -709,17 +729,15 @@
             $scope.background.imageUrl = $scope.bgArray.listFilesPaths[index].url;
         }
 
-        $scope.toggleSelection = function toggleSelection(img) {
+        $scope.toggleSelection = function toggleSelection(position, img) {
+         var idx = $scope.selection.indexOf(img);
 
-            var idx = $scope.selection.indexOf(img);
-
-
-            if (idx > -1) {
-                $scope.selection.splice(idx, 1);
-            }
-            else {
-                $scope.selection.push(img);
-            }
+//            if (idx > -1) {
+//                $scope.selection.splice(idx, 1);
+//            }
+//            else {
+                $scope.selection[$scope.iconvalue] = img ;
+           // }
 
             setSelction();
 
@@ -765,6 +783,7 @@
             $scope.testimonials.push(newTestimonial);
             $scope.toLastTestimonial();
         }
+
 
         $scope.deleteTestimonial = function (index) {
 

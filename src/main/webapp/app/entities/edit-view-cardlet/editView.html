@@ -25,6 +25,29 @@
         </div>
     </div>
 </div>
+<div ng-show="vm.isShowDialog1" class="image-popup">
+
+    <div class="row icon-dialog" >
+        <button type="button" class="close login-close-gray" ng-click="vm.hideIconPopUpDialog(true)">×</button>
+
+        <label class="login-lable label-editor label-editor-links icon-popup-text">Select Icon</label>
+
+
+        <div class="row" >
+            <div class="col-md-4 icon-modal-pop" ng-repeat-start="listIcon in listIcons.listFilesPaths">
+                <img class="editor-header-bg-img" ng-style="{'background-color': '#'+header.ctaColor}" ng-src="{{listIcon.url}}" >
+                <input id="radiobuttonsform"
+                       type="radio"
+                       ng-model="listIcon.checked"
+                       name="icon"
+                       value="{{listIcon.url}}"
+                       ng-click="toggleSelection($index, listIcon.url);"></div>
+            <div class="clearfix" ng-if="($index+1)%3==0"></div>
+            <div ng-repeat-end=""></div>
+            <div class="crop-btn-div" style="text-align:center"><button class="saveButton icon-btn" ng-click="vm.hideIconPopUpDialog(true)">OK</button></div>
+        </div>
+    </div>
+</div>
 <style>
     body{
         min-width: 850px;
@@ -60,6 +83,101 @@
     .right.carousel-control,  .left.carousel-control {
         display: none;
     }
+
+    @media (max-width: 1500px){
+    .ng-carousel slide {
+        height: 205px !important;
+        width: 350px !important;
+    }
+    .slide-content {
+        width: 350px;
+    }
+    .ng-carousel {
+        width: 350px;
+        height: 205px !important;
+    }
+    .editor-header-avatar-div {
+        position: relative;
+        width: 79px;
+        height: 67px;
+        border: 1px solid #d1d1d1;
+    }
+    .editor-header-avatar-img {
+        max-width: 98px;
+        max-height: 65px;
+    }
+    .editor-header-bg-div {
+        width: 80px !important;
+        height: 80px !important;
+    }
+    .slide-bg {
+        height: 167px;
+    }
+    .demo-nav {
+        margin-top: 84px;
+        border: none;
+        background: transparent;
+        padding: 0px;
+    }
+
+    .editor-header-bg-img {
+        width: 80px !important;
+        height: 80px !important;
+
+    }
+    }
+    .icon1val{
+        background: #f0eded;
+    }
+    .icon-popup-text{
+        font-size: 20px;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 20px;
+        font-family: Roboto-Light !important;
+    }
+    .icon-modal-pop{
+        padding: 10px;
+        text-align: center;
+    }
+    .icon-btn{
+        width: 100px;
+        font-size: 16px;
+        color: #FFFFFF;
+        text-transform: uppercase;
+        background-color: #5cbcff;
+        border: none;
+        border-radius: 5px;
+        font-family: Roboto-Light !important;
+    }
+    .icon-btn:hover {
+        background-color: #45aef7 !important;
+        color: #ffffff;
+    }
+     input[type="radio"] {
+        display: block;
+        margin-left: 40%;
+    }
+    .label-editor-logo {
+        width: 105px;
+    }
+    .label-editor {
+        font-size: 12px;
+    }
+    .display-prof{
+        margin-left: 10%;
+    }
+    .header-prof{
+        margin-bottom: 10px;
+    }
+    .icon-dialog {
+        position: relative;
+        background: #fff;
+        width: 400px;
+        margin-left: 22.4%;
+        margin-top: 29%;
+        padding: 10px;
+    }
 </style>
 
 
@@ -92,7 +210,7 @@
                             <a ng-click="setActive(1)">Header</a>
                         </li>
                         <li class="editor-tabs" ng-class="vm.activeTab == '2' ? 'active' : ''">
-                            <a ng-click="setActive(2)">Background</a>
+                            <a ng-click="setActive(2)">Banner</a>
                         </li>
                         <li class="editor-tabs" ng-class="vm.activeTab == '5' ? 'active' : ''">
                             <a ng-click="setActive(5)">Widgets</a>
@@ -107,7 +225,7 @@
                 </div>
                 <div class="save-preview-panel">
                     <div ng-if="vm.activeTab == '1'" class="editor-panel">
-                        <div class="editor-div editor-div-flex">
+                        <div class="editor-div editor-div-flex header-prof">
                             <label class="login-lable label-editor label-editor-logo">Company Logo</label>
                             <div class="editor-header-logo-div-container">
                                 <div class="editor-header-logo-div logo-flex">
@@ -117,21 +235,22 @@
                                     <img ng-if="header.logoUrl" class="editor-header-logo-img" ng-src="{{header.logoUrl}}?{{time}}">
                                 </div>
                                 <div class="editor-limits">
-                                    (240 x 70 px recommended)
+                                    (240 x 70 px)
                                 </div>
                             </div>
-                        </div>
-                        <div class="editor-div editor-div-flex editor-div-avatar">
-                            <label class="login-lable label-editor label-editor-logo">Display Profile</label>
-                            <div>
-                                <div class="editor-header-avatar-div logo-flex">
-                                    <button ng-click="vm.showImageDialog(false)" class="upload-img-btn">
-                                        <img src="/content/images/editor/edit.png">
-                                    </button>
-                                    <img ng-if="header.photoUrl" class="editor-header-avatar-img" ng-src="{{header.photoUrl}}?{{time}}">
-                                </div>
-                                <div class="editor-limits">
-                                    (100 x 100 px recommended)
+                            &nbsp;&nbsp;&nbsp;
+                            <div class="editor-div editor-div-flex editor-div-avatar">
+                                <label class="login-lable label-editor label-editor-logo display-prof">Display Profile</label>
+                                <div>
+                                    <div class="editor-header-avatar-div logo-flex">
+                                        <button ng-click="vm.showImageDialog(false)" class="upload-img-btn">
+                                            <img src="/content/images/editor/edit.png">
+                                        </button>
+                                        <img ng-if="header.photoUrl" class="editor-header-avatar-img" ng-src="{{header.photoUrl}}?{{time}}">
+                                    </div>
+                                    <div class="editor-limits">
+                                        (100 x 100 px)
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -211,7 +330,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="editor-div editor-div-flex editor-div-font-color">
+                       <!-- <div class="editor-div editor-div-flex editor-div-font-color">
                             <label class="login-lable label-editor label-editor-logo">Font Color</label>
                             <div class="editor-div-flex font-color-pading">
                                 <div class="editor-div-flex editor-radio-btn">
@@ -224,7 +343,7 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div>-->
                         <div class="editor-div editor-div-flex">
                             <label class="login-lable label-editor label-editor-slide">Color Theme</label>
                             <div>
@@ -253,15 +372,22 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="editor-div editor-div-flex">
-                            <label class="login-lable label-editor label-editor-logo">Current Theme</label>
                             <div>
-                                <div class="theme-div">
+                                <div class="theme-div ng-scope">
                                     <img ng-show="background.imageUrl" ng-src="{{background.imageUrl}}" class="theme-div-img">
                                 </div>
+                                <label class="login-lable label-editor label-editor-logo" style="text-align:center;">Current Theme</label>
+
                             </div>
                         </div>
+                        <!--<div class="editor-div editor-div-flex">-->
+                            <!--<label class="login-lable label-editor label-editor-logo">Current Theme</label>-->
+                            <!--<div>-->
+                                <!--<div class="theme-div">-->
+                                    <!--<img ng-show="background.imageUrl" ng-src="{{background.imageUrl}}" class="theme-div-img">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
                     </div>
                     <div ng-if="vm.activeTab == '3'" class="editor-panel">
                         <div class="editor-div editor-div-flex">
@@ -273,7 +399,7 @@
                                 (Max 30 Char)
                             </div>
                         </div>
-                        <div class="editor-div editor-div-flex">
+                        <!--<div class="editor-div editor-div-flex">
                             <div class="login-lable label-editor label-editor-links">
                                 <div>Add Icons</div>
                                 <div class="editor-limits">( Pick any 3 )</div>
@@ -289,16 +415,16 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="editor-div editor-div-flex">
                             <label class="login-lable label-editor label-editor-links">Icon #1</label>
                             <div class="editor-div-flex">
-                                <div ng-if="!selection[0]" class="editor-header-bg-div"></div>
+                                <div ng-if="!selection[0]" class="editor-header-bg-div"><button ng-click="vm.showIconPopUpDialog(false)" class=" editor-header-bg-div icon1val" value="0"><u style="color: #5cbcfb;">Add Icon</u></button></div>
                                 <div ng-if="selection[0]" class="editor-header-bg-img-div">
                                     <button class="delete-editor-links-icon" ng-click="deleteIcon(0)">
-                                        <img src="/content/images/editor/cncl.png">
+                                        <img  src="/content/images/editor/cncl.png">
                                     </button>
-                                    <img class="editor-header-bg-img" ng-src="{{selection[0]}}">
+                                    <img ng-style="{'background-color': '#'+header.ctaColor}" class="editor-header-bg-img" ng-src="{{selection[0]}}">
                                 </div>
                                 <div class="editor-links-group">
                                     <div class="editor-div-flex">
@@ -318,12 +444,12 @@
                         <div class="editor-div editor-div-flex">
                             <label class="login-lable label-editor label-editor-links">Icon #2</label>
                             <div class="editor-div-flex">
-                                <div ng-if="!selection[1]" class="editor-header-bg-div"></div>
+                                <div ng-if="!selection[1]" class="editor-header-bg-div"><button ng-click="vm.showIconPopUpDialog(false)" class=" editor-header-bg-div icon1val" value="1"><u style="color: #5cbcfb;">Add Icon</u></button></div>
                                 <div ng-if="selection[1]" class="editor-header-bg-img-div">
                                     <button class="delete-editor-links-icon" ng-click="deleteIcon(1)">
                                         <img src="/content/images/editor/cncl.png">
                                     </button>
-                                    <img class="editor-header-bg-img" ng-src="{{selection[1]}}">
+                                    <img ng-style="{'background-color': '#'+header.ctaColor}" class="editor-header-bg-img" ng-src="{{selection[1]}}">
                                 </div>
                                 <div class="editor-links-group">
                                     <div class="editor-div-flex">
@@ -343,12 +469,12 @@
                         <div class="editor-div editor-div-flex">
                             <label class="login-lable label-editor label-editor-links">Icon #3</label>
                             <div class="editor-div-flex">
-                                <div ng-if="!selection[2]" class="editor-header-bg-div"></div>
+                                <div ng-if="!selection[2]" class="editor-header-bg-div" ><button ng-click="vm.showIconPopUpDialog(false)" class=" editor-header-bg-div icon1val" value="2"><u style="color: #5cbcfb;">Add Icon</u></button></div>
                                 <div ng-if="selection[2]" class="editor-header-bg-img-div">
                                     <button class="delete-editor-links-icon" ng-click="deleteIcon(2)">
                                         <img src="/content/images/editor/cncl.png">
                                     </button>
-                                    <img class="editor-header-bg-img" ng-src="{{selection[2]}}">
+                                    <img ng-style="{'background-color': '#'+header.ctaColor}" class="editor-header-bg-img" ng-src="{{selection[2]}}">
                                 </div>
                                 <div class="editor-links-group">
                                     <div class="editor-div-flex">
@@ -533,7 +659,7 @@
                             <div class="focus-editing-title focus-editing-title-bg">Background</div>
                         </div>
                         <div class="editor-preview-body">
-                            <div class="editor-preview-title" ng-style="{'color': background.textColor ? '#000000' : '#ffffff'}">
+                            <div class="editor-preview-title" style="color: #ffffff ">
                                 {{background.text}}
                             </div>
                             <div>

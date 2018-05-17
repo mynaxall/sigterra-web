@@ -9,4 +9,5 @@
         .constant('PHONE_PATTERN', "^[0-9()+-\\s]+$")
         .constant('TOOLBAR_OPTIONS', "[[\"bold\",\"italics\", \"underline\", \"strikeThrough\"], [\"ul\", \"ol\",\"undo\", \"redo\", \"clear\"], [\"justifyLeft\", \"justifyCenter\", \"justifyRight\", \"justifyFull\"]]")
         .constant('MAX_IMAGE', "1000")
+;
 })();
