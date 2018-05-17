@@ -664,7 +664,6 @@
             }else{
                 fd.append('file', file);
             }
-            console.log(fd)
             $http.post(url,  fd, {
                 transformRequest: angular.identity,
                 headers: {'Content-Type': undefined}
@@ -906,7 +905,6 @@
         }
 
         $scope.deleteContentLibrary = function (index) {
-
             $scope.contentLibrary.splice(index, 1);
             $scope.toLastContentLibrary();
             $scope.showDelteDialog = false;
@@ -933,9 +931,7 @@
         };
 
         $scope.setActiveContentLibrary = function (index) {
-            console.log('asdasdas')
             $scope.activeContentLibrary = index;
-            console.log($scope.activeContentLibrary)
         }
 
         function showWidgetImageDialog(isWidget, index) {
