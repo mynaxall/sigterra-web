@@ -1,10 +1,7 @@
 package itomy.sigterra.service;
 
 import itomy.sigterra.domain.*;
-import itomy.sigterra.repository.CardletContentLibraryWidgetRepository;
-import itomy.sigterra.repository.CardletQuickBitesWidgetRepository;
-import itomy.sigterra.repository.CardletRepository;
-import itomy.sigterra.repository.CardletTestimonialWidgetRepository;
+import itomy.sigterra.repository.*;
 import itomy.sigterra.service.mapper.CardletWidgetMapper;
 import itomy.sigterra.web.rest.errors.BadRequestAlertException;
 import itomy.sigterra.web.rest.vm.*;
@@ -46,8 +43,15 @@ public class CardletWidgetService {
 
     @Inject
     private CardletRepository cardletRepository;
+
     @Inject
     private UserService userService;
+
+    @Inject
+    private ContentLibraryWidgetLikesRepository widgetLikesRepository;
+
+    @Inject
+    private ContentLibraryWidgetViewsRepository widgetViewsRepository;
 
     public CardletWidgetResponseVM getCardletWidgetesByCardletId(Long cardletId) {
         Cardlet cardlet = cardletRepository.findOne(cardletId);
@@ -78,9 +82,18 @@ public class CardletWidgetService {
             .stream()
             .map(CardletContentLibraryWidgetResponseVM::new)
             .collect(Collectors.toList());
-        responseVM.setCardletContentLibraryWidget(contentLibraryWidgetList);
+        responseVM.setCardletContentLibraryWidget(setStatistics(contentLibraryWidgetList));
 
         return responseVM;
+    }
+
+    private List<CardletContentLibraryWidgetResponseVM> setStatistics(List<CardletContentLibraryWidgetResponseVM> contentLibraryWidgetList) {
+        for (CardletContentLibraryWidgetResponseVM entity : contentLibraryWidgetList) {
+            Long likes = widgetLikesRepository.countLikes(entity.getId());
+            Long views = widgetViewsRepository.countViews(entity.getId());
+            entity.setStatistic(new ContentLibraryWidgetStatisticResponseVM(likes, views));
+        }
+        return contentLibraryWidgetList;
     }
 
     @Transactional
