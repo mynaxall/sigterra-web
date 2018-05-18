@@ -555,8 +555,7 @@
                                     <div uib-slide ng-repeat="testimonial in testimonials track by $index" index="$index" class="widget-slide">
                                         <button ng-click="showDeleteDialog($index, true)">delete</button>
 
-
-                                        <form name="formTestimonial[$index]" role="form" novalidate ng-submit="vm.save()" show-validation>
+                                        <form name="formTestimonial[$index]" role="form" novalidate show-validation>
                                             <div class="editor-div-flex editor-url">
                                                 <div class="login-lable label-editor label-editor-logo editor-div-flex">
                                                     Name:
@@ -626,7 +625,8 @@
                                 <div uib-carousel active="activeContentLibrary" interval="myInterval" no-wrap="noWrapSlides">
                                     <div uib-slide ng-repeat="item in contentLibrary track by $index" index="$index" class="widget-slide">
                                         <button ng-click="showDeleteDialog($index, false)">delete</button>
-                                        <form name="formContentLibrary[$index]" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+                                        <form name="formContentLibrary[$index]" role="form" novalidate show-validation>
                                             <div class="editor-div-flex editor-url">
                                                 <div class="login-lable label-editor label-editor-logo editor-div-flex">
                                                     Title:

@@ -807,6 +807,7 @@
         }
 
         $scope.deleteWidget = function () {
+            $scope.showSpinner = true;
             if($scope.isDelteTestimonial){
                 $scope.deleteTestimonial();
             }else{
@@ -821,11 +822,14 @@
                 EditViewerService.deleteWidget($scope.testimonials[$scope.deleteId].id).then(function (response) {
                     $scope.testimonials.splice($scope.deleteId, 1);
                     $scope.toLastTestimonial();
+                    $scope.showSpinner = false;
                 }).catch(function (response) {
+                    $scope.showSpinner = false;
                 });
             }else{
                 $scope.testimonials.splice($scope.deleteId, 1);
                 $scope.toLastTestimonial();
+                $scope.showSpinner = false;
             }
             $scope.showDelteDialog = false;
         };
@@ -919,11 +923,14 @@
                 EditViewerService.deleteContentLibrary($scope.contentLibrary[$scope.deleteId].id).then(function (response) {
                     $scope.contentLibrary.splice($scope.deleteId, 1);
                     $scope.toLastContentLibrary();
+                    $scope.showSpinner = false;
                 }).catch(function (response) {
+                    $scope.showSpinner = false;
                 });
             }else{
                 $scope.contentLibrary.splice($scope.deleteId, 1);
                 $scope.toLastContentLibrary();
+                $scope.showSpinner = false;
             }
             $scope.showDelteDialog = false;
         };
