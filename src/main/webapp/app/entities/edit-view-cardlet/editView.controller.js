@@ -806,6 +806,14 @@
             $scope.toLastTestimonial();
         }
 
+        $scope.deleteWidget = function () {
+            if($scope.isDelteTestimonial){
+                $scope.deleteTestimonial();
+            }else{
+                $scope.deleteContentLibrary();
+            }
+        }
+
 
         $scope.deleteTestimonial = function () {
 
@@ -875,7 +883,8 @@
             return false;
         }
 
-        $scope.showDeleteTestimonialDialog = function (id) {
+        $scope.showDeleteDialog = function (id, isTestimonial) {
+            $scope.isDelteTestimonial = isTestimonial;
             $scope.deleteMsg = "Do you want to delete this testimonial?";
             $scope.showDelteDialog = true;
             $scope.deleteId = id;
@@ -904,9 +913,18 @@
 
         }
 
-        $scope.deleteContentLibrary = function (index) {
-            $scope.contentLibrary.splice(index, 1);
-            $scope.toLastContentLibrary();
+        $scope.deleteContentLibrary = function () {
+
+            if($scope.contentLibrary[$scope.deleteId].id) {
+                EditViewerService.deleteContentLibrary($scope.contentLibrary[$scope.deleteId].id).then(function (response) {
+                    $scope.contentLibrary.splice($scope.deleteId, 1);
+                    $scope.toLastContentLibrary();
+                }).catch(function (response) {
+                });
+            }else{
+                $scope.contentLibrary.splice($scope.deleteId, 1);
+                $scope.toLastContentLibrary();
+            }
             $scope.showDelteDialog = false;
         };
 
