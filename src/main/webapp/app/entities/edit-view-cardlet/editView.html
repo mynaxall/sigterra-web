@@ -530,7 +530,7 @@
                         </div>
                     </div>
 
-                    <div ng-if="vm.activeTab == '5'" class="widgets-panel">
+                    <div ng-if="vm.activeTab == '5'" class="editor-panel editor-widgets-panel">
 
                         <div class="editor-widgets-header">
                             <ul class="editor-tab" >
@@ -546,10 +546,10 @@
                             </ul>
                         </div>
                         <div class="save-preview-panel">
-                            <div ng-if="vm.activeWidget == '1'" class="editor-panel">
+                            <div ng-if="vm.activeWidget == '1'" class="widgets-panel">
                                 Quick Bites Content
                             </div>
-                            <div ng-if="vm.activeWidget == '2'" class="editor-panel">
+                            <div ng-if="vm.activeWidget == '2'" class="widgets-panel">
                                 <button ng-if="testimonials.length < 9" ng-click="addTestimonial()">Add</button>
                                 <div uib-carousel active="activetTestimonial" interval="myInterval" no-wrap="noWrapSlides">
                                     <div uib-slide ng-repeat="testimonial in testimonials track by $index" index="$index" class="widget-slide">
@@ -620,7 +620,7 @@
                                     <div class="testimonial-page-number" ng-class="{active: activetTestimonial === $index}" ng-repeat="testimonial in testimonials track by $index" ng-click="setActiveTestimonial($index)">{{$index + 1}}</div>
                                 </div>
                             </div>
-                            <div ng-if="vm.activeWidget == '3'" class="editor-panel">
+                            <div ng-if="vm.activeWidget == '3'" class="widgets-panel">
                                 <button ng-if="contentLibrary.length < 9" ng-click="addContentLibrary()">Add</button>
                                 <div uib-carousel active="activeContentLibrary" interval="myInterval" no-wrap="noWrapSlides">
                                     <div uib-slide ng-repeat="item in contentLibrary track by $index" index="$index" class="widget-slide">
