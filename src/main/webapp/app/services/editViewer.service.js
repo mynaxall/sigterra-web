@@ -19,7 +19,8 @@
             updateWidgets: updateWidgets,
             getWidgets: getWidgets,
             deleteWidget: deleteWidget,
-            deleteContentLibrary: deleteContentLibrary
+            deleteContentLibrary: deleteContentLibrary,
+            uploadFile: uploadFile
 
         };
 
@@ -89,6 +90,17 @@
             });
             return service;
         }
+
+        function uploadFile(id, fd) {
+            var service =  $http.post('api/cardlet/' + id + '/widgets/images/upload',  fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            });
+            return service;
+        }
+
+
+
 
 
 

@@ -729,18 +729,18 @@
                     $scope.showSpinner = false;
                     $scope.widgets = response;
                     $scope.setWidgets();
+                    if(isSave) {
+                        vm.success = true;
+                        $timeout(function() {
+                            vm.success = false;
+                        }, 3000);
+                    }else{
+                        $location.path('/edit-cardlet-list').search({cardletId: $scope.cardletId});
+                    }
                 }).catch(function (response) {
                     $scope.showSpinner = false;
                 });
 
-                if(isSave) {
-                    vm.success = true;
-                    $timeout(function() {
-                        vm.success = false;
-                    }, 3000);
-                }else{
-                    $location.path('/edit-cardlet-list').search({cardletId: $scope.cardletId});
-                }
             }).catch(function (response) {
                 $scope.showSpinner = false;
             });
@@ -967,6 +967,37 @@
             $scope.myCroppedImage = '';
             vm.isShowDialog = true;
         }
+
+        $scope.fileNameChanged = function (files, index){
+
+            $scope.showSpinner = true;
+            if (files.length > 0) {
+                var file=  getBase64(files[0]);
+            }
+            var fd = new FormData();
+
+            fd.append('uploadFile', file);
+
+
+            EditViewerService.uploadFile($scope.cardletId,  fd).then(function (response) {
+                $scope.showSpinner = false;
+                $scope.contentLibrary[index].uploadFileUrl = response.data.uploadFileUrl;
+
+            }).catch(function (response) {
+                $scope.showSpinner = false;
+            });
+        };
+
+        function getBase64(file) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var base64str = reader.result;
+                var base64 = base64str.split(',')[1];
+                var file = b64toBlob(base64, 'application/pdf');
+
+            };
+            return file;
+        };
     }
 
 })();
