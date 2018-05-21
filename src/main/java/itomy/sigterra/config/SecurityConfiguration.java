@@ -127,7 +127,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/event/**").permitAll()
             .antMatchers("/api/cardlet/content-library-widget/{widgetId:\\d+}/likes").permitAll()
             .antMatchers("/api/cardlet/content-library-widget/{widgetId:\\d+}/views").permitAll()
-            .antMatchers("/api/cardlet/{\\d+}/widgets").permitAll()
+            .antMatchers(HttpMethod.GET,"/api/cardlet/{\\d+}/widgets").permitAll()
             .antMatchers("/api/**").authenticated()
             .antMatchers("/api/register").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/login/impersonate").hasAuthority(AuthoritiesConstants.ADMIN)
