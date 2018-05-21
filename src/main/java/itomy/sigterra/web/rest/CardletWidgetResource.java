@@ -98,16 +98,11 @@ public class CardletWidgetResource {
             .body(cardletWidgetes);
     }
 
-    @PostMapping("/cardlet/{cardletId:\\d+}/like/content-library-widget/{widgetId:\\d+}")
-    public ResponseEntity likeContentLibraryWidget(@PathVariable Long cardletId, @PathVariable Long widgetId) {
+    @PostMapping("/cardlet/content-library-widget/{widgetId:\\d+}/likes")
+    public ResponseEntity likeContentLibraryWidget(@PathVariable Long widgetId) {
         log.debug("REST request to like content library widget with id = {}, from user with ip = {} and agent = {}", widgetId, getRequestIp(), getRequestUserAgent());
 
-        Cardlet cardlet = cardletRepository.findOne(cardletId);
-        if (cardlet == null) {
-            return errorResponse(HttpStatus.NOT_FOUND, "Cardlet not found");
-        }
-
-        CardletContentLibraryWidget widget = cardletContentLibraryWidgetRepository.findByIdAndCardletId(widgetId, cardletId);
+        CardletContentLibraryWidget widget = cardletContentLibraryWidgetRepository.findOne(widgetId);
         if (widget == null) {
             return errorResponse(HttpStatus.NOT_FOUND, "Content library widget not found");
         }
@@ -120,15 +115,11 @@ public class CardletWidgetResource {
         }
     }
 
-    @PostMapping("/cardlet/{cardletId:\\d+}/view/content-library-widget/{widgetId:\\d+}")
-    public ResponseEntity viewContentLibraryWidget(@PathVariable Long cardletId, @PathVariable Long widgetId) {
+    @PostMapping("/cardlet/content-library-widget/{widgetId:\\d+}/views")
+    public ResponseEntity viewContentLibraryWidget(@PathVariable Long widgetId) {
         log.debug("REST request to view content library widget with id = {}, from user with ip = {} and agent = {}", widgetId, getRequestIp(), getRequestUserAgent());
 
-        Cardlet cardlet = cardletRepository.findOne(cardletId);
-        if (cardlet == null) {
-            return errorResponse(HttpStatus.NOT_FOUND, "Cardlet not found");
-        }
-        CardletContentLibraryWidget widget = cardletContentLibraryWidgetRepository.findByIdAndCardletId(widgetId, cardletId);
+        CardletContentLibraryWidget widget = cardletContentLibraryWidgetRepository.findOne(widgetId);
 
         if (widget == null) {
             return errorResponse(HttpStatus.NOT_FOUND, "Content library widget not found");
