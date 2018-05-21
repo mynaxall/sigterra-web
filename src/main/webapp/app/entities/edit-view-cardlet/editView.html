@@ -592,7 +592,7 @@
                                                     Description:
                                                 </div>
                                                 <div>
-                                                    <textarea class="editor-textarea" ng-model="testimonial.description" maxlength="300" name="description" required></textarea>
+                                                    <textarea class="editor-textarea widget-input" ng-model="testimonial.description" maxlength="300" name="description" required></textarea>
                                                     <div ng-show="formTestimonial[$index].$dirty && formTestimonial[$index].description.$invalid">
                                                         <p class="help-block"
                                                            ng-show="formTestimonial[$index].description.$error.required">
@@ -632,7 +632,7 @@
                                                     Title:
                                                 </div>
                                                 <div>
-                                                    <textarea class="editor-textarea" ng-model="item.title" name="title" maxlength="100" required></textarea>
+                                                    <textarea class="editor-textarea widget-input" ng-model="item.title" name="title" maxlength="100" required></textarea>
                                                     <div ng-show="formContentLibrary[$index].$dirty && formContentLibrary[$index].title.$invalid">
                                                         <p class="help-block"
                                                            ng-show="formContentLibrary[$index].title.$error.required">
@@ -666,6 +666,13 @@
                                                 </div>
                                                 <div>
                                                     <input class="editor-input widget-input" type="text"  name="uploadFileUrl" ng-model="item.uploadFileUrl" required>
+
+                                                    <div class="fileUpload btn btn-primary choose-photo-btn">
+                                                        <span>Upload</span>
+                                                        <div>
+                                                            <input type="file" accept="image/png, image/jpeg, image/jpg , application/pdf"  class="upload" ngf-select="fileNameChanged($files, $index)"/>
+                                                        </div>
+                                                    </div>
                                                     <div ng-show="formContentLibrary[$index].$dirty && formContentLibrary[$index].uploadFileUrl.$invalid">
                                                         <p class="help-block"
                                                            ng-show="formContentLibrary[$index].uploadFileUrl.$error.required">
@@ -799,6 +806,23 @@
                                     <button class="demo-nav testimonial-arrow" ng-click="nextTimonialSlide()">
                                         <img src="/content/images/editor/right.png">
                                     </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="editor-preview">
+                        <div class="header-focus" ng-if="vm.activeWidget == '3' && vm.activeTab == '5'">
+                            <img class="focus-editing-marker" src="/content/images/editor/edit-marker.png">
+                            <div class="focus-editing-title focus-editing-title-bg">Content Library</div>
+                        </div>
+                        <div class="editor-preview-contentLibrary">
+                            <div ng-if="contentLibrary.length" class="testimonials-title">Content Library</div>
+                            <div class="content-lib-editor">
+                                <div class="content-lib-editor-item" ng-repeat="item in contentLibrary track by $index" ng-class="{'active-content-library': activeContentLibrary === $index}">
+                                    <div class="content-lib-editor-image-div">
+                                        <img ng-if="item.coverImageUrl" ng-src="{{item.coverImageUrl}}" class="content-lib-editor-image">
+                                    </div>
+                                    <div>{{item.title}}</div>
                                 </div>
                             </div>
                         </div>
