@@ -7451,7 +7451,7 @@ a.preview-footer-link {
 .widgets-panel{
     border: 1px solid #dce0e6;
     padding: 50px;
-    padding-top: 0px;
+    height: 640px;
     background-color: #ffffff;
 }
 
@@ -7578,6 +7578,10 @@ a.preview-footer-link {
     height: 100%;
     background-color: rgba(0,0,0, 0.6);
     z-index: 1000;
+}
+
+.editor-widgets-panel{
+    padding-top: 0px;
 }
 
 
