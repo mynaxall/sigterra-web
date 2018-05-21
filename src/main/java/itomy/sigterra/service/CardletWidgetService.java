@@ -89,8 +89,8 @@ public class CardletWidgetService {
 
     private List<CardletContentLibraryWidgetResponseVM> setStatistics(List<CardletContentLibraryWidgetResponseVM> contentLibraryWidgetList) {
         for (CardletContentLibraryWidgetResponseVM entity : contentLibraryWidgetList) {
-            Long likes = widgetLikesRepository.countLikes(entity.getId());
-            Long views = widgetViewsRepository.countViews(entity.getId());
+            Long likes = widgetLikesRepository.countByCardletContentLibraryWidgetId(entity.getId());
+            Long views = widgetViewsRepository.countByCardletContentLibraryWidgetId(entity.getId());
             entity.setStatistic(new ContentLibraryWidgetStatisticResponseVM(likes, views));
         }
         return contentLibraryWidgetList;

@@ -45,10 +45,10 @@ public class ContentLibraryWidgetService {
     public void likeCardletContentLibraryWidget(Cardlet cardlet, CardletContentLibraryWidget widget) {
         User currentUser = userService.getUserWithAuthorities();
         Visitor visitor = visitorService.getOrCreate(currentUser, getRequestIp(), getRequestUserAgent());
-        ContentLibraryWidgetLikes like = widgetLikesRepository.findByLike(cardlet, widget, visitor);
-        if (like == null) {
-            ContentLibraryWidgetLikes likes = new ContentLibraryWidgetLikes(new Timestamp(new Date().getTime()), visitor, cardlet, widget);
-            widgetLikesRepository.save(likes);
+        ContentLibraryWidgetLikes storeLike = widgetLikesRepository.findByLike(cardlet, widget, visitor);
+        if (storeLike == null) {
+            ContentLibraryWidgetLikes like = new ContentLibraryWidgetLikes(new Timestamp(new Date().getTime()), visitor, cardlet, widget);
+            widgetLikesRepository.save(like);
         } else {
             throw new BadRequestAlertException("content_library_widget_likes",
                 "This content library widget has been liked");

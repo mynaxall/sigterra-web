@@ -25,7 +25,6 @@ public interface ContentLibraryWidgetLikesRepository extends JpaRepository<Conte
                                          @Param("widget") CardletContentLibraryWidget widget,
                                          @Param("visitor") Visitor visitor);
 
-    @Query("select count (l) from ContentLibraryWidgetLikes l where l.cardletContentLibraryWidget.id = :widgetId")
-    Long countLikes(@Param("widgetId") Long widgetId);
+    Long countByCardletContentLibraryWidgetId(@Param("widgetId") Long widgetId);
 
 }
