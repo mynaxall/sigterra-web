@@ -42,13 +42,14 @@ public class ContentLibraryWidgetService {
     @Inject
     private ContentLibraryWidgetViewsRepository widgetViewsRepository;
 
-    public void likeCardletContentLibraryWidget(Cardlet cardlet, CardletContentLibraryWidget widget) {
+    public void likeCardletContentLibraryWidget(CardletContentLibraryWidget widget) {
+        Cardlet cardlet = widget.getCardlet();
         User currentUser = userService.getUserWithAuthorities();
         Visitor visitor = visitorService.getOrCreate(currentUser, getRequestIp(), getRequestUserAgent());
-        ContentLibraryWidgetLikes storeLike = widgetLikesRepository.findByLike(cardlet, widget, visitor);
-        if (storeLike == null) {
-            ContentLibraryWidgetLikes like = new ContentLibraryWidgetLikes(new Timestamp(new Date().getTime()), visitor, cardlet, widget);
-            widgetLikesRepository.save(like);
+        ContentLibraryWidgetLikes storedLike = widgetLikesRepository.findByLike(widget, visitor);
+        if (storedLike == null) {
+            ContentLibraryWidgetLikes newLike = new ContentLibraryWidgetLikes(new Timestamp(new Date().getTime()), visitor, cardlet, widget);
+            widgetLikesRepository.save(newLike);
         } else {
             throw new BadRequestAlertException("content_library_widget_likes",
                 "This content library widget has been liked");
@@ -56,7 +57,8 @@ public class ContentLibraryWidgetService {
     }
 
 
-    public void viewCardletContentLibraryWidget(Cardlet cardlet, CardletContentLibraryWidget widget) {
+    public void viewCardletContentLibraryWidget(CardletContentLibraryWidget widget) {
+        Cardlet cardlet = widget.getCardlet();
         User currentUser = userService.getUserWithAuthorities();
         Visitor visitor = visitorService.getOrCreate(currentUser, getRequestIp(), getRequestUserAgent());
 
@@ -65,10 +67,10 @@ public class ContentLibraryWidgetService {
             return;
         }
 
-        ContentLibraryWidgetViews views = widgetViewsRepository.findByViews(cardlet, widget, visitor);
-        if (views == null) {
-            ContentLibraryWidgetViews newViews = new ContentLibraryWidgetViews(new Timestamp(new Date().getTime()), visitor, cardlet, widget);
-            widgetViewsRepository.save(newViews);
+        ContentLibraryWidgetViews storedView = widgetViewsRepository.findByViews(widget, visitor);
+        if (storedView == null) {
+            ContentLibraryWidgetViews newView = new ContentLibraryWidgetViews(new Timestamp(new Date().getTime()), visitor, cardlet, widget);
+            widgetViewsRepository.save(newView);
         } else {
             log.error("Current user has been view this page");
             return;

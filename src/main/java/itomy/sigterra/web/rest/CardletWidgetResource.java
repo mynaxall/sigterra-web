@@ -113,7 +113,7 @@ public class CardletWidgetResource {
         }
         try {
 
-            widgetLikesService.likeCardletContentLibraryWidget(cardlet, widget);
+            widgetLikesService.likeCardletContentLibraryWidget(widget);
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException ex) {
             return errorResponse(BAD_REQUEST, ex.getMessage());
@@ -135,7 +135,7 @@ public class CardletWidgetResource {
         }
         try {
 
-            widgetLikesService.viewCardletContentLibraryWidget(cardlet, widget);
+            widgetLikesService.viewCardletContentLibraryWidget(widget);
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException ex) {
             return errorResponse(BAD_REQUEST, ex.getMessage());

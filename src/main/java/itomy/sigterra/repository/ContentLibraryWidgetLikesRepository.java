@@ -1,6 +1,5 @@
 package itomy.sigterra.repository;
 
-import itomy.sigterra.domain.Cardlet;
 import itomy.sigterra.domain.CardletContentLibraryWidget;
 import itomy.sigterra.domain.ContentLibraryWidgetLikes;
 import itomy.sigterra.domain.Visitor;
@@ -18,11 +17,9 @@ import org.springframework.stereotype.Repository;
 public interface ContentLibraryWidgetLikesRepository extends JpaRepository<ContentLibraryWidgetLikes, Long> {
 
     @Query("select l from ContentLibraryWidgetLikes l " +
-        "where l.cardlet = :cardlet " +
-        "and l.cardletContentLibraryWidget = :widget " +
+        "where l.cardletContentLibraryWidget = :widget " +
         "and l.visitor = :visitor")
-    ContentLibraryWidgetLikes findByLike(@Param("cardlet") Cardlet cardlet,
-                                         @Param("widget") CardletContentLibraryWidget widget,
+    ContentLibraryWidgetLikes findByLike(@Param("widget") CardletContentLibraryWidget widget,
                                          @Param("visitor") Visitor visitor);
 
     Long countByCardletContentLibraryWidgetId(@Param("widgetId") Long widgetId);
