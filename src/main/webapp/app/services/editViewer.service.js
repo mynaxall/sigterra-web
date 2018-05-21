@@ -82,6 +82,13 @@
             return service;
         }
 
+        function deleteContentLibrary(id) {
+            var service = $http.delete('api/cardlet-content-library-widgets/' + id).then(function(result) {
+                return result.data;
+            });
+            return service;
+        }
+
 
 
     }
