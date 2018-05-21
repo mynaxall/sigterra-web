@@ -18,7 +18,6 @@ import org.springframework.security.data.repository.query.SecurityEvaluationCont
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.switchuser.SwitchUserFilter;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import javax.inject.Inject;
 
@@ -126,6 +125,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/profile-info").permitAll()
             .antMatchers("/api/analytic/**").authenticated()
             .antMatchers("/api/event/**").permitAll()
+            .antMatchers("/api/cardlet/content-library-widget/{widgetId:\\d+}/likes").permitAll()
+            .antMatchers("/api/cardlet/content-library-widget/{widgetId:\\d+}/views").permitAll()
+            .antMatchers(HttpMethod.GET,"/api/cardlet/{\\d+}/widgets").permitAll()
             .antMatchers("/api/**").authenticated()
             .antMatchers("/api/register").hasAuthority(AuthoritiesConstants.ADMIN)
             .antMatchers("/login/impersonate").hasAuthority(AuthoritiesConstants.ADMIN)

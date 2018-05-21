@@ -2,11 +2,13 @@ package itomy.sigterra.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import itomy.sigterra.domain.Cardlet;
+import itomy.sigterra.domain.CardletContentLibraryWidget;
 import itomy.sigterra.repository.CardletContentLibraryWidgetRepository;
 import itomy.sigterra.repository.CardletQuickBitesWidgetRepository;
 import itomy.sigterra.repository.CardletRepository;
 import itomy.sigterra.repository.CardletTestimonialWidgetRepository;
 import itomy.sigterra.service.CardletWidgetService;
+import itomy.sigterra.service.ContentLibraryWidgetService;
 import itomy.sigterra.web.rest.errors.BadRequestAlertException;
 import itomy.sigterra.web.rest.util.HeaderUtil;
 import itomy.sigterra.web.rest.vm.CardletImagesContentLibraryResponseVM;
@@ -22,6 +24,11 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import java.util.Optional;
+
+import static itomy.sigterra.service.util.RequestUtil.getRequestIp;
+import static itomy.sigterra.service.util.RequestUtil.getRequestUserAgent;
+import static itomy.sigterra.web.rest.util.ResponseUtil.errorResponse;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 /**
  * REST controller for managing CardletTestimonialWidget.
@@ -50,6 +57,10 @@ public class CardletWidgetResource {
 
     @Inject
     private CardletContentLibraryWidgetRepository cardletContentLibraryWidgetRepository;
+
+    @Inject
+    private ContentLibraryWidgetService widgetLikesService;
+
 
     /**
      * PUT  /cardlet-testimonial-widgets : Updates an existing cardletTestimonialWidget.
@@ -87,6 +98,40 @@ public class CardletWidgetResource {
             .body(cardletWidgetes);
     }
 
+    @PostMapping("/cardlet/content-library-widget/{widgetId:\\d+}/likes")
+    public ResponseEntity likeContentLibraryWidget(@PathVariable Long widgetId) {
+        log.debug("REST request to like content library widget with id = {}, from user with ip = {} and agent = {}", widgetId, getRequestIp(), getRequestUserAgent());
+
+        CardletContentLibraryWidget widget = cardletContentLibraryWidgetRepository.findOne(widgetId);
+        if (widget == null) {
+            return errorResponse(HttpStatus.NOT_FOUND, "Content library widget not found");
+        }
+        try {
+
+            widgetLikesService.likeCardletContentLibraryWidget(widget);
+            return ResponseEntity.ok().build();
+        } catch (IllegalArgumentException ex) {
+            return errorResponse(BAD_REQUEST, ex.getMessage());
+        }
+    }
+
+    @PostMapping("/cardlet/content-library-widget/{widgetId:\\d+}/views")
+    public ResponseEntity viewContentLibraryWidget(@PathVariable Long widgetId) {
+        log.debug("REST request to view content library widget with id = {}, from user with ip = {} and agent = {}", widgetId, getRequestIp(), getRequestUserAgent());
+
+        CardletContentLibraryWidget widget = cardletContentLibraryWidgetRepository.findOne(widgetId);
+
+        if (widget == null) {
+            return errorResponse(HttpStatus.NOT_FOUND, "Content library widget not found");
+        }
+        try {
+
+            widgetLikesService.viewCardletContentLibraryWidget(widget);
+            return ResponseEntity.ok().build();
+        } catch (IllegalArgumentException ex) {
+            return errorResponse(BAD_REQUEST, ex.getMessage());
+        }
+    }
 
     /**
      * DELETE  /cardlet-testimonial-widgets/:id : delete the "id" cardletTestimonialWidget.

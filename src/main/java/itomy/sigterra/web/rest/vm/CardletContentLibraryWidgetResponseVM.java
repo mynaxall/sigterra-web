@@ -12,6 +12,8 @@ public class CardletContentLibraryWidgetResponseVM {
 
     private String uploadFileUrl;
 
+    private ContentLibraryWidgetStatisticResponseVM statistic;
+
     public CardletContentLibraryWidgetResponseVM() {
         //For Jackson
     }
@@ -53,5 +55,13 @@ public class CardletContentLibraryWidgetResponseVM {
 
     public void setUploadFileUrl(String uploadFileUrl) {
         this.uploadFileUrl = uploadFileUrl;
+    }
+
+    public ContentLibraryWidgetStatisticResponseVM getStatistic() {
+        return statistic;
+    }
+
+    public void setStatistic(ContentLibraryWidgetStatisticResponseVM statistic) {
+        this.statistic = statistic;
     }
 }
