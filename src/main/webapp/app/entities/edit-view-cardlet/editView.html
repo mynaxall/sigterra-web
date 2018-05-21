@@ -553,7 +553,7 @@
                                 <button ng-if="testimonials.length < 9" ng-click="addTestimonial()">Add</button>
                                 <div uib-carousel active="activetTestimonial" interval="myInterval" no-wrap="noWrapSlides">
                                     <div uib-slide ng-repeat="testimonial in testimonials track by $index" index="$index" class="widget-slide">
-                                        <button ng-click="showDeleteTestimonialDialog($index)">delete</button>
+                                        <button ng-click="showDeleteDialog($index, true)">delete</button>
                                         <div class="editor-div-flex editor-url">
                                             <div class="login-lable label-editor label-editor-logo editor-div-flex">
                                                 Name:
@@ -608,7 +608,7 @@
                                 <button ng-if="contentLibrary.length < 9" ng-click="addContentLibrary()">Add</button>
                                 <div uib-carousel active="activeContentLibrary" interval="myInterval" no-wrap="noWrapSlides">
                                     <div uib-slide ng-repeat="item in contentLibrary track by $index" index="$index" class="widget-slide">
-                                        <button ng-click="deleteContentLibrary($index)">delete</button>
+                                        <button ng-click="showDeleteDialog($index, false)">delete</button>
                                         <div class="editor-div-flex editor-url">
                                             <div class="login-lable label-editor label-editor-logo editor-div-flex">
                                                 Title:

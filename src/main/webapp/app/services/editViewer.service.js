@@ -18,7 +18,8 @@
             updateViewer: updateViewer,
             updateWidgets: updateWidgets,
             getWidgets: getWidgets,
-            deleteWidget: deleteWidget
+            deleteWidget: deleteWidget,
+            deleteContentLibrary: deleteContentLibrary
 
         };
 
