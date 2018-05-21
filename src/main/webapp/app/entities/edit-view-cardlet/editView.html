@@ -554,38 +554,54 @@
                                 <div uib-carousel active="activetTestimonial" interval="myInterval" no-wrap="noWrapSlides">
                                     <div uib-slide ng-repeat="testimonial in testimonials track by $index" index="$index" class="widget-slide">
                                         <button ng-click="showDeleteDialog($index, true)">delete</button>
-                                        <div class="editor-div-flex editor-url">
-                                            <div class="login-lable label-editor label-editor-logo editor-div-flex">
-                                                Name:
+
+                                        <form name="formTestimonial[$index]" role="form" novalidate show-validation>
+                                            <div class="editor-div-flex editor-url">
+                                                <div class="login-lable label-editor label-editor-logo editor-div-flex">
+                                                    Name:
+                                                </div>
+                                                <div>
+                                                    <input class="editor-input widget-input" type="text" ng-model="testimonial.name" name="name" required>
+                                                    <div ng-show="formTestimonial[$index].$dirty && formTestimonial[$index].name.$invalid">
+                                                        <p class="help-block"
+                                                           ng-show="formTestimonial[$index].name.$error.required">
+                                                            Name is required.
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <input class="editor-input widget-input" type="text" ng-model="testimonial.name" required>
+                                            <div class="editor-div-flex editor-url">
+                                                <div class="login-lable label-editor label-editor-logo editor-div-flex">
+                                                    Co.Name:
+                                                </div>
+                                                <div>
+                                                    <input class="editor-input widget-input" type="text" ng-model="testimonial.coName" name="coName">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="editor-div-flex editor-url">
-                                            <div class="login-lable label-editor label-editor-logo editor-div-flex">
-                                                Co.Name:
+                                            <div class="editor-div-flex editor-url">
+                                                <div class="login-lable label-editor label-editor-logo editor-div-flex">
+                                                    Designation:
+                                                </div>
+                                                <div>
+                                                    <input class="editor-input widget-input" type="text" ng-model="testimonial.designation">
+
+                                                </div>
                                             </div>
-                                            <div>
-                                                <input class="editor-input widget-input" type="text" ng-model="testimonial.coName">
+                                            <div class="editor-div-flex editor-url">
+                                                <div class="login-lable label-editor label-editor-logo editor-div-flex">
+                                                    Description:
+                                                </div>
+                                                <div>
+                                                    <textarea class="editor-textarea" ng-model="testimonial.description" maxlength="300" name="description" required></textarea>
+                                                    <div ng-show="formTestimonial[$index].$dirty && formTestimonial[$index].description.$invalid">
+                                                        <p class="help-block"
+                                                           ng-show="formTestimonial[$index].description.$error.required">
+                                                            Description is required.
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="editor-div-flex editor-url">
-                                            <div class="login-lable label-editor label-editor-logo editor-div-flex">
-                                                Designation:
-                                            </div>
-                                            <div>
-                                                <input class="editor-input widget-input" type="text" ng-model="testimonial.designation">
-                                            </div>
-                                        </div>
-                                        <div class="editor-div-flex editor-url">
-                                            <div class="login-lable label-editor label-editor-logo editor-div-flex">
-                                                Description:
-                                            </div>
-                                            <div>
-                                                <textarea class="editor-textarea" ng-model="testimonial.description" maxlength="300" required></textarea>
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div ng-if="testimonials.length > 1">
@@ -609,36 +625,56 @@
                                 <div uib-carousel active="activeContentLibrary" interval="myInterval" no-wrap="noWrapSlides">
                                     <div uib-slide ng-repeat="item in contentLibrary track by $index" index="$index" class="widget-slide">
                                         <button ng-click="showDeleteDialog($index, false)">delete</button>
-                                        <div class="editor-div-flex editor-url">
-                                            <div class="login-lable label-editor label-editor-logo editor-div-flex">
-                                                Title:
-                                            </div>
-                                            <div>
-                                                <textarea class="editor-textarea" ng-model="item.title" maxlength="100" required></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="editor-div editor-div-flex header-prof">
-                                            <label class="login-lable label-editor label-editor-logo">Cover image</label>
-                                            <div class="editor-header-logo-div-container">
-                                                <div class="editor-header-logo-div logo-flex">
-                                                    <button ng-click="vm.showWidgetImageDialog(true, $index)" class="upload-img-btn">
-                                                        <img src="/content/images/editor/edit.png">
-                                                    </button>
-                                                    <img ng-if="item.coverImageUrl" class="editor-header-logo-img" ng-src="{{item.coverImageUrl}}?{{time}}">
+
+                                        <form name="formContentLibrary[$index]" role="form" novalidate show-validation>
+                                            <div class="editor-div-flex editor-url">
+                                                <div class="login-lable label-editor label-editor-logo editor-div-flex">
+                                                    Title:
                                                 </div>
-                                                <div class="editor-limits">
-                                                    (260 x 70 px)
+                                                <div>
+                                                    <textarea class="editor-textarea" ng-model="item.title" name="title" maxlength="100" required></textarea>
+                                                    <div ng-show="formContentLibrary[$index].$dirty && formContentLibrary[$index].title.$invalid">
+                                                        <p class="help-block"
+                                                           ng-show="formContentLibrary[$index].title.$error.required">
+                                                            Title is required.
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="editor-div-flex editor-url">
-                                            <div class="login-lable label-editor label-editor-logo editor-div-flex">
-                                                Upload File / URL:
+                                            <div class="editor-div editor-div-flex header-prof">
+                                                <label class="login-lable label-editor label-editor-logo">Cover image</label>
+                                                <div class="editor-header-logo-div-container">
+                                                    <div class="editor-header-logo-div logo-flex">
+                                                        <button ng-click="vm.showWidgetImageDialog(true, $index)" class="upload-img-btn">
+                                                            <img src="/content/images/editor/edit.png">
+                                                        </button>
+                                                        <img ng-if="item.coverImageUrl" class="editor-header-logo-img" ng-src="{{item.coverImageUrl}}?{{time}}">
+                                                    </div>
+                                                    <div ng-show="formContentLibrary[$index].$dirty && !item.coverImageUrl">
+                                                        <p class="help-block">
+                                                            Cover image is required.
+                                                        </p>
+                                                    </div>
+                                                    <div class="editor-limits">
+                                                        (260 x 70 px)
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <input class="editor-input widget-input" type="text" ng-model="item.uploadFileUrl">
+                                            <div class="editor-div-flex editor-url">
+                                                <div class="login-lable label-editor label-editor-logo editor-div-flex">
+                                                    Upload File / URL:
+                                                </div>
+                                                <div>
+                                                    <input class="editor-input widget-input" type="text"  name="uploadFileUrl" ng-model="item.uploadFileUrl" required>
+                                                    <div ng-show="formContentLibrary[$index].$dirty && formContentLibrary[$index].uploadFileUrl.$invalid">
+                                                        <p class="help-block"
+                                                           ng-show="formContentLibrary[$index].uploadFileUrl.$error.required">
+                                                            Upload File / URL is required.
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div ng-if="contentLibrary.length > 1">
