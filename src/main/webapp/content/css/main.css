@@ -7624,3 +7624,12 @@ a.preview-footer-link {
     box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.75);
 }
 
+.content-library-statistic{
+    color: #808080;
+    font-size: 10px;
+}
+
+.content-library-image{
+    height: 8px;
+}
+
