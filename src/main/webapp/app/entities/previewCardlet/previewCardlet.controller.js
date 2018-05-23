@@ -39,7 +39,6 @@
         $scope.testimonials = [];
         $scope.contentLibrary = [];
         $scope.activetTestimonial = 0;
-        $scope.activeContentLibrary = 0;
 
         function  getId(id) {
           return  window.atob( window.atob( window.atob(window.atob(id))));
