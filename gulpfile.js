@@ -15,7 +15,8 @@ var gulp = require('gulp'),
     KarmaServer = require('karma').Server,
     plumber = require('gulp-plumber'),
     changed = require('gulp-changed'),
-    gulpIf = require('gulp-if');
+    gulpIf = require('gulp-if'),
+    linkPattern = '^http(s?)\\:\\/\\/[0-9a-zA-Z]{2,}([-.\\w]{0,1}[0-9a-zA-Z]){2,}(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\\'\\/\\\\\\+&amp;%\\$#_])*?$';
 
 var handleErrors = require('./gulp/handle-errors'),
     serve = require('./gulp/serve'),
@@ -98,7 +99,7 @@ gulp.task('ngconstant:dev', function () {
             DEBUG_INFO_ENABLED: true,
             PHONE_PATTERN: '^[0-9()+-\\s]+$',
             TOOLBAR_OPTIONS: '[["bold","italics", "underline", "strikeThrough"], ["ul", "ol","undo", "redo", "clear"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"]]',
-            LINK_PATTERN: '^http(s?)\\:\\/\\/[0-9a-zA-Z]{2,}([-.\\w]{0,1}[0-9a-zA-Z]){2,}(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\\'\\/\\\\\\+&amp;%\\$#_])*?$',
+            LINK_PATTERN: linkPattern,
             MAX_IMAGE: '1000'
         },
         template: config.constantTemplate,
@@ -117,7 +118,7 @@ gulp.task('ngconstant:prod', function () {
             DEBUG_INFO_ENABLED: false,
             PHONE_PATTERN: '^[0-9()+-\\s]+$',
             TOOLBAR_OPTIONS: '[["bold","italics", "underline", "strikeThrough"], ["ul", "ol","undo", "redo", "clear"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"]]',
-            LINK_PATTERN: '^http(s?)\\:\\/\\/[0-9a-zA-Z]{2,}([-.\\w]{0,1}[0-9a-zA-Z]){2,}(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\\'\\/\\\\\\+&amp;%\\$#_])*?$',
+            LINK_PATTERN: linkPattern,
             MAX_IMAGE: '1000'
         },
         template: config.constantTemplate,
@@ -136,7 +137,7 @@ gulp.task('ngconstant:staging', function () {
             DEBUG_INFO_ENABLED: false,
             PHONE_PATTERN: '^[0-9()+-\\s]+$',
             TOOLBAR_OPTIONS: '[["bold","italics", "underline", "strikeThrough"], ["ul", "ol","undo", "redo", "clear"], ["justifyLeft", "justifyCenter", "justifyRight", "justifyFull"]]',
-            LINK_PATTERN: '^http(s?)\\:\\/\\/[0-9a-zA-Z]{2,}([-.\\w]{0,1}[0-9a-zA-Z]){2,}(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\\'\\/\\\\\\+&amp;%\\$#_])*?$',
+            LINK_PATTERN: linkPattern,
             MAX_IMAGE: '1000'
         },
         template: config.constantTemplate,
