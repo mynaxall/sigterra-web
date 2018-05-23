@@ -92,6 +92,8 @@
         $scope.bgArray = {};
         $scope.listIcons = {};
 
+        $scope.imageIndex = null;
+        $scope.imageError = false;
 
         $scope.widgets = {
             "cardletContentLibraryWidget": [],
@@ -971,9 +973,15 @@
         $scope.fileNameChanged = function (files, index){
 
             $scope.showSpinner = true;
-            if (files.length > 0) {
+            if(files.length > 0 && files[0].size >= 50*1024*1024){
+                $scope.imageError = true;
+                $scope.imageIndex = index;
+                $scope.showSpinner = false;
+                return;
+            } else if (files.length > 0) {
                 var file=  getBase64(files[0]);
             }
+            $scope.imageError = false;
             var fd = new FormData();
 
             fd.append('uploadFile', file);
