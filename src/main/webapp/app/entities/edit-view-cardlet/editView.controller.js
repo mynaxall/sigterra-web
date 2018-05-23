@@ -36,9 +36,9 @@
             };
         });
 
-    EditViewController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'orderByFilter', 'PHONE_PATTERN', 'TOOLBAR_OPTIONS', 'ImageService', 'Carousel', 'EditViewerService'];
+    EditViewController.$inject = ['$scope', '$state', 'CardletList', 'ParseLinks', 'AlertService', 'pagingParams', 'paginationConstants', '$http', '$timeout', '$location', 'orderByFilter', 'PHONE_PATTERN', 'TOOLBAR_OPTIONS', 'ImageService', 'Carousel', 'EditViewerService', 'LINK_PATTERN'];
 
-    function EditViewController($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter, PHONE_PATTERN, TOOLBAR_OPTIONS, ImageService, Carousel, EditViewerService) {
+    function EditViewController($scope, $state, CardletList, ParseLinks, AlertService, pagingParams, paginationcardletConstants ,$http, $timeout, $location, orderByFilter, PHONE_PATTERN, TOOLBAR_OPTIONS, ImageService, Carousel, EditViewerService, LINK_PATTERN) {
         var vm = this;
         vm.success = false;
         $scope.showError = false;
@@ -56,6 +56,7 @@
         $scope.showLink = false;
         $scope.dataFetching = false;
         vm.PHONE_PATTERN = new RegExp(PHONE_PATTERN);
+        vm.LINK_PATTERN = new RegExp(LINK_PATTERN);
         vm.toolbarOptions = angular.fromJson(TOOLBAR_OPTIONS);
         vm.showExctractButton = false;
         $scope.myCroppedImage = '';
