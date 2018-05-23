@@ -673,11 +673,6 @@
                                                             <input type="file" accept="image/png, image/jpeg, image/jpg , application/pdf"  class="upload" ngf-select="fileNameChanged($files, $index)"/>
                                                         </div>
                                                     </div>
-                                                    <div ng-if="$index === imageIndex && imageError">
-                                                        <p class="help-block">
-                                                            The file size can not exceed 50 MB.
-                                                        </p>
-                                                    </div>
                                                     <div ng-show="formContentLibrary[$index].$dirty && formContentLibrary[$index].uploadFileUrl.$invalid">
                                                         <p class="help-block"
                                                            ng-show="formContentLibrary[$index].uploadFileUrl.$error.required">
