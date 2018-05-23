@@ -66,8 +66,8 @@
         $scope.bounds.bottom = 0;
         $scope.imageSize = {width: 200, height: 200};
         $scope.secondaryColor = "";
-        vm.activeTab = 5;
-        vm.activeWidget = 3;
+        vm.activeTab = 1;
+        vm.activeWidget = 1;
         vm.bg = "/content/images/background.jpg";
         $scope.cardletView = {};
         $scope.isLogo = false;
