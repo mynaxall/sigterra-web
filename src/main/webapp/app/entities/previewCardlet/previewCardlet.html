@@ -335,6 +335,46 @@
 
     </style>
 </div>
+
+<div class="editor-preview" ng-if="testimonials.length">
+    <div class="preview-testimonials">
+        <div class="text-center preview-text-center">Testimonials</div>
+        <div uib-carousel active="activetTestimonial" interval="myInterval" no-wrap="noWrapSlides">
+            <div uib-slide ng-repeat="testimonial in testimonials track by $index" index="$index" class="widget-slide-testimonials-view">
+                <div>{{testimonial.name}}</div>
+                <div>{{testimonial.coName}}</div>
+                <div>{{testimonial.designation}}</div>
+                <div>{{testimonial.description}}</div>
+            </div>
+        </div>
+        <div ng-if="testimonials.length > 1">
+            <div class="carousel-arrow testimonial-carousel-arrow-left">
+                <button class="demo-nav testimonial-arrow" ng-click="prevTimonialSlide()">
+                    <img src="/content/images/editor/left.png">
+                </button>
+            </div>
+            <div class="carousel-arrow  testimonial-carousel-arrow-right">
+                <button class="demo-nav testimonial-arrow" ng-click="nextTimonialSlide()">
+                    <img src="/content/images/editor/right.png">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="editor-preview" ng-if="contentLibrary.length" >
+    <div class="preview-contentLibrary">
+        <div ng-if="contentLibrary.length" class="testimonials-title">Content Library</div>
+        <div class="content-lib-editor">
+            <div class="content-lib-item" ng-repeat="item in contentLibrary track by $index">
+                <div class="content-lib-editor-image-div">
+                    <img ng-if="item.coverImageUrl" ng-src="{{item.coverImageUrl}}" class="content-lib-image">
+                </div>
+                <div>{{item.title}}</div>
+                <div class="content-library-statistic"> <img class="content-library-image" src="/content/images/editor/views.png"> {{item.statistic.views}} <img class="" src="/content/images/editor/likes.png"> {{item.statistic.likes}}</div>
+            </div>
+        </div>
+    </div>
+</div>
 <section class="service-info-sec">
     <div class="text-center preview-text-center" id="capture">{{links.title}}</div>
     <div class="container service-info-editor service-info">

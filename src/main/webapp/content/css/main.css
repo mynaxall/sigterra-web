@@ -7067,6 +7067,7 @@ a.preview-footer-link {
 
 .editor-preview {
     position: relative;
+    background-color: #e3e3e3;
 }
 
 .slide-bg{
@@ -7633,3 +7634,41 @@ a.preview-footer-link {
     height: 8px;
 }
 
+.testimonials-title-view{
+    text-align: center;
+    font-size: 20px;
+}
+
+.widget-slide-testimonials-view{
+    width: 100%;
+    min-height: 130px!important;
+    background-color: transparent;
+    padding: 20px;
+}
+
+.preview-testimonials{
+    background-color: #ffffff;
+    padding: 65px 190px 30px 190px;
+}
+
+.content-lib-item{
+    margin: 8px;
+    width: 270px;
+    height: 235px;
+    background-color: #ffffff;
+    border-right: 5px;
+    padding: 5px;
+}
+
+.content-lib-image{
+    width: 260px;
+    height: 145px;
+}
+
+
+.preview-contentLibrary{
+    width: 950px;
+    background-color: #e3e3e3;
+    padding: 40px 0px 30px 0px;
+    margin: 0 auto;
+}
