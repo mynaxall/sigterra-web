@@ -36,6 +36,11 @@
         vm.showCarousel = true;
         $scope.showLink = true;
 
+        $scope.testimonials = [];
+        $scope.contentLibrary = [];
+        $scope.activetTestimonial = 0;
+        $scope.activeContentLibrary = 0;
+
         function  getId(id) {
           return  window.atob( window.atob( window.atob(window.atob(id))));
         }
@@ -103,6 +108,8 @@
 
             }).catch(function (response) {
             });
+
+            getWidgets(getId(param1));
         };
 
 
@@ -514,7 +521,41 @@
             vm.isNavbarCollapsed = !vm.isNavbarCollapsed;
         }
 
+        function  getWidgets(id) {
+            EditViewerService.getWidgets(id).then(function (response) {
+                $scope.widgets = response;
+                $scope.setWidgets()
+            }).catch(function (response) {
+            });
+        }
+
+        $scope.setWidgets = function () {
+            $scope.testimonials = $scope.widgets.cardletTestimonialWidget;
+            $scope.contentLibrary = $scope.widgets.cardletContentLibraryWidget;
+        }
+
+
+        $scope.prevTimonialSlide = function(index){
+            $scope.currentUrl = undefined;
+            if( $scope.activetTestimonial == 0){
+                $scope.activetTestimonial = $scope.testimonials.length -1
+            }else{
+                $scope.activetTestimonial = parseInt($scope.activetTestimonial) - 1;
+            }
+
+        };
+
+        $scope.nextTimonialSlide = function(index){
+            $scope.currentUrl = undefined
+            if( $scope.activetTestimonial == $scope.testimonials.length -1){
+                $scope.activetTestimonial = 0
+            }else{
+                $scope.activetTestimonial = parseInt($scope.activetTestimonial) + 1;
+            }
+
+        };
     }
+
 
 
 })();
