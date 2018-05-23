@@ -73,8 +73,6 @@
         $scope.isLogo = false;
         $scope.time = Date.now();
         $scope.cardletId = '';
-        $scope.imageIndex = null;
-        $scope.imageError = false;
         $scope.header = {
             'name' : '',
             'title' : '',
@@ -94,6 +92,8 @@
         $scope.bgArray = {};
         $scope.listIcons = {};
 
+        $scope.imageIndex = null;
+        $scope.imageError = false;
 
         $scope.widgets = {
             "cardletContentLibraryWidget": [],
