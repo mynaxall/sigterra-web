@@ -665,7 +665,7 @@
                                                     Upload File / URL:
                                                 </div>
                                                 <div>
-                                                    <input class="editor-input widget-input" type="text"  name="uploadFileUrl" ng-model="item.uploadFileUrl" required>
+                                                    <input class="editor-input widget-input" type="text"  name="uploadFileUrl" ng-model="item.uploadFileUrl" ng-pattern="vm.LINK_PATTERN" required>
 
                                                     <div class="fileUpload btn btn-primary choose-photo-btn">
                                                         <span>Upload</span>
@@ -682,6 +682,10 @@
                                                         <p class="help-block"
                                                            ng-show="formContentLibrary[$index].uploadFileUrl.$error.required">
                                                             Upload File / URL is required.
+                                                        </p>
+                                                        <p class="help-block"
+                                                           ng-show="formContentLibrary[$index].uploadFileUrl.$error.pattern">
+                                                            Incorrect URL. URL should start from "http://" or "https://
                                                         </p>
                                                     </div>
                                                 </div>
