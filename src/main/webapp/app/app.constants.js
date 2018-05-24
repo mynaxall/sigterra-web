@@ -7,7 +7,7 @@
         .constant('BUILD_VERSION', "0.0.1-DEFAULT")
         .constant('DEBUG_INFO_ENABLED', true)
         .constant('PHONE_PATTERN', "^[0-9()+-\\s]+$")
-        .constant('LINK_PATTERN', '^http(s?)\\:\\/\\/[0-9a-zA-Z]{2,}([-.\\w]{0,1}[0-9a-zA-Z]){2,}(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\\'\\/\\\\\\+&amp;%\\$#_])*?$')
+        .constant('LINK_PATTERN', '^http(s?)\\:\\/\\/[0-9a-zA-Z]{2,}([-.\\w]{0,1}[0-9a-zA-Z]){2,}(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\\'\\/\\\\\\+&amp;%=\\$#_])*?$')
         .constant('TOOLBAR_OPTIONS', "[[\"bold\",\"italics\", \"underline\", \"strikeThrough\"], [\"ul\", \"ol\",\"undo\", \"redo\", \"clear\"], [\"justifyLeft\", \"justifyCenter\", \"justifyRight\", \"justifyFull\"]]")
         .constant('MAX_IMAGE', "1000")
 ;

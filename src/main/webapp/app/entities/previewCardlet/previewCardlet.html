@@ -187,7 +187,7 @@
     }
 
 </style>
-
+<ng-include src="'app/entities/previewCardlet/previewWidgetDialog.html'"></ng-include>
 <nav class="navbar navbar-default preview-nav" >
     <div>
         <div class="navbar-header navbar-brand-preview">
@@ -232,7 +232,6 @@
 
 
 <div class="entiti-content" ng-init="getCardlet()" ng-style="{'background': 'url(' + background.imageUrl + ') no-repeat center center fixed', 'background-size': 'cover'}">
-
     <div class="preview-border">
         <div class="preview-title"></div>
     </div>
@@ -365,7 +364,7 @@
     <div class="preview-contentLibrary">
         <div ng-if="contentLibrary.length" class="testimonials-title">Content Library</div>
         <div class="content-lib-editor">
-            <div class="content-lib-item" ng-repeat="item in contentLibrary track by $index">
+            <div class="content-lib-item" ng-repeat="item in contentLibrary track by $index" ng-click="openPreviewDialog($index)">
                 <div class="content-lib-editor-image-div">
                     <img ng-if="item.coverImageUrl" ng-src="{{item.coverImageUrl}}" class="content-lib-image">
                 </div>

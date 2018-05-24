@@ -16,7 +16,7 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     changed = require('gulp-changed'),
     gulpIf = require('gulp-if'),
-    linkPattern = '^http(s?)\\:\\/\\/[0-9a-zA-Z]{2,}([-.\\w]{0,1}[0-9a-zA-Z]){2,}(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\\'\\/\\\\\\+&amp;%\\$#_])*?$';
+    linkPattern = '^http(s?)\\:\\/\\/[0-9a-zA-Z]{2,}([-.\\w]{0,1}[0-9a-zA-Z]){2,}(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\\'\\/\\\\\\+&amp;%=\\$#_])*?$';
 
 var handleErrors = require('./gulp/handle-errors'),
     serve = require('./gulp/serve'),

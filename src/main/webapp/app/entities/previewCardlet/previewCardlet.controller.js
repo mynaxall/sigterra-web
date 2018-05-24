@@ -18,6 +18,7 @@
         vm.toggleNavbar = toggleNavbar;
         vm.isNavbarCollapsed = true;
         $scope.time = Date.now();
+        $scope.showViewDialog = false;
 
 
         $scope.getUser = function () {
@@ -553,6 +554,30 @@
             }
 
         };
+
+        $scope.openPreviewDialog = function(index){
+            $scope.isVideo = false;
+            $scope.isPdf = false;
+            $scope.isImage = false;
+            $scope.showLink = false;
+            $scope.showViewDialog = true;
+            $scope.viewingElement = $scope.contentLibrary[index].uploadFileUrl;
+            if($scope.viewingElement.toLowerCase().includes('www.youtube.com') ) {
+                $scope.isVideo = true;
+                $scope.viewingElement = $scope.viewingElement.replace("watch?v=", "embed/");
+            }else if($scope.viewingElement.toLowerCase().includes('.pdf')){
+                $scope.isPdf = true;
+            }else if($scope.viewingElement.toLowerCase().includes('.jpeg') || $scope.viewingElement.toLowerCase().includes('.png') || $scope.viewingElement.toLowerCase().includes('.jpg')){
+                $scope.isImage = true;
+            }else {
+                $scope.showLink = true;
+            }
+
+        };
+
+        $scope.closeDialog = function () {
+            $scope.showViewDialog = false;
+        }
     }
 
 

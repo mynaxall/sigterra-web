@@ -7676,3 +7676,18 @@ a.preview-footer-link {
 .text-left{
     text-align: left;
 }
+
+.video-frame{
+    width: 100%    !important;
+    height: 400px   !important;
+}
+
+.preview-dialog-content{
+    background: #FFF;
+    padding: 30px;
+}
+
+.preview-dialog-image-div{
+    max-height: 400px;
+    overflow: auto;
+}
