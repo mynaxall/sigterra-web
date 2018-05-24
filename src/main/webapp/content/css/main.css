@@ -7672,3 +7672,7 @@ a.preview-footer-link {
     padding: 40px 0px 30px 0px;
     margin: 0 auto;
 }
+
+.text-left{
+    text-align: left;
+}
