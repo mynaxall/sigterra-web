@@ -728,7 +728,7 @@
         </div>
         <div class="view-editor-col">
             <div class="second-column-editor">
-                <div class="editor-preview-panel"  ng-style="{'background': 'url(' + background.imageUrl + ') no-repeat center center fixed', 'background-size': 'cover'}">
+                <div class="editor-preview-panel">
                     <div class="editor-preview-header" id="editor-preview-header">
                         <div class="header-focus" ng-if="vm.activeTab == '1'">
                             <img class="focus-editing-marker" src="/content/images/editor/edit-marker.png">
@@ -765,7 +765,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="editor-preview">
+                    <div class="editor-preview" ng-style="{'background': 'url(' + background.imageUrl + ') no-repeat center center fixed', 'background-size': 'cover'}">
                         <div class="header-focus" ng-if="vm.activeTab == '2'">
                             <img class="focus-editing-marker" src="/content/images/editor/edit-marker.png">
                             <div class="focus-editing-title focus-editing-title-bg">Background</div>
