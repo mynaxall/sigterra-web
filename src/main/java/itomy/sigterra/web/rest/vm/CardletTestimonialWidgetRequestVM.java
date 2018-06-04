@@ -20,7 +20,7 @@ public class CardletTestimonialWidgetRequestVM {
 
     private String designation;
 
-    @Size(max = 30)
+    @Size(max = 300)
     @NotEmpty
     private String description;
 

@@ -46,5 +46,5 @@
     <include file="classpath:config/liquibase/changelog/20180511101522_added_entity_constraints_CardletContentLibraryWidget.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20180517151332_added_entity_ContentLibraryWidgetLikes.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20180518090104_added_entity_ContentLibraryWidgetViews.xml" relativeToChangelogFile="false"/>
-
+    <include file="classpath:config/liquibase/changelog/20180601124004_change_size_text_all_Widgets.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>
