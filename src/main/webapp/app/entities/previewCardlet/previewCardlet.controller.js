@@ -573,10 +573,11 @@
             }else {
                 $scope.showLink = true;
             }
-
+            document.body.className += " modal-open";
         };
 
         $scope.closeDialog = function () {
+            document.body.className = document.body.className.replace(" modal-open", "");
             $scope.showViewDialog = false;
         }
     }
