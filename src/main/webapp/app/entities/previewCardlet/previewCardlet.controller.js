@@ -561,6 +561,7 @@
             $scope.isImage = false;
             $scope.showLink = false;
             $scope.showViewDialog = true;
+            $scope.dialogTitle = $scope.contentLibrary[index].title;
             $scope.viewingElement = $scope.contentLibrary[index].uploadFileUrl;
             if($scope.viewingElement.toLowerCase().includes('www.youtube.com') ) {
                 $scope.isVideo = true;
