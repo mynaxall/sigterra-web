@@ -561,7 +561,7 @@
             $scope.isImage = false;
             $scope.showLink = false;
             $scope.showViewDialog = true;
-            $scope.dialogTitle = $scope.contentLibrary[index].title;
+            $scope.dialogContent= $scope.contentLibrary[index];
             $scope.viewingElement = $scope.contentLibrary[index].uploadFileUrl;
             if($scope.viewingElement.toLowerCase().includes('www.youtube.com') ) {
                 $scope.isVideo = true;
@@ -574,11 +574,17 @@
                 $scope.showLink = true;
             }
             document.body.className += " modal-open";
+            EditViewerService.viewsContentLibrary($scope.dialogContent.id)
+
         };
 
         $scope.closeDialog = function () {
             document.body.className = document.body.className.replace(" modal-open", "");
             $scope.showViewDialog = false;
+        }
+
+        $scope.likeContentLibrary = function () {
+            EditViewerService.likesContentLibrary($scope.dialogContent.id)
         }
     }
 
