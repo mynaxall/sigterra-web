@@ -3,12 +3,13 @@
     <div class="modal-dialog " style="margin-top: 100px; width: 850px!important;">
         <div class="modal-content">
             <div class="modal-header">
-                {{dialogTitle}}
+                {{dialogContent.title}}
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                         ng-click="closeDialog()">&times;</button>
               <div class="signature-title"></div>
             </div>
             <div  style=" padding: 0px!important;" class="modal-body">
+                <button ng-click="likeContentLibrary()">Like</button>
                 <div class="preview-dialog-content">
                     <iframe class="video-frame" ng-if="isVideo && showViewDialog" ng-src="{{trustSrc(viewingElement)}}" frameborder="0" allowfullscreen></iframe>
                     <embed  ng-src="{{trustSrc(viewingElement)}}" ng-if="isPdf" ng-if="isPdf" type="application/pdf" width="100%" height="400px" />

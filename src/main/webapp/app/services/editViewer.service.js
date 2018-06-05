@@ -20,7 +20,9 @@
             getWidgets: getWidgets,
             deleteWidget: deleteWidget,
             deleteContentLibrary: deleteContentLibrary,
-            uploadFile: uploadFile
+            uploadFile: uploadFile,
+            likesContentLibrary: likesContentLibrary,
+            viewsContentLibrary: viewsContentLibrary
 
         };
 
@@ -97,6 +99,19 @@
                 headers: {'Content-Type': undefined}
             });
             return service;
+        }
+
+        function likesContentLibrary (id) {
+            var service = $http.post('api/cardlet/content-library-widget/' + id + '/likes').then(function(result) {
+                return result.data;
+            });
+        }
+
+
+        function viewsContentLibrary (id) {
+            var service = $http.post('api/cardlet/content-library-widget/' + id + '/views').then(function(result) {
+                return result.data;
+            });
         }
 
 
