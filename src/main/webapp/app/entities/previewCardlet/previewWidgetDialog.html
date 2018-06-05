@@ -9,9 +9,8 @@
             </div>
             <div  style=" padding: 0px!important;" class="modal-body">
                 <div class="preview-dialog-content">
-                    <iframe class="video-frame" ng-if="isVideo" ng-src="{{trustSrc(viewingElement)}}" frameborder="0" allowfullscreen></iframe>
+                    <iframe class="video-frame" ng-if="isVideo && showViewDialog" ng-src="{{trustSrc(viewingElement)}}" frameborder="0" allowfullscreen></iframe>
                     <embed  ng-src="{{trustSrc(viewingElement)}}" ng-if="isPdf" ng-if="isPdf" type="application/pdf" width="100%" height="400px" />
-
                     <div class="preview-dialog-image-div">
                         <img width="100%" ng-src="{{viewingElement}}" ng-if="isImage">
                     </div>
