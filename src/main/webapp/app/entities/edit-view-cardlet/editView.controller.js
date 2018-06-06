@@ -599,8 +599,14 @@
             $scope.isLogo = isLogo;
             angular.element('#fileInput').val(null);
             $scope.myImage = "";
-            if ($scope.header.imageUrl) {
-                $http.get($scope.header.imageUrl, {responseType: "arraybuffer"})
+            var imageUrl;
+            if ($scope.header.logoUrl) {
+                imageUrl = $scope.header.logoUrl;
+            }else if( $scope.header.photoUrl) {
+                imageUrl = $scope.header.photoUrl;
+            }
+            if(imageUrl && !imageUrl.startsWith("/")){
+                $http.get(imageUrl, {responseType: "arraybuffer"})
                     .success(function (data) {
                         var str = _arrayBufferToBase64(data);
                         $scope.myImage = 'data:image/JPEG;base64,' + str;
@@ -967,6 +973,19 @@
             $scope.contentLibraryImageIndex = index;
             angular.element('#fileInput').val(null);
             $scope.myImage = "";
+            $scope.myCroppedImage = '';
+            vm.isShowDialog = true;
+            var imageUrl;
+            if ( $scope.contentLibrary[$scope.contentLibraryImageIndex].coverImageUrl) {
+                imageUrl = $scope.contentLibrary[$scope.contentLibraryImageIndex].coverImageUrl;
+            }
+            if(imageUrl && !imageUrl.startsWith("/")){
+                $http.get(imageUrl, {responseType: "arraybuffer"})
+                    .success(function (data) {
+                        var str = _arrayBufferToBase64(data);
+                        $scope.myImage = 'data:image/JPEG;base64,' + str;
+                    });
+            }
             $scope.myCroppedImage = '';
             vm.isShowDialog = true;
         }
