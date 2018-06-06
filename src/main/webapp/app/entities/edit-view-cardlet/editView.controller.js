@@ -594,9 +594,9 @@
         }
 
 
-        function showImageDialog(isWidget, type) {
-            $scope.isWidget = isWidget;
-            $scope.isLogo = type;
+        function showImageDialog(isLogo, type) {
+            $scope.isWidget = false;
+            $scope.isLogo = isLogo;
             angular.element('#fileInput').val(null);
             $scope.myImage = "";
             if ($scope.header.imageUrl) {
@@ -674,7 +674,7 @@
                 .success(function (data, status, headers, config) {
                     if($scope.isWidget){
                         $scope.contentLibrary[$scope.contentLibraryImageIndex].coverImageUrl = data.coverImageUrl;
-                    }if($scope.isLogo){
+                    }else if($scope.isLogo){
                         $scope.header.logoUrl = data.url
                     }else{
                         $scope.header.photoUrl = data.url
