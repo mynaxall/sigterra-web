@@ -103,15 +103,15 @@
 
         function likesContentLibrary (id) {
             var service = $http.post('api/cardlet/content-library-widget/' + id + '/likes').then(function(result) {
-                return result.data;
             });
+            return service
         }
 
 
         function viewsContentLibrary (id) {
             var service = $http.post('api/cardlet/content-library-widget/' + id + '/views').then(function(result) {
-                return result.data;
             });
+            return service
         }
 
 
