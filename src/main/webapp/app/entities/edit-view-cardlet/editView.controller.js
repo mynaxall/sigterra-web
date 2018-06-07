@@ -600,7 +600,7 @@
             angular.element('#fileInput').val(null);
             $scope.myImage = "";
             var imageUrl;
-            if ($scope.header.logoUrl) {
+            if ($scope.header.logoUrl && $scope.isLogo) {
                 imageUrl = $scope.header.logoUrl;
             }else if( $scope.header.photoUrl) {
                 imageUrl = $scope.header.photoUrl;
@@ -976,7 +976,8 @@
             $scope.myCroppedImage = '';
             vm.isShowDialog = true;
             var imageUrl;
-            if ( $scope.contentLibrary[$scope.contentLibraryImageIndex].coverImageUrl) {
+            console.log($scope.contentLibrary[$scope.contentLibraryImageIndex].coverImageUrl)
+            if ($scope.contentLibrary[$scope.contentLibraryImageIndex].coverImageUrl) {
                 imageUrl = $scope.contentLibrary[$scope.contentLibraryImageIndex].coverImageUrl;
             }
             if(imageUrl && !imageUrl.startsWith("/")){
