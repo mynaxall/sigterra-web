@@ -574,7 +574,10 @@
                 $scope.showLink = true;
             }
             document.body.className += " modal-open";
-            EditViewerService.viewsContentLibrary($scope.dialogContent.id)
+            EditViewerService.viewsContentLibrary($scope.dialogContent.id).then(function () {
+                getContentLibrary();
+            }).catch(function (response) {
+            });
 
         };
 
@@ -584,7 +587,19 @@
         }
 
         $scope.likeContentLibrary = function () {
-            EditViewerService.likesContentLibrary($scope.dialogContent.id)
+            EditViewerService.likesContentLibrary($scope.dialogContent.id).then(function () {
+                getContentLibrary();
+            }).catch(function (response) {
+            });
+        }
+
+
+        function getContentLibrary() {
+            var id = $location.search().cardletId;
+            EditViewerService.getWidgets(getId(id)).then(function (response) {
+                $scope.contentLibrary = response.cardletContentLibraryWidget;
+            }).catch(function (response) {
+            });
         }
     }
 
