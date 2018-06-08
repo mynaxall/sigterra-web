@@ -606,6 +606,28 @@
                 imageUrl = $scope.header.photoUrl;
             }
             if(imageUrl && !imageUrl.startsWith("/")){
+                $http.get(imageUrl + "?"+ $scope.time, {responseType: "arraybuffer"})
+                    .success(function (data) {
+                        var str = _arrayBufferToBase64(data);
+                        $scope.myImage = 'data:image/JPEG;base64,' + str;
+                    });
+            }
+            $scope.myCroppedImage = '';
+            vm.isShowDialog = true;
+        }
+
+        function showWidgetImageDialog(isWidget, index) {
+            $scope.isWidget = isWidget;
+            $scope.contentLibraryImageIndex = index;
+            angular.element('#fileInput').val(null);
+            $scope.myImage = "";
+            vm.isShowDialog = true;
+            var imageUrl;
+            console.log($scope.contentLibrary[$scope.contentLibraryImageIndex].coverImageUrl)
+            if ($scope.contentLibrary[$scope.contentLibraryImageIndex].coverImageUrl) {
+                imageUrl = 'https://sigterra-s3-storage-dev.s3-accelerate.amazonaws.com/accounts/3/1/logoview.tmp';
+            }
+            if(imageUrl && !imageUrl.startsWith("/")){
                 $http.get(imageUrl, {responseType: "arraybuffer"})
                     .success(function (data) {
                         var str = _arrayBufferToBase64(data);
@@ -968,28 +990,6 @@
             $scope.activeContentLibrary = index;
         }
 
-        function showWidgetImageDialog(isWidget, index) {
-            $scope.isWidget = isWidget;
-            $scope.contentLibraryImageIndex = index;
-            angular.element('#fileInput').val(null);
-            $scope.myImage = "";
-            $scope.myCroppedImage = '';
-            vm.isShowDialog = true;
-            var imageUrl;
-            console.log($scope.contentLibrary[$scope.contentLibraryImageIndex].coverImageUrl)
-            if ($scope.contentLibrary[$scope.contentLibraryImageIndex].coverImageUrl) {
-                imageUrl = $scope.contentLibrary[$scope.contentLibraryImageIndex].coverImageUrl;
-            }
-            if(imageUrl && !imageUrl.startsWith("/")){
-                $http.get(imageUrl, {responseType: "arraybuffer"})
-                    .success(function (data) {
-                        var str = _arrayBufferToBase64(data);
-                        $scope.myImage = 'data:image/JPEG;base64,' + str;
-                    });
-            }
-            $scope.myCroppedImage = '';
-            vm.isShowDialog = true;
-        }
 
         $scope.fileNameChanged = function (files, index){
 
