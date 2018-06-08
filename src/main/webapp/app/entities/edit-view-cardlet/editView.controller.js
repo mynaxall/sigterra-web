@@ -623,9 +623,9 @@
             $scope.myImage = "";
             vm.isShowDialog = true;
             var imageUrl;
-            console.log($scope.contentLibrary[$scope.contentLibraryImageIndex].coverImageUrl)
-            if ($scope.contentLibrary[$scope.contentLibraryImageIndex].coverImageUrl) {
-                imageUrl = 'https://sigterra-s3-storage-dev.s3-accelerate.amazonaws.com/accounts/3/1/logoview.tmp';
+            console.log($scope.contentLibrary[index].coverImageUrl)
+            if ($scope.contentLibrary[index].coverImageUrl) {
+                imageUrl = $scope.contentLibrary[index].coverImageUrl;
             }
             if(imageUrl && !imageUrl.startsWith("/")){
                 $http.get(imageUrl, {responseType: "arraybuffer"})

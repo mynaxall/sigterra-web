@@ -233,7 +233,7 @@
                                     <button ng-click="vm.showImageDialog(true)" class="upload-img-btn">
                                         <img src="/content/images/editor/edit.png">
                                     </button>
-                                    <img ng-if="header.logoUrl" class="editor-header-logo-img" ng-src="{{header.logoUrl}}?{{time}}">
+                                    <img crossorigin="anonymous" ng-if="header.logoUrl" class="editor-header-logo-img" ng-src="{{header.logoUrl}}?{{time}}">
                                 </div>
                                 <div class="editor-limits">
                                     (240 x 70 px)
@@ -247,7 +247,7 @@
                                         <button ng-click="vm.showImageDialog(false)" class="upload-img-btn">
                                             <img src="/content/images/editor/edit.png">
                                         </button>
-                                        <img ng-if="header.photoUrl" class="editor-header-avatar-img" ng-src="{{header.photoUrl}}?{{time}}">
+                                        <img crossorigin="anonymous" ng-if="header.photoUrl" class="editor-header-avatar-img" ng-src="{{header.photoUrl}}?{{time}}">
                                     </div>
                                     <div class="editor-limits">
                                         (100 x 100 px)
@@ -654,7 +654,7 @@
                                                         <button ng-click="vm.showWidgetImageDialog(true, $index)" class="upload-img-btn">
                                                             <img src="/content/images/editor/edit.png">
                                                         </button>
-                                                        <img ng-if="item.coverImageUrl" class="editor-header-logo-img" ng-src="{{item.coverImageUrl}}?{{time}}">
+                                                        <img  crossorigin="anonymous" ng-if="item.coverImageUrl" class="editor-header-logo-img" ng-src="{{item.coverImageUrl}}">
                                                     </div>
                                                     <div ng-show="formContentLibrary[$index].$dirty && !item.coverImageUrl">
                                                         <p class="help-block">
@@ -737,13 +737,13 @@
                         <div class="editor-preview-header-flex">
                             <div>
                                 <a href="#">
-                                    <img class="header-preview-editor-logo" ng-show="header.logoUrl" alt="Brand" ng-src="{{header.logoUrl}}?{{time}}">
+                                    <img crossorigin="anonymous" class="header-preview-editor-logo" ng-show="header.logoUrl" alt="Brand" ng-src="{{header.logoUrl}}?{{time}}">
                                 </a>
                             </div>
                             <div>
                                 <div class="preview-image-group">
                                     <div >
-                                        <img  class="header-preview-editor-avatar header-icons"  class="image " ng-show="header.photoUrl" ng-src="{{header.photoUrl}}?{{time}}">
+                                        <img crossorigin="anonymous"  class="header-preview-editor-avatar header-icons"  class="image " ng-show="header.photoUrl" ng-src="{{header.photoUrl}}?{{time}}">
                                     </div>
                                     <div class=" alignme ">
                                         <span class="bold">{{header.name}}</span>
@@ -838,7 +838,7 @@
                             <div class="content-lib-editor">
                                 <div class="content-lib-editor-item" ng-repeat="item in contentLibrary track by $index" ng-class="{'active-content-library': activeContentLibrary === $index}">
                                     <div class="content-lib-editor-image-div">
-                                        <img ng-if="item.coverImageUrl" ng-src="{{item.coverImageUrl}}" class="content-lib-editor-image">
+                                        <img crossorigin="anonymous" ng-if="item.coverImageUrl" ng-src="{{item.coverImageUrl}}" class="content-lib-editor-image">
                                     </div>
                                     <div>{{item.title}}</div>
                                     <div class="content-library-statistic"> <img class="content-library-image" src="/content/images/editor/views.png"> {{item.statistic.views}} <img class="" src="/content/images/editor/likes.png"> {{item.statistic.likes}}</div>
