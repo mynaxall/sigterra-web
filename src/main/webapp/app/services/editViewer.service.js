@@ -20,6 +20,7 @@
             getWidgets: getWidgets,
             deleteWidget: deleteWidget,
             deleteContentLibrary: deleteContentLibrary,
+            deleteQuickbite: deleteQuickbite,
             uploadFile: uploadFile,
             likesContentLibrary: likesContentLibrary,
             viewsContentLibrary: viewsContentLibrary
@@ -92,6 +93,14 @@
             });
             return service;
         }
+
+        function deleteQuickbite(id){
+            var service = $http.delete('api/cardlet-quick-bites-widgets/' + id).then(function(result) {
+                return result.data;
+            });
+            return service;
+        }
+
 
         function uploadFile(id, fd) {
             var service =  $http.post('api/cardlet/' + id + '/widgets/images/upload',  fd, {

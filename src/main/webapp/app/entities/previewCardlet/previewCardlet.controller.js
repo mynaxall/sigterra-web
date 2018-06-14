@@ -36,6 +36,7 @@
         vm.currentSlide = 0;
         vm.showCarousel = true;
         $scope.showLink = true;
+        $scope.quickbites = [];
 
         $scope.testimonials = [];
         $scope.contentLibrary = [];
@@ -531,6 +532,7 @@
 
         $scope.setWidgets = function () {
             $scope.testimonials = $scope.widgets.cardletTestimonialWidget;
+            $scope.quickbites = $scope.widgets.cardletQuickBitesWidget;
             $scope.contentLibrary = $scope.widgets.cardletContentLibraryWidget;
         }
 

@@ -179,6 +179,137 @@
         margin-top: 29%;
         padding: 10px;
     }
+    .tooltip {
+opacity: 1 !important;
+    position: relative !important;
+    display: inline-block;
+    <!--border-bottom: 1px dotted black;-->
+}
+
+.tooltip .tooltiptext {
+   visibility: hidden;
+    max-width: 240px;
+    background-color: #fff9b6;
+    color: #1b1919;
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 30%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 11px;
+    min-width: 200px;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    box-shadow: 1px 1px 1px 1px #272626ab;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+ul li {
+  margin: 4px 0; /*For spacing between li*/
+}
+.list-tag>li {
+    display: inline-block;
+    border: 1px solid black;
+    margin-right: 10px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    padding: 3px 12px;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #62bffc;
+    font-size: 24px;
+}
+.delete-quickbite{
+    margin-right: -3%;
+    margin-top: -19px;
+    float: right;
+    }
+
+.quickbite-panel {
+    border: 1px solid #dce0e6;
+    padding: 20px;
+    height: 640px;
+    background-color: #ffffff;
+}
+.widgets-panel {
+    padding: 20px;
+    }
+@media (max-width: 1500px){
+.editor-panel {
+    width: 100%;
+}
+}
+.widget-input {
+    width: 427px;
+}
+.editor-preview-quickbites{
+
+    padding: 12px 48px 31px 43px;
+        }
+
+    .round{
+    font-size: 11px !important;
+    max-width:177px;
+        display: inline-block !important;
+    border: 1px solid rgba(255,255,255,0.6) !important;
+    margin-right: 10px !important;
+    border-radius: 15px !important;
+    margin-bottom: -8px !important;
+        padding: 6px 31px !important;
+            min-width: 176px;
+    }
+    .add-widget-icon{
+    font-size:24px;
+    float:right;
+    margin-top: -1%;
+    }
+    input::-webkit-input-placeholder {
+color: #c6cad5 !important;
+    font-style: italic;
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+color: #c6cad5 !important;
+    font-style: italic;
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+color: #c6cad5 !important;
+    font-style: italic;
+}
+
+input:-ms-input-placeholder {
+color: #c6cad5 !important;
+    font-style: italic;
+}
+.edit-content-url{
+width:200px;
+}
 </style>
 
 
@@ -265,7 +396,7 @@
                                         Name:
                                     </div>
                                     <div>
-                                        <input class="editor-input" type="text" ng-model="header.name" maxlength="20">
+                                        <input class="editor-input" type="text" placeholder="Enter Full Name" ng-model="header.name" maxlength="20">
                                     </div>
                                     <div class="editor-limits">
                                         ({{header.name.length}}/20)
@@ -276,7 +407,7 @@
                                         Title:
                                     </div>
                                     <div>
-                                        <input class="editor-input" type="text" ng-model="header.title" maxlength="30">
+                                        <input class="editor-input" type="text" placeholder="Enter Business Title" ng-model="header.title" maxlength="30">
                                     </div>
                                     <div class="editor-limits">
                                         ({{header.title.length}}/30)
@@ -287,7 +418,7 @@
                                         Email:
                                     </div>
                                     <div>
-                                        <input class="editor-input" type="text" ng-model="header.email">
+                                        <input class="editor-input" type="text" placeholder="Enter Business Email" ng-model="header.email">
                                     </div>
                                 </div>
                                 <div class="input-editor-flex">
@@ -295,7 +426,7 @@
                                         Phone:
                                     </div>
                                     <div>
-                                        <input class="editor-input" type="text" ng-model="header.phone">
+                                        <input class="editor-input" type="text" placeholder="XXXXXXXXXX" ng-model="header.phone">
                                     </div>
                                 </div>
                             </div>
@@ -420,7 +551,7 @@
                         <div class="editor-div editor-div-flex">
                             <label class="login-lable label-editor label-editor-links">Icon #1</label>
                             <div class="editor-div-flex">
-                                <div ng-if="!selection[0]" class="editor-header-bg-div"><button ng-click="vm.showIconPopUpDialog(false)" class=" editor-header-bg-div icon1val" value="0"><u style="color: #5cbcfb;">Add Icon</u></button></div>
+                                <div ng-if="!selection[0]" class="editor-header-bg-div"><button ng-click="vm.showIconPopUpDialog(false, 0)" class=" editor-header-bg-div icon1val" value="0"><u style="color: #5cbcfb;">Add Icon</u></button></div>
                                 <div ng-if="selection[0]" class="editor-header-bg-img-div">
                                     <button class="delete-editor-links-icon" ng-click="deleteIcon(0)">
                                         <img  src="/content/images/editor/cncl.png">
@@ -445,7 +576,7 @@
                         <div class="editor-div editor-div-flex">
                             <label class="login-lable label-editor label-editor-links">Icon #2</label>
                             <div class="editor-div-flex">
-                                <div ng-if="!selection[1]" class="editor-header-bg-div"><button ng-click="vm.showIconPopUpDialog(false)" class=" editor-header-bg-div icon1val" value="1"><u style="color: #5cbcfb;">Add Icon</u></button></div>
+                                <div ng-if="!selection[1]" class="editor-header-bg-div"><button ng-click="vm.showIconPopUpDialog(false, 1)" class=" editor-header-bg-div icon1val" value="1"><u style="color: #5cbcfb;">Add Icon</u></button></div>
                                 <div ng-if="selection[1]" class="editor-header-bg-img-div">
                                     <button class="delete-editor-links-icon" ng-click="deleteIcon(1)">
                                         <img src="/content/images/editor/cncl.png">
@@ -470,7 +601,7 @@
                         <div class="editor-div editor-div-flex">
                             <label class="login-lable label-editor label-editor-links">Icon #3</label>
                             <div class="editor-div-flex">
-                                <div ng-if="!selection[2]" class="editor-header-bg-div" ><button ng-click="vm.showIconPopUpDialog(false)" class=" editor-header-bg-div icon1val" value="2"><u style="color: #5cbcfb;">Add Icon</u></button></div>
+                                <div ng-if="!selection[2]" class="editor-header-bg-div" ><button ng-click="vm.showIconPopUpDialog(false, 2)" class=" editor-header-bg-div icon1val" value="2"><u style="color: #5cbcfb;">Add Icon</u></button></div>
                                 <div ng-if="selection[2]" class="editor-header-bg-img-div">
                                     <button class="delete-editor-links-icon" ng-click="deleteIcon(2)">
                                         <img src="/content/images/editor/cncl.png">
@@ -546,15 +677,79 @@
                             </ul>
                         </div>
                         <div class="save-preview-panel">
-                            <div ng-if="vm.activeWidget == '1'" class="widgets-panel">
-                                Quick Bites Content
-                            </div>
+                            <div ng-if="vm.activeWidget == '1'" class="quickbite-panel">
+                                <p style="text-align:center"> <span>Add Quick Bites for brief information</span>
+                                    <i ng-if="campuses1.length < 3" ng-click="addQuickbites()" class="fa fa-plus add-widget-icon"></i>
+                                </p>
+
+                                <div uib-carousel active="activeQuickbite" interval="myInterval" no-wrap="noWrapSlides">
+                                    <div uib-slide  ng-repeat="item in  campuses1 " index="$index" ng-init="quickbiteParent = $index" class="widget-slide" >
+                                        <div  ng-repeat="i in item " ng-init="quickbiteChild = $index"  >
+
+                                            <i  ng-if="i.title != '' && i.description != ''" ng-click="showDeleteQuickbiteDialog(quickbiteParent, quickbiteChild, true)" class="fa fa-trash-o delete-quickbite"></i>
+                                            <!--<button  ng-if="i.title != '' && i.description != ''" ng-click="showDeleteQuickbiteDialog(quickbiteParent, quickbiteChild, true)">delete </button>-->
+
+                                            <form name="formTestimonial1[$index]" role="form" novalidate show-validation >
+                                                <div class="editor-div-flex editor-url">
+                                                    <div class="login-lable label-editor label-editor-logo editor-div-flex">
+                                                        Name:
+                                                    </div>
+                                                    <div>
+                                                        <input class="editor-input widget-input" type="text" ng-model="i.title" name="title" maxlength="20" required>
+                                                        <div ng-show="formTestimonial1[$index].$dirty && formTestimonial1[$index].name.$invalid">
+                                                            <p class="help-block"
+                                                               ng-show="formTestimonial1[$index].name.$error.required">
+                                                                Name is required.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="editor-div-flex editor-url">
+                                                    <div class="login-lable label-editor label-editor-logo text-left">
+                                                        <div>Description:</div>
+                                                        <div class="editor-limits">
+                                                            ( 300 char )
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <textarea class="editor-textarea widget-input" ng-model="i.description" maxlength="300" name="description" required></textarea>
+                                                        <div ng-show="formTestimonial1[$index].$dirty && formTestimonial1[$index].description.$invalid">
+                                                            <p class="help-block"
+                                                               ng-show="formTestimonial1[$index].description.$error.required">
+                                                                Description is required.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <hr style="width: 108%;margin-left: -4%;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-if="campuses1.length > 1">
+                                    <div class="carousel-arrow widget-carousel-arrow-left">
+                                        <button class="demo-nav testimonial-arrow" ng-click="prevQuickbiteSlide()">
+                                            <img ng-if="activeQuickbite != 0" src="/content/images/editor/left.png">
+                                        </button>
+                                    </div>
+                                    <div class="carousel-arrow  widget-carousel-arrow-right">
+                                        <button class="demo-nav testimonial-arrow" ng-click="nextQuickbiteSlide()">
+                                            <img  ng-if="activeQuickbite !== campuses1.length-1"  src="/content/images/editor/right.png">
+                                        </button>
+                                    </div>
+                                </div>
+                                <div ng-if="campuses1.length > 1" class="testimonial-paging">
+                                    <div class="testimonial-page-number" ng-class="{active: activeQuickbite === $index}" ng-repeat="quickbite in campuses1 track by $index" ng-click="setActiveQuckbite($index)">{{$index + 1}}</div>
+                                </div>                            </div>
+
                             <div ng-if="vm.activeWidget == '2'" class="widgets-panel">
-                                <button ng-if="testimonials.length < 9" ng-click="addTestimonial()">Add</button>
+                                <p style="text-align:center"> <span>Share what your Customer's say</span>
+                                    <i ng-if="testimonials.length < 9" ng-click="addTestimonial()" class="fa fa-plus add-widget-icon" ></i>
+                                </p>
                                 <div uib-carousel active="activetTestimonial" interval="myInterval" no-wrap="noWrapSlides">
                                     <div uib-slide ng-repeat="testimonial in testimonials track by $index" index="$index" class="widget-slide">
-                                        <button ng-click="showDeleteDialog($index, true)">delete</button>
-
+                                        <i ng-click="showDeleteDialog($index, true)" class="fa fa-trash-o delete-quickbite"></i>
                                         <form name="formTestimonial[$index]" role="form" novalidate show-validation>
                                             <div class="editor-div-flex editor-url">
                                                 <div class="login-lable label-editor label-editor-logo editor-div-flex">
@@ -624,10 +819,12 @@
                                 </div>
                             </div>
                             <div ng-if="vm.activeWidget == '3'" class="widgets-panel">
-                                <button ng-if="contentLibrary.length < 9" ng-click="addContentLibrary()">Add</button>
+                                <p style="text-align:center"> <span>Share your content with customers</span>
+                                    <i ng-if="contentLibrary.length < 9" ng-click="addContentLibrary()" class="fa fa-plus add-widget-icon" ></i>
+                                </p>
                                 <div uib-carousel active="activeContentLibrary" interval="myInterval" no-wrap="noWrapSlides">
                                     <div uib-slide ng-repeat="item in contentLibrary track by $index" index="$index" class="widget-slide">
-                                        <button ng-click="showDeleteDialog($index, false)">delete</button>
+                                        <i ng-click="showDeleteDialog($index, false)" class="fa fa-trash-o delete-quickbite"></i>
 
                                         <form name="formContentLibrary[$index]" role="form" novalidate show-validation>
                                             <div class="editor-div-flex editor-url">
@@ -673,7 +870,7 @@
                                                         (PDF /JPG/ PNG)
                                                     </div>
                                                 </div>
-                                                <div>
+                                                <div class="edit-content-url">
                                                     <input class="editor-input widget-input" type="text"  name="uploadFileUrl" ng-model="item.uploadFileUrl" ng-pattern="vm.LINK_PATTERN" required>
 
                                                     <div class="fileUpload btn btn-primary choose-photo-btn">
@@ -768,7 +965,7 @@
                     <div class="editor-preview" ng-style="{'background': 'url(' + background.imageUrl + ') no-repeat center center fixed', 'background-size': 'cover'}">
                         <div class="header-focus" ng-if="vm.activeTab == '2'">
                             <img class="focus-editing-marker" src="/content/images/editor/edit-marker.png">
-                            <div class="focus-editing-title focus-editing-title-bg">Background</div>
+                            <div class="focus-editing-title focus-editing-title-bg">Banner</div>
                         </div>
                         <div class="editor-preview-body">
                             <div class="editor-preview-title" style="color: #ffffff ">
@@ -797,6 +994,31 @@
                                 </div>
                             </div>
 
+                        </div>
+                    </div>
+                    <div class="editor-preview">
+                        <div class="header-focus" ng-if="vm.activeWidget == '1' && vm.activeTab == '5'">
+                            <img class="focus-editing-marker" src="/content/images/editor/edit-marker.png">
+                            <div class="focus-editing-title focus-editing-title-bg">Quick Bites</div>
+                        </div>
+
+
+
+                        <div class="editor-preview-quickbites">
+                            <div ng-if="quickbites.length" class="testimonials-title">Quick Bites</div>
+                            <div class="row" style="margin-top: 5%;">
+
+                                <div class="col-md-4 icon-modal-pop" ng-repeat-start="i in quickbites track by $index">
+                                    <div class="tooltip">
+                                        <button type="button " ng-style="{'background-color': '#'+header.ctaColor}" class="btn btn-primary btn-round-lg btn-lg round list-tag list-inline">{{i.title}}</button>
+                                        <span ng-model="i.title"></span>
+                                        <span class="tooltiptext">{{i.description}}</span>
+                                    </div>
+                                </div>
+                                <div class="clearfix" ng-if="($index+1)%3==0"></div>
+                                <div ng-repeat-end=""></div>
+
+                            </div>
                         </div>
                     </div>
                     <div class="editor-preview">

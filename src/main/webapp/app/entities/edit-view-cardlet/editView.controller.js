@@ -77,11 +77,14 @@
         $scope.header = {
             'name' : '',
             'title' : '',
-            'text' : 'Request For Demo'};
+            'text' : 'Request For Demo',
+            'logoUrl': '/content/images/page_logo.png',
+            'photoUrl': '/content/images/User.png'};
         $scope.selection = [];
         $scope.background = {
             'text' : 'Conversational Commerce is the biggest opportunity for brands to act like people in digital channels & build customer engagement and loyalty',
-            'textColor' : 'true'
+            'textColor' : 'true',
+            'imageUrl':'/content/images/viewpage/backgrounds/bg_theme08.png'
         };
         $scope.links = {
             'title' : 'CapGemini\'s Experts',
@@ -110,10 +113,15 @@
 
         $scope.activetTestimonial = 0;
         $scope.activeContentLibrary = 0;
+        $scope.activeQuickbite = 0;
 
         $scope.testimonials = [];
         $scope.contentLibrary = [];
-
+        $scope.model = {};
+        $scope.model.campuses = [];
+        $scope.model.campuses1 = [];
+        $scope.campuses1 = [];
+        $scope.quickbites = [];
 
         $scope.myImage='';
         $scope.myCroppedImage = '';
@@ -189,7 +197,18 @@
         function setValues(response) {
             $scope.cardletView = response;
             if($scope.cardletView.header){
+            console.log("=-=-=$scope.cardletView.header=-=-")
+            if(!$scope.cardletView.header.logoUrl){
+            $scope.cardletView.header.logoUrl = '/content/images/page_logo.png'
+            }
+            if(!$scope.cardletView.header.photoUrl){
+            $scope.cardletView.header.photoUrl = '/content/images/User.png'
+            }
+
+            console.log($scope.cardletView.header)
                 $scope.header = $scope.cardletView.header;
+                            console.log($scope.header)
+
                 if(!$scope.header.ctaColor){
                     $scope.header.ctaColor = "f0ad4e";
                 }
@@ -198,20 +217,35 @@
             }
             if($scope.cardletView.background){
                 $scope.background = $scope.cardletView.background;
+
+                if(!$scope.cardletView.background.imageUrl){
+                 $scope.cardletView.background.imageUrl = '/content/images/viewpage/backgrounds/bg_theme08.png'
+              }
             }
-            if($scope.cardletView.links){
-                $scope.links = $scope.cardletView.links;
-                $scope.selection = [];
-                if($scope.links.logoUrl1) {
-                    $scope.selection.push($scope.links.logoUrl1);
-                }
-                if($scope.links.logoUrl2) {
-                    $scope.selection.push($scope.links.logoUrl2);
-                }
-                if($scope.links.logoUrl3) {
-                    $scope.selection.push($scope.links.logoUrl3);
-                }
-            }
+             if($scope.cardletView.links){
+                           $scope.links = $scope.cardletView.links;
+                           $scope.selection = [];
+                           console.log("===========$scope.links.logoUrls=========")
+                           console.log($scope.links.logoUrl1)
+                           console.log($scope.links.logoUrl2)
+                           console.log($scope.links.logoUrl3)
+                           if($scope.links.logoUrl1) {
+                               //$scope.selection.push($scope.links.logoUrl1);
+                               $scope.selection[0]= $scope.links.logoUrl1;
+
+                           }
+                           if($scope.links.logoUrl2) {
+                                    $scope.selection[1] =       $scope.links.logoUrl2 ;
+
+                               //$scope.selection.push($scope.links.logoUrl2);
+                           }
+                           if($scope.links.logoUrl3) {
+                                        $scope.selection[2] =    $scope.links.logoUrl3;
+
+                               //$scope.selection.push($scope.links.logoUrl3);
+                           }
+                       }
+
 
             if($scope.cardletView.footer){
                 $scope.footer = $scope.cardletView.footer;
@@ -222,6 +256,7 @@
 
         function loadAll () {
             EditViewerService.getBackgrounds().then(function (response) {
+
                 $scope.bgArray = response;
 
             }).catch(function (response) {
@@ -234,7 +269,8 @@
 
             EditViewerService.getWidgets($scope.cardletId).then(function (response) {
                 $scope.widgets = response;
-                $scope.setWidgets()
+
+                $scope.getNsetWidgets();
             }).catch(function (response) {
             });
 
@@ -252,6 +288,7 @@
             function onSuccess(data, headers) {
                 vm.queryCount = vm.totalItems;
                 $scope.cardlets = data;
+
 
             }
             function onError(error) {
@@ -638,15 +675,15 @@
             vm.isShowDialog = true;
         }
 
-        function showIconPopUpDialog(type) {
-                    $scope.listIcons.listFilesPaths.forEach(function (listIcon, i) {
-                        listIcon.checked = false;
-                    });
-                    $scope.iconvalue = angular.element('.icon1val').val();
-                    $scope.gender = '';
-                     $scope.myImage = "";
-                    vm.isShowDialog1 = true;
-                }
+        function showIconPopUpDialog(type, idx) {
+                           $scope.listIcons.listFilesPaths.forEach(function (listIcon, i) {
+                               listIcon.checked = false;
+                           });
+                           $scope.iconvalue = idx;
+                           $scope.gender = '';
+                            $scope.myImage = "";
+                           vm.isShowDialog1 = true;
+                       }
 
         function _arrayBufferToBase64(buffer) {
             var binary = '';
@@ -749,6 +786,11 @@
             $scope.cardletView.footer = $scope.footer;
             $scope.cardletView.cardletId = $scope.cardletId;
             $scope.widgets.cardletTestimonialWidget = $scope.testimonials;
+            $scope.widgets.cardletQuickBitesWidget = [].concat(...$scope.campuses1);
+            $scope.widgets.cardletQuickBitesWidget = $scope.widgets.cardletQuickBitesWidget.filter(function(item){
+                            return item.title.trim().length>0 && item.description.trim().length>0
+
+                    });
             $scope.widgets.cardletContentLibraryWidget = $scope.contentLibrary;
             $scope.widgets.cardletId = $scope.cardletId;
             EditViewerService.updateViewer($scope.cardletView ).then(function (response) {
@@ -782,7 +824,7 @@
             $scope.background.imageUrl = $scope.bgArray.listFilesPaths[index].url;
         }
 
-        $scope.toggleSelection = function toggleSelection(position, img) {
+/*        $scope.toggleSelection = function toggleSelection(position, img) {
          var idx = $scope.selection.indexOf(img);
 
 //            if (idx > -1) {
@@ -794,12 +836,64 @@
 
             setSelction();
 
-        };
+        };*/
+$scope.toggleSelection = function toggleSelection(position, img) {
+                var idx = $scope.selection.indexOf(img);
 
-        $scope.deleteIcon = function(id){
+        //            if (idx > -1) {
+        //                $scope.selection.splice(idx, 1);
+        //            }
+        //            else {
+                       console.log($scope.iconvalue)
+                       console.log("angular.element('.icon1val').val()")
+                       console.log(angular.element('.icon1val').val())
+                       $scope.selection[$scope.iconvalue] = img ;
+                  // }
+
+                   setSelction();
+
+               };
+        /*$scope.deleteIcon = function(id){
             $scope.selection.splice(id, 1);
             setSelction();
         }
+*/
+
+        $scope.deleteIcon = function(id){
+          // $scope.selection.splice(id, 1);
+           //setSelction();
+                   $scope.links.logoUrl1 = '';
+                   $scope.links.logoUrl2 = '';
+                   $scope.links.logoUrl3 = '';
+
+                   if(id === 0){
+                   $scope.links.name1 ="";
+                   $scope.links.url1 ="";
+                   $scope.selection[0] = "";
+                       $scope.links.logoUrl1 = "";
+                       $scope.links.logoUrl2 = $scope.selection[1];
+                       $scope.links.logoUrl3 = $scope.selection[2];
+                   }
+                   if(id === 1){
+                   $scope.selection[1] = "";
+
+                   $scope.links.name2 ="";
+                   $scope.links.url2 ="";
+                                           $scope.links.logoUrl2 = "";
+
+                       $scope.links.logoUrl1 = $scope.selection[0];
+                       $scope.links.logoUrl3 = $scope.selection[2];
+                   }
+                   if(id === 2){
+                   $scope.selection[2] = "";
+
+                   $scope.links.name3 ="";
+                   $scope.links.url3 ="";
+                       $scope.links.logoUrl1 = $scope.selection[0];
+                       $scope.links.logoUrl2 = $scope.selection[1];
+                       $scope.links.logoUrl3 = "";
+                   }
+       }
 
         function setSelction() {
             $scope.links.logoUrl1 = '';
@@ -841,7 +935,11 @@
             $scope.showSpinner = true;
             if($scope.isDelteTestimonial){
                 $scope.deleteTestimonial();
-            }else{
+            }
+            else if($scope.isDeleteQuickbite){
+              $scope.deleteQuickbite();
+            }
+            else{
                 $scope.deleteContentLibrary();
             }
         }
@@ -894,11 +992,143 @@
             }
 
         };
-
         $scope.setWidgets = function () {
             $scope.testimonials = $scope.widgets.cardletTestimonialWidget;
             $scope.contentLibrary = $scope.widgets.cardletContentLibraryWidget;
+            $scope.quickbites = [].concat(...$scope.campuses1)
+            $scope.quickbites = $scope.widgets.cardletQuickBitesWidget;
+            $scope.campuses1 = chunkArray($scope.widgets.cardletQuickBitesWidget, 3);
+            console.log("yahoo $scope.model.campuses1")
+            console.log($scope.campuses1);
+            angular.forEach($scope.campuses1, function(value, key){
+            console.log(key + ': ' + value);
+            console.log(value.length)
+            if(value.length == 2){
+                  $scope.campuses1[key].push({"title":"", "description":""});
+            }
+            else if(value.length == 1){
+                for(i=0; i<=2; i++){
+                 $scope.campuses1[key].push({"title":"", "description":""});
+                }
+              }
+           });
         }
+        $scope.getNsetWidgets = function () {
+            $scope.testimonials = $scope.widgets.cardletTestimonialWidget;
+            $scope.quickbites = $scope.widgets.cardletQuickBitesWidget;
+            console.log("i am in get widgets")
+            console.log($scope.quickbites)
+            var resultArray = chunkArray($scope.quickbites, 3)
+            $scope.campuses1 = resultArray;
+           console.log("yahoo $scope.model.campuses1")
+           console.log($scope.campuses1)
+           angular.forEach($scope.campuses1, function(value, key){
+            console.log(key + ': ' + value);
+            console.log(value.length)
+            if(value.length == 2){
+                  $scope.campuses1[key].push({"title":"", "description":""});
+            }
+            else if(value.length == 1){
+                for(i=0; i<=2; i++){
+                 $scope.campuses1[key].push({"title":"", "description":""});
+                }
+              }
+           });
+            $scope.contentLibrary = $scope.widgets.cardletContentLibraryWidget;
+        }
+
+        function chunkArray(myArray, chunk_size){
+            var i, j, resArray=[];
+            for (i = 0, j = myArray.length; i < j; i += chunk_size) {
+              resArray.push(myArray.slice(i, i + chunk_size));
+            }
+            console.log("resArray");
+            console.log(resArray);
+            return resArray
+        }
+
+        $scope.addQuickbites = function () {
+        var test = new Array();
+        for(i=1;i<=3;i++){
+            test.push({"title":"title"+i, "description":"description"+i});
+            }
+        $scope.campuses1.push(test);
+        console.log($scope.campuses1)
+        $scope.quickbites = [].concat(...$scope.campuses1)
+        $scope.toLastQuickbite();
+        }
+
+        $scope.setActiveQuckbite = function (index) {
+                console.log(index)
+                   $scope.activeQuickbite = index;
+                }
+
+        $scope.showDeleteQuickbiteDialog = function (prId, chId, isQuickbite) {
+                console.log(prId)
+                console.log(chId)
+                            $scope.isDeleteQuickbite = isQuickbite;
+                            $scope.deleteMsg = "Do you want to delete this Quickbite?";
+                            $scope.showDelteDialog = true;
+                            $scope.deleteprId = prId;
+                            $scope.deletechId = chId;
+                        }
+        $scope.deleteQuickbite = function () {
+           if($scope.campuses1[$scope.deleteprId][$scope.deletechId].id) {
+
+               EditViewerService.deleteQuickbite($scope.campuses1[$scope.deleteprId][$scope.deletechId].id).then(function (response) {
+               //$scope.campuses1[$scope.deleteprId].splice($scope.deletechId,1)
+               $scope.campuses1[$scope.deleteprId][$scope.deletechId].title = "";
+               $scope.campuses1[$scope.deleteprId][$scope.deletechId].description = "";
+               // $scope.campuses1[$scope.deleteprId][$scope.deletechId] = "";
+                 console.log("After delte $scope.campuses1 if ")
+                  $scope.toLastQuickbite();
+                   $scope.showSpinner = false;
+               }).catch(function (response) {
+                   $scope.showSpinner = false;
+               });
+           }else{
+              console.log($scope.campuses1[$scope.deleteprId][$scope.deletechId])
+              $scope.campuses1[$scope.deleteprId][$scope.deletechId].title = "";
+              $scope.campuses1[$scope.deleteprId][$scope.deletechId].description = "";
+               console.log("After delte $scope.campuses1 else")
+               console.log($scope.test)
+                 $scope.toLastQuickbite();
+                 $scope.showSpinner = false;
+           }
+           $scope.showDelteDialog = false;
+       };
+
+        $scope.prevQuickbiteSlide = function(index){
+           $scope.currentUrl = undefined;
+           if( $scope.activeQuickbite == 0){
+               $scope.activeQuickbite = $scope.campuses1.length -1
+           }else{
+               $scope.activeQuickbite = parseInt($scope.activeQuickbite) - 1;
+           }
+
+        };
+
+        $scope.nextQuickbiteSlide = function(index){
+
+           $scope.currentUrl = undefined
+           console.log($scope.campuses1.length)
+           if( $scope.activeQuickbite == $scope.campuses1.length -1){
+           console.log("in if")
+           console.log($scope.activeQuickbite)
+           $scope.activeQuickbite = 0
+           }else{
+               $scope.activeQuickbite = parseInt($scope.activeQuickbite) + 1;
+//                console.log("in else")
+//                          console.log($scope.activeQuickbite)
+           }
+
+        };
+
+        $scope.toLastQuickbite = function () {
+                   var index = $scope.campuses1.length - 1;
+                   $scope.activeQuickbite = index;
+
+               };
 
 
         $scope.isInvalid = function() {
