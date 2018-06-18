@@ -197,7 +197,6 @@
         function setValues(response) {
             $scope.cardletView = response;
             if($scope.cardletView.header){
-            console.log("=-=-=$scope.cardletView.header=-=-")
             if(!$scope.cardletView.header.logoUrl){
             $scope.cardletView.header.logoUrl = '/content/images/page_logo.png'
             }
@@ -207,8 +206,6 @@
 
             console.log($scope.cardletView.header)
                 $scope.header = $scope.cardletView.header;
-                            console.log($scope.header)
-
                 if(!$scope.header.ctaColor){
                     $scope.header.ctaColor = "f0ad4e";
                 }
@@ -223,28 +220,25 @@
               }
             }
              if($scope.cardletView.links){
-                           $scope.links = $scope.cardletView.links;
-                           $scope.selection = [];
-                           console.log("===========$scope.links.logoUrls=========")
-                           console.log($scope.links.logoUrl1)
-                           console.log($scope.links.logoUrl2)
-                           console.log($scope.links.logoUrl3)
-                           if($scope.links.logoUrl1) {
-                               //$scope.selection.push($scope.links.logoUrl1);
-                               $scope.selection[0]= $scope.links.logoUrl1;
+               $scope.links = $scope.cardletView.links;
+               $scope.selection = [];
 
-                           }
-                           if($scope.links.logoUrl2) {
-                                    $scope.selection[1] =       $scope.links.logoUrl2 ;
+               if($scope.links.logoUrl1) {
+                   //$scope.selection.push($scope.links.logoUrl1);
+                   $scope.selection[0]= $scope.links.logoUrl1;
 
-                               //$scope.selection.push($scope.links.logoUrl2);
-                           }
-                           if($scope.links.logoUrl3) {
-                                        $scope.selection[2] =    $scope.links.logoUrl3;
+               }
+               if($scope.links.logoUrl2) {
+                        $scope.selection[1] =       $scope.links.logoUrl2 ;
 
-                               //$scope.selection.push($scope.links.logoUrl3);
-                           }
-                       }
+                   //$scope.selection.push($scope.links.logoUrl2);
+               }
+               if($scope.links.logoUrl3) {
+                            $scope.selection[2] =    $scope.links.logoUrl3;
+
+                   //$scope.selection.push($scope.links.logoUrl3);
+               }
+             }
 
 
             if($scope.cardletView.footer){
@@ -660,7 +654,6 @@
             $scope.myImage = "";
             vm.isShowDialog = true;
             var imageUrl;
-            console.log($scope.contentLibrary[index].coverImageUrl)
             if ($scope.contentLibrary[index].coverImageUrl) {
                 imageUrl = $scope.contentLibrary[index].coverImageUrl;
             }
@@ -676,14 +669,14 @@
         }
 
         function showIconPopUpDialog(type, idx) {
-                           $scope.listIcons.listFilesPaths.forEach(function (listIcon, i) {
-                               listIcon.checked = false;
-                           });
-                           $scope.iconvalue = idx;
-                           $scope.gender = '';
-                            $scope.myImage = "";
-                           vm.isShowDialog1 = true;
-                       }
+           $scope.listIcons.listFilesPaths.forEach(function (listIcon, i) {
+               listIcon.checked = false;
+           });
+           $scope.iconvalue = idx;
+           $scope.gender = '';
+            $scope.myImage = "";
+           vm.isShowDialog1 = true;
+        }
 
         function _arrayBufferToBase64(buffer) {
             var binary = '';
@@ -705,10 +698,6 @@
         }
 
         function hideIconPopUpDialog(clean){
-//            if(clean){
-//                $scope.myImage='';
-//                $scope.myCroppedImage = '';
-//            }
             vm.isShowDialog1 = false;
         }
 
@@ -786,7 +775,7 @@
             $scope.cardletView.footer = $scope.footer;
             $scope.cardletView.cardletId = $scope.cardletId;
             $scope.widgets.cardletTestimonialWidget = $scope.testimonials;
-            $scope.widgets.cardletQuickBitesWidget = [].concat(...$scope.campuses1);
+            $scope.widgets.cardletQuickBitesWidget = Array.prototype.concat.apply([], $scope.campuses1);
             $scope.widgets.cardletQuickBitesWidget = $scope.widgets.cardletQuickBitesWidget.filter(function(item){
                             return item.title.trim().length>0 && item.description.trim().length>0
 
@@ -824,75 +813,44 @@
             $scope.background.imageUrl = $scope.bgArray.listFilesPaths[index].url;
         }
 
-/*        $scope.toggleSelection = function toggleSelection(position, img) {
-         var idx = $scope.selection.indexOf(img);
-
-//            if (idx > -1) {
-//                $scope.selection.splice(idx, 1);
-//            }
-//            else {
-                $scope.selection[$scope.iconvalue] = img ;
-           // }
-
-            setSelction();
-
-        };*/
-$scope.toggleSelection = function toggleSelection(position, img) {
-                var idx = $scope.selection.indexOf(img);
-
-        //            if (idx > -1) {
-        //                $scope.selection.splice(idx, 1);
-        //            }
-        //            else {
-                       console.log($scope.iconvalue)
-                       console.log("angular.element('.icon1val').val()")
-                       console.log(angular.element('.icon1val').val())
-                       $scope.selection[$scope.iconvalue] = img ;
-                  // }
-
-                   setSelction();
-
-               };
-        /*$scope.deleteIcon = function(id){
-            $scope.selection.splice(id, 1);
-            setSelction();
-        }
-*/
+        $scope.toggleSelection = function toggleSelection(position, img) {
+        var idx = $scope.selection.indexOf(img);
+               $scope.selection[$scope.iconvalue] = img ;
+           setSelction();
+       };
 
         $scope.deleteIcon = function(id){
-          // $scope.selection.splice(id, 1);
-           //setSelction();
-                   $scope.links.logoUrl1 = '';
-                   $scope.links.logoUrl2 = '';
-                   $scope.links.logoUrl3 = '';
 
-                   if(id === 0){
-                   $scope.links.name1 ="";
-                   $scope.links.url1 ="";
-                   $scope.selection[0] = "";
-                       $scope.links.logoUrl1 = "";
-                       $scope.links.logoUrl2 = $scope.selection[1];
-                       $scope.links.logoUrl3 = $scope.selection[2];
-                   }
-                   if(id === 1){
-                   $scope.selection[1] = "";
+        $scope.links.logoUrl1 = '';
+        $scope.links.logoUrl2 = '';
+        $scope.links.logoUrl3 = '';
 
-                   $scope.links.name2 ="";
-                   $scope.links.url2 ="";
-                                           $scope.links.logoUrl2 = "";
+        if(id === 0){
+        $scope.links.name1 ="";
+        $scope.links.url1 ="";
+        $scope.selection[0] = "";
+           $scope.links.logoUrl1 = "";
+           $scope.links.logoUrl2 = $scope.selection[1];
+           $scope.links.logoUrl3 = $scope.selection[2];
+        }
+        if(id === 1){
+        $scope.selection[1] = "";
 
-                       $scope.links.logoUrl1 = $scope.selection[0];
-                       $scope.links.logoUrl3 = $scope.selection[2];
-                   }
-                   if(id === 2){
-                   $scope.selection[2] = "";
+        $scope.links.name2 ="";
+        $scope.links.url2 ="";
+        $scope.links.logoUrl2 = "";
 
-                   $scope.links.name3 ="";
-                   $scope.links.url3 ="";
-                       $scope.links.logoUrl1 = $scope.selection[0];
-                       $scope.links.logoUrl2 = $scope.selection[1];
-                       $scope.links.logoUrl3 = "";
-                   }
+        $scope.links.logoUrl1 = $scope.selection[0];
+        $scope.links.logoUrl3 = $scope.selection[2];
+        }
+        if(id === 2){
+        $scope.selection[2] = "";
+        $scope.links.name3 ="";
+        $scope.links.url3 ="";
+        $scope.links.logoUrl1 = $scope.selection[0];
+        $scope.links.logoUrl2 = $scope.selection[1];
+        $scope.links.logoUrl3 = "";
+        }
        }
 
         function setSelction() {
@@ -995,14 +953,10 @@ $scope.toggleSelection = function toggleSelection(position, img) {
         $scope.setWidgets = function () {
             $scope.testimonials = $scope.widgets.cardletTestimonialWidget;
             $scope.contentLibrary = $scope.widgets.cardletContentLibraryWidget;
-            $scope.quickbites = [].concat(...$scope.campuses1)
+            $scope.quickbites = Array.prototype.concat.apply([], $scope.campuses1);
             $scope.quickbites = $scope.widgets.cardletQuickBitesWidget;
             $scope.campuses1 = chunkArray($scope.widgets.cardletQuickBitesWidget, 3);
-            console.log("yahoo $scope.model.campuses1")
-            console.log($scope.campuses1);
             angular.forEach($scope.campuses1, function(value, key){
-            console.log(key + ': ' + value);
-            console.log(value.length)
             if(value.length == 2){
                   $scope.campuses1[key].push({"title":"", "description":""});
             }
@@ -1016,15 +970,9 @@ $scope.toggleSelection = function toggleSelection(position, img) {
         $scope.getNsetWidgets = function () {
             $scope.testimonials = $scope.widgets.cardletTestimonialWidget;
             $scope.quickbites = $scope.widgets.cardletQuickBitesWidget;
-            console.log("i am in get widgets")
-            console.log($scope.quickbites)
             var resultArray = chunkArray($scope.quickbites, 3)
             $scope.campuses1 = resultArray;
-           console.log("yahoo $scope.model.campuses1")
-           console.log($scope.campuses1)
            angular.forEach($scope.campuses1, function(value, key){
-            console.log(key + ': ' + value);
-            console.log(value.length)
             if(value.length == 2){
                   $scope.campuses1[key].push({"title":"", "description":""});
             }
@@ -1042,9 +990,7 @@ $scope.toggleSelection = function toggleSelection(position, img) {
             for (i = 0, j = myArray.length; i < j; i += chunk_size) {
               resArray.push(myArray.slice(i, i + chunk_size));
             }
-            console.log("resArray");
-            console.log(resArray);
-            return resArray
+            return resArray;
         }
 
         $scope.addQuickbites = function () {
@@ -1053,34 +999,27 @@ $scope.toggleSelection = function toggleSelection(position, img) {
             test.push({"title":"title"+i, "description":"description"+i});
             }
         $scope.campuses1.push(test);
-        console.log($scope.campuses1)
-        $scope.quickbites = [].concat(...$scope.campuses1)
+        $scope.quickbites = Array.prototype.concat.apply([], $scope.campuses1);
         $scope.toLastQuickbite();
         }
 
         $scope.setActiveQuckbite = function (index) {
-                console.log(index)
                    $scope.activeQuickbite = index;
                 }
 
         $scope.showDeleteQuickbiteDialog = function (prId, chId, isQuickbite) {
-                console.log(prId)
-                console.log(chId)
-                            $scope.isDeleteQuickbite = isQuickbite;
-                            $scope.deleteMsg = "Do you want to delete this Quickbite?";
-                            $scope.showDelteDialog = true;
-                            $scope.deleteprId = prId;
-                            $scope.deletechId = chId;
-                        }
+            $scope.isDeleteQuickbite = isQuickbite;
+            $scope.deleteMsg = "Do you want to delete this Quickbite?";
+            $scope.showDelteDialog = true;
+            $scope.deleteprId = prId;
+            $scope.deletechId = chId;
+        }
         $scope.deleteQuickbite = function () {
            if($scope.campuses1[$scope.deleteprId][$scope.deletechId].id) {
 
                EditViewerService.deleteQuickbite($scope.campuses1[$scope.deleteprId][$scope.deletechId].id).then(function (response) {
-               //$scope.campuses1[$scope.deleteprId].splice($scope.deletechId,1)
                $scope.campuses1[$scope.deleteprId][$scope.deletechId].title = "";
                $scope.campuses1[$scope.deleteprId][$scope.deletechId].description = "";
-               // $scope.campuses1[$scope.deleteprId][$scope.deletechId] = "";
-                 console.log("After delte $scope.campuses1 if ")
                   $scope.toLastQuickbite();
                    $scope.showSpinner = false;
                }).catch(function (response) {
@@ -1090,8 +1029,6 @@ $scope.toggleSelection = function toggleSelection(position, img) {
               console.log($scope.campuses1[$scope.deleteprId][$scope.deletechId])
               $scope.campuses1[$scope.deleteprId][$scope.deletechId].title = "";
               $scope.campuses1[$scope.deleteprId][$scope.deletechId].description = "";
-               console.log("After delte $scope.campuses1 else")
-               console.log($scope.test)
                  $scope.toLastQuickbite();
                  $scope.showSpinner = false;
            }
@@ -1111,24 +1048,19 @@ $scope.toggleSelection = function toggleSelection(position, img) {
         $scope.nextQuickbiteSlide = function(index){
 
            $scope.currentUrl = undefined
-           console.log($scope.campuses1.length)
            if( $scope.activeQuickbite == $scope.campuses1.length -1){
-           console.log("in if")
-           console.log($scope.activeQuickbite)
            $scope.activeQuickbite = 0
            }else{
                $scope.activeQuickbite = parseInt($scope.activeQuickbite) + 1;
-//                console.log("in else")
-//                          console.log($scope.activeQuickbite)
            }
 
         };
 
         $scope.toLastQuickbite = function () {
-                   var index = $scope.campuses1.length - 1;
-                   $scope.activeQuickbite = index;
+        var index = $scope.campuses1.length - 1;
+        $scope.activeQuickbite = index;
 
-               };
+        };
 
 
         $scope.isInvalid = function() {
